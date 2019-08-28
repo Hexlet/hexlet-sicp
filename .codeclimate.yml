@@ -39,6 +39,10 @@ checks:
 plugins:
   phpcodesniffer:
     enabled: true
+    config:
+      file_extensions: "php"
+      ignore_warnings: true
+      standard: "./phpcs.xml"
   phan:
     enabled: true
     config:
