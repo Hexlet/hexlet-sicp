@@ -1,0 +1,20 @@
+version: "2"
+plugins:
+  phpcodesniffer:
+    enabled: true
+    config:
+      file_extensions: "php"
+      ignore_warnings: true
+      standard: "./phpcs.xml"
+  phan:
+    enabled: true
+    config:
+      file_extensions: "php"
+  sonar-php:
+    enabled: true
+    tests:
+      - tests/**
+exclude_patterns:
+- "tests/"
+- "spec/"
+- "**/vendor/"
