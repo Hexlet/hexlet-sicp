@@ -10,11 +10,11 @@
     "require": {
         "php": "^7.3",
         "fideloper/proxy": "^4.0",
-        "heroku/heroku-buildpack-php": "^160.0",
         "laravel/framework": "5.8.*",
         "laravel/tinker": "^1.0"
     },
     "require-dev": {
+        "heroku/heroku-buildpack-php": "^160.0",
         "barryvdh/laravel-ide-helper": "^2.6",
         "beyondcode/laravel-dump-server": "^1.0",
         "filp/whoops": "^2.0",
