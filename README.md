@@ -3,6 +3,20 @@
 [![build status](https://travis-ci.org/Hexlet/hexlet-sicp.svg?branch=master)](https://travis-ci.com/Hexlet/hexlet-sicp)
 
 # hexlet-sicp
+
+### Required
+
+* PHP
+* Composer
+
+### Setup
+
+```sh
+$ make setup
+$ make test # run tests
+$ make server # run server
+```
+
 осилятор СИКП
 сервис в котором есть рейтинг тех кто проходит сикп
 и каждый отмечает что он прошел
