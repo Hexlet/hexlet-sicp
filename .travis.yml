@@ -7,7 +7,7 @@ env:
   - APP_ENV=testing
 php:
   - '7.3'
-install: make install
+install: make setup
 script:
   - make lint
   - make analyse
