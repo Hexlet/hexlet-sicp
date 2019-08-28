@@ -1,6 +1,9 @@
 test:
 	composer phpunit
 
+install:
+	composer install
+
 start:
 	php artisan serve
 
@@ -9,6 +12,7 @@ analyze:
 
 lint:
 	composer phpcs
+
 fix-lint:
 	composer phpcbf
 

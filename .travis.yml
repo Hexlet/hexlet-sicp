@@ -1,0 +1,14 @@
+language: php
+sudo: false
+cache:
+  directories:
+    - $HOME/.composer/cache/files
+env:
+  - APP_ENV=testing
+php:
+  - '7.2'
+install: make install
+script:
+  - make lint
+  - make analyze
+  - make test
