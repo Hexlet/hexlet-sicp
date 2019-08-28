@@ -10,5 +10,5 @@ php:
 install: make install
 script:
   - make lint
-  - make analyze
+  - make analyse
   - make test

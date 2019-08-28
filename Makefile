@@ -7,8 +7,8 @@ install:
 start:
 	php artisan serve
 
-analyze:
-	php artisan code:analyze
+analyse:
+	php artisan code:analyse
 
 lint:
 	composer phpcs
