@@ -10,6 +10,7 @@
     "require": {
         "php": "^7.3",
         "fideloper/proxy": "^4.0",
+        "heroku/heroku-buildpack-php": "^160.0",
         "laravel/framework": "5.8.*",
         "laravel/tinker": "^1.0"
     },

@@ -16,4 +16,7 @@ lint:
 fix-lint:
 	composer phpcbf
 
+deploy:
+	git push heroku master
+
 .PHONY: test
