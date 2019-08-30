@@ -4,7 +4,13 @@
 
 # hexlet-sicp
 
-### Required
+Осилятор СИКП &mdash; сервис, в котором есть рейтинг тех, кто проходит сикп, и каждый отмечает что он прошел.
+
+### Участие
+
+* Обсуждение в канале #php слака http://slack-ru.hexlet.io
+
+### Requirements
 
 * PHP
 * Composer
@@ -17,4 +23,24 @@ $ make test # run tests
 $ make start # start server
 ```
 
-Осилятор СИКП &mdash; сервис, в котором есть рейтинг тех, кто проходит сикп, и каждый отмечает что он прошел. Мы туда мотивашки прикрутим обсуждение глав и так далее. MVP включает в себя регистрацию и возможность отмечать, что прошел и профиль, в котором это можно посмотреть.
+### Смысл
+
+
+### MVP
+
+Включает в себя регистрацию и возможность отмечать, что прошел и профиль, в котором это можно посмотреть. Отмечаем по 
+* Регистрация по паролю
+* Регистрация через соц сети
+
+### Стандарты
+
+* Пулреквесты должны быть настолько маленькими насколько это возможно с точки зрения здравого смысла
+* Весь код должен соответствовать стандартам кодирования PSR и Laravel
+* Пулреквест должен проходить все проверки
+* Все экшены контроллеров должны быть покрыты тестами
+
+##
+[![Hexlet Ltd. logo](https://raw.githubusercontent.com/Hexlet/hexletguides.github.io/master/images/hexlet_logo128.png)](https://ru.hexlet.io/pages/about?utm_source=github&utm_medium=link&utm_campaign=exercises-javascript)
+
+This repository is created and maintained by the team and the community of Hexlet, an educational project. [Read more about Hexlet (in Russian)](https://ru.hexlet.io/pages/about?utm_source=github&utm_medium=link&utm_campaign=exercises-javascript).
+##
