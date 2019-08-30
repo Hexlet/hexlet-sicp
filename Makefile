@@ -22,6 +22,7 @@ deploy:
 
 env:
 	cp .env.example .env
+
 key:
 	php artisan key:generate
 
