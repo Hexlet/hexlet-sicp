@@ -1,8 +1,9 @@
 test:
 	composer run phpunit
 
-setup:
+setup: env
 	composer install
+	$(MAKE) key
 
 start:
 	php artisan serve
@@ -20,3 +21,8 @@ deploy:
 	git push heroku master
 
 .PHONY: test
+
+env:
+	cp .env.example .env
+key:
+	php artisan key:generate
