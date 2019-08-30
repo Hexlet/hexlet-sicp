@@ -20,9 +20,10 @@ fix-lint:
 deploy:
 	git push heroku master
 
-.PHONY: test
-
 env:
 	cp .env.example .env
+
 key:
 	php artisan key:generate
+
+.PHONY: test
