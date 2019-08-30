@@ -1,8 +1,9 @@
 test:
 	composer run phpunit
 
-setup: env key
+setup: env
 	composer install
+	$(MAKE) key
 
 start:
 	php artisan serve
@@ -22,6 +23,6 @@ deploy:
 .PHONY: test
 
 env:
-		cp .env.example .env
+	cp .env.example .env
 key:
-		php artisan key:generate
+	php artisan key:generate
