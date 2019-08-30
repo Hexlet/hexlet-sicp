@@ -9,7 +9,9 @@
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
+ */
+
+use Illuminate\Http\Request;
 
 Route::get('/', function () {
     return view('welcome');
@@ -21,7 +23,11 @@ Route::group(
     ],
     static function () {
 
-        Route::get('/github', 'GithubController@redirectToProvider');
-        Route::get('/github/callback', 'GithubController@handleProviderCallback');
+        Route::get('/github', 'GithubController@redirectToProvider')->name('oauth.github');
+        Route::get('/github/callback', 'GithubController@handleProviderCallback')->name('oauth.github-callback');
     }
 );
+Route::get('/webhook', function (Request $request) {
+    dump($request->all());
+});
+Route::get('index', 'PageController@index')->name('index');

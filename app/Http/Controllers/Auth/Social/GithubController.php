@@ -23,5 +23,7 @@ class GithubController extends Controller
         $user = Socialite::driver('github')->user();
 
         // $user->token;
+
+        return "success?";
     }
 }
