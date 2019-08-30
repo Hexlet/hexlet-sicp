@@ -3,6 +3,7 @@ test:
 
 setup:
 	composer install
+	php artisan key:generate
 
 start:
 	php artisan serve
