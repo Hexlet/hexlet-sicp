@@ -14,3 +14,14 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::group(
+    [
+    'prefix' => 'oauth',
+    'namespace' => '\\App\\Http\\Controllers\\Auth\\Social\\'
+    ],
+    static function () {
+
+        Route::get('/github', 'GithubController@redirectToProvider');
+        Route::get('/github/callback', 'GithubController@handleProviderCallback');
+    }
+);
