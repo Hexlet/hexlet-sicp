@@ -11,7 +11,8 @@
         "php": "^7.3",
         "fideloper/proxy": "^4.0",
         "laravel/framework": "5.8.*",
-        "laravel/tinker": "^1.0"
+        "laravel/tinker": "^1.0",
+        "symfony/yaml": "^4.3"
     },
     "require-dev": {
         "heroku/heroku-buildpack-php": "^160.0",

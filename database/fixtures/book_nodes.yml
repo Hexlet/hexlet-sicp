@@ -1,0 +1,24 @@
+- book_node:
+    description: Building Abstractions with Procedures
+    type: 0
+    order_number: 1
+    parent_id:
+    id: 1
+- book_node:
+    description: The Elements of Programming
+    type: 1
+    order_number: 1
+    parent_id: 1
+    id: 2
+- book_node:
+    description: Below is a sequence of expressions. What is the result printed by the interpreter in response to each expression? Assume that the sequence is to be evaluated in the order in which it is presented.
+    type: 2
+    order_number: 1
+    parent_id: 2
+    id: 3
+- book_node:
+    description: Translate the following expression into prefix
+    type: 2
+    order_number: 2
+    parent_id: 2
+    id: 4
