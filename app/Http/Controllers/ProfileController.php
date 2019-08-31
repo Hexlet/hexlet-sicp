@@ -8,14 +8,9 @@ use Illuminate\View\View;
 
 class ProfileController extends Controller
 {
-    /**
-     * Выводим профиль автризованного пользователя.
-     *
-     * @return Factory|View
-     */
-    public function show()
+    public function index()
     {
-        return view('profile.show', [
+        return view('profile.index', [
             'user' => Auth::user(),
         ]);
     }

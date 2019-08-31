@@ -30,12 +30,6 @@ Route::group(
 Route::get('/webhook', function (Request $request) {
     dump($request->all());
 });
-Route::get('index', 'PageController@index')->name('index');
+//Route::get('index', 'PageController@index')->name('index');
 
-/*Route::middleware('auth')
-    ->group(function () {
-        Route::get('profile', 'ProfileController@show')->name('profile.show');
-    });*/
-
-
-Route::get('profile', 'ProfileController@show')->name('profile.show');
+Route::resource('profile', 'ProfileController')->only('index');

@@ -8,16 +8,14 @@ use Tests\TestCase;
 
 class ProfileControllerTest extends TestCase
 {
-    use DatabaseMigrations;
 
-    /** @test */
-    public function canViewProfilePage()
+    public function testIndex()
     {
         $user = factory(User::class)->create();
 
         $this->actingAs($user);
 
-        $response = $this->get('/profile');
+        $response = $this->get(route('profile.index'));
 
         $response->assertStatus(200)
             ->assertSee($user->name);
