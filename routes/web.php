@@ -11,6 +11,11 @@
 |
 */
 
+use Illuminate\Support\Facades\Lang;
+
 Route::get('/', function () {
     return view('welcome');
+});
+Route::get('/sicp/content', function () {
+    return view('sicp.table-of-content');
 });
