@@ -15,10 +15,8 @@ class CreateChapters extends Migration
     {
         Schema::create('chapters', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('number');
+            $table->string('path');
             $table->string('name');
-            $table->string('book');
-            $table->timestamps();
         });
     }
 
