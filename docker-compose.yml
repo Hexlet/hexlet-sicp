@@ -1,0 +1,94 @@
+version: "3"
+services:
+
+  nginx-proxy:
+    image: jwilder/nginx-proxy
+    container_name: nginx-proxy
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+      - ./storage/certs:/etc/nginx/certs
+    depends_on:
+      - web
+    networks:
+      - hexlet-sicp-network
+
+  db:
+    build:
+      context: ./
+      dockerfile: docker/dev/db.Dockerfile
+    command: '--default-authentication-plugin=mysql_native_password'
+    image: ${COMPOSE_PROJECT_NAME}_db
+    container_name: ${COMPOSE_PROJECT_NAME}_db_1
+    environment:
+      MYSQL_USER: docker
+      MYSQL_DATABASE: docker
+      MYSQL_PASSWORD: secret
+      MYSQL_ROOT_PASSWORD: secret
+    ports:
+      - "33060:3306"
+    networks:
+      - hexlet-sicp-network
+
+  web:
+    build:
+      context: ./
+      dockerfile: docker/dev/web.Dockerfile
+    image: ${COMPOSE_PROJECT_NAME}_web
+    container_name: ${COMPOSE_PROJECT_NAME}_web_1
+    volumes:
+      - ./public:/var/www/public
+      - ./storage:/var/www/storage
+    ports:
+      - "8089:80"
+    environment:
+      VIRTUAL_HOST: ${VIRTUAL_HOST}
+      VIRTUAL_PORT: 8089
+    depends_on:
+      - app
+    links:
+      - 'app:app'
+    networks:
+      - hexlet-sicp-network
+
+  app:
+    build:
+      context: ./
+      dockerfile: docker/dev/app.Dockerfile
+    image: ${COMPOSE_PROJECT_NAME}_app
+    container_name: ${COMPOSE_PROJECT_NAME}_app_1
+    environment:
+      XDEBUG_CONFIG: "remote_host=192.168.220.1 remote_enable=1"
+      PHP_IDE_CONFIG: "serverName=Docker"
+    volumes:
+    - ./:/var/www
+    #- ~/.ssh:/home/docker-user/.ssh -- pass your local ssh key
+    depends_on:
+      - db
+    networks:
+      - hexlet-sicp-network
+
+  node:
+    build:
+      context: ./
+      dockerfile: docker/dev/node.Dockerfile
+    image: ${COMPOSE_PROJECT_NAME}_node
+    container_name: ${COMPOSE_PROJECT_NAME}_node_1
+    ports:
+      - "3000:3000"
+    tty: true
+    volumes:
+      - ./:/var/www
+    networks:
+      - hexlet-sicp-network
+
+#Docker Networks
+networks:
+  hexlet-sicp-network:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.168.220.0/28

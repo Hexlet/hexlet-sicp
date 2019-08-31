@@ -15,6 +15,12 @@
 * PHP
 * Composer
 
+### Requirements to start with docker
+
+* docker
+* docker-compose
+* mkcert (https://github.com/FiloSottile/mkcert#installation or for linux https://linoxide.com/linux-how-to/mkcert-localhost-ssl-certificates-linux/)
+
 ### Setup
 
 ```sh
@@ -22,6 +28,17 @@ $ make setup
 $ make test # run tests
 $ make start # start server
 ```
+
+### Setup with docker 
+ 
+```sh
+$ cp docker.env.example docker.env # Set env variables in docker.env
+$ make up
+$ make prepare-app
+$ make prepare-db
+```
+
+In `/etc/hosts` set `127.0.0.1 VAR_FROM_VIRTUAL_HOST`
 
 ### Смысл
 
