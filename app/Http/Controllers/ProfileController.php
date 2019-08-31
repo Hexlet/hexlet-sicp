@@ -8,7 +8,7 @@ use Illuminate\View\View;
 
 class ProfileController extends Controller
 {
-    public function index()
+    public function __invoke()
     {
         return view('profile.index', [
             'user' => Auth::user(),

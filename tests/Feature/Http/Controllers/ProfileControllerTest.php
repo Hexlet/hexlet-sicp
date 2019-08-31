@@ -15,7 +15,7 @@ class ProfileControllerTest extends TestCase
 
         $this->actingAs($user);
 
-        $response = $this->get(route('profile.index'));
+        $response = $this->get(route('profile'));
 
         $response->assertStatus(200)
             ->assertSee($user->name);
