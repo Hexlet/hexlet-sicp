@@ -31,3 +31,7 @@ Route::get('/webhook', function (Request $request) {
     dump($request->all());
 });
 Route::get('index', 'PageController@index')->name('index');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
