@@ -4,13 +4,9 @@
     <div class="row my-4">
         <div class="col-12 col-md-3">
             <div class="position-sticky sticky-top pt-4 mb-4">
-                <img class="img-fluid rounded shadow-sm mb-3" src="{{ $user->photo }}">
                 <h1 class="h2 mb-2">
                     {{ $user->name }}
                 </h1>
-                <div class="small mt-5">
-                    <a title="#" class="text-muted" href="#">Редактировать профиль</a>
-                </div>
             </div>
         </div>
         <div class="col-12 col-md-9 my-4 d-flex flex-column">
