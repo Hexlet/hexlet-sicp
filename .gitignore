@@ -9,4 +9,7 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
-.idea/
+.idea
+/build
+_ide_helper.php
+_ide_helper_models.php

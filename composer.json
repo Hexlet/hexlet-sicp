@@ -11,14 +11,18 @@
         "php": "^7.3",
         "fideloper/proxy": "^4.0",
         "laravel/framework": "5.8.*",
-        "laravel/tinker": "^1.0"
+        "laravel/socialite": "^4.1",
+        "laravel/tinker": "^1.0",
+        "laravelcollective/html": "^5.8"
     },
     "require-dev": {
-        "heroku/heroku-buildpack-php": "^160.0",
+        "barryvdh/laravel-debugbar": "^3.2",
         "barryvdh/laravel-ide-helper": "^2.6",
         "beyondcode/laravel-dump-server": "^1.0",
+        "doctrine/dbal": "^2.9",
         "filp/whoops": "^2.0",
         "fzaninotto/faker": "^1.4",
+        "heroku/heroku-buildpack-php": "^160.0",
         "mockery/mockery": "^1.0",
         "nunomaduro/collision": "^3.0",
         "nunomaduro/larastan": "^0.4.0",
