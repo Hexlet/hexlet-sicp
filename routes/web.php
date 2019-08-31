@@ -31,3 +31,16 @@ Route::get('/webhook', function (Request $request) {
     dump($request->all());
 });
 Route::get('index', 'PageController@index')->name('index');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+
+
+// **************    VISUAL MANUAL TESTS    *****************
+Route::get('/tests/is_leaf', function () {
+    (new \Tests\Feature\ChaptersTest())->testIsLeaf();
+})->name('testIsLeaf');
+
+
