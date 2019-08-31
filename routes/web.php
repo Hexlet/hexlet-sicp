@@ -31,6 +31,3 @@ Route::get('/webhook', function (Request $request) {
     dump($request->all());
 });
 Route::get('index', 'PageController@index')->name('index');
-Route::get('/sicp/content', function () {
-    return view('sicp.table-of-content');
-});
