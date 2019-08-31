@@ -37,7 +37,13 @@ $ make start # start server
 * Пулреквесты должны быть настолько маленькими насколько это возможно с точки зрения здравого смысла
 * Весь код должен соответствовать стандартам кодирования PSR и Laravel
 * Пулреквест должен проходить все проверки
+
+#### Прикладные вещи
+
 * Все экшены контроллеров должны быть покрыты тестами
+* Формы делаются с помощью https://github.com/LaravelCollective/html
+* В подавляющем большинстве используется ресурсный роутинг. Что под него не подходит сначала обсуждается (такое бывает крайне редко)
+* Тексты только через локали
 
 ##
 [![Hexlet Ltd. logo](https://raw.githubusercontent.com/Hexlet/hexletguides.github.io/master/images/hexlet_logo128.png)](https://ru.hexlet.io/pages/about?utm_source=github&utm_medium=link&utm_campaign=exercises-javascript)
