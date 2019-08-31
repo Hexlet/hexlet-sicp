@@ -159,8 +159,6 @@ class CreateChaptersTable extends Migration
      */
     public function down()
     {
-        Schema::table('chapters', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('chapters');
     }
 }
