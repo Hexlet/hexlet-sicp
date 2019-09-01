@@ -18,6 +18,7 @@ class CreateChapters extends Migration
             $table->string('path');
             $table->string('name_en');
             $table->string('name_ru');
+            $table->timestamps();
         });
     }
 
