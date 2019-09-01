@@ -5,7 +5,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Support\Facades\DB;
 
-class CreateChaptersTable extends Migration
+class SeedChaptersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,10 +14,7 @@ class CreateChaptersTable extends Migration
      */
     public function up()
     {
-        Schema::create('chapters', function (Blueprint $table) {
-            $table->bigIncrements('id')->unsigned();
-            $table->string('number')->unique();
-        });
+        Artisan::call('db:seed', array('--class' => 'ChapterSeeder'));
     }
 
     /**
@@ -27,6 +24,6 @@ class CreateChaptersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('chapters');
+        DB::table('chapters')->delete();
     }
 }
