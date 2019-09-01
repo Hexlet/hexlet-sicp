@@ -1,7 +1,9 @@
 test:
 	composer run phpunit
 
-setup:
+setup: env-prepare install key
+
+install:
 	composer install
 
 start:
@@ -18,5 +20,11 @@ fix-lint:
 
 deploy:
 	git push heroku master
+
+env-prepare:
+	cp -n .env.example .env || true
+
+key:
+	php artisan key:generate
 
 .PHONY: test
