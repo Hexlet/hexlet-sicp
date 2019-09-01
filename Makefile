@@ -1,9 +1,10 @@
 test:
 	composer run phpunit
 
-setup: env
+setup: env-prepare install key
+
+install:
 	composer install
-	$(MAKE) key
 
 start:
 	php artisan serve
@@ -20,8 +21,8 @@ fix-lint:
 deploy:
 	git push heroku master
 
-env:
-	cp .env.example .env
+env-prepare:
+	cp -n .env.example .env || true
 
 key:
 	php artisan key:generate
