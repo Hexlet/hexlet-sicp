@@ -17,8 +17,8 @@ class CreateChapterTable extends Migration
             $table->bigIncrements('id');
             $table->string('number')->unique();
             $table->string('name');
-            $table->text('description');
-            $table->bigInteger(parent_id)->nullable();
+            $table->text('description')->nullable();
+            $table->bigInteger('parent_id')->nullable();
             $table->timestamps();
         });
     }
