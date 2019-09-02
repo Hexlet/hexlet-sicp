@@ -6,10 +6,11 @@ use App\User;
 
 class UserController extends Controller
 {
-    public function show(User $user)
+    public function show(string $username)
     {
-        return view('user.index', [
+        dd($username);
+/*        return view('user.index', [
             'user' => $user,
-        ]);
+        ]);*/
     }
 }
