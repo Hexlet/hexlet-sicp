@@ -10,6 +10,11 @@ plugins:
     enabled: true
     tests:
       - tests/**
+  phpmd:
+    enabled: true
+    config:
+      file_extensions:
+        - php
 exclude_patterns:
 - "tests/"
 - "spec/"
