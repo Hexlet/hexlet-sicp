@@ -26,4 +26,7 @@ env:
 key:
 	php artisan key:generate
 
+build-front:
+	npm run prod
+
 .PHONY: test
