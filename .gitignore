@@ -13,3 +13,6 @@ yarn-error.log
 /build
 _ide_helper.php
 _ide_helper_models.php
+/public/mix-manifest.json
+public/css
+public/js
