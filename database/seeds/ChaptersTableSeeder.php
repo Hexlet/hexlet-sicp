@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class ChapterSeeder extends Seeder
+class ChaptersTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
