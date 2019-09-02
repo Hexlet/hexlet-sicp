@@ -16,7 +16,7 @@ class ChaptersTableSeeder extends Seeder
         )
         ->keys()
         ->map(function ($chapterNumber) {
-            return ['number' => $chapterNumber];
+            return ['path' => $chapterNumber];
         })->toArray();
         DB::table('chapters')->insert($preparedChapters);
     }
