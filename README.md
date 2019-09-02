@@ -23,6 +23,11 @@ $ make test # run tests
 $ make start # start server
 ```
 
+Для локальной сборки ресурсный файлов надо выполнить:
+```sh
+$ heroku local frontend
+``` 
+
 ### Смысл
 
 
