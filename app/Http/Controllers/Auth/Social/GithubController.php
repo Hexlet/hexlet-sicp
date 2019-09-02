@@ -3,6 +3,10 @@
 namespace App\Http\Controllers\Auth\Social;
 
 use App\Http\Controllers\Controller;
+use App\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 use Socialite;
 
 class GithubController extends Controller
@@ -20,10 +24,29 @@ class GithubController extends Controller
      */
     public function handleProviderCallback()
     {
-        $user = Socialite::driver('github')->user();
+        try {
+            /**
+             * @var \Laravel\Socialite\Two\User|null $user
+             */
+            $user = Socialite::driver('github')->user();
+        } catch (Exception $e) {
+            Session::flash('error', 'socialite.github.error');
+            return redirect('/login');
+        }
+        $authUser = User::firstOrNew(['email' => $user->getEmail()]);
 
-        // $user->token;
+        if (false === $authUser->exists) {
+            $authUser->name              = $user->getName();
+            $authUser->email_verified_at = now();
+            $authUser->password          = Hash::make(random_bytes(10));
+        }
 
-        return "success?";
+        try {
+            $authUser->saveOrFail();
+            Auth::login($authUser, true);
+            return redirect()->route('home');
+        } catch (\Exception $e) {
+            Session::flash('error', 'Произошла ошибка при попытке войти');
+        }
     }
 }
