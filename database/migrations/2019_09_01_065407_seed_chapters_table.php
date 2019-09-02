@@ -14,7 +14,7 @@ class SeedChaptersTable extends Migration
      */
     public function up()
     {
-        Artisan::call('db:seed', array('--class' => 'ChapterSeeder'));
+        Artisan::call('db:seed', array('--class' => 'ChaptersTableSeeder'));
     }
 
     /**
