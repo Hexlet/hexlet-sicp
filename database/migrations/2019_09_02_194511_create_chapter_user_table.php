@@ -18,6 +18,14 @@ class CreateChapterUserTable extends Migration
             $table->bigInteger('chapter_id');
             $table->bigInteger('user_id');
             $table->timestamps();
+
+            $table->foreign('chapter_id')
+                ->references('id')
+                ->on('chapters');
+
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users');
         });
     }
 
