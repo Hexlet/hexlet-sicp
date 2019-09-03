@@ -36,4 +36,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function chapters()
+    {
+        return $this->belongsToMany(Chapter::class);
+    }
+
+    public function readChapter(int $chapterId)
+    {
+        $this->chapters()->attach($chapterId);
+    }
 }
