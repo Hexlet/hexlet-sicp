@@ -11,12 +11,18 @@ use Socialite;
 
 class GithubController extends Controller
 {
+    private $socialite;
+
+    public function __construct(Socialite $socialite)
+    {
+        $this->socialite = $socialite;
+    }
     /**
      * Redirect the user to the GitHub authentication page.
      */
     public function redirectToProvider()
     {
-        return Socialite::driver('github')->redirect();
+        return $this->socialite::driver('github')->redirect();
     }
 
     /**
@@ -24,29 +30,18 @@ class GithubController extends Controller
      */
     public function handleProviderCallback()
     {
-        try {
-            /**
-             * @var \Laravel\Socialite\Two\User|null $user
-             */
-            $user = Socialite::driver('github')->user();
-        } catch (Exception $e) {
-            Session::flash('error', 'socialite.github.error');
-            return redirect('/login');
-        }
-        $authUser = User::firstOrNew(['email' => $user->getEmail()]);
+        $socialiteUser = $this->socialite::driver('github')->user();
+
+        $authUser = User::firstOrNew(['email' => $socialiteUser->getEmail()]);
 
         if (false === $authUser->exists) {
-            $authUser->name              = $user->getName();
+            $authUser->name              = $socialiteUser->getName();
             $authUser->email_verified_at = now();
             $authUser->password          = Hash::make(random_bytes(10));
         }
 
-        try {
-            $authUser->saveOrFail();
-            Auth::login($authUser, true);
-            return redirect()->route('home');
-        } catch (\Exception $e) {
-            Session::flash('error', 'Произошла ошибка при попытке войти');
-        }
+        $authUser->saveOrFail();
+        Auth::login($authUser, true);
+        return redirect()->route('home');
     }
 }
