@@ -12,17 +12,19 @@ use Socialite;
 class GithubController extends Controller
 {
     private $socialite;
+    private $user;
 
-    public function __construct(Socialite $socialite)
+    public function __construct(Socialite $socialite, User $user)
     {
         $this->socialite = $socialite;
+        $this->user      = $user;
     }
     /**
      * Redirect the user to the GitHub authentication page.
      */
     public function redirectToProvider()
     {
-        return $this->socialite::driver('github')->redirect();
+        return $this->socialite::driver('github')->scopes(['user:email'])->redirect();
     }
 
     /**
@@ -32,16 +34,16 @@ class GithubController extends Controller
     {
         $socialiteUser = $this->socialite::driver('github')->user();
 
-        $authUser = User::firstOrNew(['email' => $socialiteUser->getEmail()]);
+        $userForAuth = User::firstOrNew(['email' => $socialiteUser->getEmail()]);
 
-        if (false === $authUser->exists) {
-            $authUser->name              = $socialiteUser->getName();
-            $authUser->email_verified_at = now();
-            $authUser->password          = Hash::make(random_bytes(10));
+        if (false === $userForAuth->exists) {
+            $userForAuth->name              = $socialiteUser->getName();
+            $userForAuth->email_verified_at = now();
+            $userForAuth->password          = Hash::make(random_bytes(10));
+            $userForAuth->saveOrFail();
         }
 
-        $authUser->saveOrFail();
-        Auth::login($authUser, true);
+        Auth::login($userForAuth, true);
         return redirect()->route('home');
     }
 }
