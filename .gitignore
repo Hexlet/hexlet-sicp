@@ -16,3 +16,4 @@ _ide_helper_models.php
 /public/mix-manifest.json
 public/css
 public/js
+package-lock.json
