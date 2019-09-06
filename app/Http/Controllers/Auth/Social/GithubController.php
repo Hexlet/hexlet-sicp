@@ -3,16 +3,28 @@
 namespace App\Http\Controllers\Auth\Social;
 
 use App\Http\Controllers\Controller;
+use App\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 use Socialite;
 
 class GithubController extends Controller
 {
+    private $socialite;
+    private $user;
+
+    public function __construct(Socialite $socialite, User $user)
+    {
+        $this->socialite = $socialite;
+        $this->user      = $user;
+    }
     /**
      * Redirect the user to the GitHub authentication page.
      */
     public function redirectToProvider()
     {
-        return Socialite::driver('github')->redirect();
+        return $this->socialite::driver('github')->scopes(['user:email'])->redirect();
     }
 
     /**
@@ -20,10 +32,18 @@ class GithubController extends Controller
      */
     public function handleProviderCallback()
     {
-        $user = Socialite::driver('github')->user();
+        $socialiteUser = $this->socialite::driver('github')->user();
 
-        // $user->token;
+        $userForAuth = User::firstOrNew(['email' => $socialiteUser->getEmail()]);
 
-        return "success?";
+        if (false === $userForAuth->exists) {
+            $userForAuth->name              = $socialiteUser->getName();
+            $userForAuth->email_verified_at = now();
+            $userForAuth->password          = Hash::make(random_bytes(10));
+            $userForAuth->saveOrFail();
+        }
+
+        Auth::login($userForAuth, true);
+        return redirect()->route('home');
     }
 }
