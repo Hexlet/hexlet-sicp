@@ -19,7 +19,7 @@ class UserChapterControllerTest extends TestCase
         $this->post(route('users.chapters.store', [$user->id]), [
                 'chapters_id' => $chapters->pluck('id'),
             ])
-            ->assertStatus(201);
+            ->assertStatus(200);
 
         $this->assertCount($quantity, $user->readChapters);
     }
