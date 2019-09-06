@@ -37,13 +37,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function chapters()
+    public function readChapters()
     {
-        return $this->belongsToMany(Chapter::class);
-    }
-
-    public function readChapter(int $chapterId)
-    {
-        $this->chapters()->attach($chapterId);
+        return $this->belongsToMany(Chapter::class, 'read_chapters');
     }
 }

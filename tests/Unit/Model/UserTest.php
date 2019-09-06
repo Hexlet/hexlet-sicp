@@ -3,6 +3,7 @@
 namespace Tests\Unit\Model;
 
 use App\Chapter;
+use App\ReadChapter;
 use App\User;
 use DB;
 use Tests\TestCase;
@@ -15,11 +16,11 @@ class UserTest extends TestCase
 
         $chapter = factory(Chapter::class)->create();
 
-        DB::table('chapter_user')->insert([
-            'user_id'    => $user->id,
+        factory(ReadChapter::class)->create([
+            'user_id' => $user->id,
             'chapter_id' => $chapter->id,
         ]);
 
-        $this->assertCount(1, $user->chapters);
+        $this->assertCount(1, $user->readChapters);
     }
 }

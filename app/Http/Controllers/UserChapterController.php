@@ -8,8 +8,13 @@ class UserChapterController extends Controller
 {
     public function store(User $user)
     {
-        $user->readChapter(request('chapter_id'));
+        $this->updateUserReadChapters($user, request('chapters_id'));
 
-        return response()->json('Chapter successfully save', 201);
+        return response()->json('Successfully updated', 200);
+    }
+
+    private function updateUserReadChapters(User $user, $chaptersId)
+    {
+        $user->readChapters()->sync($chaptersId);
     }
 }

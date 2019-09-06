@@ -10,18 +10,17 @@ class UserChapterControllerTest extends TestCase
 {
     public function testStore()
     {
+        $quantity = 3;
+
         $user = factory(User::class)->create();
 
-        $chapter = factory(Chapter::class)->create();
+        $chapters = factory(Chapter::class, $quantity)->create();
 
         $this->post(route('users.chapters.store', [$user->id]), [
-                'chapter_id' => $chapter->id,
+                'chapters_id' => $chapters->pluck('id'),
             ])
             ->assertStatus(201);
 
-        $this->assertDatabaseHas('chapter_user', [
-            'user_id'    => $user->id,
-            'chapter_id' => $chapter->id,
-        ]);
+        $this->assertCount($quantity, $user->readChapters);
     }
 }
