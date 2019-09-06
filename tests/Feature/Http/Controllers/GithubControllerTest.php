@@ -5,35 +5,26 @@ namespace Tests\Feature\Http\Controllers;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Laravel\Socialite\Contracts\Factory as Socialite;
+use Laravel\Socialite\Two\User;
 
 class GithubControllerTest extends TestCase
 {
-    public function mockSocialiteFacade($email = 'foo@bar.com', $name = 'foo', $token = 'foo', $id = 1)
+    use WithFaker;
+
+    public function mockSocialiteFacade($email, $name, $token, $id)
     {
-        $socialiteUser = $this->createMock(\Laravel\Socialite\Two\User::class);
-        $socialiteUser->expects($this->any())
-            ->method('getEmail')
-            ->willReturn($email);
-        $socialiteUser
-            ->expects($this->any())
-            ->method('getName')
-            ->willReturn($name);
-        $socialiteUser->token = $token;
-        $socialiteUser->name  = $name;
-        $socialiteUser->id    = $id;
-        $socialiteUser->email = $email;
+        $user = new User();
+        $user->token = $token;
+        $user->name  = $name;
+        $user->id    = $id;
+        $user->email = $email;
 
         $provider = $this->createMock(\Laravel\Socialite\Two\GithubProvider::class);
-        $provider->expects($this->any())
-                 ->method('user')
-                 ->willReturn($socialiteUser);
+        $provider->method('user')->willReturn($user);
 
         $stub = $this->createMock(Socialite::class);
-        $stub->expects($this->any())
-             ->method('driver')
-             ->willReturn($provider);
+        $stub->method('driver')->willReturn($provider);
 
-        // Replace Socialite Instance with our mock
         $this->app->instance(Socialite::class, $stub);
     }
     public function testRedirectToGithub()
@@ -45,13 +36,13 @@ class GithubControllerTest extends TestCase
 
     public function testCreateUserAndLogin()
     {
-        $this->mockSocialiteFacade('foo@bar.com');
+        $name  = $this->faker->name;
+        $token = $this->faker->randomAscii;
+        $email = $this->faker->email;
+        $this->mockSocialiteFacade($email, $name, $token, random_int(1, 100));
 
-        $this->json('GET', '/oauth/github/callback')
-            ->assertLocation('/home');
+        $this->json('GET', '/oauth/github/callback')->assertLocation('/home');
 
-        $this->assertDatabaseHas('users', [
-            'email' => 'foo@bar.com',
-        ]);
+        $this->assertDatabaseHas('users', ['email' => $email]);
     }
 }
