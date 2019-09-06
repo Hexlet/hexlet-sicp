@@ -18,22 +18,21 @@
                     <h3>@lang('register.title')</h3>
                 </div>
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
-                        @csrf
-                        <div class="form-group">
-                            <input name="email" type="email" class="form-control @error('email') is-invalid @enderror" placeholder="@lang('register.emailPlaceholder')">
+                    {!! Form::open()->route('register') !!}
+
+                        {!! Form::text('email', __('register.emailPlaceholder')) !!}
+
+                        {!! Form::text('name', __('register.namePlaceholder')) !!}
+
+                        {!! Form::text('password', __('register.passwordPlaceholder'))->type('password') !!}
+
+                        {!! Form::text('password_confirmation', __('register.passwordConfirmationPlaceholder'))->type('password') !!}
+
+                        <div class="form-group mb-0">
+                            {!! Form::submit(__('register.registerButton')) !!}
                         </div>
-                        <div class="form-group">
-                                <input name="name" type="text" class="form-control @error('name') is-invalid @enderror" placeholder="@lang('register.namePlaceholder')">
-                            </div>
-                        <div class="form-group">
-                            <input name="password" type="password" class="form-control @error('password') is-invalid @enderror" placeholder="@lang('register.passwordPlaceholder')">
-                        </div>
-                        <div class="form-group">
-                            <input name="password_confirmation" type="password" class="form-control" placeholder="@lang('register.passwordConfirmationPlaceholder')">
-                        </div>
-                        <button type="submit" class="btn btn-primary">@lang('register.registerButton')</button>
-                    </form>
+
+                    {!! Form::close() !!}
                 </div>
             </div>
         </div>
