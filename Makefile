@@ -5,9 +5,10 @@ setup: env-prepare install key
 
 install:
 	composer install
+	npm install
 
 start:
-	php artisan serve
+	heroku local -f Procfile.dev
 
 analyse:
 	php artisan code:analyse
