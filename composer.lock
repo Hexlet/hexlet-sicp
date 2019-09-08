@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6e5e6071cec0b72f1614296c49317e34",
+    "content-hash": "6bcf81221bd3b1a24c992c09ef085c88",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -929,63 +929,6 @@
                 "psysh"
             ],
             "time": "2019-08-07T15:10:45+00:00"
-        },
-        {
-            "name": "laravelbook/ardent",
-            "version": "3.6.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/laravel-ardent/ardent.git",
-                "reference": "ae8983fa82060ed9280cc6a2c9b267a966124b0f"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/laravel-ardent/ardent/zipball/ae8983fa82060ed9280cc6a2c9b267a966124b0f",
-                "reference": "ae8983fa82060ed9280cc6a2c9b267a966124b0f",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/database": "~5.1",
-                "illuminate/events": "~5.1",
-                "illuminate/hashing": "~5.1",
-                "illuminate/support": "~5.1",
-                "illuminate/validation": "~5.1"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "LaravelArdent\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Igor Santos",
-                    "role": "Maintainer",
-                    "email": "igorsantos07@gmail.com",
-                    "homepage": "http://igorsantos.com.br"
-                },
-                {
-                    "name": "Max Ehsan",
-                    "role": "Original developer"
-                }
-            ],
-            "description": "Self-validating smart models for Laravel 5's Eloquent ORM",
-            "keywords": [
-                "Active Record",
-                "activerecord",
-                "database",
-                "eloquent",
-                "framework",
-                "laravel",
-                "orm",
-                "sql",
-                "validation"
-            ],
-            "time": "2018-10-09T02:57:28+00:00"
         },
         {
             "name": "laravelcollective/html",
@@ -3544,37 +3487,34 @@
         },
         {
             "name": "barryvdh/laravel-ide-helper",
-            "version": "v2.6.4",
+            "version": "v2.6.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/barryvdh/laravel-ide-helper.git",
-                "reference": "16eb4f65ee0d51b1f1182d56ae28ee00a70ce75a"
+                "reference": "8740a9a158d3dd5cfc706a9d4cc1bf7a518f99f3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/barryvdh/laravel-ide-helper/zipball/16eb4f65ee0d51b1f1182d56ae28ee00a70ce75a",
-                "reference": "16eb4f65ee0d51b1f1182d56ae28ee00a70ce75a",
+                "url": "https://api.github.com/repos/barryvdh/laravel-ide-helper/zipball/8740a9a158d3dd5cfc706a9d4cc1bf7a518f99f3",
+                "reference": "8740a9a158d3dd5cfc706a9d4cc1bf7a518f99f3",
                 "shasum": ""
             },
             "require": {
                 "barryvdh/reflection-docblock": "^2.0.6",
                 "composer/composer": "^1.6",
+                "doctrine/dbal": "~2.3",
                 "illuminate/console": "^5.5|^6",
                 "illuminate/filesystem": "^5.5|^6",
                 "illuminate/support": "^5.5|^6",
                 "php": ">=7"
             },
             "require-dev": {
-                "doctrine/dbal": "~2.3",
                 "illuminate/config": "^5.5|^6",
                 "illuminate/view": "^5.5|^6",
                 "phpro/grumphp": "^0.14",
                 "phpunit/phpunit": "4.*",
                 "scrutinizer/ocular": "~1.1",
                 "squizlabs/php_codesniffer": "^3"
-            },
-            "suggest": {
-                "doctrine/dbal": "Load information from the database about models for phpdocs (~2.3)"
             },
             "type": "library",
             "extra": {
@@ -3614,7 +3554,7 @@
                 "phpstorm",
                 "sublime"
             ],
-            "time": "2019-09-03T17:51:13+00:00"
+            "time": "2019-09-08T09:56:38+00:00"
         },
         {
             "name": "barryvdh/reflection-docblock",

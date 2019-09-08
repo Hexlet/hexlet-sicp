@@ -13,7 +13,6 @@
         "laravel/framework": "5.8.*",
         "laravel/socialite": "^4.1",
         "laravel/tinker": "^1.0",
-        "laravelbook/ardent": "^3.6",
         "laravelcollective/html": "^5.8",
         "netojose/laravel-bootstrap-4-forms": "^3.0"
     },

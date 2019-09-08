@@ -37,5 +37,7 @@ Route::get('/webhook', function (Request $request) {
 
 //Route::get('index', 'PageController@index')->name('index');
 
-Route::resource('users', 'UserController')->only('show');
-Route::resource('users.chapters', 'UserChapterController')->only('store');
+Route::middleware('auth')->group(function () {
+    Route::resource('users', 'UserController')->only('show');
+    Route::resource('users.chapters', 'UserChapterController')->only('store');
+});

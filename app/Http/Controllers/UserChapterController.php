@@ -2,25 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\User\SaveChapterRequest;
 use App\User;
 
 class UserChapterController extends Controller
 {
-    public function store(User $user)
+    public function store(SaveChapterRequest $request, User $user)
     {
-        $this->updateUserReadChapters($user, request('chapters_id'));
+        $validatedData = $request->validated();
 
-        return response()->json('Successfully updated', 200);
-    }
+        //TODO Добавить guard, авторизованный польтзователь может изменять только свой список глав
+        $user->chapters()->sync($validatedData['chapters_id']);
 
-    private function updateUserReadChapters(User $user, $chaptersId)
-    {
-        $user->readChapters()->delete();
-
-        foreach ($chaptersId as $chapterId) {
-            $user->readChapters()->create([
-                'chapter_id' => $chapterId,
-            ]);
-        }
+        return response()->json(__('Successfully updated'), 200);
     }
 }
