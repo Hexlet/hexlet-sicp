@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6bcf81221bd3b1a24c992c09ef085c88",
+    "content-hash": "6e5e6071cec0b72f1614296c49317e34",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -929,6 +929,63 @@
                 "psysh"
             ],
             "time": "2019-08-07T15:10:45+00:00"
+        },
+        {
+            "name": "laravelbook/ardent",
+            "version": "3.6.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel-ardent/ardent.git",
+                "reference": "ae8983fa82060ed9280cc6a2c9b267a966124b0f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel-ardent/ardent/zipball/ae8983fa82060ed9280cc6a2c9b267a966124b0f",
+                "reference": "ae8983fa82060ed9280cc6a2c9b267a966124b0f",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/database": "~5.1",
+                "illuminate/events": "~5.1",
+                "illuminate/hashing": "~5.1",
+                "illuminate/support": "~5.1",
+                "illuminate/validation": "~5.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "LaravelArdent\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Igor Santos",
+                    "role": "Maintainer",
+                    "email": "igorsantos07@gmail.com",
+                    "homepage": "http://igorsantos.com.br"
+                },
+                {
+                    "name": "Max Ehsan",
+                    "role": "Original developer"
+                }
+            ],
+            "description": "Self-validating smart models for Laravel 5's Eloquent ORM",
+            "keywords": [
+                "Active Record",
+                "activerecord",
+                "database",
+                "eloquent",
+                "framework",
+                "laravel",
+                "orm",
+                "sql",
+                "validation"
+            ],
+            "time": "2018-10-09T02:57:28+00:00"
         },
         {
             "name": "laravelcollective/html",

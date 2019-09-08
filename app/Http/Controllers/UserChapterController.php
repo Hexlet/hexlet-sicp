@@ -15,6 +15,12 @@ class UserChapterController extends Controller
 
     private function updateUserReadChapters(User $user, $chaptersId)
     {
-        $user->readChapters()->sync($chaptersId);
+        $user->readChapters()->delete();
+
+        foreach ($chaptersId as $chapterId) {
+            $user->readChapters()->create([
+                'chapter_id' => $chapterId,
+            ]);
+        }
     }
 }
