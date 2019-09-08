@@ -14,46 +14,37 @@ class ReadChapterTest extends TestCase
     {
         $user = factory(User::class)->create();
 
-        $readChapter = new ReadChapter();
-
-        $readChapter->fill([
-            'user_id' => $user->id,
-            'chapter_id' => null,
-        ]);
-
         $this->expectException(ValidationException::class);
 
-        $readChapter->save();
+        $this->createReadChapters(null, $user->id);
     }
 
     public function testChapterIdIsExistInDatabase()
     {
         $user = factory(User::class)->create();
 
-        $readChapter = new ReadChapter();
-
-        $readChapter->fill([
-            'user_id' => $user->id,
-            'chapter_id' => 999,
-        ]);
-
         $this->expectException(ValidationException::class);
 
-        $readChapter->save();
+        $this->createReadChapters(999, $user->id);
     }
 
     public function testUserIdIsRequired()
     {
         $chapter = factory(Chapter::class)->create();
 
+        $this->expectException(ValidationException::class);
+
+        $this->createReadChapters($chapter->id);
+    }
+
+    private function createReadChapters($chapterId = null, $userId = null)
+    {
         $readChapter = new ReadChapter();
 
         $readChapter->fill([
-            'chapter_id' => $chapter->id,
-            'user_id' => null,
+            'chapter_id' => $chapterId,
+            'user_id' => $userId,
         ]);
-
-        $this->expectException(ValidationException::class);
 
         $readChapter->save();
     }
