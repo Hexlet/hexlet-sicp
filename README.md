@@ -8,7 +8,7 @@
 
 ### Участие
 
-* Обсуждение в канале #php слака http://slack-ru.hexlet.io
+* Обсуждение в канале #hexlet-volunteers слака http://slack-ru.hexlet.io
 
 ### Requirements
 
@@ -44,6 +44,9 @@ $ make start # start server
 * Формы делаются с помощью https://github.com/LaravelCollective/html
 * В подавляющем большинстве используется ресурсный роутинг. Что под него не подходит сначала обсуждается (такое бывает крайне редко)
 * Тексты только через локали
+
+#### Видео созвонов
+* 07.09.2019 https://youtu.be/82QPDHVUIc0
 
 ##
 [![Hexlet Ltd. logo](https://raw.githubusercontent.com/Hexlet/hexletguides.github.io/master/images/hexlet_logo128.png)](https://ru.hexlet.io/pages/about?utm_source=github&utm_medium=link&utm_campaign=exercises-javascript)
