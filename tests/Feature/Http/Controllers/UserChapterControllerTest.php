@@ -34,8 +34,8 @@ class UserChapterControllerTest extends TestCase
             ])
             ->assertStatus(200);
 
-        $freshUser = User::find($this->user->id);
+        $this->user->refresh();
 
-        $this->assertCount($quantity, $freshUser->readChapters);
+        $this->assertCount($quantity, $this->user->readChapters);
     }
 }
