@@ -21,6 +21,6 @@ class UserTest extends TestCase
             'chapter_id' => $chapter->id,
         ]);
 
-        $this->assertCount(1, $user->readChapters);
+        $this->assertCount(1, $user->chapters);
     }
 }

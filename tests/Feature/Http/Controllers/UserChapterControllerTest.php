@@ -3,24 +3,39 @@
 namespace Tests\Feature\Http\Controllers;
 
 use App\Chapter;
+use App\ReadChapter;
 use App\User;
 use Tests\TestCase;
 
 class UserChapterControllerTest extends TestCase
 {
+    private $user;
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $this->user = factory(User::class)->create();
+        $this->actingAs($this->user);
+    }
+
     public function testStore()
     {
         $quantity = 3;
 
-        $user = factory(User::class)->create();
+        factory(ReadChapter::class)->create(['user_id' => $this->user->id]);
+
+        $this->assertCount(1, $this->user->readChapters);
 
         $chapters = factory(Chapter::class, $quantity)->create();
 
-        $this->post(route('users.chapters.store', [$user->id]), [
-                'chapters_id' => $chapters->pluck('id'),
+        $this->post(route('users.chapters.store', [$this->user->id]), [
+                'chapters_id' => $chapters->pluck('id')->toArray(),
             ])
             ->assertStatus(200);
 
-        $this->assertCount($quantity, $user->readChapters);
+        $this->user->refresh();
+
+        $this->assertCount($quantity, $this->user->readChapters);
     }
 }
