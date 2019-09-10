@@ -10,14 +10,14 @@
             </div>
         </div>
         <div class="col-12 col-md-9 my-4 d-flex flex-column">
-            <ul class="chapters-tree">
-                @foreach($allChapters as $chapter)
+            <ul class="list-group">
+                @foreach($chaptersTree as $path => $is_read)
 
-                    <li class="chapters-tree-item">
+                    <li class="list-group-item">
                         <label>
-                            <input type="checkbox" {{ $chapter->is_read ? 'checked' : '' }}>
+                            <input type="checkbox" {{ $is_read ? 'checked' : '' }}>
                         </label>
-                        {{ $chapter->path }}
+                        {{ $path }}
                     </li>
 
                 @endforeach

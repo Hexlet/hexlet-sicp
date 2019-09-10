@@ -11,11 +11,16 @@ class UserController extends Controller
     {
         $user = User::where('name', $name)->firstOrFail();
 
-        $allChapters = Chapter::with('user')->get();
+        $allChapters = Chapter::all();
+        $userReadChapters = $user->readChapters;
+
+        $chaptersTree = $allChapters->each(function ($chapter) use ($userReadChapters) {
+            $chapter->is_read = $userReadChapters->contains('id', $chapter->id);
+        })->pluck('is_read', 'path');
 
         return view('user.index', [
             'user' => $user,
-            'allChapters' => $allChapters
+            'chaptersTree' => $chaptersTree
         ]);
     }
 }
