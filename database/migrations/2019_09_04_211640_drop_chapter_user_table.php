@@ -25,8 +25,8 @@ class DropChapterUserTable extends Migration
     {
         Schema::create('chapter_user', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('chapter_id');
-            $table->bigInteger('user_id');
+            $table->bigInteger('chapter_id')->unsigned();
+            $table->bigInteger('user_id')->unsigned();
             $table->timestamps();
 
             $table->foreign('chapter_id')

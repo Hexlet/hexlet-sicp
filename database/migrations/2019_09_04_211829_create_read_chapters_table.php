@@ -15,8 +15,8 @@ class CreateReadChaptersTable extends Migration
     {
         Schema::create('read_chapters', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('chapter_id');
-            $table->bigInteger('user_id');
+            $table->bigInteger('chapter_id')->unsigned();
+            $table->bigInteger('user_id')->unsigned();
             $table->timestamps();
 
             $table->unique(['chapter_id', 'user_id']);
