@@ -14,9 +14,13 @@ class UserController extends Controller
         $allChapters = Chapter::all();
         $userReadChapters = $user->readChapters;
 
-        $chaptersTree = $allChapters->each(function ($chapter) use ($userReadChapters) {
-            $chapter->is_read = $userReadChapters->contains('id', $chapter->id);
-        })->pluck('is_read', 'path');
+        $chaptersTree = $allChapters->map(function ($chapter) use ($userReadChapters) {
+            return [
+                'id' => $chapter->id,
+                'path' => $chapter->path,
+                'is_read' => $userReadChapters->contains('id', $chapter->id),
+            ];
+        });
 
         return view('user.index', [
             'user' => $user,

@@ -11,13 +11,16 @@
         </div>
         <div class="col-12 col-md-9 my-4 d-flex flex-column">
             <ul class="list-group">
-                @foreach($chaptersTree as $path => $is_read)
+                @foreach($chaptersTree as $chapter)
 
                     <li class="list-group-item">
-                        <label>
-                            <input type="checkbox" {{ $is_read ? 'checked' : '' }}>
-                        </label>
-                        {{ $path }}
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input"  id="{{ $chapter['id'] }}" value="{{ $chapter['id'] }}" {{ $chapter['is_read'] ? 'checked' : '' }}>
+
+                            <label for="{{ $chapter['id'] }}" class="form-check-label">
+                                {{ $chapter['path'] }}
+                            </label>
+                        </div>
                     </li>
 
                 @endforeach
