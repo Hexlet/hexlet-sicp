@@ -8,6 +8,9 @@ plugins:
       standard: "./phpcs.xml"
   sonar-php:
     enabled: true
+    checks:
+      php:S1192:
+        enabled: false
     tests:
       - tests/**
   phpmd:
@@ -15,6 +18,9 @@ plugins:
     config:
       file_extensions:
         - php
+    checks:
+      CleanCode/StaticAccess:
+        enabled: false
 exclude_patterns:
 - "tests/"
 - "spec/"
