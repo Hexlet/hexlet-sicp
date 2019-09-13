@@ -22,6 +22,7 @@ plugins:
       CleanCode/StaticAccess:
         enabled: false
 exclude_patterns:
+- "./database/migrations/"
 - "tests/"
 - "spec/"
 - "**/vendor/"
