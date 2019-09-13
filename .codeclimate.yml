@@ -19,3 +19,4 @@ exclude_patterns:
 - "tests/"
 - "spec/"
 - "**/vendor/"
+- "database/migrations"
