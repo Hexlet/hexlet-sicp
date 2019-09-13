@@ -8,9 +8,9 @@ plugins:
       standard: "./phpcs.xml"
   sonar-php:
     enabled: true
-    checks:
-      php:S1192:
-        enabled: false
+#    checks:
+#      php:S1192:
+#        enabled: false
     tests:
       - tests/**
   phpmd:
