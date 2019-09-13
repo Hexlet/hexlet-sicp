@@ -19,4 +19,4 @@ exclude_patterns:
 - "tests/"
 - "spec/"
 - "**/vendor/"
-- "database/migrations/"
+- "database/migrations/*.php"
