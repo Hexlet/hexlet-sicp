@@ -17,7 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::group(
@@ -41,3 +41,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('users', 'UserController')->only('show');
     Route::resource('users.chapters', 'UserChapterController')->only('store');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
