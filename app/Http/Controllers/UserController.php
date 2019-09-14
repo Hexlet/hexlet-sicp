@@ -18,7 +18,7 @@ class UserController extends Controller
             return [
                 'id' => $chapter->id,
                 'path' => $chapter->path,
-                'is_read' => $userReadChapters->contains('id', $chapter->id),
+                'is_read' => $userReadChapters->contains('chapter_id', $chapter->id),
             ];
         });
 
