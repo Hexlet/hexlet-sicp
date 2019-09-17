@@ -34,7 +34,7 @@
             </div>
         </div>
         <div class="row mt-3">
-            <div class="col center">
+            <div class="col">
                 <h4 class="text-center text-uppercase">@lang('register.or')</h4>
             </div>
         </div>
