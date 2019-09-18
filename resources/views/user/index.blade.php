@@ -26,7 +26,7 @@
 
                 @endforeach
 
-                <div class="form-group mt-2 mb-2">
+                <div class="form-group my-2">
                     {!! Form::submit(__('Save')) !!}
                 </div>
 
