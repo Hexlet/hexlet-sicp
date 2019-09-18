@@ -10,6 +10,7 @@
     "require": {
         "php": "^7.3",
         "fideloper/proxy": "^4.0",
+        "laracasts/flash": "^3.0",
         "laravel/framework": "5.8.*",
         "laravel/socialite": "^4.1",
         "laravel/tinker": "^1.0",
