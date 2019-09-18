@@ -14,6 +14,6 @@ class UserChapterController extends Controller
         //TODO Добавить guard, авторизованный польтзователь может изменять только свой список глав
         $user->chapters()->sync($validatedData['chapters_id']);
 
-        return response()->json(__('Successfully updated'), 200);
+        return redirect(route('users.show', $user->name));
     }
 }

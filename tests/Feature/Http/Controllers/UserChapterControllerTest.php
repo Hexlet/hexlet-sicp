@@ -32,7 +32,7 @@ class UserChapterControllerTest extends TestCase
         $this->post(route('users.chapters.store', [$this->user->id]), [
                 'chapters_id' => $chapters->pluck('id')->toArray(),
             ])
-            ->assertStatus(200);
+            ->assertRedirect(route('users.show', $this->user->name));
 
         $this->user->refresh();
 
