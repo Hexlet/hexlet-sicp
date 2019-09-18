@@ -11,13 +11,11 @@
 |
  */
 
-use Illuminate\Http\Request;
-
 Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::group(
@@ -31,13 +29,10 @@ Route::group(
         Route::get('/github/callback', 'GithubController@handleProviderCallback')->name('oauth.github-callback');
     }
 );
-Route::get('/webhook', function (Request $request) {
-    dump($request->all());
-});
-
-//Route::get('index', 'PageController@index')->name('index');
 
 Route::middleware('auth')->group(function () {
     Route::resource('users', 'UserController')->only('show');
     Route::resource('users.chapters', 'UserChapterController')->only('store');
 });
+
+Route::get('/home', 'HomeController@index')->name('home');
