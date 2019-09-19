@@ -11,20 +11,19 @@ class UserController extends Controller
     {
         $user = User::where('name', $name)->firstOrFail();
 
-        $allChapters = Chapter::all();
-        $userReadChapters = $user->readChapters;
+        $chapters = Chapter::all();
+        $readChapters = $user->readChapters;
 
-        $chaptersTree = $allChapters->map(function ($chapter) use ($userReadChapters) {
+        $readChaptersById = $readChapters->mapWithKeys(function ($chapter) {
             return [
-                'id' => $chapter->id,
-                'path' => $chapter->path,
-                'is_read' => $userReadChapters->contains('chapter_id', $chapter->id),
+                $chapter->id => $chapter,
             ];
         });
 
         return view('user.index', [
             'user' => $user,
-            'chaptersTree' => $chaptersTree
+            'chapters' => $chapters,
+            'readChaptersById' => $readChaptersById,
         ]);
     }
 }
