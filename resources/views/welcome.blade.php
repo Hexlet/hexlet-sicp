@@ -1,18 +1,8 @@
-@extends('layout.app')
+@extends('layouts.app')
 
 @section('content')
-    <div class="title m-b-md">
-        Laravel
-    </div>
-
-    <div class="links">
-        <a href="https://laravel.com/docs">Docs</a>
-        <a href="https://laracasts.com">Laracasts</a>
-        <a href="https://laravel-news.com">News</a>
-        <a href="https://blog.laravel.com">Blog</a>
-        <a href="https://nova.laravel.com">Nova</a>
-        <a href="https://forge.laravel.com">Forge</a>
-        <a href="https://github.com/laravel/laravel">GitHub</a>
-        <a href="{{ route('oauth.github') }}">login with github</a>
-    </div>
+    <h1>
+        Hexlet SICP
+    </h1>
+    <p>Осилятор СИКП — сервис, в котором есть рейтинг тех, кто проходит сикп, и каждый отмечает что он прошел.</p>
 @endsection
