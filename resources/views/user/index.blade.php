@@ -24,7 +24,7 @@
                         <div class="form-check">
                             <input type="checkbox" name="chapters_id[]" class="form-check-input"  id="{{ $chapter->id }}" value="{{ $chapter->id }}" {{ $is_read ? 'checked' : '' }}>
                             <label for="{{ $chapter->id }}" class="form-check-label">
-                                {{ $chapter->path }} {{ chapterName($chapter->path) }}
+                                {{ $chapter->path }} {{ getChapterName($chapter->path) }}
                             </label>
                         </div>
                     </li>
