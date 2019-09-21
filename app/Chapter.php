@@ -12,8 +12,13 @@ class Chapter extends Model
         return $this->belongsToMany(User::class, 'read_chapters');
     }
 
-    public function getIsReadAttribute()
+    public function children()
     {
-        return $this->user->where('id', Auth::user()->id)->count() > 0;
+        return $this->hasMany(Chapter::class, 'parent_id');
+    }
+
+    public function getCanReadAttribute()
+    {
+        return $this->children->count() === 0;
     }
 }

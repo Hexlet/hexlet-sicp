@@ -22,7 +22,10 @@
 
                     <li class="list-group-item">
                         <div class="form-check">
-                            <input type="checkbox" name="chapters_id[]" class="form-check-input"  id="{{ $chapter->id }}" value="{{ $chapter->id }}" {{ $is_read ? 'checked' : '' }}>
+                            @if($chapter->can_read)
+                                <input type="checkbox" name="chapters_id[]" class="form-check-input"  id="{{ $chapter->id }}" value="{{ $chapter->id }}" {{ $is_read ? 'checked' : '' }}>
+                            @endif
+                            
                             <label for="{{ $chapter->id }}" class="form-check-label">
                                 {{ $chapter->path }} {{ getChapterName($chapter->path) }}
                             </label>
