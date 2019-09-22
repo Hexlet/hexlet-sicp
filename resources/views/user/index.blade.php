@@ -9,7 +9,10 @@
                 </h1>
             </div>
         </div>
-        <div class="col-12 col-md-9 my-4 d-flex flex-column">
+        <div class="col-12 col-md-9 my-4">
+            <h3>{{ __('sicp.title') }}</h3>
+            <span>{{ __('sicp.authors') }}</span>
+
             <ul class="list-group">
                 {!! Form::open()->route('users.chapters.store', [$user->id]) !!}
                 @foreach($chapters as $chapter)
@@ -20,9 +23,8 @@
                     <li class="list-group-item">
                         <div class="form-check">
                             <input type="checkbox" name="chapters_id[]" class="form-check-input"  id="{{ $chapter->id }}" value="{{ $chapter->id }}" {{ $is_read ? 'checked' : '' }}>
-
                             <label for="{{ $chapter->id }}" class="form-check-label">
-                                {{ $chapter->path }}
+                                {{ $chapter->path }} {{ getChapterName($chapter->path) }}
                             </label>
                         </div>
                     </li>
