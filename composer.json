@@ -10,6 +10,7 @@
     "require": {
         "php": "^7.3",
         "browner12/helpers": "2.1.4",
+        "doctrine/dbal": "^2.9",
         "fideloper/proxy": "^4.0",
         "laracasts/flash": "^3.0",
         "laravel/framework": "5.8.*",
@@ -22,7 +23,6 @@
         "barryvdh/laravel-debugbar": "^3.2",
         "barryvdh/laravel-ide-helper": "^2.6",
         "beyondcode/laravel-dump-server": "^1.0",
-        "doctrine/dbal": "^2.9",
         "filp/whoops": "^2.0",
         "fzaninotto/faker": "^1.4",
         "heroku/heroku-buildpack-php": "^160.0",
