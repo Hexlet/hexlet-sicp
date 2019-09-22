@@ -15,5 +15,9 @@ return [
 
     'failed' => 'These credentials do not match our records.',
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
-    'with_github' => 'Log in with Github'
+    'with_github' => 'Log in with Github',
+    'logged_in' => 'You are logged in!',
+    'mail' => [
+        'send_link' => 'Мы отправили вам на эл. почту ссылку на подтверждения почты'
+    ],
 ];

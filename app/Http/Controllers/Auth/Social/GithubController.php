@@ -44,6 +44,7 @@ class GithubController extends Controller
         }
 
         Auth::login($userForAuth, true);
+        flash()->success(__('auth.logged_in'));
         return redirect()->route('home');
     }
 }
