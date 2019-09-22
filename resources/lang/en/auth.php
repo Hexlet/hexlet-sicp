@@ -18,7 +18,7 @@ return [
     'with_github' => 'Log in with Github',
     'logged_in' => 'You are logged in!',
     'mail' => [
-        'send_link' => 'Мы отправили вам на эл. почту ссылку на подтверждения почты',
+        'send_link' => 'A link has been sent to your email to confirm registration',
         'verified'  => 'Email Confirmed',
     ],
 ];
