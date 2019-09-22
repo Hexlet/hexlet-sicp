@@ -16,7 +16,7 @@ class UserController extends Controller
 
         $readChaptersById = $readChapters->mapWithKeys(function ($chapter) {
             return [
-                $chapter->id => $chapter,
+                $chapter->chapter_id => $chapter,
             ];
         });
 
