@@ -3,8 +3,6 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider;
-use responseforma
 use URL;
 use DB;
 
