@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider;
+use responseforma
 use URL;
 use DB;
 
@@ -20,26 +22,13 @@ class AppServiceProvider extends ServiceProvider
 
         $isDevEnv = $environment !== 'production';
 
-        $this->app->bind(ResponseFormatter::class);
-
-        if ($isDevEnv
-            && class_exists(IdeHelperServiceProvider::class)
-        ) {
-            $this->app->register(IdeHelperServiceProvider::class);
-        }
-
         if ($isDevEnv) {
-            DB::listen(
-                static function ($query) {
-                    info(
-                        $query->sql,
-                        [
+            DB::listen(function ($query) {
+                    info($query->sql, [
                             'bind' => $query->bindings,
                             'time' => $query->time,
-                        ]
-                    );
-                }
-            );
+                        ]);
+            });
         }
     }
 
