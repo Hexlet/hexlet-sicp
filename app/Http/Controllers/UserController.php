@@ -11,12 +11,12 @@ class UserController extends Controller
     {
         $user = User::where('name', $name)->firstOrFail();
 
-        $chapters = Chapter::all();
+        $chapters = Chapter::with('children')->get();
         $readChapters = $user->readChapters;
 
         $readChaptersById = $readChapters->mapWithKeys(function ($chapter) {
             return [
-                $chapter->id => $chapter,
+                $chapter->chapter_id => $chapter,
             ];
         });
 
