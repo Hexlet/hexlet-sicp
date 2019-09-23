@@ -19,7 +19,9 @@ class VerificationController extends Controller
     |
     */
 
-    use VerifiesEmails;
+    use VerifiesEmails {
+        verify as protected verifyEmail;
+    }
 
     /**
      * Create a new controller instance.
@@ -38,5 +40,11 @@ class VerificationController extends Controller
         $user = Auth::user();
 
         return route('users.show', $user->name);
+    }
+
+    public function verify(\Illuminate\Http\Request $request)
+    {
+        flash(__('auth.mail.verified'));
+        return $this->verifyEmail($request);
     }
 }
