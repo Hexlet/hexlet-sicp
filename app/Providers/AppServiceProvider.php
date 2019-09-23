@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use URL;
+use DB;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -14,7 +15,32 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+
+        $environment = $this->app->environment();
+
+        $isDevEnv = $environment !== 'production';
+
+        $this->app->bind(ResponseFormatter::class);
+
+        if ($isDevEnv
+            && class_exists(IdeHelperServiceProvider::class)
+        ) {
+            $this->app->register(IdeHelperServiceProvider::class);
+        }
+
+        if ($isDevEnv) {
+            DB::listen(
+                static function ($query) {
+                    info(
+                        $query->sql,
+                        [
+                            'bind' => $query->bindings,
+                            'time' => $query->time,
+                        ]
+                    );
+                }
+            );
+        }
     }
 
     /**
