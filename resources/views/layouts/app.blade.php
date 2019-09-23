@@ -33,7 +33,12 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <!-- Left Side Of Navbar -->
                         <ul class="navbar-nav mr-auto">
-                            <a href="https://github.com/Hexlet/hexlet-sicp">Source Code</a>
+                            <li class="nav-item">
+                                <a class="nav-link" href="https://github.com/Hexlet/hexlet-sicp">{{ __('layout.rating_page') }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="https://github.com/Hexlet/hexlet-sicp">Source Code</a>
+                            </li>
                         </ul>
 
                         <!-- Right Side Of Navbar -->

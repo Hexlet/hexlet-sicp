@@ -35,4 +35,6 @@ Route::middleware('auth')->group(function () {
     Route::resource('users.chapters', 'UserChapterController')->only('store');
 });
 
+Route::resource('ratings', 'RatingController')->only('index');
+
 Route::get('/home', 'HomeController@index')->name('home');
