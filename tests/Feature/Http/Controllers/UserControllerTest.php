@@ -16,6 +16,6 @@ class UserControllerTest extends TestCase
         $response = $this->get(route('users.show', $user->name));
 
         $response->assertStatus(200)
-            ->assertSee($user->name);
+            ->assertSee(htmlentities($user->name));
     }
 }
