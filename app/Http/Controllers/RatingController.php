@@ -12,10 +12,6 @@ class RatingController extends Controller
             ->orderBy('read_chapters_count', 'DESC')
             ->get();
 
-        if (request()->wantsJson()) {
-            return $users;
-        }
-
         return view('rating.index', [
            'users' => $users,
         ]);
