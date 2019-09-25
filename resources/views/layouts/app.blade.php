@@ -33,9 +33,12 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <!-- Left Side Of Navbar -->
                         <ul class="navbar-nav mr-auto">
+                            @if (Route::has('ratings.index'))
                             <li class="nav-item">
-                                <a class="nav-link" href="https://github.com/Hexlet/hexlet-sicp">{{ __('layout.rating_page') }}</a>
+                                    <a class="nav-link" href="{{ route('ratings.index') }}">{{ __('layout.rating_page') }}</a>
                             </li>
+                            @endif
+
                             <li class="nav-item">
                                 <a class="nav-link" href="https://github.com/Hexlet/hexlet-sicp">Source Code</a>
                             </li>
