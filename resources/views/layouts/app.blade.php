@@ -24,7 +24,7 @@
 <body class="d-flex flex-column">
     <div class="d-flex flex-column min-vh-100">
         @include('layouts._nav')
-        <main class="flex-shrink-0 my-5">
+        <main class="my-5">
             <div class="container mb-3">
                 @include('flash::message')
                 @yield('content')
