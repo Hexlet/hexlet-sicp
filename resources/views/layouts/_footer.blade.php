@@ -1,5 +1,5 @@
-<footer class="footer text-muted pb-5 mt-5">
-        <div class="container">
+<footer class="footer text-muted pb-5 mt-auto">
+        <div class="container mt-5">
             <div class="row">
                 <div class="col-12 col-md-4">
                     <div class="h4">© Hexlet</div>

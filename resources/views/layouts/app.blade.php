@@ -22,14 +22,17 @@
 </head>
 
 <body class="d-flex flex-column">
-    @include('layouts._nav')
-    <main class="flex-shrink-0 my-5">
-        <div class="container mb-3">
-            @include('flash::message')
-            @yield('content')
-        </div>
-    </main>
-    @include('layouts._footer')
+    <div class="d-flex flex-column min-vh-100">
+        @include('layouts._nav')
+        <main class="flex-shrink-0 my-5">
+            <div class="container mb-3">
+                @include('flash::message')
+                @yield('content')
+            </div>
+        </main>
+        @include('layouts._footer')
+    </div>
+
 </body>
 
 </html>
