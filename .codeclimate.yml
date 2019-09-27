@@ -1,4 +1,9 @@
 version: "2"
+checks:
+  similar-code:
+    enabled: true
+    config:
+      threshold: #language-specific defaults. overrides affect all languages.
 plugins:
   phpcodesniffer:
     enabled: true
@@ -23,3 +28,4 @@ exclude_patterns:
   - "tests/"
   - "spec/"
   - "**/vendor/"
+  - "resources/lang"
