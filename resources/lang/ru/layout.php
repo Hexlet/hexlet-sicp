@@ -1,5 +1,21 @@
 <?php
 
 return [
-    'rating_page' => 'Рейтинг',
+    'nav' => [
+        'rating'   => 'Рейтинг',
+        'login'    => 'Войти',
+        'register' => 'Регистрация',
+        'logout'   => 'Выйти',
+        'profile'  => 'Профиль'
+    ],
+    'footer' => [
+        'about'             => 'О проекте',
+        'source_code'       => 'Исходный код',
+        'other_os_projects' => 'Другие open-source проекты',
+        'help'              => 'Помощь',
+        'knowledge'         => 'База знаний',
+        'blog'              => 'Блог',
+        'recommended_books' => 'Рекомендуемые книги',
+        'additionally'      => 'Дополнительно',
+    ],
 ];
