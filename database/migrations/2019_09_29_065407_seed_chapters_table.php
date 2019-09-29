@@ -3,8 +3,9 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Support\Facades\DB;
 
-class SeedParentIdInChaptersTable extends Migration
+class SeedChaptersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +14,9 @@ class SeedParentIdInChaptersTable extends Migration
      */
     public function up()
     {
-        Artisan::call('db:seed', array('--class' => 'ChaptersParentIdTableSeeder'));
+        if (DB::table('chapters')->count() === 0) {
+            Artisan::call('db:seed', array('--class' => 'ChaptersTableSeeder'));
+        }
     }
 
     /**
@@ -23,7 +26,6 @@ class SeedParentIdInChaptersTable extends Migration
      */
     public function down()
     {
-        DB::table('chapters')
-            ->update(['parent_id' => null]);
+        DB::table('chapters')->delete();
     }
 }
