@@ -12,9 +12,14 @@ class Chapter extends Model
         return $this->belongsToMany(User::class, 'read_chapters');
     }
 
+    public function parent()
+    {
+        return $this->belongsTo(self::class);
+    }
+
     public function children()
     {
-        return $this->hasMany(Chapter::class, 'parent_id');
+        return $this->hasMany(self::class, 'parent_id');
     }
 
     public function getCanReadAttribute()
