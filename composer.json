@@ -17,7 +17,8 @@
         "laravel/socialite": "^4.1",
         "laravel/tinker": "^1.0",
         "laravelcollective/html": "^5.8",
-        "netojose/laravel-bootstrap-4-forms": "^3.0"
+        "netojose/laravel-bootstrap-4-forms": "^3.0",
+        "symfony/yaml": "^4.3"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.2",
