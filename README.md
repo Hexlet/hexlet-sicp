@@ -21,6 +21,7 @@
 $ make setup
 $ make test # run tests
 $ make start # start server
+$ php artisan migrate --seed
 ```
 
 ### Смысл
