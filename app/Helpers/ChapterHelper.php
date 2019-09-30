@@ -15,3 +15,19 @@ if (!function_exists('haveRead')) {
         return $user->chapters->contains($chapter);
     }
 }
+
+if (!function_exists('getChapterLevel')) {
+    function getChapterLevel(App\Chapter $chapter): int
+    {
+        return count(explode('.', $chapter->path));
+    }
+}
+
+if (!function_exists('getChapterHeaderTag')) {
+    function getChapterHeaderTag(App\Chapter $chapter): string
+    {
+        return $chapter->can_read
+        ? ''
+        : sprintf('h%s', getChapterLevel($chapter) + 3);
+    }
+}
