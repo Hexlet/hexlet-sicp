@@ -40,5 +40,6 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::resource('ratings', 'RatingController')->only('index');
+Route::get('profile', 'ProfileController');
 
 Route::get('/home', 'HomeController@index')->name('home');
