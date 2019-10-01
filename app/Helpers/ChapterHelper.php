@@ -31,3 +31,9 @@ if (!function_exists('getChapterHeaderTag')) {
         : sprintf('h%s', getChapterLevel($chapter) + 3);
     }
 }
+if (!function_exists('getReadChapterPercent')) {
+    function getReadChapterPercent($readChapters, $chapters)
+    {
+        return ($readChapters->count() / $chapters->count()) * 100;
+    }
+}
