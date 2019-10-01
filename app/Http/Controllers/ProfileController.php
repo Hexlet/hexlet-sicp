@@ -9,12 +9,12 @@ class ProfileController extends Controller
 {
     public function __invoke()
     {
-        $user = auth()->user();
+        $user     = auth()->user();
         $chapters = Chapter::with('children')->get();
 
         // $chapters =
         return view('profile.index', [
-            'user' => auth()->user(),
+            'user'     => $user,
             'chapters' => $chapters
         ]);
     }
