@@ -42,5 +42,4 @@ class UserControllerTest extends TestCase
         $response->assertStatus(200)
             ->assertSee(htmlentities($user->name));
     }
-
 }
