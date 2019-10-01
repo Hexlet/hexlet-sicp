@@ -4,12 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Chapter;
 use Illuminate\Http\Request;
+use Auth;
 
 class ProfileController extends Controller
 {
     public function __invoke()
     {
-        $user     = auth()->user();
+        $user     = Auth::user();
         $chapters = Chapter::with('children')->get();
 
         // $chapters =
