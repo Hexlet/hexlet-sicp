@@ -20,7 +20,7 @@ class UserController extends Controller
             ];
         });
 
-        return view('user.index', [
+        return view('user.show', [
             'user' => $user,
             'chapters' => $chapters,
             'readChaptersById' => $readChaptersById,
