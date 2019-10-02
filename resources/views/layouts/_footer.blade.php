@@ -5,7 +5,7 @@
                     <div class="h4">© Hexlet</div>
                     <hr>
                     <ul class="list-unstyled">
-                        <li><a target="_blank" href="/">'{{ __('layout.footer.about') }}'</a></li>
+                        <li><a target="_blank" href="/">{{ __('layout.footer.about') }}</a></li>
                         <li><a target="_blank" href="https://github.com/Hexlet/hexlet-sicp">{{ __('layout.footer.source_code') }}</a></li>
                         <li><a target="_blank" href="http://slack-ru.hexlet.io/">Slack #hexlet-volunteers</a></li>
                     </ul>
