@@ -8,6 +8,11 @@
                         <li><a target="_blank" href="/">'{{ __('layout.footer.about') }}'</a></li>
                         <li><a target="_blank" href="https://github.com/Hexlet/hexlet-sicp">{{ __('layout.footer.source_code') }}</a></li>
                         <li><a target="_blank" href="http://slack-ru.hexlet.io/">Slack #hexlet-volunteers</a></li>
+                        <li>
+                            <a href="{{ url('locale/en') }}" ><i class="fa fa-language"></i>EN</a>
+                            /
+                            <a href="{{ url('locale/ru') }}" ><i class="fa fa-language"></i>RU</a>
+                        </li>
                     </ul>
                 </div>
                 <div class="col-12 col-md-4">
