@@ -14,16 +14,9 @@ class UserController extends Controller
         $chapters = Chapter::with('children')->get();
         $readChapters = $user->readChapters;
 
-        $readChaptersById = $readChapters->mapWithKeys(function ($chapter) {
-            return [
-                $chapter->chapter_id => $chapter,
-            ];
-        });
-
         return view('user.show', [
             'user' => $user,
             'chapters' => $chapters,
-            'readChaptersById' => $readChaptersById,
         ]);
     }
 }
