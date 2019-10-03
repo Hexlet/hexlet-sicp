@@ -6,7 +6,7 @@ use App\Chapter;
 use Illuminate\Http\Request;
 use Auth;
 
-class ProfileController extends Controller
+class MyController extends Controller
 {
     public function __invoke()
     {

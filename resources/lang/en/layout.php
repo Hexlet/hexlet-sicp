@@ -6,7 +6,7 @@ return [
         'logout'   => 'Logout',
         'login'    => 'Login',
         'register' => 'Register',
-        'profile'  => 'Profile'
+        'my_progress'  => 'My progress'
     ],
     'footer' => [
         'about'             => 'About',

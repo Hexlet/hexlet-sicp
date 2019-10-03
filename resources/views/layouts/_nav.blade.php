@@ -31,8 +31,8 @@
 
                     @else
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('profile') }}">
-                                    {{ __('layout.nav.profile') }}
+                            <a class="nav-link" href="{{ route('my') }}">
+                                    {{ __('layout.nav.my_progress') }}
                             </a>
                         </li>
                         <li class="nav-item">

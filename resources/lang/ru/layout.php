@@ -6,7 +6,7 @@ return [
         'login'    => 'Войти',
         'register' => 'Регистрация',
         'logout'   => 'Выйти',
-        'profile'  => 'Профиль'
+        'my_progress'  => 'Мой прогресс'
     ],
     'footer' => [
         'about'             => 'О проекте',
