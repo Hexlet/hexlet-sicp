@@ -27,6 +27,7 @@
                     @endif
                 </li>
                 @endforeach
+            <ul>
         </div>
     </div>
 @endsection
