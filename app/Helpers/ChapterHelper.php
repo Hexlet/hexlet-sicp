@@ -34,6 +34,9 @@ if (!function_exists('getChapterHeaderTag')) {
 if (!function_exists('getReadChapterPercent')) {
     function getReadChapterPercent($readChapters, $chapters)
     {
+        if ($chapters->count() === 0) {
+            return 0;
+        }
         return ($readChapters->count() / $chapters->count()) * 100;
     }
 }
