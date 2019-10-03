@@ -18,4 +18,28 @@ class UserControllerTest extends TestCase
         $response->assertStatus(200)
             ->assertSee(htmlentities($user->name));
     }
+
+    public function testVisitByOtherUser()
+    {
+        $user = factory(User::class)->create();
+        $visitor = factory(User::class)->create();
+        $this->actingAs($visitor);
+
+        $response = $this->get(route('users.show', $user->name));
+
+        $response->assertStatus(200)
+            ->assertSee(htmlentities($user->name));
+    }
+
+    public function testVisitByGuest()
+    {
+        $user = factory(User::class)->create();
+        $visitor = factory(User::class)->create();
+        // $this->actingAs($visitor);
+
+        $response = $this->get(route('users.show', $user->name));
+
+        $response->assertStatus(200)
+            ->assertSee(htmlentities($user->name));
+    }
 }

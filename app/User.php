@@ -39,7 +39,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function chapters()
     {
-        return $this->belongsToMany(Chapter::class, 'read_chapters');
+        return $this->belongsToMany(Chapter::class, 'read_chapters')->withTimestamps();
     }
 
     public function readChapters()

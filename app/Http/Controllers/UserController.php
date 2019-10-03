@@ -9,21 +9,13 @@ class UserController extends Controller
 {
     public function show(string $name)
     {
-        $user = User::where('name', $name)->firstOrFail();
+        $user = User::where('name', $name)->with('readChapters')->firstOrFail();
 
         $chapters = Chapter::with('children')->get();
-        $readChapters = $user->readChapters;
 
-        $readChaptersById = $readChapters->mapWithKeys(function ($chapter) {
-            return [
-                $chapter->chapter_id => $chapter,
-            ];
-        });
-
-        return view('user.index', [
+        return view('user.show', [
             'user' => $user,
             'chapters' => $chapters,
-            'readChaptersById' => $readChaptersById,
         ]);
     }
 }

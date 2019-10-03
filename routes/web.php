@@ -33,12 +33,12 @@ Route::group(
         Route::get('/github/callback', 'GithubController@handleProviderCallback')->name('oauth.github-callback');
     }
 );
-
+Route::resource('users', 'UserController')->only('show');
 Route::middleware('auth')->group(function () {
-    Route::resource('users', 'UserController')->only('show');
     Route::resource('users.chapters', 'UserChapterController')->only('store');
 });
 
 Route::resource('ratings', 'RatingController')->only('index');
+Route::get('/my', 'MyController')->name('my');
 
 Route::get('/home', 'HomeController@index')->name('home');
