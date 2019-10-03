@@ -14,7 +14,7 @@ class MyController extends Controller
         $chapters = Chapter::with('children')->get();
 
         // $chapters =
-        return view('profile.index', [
+        return view('my.index', [
             'user'     => $user,
             'chapters' => $chapters
         ]);

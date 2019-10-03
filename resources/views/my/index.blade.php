@@ -13,9 +13,6 @@
             <ul class="list-group">
                 {!! Form::open()->route('users.chapters.store', [$user]) !!}
                 @foreach($chapters as $chapter)
-                    @php
-                        $is_read = $chapters->contains($chapter);
-                    @endphp
                     <li class="list-group-item {{ getChapterHeaderTag($chapter) }}">
                         <div class="form-check">
                             @if($chapter->can_read)
