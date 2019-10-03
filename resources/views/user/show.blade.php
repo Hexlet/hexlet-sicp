@@ -25,7 +25,7 @@
                     @else
                     <h4 class="h6">{{ $chapter->path }} {{ getChapterName($chapter->path) }}</h4>
                     @endif
-                    </li>
+                </li>
                 @endforeach
         </div>
     </div>
