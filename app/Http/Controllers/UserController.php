@@ -9,10 +9,9 @@ class UserController extends Controller
 {
     public function show(string $name)
     {
-        $user = User::where('name', $name)->firstOrFail();
+        $user = User::where('name', $name)->with('readChapters')->firstOrFail();
 
         $chapters = Chapter::with('children')->get();
-        $readChapters = $user->readChapters;
 
         return view('user.show', [
             'user' => $user,
