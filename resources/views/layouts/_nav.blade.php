@@ -38,17 +38,8 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                document.getElementById('logout-form').submit();">
-                                {{ __('layout.nav.logout') }}
-                            </a>
+                            <a class="nav-link"href="{{ route('logout') }}" data-method="post" rel="nofollow"><i class="fa fa-language"></i>{{ __('layout.nav.logout') }}</a>
                         </li>
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                style="display: none;">
-                                @csrf
-                            </form>
-                        </div>
                     @endguest
                 </ul>
             </div>
