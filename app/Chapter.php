@@ -26,4 +26,9 @@ class Chapter extends Model
     {
         return $this->children->count() === 0;
     }
+
+    public function getChapterLevel(): int
+    {
+        return count(explode('.', $this->path));
+    }
 }

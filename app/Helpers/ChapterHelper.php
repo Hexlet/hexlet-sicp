@@ -16,19 +16,12 @@ if (!function_exists('haveRead')) {
     }
 }
 
-if (!function_exists('getChapterLevel')) {
-    function getChapterLevel(App\Chapter $chapter): int
-    {
-        return count(explode('.', $chapter->path));
-    }
-}
-
 if (!function_exists('getChapterHeaderTag')) {
     function getChapterHeaderTag(App\Chapter $chapter): string
     {
         return $chapter->can_read
         ? ''
-        : sprintf('h%s', getChapterLevel($chapter) + 3);
+        : sprintf('h%s', $chapter->getChapterLevel() + 3);
     }
 }
 if (!function_exists('getReadChapterPercent')) {
