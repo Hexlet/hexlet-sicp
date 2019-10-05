@@ -18,7 +18,7 @@
                         @foreach($users as $user)
                             <tr>
                                 <td>{{ $loop->index + 1 }}</td>
-                                <td><a href="{{ route('users.show', $user->name) }}">{{ $user->name }}</a></td>
+                                <td><a href="{{ route('users.show', $user) }}">{{ $user->name }}</a></td>
                                 <td>{{ $user->read_chapters_count }}</td>
                             </tr>
                         @endforeach

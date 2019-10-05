@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Http\Controllers;
 
+use App\User as AppUser;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Laravel\Socialite\Contracts\Factory as Socialite;
@@ -40,9 +41,9 @@ class GithubControllerTest extends TestCase
         $token = $this->faker->randomAscii;
         $email = $this->faker->email;
         $this->mockSocialiteFacade($email, $name, $token, random_int(1, 100));
+        $this->json('GET', '/oauth/github/callback')->assertLocation(route('my'));
 
-        $this->json('GET', '/oauth/github/callback')->assertLocation(route('users.show', $name));
-
+        $user = AppUser::where('email', $email)->firstOrFail();
         $this->assertDatabaseHas('users', ['email' => $email]);
     }
 }
