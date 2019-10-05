@@ -16,6 +16,6 @@ class ProfileControllerTest extends TestCase
         $response = $this->get(route('my'));
 
         $response->assertStatus(200)
-            ->assertSee(htmlentities($user->name));
+            ->assertSee(e($user->name));
     }
 }
