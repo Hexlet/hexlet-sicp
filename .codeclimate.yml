@@ -25,6 +25,7 @@ plugins:
         enabled: false
 exclude_patterns:
   - "database/"
+  - "config/"
   - "tests/"
   - "spec/"
   - "**/vendor/"

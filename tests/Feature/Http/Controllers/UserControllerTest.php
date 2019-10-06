@@ -16,7 +16,7 @@ class UserControllerTest extends TestCase
         $response = $this->get(route('users.show', $user->name));
 
         $response->assertStatus(200)
-            ->assertSee(htmlentities($user->name));
+            ->assertSee(e($user->name));
     }
 
     public function testVisitByOtherUser()
@@ -28,7 +28,7 @@ class UserControllerTest extends TestCase
         $response = $this->get(route('users.show', $user->name));
 
         $response->assertStatus(200)
-            ->assertSee(htmlentities($user->name));
+            ->assertSee(e($user->name));
     }
 
     public function testVisitByGuest()
@@ -40,6 +40,6 @@ class UserControllerTest extends TestCase
         $response = $this->get(route('users.show', $user->name));
 
         $response->assertStatus(200)
-            ->assertSee(htmlentities($user->name));
+            ->assertSee(e($user->name));
     }
 }
