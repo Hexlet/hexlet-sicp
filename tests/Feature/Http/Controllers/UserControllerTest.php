@@ -13,7 +13,7 @@ class UserControllerTest extends TestCase
 
         $this->actingAs($user);
 
-        $response = $this->get(route('users.show', $user->name));
+        $response = $this->get(route('users.show', $user));
 
         $response->assertStatus(200)
             ->assertSee(e($user->name));
@@ -25,7 +25,7 @@ class UserControllerTest extends TestCase
         $visitor = factory(User::class)->create();
         $this->actingAs($visitor);
 
-        $response = $this->get(route('users.show', $user->name));
+        $response = $this->get(route('users.show', $user));
 
         $response->assertStatus(200)
             ->assertSee(e($user->name));
@@ -37,7 +37,7 @@ class UserControllerTest extends TestCase
         $visitor = factory(User::class)->create();
         // $this->actingAs($visitor);
 
-        $response = $this->get(route('users.show', $user->name));
+        $response = $this->get(route('users.show', $user));
 
         $response->assertStatus(200)
             ->assertSee(e($user->name));

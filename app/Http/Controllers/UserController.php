@@ -7,9 +7,9 @@ use App\User;
 
 class UserController extends Controller
 {
-    public function show(string $name)
+    public function show(User $user)
     {
-        $user = User::where('name', $name)->with('readChapters')->firstOrFail();
+        $user->load('readChapters');
 
         $chapters = Chapter::with('children')->get();
 

@@ -36,9 +36,10 @@ Route::group(
 Route::resource('users', 'UserController')->only('show');
 Route::middleware('auth')->group(function () {
     Route::resource('users.chapters', 'UserChapterController')->only('store');
+    Route::get('/my', 'MyController')->name('my');
 });
 
 Route::resource('ratings', 'RatingController')->only('index');
-Route::get('/my', 'MyController')->name('my');
+
 
 Route::get('/home', 'HomeController@index')->name('home');

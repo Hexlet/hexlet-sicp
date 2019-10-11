@@ -35,6 +35,6 @@ class LoginController extends Controller
     {
         $user = Auth::user();
 
-        return route('users.show', $user->name);
+        return route('users.show', $user);
     }
 }
