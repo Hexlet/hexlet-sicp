@@ -14,6 +14,8 @@ class UserTest extends TestCase
     {
         $user = factory(User::class)->create();
 
+        $this->actingAs($user);
+
         $chapter = factory(Chapter::class)->create();
 
         factory(ReadChapter::class)->create([

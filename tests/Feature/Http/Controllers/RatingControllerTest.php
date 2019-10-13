@@ -13,6 +13,7 @@ class RatingControllerTest extends TestCase
         factory(User::class, 10)
             ->create()
             ->each(function ($user) {
+                $this->actingAs($user);
                 factory(ReadChapter::class, mt_rand(0, 10))->create([
                     'user_id' => $user->id,
                 ]);
