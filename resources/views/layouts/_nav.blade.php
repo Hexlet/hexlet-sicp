@@ -13,6 +13,10 @@
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
+                        <a class="nav-link" target="_blank"
+                           href="https://guides.hexlet.io/how-to-learn-sicp/">{{ __('layout.nav.sicp_read') }}</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link"
                             href="{{ route('ratings.index') }}">{{ __('layout.nav.rating') }}</a>
                     </li>

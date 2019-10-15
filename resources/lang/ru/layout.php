@@ -6,7 +6,8 @@ return [
         'login'    => 'Войти',
         'register' => 'Регистрация',
         'logout'   => 'Выйти',
-        'my_progress'  => 'Мой прогресс'
+        'my_progress'  => 'Мой прогресс',
+        'sicp_read' => 'Как изучать SICP',
     ],
     'footer' => [
         'about'             => 'О проекте',
