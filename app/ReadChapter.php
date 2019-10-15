@@ -12,9 +12,4 @@ class ReadChapter extends Model
     protected $fillable = ['chapter_id'];
 
     protected static $recordEvents = ['created'];
-
-    public function getDescriptionForEvent(string $eventName): string
-    {
-        return "This model has been {$eventName}";
-    }
 }
