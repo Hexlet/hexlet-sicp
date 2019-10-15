@@ -10,9 +10,15 @@ class UserChapterController extends Controller
     public function store(SaveChapterRequest $request, User $user)
     {
         //TODO Добавить guard, авторизованный польтзователь может изменять только свой список глав
-        $completeChapters = $request->get('chapters_id', []);
-        $user->chapters()->detach();
-        foreach ($completeChapters as $chapterId) {
+        $completeChapters = collect($request->get('chapters_id', []));
+        $userChapters = $user->chapters()->pluck('chapter_id');
+
+        $chaptersToCreate = $completeChapters->diff($userChapters);
+        $chaptersToDelete = $userChapters->diff($completeChapters);
+
+
+        $user->chapters()->detach($chaptersToDelete);
+        foreach ($chaptersToCreate as $chapterId) {
             $user->readChapters()->create([
                 'chapter_id' => $chapterId
             ]);
