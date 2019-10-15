@@ -6,7 +6,8 @@ return [
         'logout'   => 'Logout',
         'login'    => 'Login',
         'register' => 'Register',
-        'my_progress'  => 'My progress'
+        'my_progress'  => 'My progress',
+        'sicp_read' => 'How to read SICP',
     ],
     'footer' => [
         'about'             => 'About',
