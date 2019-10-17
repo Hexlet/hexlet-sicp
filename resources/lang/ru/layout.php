@@ -9,6 +9,9 @@ return [
         'my_progress'  => 'Мой прогресс',
         'sicp_read' => 'Как изучать SICP',
     ],
+    'welcome' => [
+        'mark_read' => 'Отметить прочитанное',
+    ],
     'footer' => [
         'about'             => 'О проекте',
         'source_code'       => 'Исходный код',

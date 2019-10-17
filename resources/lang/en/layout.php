@@ -9,6 +9,9 @@ return [
         'my_progress'  => 'My progress',
         'sicp_read' => 'How to read SICP',
     ],
+    'welcome' => [
+        'mark_read' => 'Mark read',
+    ],
     'footer' => [
         'about'             => 'About',
         'source_code'       => 'Source code',
