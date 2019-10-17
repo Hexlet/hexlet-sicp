@@ -8,7 +8,7 @@
 
     <div class="col-md-8">
         <a href="https://mitpress.mit.edu/sites/default/files/sicp/index.html">
-            <img class="img-fluid" src="{{ asset('img/Patchouli_Gives_SICP.jpg') }}" alt="Начать изучать sicp">
+            <img class="img-fluid" src="{{ asset('img/Patchouli_Gives_SICP.png') }}" alt="Начать изучать sicp">
         </a>
     </div>
 
