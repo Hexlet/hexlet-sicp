@@ -14,7 +14,6 @@ class ChapterController extends Controller
      */
     public function index()
     {
-        abort(301);
         $rootChapters = Chapter::with(['children', 'parent'])->get()->filter(function (Chapter $chapter) {
             return !$chapter->parent;
         });

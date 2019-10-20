@@ -1,6 +1,6 @@
 <?php
 
-use App\User;
+use Illuminate\Database\Eloquent\Collection;
 
 if (!function_exists('getChapterName')) {
     function getChapterName(string $chapter): string
@@ -33,3 +33,11 @@ if (!function_exists('getReadChapterPercent')) {
         return ($readChapters->count() / $chapters->count()) * 100;
     }
 }
+if (!function_exists('buildChaptersTree')) {
+    function buildChaptersTree(Collection $chapters)
+    {
+        $keyByPath = $chapters->keyBy('path');
+    }
+}
+
+
