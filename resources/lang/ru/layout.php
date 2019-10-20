@@ -8,6 +8,7 @@ return [
         'logout'   => 'Выйти',
         'my_progress'  => 'Мой прогресс',
         'sicp_read' => 'Как изучать SICP',
+        'chapters' => 'Оглавление',
     ],
     'footer' => [
         'about'             => 'О проекте',

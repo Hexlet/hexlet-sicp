@@ -8,6 +8,7 @@ return [
         'register' => 'Register',
         'my_progress'  => 'My progress',
         'sicp_read' => 'How to read SICP',
+        'chapters' => 'Table of Contents',
     ],
     'footer' => [
         'about'             => 'About',
