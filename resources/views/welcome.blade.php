@@ -1,7 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-<h1 class="my-4">Hexlet SICP
+<h1 class="my-4">
+    Hexlet SICP
 </h1>
 <p>Осилятор СИКП &mdash; сервис, в котором есть рейтинг тех, кто проходит сикп, и каждый отмечает что он прошел.</p>
 <div class="row">
