@@ -15,33 +15,4 @@ class ChapterController extends Controller
 
         return view('chapter.index', ['chapters' => $chapters]);
     }
-
-    public function create()
-    {
-        //
-    }
-
-    public function store(Request $request)
-    {
-        //
-    }
-
-    public function show(Chapter $chapter)
-    {
-        //
-    }
-    public function edit(Chapter $chapter)
-    {
-        //
-    }
-
-    public function update(Request $request, Chapter $chapter)
-    {
-        //
-    }
-
-    public function destroy(Chapter $chapter)
-    {
-        //
-    }
 }
