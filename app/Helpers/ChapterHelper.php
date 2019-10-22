@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Collection;
 
 if (!function_exists('getChapterName')) {
     function getChapterName(string $chapter): string
@@ -33,11 +33,24 @@ if (!function_exists('getReadChapterPercent')) {
         return ($readChapters->count() / $chapters->count()) * 100;
     }
 }
-if (!function_exists('buildChaptersTree')) {
-    function buildChaptersTree(Collection $chapters)
+if (!function_exists('buildChaptersTreeFromStructure')) {
+    function buildChaptersTreeFromStructure(Collection $chapters, $treeStructure)
     {
-        $keyByPath = $chapters->keyBy('path');
+        $chaptersKeyByPath = $chapters->keyBy('path');
+        $treeBuilder = function ($tree, Collection $acc) use (&$treeBuilder, $chaptersKeyByPath) {
+            foreach ($tree as $treeNode) {
+                $chapter = $chaptersKeyByPath->get($treeNode['path']);
+                $chilrenNodes = array_get($treeNode, 'children');
+                if (!empty($chilrenNodes)) {
+                    $chapter->children = $treeBuilder($chilrenNodes, collect());
+                } else {
+                    $chapter->children = collect();
+                }
+                $acc->push($chapter);
+            }
+            return $acc;
+        };
+
+        return $treeBuilder($treeStructure, collect());
     }
 }
-
-

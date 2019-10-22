@@ -14,10 +14,10 @@ class ChapterController extends Controller
      */
     public function index()
     {
-        $rootChapters = Chapter::with(['children', 'parent'])->get()->filter(function (Chapter $chapter) {
-            return !$chapter->parent;
-        });
-        return view('chapter.index', ['chapters' => $rootChapters]);
+        $treeStructure = Yaml::parseFile(database_path('chapters.yml'));
+        $chapters = buildChaptersTreeFromStructure(Chapter::get(), $treeStructure);
+
+        return view('chapter.index', ['chapters' => $chapters]);
     }
 
     /**
