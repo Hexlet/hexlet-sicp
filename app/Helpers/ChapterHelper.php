@@ -41,11 +41,10 @@ if (!function_exists('buildChaptersTreeFromStructure')) {
             foreach ($tree as $treeNode) {
                 $chapter = $chaptersKeyByPath->get($treeNode['path']);
                 $chilrenNodes = array_get($treeNode, 'children');
-                if (!empty($chilrenNodes)) {
-                    $chapter->children = $treeBuilder($chilrenNodes, collect());
-                } else {
-                    $chapter->children = collect();
-                }
+                $chapter->children = empty($chilrenNodes)
+                    ? collect()
+                    : $treeBuilder($chilrenNodes, collect());
+
                 $acc->push($chapter);
             }
             return $acc;
