@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Chapter;
 use Illuminate\Http\Request;
+use Symfony\Component\Yaml\Yaml;
 
 class ChapterController extends Controller
 {
