@@ -40,6 +40,7 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::resource('ratings', 'RatingController')->only('index');
+Route::resource('chapters', 'ChapterController')->only('index');
 
 
 Route::get('/home', 'HomeController@index')->name('home');
