@@ -11,7 +11,7 @@
         </div>
         <div class="col-12 col-md-9 my-4">
             <h1 class="h3">{{ __('sicp.title') }}</h1>
-            <h2 class="h4">by {{ __('sicp.authors') }}</h4>
+            <h2 class="h4">by {{ __('sicp.authors') }}</h2>
             <div class="progress">
                 <div class="progress-bar bg-success"
                     role="progressbar" style="width: {{ getReadChapterPercent($user->readChapters, $chapters) }}%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
