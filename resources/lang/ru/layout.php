@@ -10,6 +10,9 @@ return [
         'sicp_read' => 'Как изучать SICP',
         'chapters' => 'Оглавление',
     ],
+    'welcome' => [
+        'mark_read' => 'Отметить прочитанное',
+    ],
     'footer' => [
         'about'             => 'О проекте',
         'source_code'       => 'Исходный код',
