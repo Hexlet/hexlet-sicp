@@ -9,9 +9,9 @@
                         <li><a target="_blank" href="https://github.com/Hexlet/hexlet-sicp">{{ __('layout.footer.source_code') }}</a></li>
                         <li><a target="_blank" href="http://slack-ru.hexlet.io/">Slack #hexlet-volunteers</a></li>
                         <li>
-                            <a href="{{ url('locale/en') }}" data-method="put" rel="nofollow"><i class="fa fa-language"></i>EN</a>
+                            <a href="{{ url('locale/en') }}" data-method="put" rel="nofollow"></i>EN</a>
                             /
-                            <a href="{{ url('locale/ru') }}" data-method="put" rel="nofollow"><i class="fa fa-language"></i>RU</a>
+                            <a href="{{ url('locale/ru') }}" data-method="put" rel="nofollow"></i>RU</a>
                         </li>
                     </ul>
                 </div>
