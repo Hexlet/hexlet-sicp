@@ -13,7 +13,7 @@
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
 Route::put('locale/{locale}', function ($locale) {
     Session::put('locale', $locale);
     return redirect()->back();
@@ -37,10 +37,8 @@ Route::resource('users', 'UserController')->only('show');
 Route::middleware('auth')->group(function () {
     Route::resource('users.chapters', 'UserChapterController')->only('store');
     Route::get('/my', 'MyController')->name('my');
+    Route::resource('account', 'AccountController')->only(['index','destroy']);
 });
 
 Route::resource('ratings', 'RatingController')->only('index');
 Route::resource('chapters', 'ChapterController')->only('index');
-
-
-Route::get('/home', 'HomeController@index')->name('home');
