@@ -16,4 +16,9 @@ class ChapterController extends Controller
 
         return view('chapter.index', ['chapters' => $chapters]);
     }
+
+    public function show(Chapter $chapter)
+    {
+        return view('chapter.show', compact('chapter'));
+    }
 }

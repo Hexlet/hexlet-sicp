@@ -33,6 +33,6 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], static function () 
     });
     Route::resource('users', 'UserController')->only('show');
     Route::resource('ratings', 'RatingController')->only('index');
-    Route::resource('chapters', 'ChapterController')->only('index');
+    Route::resource('chapters', 'ChapterController')->only('index', 'show');
     Route::get('/home', 'HomeController@index')->name('home');
 });
