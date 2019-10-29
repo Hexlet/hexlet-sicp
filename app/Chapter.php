@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Auth;
 
 class Chapter extends Model
 {
-    public function user()
+    public function users()
     {
         return $this->belongsToMany(User::class, 'read_chapters');
     }
