@@ -7,7 +7,7 @@
             <small>
                 @if ($chapter->parent)
                 <a href="{{ route('chapters.show', $chapter->parent) }}">
-                        {{ $chapter->parent->path }}. {{ getChapterName($chapter->parent->path) }}
+                    {{ $chapter->parent->path }}. {{ getChapterName($chapter->parent->path) }}
                 </a>
                 @endif
             </small>
@@ -23,18 +23,12 @@
                 </li>
                 @endforeach
             </ul>
-            <p>
-                    Эту главу завершили:
-                    <ul>
-                        @foreach ($chapter->users as $user)
-                        <li>
-                            <a href="{{ route('users.show', $user) }}">
-                                {{ $user->name }}
-                            </a>
-                        </li>
-                        @endforeach
-                    </ul>
-                </p>
+            <p>{{ __('chapter.show.who_completed') }}</p>
+            <ul>
+                @foreach ($chapter->users as $user)
+                <li><a href="{{ route('users.show', $user) }}">{{ $user->name }}</a> </li>
+                @endforeach
+            </ul>
         </div>
         <div>
 
