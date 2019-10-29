@@ -23,12 +23,15 @@
                 </li>
                 @endforeach
             </ul>
+            @if ($chapter->users->isNotEmpty())
             <p>{{ __('chapter.show.who_completed') }}</p>
             <ul>
                 @foreach ($chapter->users as $user)
                 <li><a href="{{ route('users.show', $user) }}">{{ $user->name }}</a> </li>
                 @endforeach
             </ul>
+            @endif
+            <p>{{ __('chapter.show.nobody_completed') }}</p>
         </div>
         <div>
 
