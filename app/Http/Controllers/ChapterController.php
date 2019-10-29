@@ -19,6 +19,11 @@ class ChapterController extends Controller
 
     public function show(Chapter $chapter)
     {
+        $chapter->load([
+            'parent',
+            'children',
+            'users',
+        ]);
         return view('chapter.show', compact('chapter'));
     }
 }
