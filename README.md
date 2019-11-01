@@ -47,6 +47,13 @@ $ php artisan migrate --seed
 * Тексты только через локали
 * Чтобы включить логирование Rollbar, необходимо установить переменную `LOG_CHANNEL=rollbar` и `ROLLBAR_TOKEN=`
 
+##### 
+Добавить пре-комит хук
+```shell
+$ git config core.hooksPath .githooks
+```
+
+
 #### Видео созвонов
 * 07.09.2019 https://youtu.be/82QPDHVUIc0
 
@@ -55,3 +62,5 @@ $ php artisan migrate --seed
 
 This repository is created and maintained by the team and the community of Hexlet, an educational project. [Read more about Hexlet (in Russian)](https://ru.hexlet.io/pages/about?utm_source=github&utm_medium=link&utm_campaign=exercises-javascript).
 ##
+
+
