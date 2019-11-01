@@ -53,7 +53,6 @@ $ php artisan migrate --seed
 $ git config core.hooksPath .githooks
 ```
 
-
 #### Видео созвонов
 * 07.09.2019 https://youtu.be/82QPDHVUIc0
 
@@ -62,5 +61,3 @@ $ git config core.hooksPath .githooks
 
 This repository is created and maintained by the team and the community of Hexlet, an educational project. [Read more about Hexlet (in Russian)](https://ru.hexlet.io/pages/about?utm_source=github&utm_medium=link&utm_campaign=exercises-javascript).
 ##
-
-
