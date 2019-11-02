@@ -1,7 +1,7 @@
 <ol>
     @foreach ($chapters as $chapter)
         <li>
-            {{ getChapterName($chapter->path) }}
+            <a href="{{ route('chapters.show', $chapter) }}">{{ getChapterName($chapter->path) }}</a>
             @includeWhen($chapter->children->isNotEmpty(), 'chapter.list', ['chapters' => $chapter->children])
         </li>
     @endforeach
