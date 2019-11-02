@@ -11,9 +11,6 @@
 |
  */
 
-const INDEX = 'index';
-const SHOW = 'show';
-
 Route::group(['prefix' => LaravelLocalization::setLocale()], static function () {
     Auth::routes(['verify' => true]);
     Route::get('/', function () {
@@ -33,10 +30,10 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], static function () 
     Route::middleware('auth')->group(function () {
         Route::resource('users.chapters', 'UserChapterController')->only('store');
         Route::get('/my', 'MyController')->name('my');
-        Route::resource('account', 'AccountController')->only([INDEX,'destroy']);
+        Route::resource('account', 'AccountController')->only(['index','destroy']);
     });
-    Route::resource('users', 'UserController')->only(SHOW);
-    Route::resource('ratings', 'RatingController')->only(INDEX);
-    Route::resource('chapters', 'ChapterController')->only(INDEX, SHOW);
+    Route::resource('users', 'UserController')->only('show');
+    Route::resource('ratings', 'RatingController')->only('index');
+    Route::resource('chapters', 'ChapterController')->only('index', 'show');
     Route::get('/home', 'HomeController@index')->name('home');
 });

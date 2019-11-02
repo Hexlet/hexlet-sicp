@@ -1,5 +1,11 @@
 version: "2"
 checks:
+  duplication:
+    enabled: false
+    config:
+      languages:
+      - php:
+          mass_threshold: 100
   similar-code:
     enabled: true
     config:
