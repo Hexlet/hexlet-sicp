@@ -4,7 +4,7 @@
             {{ __('account.settings') }}
             </div>
             <div class="list-group list-group-flush">
-                <a class="nav-link list-group-item list-group-item-action active href="/account">{{ __('account.account') }}</a>
+                <a class="nav-link list-group-item list-group-item-action active" href="/account">{{ __('account.account') }}</a>
             </div>
     </div>
 </div>
