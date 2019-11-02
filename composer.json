@@ -17,6 +17,7 @@
         "laravel/socialite": "^4.1",
         "laravel/tinker": "^1.0",
         "laravelcollective/html": "^5.8",
+        "mcamara/laravel-localization": "^1.4",
         "netojose/laravel-bootstrap-4-forms": "^3.0",
         "rollbar/rollbar-laravel": "^4.0",
         "symfony/yaml": "^4.3"
