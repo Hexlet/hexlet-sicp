@@ -30,7 +30,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], static function () 
     Route::middleware('auth')->group(function () {
         Route::resource('users.chapters', 'UserChapterController')->only('store');
         Route::get('/my', 'MyController')->name('my');
-        Route::resource('account', 'AccountController')->only(['index','destroy']);
+        Route::resource('account', 'AccountController')->only('index', 'destroy');
     });
     Route::resource('users', 'UserController')->only('show');
     Route::resource('ratings', 'RatingController')->only('index');
