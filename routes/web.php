@@ -11,19 +11,18 @@
 |
  */
 
-Route::group(['prefix' => LaravelLocalization::setLocale()], static function () {
+Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
     Auth::routes(['verify' => true]);
     Route::get('/', function () {
         return view('welcome');
     })->name('welcome');
     Route::group(
         [
-        'prefix' => 'oauth',
-        'namespace' => '\\App\\Http\\Controllers\\Auth\\Social\\'
+            'prefix' => 'oauth',
+            'namespace' => '\\App\\Http\\Controllers\\Auth\\Social\\',
         ],
         static function () {
-
-            Route::get('/github', 'GithubController@redirectToProvider')->name('oauth.github');
+Route::get('/github', 'GithubController@redirectToProvider')->name('oauth.github');
             Route::get('/github/callback', 'GithubController@handleProviderCallback')->name('oauth.github-callback');
         }
     );
