@@ -21,9 +21,9 @@
                 @foreach($chapters as $chapter)
                 <li class="list-group-item {{ haveRead($user, $chapter) ? 'list-group-item-success' : '' }}">
                     @if(!$chapter->can_read)
-                        <h3 class="h4">{{ $chapter->path }} {{ getChapterName($chapter->path) }}</h3>
+                        <h3 class="h4"><a href="{{ route('chapters.show', $chapter) }}">{{ $chapter->path }} {{ getChapterName($chapter->path) }}</a></h3>
                     @else
-                        <h4 class="h6">{{ $chapter->path }} {{ getChapterName($chapter->path) }}</h4>
+                        <h4 class="h6"><a href="{{ route('chapters.show', $chapter) }}">{{ $chapter->path }} {{ getChapterName($chapter->path) }}</a></h4>
                     @endif
                 </li>
                 @endforeach
