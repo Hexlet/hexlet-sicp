@@ -30,8 +30,9 @@
                 <li><a href="{{ route('users.show', $user) }}">{{ $user->name }}</a> </li>
                 @endforeach
             </ul>
-            @endif
+            @else
             <p>{{ __('chapter.show.nobody_completed') }}</p>
+            @endif
         </div>
         <div>
 
