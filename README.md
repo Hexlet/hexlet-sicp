@@ -14,6 +14,7 @@
 
 * PHP
 * Composer
+* SQLite for local, PostgreSQL for production
 
 ### Setup
 
