@@ -1,7 +1,7 @@
 test:
 	composer run phpunit
 
-setup: env-prepare install key sqlite-prepare
+setup: env-prepare sqlite-prepare install key
 
 install:
 	composer install
