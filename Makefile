@@ -1,7 +1,7 @@
 test:
 	composer run phpunit
 
-setup: env-prepare install key
+setup: env-prepare sqlite-prepare install key
 
 install:
 	composer install
@@ -24,6 +24,9 @@ deploy:
 
 env-prepare:
 	cp -n .env.example .env || true
+
+sqlite-prepare:
+	touch database/database.sqlite
 
 key:
 	php artisan key:generate
