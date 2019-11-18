@@ -6,34 +6,41 @@ use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use App\User;
-
+use App\Chapter;
+use App\ReadChapter;
 class AccountControllerTest extends TestCase
 {
-    /**
-     * A basic feature test example.
-     *
-     * @return void
-     */
+    private $user;
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $this->user = factory(User::class)->create();
+        $this->actingAs($this->user);
+    }
+
     public function testIndex()
     {
-        $user = factory(User::class)->create();
-
-        $this->actingAs($user);
         $response = $this->get(route('account.index'));
 
         $response->assertStatus(200)
-            ->assertSee(e($user->email));
+            ->assertSee(e($this->user->email));
     }
 
     public function testDestroy()
     {
-        $user = factory(User::class)->create();
+        $chapter = factory(Chapter::class)->create();
 
-        $this->actingAs($user);
-        $response = $this->delete(route('account.destroy', $user));
+        factory(ReadChapter::class)->create([
+            'user_id' => $this->user->id,
+            'chapter_id' => $chapter->id,
+        ]);
+
+        $response = $this->delete(route('account.destroy', $this->user));
         $response->assertStatus(302);
 
-        $user2 = User::find($user->id);
+        $user2 = User::find($this->user->id);
         $this->assertNull($user2);
     }
 }
