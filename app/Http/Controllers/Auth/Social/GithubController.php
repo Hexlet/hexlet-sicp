@@ -39,6 +39,7 @@ class GithubController extends Controller
 
         if (false === $userForAuth->exists) {
             $deleteUser = User::withTrashed()->where('email', $email)->first();
+
             if ($deleteUser) {
                 $deleteUser->restore();
                 return redirect()->route('my');
