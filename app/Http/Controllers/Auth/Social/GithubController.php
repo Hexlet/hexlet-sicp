@@ -34,9 +34,16 @@ class GithubController extends Controller
     {
         $socialiteUser = $this->socialite::driver('github')->user();
 
-        $userForAuth = User::firstOrNew(['email' => $socialiteUser->getEmail()]);
+        $email = $socialiteUser->getEmail();
+        $userForAuth = User::firstOrNew(['email' => $email]);
 
         if (false === $userForAuth->exists) {
+            $deleteUser = User::withTrashed()->where('email', $email)->first();
+            if ($deleteUser) {
+                $deleteUser->restore();
+                return redirect()->route('my');
+            }
+
             $userForAuth->name              = $socialiteUser->getName();
             $userForAuth->email_verified_at = now();
             $userForAuth->password          = Hash::make(random_bytes(10));
