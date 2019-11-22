@@ -52,6 +52,11 @@ class GithubController extends Controller
             return $this->sendFailedResponse();
         }
 
+        return $this->loginOrCreateAccount($name, $email);
+    }
+
+    protected function loginOrCreateAccount($name, $email)
+    {
         $userForAuth = User::firstOrNew(['email' => $email]);
 
         if (false === $userForAuth->exists) {
