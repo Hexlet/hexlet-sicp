@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use Socialite;
+use Validator;
 
 class GithubController extends Controller
 {
@@ -24,7 +25,11 @@ class GithubController extends Controller
      */
     public function redirectToProvider()
     {
-        return $this->socialite::driver('github')->scopes(['user:email'])->redirect();
+        try {
+            return $this->socialite::driver('github')->scopes(['user:email'])->redirect();
+        } catch (Exception $e) {
+            return $this->sendFailedResponse($e->getMessage());
+        }
     }
 
     /**
@@ -32,9 +37,21 @@ class GithubController extends Controller
      */
     public function handleProviderCallback()
     {
-        $socialiteUser = $this->socialite::driver('github')->user();
+        try {
+            $socialiteUser = $this->socialite::driver('github')->user();
+        } catch (Exception $e) {
+            return $this->sendFailedResponse($e->getMessage());
+        }
 
         $email = $socialiteUser->getEmail();
+        $name = $socialiteUser->getName();
+
+        $validator = $this->validator(['email' => $email, 'name' => $name]);
+
+        if ($validator->fails()) {
+            return $this->sendFailedResponse();
+        }
+
         $userForAuth = User::firstOrNew(['email' => $email]);
 
         if (false === $userForAuth->exists) {
@@ -45,7 +62,7 @@ class GithubController extends Controller
                 return redirect()->route('my');
             }
 
-            $userForAuth->name              = $socialiteUser->getName();
+            $userForAuth->name              = $name;
             $userForAuth->email_verified_at = now();
             $userForAuth->password          = Hash::make(random_bytes(10));
             $userForAuth->saveOrFail();
@@ -55,5 +72,19 @@ class GithubController extends Controller
         flash()->success(__('auth.logged_in'));
 
         return redirect()->route('my');
+    }
+
+    protected function sendFailedResponse($msg = null)
+    {
+        flash()->error($msg ?:  __('Unable to login, try with another provider to login.'));
+        return redirect()->route('my');
+    }
+
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'name' => ['required', 'string', 'min:2','max:255'],
+            'email' => ['required', 'string', 'email', 'max:255'],
+        ]);
     }
 }

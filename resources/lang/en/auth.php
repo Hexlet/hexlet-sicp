@@ -21,4 +21,5 @@ return [
         'send_link' => 'A link has been sent to your email to confirm registration',
         'verified'  => 'Email Confirmed',
     ],
+    'provider_fails' => 'Unable to login, try with another provider to login.',
 ];

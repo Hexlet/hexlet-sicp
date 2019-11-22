@@ -70,4 +70,15 @@ class GithubControllerTest extends TestCase
         $user = AppUser::where('email', $email)->firstOrFail();
         $this->assertDatabaseHas('users', ['email' => $email]);
     }
+
+    public function testCreateEmptyUserNameAndLogin()
+    {
+        $name  = "";
+        $token = $this->faker->randomAscii;
+        $email = $this->faker->email;
+        $this->mockSocialiteFacade($email, $name, $token, random_int(1, 100));
+        $this->json('GET', '/oauth/github/callback')->assertLocation(route('my'));
+
+        $this->assertDatabaseMissing('users', [ 'email' => $email, 'name' => $name ]);
+    }
 }
