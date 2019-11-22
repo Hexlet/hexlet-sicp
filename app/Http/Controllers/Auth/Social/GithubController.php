@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use Socialite;
 use Validator;
+use Exception;
 
 class GithubController extends Controller
 {
@@ -81,7 +82,7 @@ class GithubController extends Controller
 
     protected function sendFailedResponse($msg = null)
     {
-        flash()->error($msg ?:  __('Unable to login, try with another provider to login.'));
+        flash()->error($msg ?:  __('auth.provider_fails'));
         return redirect()->route('my');
     }
 
