@@ -46,4 +46,39 @@ class GithubControllerTest extends TestCase
         $user = AppUser::where('email', $email)->firstOrFail();
         $this->assertDatabaseHas('users', ['email' => $email]);
     }
+
+    public function testUserDeleteAndLogin()
+    {
+        $name  = $this->faker->name;
+        $token = $this->faker->randomAscii;
+        $email = $this->faker->email;
+        $this->mockSocialiteFacade($email, $name, $token, random_int(1, 100));
+        $this->json('GET', '/oauth/github/callback')->assertLocation(route('my'));
+
+        $user = AppUser::where('email', $email)->firstOrFail();
+        $this->assertDatabaseHas('users', ['email' => $email]);
+
+        $response = $this->delete(route('account.destroy', $user));
+        $response->assertStatus(302);
+
+        $user2 = AppUser::find($user->id);
+        $this->assertNull($user2);
+
+        $this->mockSocialiteFacade($email, $name, $token, random_int(1, 100));
+        $this->json('GET', '/oauth/github/callback')->assertLocation(route('my'));
+
+        $user = AppUser::where('email', $email)->firstOrFail();
+        $this->assertDatabaseHas('users', ['email' => $email]);
+    }
+
+    public function testCreateEmptyUserNameAndLogin()
+    {
+        $name  = "";
+        $token = $this->faker->randomAscii;
+        $email = $this->faker->email;
+        $this->mockSocialiteFacade($email, $name, $token, random_int(1, 100));
+        $this->json('GET', '/oauth/github/callback')->assertLocation(route('my'));
+
+        $this->assertDatabaseMissing('users', [ 'email' => $email, 'name' => $name ]);
+    }
 }

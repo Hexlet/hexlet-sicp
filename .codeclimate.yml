@@ -13,6 +13,9 @@ plugins:
       standard: "./phpcs.xml"
   sonar-php:
     enabled: true
+    checks:
+      php:S1192:
+        enabled: false
     tests_patterns:
       - tests/**
   phpmd:
