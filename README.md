@@ -48,6 +48,12 @@ $ php artisan migrate --seed
 * Тексты только через локали
 * Чтобы включить логирование Rollbar, необходимо установить переменную `LOG_CHANNEL=rollbar` и `ROLLBAR_TOKEN=`
 
+##### 
+Добавить пре-комит хук
+```shell
+$ git config core.hooksPath .githooks
+```
+
 #### Видео созвонов
 * 07.09.2019 https://youtu.be/82QPDHVUIc0
 
