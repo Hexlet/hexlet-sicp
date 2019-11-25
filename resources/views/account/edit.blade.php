@@ -8,9 +8,8 @@
             <div class="card">
                 <div class="card-header">{{ __('account.сhange_name') }}</div>
                 <div class="card-body">
-                    {!! Form::open()->route('account.update', [$user]) !!}
-                    {!! method_field('patch') !!}
-                    {!! Form::text('name', __('register.namePlaceholder'), $user->name) !!}
+                    {!! Form::open()->patch()->route('account.update', [$user->id]) !!}
+                    {!! Form::text('name', __('register.namePlaceholder'))->value($user->name) !!}
                     <div class="form-group mb-0">
                     {!! Form::submit(__('Save')) !!}
                     </div>
