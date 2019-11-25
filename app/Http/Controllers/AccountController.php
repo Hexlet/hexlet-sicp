@@ -18,7 +18,7 @@ class AccountController extends Controller
     {
         $user = Auth::user();
         $this->validate(request(), [
-            'name' => 'required|min:2||max:255|unique:users,id,' . $user->id,
+            'name' => 'required|min:2||max:255|unique:users,name,' . $user->name,
         ]);
         $user->name = request('name');
         $user->save();
