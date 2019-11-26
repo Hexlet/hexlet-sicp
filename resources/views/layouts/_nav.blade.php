@@ -70,6 +70,19 @@
                 </li>
                 @endguest
             </ul>
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a rel="alternate" class="nav-link"
+                    @if (LaravelLocalization::getCurrentLocale() == 'ru')
+                        href="{{ LaravelLocalization::getLocalizedURL('en') }}">
+                            <img src="{{ asset('icons/flags/en.svg') }}" width="24px">
+                    @else
+                        href="{{ LaravelLocalization::getLocalizedURL('ru') }}">
+                            <img src="{{ asset('icons/flags/ru.svg') }}/" width="24px">
+                    @endif
+                    </a>
+                </li>
+            </ul>
         </div>
     </div>
 </nav>
