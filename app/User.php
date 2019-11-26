@@ -48,7 +48,6 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function readChapters()
     {
-        var_dump();
         return $this->hasMany(ReadChapter::class);
     }
 }
