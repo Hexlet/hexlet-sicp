@@ -18,7 +18,7 @@
     <rule ref="PSR1.Classes.ClassDeclaration.MissingNamespace">
         <exclude-pattern>database/</exclude-pattern>
     </rule>
-    <rule ref="./Sniffs"/>
+    <rule ref="Sniffs"/>
     <rule ref="Generic.ControlStructures.InlineControlStructure">
         <properties>
             <property name="error" value="true"/>
