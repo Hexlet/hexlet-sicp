@@ -9,7 +9,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use Notifiable, SoftDeletes;
+    use Notifiable;
+    use SoftDeletes;
 
     protected $dates = ['deleted_at'];
 
