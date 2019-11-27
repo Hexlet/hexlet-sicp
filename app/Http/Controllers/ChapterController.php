@@ -10,10 +10,7 @@ class ChapterController extends Controller
 {
     public function index()
     {
-        $treeFilepath = database_path('chapters.yml');
-        $treeStructure = Yaml::parseFile($treeFilepath);
-        $chapters = buildChaptersTreeFromStructure(Chapter::get(), $treeStructure);
-
+        $chapters = buildChaptersTreeFromStructure(Chapter::orderBy("parent_id")->get());
         return view('chapter.index', ['chapters' => $chapters]);
     }
 

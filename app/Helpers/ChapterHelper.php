@@ -34,22 +34,14 @@ if (!function_exists('getReadChapterPercent')) {
     }
 }
 if (!function_exists('buildChaptersTreeFromStructure')) {
-    function buildChaptersTreeFromStructure(Collection $chapters, $treeStructure)
+    function buildChaptersTreeFromStructure(Collection $chapters)
     {
-        $chaptersKeyByPath = $chapters->keyBy('path');
-        $treeBuilder = function ($tree, Collection $acc) use (&$treeBuilder, $chaptersKeyByPath) {
-            foreach ($tree as $treeNode) {
-                $chapter = $chaptersKeyByPath->get($treeNode['path']);
-                $chilrenNodes = array_get($treeNode, 'children');
-                $chapter->children = empty($chilrenNodes)
-                    ? collect()
-                    : $treeBuilder($chilrenNodes, collect());
-
-                $acc->push($chapter);
-            }
-            return $acc;
-        };
-
-        return $treeBuilder($treeStructure, collect());
+        $chaptersNew = [];
+        for ($i = 0, $c = count($chapters); $i < $c; $i++) {
+            $parent_id = $chapters[$i]['parent_id'];
+            $parent_id = $parent_id ? $parent_id : 0;
+            $chaptersNew[$parent_id][] = $chapters[$i];
+        }
+        return $chaptersNew;
     }
 }
