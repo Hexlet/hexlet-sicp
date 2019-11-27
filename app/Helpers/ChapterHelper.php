@@ -37,10 +37,10 @@ if (!function_exists('buildChaptersTreeFromStructure')) {
     function buildChaptersTreeFromStructure(Collection $chapters)
     {
         $chaptersNew = [];
-        for ($i = 0, $c = count($chapters); $i < $c; $i++) {
-            $parent = $chapters[$i]['parent_id'];
+        foreach ($chapters as $chapter) {
+            $parent = $chapter['parent_id'];
             $parent = $parent ? $parent : 0;
-            $chaptersNew[$parent][] = $chapters[$i];
+            $chaptersNew[$parent][] = $chapter;
         }
         return $chaptersNew;
     }
