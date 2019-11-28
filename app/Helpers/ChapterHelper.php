@@ -33,15 +33,3 @@ if (!function_exists('getReadChapterPercent')) {
         return ($readChapters->count() / $chapters->count()) * 100;
     }
 }
-if (!function_exists('buildChaptersTreeFromStructure')) {
-    function buildChaptersTreeFromStructure(Collection $chapters)
-    {
-        $chaptersNew = [];
-        foreach ($chapters as $chapter) {
-            $parent = $chapter['parent_id'];
-            $parent = $parent ? $parent : 0;
-            $chaptersNew[$parent][] = $chapter;
-        }
-        return $chaptersNew;
-    }
-}

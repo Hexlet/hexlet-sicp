@@ -10,8 +10,8 @@ class ChapterController extends Controller
 {
     public function index()
     {
-        $chapters = buildChaptersTreeFromStructure(Chapter::orderBy("parent_id")->get());
-        return view('chapter.index', ['chapters' => $chapters]);
+        $chapters  = Chapter::where('parent_id', null)->get();
+        return view('chapter.index', compact('chapters'));
     }
 
     public function show(Chapter $chapter)
