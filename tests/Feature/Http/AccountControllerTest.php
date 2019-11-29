@@ -8,6 +8,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use App\User;
 use App\Chapter;
 use App\ReadChapter;
+
 class AccountControllerTest extends TestCase
 {
     private $user;
