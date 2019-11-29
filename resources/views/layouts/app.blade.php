@@ -13,6 +13,9 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    @if (env('APP_ENV') == 'production')
+    @include('layouts.deps._gtm_head')
+    @endif
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -23,6 +26,9 @@
 </head>
 
 <body class="d-flex flex-column">
+    @if (env('APP_ENV') == 'production')
+    @include('layouts.deps._gtm_body')
+    @endif
     <div class="d-flex flex-column min-vh-100">
         @include('layouts._nav')
         <main class="my-5">
