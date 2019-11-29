@@ -32,7 +32,7 @@ class GithubControllerTest extends TestCase
     {
         $response = $this->call('GET', '/oauth/github');
 
-        $this->assertContains('github.com/login/oauth', $response->getTargetUrl());
+        $this->assertStringContainsString('github.com/login/oauth', $response->getTargetUrl());
     }
 
     public function testCreateUserAndLogin()
