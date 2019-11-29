@@ -78,7 +78,7 @@
                             <img src="{{ asset('icons/flags/en.svg') }}" width="24px">
                     @else
                         href="{{ LaravelLocalization::getLocalizedURL('ru') }}">
-                            <img src="{{ asset('icons/flags/ru.svg') }}/" width="24px">
+                            <img src="{{ asset('icons/flags/ru.svg') }}" width="24px">
                     @endif
                     </a>
                 </li>
