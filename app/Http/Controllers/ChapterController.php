@@ -10,9 +10,7 @@ class ChapterController extends Controller
 {
     public function index()
     {
-        $chapters  = Chapter::all()->groupBy('parent_id');//->toArray();
-        //var_dump($chapters);
-        //exit;
+        $chapters  = Chapter::all()->groupBy('parent_id');
         return view('chapter.index', compact('chapters'));
     }
 
