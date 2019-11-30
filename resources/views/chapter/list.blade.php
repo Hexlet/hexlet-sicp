@@ -1,8 +1,8 @@
 <ol>
-    @foreach ($chapters[$parent] as $key => $chapter)
+    @foreach ($chapters[$parent] as $chapter)
         <li>
-            <a href="{{ route('chapters.show', $chapter['id']) }}">{{ getChapterName($chapter['path']) }}</a>
-            @includeWhen(array_key_exists($chapter['id'], $chapters), 'chapter.list', ['chapters' => $chapters, 'parent' => $chapter['id']])
+            <a href="{{ route('chapters.show', $chapter->id) }}">{{ getChapterName($chapter->path) }}</a>
+            @includeWhen(isset($chapters[$chapter->id]), 'chapter.list', ['chapters' => $chapters, 'parent' => $chapter->id])
         </li>
     @endforeach
 </ol>
