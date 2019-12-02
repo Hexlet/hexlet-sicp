@@ -14,9 +14,11 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(User::class, 10)->create()->each(function (User $user) {
-            $chapters = Chapter::inRandomOrder()->limit(rand(5, 10))->get();
-            $user->chapters()->attach($chapters);
+        $chapters = Chapter::all();
+        factory(User::class, 10)->create()->each(function (User $user) use ($chapters) {
+            $user->chapters()->attach(
+                $chapters ->random(rand(5, 10))
+            );
         });
     }
 }
