@@ -33,23 +33,3 @@ if (!function_exists('getReadChapterPercent')) {
         return ($readChapters->count() / $chapters->count()) * 100;
     }
 }
-if (!function_exists('buildChaptersTreeFromStructure')) {
-    function buildChaptersTreeFromStructure(Collection $chapters, $treeStructure)
-    {
-        $chaptersKeyByPath = $chapters->keyBy('path');
-        $treeBuilder = function ($tree, Collection $acc) use (&$treeBuilder, $chaptersKeyByPath) {
-            foreach ($tree as $treeNode) {
-                $chapter = $chaptersKeyByPath->get($treeNode['path']);
-                $chilrenNodes = array_get($treeNode, 'children');
-                $chapter->children = empty($chilrenNodes)
-                    ? collect()
-                    : $treeBuilder($chilrenNodes, collect());
-
-                $acc->push($chapter);
-            }
-            return $acc;
-        };
-
-        return $treeBuilder($treeStructure, collect());
-    }
-}
