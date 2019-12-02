@@ -72,15 +72,26 @@
             </ul>
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a rel="alternate" class="nav-link"
-                    @if (LaravelLocalization::getCurrentLocale() == 'ru')
-                        href="{{ LaravelLocalization::getLocalizedURL('en') }}">
-                            <img src="{{ asset('icons/flags/en.svg') }}" width="24px">
-                    @else
-                        href="{{ LaravelLocalization::getLocalizedURL('ru') }}">
-                            <img src="{{ asset('icons/flags/ru.svg') }}" width="24px">
-                    @endif
-                    </a>
+                    @php
+                    $currentLocale = LaravelLocalization::getCurrentLocale();
+                    $locales = LaravelLocalization::getSupportedLocales();
+                    $otherLocales = getOtherLocales($currentLocale, $locales);
+                    $nativeLanguageName = getNativeLanguageName($currentLocale);
+                    @endphp
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img src="{{ getPathToLocaleFlag($currentLocale) }}" width="24px">
+                            {{ $nativeLanguageName }}
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        @foreach($otherLocales as $localeCode => ['native' => $language])
+                            <a rel="alternate" class="dropdown-item" hreflang="{{ $localeCode  }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true)  }}">
+                                <img src="{{ getPathToLocaleFlag($localeCode) }}" width="24px">
+                                {{ normalizeNativeLanguageName($language) }}
+                            </a>
+                         @endforeach
+                        </div>
+                    </div>
                 </li>
             </ul>
         </div>
