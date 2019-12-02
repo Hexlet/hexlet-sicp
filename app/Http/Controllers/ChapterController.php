@@ -12,7 +12,7 @@ class ChapterController extends Controller
     {
         $treeFilepath = database_path('chapters.yml');
         $treeStructure = Yaml::parseFile($treeFilepath);
-        $chapters = buildChaptersTreeFromStructure(Chapter::get(), $treeStructure);
+        $chapters = buildChaptersTreeFromStructure(Chapter::all(), $treeStructure);
 
         return view('chapter.index', ['chapters' => $chapters]);
     }
