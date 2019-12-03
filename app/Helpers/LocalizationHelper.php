@@ -2,9 +2,10 @@
 
 use Illuminate\Support\Collection;
 
-if (!function_exists('getChapterName')) {
-    function getChapterName(string $chapter): string
+if (!function_exists('getLocalizedHttpsURL')) {
+    function getLocalizedHttpsURL(string $localeCode): string
     {
-        return  __('sicp.chapters')[$chapter] ?? __('sicp.chapters.' . $chapter);
+        $url = LaravelLocalization::getLocalizedURL($localeCode, null, [], true);
+        return preg_replace("/^http:/i", "https:", $url);
     }
 }
