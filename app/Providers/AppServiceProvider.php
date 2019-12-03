@@ -20,9 +20,9 @@ class AppServiceProvider extends ServiceProvider
 
         $isDevEnv = $environment !== 'production';
 
-        if (!$isDevEnv) {
+        //if (!$isDevEnv) {
             \URL::forceScheme('https');
-        }
+        //}
 
         if ($isDevEnv) {
             DB::listen(function ($query) {
