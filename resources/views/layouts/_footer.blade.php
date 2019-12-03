@@ -12,7 +12,7 @@
                         @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
                             <a  rel="alternate"
                                 hreflang="{{ $localeCode }}"
-                                href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                                href="{{ getLocalizedHttpsURL($localeCode) }}">
                                 {{ strtoupper($localeCode) }}
                             </a>
                         @endforeach
