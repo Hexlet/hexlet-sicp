@@ -8,6 +8,12 @@ use App\User;
 
 class ChapterControllerTest extends TestCase
 {
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $this->seed('TestDatabaseSeeder');
+    }
+
     public function testIndexAsGuest()
     {
         $response = $this->get(route('chapters.index'));
