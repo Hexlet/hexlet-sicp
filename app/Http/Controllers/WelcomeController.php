@@ -12,5 +12,4 @@ class WelcomeController extends Controller
         $logItems = Activity::orderBy('created_at', 'DESC')->limit(10)->get();
         return view('welcome', compact('logItems'));
     }
-
 }

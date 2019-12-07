@@ -7,7 +7,7 @@ if (!function_exists('getChapterNameArray')) {
     {
 
         return collect($chapters)->map(function ($item) {
-            return $item.' '.getChapterName($item);
+            return $item . ' ' . getChapterName($item);
         })->implode(', ');
     }
 }
