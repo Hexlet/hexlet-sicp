@@ -25,9 +25,19 @@
                 </div>
                 <span class="d-block">
                     @if($logItem->getExtraProperty('chapters'))
-                    {{ __('activitylog.action_'.$logItem->description) }} <em>{{ getChapterNameArray($logItem->getExtraProperty('chapters')) }}</em>
+                    <a data-toggle="collapse" href="#collapseExp{{ $logItem->id }}" aria-expanded="false" aria-controls="collapseExp{{ $logItem->id }}">
+                        {{ __('activitylog.action_'.$logItem->description) }}
+                        {{ count($logItem->getExtraProperty('chapters')) }}</a>
+                    <div class="collapse" id="collapseExp{{ $logItem->id }}">
+                    <ul>
+                        @foreach(getChapterNameArray($logItem->getExtraProperty('chapters')) as $chapter)
+                        <li>{{  $chapter }}</li>
+                        @endforeach
+                    </ul>
+                    </div>
                     @endif
                 </span>
+
             </div>
         </div>
         @endforeach

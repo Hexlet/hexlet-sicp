@@ -20,7 +20,12 @@
                                 <td>{{ $logItem->created_at }}</td>
                                 <td>
                                     @if($logItem->getExtraProperty('chapters'))
-                                    {{ __('activitylog.action_'.$logItem->description) }} {{ getChapterNameArray($logItem->getExtraProperty('chapters')) }}
+                                    {{ __('activitylog.action_'.$logItem->description) }}
+                                    <ul>
+                                        @foreach(getChapterNameArray($logItem->getExtraProperty('chapters')) as $chapter)
+                                        <li>{{  $chapter }}</li>
+                                        @endforeach
+                                    </ul>
                                     @endif
                                 </td>
                                 <td>
