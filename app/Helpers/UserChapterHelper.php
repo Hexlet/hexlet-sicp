@@ -14,17 +14,18 @@ if (!function_exists('getChapterNameArray')) {
 
 
 if (!function_exists('getDiffChapters')) {
-    function getDiffChapters(Collection $ChaptersOld, Collection $ChaptersNew): array
+    function getDiffChapters(Collection $chaptersOld, Collection $chaptersNew): array
     {
-        $chapters = $ChaptersNew->diff($ChaptersOld);
+        $chapters = $chaptersNew->diff($chaptersOld);
         if (count($chapters)) {
             return ['added', $chapters];
-        } else {
-            $chapters = $ChaptersOld->diff($ChaptersNew);
-            if (count($chapters)) {
-                return ['removed', $chapters];
-            }
         }
+
+        $chapters = $chaptersOld->diff($chaptersNew);
+        if (count($chapters)) {
+            return ['removed', $chapters];
+        }
+
         return ['', []];
     }
 }
