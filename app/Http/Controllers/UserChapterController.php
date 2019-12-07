@@ -18,11 +18,13 @@ class UserChapterController extends Controller
 
         [$log, $chapters] = getDiffChapters($userChaptersOld, $userChaptersNew);
 
-        activity()
+        if ($log) {
+            activity()
                 ->performedOn($user)
                 ->causedBy(auth()->user())
                 ->withProperties(['chapters' => $chapters])
                 ->log($log);
+        }
 
         return redirect(route('my'));
     }
