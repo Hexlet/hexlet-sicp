@@ -37,7 +37,7 @@ class AccountController extends Controller
         $user = Auth::user();
         $user->delete();
         flash(__('account.your_account_deleted'));
-        return redirect()->route('welcome');
+        return redirect()->route('index');
     }
 
     public function delete(User $user)

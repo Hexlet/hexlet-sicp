@@ -21,6 +21,7 @@
         "mcamara/laravel-localization": "^1.4",
         "netojose/laravel-bootstrap-4-forms": "^3.0",
         "rollbar/rollbar-laravel": "^5.0",
+        "spatie/laravel-activitylog": "^3.9",
         "symfony/yaml": "^4.3"
     },
     "require-dev": {
