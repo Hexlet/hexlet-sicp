@@ -22,8 +22,8 @@
                                     @if($logItem->getExtraProperty('chapters'))
                                     {{ __('activitylog.action_'.$logItem->description) }}
                                     <ul>
-                                        @foreach(getChapterNameArray($logItem->getExtraProperty('chapters')) as $chapter)
-                                        <li>{{  $chapter }}</li>
+                                        @foreach($logItem->getExtraProperty('chapters') as $chapter)
+                                        <li>{{ $chapter }} {{ getChapterName($chapter) }}</li>
                                         @endforeach
                                     </ul>
                                     @endif
