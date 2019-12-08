@@ -30,8 +30,8 @@
                         {{ count($logItem->getExtraProperty('chapters')) }}</a>
                     <div class="collapse" id="collapseExp{{ $logItem->id }}">
                     <ul>
-                        @foreach(getChapterNameArray($logItem->getExtraProperty('chapters')) as $chapter)
-                        <li>{{  $chapter }}</li>
+                        @foreach($logItem->getExtraProperty('chapters') as $chapter)
+                        <li>{{ $chapter }} {{ getChapterName($chapter) }}</li>
                         @endforeach
                     </ul>
                     </div>

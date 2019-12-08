@@ -2,17 +2,6 @@
 
 use Illuminate\Support\Collection;
 
-if (!function_exists('getChapterNameArray')) {
-    function getChapterNameArray(array $chapters): array
-    {
-
-        return collect($chapters)->map(function ($item) {
-            return $item . ' ' . getChapterName($item);
-        })->toArray();
-    }
-}
-
-
 if (!function_exists('getDiffChapters')) {
     function getDiffChapters(Collection $chaptersOld, Collection $chaptersNew): array
     {
