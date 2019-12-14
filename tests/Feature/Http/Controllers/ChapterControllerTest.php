@@ -5,13 +5,19 @@ namespace Tests\Feature\Http\Controllers;
 use App\Chapter;
 use Tests\TestCase;
 use App\User;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class ChapterControllerTest extends TestCase
 {
     protected function setUp(): void
     {
         parent::setUp();
-        $this->seed('TestDatabaseSeeder');
+        factory(Chapter::class, 2)
+            ->create()
+            ->each(function (Chapter $chapter) {
+                $chapter->children()->saveMany(factory(Chapter::class, mt_rand(0, 3)));
+                factory(Chapter::class, mt_rand(0, 3))->create();
+            });
     }
 
     public function testIndexAsGuest()
@@ -37,5 +43,12 @@ class ChapterControllerTest extends TestCase
         $response = $this->get(route('chapters.show', $chapter));
 
         $response->assertStatus(200);
+    }
+
+    public function testInvalidShow()
+    {
+        $this->expectException(NotFoundHttpException::class);
+        $response = $this->get(route('chapters.show', ['chapter' => 'foo']));
+        $response->assertNotFound();
     }
 }

@@ -3,6 +3,7 @@
 namespace Tests\Feature\Http\Controllers;
 
 use App\User;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Tests\TestCase;
 
 class UserControllerTest extends TestCase
@@ -41,5 +42,13 @@ class UserControllerTest extends TestCase
 
         $response->assertStatus(200)
             ->assertSee(e($user->name));
+    }
+
+    public function testInvalidShow()
+    {
+        $this->expectException(NotFoundHttpException::class);
+        $response = $this->get(route('users.show', ['user' => 'foo']));
+        $response->assertNotFound();
+        $response->assertStatus(404);
     }
 }
