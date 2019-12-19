@@ -76,12 +76,11 @@
                     $currentLocale = LaravelLocalization::getCurrentLocale();
                     $locales = LaravelLocalization::getSupportedLocales();
                     $otherLocales = getOtherLocales($currentLocale, $locales);
-                    $nativeLanguageName = getNativeLanguageName($currentLocale);
                     @endphp
                     <div class="dropdown">
                         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <img src="{{ getPathToLocaleFlag($currentLocale) }}" width="24px">
-                            {{ $nativeLanguageName }}
+                            {{ getNativeLanguageName($currentLocale) }}
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         @foreach($otherLocales as $localeCode => ['native' => $language])
