@@ -32,10 +32,10 @@ if (!function_exists('getNativeLanguageName')) {
     }
 }
 if (!function_exists('normalizeNativeLanguageName')) {
-    function normalizeNativeLanguageName(string $language, $e = 'utf-8'): string
+    function normalizeNativeLanguageName(string $language, $encoding = 'utf-8'): string
     {
         // multi-bytes strtolower()
-        $lower = mb_strtolower($language, $e);
+        $lower = mb_strtolower($language, $encoding);
 
         // multi-bytes version of ucfirst()
         $upperFirstChar = mb_strtoupper(mb_substr($lower, 0, 1));
