@@ -78,14 +78,14 @@
                     $otherLocales = getOtherLocales($currentLocale, $locales);
                     @endphp
                     <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img src="{{ getPathToLocaleFlag($currentLocale) }}" width="24px">
+                        <a class="btn dropdown-toggle nav-link d-flex align-items-center py-0" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img src="{{ getPathToLocaleFlag($currentLocale) }}" class="mr-1" width="24px">
                             {{ getNativeLanguageName($currentLocale) }}
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        </a>
+                        <div class="dropdown-menu border-white" aria-labelledby="dropdownMenuButton">
                         @foreach($otherLocales as $localeCode => ['native' => $language])
-                            <a rel="alternate" class="dropdown-item" hreflang="{{ $localeCode  }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true)  }}">
-                                <img src="{{ getPathToLocaleFlag($localeCode) }}" width="24px">
+                            <a rel="alternate" class="dropdown-item d-flex align-items-center pl-2 py-0" hreflang="{{ $localeCode  }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true)  }}">
+                                <img src="{{ getPathToLocaleFlag($localeCode) }}" class="mr-1" width="24px">
                                 {{ normalizeNativeLanguageName($language) }}
                             </a>
                          @endforeach
