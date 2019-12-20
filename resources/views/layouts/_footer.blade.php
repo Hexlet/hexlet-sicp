@@ -8,15 +8,6 @@
                         <li><a target="_blank" href="/">{{ __('layout.footer.about') }}</a></li>
                         <li><a target="_blank" href="https://github.com/Hexlet/hexlet-sicp">{{ __('layout.footer.source_code') }}</a></li>
                         <li><a target="_blank" href="https://slack-ru.hexlet.io/">Slack #hexlet-volunteers</a></li>
-                        <li>
-                        @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
-                            <a  rel="alternate"
-                                hreflang="{{ $localeCode }}"
-                                href="{{ getLocalizedHttpsURL($localeCode) }}">
-                                {{ strtoupper($localeCode) }}
-                            </a>
-                        @endforeach
-                    </li>
                     </ul>
                 </div>
                 <div class="col-12 col-md-4">

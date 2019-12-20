@@ -70,6 +70,29 @@
                 </li>
                 @endguest
             </ul>
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    @php
+                    $currentLocale = LaravelLocalization::getCurrentLocale();
+                    $locales = LaravelLocalization::getSupportedLocales();
+                    $otherLocales = getOtherLocales($currentLocale, $locales);
+                    @endphp
+                    <div class="dropdown">
+                        <a class="btn dropdown-toggle nav-link d-flex align-items-center py-0" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img src="{{ getPathToLocaleFlag($currentLocale) }}" class="mr-1" width="24px">
+                            {{ getNativeLanguageName($currentLocale) }}
+                        </a>
+                        <div class="dropdown-menu border-white" aria-labelledby="dropdownMenuButton">
+                        @foreach($otherLocales as $localeCode => ['native' => $language])
+                            <a rel="alternate" class="dropdown-item d-flex align-items-center pl-2 py-0" hreflang="{{ $localeCode  }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true)  }}">
+                                <img src="{{ getPathToLocaleFlag($localeCode) }}" class="mr-1" width="24px">
+                                {{ normalizeNativeLanguageName($language) }}
+                            </a>
+                         @endforeach
+                        </div>
+                    </div>
+                </li>
+            </ul>
         </div>
     </div>
 </nav>
