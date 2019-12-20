@@ -54,7 +54,7 @@ if (!function_exists('normalizeNativeLanguageName')) {
 
         // multi-bytes version of ucfirst()
         $upperFirstChar = mb_strtoupper(mb_substr($lower, 0, 1));
-        $result = $upperFirstChar.mb_substr($lower, 1);
+        $result = $upperFirstChar . mb_substr($lower, 1);
 
         return $result;
     }
