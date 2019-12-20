@@ -12,11 +12,12 @@ class GithubControllerTest extends TestCase
 {
     use WithFaker;
 
-    public function mockSocialiteFacade($email, $name, $token, $id)
+    public function mockSocialiteFacade($email, $name, $nickname, $token, $id)
     {
         $user = new User();
         $user->token = $token;
         $user->name  = $name;
+        $user->nickname = $nickname;
         $user->id    = $id;
         $user->email = $email;
 
@@ -32,15 +33,16 @@ class GithubControllerTest extends TestCase
     {
         $response = $this->call('GET', '/oauth/github');
 
-        $this->assertContains('github.com/login/oauth', $response->getTargetUrl());
+        $this->assertStringContainsString('github.com/login/oauth', $response->getTargetUrl());
     }
 
     public function testCreateUserAndLogin()
     {
         $name  = $this->faker->name;
+        $nickname = $this->faker->name;
         $token = $this->faker->randomAscii;
         $email = $this->faker->email;
-        $this->mockSocialiteFacade($email, $name, $token, random_int(1, 100));
+        $this->mockSocialiteFacade($email, $name, $nickname, $token, random_int(1, 100));
         $this->json('GET', '/oauth/github/callback')->assertLocation(route('my'));
 
         $user = AppUser::where('email', $email)->firstOrFail();
@@ -50,9 +52,10 @@ class GithubControllerTest extends TestCase
     public function testUserDeleteAndLogin()
     {
         $name  = $this->faker->name;
+        $nickname = $this->faker->name;
         $token = $this->faker->randomAscii;
         $email = $this->faker->email;
-        $this->mockSocialiteFacade($email, $name, $token, random_int(1, 100));
+        $this->mockSocialiteFacade($email, $name, $nickname, $token, random_int(1, 100));
         $this->json('GET', '/oauth/github/callback')->assertLocation(route('my'));
 
         $user = AppUser::where('email', $email)->firstOrFail();
@@ -64,7 +67,7 @@ class GithubControllerTest extends TestCase
         $user2 = AppUser::find($user->id);
         $this->assertNull($user2);
 
-        $this->mockSocialiteFacade($email, $name, $token, random_int(1, 100));
+        $this->mockSocialiteFacade($email, $name, $nickname, $token, random_int(1, 100));
         $this->json('GET', '/oauth/github/callback')->assertLocation(route('my'));
 
         $user = AppUser::where('email', $email)->firstOrFail();
@@ -74,11 +77,12 @@ class GithubControllerTest extends TestCase
     public function testCreateEmptyUserNameAndLogin()
     {
         $name  = "";
+        $nickname = $this->faker->name;
         $token = $this->faker->randomAscii;
         $email = $this->faker->email;
-        $this->mockSocialiteFacade($email, $name, $token, random_int(1, 100));
+        $this->mockSocialiteFacade($email, $name, $nickname, $token, random_int(1, 100));
         $this->json('GET', '/oauth/github/callback')->assertLocation(route('my'));
 
-        $this->assertDatabaseMissing('users', [ 'email' => $email, 'name' => $name ]);
+        $this->assertDatabaseHas('users', [ 'email' => $email, 'name' => $nickname ]);
     }
 }

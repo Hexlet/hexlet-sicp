@@ -46,6 +46,7 @@ class GithubController extends Controller
 
         $email = $socialiteUser->getEmail();
         $name = $socialiteUser->getName();
+        $name = empty($name) ? $socialiteUser->getNickname() : $name;
 
         $validator = $this->validator(['email' => $email, 'name' => $name]);
 

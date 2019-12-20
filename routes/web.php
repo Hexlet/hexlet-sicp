@@ -13,9 +13,7 @@
 
 Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
     Auth::routes(['verify' => true]);
-    Route::get('/', function () {
-        return view('welcome');
-    })->name('welcome');
+    Route::resource('/', 'WelcomeController')->only('index');
     Route::group(
         [
             'prefix' => 'oauth',
@@ -29,10 +27,12 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
     Route::middleware('auth')->group(function () {
         Route::resource('users.chapters', 'UserChapterController')->only('store');
         Route::get('/my', 'MyController')->name('my');
-        Route::resource('account', 'AccountController')->only('index', 'destroy');
+        Route::resource('account', 'AccountController')->only('index', 'edit', 'update', 'destroy');
+        Route::get('/account/delete', 'AccountController@delete')->name('account.delete');
     });
     Route::resource('users', 'UserController')->only('show');
     Route::resource('ratings', 'RatingController')->only('index');
     Route::resource('chapters', 'ChapterController')->only('index', 'show');
     Route::get('/home', 'HomeController@index')->name('home');
+    Route::resource('log', 'ActivitylogController')->only('index');
 });

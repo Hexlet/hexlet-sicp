@@ -8,6 +8,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use App\User;
 use App\Chapter;
 use App\ReadChapter;
+
 class AccountControllerTest extends TestCase
 {
     private $user;
@@ -23,11 +24,15 @@ class AccountControllerTest extends TestCase
     public function testIndex()
     {
         $response = $this->get(route('account.index'));
+        $response->assertStatus(302);
+    }
 
+    public function testDelete()
+    {
+        $response = $this->get(route('account.delete'));
         $response->assertStatus(200)
             ->assertSee(e($this->user->email));
     }
-
     public function testDestroy()
     {
         $chapter = factory(Chapter::class)->create();
@@ -42,5 +47,14 @@ class AccountControllerTest extends TestCase
 
         $user2 = User::find($this->user->id);
         $this->assertNull($user2);
+    }
+
+    public function testUpdateName()
+    {
+        $this->patch(route('account.update', $this->user->id), [
+            'name' => 'Claus',
+        ]);
+        $user2 = User::find($this->user->id);
+        $this->assertEquals('Claus', $user2->name);
     }
 }

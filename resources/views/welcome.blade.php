@@ -10,6 +10,38 @@
         <a href="https://mitpress.mit.edu/sites/default/files/sicp/index.html">
             <img class="img-fluid" src="{{ asset('img/Patchouli_Gives_SICP.png') }}" alt="Начать изучать sicp">
         </a>
+        <h3 class="my-3"><a href="{{ (route('log.index')) }}">{{ __('activitylog.title') }}</a></h3>
+
+        @foreach($logItems as $logItem)
+        <div class="media text-muted pt-1">
+            <div class="media-body pb-1 mb-0 small lh-125 border-bottom border-gray">
+                <div class="d-flex justify-content-between align-items-center w-100">
+                    <strong class="text-gray-dark">
+                        @if($logItem->causer)
+                        <a href="{{ route('users.show', $logItem->causer->id) }}">{{ $logItem->causer->name }}</a>
+                        @endif
+                    </strong>
+                    <a href="#">{{ $logItem->created_at }}</a>
+                </div>
+                <span class="d-block">
+                    @if($logItem->getExtraProperty('chapters'))
+                    <a data-toggle="collapse" href="#collapseExp{{ $logItem->id }}" aria-expanded="false" aria-controls="collapseExp{{ $logItem->id }}">
+                        {{ __('activitylog.action_'.$logItem->description) }}
+                        {{ count($logItem->getExtraProperty('chapters')) }}</a>
+                    <div class="collapse" id="collapseExp{{ $logItem->id }}">
+                    <ul>
+                        @foreach($logItem->getExtraProperty('chapters') as $chapter)
+                        <li>{{ $chapter }} {{ getChapterName($chapter) }}</li>
+                        @endforeach
+                    </ul>
+                    </div>
+                    @endif
+                </span>
+
+            </div>
+        </div>
+        @endforeach
+
     </div>
     <div class="col-md-4">
         <h2 class="my-3">{{ __('welcome.what_is_here') }}</h2>
