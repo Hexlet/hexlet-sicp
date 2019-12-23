@@ -13,7 +13,7 @@ class SitemapControllerTest extends TestCase
      *
      * @return void
      */
-    public function testExample()
+    public function testIndex()
     {
         $response = $this->get('/sitemap.xml');
 

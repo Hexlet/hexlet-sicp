@@ -22,6 +22,7 @@ class GenerateSitemap extends Command
     public function handle()
     {
         $sitemap = SitemapGenerator::create(config('app.url'))->getSitemap();
+        $this->info(__('console.generate_sitemap'));
         $this->github->gists()->update(config('sitemap.gist_id'), [
             'files' => [
                 'sitemap.xml' => [
