@@ -45,7 +45,7 @@
     </div>
     <div class="col-md-4">
         <h2 class="my-3">{{ __('welcome.what_is_here') }}</h2>
-        <p class="text-justify">{{ __('welcome.about_sicp') }}
+        <p>{{ __('welcome.about_sicp') }}
             <br>
             <a href="https://guides.hexlet.io/how-to-learn-sicp/">{{ __('layout.nav.sicp_read') }}</a>
         </p>
