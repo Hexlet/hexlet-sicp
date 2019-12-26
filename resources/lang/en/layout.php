@@ -2,6 +2,7 @@
 
 return [
     'nav' => [
+        'name' => 'Hexlet SICP',
         'rating'   => 'Rating',
         'logout'   => 'Logout',
         'login'    => 'Login',

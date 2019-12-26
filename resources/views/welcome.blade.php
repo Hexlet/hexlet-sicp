@@ -1,9 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<h1 class="my-4">
-    Hexlet SICP
-</h1>
+<h1 class="my-4">{{ __('welcome.title') }}</h1>
 <p>{{ __('welcome.description') }}</p>
 <div class="row">
     <div class="col-md-8">
