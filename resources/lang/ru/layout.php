@@ -2,12 +2,13 @@
 
 return [
     'nav' => [
+        'name' => 'Хекслет СИКП',
         'rating'   => 'Рейтинг',
         'login'    => 'Войти',
         'register' => 'Регистрация',
         'logout'   => 'Выйти',
         'my_progress'  => 'Мой прогресс',
-        'sicp_read' => 'Как изучать SICP',
+        'sicp_read' => 'Как изучать СИКП',
         'chapters' => 'Оглавление',
     ],
     'welcome' => [

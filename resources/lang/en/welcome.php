@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'title' => 'Hexlet SICP',
     'what_is_here' => 'What is here',
     'about_sicp' => 'SICP — a book on computer science (computer science).
                      Perception of computers as abstract machines used to manipulate data.
