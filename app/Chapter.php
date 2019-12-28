@@ -22,6 +22,11 @@ class Chapter extends Model
         return $this->hasMany(self::class, 'parent_id');
     }
 
+    public function exercises()
+    {
+        return $this->hasMany(Exercise::class);
+    }
+
     public function getCanReadAttribute()
     {
         return $this->children->count() === 0;
