@@ -1,6 +1,11 @@
+@php
+    $currentLocale = LaravelLocalization::getCurrentLocale();
+    $locales = LaravelLocalization::getSupportedLocales();
+    $otherLocales = getOtherLocales($currentLocale, $locales);
+@endphp
 <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
     <div class="container">
-        <a class="navbar-brand" href="{{ url('/') }}">
+        <a class="navbar-brand" href="{{ LaravelLocalization::getLocalizedURL($currentLocale, '/') }}">
             {{ __('layout.nav.name') }}
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -72,11 +77,6 @@
             </ul>
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    @php
-                    $currentLocale = LaravelLocalization::getCurrentLocale();
-                    $locales = LaravelLocalization::getSupportedLocales();
-                    $otherLocales = getOtherLocales($currentLocale, $locales);
-                    @endphp
                     <div class="dropdown">
                         <a class="btn dropdown-toggle nav-link d-flex align-items-center py-0" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <img src="{{ getPathToLocaleFlag($currentLocale) }}" class="mr-1" width="24px">
@@ -84,7 +84,7 @@
                         </a>
                         <div class="dropdown-menu border-white" aria-labelledby="dropdownMenuButton">
                         @foreach($otherLocales as $localeCode => ['native' => $language])
-                            <a rel="alternate" class="dropdown-item d-flex align-items-center pl-2 py-0" hreflang="{{ $localeCode  }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true)  }}">
+                            <a rel="alternate" class="dropdown-item d-flex align-items-center pl-2 py-0" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
                                 <img src="{{ getPathToLocaleFlag($localeCode) }}" class="mr-1" width="24px">
                                 {{ normalizeNativeLanguageName($language) }}
                             </a>
