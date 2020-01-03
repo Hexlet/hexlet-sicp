@@ -3,8 +3,8 @@
 Route::get('sitemap.xml', 'SitemapController@index');
 
 Route::group([
-	'prefix' => LaravelLocalization::setLocale(),
-	'middleware' => [ 'localizationRedirect' ]
+    'prefix' => LaravelLocalization::setLocale(),
+    'middleware' => [ 'localizationRedirect' ]
 ], function () {
     Auth::routes(['verify' => true]);
     Route::resource('/', 'WelcomeController')->only('index');
