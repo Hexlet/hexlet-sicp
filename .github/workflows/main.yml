@@ -1,0 +1,30 @@
+name: Main workflow
+
+on:
+  pull_request:
+    branches:
+      - 'master'
+  push:
+    branches:
+      - 'master'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+      
+    - name: PHP Security Checker
+      uses: StephaneBour/actions-php-security-checker@1.0
+    
+    - name: Setup project
+      run: make setup
+      
+    - name: Check lint
+      run: make lint
+      
+    - name: Analyse by phpstan
+      run: make analyse
+      
+    - name: Execute tests (Unit and Feature tests) via PHPUnit
+      run: make test
