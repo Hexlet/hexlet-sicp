@@ -1,7 +1,7 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/117a4957bde29b93eb7b/maintainability)](https://codeclimate.com/github/Hexlet/hexlet-sicp/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/117a4957bde29b93eb7b/test_coverage)](https://codeclimate.com/github/Hexlet/hexlet-sicp/test_coverage)
 [![build status](https://travis-ci.org/Hexlet/hexlet-sicp.svg?branch=master)](https://travis-ci.com/Hexlet/hexlet-sicp)
-
+[![github action status](https://github.com/Hexlet/hexlet-sicp/workflows/Main%20workflow/badge.svg)](https://github.com/Hexlet/hexlet-sicp/actions/new)
 # hexlet-sicp
 
 Осилятор СИКП &mdash; сервис, в котором есть рейтинг тех, кто проходит сикп, и каждый отмечает что он прошел.
