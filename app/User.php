@@ -6,11 +6,13 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Laravelista\Comments\Commenter;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
     use Notifiable;
     use SoftDeletes;
+    use Commenter;
 
     protected $dates = ['deleted_at'];
 
@@ -49,5 +51,10 @@ class User extends Authenticatable implements MustVerifyEmail
     public function readChapters()
     {
         return $this->hasMany(ReadChapter::class);
+    }
+
+    public function isAdminComments()
+    {
+        return in_array($this->email, \Config::get('comments.admins'));
     }
 }

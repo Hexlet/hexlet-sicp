@@ -4,9 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
+use Laravelista\Comments\Commentable;
 
 class Chapter extends Model
 {
+    use Commentable;
+    
     public function users()
     {
         return $this->belongsToMany(User::class, 'read_chapters');
