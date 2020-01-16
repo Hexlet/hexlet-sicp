@@ -2,6 +2,7 @@
 
 namespace App\Policies;
 
+use App\User;
 use Laravelista\Comments\Comment;
 
 class CommentPolicy
