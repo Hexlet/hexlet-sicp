@@ -20,4 +20,4 @@ class CommentPolicy
     {
         return $user->id != $comment->commenter_id;
     }
-} 
+}
