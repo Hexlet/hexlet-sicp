@@ -38,7 +38,7 @@
         <div class="card-body">
             <h5 class="card-title">{{ __('authentication_required') }}</h5>
             <p class="card-text">{{ __('must_log_in') }}</p>
-            <a href="{{ route('login') }}" class="btn btn-primary">{{ __('nav.login') }} </a>
+            <a href="{{ route('login') }}" class="btn btn-primary">{{ __('nav.login') }}</a>
         </div>
     </div>
 @endauth
