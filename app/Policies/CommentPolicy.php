@@ -6,7 +6,6 @@ use Laravelista\Comments\Comment;
 
 class CommentPolicy
 {
-
     public function create(User $user): bool
     {
         return true;
