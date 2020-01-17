@@ -1,11 +1,8 @@
 @inject('markdown', 'Parsedown')
 @php($markdown->setSafeMode(true))
 
-@if(isset($reply) && $reply === true)
   <div id="comment-{{ $comment->id }}" class="media">
-@else
-  <li id="comment-{{ $comment->id }}" class="media">
-@endif
+    <div class="mr-3"></div>
     <div class="media-body">
         <h5 class="mt-0 mb-1">{{ $comment->commenter->name ?? $comment->guest_name }} <small class="text-muted">- {{ $comment->created_at->diffForHumans() }}</small></h5>
         <div style="white-space: pre-wrap;">{!! $markdown->line($comment->comment) !!}</div>
@@ -63,7 +60,7 @@
                         <form method="POST" action="{{ url('comments/' . $comment->id) }}">
                             @csrf
                             <div class="modal-header">
-                                <h5 class="modal-title">{{ __('comment.reply_to_comment') }}Reply to Comment</h5>
+                                <h5 class="modal-title">{{ __('comment.reply_to_comment') }}</h5>
                                 <button type="button" class="close" data-dismiss="modal">
                                 <span>&times;</span>
                                 </button>
@@ -99,8 +96,4 @@
         @endif
 
     </div>
-@if(isset($reply) && $reply === true)
   </div>
-@else
-  </li>
-@endif

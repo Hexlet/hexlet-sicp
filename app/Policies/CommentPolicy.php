@@ -9,16 +9,16 @@ class CommentPolicy
 {
     public function delete(User $user, Comment $comment): bool
     {
-        return $user->id == $comment->commenter_id || $user->isAdminComments();
+        return $user->id == $comment->commenter_id || isAdminComments($user);
     }
 
     public function update(User $user, Comment $comment): bool
     {
-        return $user->id == $comment->commenter_id || $user->isAdminComments();
+        return $user->id == $comment->commenter_id || isAdminComments($user);
     }
 
-    public function reply(User $user, Comment $comment): bool
+    public function reply(): bool
     {
-        return $user->id != $comment->commenter_id;
+        return true;
     }
 }

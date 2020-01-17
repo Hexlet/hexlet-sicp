@@ -6,7 +6,7 @@
     }
 @endphp
 
-@if($comments->count() < 1)
+@if($comments->isEmpty())
     <div class="alert alert-warning">{{ __('comment.none_comments') }}</div>
 @endif
 

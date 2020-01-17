@@ -13,7 +13,7 @@ return [
      * You can customize the behaviour of these permissions by
      * creating your own and pointing to it here.
      */
-    'admins' => explode(" ", env('COMMENT_ADMINS')),
+    'admins' => explode(", ", env('COMMENT_ADMINS')),
 
     'permissions' => [
         'create-comment' => 'Laravelista\Comments\CommentPolicy@create',
