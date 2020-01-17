@@ -52,9 +52,4 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasMany(ReadChapter::class);
     }
-
-    public function isAdminComments()
-    {
-        return in_array($this->email, \Config::get('comments.admins'));
-    }
 }
