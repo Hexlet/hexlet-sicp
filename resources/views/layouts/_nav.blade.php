@@ -24,6 +24,13 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="{{ route('exercises.index') }}">
+                        <i class="fas fa-dumbbell"></i>
+
+                        {{ __('layout.nav.exercises') }}
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" target="_blank" href="https://guides.hexlet.io/how-to-learn-sicp/">
                         <i class="far fa-hand-point-right"></i>
                         {{ __('layout.nav.sicp_read') }}

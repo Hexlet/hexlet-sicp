@@ -23,6 +23,15 @@
                 </li>
                 @endforeach
             </ul>
+            @if ($chapter->exercises->isNotEmpty())
+                <p>Упражнения:</p>
+                <ul>
+                    @foreach ($chapter->exercises as $exercise)
+                        <li><a href="{{ route('exercises.show', $exercise) }}">{{ $exercise->path }}</a> </li>
+                    @endforeach
+                </ul>
+            @endif
+
             @if ($chapter->users->isNotEmpty())
             <p>{{ __('chapter.show.who_completed') }}</p>
             <ul>
@@ -33,9 +42,6 @@
             @else
             <p>{{ __('chapter.show.nobody_completed') }}</p>
             @endif
-        </div>
-        <div>
-
         </div>
     </div>
 </div>

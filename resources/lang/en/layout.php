@@ -10,6 +10,7 @@ return [
         'my_progress'  => 'My progress',
         'sicp_read' => 'How to read SICP',
         'chapters' => 'Table of Contents',
+        'exercises' => 'List of Exercises',
     ],
     'welcome' => [
         'mark_read' => 'Mark read',

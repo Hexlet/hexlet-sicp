@@ -10,7 +10,7 @@ class ChapterController extends Controller
 {
     public function index()
     {
-        $chapters  = Chapter::all()->groupBy('parent_id');
+        $chapters  = Chapter::with('exercises')->get()->groupBy('parent_id');
         return view('chapter.index', compact('chapters'));
     }
 
@@ -20,6 +20,7 @@ class ChapterController extends Controller
             'parent',
             'children',
             'users',
+            'exercises'
         ]);
         return view('chapter.show', compact('chapter'));
     }
