@@ -15,8 +15,9 @@ class ChapterControllerTest extends TestCase
         factory(Chapter::class, 2)
             ->create()
             ->each(function (Chapter $chapter) {
-                $chapter->children()->saveMany(factory(Chapter::class, mt_rand(0, 3)));
-                factory(Chapter::class, mt_rand(0, 3))->create();
+                $chapter->children()->saveMany(
+                    factory(Chapter::class, mt_rand(0, 3))->make()
+                );
             });
     }
 
