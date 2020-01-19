@@ -49,11 +49,11 @@ class AccountControllerTest extends TestCase
 
     public function testUpdateName()
     {
-        $this->patch(route('account.update', $this->user->id), [
+        $this->patch(route('account.update', $this->user), [
             'name' => 'Claus',
         ]);
-        $user2 = User::find($this->user->id);
-        $this->assertEquals('Claus', $user2->name);
+        $storedUser = User::find($this->user->id);
+        $this->assertEquals('Claus', $storedUser->name);
     }
 
     public function testEdit()
