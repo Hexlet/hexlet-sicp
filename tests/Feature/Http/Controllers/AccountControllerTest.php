@@ -1,10 +1,8 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Feature\Http\Controllers;
 
 use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use App\User;
 use App\Chapter;
 use App\ReadChapter;
@@ -56,5 +54,14 @@ class AccountControllerTest extends TestCase
         ]);
         $user2 = User::find($this->user->id);
         $this->assertEquals('Claus', $user2->name);
+    }
+
+    public function testEdit()
+    {
+        $this->actingAs($this->user);
+
+        $response = $this->get(route('account.edit', $this->user->id));
+
+        $response->assertOk();
     }
 }
