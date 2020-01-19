@@ -13,7 +13,12 @@
                 </small>
                 <h1 class="h2">{{ __('exercise.exercise') }} {{ $exercise->path }}</h1>
                 <div>
-                    {{ getExerciseDescription($exercise->path) ?: __('exercise.show.empty_description') }}
+                    @if(view()->exists(getExerciseListingViewFilepath($exercise->path)))
+                    <p>{{ getExerciseDescription($exercise->path) }}</p>
+                    @include(getExerciseListingViewFilepath($exercise->path))
+                    @else
+                        <p>{{ __('exercise.show.empty_description') }}</p>
+                    @endif
                 </div>
                 <p>{{ __('exercise.show.nobody_completed') }}</p>
             </div>
