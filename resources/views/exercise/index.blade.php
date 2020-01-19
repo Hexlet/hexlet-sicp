@@ -7,7 +7,7 @@
             <h1 class="h2">{{ __('sicp.title') }}</h1>
             <h2 class="h5 text-muted mb-4">by {{ __('sicp.authors') }}</h2>
             @foreach($exercisesGroups as $rootChapterPath => $exercises)
-            <h3>Chapter {{ $rootChapterPath }}</h3>
+            <h3>{{ __('chapter.chapter') }} {{ $rootChapterPath }}</h3>
             <p>
                 @foreach($exercises as $exercise)
                 <a title="{{ __('exercise.exercise') }} {{ $exercise->path }}"

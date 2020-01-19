@@ -23,13 +23,16 @@
                 </li>
                 @endforeach
             </ul>
+
             @if ($chapter->exercises->isNotEmpty())
-                <p>Упражнения:</p>
-                <ul>
-                    @foreach ($chapter->exercises as $exercise)
-                        <li><a href="{{ route('exercises.show', $exercise) }}">{{ $exercise->path }}</a> </li>
-                    @endforeach
-                </ul>
+            <p>{{ __('chapter.show.exercises_list') }}:</p>
+            <ul>
+                @foreach ($chapter->exercises as $exercise)
+                <li><a href="{{ route('exercises.show', $exercise) }}">{{ $exercise->path }}</a> </li>
+                @endforeach
+            </ul>
+            @else
+            <p>{{ __('chapter.show.no_exercises') }}</p>
             @endif
 
             @if ($chapter->users->isNotEmpty())

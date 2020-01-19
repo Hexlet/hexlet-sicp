@@ -13,7 +13,7 @@
                 </small>
                 <h1 class="h2">{{ __('exercise.exercise') }} {{ $exercise->path }}</h1>
                 <div>
-                    {{ getExerciseDescription($exercise->path) ?: __('exercise.empty_description') }}
+                    {{ getExerciseDescription($exercise->path) ?: __('exercise.show.empty_description') }}
                 </div>
                 <p>{{ __('exercise.show.nobody_completed') }}</p>
             </div>
