@@ -1,5 +1,6 @@
 <?php
 
+use App\Chapter;
 use App\Exercise;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -18,9 +19,7 @@ class ExercisesTableSeeder extends Seeder
         DB::beginTransaction();
         $createExercises = function ($exercises) {
             foreach ($exercises as ['chapter_path' => $chapter_path, 'children' => $children]) {
-                // ['chapter_path' => '1.1.2', 'children' => [1.21, 1.22, 1.23]]
-
-                $chapter = App\Chapter::where('path', $chapter_path)->value('id');
+                $chapter = Chapter::where('path', $chapter_path)->value('id');
 
                 array_map(function ($exercise) use ($chapter) {
                     $exerciseModel = new Exercise();

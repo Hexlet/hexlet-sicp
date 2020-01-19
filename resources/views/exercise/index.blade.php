@@ -6,13 +6,17 @@
         <div class="col-md-8">
             <h1 class="h2">{{ __('sicp.title') }}</h1>
             <h2 class="h5 text-muted mb-4">by {{ __('sicp.authors') }}</h2>
-            @foreach ($exercises as $chapter => $exercise)
-                <h3>Chapter {{ $chapter }}</h3>
-                <p class="float-left">
-                @foreach ($exercise as $value)
-                    <span class="pr-3">{{ $value['path'] }}</span>
+            @foreach($exercisesGroups as $rootChapterPath => $exercises)
+            <h3>{{ __('chapter.chapter') }} {{ $rootChapterPath }}</h3>
+            <p>
+                @foreach($exercises as $exercise)
+                <a title="{{ __('exercise.exercise') }} {{ $exercise->path }}"
+                   href="{{ route('exercises.show', $exercise) }}">
+                {{ $exercise->path }}
+                    <br>
+                </a>
                 @endforeach
-                </p>
+            </p>
             @endforeach
         </div>
     </div>

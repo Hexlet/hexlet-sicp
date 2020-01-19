@@ -32,6 +32,6 @@ class CreateExercisesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('exerscises');
+        Schema::dropIfExists('exercises');
     }
 }
