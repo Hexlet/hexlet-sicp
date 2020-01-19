@@ -28,6 +28,5 @@ Route::group([
     Route::resource('ratings', 'RatingController')->only('index');
     Route::resource('chapters', 'ChapterController')->only('index', 'show');
     Route::resource('exercises', 'ExerciseController')->only('index', 'show');
-    Route::get('/home', 'HomeController@index')->name('home');
     Route::resource('log', 'ActivitylogController')->only('index');
 });
