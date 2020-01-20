@@ -35,9 +35,6 @@ class UserControllerTest extends TestCase
     public function testVisitByGuest()
     {
         $user = factory(User::class)->create();
-        $visitor = factory(User::class)->create();
-        // $this->actingAs($visitor);
-
         $response = $this->get(route('users.show', $user));
 
         $response->assertStatus(200)

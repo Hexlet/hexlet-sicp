@@ -6,8 +6,6 @@ use Github\Api\Gists;
 use GrahamCampbell\GitHub\GitHubManager;
 use Tests\TestCase;
 
-use function GuzzleHttp\json_decode;
-
 class SitemapControllerTest extends TestCase
 {
     /**
@@ -24,7 +22,7 @@ class SitemapControllerTest extends TestCase
 
         $github = $this->getMockBuilder(GitHubManager::class)
             ->disableOriginalConstructor()
-            ->setMethods(['gists'])
+            ->addMethods(['gists'])
             ->getMock();
         $github->method('gists')->willReturn($gists);
 
@@ -37,10 +35,11 @@ class SitemapControllerTest extends TestCase
 
     private function getFixture()
     {
+        $sitemapFilepath = base_path('tests/fixtures/sitemap.xml');
         return [
             "files" => [
                 "sitemap.xml" => [
-                    "content" => "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<urlset xmlns=\"http:\/\/www.sitemaps.org\/schemas\/sitemap\/0.9\" xmlns:xhtml=\"http:\/\/www.w3.org\/1999\/xhtml\">\n<\/urlset>"
+                    "content" => file_get_contents($sitemapFilepath)
                 ]
             ]
         ];

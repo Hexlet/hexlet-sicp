@@ -9,7 +9,7 @@
         </div>
         <div class="col-12 col-md-9 my-4">
             <h1 class="h3">{{ __('sicp.title') }}</h1>
-            <h2 class="h4">by {{ __('sicp.authors') }}</h4>
+            <h2 class="h4">by {{ __('sicp.authors') }}</h2>
             <ul class="list-group">
                 {!! Form::open()->route('users.chapters.store', [$user]) !!}
                 @foreach($chapters as $chapter)
