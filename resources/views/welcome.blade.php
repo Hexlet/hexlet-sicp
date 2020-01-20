@@ -21,7 +21,7 @@
                     </strong>
                     <a href="#">{{ $logItem->created_at }}</a>
                 </div>
-                <span class="d-block">
+                <div class="d-block">
                     @if($logItem->getExtraProperty('chapters'))
                     <a data-toggle="collapse" href="#collapseExp{{ $logItem->id }}" aria-expanded="false" aria-controls="collapseExp{{ $logItem->id }}">
                         {{ __('activitylog.action_'.$logItem->description) }}
@@ -34,7 +34,7 @@
                     </ul>
                     </div>
                     @endif
-                </span>
+                </div>
 
             </div>
         </div>
