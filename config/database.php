@@ -91,6 +91,28 @@ return [
             'prefix_indexes' => true,
         ],
 
+        'sqlite_test' => [
+            'driver' => 'sqlite',
+            'url' => env('TEST_DATABASE_URL'),
+            'database' => env('TEST_DB_DATABASE', ':memory:'),
+            'prefix' => '',
+            'foreign_key_constraints' => env('TEST_DB_FOREIGN_KEYS', true),
+        ],
+
+        'pgsql_test' => [
+            'driver' => 'pgsql',
+            'url' => env('TEST_DATABASE_URL'),
+            'host' => env('TEST_DB_HOST', '127.0.0.1'),
+            'port' => env('TEST_DB_PORT', '5432'),
+            'database' => env('TEST_DB_DATABASE', 'hexlet_sicp_test'),
+            'username' => env('TEST_DB_USERNAME', 'hexlet_sicp_test_user'),
+            'password' => env('TEST_DB_PASSWORD', 'secret'),
+            'charset' => 'utf8',
+            'prefix' => '',
+            'prefix_indexes' => true,
+            'schema' => 'public',
+            'sslmode' => 'prefer',
+        ],
     ],
 
     /*

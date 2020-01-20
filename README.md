@@ -49,8 +49,22 @@ $ php artisan migrate --seed
 * Чтобы включить логирование Rollbar, необходимо установить переменную `LOG_CHANNEL=rollbar` и `ROLLBAR_TOKEN=`
 * Чтобы добавить упражнение необходимо добавить его содержимое (код или картинка) по пути `resources/views/exercise/listing/#_#.blade.php`, а текстовое описание в `resources/lang/{locale}/sicp.php` под ключем `exercises.#.#` на соответствующем языке.
 
-##### 
-Добавить пре-комит хук
+#### Альтернативный профиль БД для тестирования
+
+1. Создать отдельную тестовую базу postgres.  
+Настройки параметров подключения можно посмотреть в секции `pgsql_test` конфигурации `config/database.php`
+Пример создания тестовой базы "с нуля":
+```shell
+sudo apt install postgresql
+sudo -u postgres createuser --createdb $(whoami)
+sudo -u postgres createuser hexlet_sicp_test_user
+sudo -u postgres psql -c "ALTER USER hexlet_sicp_test_user WITH ENCRYPTED PASSWORD 'secret'"
+createdb hexlet_sicp_test
+```
+2. Запустить тесты с альтернативным профилем `DB_CONNECTION=pgsql_test make test`
+
+#### Добавить пре-комит хук
+
 ```shell
 $ git config core.hooksPath .githooks
 ```
