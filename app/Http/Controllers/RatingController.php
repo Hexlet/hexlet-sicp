@@ -10,7 +10,7 @@ class RatingController extends Controller
     {
         $users = User::withCount('readChapters')
             ->orderBy('read_chapters_count', 'DESC')
-            ->get();
+            ->paginate();
 
         return view('rating.index', [
            'users' => $users,
