@@ -11,6 +11,7 @@ return [
         'sicp_read' => 'How to read SICP',
         'chapters' => 'Table of Contents',
         'exercises' => 'List of Exercises',
+        'sicp_book' => 'Book',
     ],
     'welcome' => [
         'mark_read' => 'Mark read',
