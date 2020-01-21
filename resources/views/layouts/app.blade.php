@@ -13,7 +13,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-    @if (env('APP_ENV') == 'production')
+    @if (config('app.env') == 'production')
     @include('layouts.deps._gtm_head')
     @endif
 
@@ -26,7 +26,7 @@
 </head>
 
 <body class="d-flex flex-column">
-    @if (env('APP_ENV') == 'production')
+    @if (config('app.env') == 'production')
     @include('layouts.deps._gtm_body')
     @endif
     <div class="d-flex flex-column min-vh-100">
