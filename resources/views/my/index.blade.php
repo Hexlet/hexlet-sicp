@@ -1,34 +1,42 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="row my-4">
-        <div class="col-12 col-md-3">
-            <div class="position-sticky sticky-top pt-4 mb-4">
-                <p class="h2 mb-2">{{ $user->name }}</p>
-            </div>
-        </div>
-        <div class="col-12 col-md-9 my-4">
-            <h1 class="h3">{{ __('sicp.title') }}</h1>
-            <h2 class="h4">by {{ __('sicp.authors') }}</h2>
-            <ul class="list-group">
-                {!! Form::open()->route('users.chapters.store', [$user]) !!}
-                @foreach($chapters as $chapter)
-                    <li class="list-group-item {{ getChapterHeaderTag($chapter) }}">
-                        <div class="form-check">
-                            @if($chapter->can_read)
-                                <input type="checkbox" name="chapters_id[]" class="form-check-input"  id="{{ $chapter->id }}" value="{{ $chapter->id }}" {{ haveRead($user, $chapter) ? 'checked' : '' }}>
-                            @endif
-                            <label for="{{ $chapter->id }}" class="form-check-label">
-                                {{ $chapter->path }} {{ getChapterName($chapter->path) }}
-                            </label>
-                        </div>
-                    </li>
-                @endforeach
-                <div class="form-group my-2">
-                    {!! Form::submit(__('Save')) !!}
-                </div>
-                {!! Form::close() !!}
-            </ul>
+<div class="row">
+    <div class="col">
+        <h3>{{ __('layout.nav.my_progress') }}</h3>
+    </div>
+    <div class="col text-right">
+        <h5>{{ $user->name }}</h5>
+    </div>
+</div>
+<div class="row mt-2">
+    <div class="col-12 col-md-4 mb-2">
+        <div class="nav nav-pills flex-column position-sticky sticky-top" role="tablist">
+            @foreach($mainChapters as $mainChapter)
+            <a class="nav-item nav-link {{ $mainChapter->path === '1' ? 'active' : '' }}"
+                id="subChapters{{ $mainChapter->id }}-tab"
+                href="#subChapters{{ $mainChapter->id }}" data-toggle="tab" role="tab"
+                aria-controls="subChapters{{ $mainChapter->id }}" aria-selected="{{ $mainChapter->path === '1' ? 'true' : 'false' }}">
+                {{ $mainChapter->path }} {{ getChapterName($mainChapter->path) }}
+            </a>
+            @endforeach
         </div>
     </div>
+    <div class="col-12 col-md-8 card pb-4">
+        {!! Form::open()->route('users.chapters.store', [$user]) !!}
+        <div class="tab-content">
+            @foreach($mainChapters as $mainChapter)
+            <div class="tab-pane card-body {{ $mainChapter->path === '1' ? 'active' : '' }}"
+                id="subChapters{{ $mainChapter->id }}" role="tabpanel"
+                aria-labelledby="subChapters{{ $mainChapter->id }}-tab">
+                @include('partials.chapter_form_element', ['chapter' => $mainChapter])
+            </div>
+            @endforeach
+            <div class="form-group float-right">
+                {!! Form::submit(__('Save')) !!}
+            </div>
+        </div>
+        {!! Form::close() !!}
+    </div>
+</div>
 @endsection
