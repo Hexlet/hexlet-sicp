@@ -32,7 +32,7 @@
                 @include('partials.chapter_form_element', ['chapter' => $mainChapter])
             </div>
             @endforeach
-            <div class="form-group float-right">
+            <div class="form-group text-right">
                 {!! Form::submit(__('Save')) !!}
             </div>
         </div>
