@@ -13,11 +13,7 @@ class MyController extends Controller
     {
         $user     = User::with('readChapters')->find(Auth::id());
         $chapters = Chapter::with('children')->get();
-
-        // $chapters =
-        return view('my.index', [
-            'user'     => $user,
-            'chapters' => $chapters
-        ]);
+        $mainChapters = $chapters->where('parent_id', null);
+        return view('my.index', compact(['user', 'chapters', 'mainChapters']));
     }
 }
