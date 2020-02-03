@@ -15,6 +15,7 @@
 * PHP
 * Composer
 * SQLite for local, PostgreSQL for production
+* [heroku cli](https://devcenter.heroku.com/articles/heroku-cli#download-and-install)
 
 ### Setup
 
