@@ -21,9 +21,8 @@
 
 ```sh
 $ make setup
+$ make start # start server http://127.0.0.1:8000/
 $ make test # run tests
-$ make start # start server
-$ php artisan migrate --seed
 ```
 
 ### Смысл
