@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'chapter' => 'Chapter',
     'show' => [
         'exercises_list' => 'Exercises',
         'no_exercises' => 'No exercises',
