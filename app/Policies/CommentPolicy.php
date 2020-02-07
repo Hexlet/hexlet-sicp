@@ -7,6 +7,11 @@ use Laravelista\Comments\Comment;
 
 class CommentPolicy
 {
+    public function create(): bool
+    {
+        return true;
+    }
+
     public function delete(User $user, Comment $comment): bool
     {
         return $user->id == $comment->commenter_id || isAdminComments($user);

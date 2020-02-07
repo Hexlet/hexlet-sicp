@@ -9,7 +9,10 @@ return [
     'edit_comment' => 'Редактировать',
     'update_comment_here' => 'Изменить сообщение здесь:',
     'cancel' => 'Отменить',
-    'update' => 'Изменить',
+    'update' => 'Обновить',
+    'edit' => 'Изменить',
+    'delete' => 'Удалить',
     'reply' => 'Ответить',
     'reply_to_comment' => 'Ответ на комментарий',
+    'delete'
 ];

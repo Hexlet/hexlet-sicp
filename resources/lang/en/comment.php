@@ -10,6 +10,8 @@ return [
     'update_comment_here' => 'Update your message here:',
     'cancel' => 'Cancel',
     'update' => 'Update',
+    'edit' => 'Edit',
+    'delete' => 'Delete',
     'reply' => 'Reply',
     'reply_to_comment' => 'Reply to Comment',
 ];

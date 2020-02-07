@@ -4,25 +4,40 @@
   <div id="comment-{{ $comment->id }}" class="media">
     <div class="mr-3"></div>
     <div class="media-body">
-        <h5 class="mt-0 mb-1">{{ $comment->commenter->name ?? $comment->guest_name }} <small class="text-muted">- {{ $comment->created_at->diffForHumans() }}</small></h5>
+        <h5 class="mt-0 mb-1">
+            <a href="#comment-{{ $comment->id }}">#</a>
+            {{ $comment->commenter->name ?? $comment->guest_name }} <small class="text-muted">- {{ $comment->created_at->diffForHumans() }}</small></h5>
         <div style="white-space: pre-wrap;">{!! $markdown->line($comment->comment) !!}</div>
-
         <div>
             @can('reply-to-comment', $comment)
-                <button data-toggle="modal" data-target="#reply-modal-{{ $comment->id }}" class="btn btn-sm btn-link text-uppercase">Reply</button>
+                <button data-toggle="modal"
+                        data-target="#reply-modal-{{ $comment->id }}"
+                        class="btn btn-sm btn-link text-uppercase">
+                    @lang('comment.reply')
+                </button>
             @endcan
             @can('edit-comment', $comment)
-                <button data-toggle="modal" data-target="#comment-modal-{{ $comment->id }}" class="btn btn-sm btn-link text-uppercase">Edit</button>
-            @endcan
+                    <button data-toggle="modal"
+                            data-target="#comment-modal-{{ $comment->id }}"
+                            class="btn btn-sm btn-link text-uppercase">
+                        @lang('comment.edit')
+                    </button>
+                @endcan
             @can('delete-comment', $comment)
-                <a href="{{ url('comments/' . $comment->id) }}" onclick="event.preventDefault();document.getElementById('comment-delete-form-{{ $comment->id }}').submit();" class="btn btn-sm btn-link text-danger text-uppercase">Delete</a>
-                <form id="comment-delete-form-{{ $comment->id }}" action="{{ url('comments/' . $comment->id) }}" method="POST" style="display: none;">
+                <a href="{{ route('comments.destroy', $comment->id) }}"
+                   onclick="event.preventDefault();document.getElementById('comment-delete-form-{{ $comment->id }}').submit();"
+                   class="btn btn-sm btn-link text-danger text-uppercase">
+                    @lang('comment.delete')
+                </a>
+                <form id="comment-delete-form-{{ $comment->id }}"
+                      action="{{ url('comments/' . $comment->id) }}"
+                      method="POST" style="display: none;">
                     @method('DELETE')
                     @csrf
                 </form>
             @endcan
         </div>
-
+        {{--        @todo убрать дублирование, вынести в компонент форму --}}
         @can('edit-comment', $comment)
             <div class="modal fade" id="comment-modal-{{ $comment->id }}" tabindex="-1" role="dialog">
                 <div class="modal-dialog" role="document">
@@ -44,8 +59,8 @@
                                 </div>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-sm btn-outline-secondary text-uppercase" data-dismiss="modal">{{ __('comment.cancel') }}</button>
                                 <button type="submit" class="btn btn-sm btn-outline-success text-uppercase">{{ __('comment.update') }}</button>
+                                <button type="button" class="btn btn-sm btn-outline-secondary text-uppercase" data-dismiss="modal">{{ __('comment.cancel') }}</button>
                             </div>
                         </form>
                     </div>
@@ -73,17 +88,15 @@
                                 </div>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-sm btn-outline-secondary text-uppercase" data-dismiss="modal">{{ __('comment.cancel') }}</button>
                                 <button type="submit" class="btn btn-sm btn-outline-success text-uppercase">{{ __('comment.reply') }}</button>
+                                <button type="button" class="btn btn-sm btn-outline-secondary text-uppercase" data-dismiss="modal">{{ __('comment.cancel') }}</button>
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
         @endcan
-
         <br />{{-- Margin bottom --}}
-
         {{-- Recursion for children --}}
         @if($grouped_comments->has($comment->id))
             @foreach($grouped_comments[$comment->id] as $child)
@@ -94,6 +107,5 @@
                 ])
             @endforeach
         @endif
-
     </div>
   </div>

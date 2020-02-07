@@ -16,7 +16,7 @@ return [
     'admins' => explode(", ", env('COMMENT_ADMINS')),
 
     'permissions' => [
-        'create-comment' => 'Laravelista\Comments\CommentPolicy@create',
+        'create-comment' => '\App\Policies\CommentPolicy@create',
         'delete-comment' => '\App\Policies\CommentPolicy@delete',
         'edit-comment' => '\App\Policies\CommentPolicy@update',
         'reply-to-comment' => '\App\Policies\CommentPolicy@reply',
