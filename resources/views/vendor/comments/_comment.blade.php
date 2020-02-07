@@ -24,7 +24,7 @@
                     </button>
                 @endcan
             @can('delete-comment', $comment)
-                <a href="{{ route('comments.destroy', $comment->id) }}"
+                <a href="{{ url('comments/' . $comment->id) }}"
                    onclick="event.preventDefault();document.getElementById('comment-delete-form-{{ $comment->id }}').submit();"
                    class="btn btn-sm btn-link text-danger text-uppercase">
                     @lang('comment.delete')
