@@ -97,4 +97,5 @@ return [
         ],
     ],
 
+    'log_sql_queries' => ENV('LOG_SQL_QUERIES', false),
 ];
