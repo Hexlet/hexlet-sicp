@@ -15,12 +15,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-
-        $environment = $this->app->environment();
-
-        $isDevEnv = $environment !== 'production';
-
-        if ($isDevEnv) {
+        if (config('logging.log_sql_queries')) {
             DB::listen(function ($query) {
                     info($query->sql, [
                             'bind' => $query->bindings,
