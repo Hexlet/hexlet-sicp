@@ -23,11 +23,6 @@ class Comment extends Model
         return $this->morphTo();
     }
 
-    public function apply(Builder $builder, Model $model)
-    {
-        $builder->latest();
-    }
-
     protected static function boot()
     {
         parent::boot();
