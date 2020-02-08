@@ -7,9 +7,10 @@
         <div style="white-space: pre-wrap;">{!! $comment->content !!}</div>
         <div>
             @can('reply', $comment)
-                <button data-toggle="modal"
-                        data-target="#reply-modal-{{ $comment->id }}"
-                        class="btn btn-sm btn-link text-uppercase">
+                <button
+                    data-toggle="modal"
+                    data-target="#reply-modal-{{ $comment->id }}"
+                    class="btn btn-sm btn-link text-uppercase">
                     @lang('comment.reply')
                 </button>
             @endcan
@@ -22,16 +23,12 @@
             @endcan
             @can('delete', $comment)
                 <a href="{{ route('comments.destroy', $comment) }}"
-                   onclick="event.preventDefault();document.getElementById('comment-delete-form-{{ $comment->id }}').submit();"
-                   class="btn btn-sm btn-link text-danger text-uppercase">
+                   class="btn btn-sm btn-link text-danger text-uppercase"
+                   data-confirm="Вы уверены?"
+                   data-method="delete"
+                   rel="nofollow">
                     @lang('comment.delete')
                 </a>
-                <form id="comment-delete-form-{{ $comment->id }}"
-                      action="{{ url('comments/' . $comment->id) }}"
-                      method="POST" style="display: none;">
-                    @method('DELETE')
-                    @csrf
-                </form>
             @endcan
         </div>
         {{--        @todo убрать дублирование, вынести в компонент форму --}}
@@ -39,27 +36,22 @@
             <div class="modal fade" id="comment-modal-{{ $comment->id }}" tabindex="-1" role="dialog">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
-                        <form method="POST" action="{{ url('comments/' . $comment->id) }}">
-                            @method('PUT')
-                            @csrf
-                            <div class="modal-header">
-                                <h5 class="modal-title">{{ __('comment.edit_comment') }}</h5>
-                                <button type="button" class="close" data-dismiss="modal">
-                                    <span>&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="form-group">
-                                    <label for="content">{{ __('comment.update_comment_here') }}</label>
-                                    <textarea required class="form-control" name="content" rows="3">{{ $comment->content }}</textarea>
-{{--                                    <small class="form-text text-muted"><a target="_blank" href="https://help.github.com/articles/basic-writing-and-formatting-syntax">Markdown</a> cheatsheet.</small>--}}
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="submit" class="btn btn-sm btn-outline-success text-uppercase">{{ __('comment.update') }}</button>
-                                <button type="button" class="btn btn-sm btn-outline-secondary text-uppercase" data-dismiss="modal">{{ __('comment.cancel') }}</button>
-                            </div>
-                        </form>
+                        {!! Form::open()->route('comments.update', ['comment' => $comment])->put() !!}
+                        <div class="modal-header">
+                            <h5 class="modal-title">{{ __('comment.edit_comment') }}</h5>
+                            <button type="button" class="close" data-dismiss="modal">
+                                <span>&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            {!! Form::textarea('content', __('comment.update_comment_here'), $comment->content)->attrs(['rows' => 3])->required() !!}
+                        </div>
+                        <div class="modal-footer">
+
+                            {!! Form::button(__('comment.cancel'), 'secondary btn-sm text-uppercase')->attrs(['data-dismiss' => 'modal']) !!}
+                            {!! Form::submit(__('comment.update'), 'success btn-sm text-uppercase') !!}
+                        </div>
+                        {!! Form::close() !!}
                     </div>
                 </div>
             </div>

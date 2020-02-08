@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -20,5 +21,19 @@ class Comment extends Model
     public function commentable()
     {
         return $this->morphTo();
+    }
+
+    public function apply(Builder $builder, Model $model)
+    {
+        $builder->latest();
+    }
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::addGlobalScope('order', function (Builder $builder) {
+            $builder->orderBy('created_at', 'desc');
+        });
     }
 }
