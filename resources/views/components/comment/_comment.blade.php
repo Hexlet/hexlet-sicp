@@ -2,9 +2,9 @@
     <div class="mr-3"></div>
     <div class="media-body">
         <h5 class="mt-0 mb-1">
-            <a href="#comment-{{ $comment->id }}">#</a>
+            <a href="#comment-{{ $comment->id }}" class="small">#</a>
             {{ $comment->user->name }} <small class="text-muted">- {{ $comment->created_at->diffForHumans() }}</small></h5>
-        <div style="white-space: pre-wrap;">{!! $comment->content !!}</div>
+        <span>{{ $comment->content }}</span>
         <div>
             @can('reply', $comment)
                 <button
@@ -31,60 +31,15 @@
                 </a>
             @endcan
         </div>
-        {{--        @todo убрать дублирование, вынести в компонент форму --}}
         @can('update', $comment)
-            <div class="modal fade" id="comment-modal-{{ $comment->id }}" tabindex="-1" role="dialog">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        {!! Form::open()->route('comments.update', ['comment' => $comment])->put() !!}
-                        <div class="modal-header">
-                            <h5 class="modal-title">{{ __('comment.edit_comment') }}</h5>
-                            <button type="button" class="close" data-dismiss="modal">
-                                <span>&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            {!! Form::textarea('content', __('comment.update_comment_here'), $comment->content)->attrs(['rows' => 3])->required() !!}
-                        </div>
-                        <div class="modal-footer">
-
-                            {!! Form::button(__('comment.cancel'), 'secondary btn-sm text-uppercase')->attrs(['data-dismiss' => 'modal']) !!}
-                            {!! Form::submit(__('comment.update'), 'success btn-sm text-uppercase') !!}
-                        </div>
-                        {!! Form::close() !!}
-                    </div>
-                </div>
-            </div>
+            @include('components.comment._modal', [
+                'modalTitle' => 'comment.edit_comment',
+                'comment' => $comment,
+                'method' => 'PUT',
+                'content' => $comment->content,
+                'submitLabel' => 'comment.update',
+                ])
         @endcan
-
-        @can('create', $comment)
-            <div class="modal fade" id="reply-modal-{{ $comment->id }}" tabindex="-1" role="dialog">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <form method="POST" action="{{ url('comments/' . $comment->id) }}">
-                            @csrf
-                            <div class="modal-header">
-                                <h5 class="modal-title">{{ __('comment.reply_to_comment') }}</h5>
-                                <button type="button" class="close" data-dismiss="modal">
-                                    <span>&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="form-group">
-                                    <label for="content">{{ __('comment.enter_your_message') }}</label>
-                                    <textarea required class="form-control" name="content" rows="3"></textarea>
-{{--                                    <small class="form-text text-muted"><a target="_blank" href="https://help.github.com/articles/basic-writing-and-formatting-syntax">Markdown</a> cheatsheet.</small>--}}
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="submit" class="btn btn-sm btn-outline-success text-uppercase">{{ __('comment.reply') }}</button>
-                                <button type="button" class="btn btn-sm btn-outline-secondary text-uppercase" data-dismiss="modal">{{ __('comment.cancel') }}</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        @endcan
-        <br />{{-- Margin bottom --}}
+        <br>
     </div>
 </div>
