@@ -1,4 +1,5 @@
 <?php
+
 return [
     'settings' => 'Settings',
     'account' => 'Account',

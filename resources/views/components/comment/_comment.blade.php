@@ -3,7 +3,9 @@
     <div class="media-body">
         <h5 class="mt-0 mb-1">
             <a href="#comment-{{ $comment->id }}" class="small">#</a>
-            {{ $comment->user->name }} <small class="text-muted">- {{ $comment->created_at->diffForHumans() }}</small></h5>
+            {{ $comment->user->name }}
+            <small class="text-muted">- {{ $comment->created_at->diffForHumans() }}</small>
+        </h5>
         <span>{{ $comment->content }}</span>
         <div>
             @can('reply', $comment)

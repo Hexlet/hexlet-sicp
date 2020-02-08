@@ -19,11 +19,11 @@ class CommentController extends Controller
         );
         $user = auth()->user();
 
-        $user->comments()->save(
+        $comment = $user->comments()->save(
             Comment::make($request->all())
         );
 
-        return back();
+        return $this->redirectBackToComment($comment);
     }
 
     public function update(Request $request, Comment $comment)
@@ -34,7 +34,7 @@ class CommentController extends Controller
         $content = $request->get('content', $comment->content);
         $comment->update(['content' => $content]);
 
-        return back();
+        return $this->redirectBackToComment($comment);
     }
 
     public function destroy(Comment $comment)
@@ -42,5 +42,16 @@ class CommentController extends Controller
         $comment->delete();
 
         return back();
+    }
+
+    /**
+     * @param Comment $comment
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    private function redirectBackToComment(Comment $comment)
+    {
+        return redirect(
+            url()->previous() . '#comment-' . $comment->id
+        );
     }
 }
