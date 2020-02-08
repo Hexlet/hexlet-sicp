@@ -14,10 +14,11 @@ return [
     'features_list' => [
         'Mark chapters as read',
         'See rating, who read how much',
+        'Discuss chapters and tasks',
+        'Track user activity',
     ],
     'coming_soon_list' => [
-        'Discuss chapters and tasks',
+        'Mark exercises as completed',
         'Bind repository with resolved exercises',
-        'Track user activity',
     ],
 ];
