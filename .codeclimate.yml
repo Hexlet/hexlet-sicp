@@ -11,13 +11,6 @@ plugins:
       file_extensions: "php"
       ignore_warnings: true
       standard: "./phpcs.xml"
-  sonar-php:
-    enabled: true
-    checks:
-      php:S1192:
-        enabled: false
-    tests_patterns:
-      - tests/**
   phpmd:
     enabled: true
     config:
