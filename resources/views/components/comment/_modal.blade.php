@@ -11,9 +11,9 @@
             <div class="modal-body">
                 {!! Form::textarea('content', __('comment.update_comment_here'), $content)->attrs(['rows' => 3])->required() !!}
             </div>
-            <div class="modal-footer">
-                {!! Form::button(__('comment.cancel'), 'secondary btn-sm text-uppercase')->attrs(['data-dismiss' => 'modal']) !!}
+            <div class="modal-footer text-left">
                 {!! Form::submit(__($submitLabel), 'success btn-sm text-uppercase') !!}
+                {!! Form::button(__('comment.cancel'), 'secondary btn-sm text-uppercase  mr-auto')->attrs(['data-dismiss' => 'modal']) !!}
             </div>
             {!! Form::close() !!}
         </div>
