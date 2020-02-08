@@ -1,4 +1,5 @@
 <?php
+
 if (!function_exists('getExerciseListingViewFilepath')) {
     function getExerciseListingViewFilepath(string $exercisePath): string
     {

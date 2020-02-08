@@ -1,4 +1,5 @@
 <?php
+
 return [
     'exercise' => 'Exercise',
     'show' => [

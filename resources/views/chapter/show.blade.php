@@ -45,6 +45,7 @@
             @else
             <p>{{ __('chapter.show.nobody_completed') }}</p>
             @endif
+            @comments(['model' => $chapter])
         </div>
     </div>
 </div>

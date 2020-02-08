@@ -44,7 +44,7 @@ $ php artisan migrate --seed
 #### Прикладные вещи
 
 * Все экшены контроллеров должны быть покрыты тестами
-* Формы делаются с помощью https://github.com/LaravelCollective/html
+* Формы делаются с помощью [netojose/laravel-bootstrap-4-forms](https://github.com/netojose/laravel-bootstrap-4-forms)
 * В подавляющем большинстве используется ресурсный роутинг. Что под него не подходит сначала обсуждается (такое бывает крайне редко)
 * Тексты только через локали
 * Чтобы включить логирование Rollbar, необходимо установить переменную `LOG_CHANNEL=rollbar` и `ROLLBAR_TOKEN=`
@@ -77,4 +77,7 @@ $ git config core.hooksPath .githooks
 [![Hexlet Ltd. logo](https://raw.githubusercontent.com/Hexlet/hexletguides.github.io/master/images/hexlet_logo128.png)](https://ru.hexlet.io/pages/about?utm_source=github&utm_medium=link&utm_campaign=exercises-javascript)
 
 This repository is created and maintained by the team and the community of Hexlet, an educational project. [Read more about Hexlet (in Russian)](https://ru.hexlet.io/pages/about?utm_source=github&utm_medium=link&utm_campaign=exercises-javascript).
-##
+
+## FAQ
+Q: Ошибка `Illuminate\Session\TokenMismatchException: CSRF token mismatch.`
+A: Сбросить кеш конфига `php artisan config:clear`
