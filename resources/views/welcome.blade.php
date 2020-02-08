@@ -9,7 +9,6 @@
             <img class="img-fluid" src="{{ asset('img/Patchouli_Gives_SICP.png') }}" alt="Начать изучать sicp">
         </a>
         <h3 class="my-3"><a href="{{ (route('log.index')) }}">{{ __('activitylog.title') }}</a></h3>
-
         @foreach($logItems as $logItem)
         <div class="media text-muted pt-1">
             <div class="media-body pb-1 mb-0 small lh-125 border-bottom border-gray">
