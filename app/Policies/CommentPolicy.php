@@ -16,7 +16,7 @@ class CommentPolicy
      * @param  \App\User  $user
      * @return mixed
      */
-    public function viewAny(User $user)
+    public function viewAny()
     {
         return true;
     }
@@ -28,7 +28,7 @@ class CommentPolicy
      * @param  \App\Comment  $comment
      * @return mixed
      */
-    public function view(User $user, Comment $comment)
+    public function view()
     {
         return true;
     }
@@ -39,7 +39,7 @@ class CommentPolicy
      * @param  \App\User  $user
      * @return mixed
      */
-    public function create(User $user)
+    public function create()
     {
         return true;
     }
@@ -75,7 +75,7 @@ class CommentPolicy
      * @param  \App\Comment  $comment
      * @return mixed
      */
-    public function restore(User $user, Comment $comment)
+    public function restore()
     {
         return false;
     }
@@ -87,8 +87,8 @@ class CommentPolicy
      * @param  \App\Comment  $comment
      * @return mixed
      */
-    public function forceDelete(User $user, Comment $comment)
+    public function forceDelete()
     {
-        //
+        return false;
     }
 }
