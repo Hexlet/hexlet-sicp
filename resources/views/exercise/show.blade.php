@@ -21,6 +21,7 @@
                     @endif
                 </div>
                 <p>{{ __('exercise.show.nobody_completed') }}</p>
+                @comments(['model' => $exercise])
             </div>
         </div>
     </div>

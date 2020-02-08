@@ -1,0 +1,46 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Comment;
+use Illuminate\Http\Request;
+
+class CommentController extends Controller
+{
+    public function store(Request $request)
+    {
+        $this->validate(
+            $request,
+            [
+                'commentable_type' => 'required|string',
+                'commentable_id'   => 'required|string|min:1',
+                'content'          => 'required|string|min:1|max:500'
+            ]
+        );
+        $user = auth()->user();
+
+        $user->comments()->save(
+            Comment::make($request->all())
+        );
+
+        return back();
+    }
+
+    public function update(Request $request, Comment $comment)
+    {
+        $this->validate($request, [
+            'content'          => 'required|string|min:1|max:500'
+        ]);
+        $content = $request->get('content', $comment->content);
+        $comment->update(['content' => $content]);
+
+        return back();
+    }
+
+    public function destroy(Comment $comment)
+    {
+        $comment->delete();
+
+        return back();
+    }
+}

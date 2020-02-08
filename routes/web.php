@@ -29,4 +29,5 @@ Route::group([
     Route::resource('chapters', 'ChapterController')->only('index', 'show');
     Route::resource('exercises', 'ExerciseController')->only('index', 'show');
     Route::resource('log', 'ActivitylogController')->only('index');
+    Route::resource('comments', 'CommentController')->only('store', 'update', 'destroy');
 });

@@ -3,13 +3,17 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Auth;
 
 class Chapter extends Model
 {
     public function users()
     {
         return $this->belongsToMany(User::class, 'read_chapters');
+    }
+
+    public function comments()
+    {
+        return $this->morphMany('\App\Comment', 'commentable');
     }
 
     public function parent()
