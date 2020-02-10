@@ -14,6 +14,7 @@
 
 * PHP ^7.3
 * Composer
+* Node.js & npm
 * SQLite for local, PostgreSQL for production
 * [heroku cli](https://devcenter.heroku.com/articles/heroku-cli#download-and-install)
 
