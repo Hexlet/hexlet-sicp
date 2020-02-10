@@ -13,6 +13,7 @@
 ### Requirements
 
 * PHP ^7.3
+* Packages: php7.3-mbstring php7.3-curl php7.3-dom php7.3-xml php7.3-zip php7.3-sqlite (or higher)
 * Composer
 * Node.js & npm
 * SQLite for local, PostgreSQL for production
