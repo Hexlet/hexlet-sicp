@@ -3886,30 +3886,29 @@
         },
         {
             "name": "spatie/laravel-activitylog",
-            "version": "3.9.1",
+            "version": "3.9.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-activitylog.git",
-                "reference": "659738573f8607191afbd2b794db8669a5b20951"
+                "reference": "6700a3bdfb7a12c9f53d1713d59249e3eca35090"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-activitylog/zipball/659738573f8607191afbd2b794db8669a5b20951",
-                "reference": "659738573f8607191afbd2b794db8669a5b20951",
+                "url": "https://api.github.com/repos/spatie/laravel-activitylog/zipball/6700a3bdfb7a12c9f53d1713d59249e3eca35090",
+                "reference": "6700a3bdfb7a12c9f53d1713d59249e3eca35090",
                 "shasum": ""
             },
             "require": {
-                "illuminate/config": "5.8.*|^6.0",
-                "illuminate/database": "5.8.*|^6.0",
-                "illuminate/support": "5.8.*|^6.0",
+                "illuminate/config": "^6.0",
+                "illuminate/database": "^6.0",
+                "illuminate/support": "^6.0",
                 "php": "^7.2",
                 "spatie/string": "^2.1"
             },
             "require-dev": {
                 "ext-json": "*",
-                "orchestra/testbench": "3.8.*|^4.0",
-                "phpunit/phpunit": "^7.5|^8.0",
-                "scrutinizer/ocular": "^1.5"
+                "orchestra/testbench": "^4.0",
+                "phpunit/phpunit": "^8.0"
             },
             "type": "library",
             "extra": {
@@ -3960,7 +3959,7 @@
                 "spatie",
                 "user"
             ],
-            "time": "2019-10-15T07:39:07+00:00"
+            "time": "2020-02-05T11:24:06+00:00"
         },
         {
             "name": "spatie/laravel-sitemap",
