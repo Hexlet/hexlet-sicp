@@ -1,7 +1,7 @@
 test:
 	composer run phpunit
 
-setup: env-prepare sqlite-prepare install key
+setup: env-prepare sqlite-prepare install key db-prepare
 
 install:
 	composer install
@@ -10,6 +10,9 @@ install:
 start:
 	heroku local -f Procfile.dev
 
+db-prepare:
+	php artisan migrate --seed
+	
 analyse:
 	php artisan code:analyse
 

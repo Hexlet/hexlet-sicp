@@ -12,8 +12,10 @@
 
 ### Requirements
 
-* PHP
+* PHP ^7.3
+* Packages: php7.3-mbstring php7.3-curl php7.3-dom php7.3-xml php7.3-zip php7.3-sqlite (or higher)
 * Composer
+* Node.js & npm
 * SQLite for local, PostgreSQL for production
 * [heroku cli](https://devcenter.heroku.com/articles/heroku-cli#download-and-install)
 
@@ -21,9 +23,8 @@
 
 ```sh
 $ make setup
+$ make start # start server http://127.0.0.1:8000/
 $ make test # run tests
-$ make start # start server
-$ php artisan migrate --seed
 ```
 
 ### Смысл
