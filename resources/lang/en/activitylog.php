@@ -7,5 +7,5 @@ return [
     'user' => 'User',
     'action_added' => 'Added read chapters:',
     'action_removed' => 'Removed read chapters:',
-    'action_commented' => 'Оставил комментарий'
+    'action_commented' => 'Has left comment'
 ];

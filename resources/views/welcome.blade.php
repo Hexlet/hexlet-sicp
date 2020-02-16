@@ -20,29 +20,33 @@
                     </strong>
                     <a href="{{ $logItem->getExtraProperty('url') ?? '#' }}">{{ $logItem->created_at }}</a>
                 </div>
+                @if($logItem->description === 'commented')
+                <a href="{{ $logItem->getExtraProperty('url') }}">
+                    {{ __('activitylog.action_'.$logItem->description) }}
+                </a>
+                <span>
+                    {{ $logItem->getExtraProperty('comment.content') }}
+                </span>
+                @else
                 <div class="d-block">
                     <a data-toggle="collapse"
                        href="#collapseExp{{ $logItem->id }}"
                        aria-expanded="false"
                        aria-controls="collapseExp{{ $logItem->id }}">
                         {{ __('activitylog.action_'.$logItem->description) }}
-                        {{ $logItem->getExtraProperty('count') }}
+                        {{ $logItem->getExtraProperty('count') ?? count($logItem->getExtraProperty('chapters')) }}
                     </a>
                     <div class="collapse" id="collapseExp{{ $logItem->id }}">
                         @if($logItem->getExtraProperty('chapters'))
                         <ul>
-                            @foreach(($logItem->getExtraProperty('chapters')) as $chapter)
+                        @foreach(($logItem->getExtraProperty('chapters')) as $chapter)
                             <li>{{ $chapter }} {{ getChapterName($chapter) }}</li>
-                            @endforeach
+                        @endforeach
                         </ul>
                         @endif
-                        @if($logItem->description === ('commented'))
-                        <span>{{ $logItem->getExtraProperty('comment.content') }}</span>
-                        @endif
                     </div>
-
                 </div>
-
+                @endif
             </div>
         </div>
         @endforeach
