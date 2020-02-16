@@ -18,27 +18,34 @@
                         <a href="{{ route('users.show', $logItem->causer->id) }}">{{ $logItem->causer->name }}</a>
                         @endif
                     </strong>
-                    <a href="#">{{ $logItem->created_at }}</a>
+                    <a href="{{ $logItem->getExtraProperty('url') ?? '#' }}">{{ $logItem->created_at }}</a>
                 </div>
                 <div class="d-block">
-                    @if($logItem->getExtraProperty('chapters'))
-                    <a data-toggle="collapse" href="#collapseExp{{ $logItem->id }}" aria-expanded="false" aria-controls="collapseExp{{ $logItem->id }}">
+                    <a data-toggle="collapse"
+                       href="#collapseExp{{ $logItem->id }}"
+                       aria-expanded="false"
+                       aria-controls="collapseExp{{ $logItem->id }}">
                         {{ __('activitylog.action_'.$logItem->description) }}
-                        {{ count($logItem->getExtraProperty('chapters')) }}</a>
+                        {{ $logItem->getExtraProperty('count') }}
+                    </a>
                     <div class="collapse" id="collapseExp{{ $logItem->id }}">
-                    <ul>
-                        @foreach($logItem->getExtraProperty('chapters') as $chapter)
-                        <li>{{ $chapter }} {{ getChapterName($chapter) }}</li>
-                        @endforeach
-                    </ul>
+                        @if($logItem->getExtraProperty('chapters'))
+                        <ul>
+                            @foreach(($logItem->getExtraProperty('chapters')) as $chapter)
+                            <li>{{ $chapter }} {{ getChapterName($chapter) }}</li>
+                            @endforeach
+                        </ul>
+                        @endif
+                        @if($logItem->description === ('commented'))
+                        <span>{{ $logItem->getExtraProperty('comment.content') }}</span>
+                        @endif
                     </div>
-                    @endif
+
                 </div>
 
             </div>
         </div>
         @endforeach
-
     </div>
     <div class="col-md-4">
         <h2 class="my-3">{{ __('welcome.what_is_here') }}</h2>

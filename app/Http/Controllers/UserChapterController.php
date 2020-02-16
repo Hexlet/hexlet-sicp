@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\User\SaveChapterRequest;
 use App\User;
-use Auth;
-use Spatie\Activitylog\Models\Activity;
 
 class UserChapterController extends Controller
 {
@@ -21,8 +19,10 @@ class UserChapterController extends Controller
         if ($log) {
             activity()
                 ->performedOn($user)
-                ->causedBy(auth()->user())
-                ->withProperties(['chapters' => $chapters])
+                ->causedBy($user)
+                ->withProperties(
+                    ['chapters' => $chapters, 'count' => count($chapters), 'url' => route('users.show', $user)]
+                )
                 ->log($log);
         }
 

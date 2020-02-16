@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Comment;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
 class CommentController extends Controller
@@ -17,13 +18,24 @@ class CommentController extends Controller
                 'content'          => 'required|string|min:1|max:500'
             ]
         );
+        $commentableModel = $request->get('commentable_type');
+        $commentableId = $request->get('commentable_id');
+        /** @var Model $commentable */
+        $commentable = $commentableModel::findOrFail($commentableId);
+
         $user = auth()->user();
 
         $comment = $user->comments()->save(
             Comment::make($request->all())
         );
 
-        return $this->redirectBackToComment($comment);
+        activity()
+            ->performedOn($commentable)
+            ->causedBy($user)
+            ->withProperties(['comment' => $comment, 'url' => $this->getCommentUrl($comment)])
+            ->log('commented');
+
+        return redirect($this->getCommentUrl($comment));
     }
 
     public function update(Request $request, Comment $comment)
@@ -34,7 +46,7 @@ class CommentController extends Controller
         $content = $request->get('content', $comment->content);
         $comment->update(['content' => $content]);
 
-        return $this->redirectBackToComment($comment);
+        return redirect($this->getCommentUrl($comment));
     }
 
     public function destroy(Comment $comment)
@@ -43,15 +55,8 @@ class CommentController extends Controller
 
         return back();
     }
-
-    /**
-     * @param Comment $comment
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
-     */
-    private function redirectBackToComment(Comment $comment)
+    private function getCommentUrl(Comment $comment)
     {
-        return redirect(
-            url()->previous() . '#comment-' . $comment->id
-        );
+        return url()->previous() . '#comment-' . $comment->id;
     }
 }
