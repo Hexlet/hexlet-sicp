@@ -7,4 +7,5 @@ return [
     'user' => 'Пользователь',
     'action_added' => 'Добавил глав: ',
     'action_removed' => 'Удалил глав из прочитанных: ',
+    'action_commented' => 'Оставил комментарий'
 ];
