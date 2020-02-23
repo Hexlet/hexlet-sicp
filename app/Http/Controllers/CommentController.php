@@ -7,14 +7,19 @@ use Illuminate\Http\Request;
 
 class CommentController extends Controller
 {
+    public function __construct()
+    {
+        $this->authorizeResource(Comment::class, 'comment');
+    }
+
     public function store(Request $request)
     {
         $this->validate(
             $request,
             [
                 'commentable_type' => 'required|string',
-                'commentable_id'   => 'required|string|min:1',
-                'content'          => 'required|string|min:1|max:500'
+                'commentable_id' => 'required|min:1',
+                'content' => 'required|string|min:1|max:500',
             ]
         );
         $user = auth()->user();
@@ -28,9 +33,14 @@ class CommentController extends Controller
 
     public function update(Request $request, Comment $comment)
     {
-        $this->validate($request, [
-            'content'          => 'required|string|min:1|max:500'
-        ]);
+        $this->validate(
+            $request,
+            [
+                'commentable_type' => 'required|string',
+                'commentable_id' => 'required|min:1',
+                'content' => 'required|string|min:1|max:500',
+            ]
+        );
         $content = $request->get('content', $comment->content);
         $comment->update(['content' => $content]);
 
