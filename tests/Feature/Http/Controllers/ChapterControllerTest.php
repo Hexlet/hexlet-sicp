@@ -3,9 +3,10 @@
 namespace Tests\Feature\Http\Controllers;
 
 use App\Chapter;
-use Tests\TestCase;
+use App\Comment;
 use App\User;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Tests\TestCase;
 
 class ChapterControllerTest extends TestCase
 {
@@ -41,6 +42,17 @@ class ChapterControllerTest extends TestCase
     public function testShow()
     {
         $chapter = Chapter::inRandomOrder()->first();
+        $response = $this->get(route('chapters.show', $chapter));
+
+        $response->assertStatus(200);
+    }
+
+    public function testShowWithComments()
+    {
+        $chapter = Chapter::inRandomOrder()->first();
+        $chapter->comments()->saveMany(
+            factory(Comment::class, 5)->state('with_user')->make()
+        );
         $response = $this->get(route('chapters.show', $chapter));
 
         $response->assertStatus(200);
