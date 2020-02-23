@@ -7,6 +7,7 @@ use App\Comment;
 use App\Exercise;
 use App\User;
 use Illuminate\Auth\Access\AuthorizationException;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
@@ -36,14 +37,11 @@ class CommentControllerTest extends TestCase
 
     /**
      * @dataProvider dataCommentable
-     * @param string $commentableClass
-     * @param string $commentableRoutesGroup
-     * @param string $commentableName
      */
-    public function testStoreChapter(string $commentableClass, string $commentableRoutesGroup, string $commentableName)
+    public function testStoreChapter(string $commentableClass)
     {
         $commentable = $commentableClass::inRandomOrder()->first();
-        $visitedPage = route($commentableRoutesGroup . '.show', [$commentableName => $commentable]);
+        $visitedPage = $this->getCommentableActionRoute('show', $commentable);
         $user = $this->user;
         $this
             ->from($visitedPage)
@@ -64,14 +62,11 @@ class CommentControllerTest extends TestCase
 
     /**
      * @dataProvider dataCommentable
-     * @param string $commentableClass
-     * @param string $commentableRoutesGroup
-     * @param string $commentableName
      */
-    public function testUpdate(string $commentableClass, string $commentableRoutesGroup, string $commentableName)
+    public function testUpdate(string $commentableClass)
     {
         $commentable = $commentableClass::inRandomOrder()->first();
-        $visitedPage = route($commentableRoutesGroup . '.show', [$commentableName => $commentable]);
+        $visitedPage = $this->getCommentableActionRoute('show', $commentable);
         $user = $this->user;
         $this
             ->from($visitedPage)
@@ -102,14 +97,11 @@ class CommentControllerTest extends TestCase
 
     /**
      * @dataProvider dataCommentable
-     * @param string $commentableClass
-     * @param string $commentableRoutesGroup
-     * @param string $commentableName
      */
-    public function testDestroy(string $commentableClass, string $commentableRoutesGroup, string $commentableName)
+    public function testDestroy(string $commentableClass)
     {
         $commentable = $commentableClass::inRandomOrder()->first();
-        $visitedPage = route($commentableRoutesGroup . '.show', [$commentableName => $commentable]);
+        $visitedPage = $this->getCommentableActionRoute('show', $commentable);
         $user = $this->user;
         $this
             ->from($visitedPage)
@@ -136,17 +128,11 @@ class CommentControllerTest extends TestCase
 
     /**
      * @dataProvider dataCommentable
-     * @param string $commentableClass
-     * @param string $commentableRoutesGroup
-     * @param string $commentableName
      */
-    public function testUpdateByOtherUser(
-        string $commentableClass,
-        string $commentableRoutesGroup,
-        string $commentableName
-    ) {
+    public function testUpdateByOtherUser(string $commentableClass)
+    {
         $commentable = $commentableClass::inRandomOrder()->first();
-        $visitedPage = route($commentableRoutesGroup . '.show', [$commentableName => $commentable]);
+        $visitedPage = $this->getCommentableActionRoute('show', $commentable);
         $user = $this->user;
         $this
             ->from($visitedPage)
@@ -168,17 +154,12 @@ class CommentControllerTest extends TestCase
 
     /**
      * @dataProvider dataCommentable
-     * @param string $commentableClass
-     * @param string $commentableRoutesGroup
-     * @param string $commentableName
      */
     public function testDestroyByOtherUser(
-        string $commentableClass,
-        string $commentableRoutesGroup,
-        string $commentableName
+        string $commentableClass
     ) {
         $commentable = $commentableClass::inRandomOrder()->first();
-        $visitedPage = route($commentableRoutesGroup . '.show', [$commentableName => $commentable]);
+        $visitedPage = $this->getCommentableActionRoute('show', $commentable);
         $user = $this->user;
         $this
             ->from($visitedPage)
@@ -204,5 +185,13 @@ class CommentControllerTest extends TestCase
             'test with chapter'  => [Chapter::class, 'chapters', 'chapter'],
             'test with exercise' => [Exercise::class, 'exercises', 'exercise'],
         ];
+    }
+
+    private function getCommentableActionRoute(string $action, Model $model): string
+    {
+        $routesGroup = $model->getTable();
+        return route("{$routesGroup}.{$action}", [
+            str_singular($routesGroup) => $model
+        ]);
     }
 }
