@@ -18,27 +18,38 @@
                         <a href="{{ route('users.show', $logItem->causer->id) }}">{{ $logItem->causer->name }}</a>
                         @endif
                     </strong>
-                    <a href="#">{{ $logItem->created_at }}</a>
+                    <a href="{{ $logItem->getExtraProperty('url') ?? '#' }}">{{ $logItem->created_at }}</a>
                 </div>
+                @if($logItem->description === 'commented')
+                <a href="{{ $logItem->getExtraProperty('url') }}">
+                    {{ __('activitylog.action_'.$logItem->description) }}
+                </a>
+                <span>
+                    {{ $logItem->getExtraProperty('comment.content') }}
+                </span>
+                @else
                 <div class="d-block">
-                    @if($logItem->getExtraProperty('chapters'))
-                    <a data-toggle="collapse" href="#collapseExp{{ $logItem->id }}" aria-expanded="false" aria-controls="collapseExp{{ $logItem->id }}">
+                    <a data-toggle="collapse"
+                       href="#collapseExp{{ $logItem->id }}"
+                       aria-expanded="false"
+                       aria-controls="collapseExp{{ $logItem->id }}">
                         {{ __('activitylog.action_'.$logItem->description) }}
-                        {{ count($logItem->getExtraProperty('chapters')) }}</a>
+                        {{ $logItem->getExtraProperty('count') ?? count($logItem->getExtraProperty('chapters')) }}
+                    </a>
                     <div class="collapse" id="collapseExp{{ $logItem->id }}">
-                    <ul>
-                        @foreach($logItem->getExtraProperty('chapters') as $chapter)
-                        <li>{{ $chapter }} {{ getChapterName($chapter) }}</li>
+                        @if($logItem->getExtraProperty('chapters'))
+                        <ul>
+                        @foreach(($logItem->getExtraProperty('chapters')) as $chapter)
+                            <li>{{ $chapter }} {{ getChapterName($chapter) }}</li>
                         @endforeach
-                    </ul>
+                        </ul>
+                        @endif
                     </div>
-                    @endif
                 </div>
-
+                @endif
             </div>
         </div>
         @endforeach
-
     </div>
     <div class="col-md-4">
         <h2 class="my-3">{{ __('welcome.what_is_here') }}</h2>
