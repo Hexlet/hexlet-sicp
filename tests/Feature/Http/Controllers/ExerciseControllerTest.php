@@ -3,6 +3,7 @@
 namespace Tests\Feature\Http\Controllers;
 
 use App\Chapter;
+use App\Comment;
 use App\Exercise;
 use Tests\TestCase;
 use App\User;
@@ -45,6 +46,19 @@ class ExerciseControllerTest extends TestCase
     public function testShow()
     {
         $exercise = Exercise::inRandomOrder()->first();
+        $response = $this->get(route('exercises.show', $exercise));
+
+        $response->assertStatus(200);
+        $response->assertSee($exercise->path);
+    }
+
+    public function testShowWithComments()
+    {
+        $exercise = Exercise::inRandomOrder()->first();
+        $exercise->comments()->saveMany(
+            factory(Comment::class, 5)->state('with_user')->make()
+        );
+
         $response = $this->get(route('exercises.show', $exercise));
 
         $response->assertStatus(200);
