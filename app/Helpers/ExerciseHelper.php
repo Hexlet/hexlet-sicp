@@ -7,10 +7,3 @@ if (!function_exists('getExerciseListingViewFilepath')) {
         return sprintf('exercise.listing.%s', $viewName);
     }
 }
-
-if (!function_exists('getExerciseDescription')) {
-    function getExerciseDescription(string $exercisePath): string
-    {
-        return  __('sicp.exercises')[$exercisePath] ?? __('sicp.exercises.' . $exercisePath);
-    }
-}

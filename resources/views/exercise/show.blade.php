@@ -14,7 +14,6 @@
                 <h1 class="h2">{{ __('exercise.exercise') }} {{ $exercise->path }}</h1>
                 <div>
                     @if(view()->exists(getExerciseListingViewFilepath($exercise->path)))
-                    <p>{{ getExerciseDescription($exercise->path) }}</p>
                     @include(getExerciseListingViewFilepath($exercise->path))
                     @else
                         <p>{{ __('exercise.show.empty_description') }}</p>
