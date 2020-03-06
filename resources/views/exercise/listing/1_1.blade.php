@@ -1,3 +1,4 @@
+<p>{{ __('exercises/1_1.description') }}</p>
 <pre><code>10
 (+ 5 3 4)
 (- 9 1)
