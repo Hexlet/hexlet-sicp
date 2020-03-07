@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Contracts\Pagination\Paginator;
-use Spatie\Activitylog\Models\Activity;
+use App\Activity;
 
 class ActivitylogController extends Controller
 {

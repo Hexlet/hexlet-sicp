@@ -8,6 +8,7 @@
         <a href="https://mitpress.mit.edu/sites/default/files/sicp/index.html">
             <img class="img-fluid" src="{{ asset('img/Patchouli_Gives_SICP.png') }}" alt="Начать изучать sicp">
         </a>
+        @include('components.activity_chart')
         <h3 class="my-3"><a href="{{ (route('log.index')) }}">{{ __('activitylog.title') }}</a></h3>
         @foreach($logItems as $logItem)
         <div class="media text-muted pt-1">

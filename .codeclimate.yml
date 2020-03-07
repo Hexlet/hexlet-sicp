@@ -11,14 +11,6 @@ plugins:
       file_extensions: "php"
       ignore_warnings: true
       standard: "./phpcs.xml"
-  phpmd:
-    enabled: true
-    config:
-      file_extensions:
-        - php
-    checks:
-      CleanCode/StaticAccess:
-        enabled: false
 exclude_patterns:
   - "database/"
   - "config/"
