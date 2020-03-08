@@ -44,6 +44,4 @@ class UserExerciseControllerTest extends TestCase
             'exercise_id' => $exercise->id
         ]);
     }
-
-
 }
