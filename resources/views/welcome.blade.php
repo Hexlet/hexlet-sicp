@@ -11,6 +11,9 @@
         @include('components.activity_chart')
         <h3 class="my-3"><a href="{{ (route('log.index')) }}">{{ __('activitylog.title') }}</a></h3>
         @foreach($logItems as $logItem)
+            @php
+            /** @var \App\Activity $logItem */
+            @endphp
         <div class="media text-muted pt-1">
             <div class="media-body pb-1 mb-0 small lh-125 border-bottom border-gray">
                 <div class="d-flex justify-content-between align-items-center w-100">
@@ -21,33 +24,43 @@
                     </strong>
                     <a href="{{ $logItem->getExtraProperty('url') ?? '#' }}">{{ $logItem->created_at }}</a>
                 </div>
-                @if($logItem->description === 'commented')
-                <a href="{{ $logItem->getExtraProperty('url') }}">
-                    {{ __('activitylog.action_'.$logItem->description) }}
-                </a>
-                <span>
-                    {{ $logItem->getExtraProperty('comment.content') }}
-                </span>
-                @else
-                <div class="d-block">
-                    <a data-toggle="collapse"
-                       href="#collapseExp{{ $logItem->id }}"
-                       aria-expanded="false"
-                       aria-controls="collapseExp{{ $logItem->id }}">
-                        {{ __('activitylog.action_'.$logItem->description) }}
-                        {{ $logItem->getExtraProperty('count') ?? count($logItem->getExtraProperty('chapters')) }}
-                    </a>
-                    <div class="collapse" id="collapseExp{{ $logItem->id }}">
-                        @if($logItem->getExtraProperty('chapters'))
-                        <ul>
-                        @foreach(($logItem->getExtraProperty('chapters')) as $chapter)
-                            <li>{{ $chapter }} {{ getChapterName($chapter) }}</li>
-                        @endforeach
-                        </ul>
-                        @endif
-                    </div>
-                </div>
-                @endif
+                @switch($logItem->description)
+                    @case('completed_exercise')
+                        <a href="{{ route('exercises.show', $logItem->getExtraProperty('exercise_id')) }}">
+                            {{ __('activitylog.action_'.$logItem->description) }}
+                        </a>
+                        @break
+                    @case('commented')
+                        <a href="{{ $logItem->getExtraProperty('url') }}">
+                            {{ __('activitylog.action_'.$logItem->description) }}
+                        </a>
+                        <span>
+                        {{ $logItem->getExtraProperty('comment.content') }}
+                        </span>
+                        @break
+                    @case('added')
+                        <div class="d-block">
+                            <a data-toggle="collapse"
+                               href="#collapseExp{{ $logItem->id }}"
+                               aria-expanded="false"
+                               aria-controls="collapseExp{{ $logItem->id }}">
+                                {{ __('activitylog.action_'.$logItem->description) }}
+                                {{ $logItem->getExtraProperty('count') ?? count($logItem->getExtraProperty('chapters')) }}
+                            </a>
+                            <div class="collapse" id="collapseExp{{ $logItem->id }}">
+                                @if($logItem->getExtraProperty('chapters'))
+                                    <ul>
+                                        @foreach(($logItem->getExtraProperty('chapters')) as $chapter)
+                                            <li>{{ $chapter }} {{ getChapterName($chapter) }}</li>
+                                        @endforeach
+                                    </ul>
+                                @endif
+                            </div>
+                        </div>
+                        @break
+                    @default
+                    <span>{{ __('activitylog.action_unknown') }}</span>
+                @endswitch
             </div>
         </div>
         @endforeach
