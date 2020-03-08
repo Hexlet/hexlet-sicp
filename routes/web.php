@@ -7,6 +7,7 @@ Route::group([
     'middleware' => [ 'localizationRedirect' ],
 ], function () {
     Auth::routes(['verify' => true]);
+    Route::post('/dev-login', 'Auth\LoginController@devLogin')->name('auth.dev-login');
     Route::resource('/', 'WelcomeController')->only('index');
     Route::group(
         [

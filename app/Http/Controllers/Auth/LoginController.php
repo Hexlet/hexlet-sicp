@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
+use App\User;
 
 class LoginController extends Controller
 {
@@ -25,5 +26,14 @@ class LoginController extends Controller
         $user = Auth::user();
 
         return route('users.show', $user);
+    }
+
+    public function devLogin()
+    {
+        $user = User::first();
+
+        Auth::login($user);
+
+        return redirect()->back();
     }
 }

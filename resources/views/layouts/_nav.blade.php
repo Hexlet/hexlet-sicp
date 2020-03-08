@@ -54,6 +54,15 @@
             <ul class="navbar-nav ml-auto">
                 <!-- Authentication Links -->
                 @guest
+                @if(app()->environment('local'))
+                <li>
+                    <a href="{{ route('auth.dev-login') }}"
+                       class="nav-link"
+                       data-method="post">
+                        Dev-login
+                    </a>
+                </li>
+                @endif
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('login') }}">
                             <i class="fas fa-sign-in-alt"></i>
