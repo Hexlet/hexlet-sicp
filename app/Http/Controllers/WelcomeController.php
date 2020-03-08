@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Activity;
 use Carbon\Carbon;
 use Carbon\CarbonPeriod;
+use Illuminate\Support\Collection;
 
 class WelcomeController extends Controller
 {
@@ -16,7 +17,7 @@ class WelcomeController extends Controller
             ->groupBy(function (Activity $activity) {
                     return $activity->created_at->format('Y-m-d');
             })
-            ->map(function ($group) {
+            ->map(function (Collection $group) {
                     return $group->count();
             });
 
@@ -25,7 +26,17 @@ class WelcomeController extends Controller
                     $day = $dayDate->format('Y-m-d');
                     $dayActivitiesCount = $countActivitiesByDays->get($day, 0);
 
-                    return $dayActivitiesCount;
+                if ($dayActivitiesCount < 1) :
+                    return 0;
+                elseif ($dayActivitiesCount < 5) :
+                    return 1;
+                elseif ($dayActivitiesCount < 10) :
+                    return 2;
+                elseif ($dayActivitiesCount < 15) :
+                    return 3;
+                else :
+                    return 4;
+                endif;
             });
 
         return view(
