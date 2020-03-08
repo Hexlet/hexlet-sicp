@@ -20,7 +20,7 @@ class ExerciseController extends Controller
     {
         /** @var User $user */
         $exercise->load('chapter');
-        $user = auth()->user();
+        $user = auth()->user() ?? User::make([]);
         $userCompletedExercise = $user->completedExercises()
             ->where('exercise_id', $exercise->id)
             ->exists();
