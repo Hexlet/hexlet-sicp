@@ -16,9 +16,9 @@ return [
         'See rating, who read how much',
         'Discuss chapters and tasks',
         'Track user activity',
+        'Mark exercises as completed',
     ],
     'coming_soon_list' => [
-        'Mark exercises as completed',
         'Bind repository with resolved exercises',
     ],
 ];

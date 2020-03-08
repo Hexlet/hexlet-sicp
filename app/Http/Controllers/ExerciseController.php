@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Exercise;
-use Illuminate\Http\Request;
+use App\User;
 
 class ExerciseController extends Controller
 {
@@ -18,7 +18,13 @@ class ExerciseController extends Controller
 
     public function show(Exercise $exercise)
     {
+        /** @var User $user */
         $exercise->load('chapter');
-        return view('exercise.show', compact('exercise'));
+        $user = auth()->user() ?? User::make([]);
+        $userCompletedExercise = $user->completedExercises()
+            ->where('exercise_id', $exercise->id)
+            ->exists();
+
+        return view('exercise.show', compact('exercise', 'userCompletedExercise'));
     }
 }

@@ -26,4 +26,7 @@ return [
         'recommended_books' => 'Рекомендуемые книги',
         'additionally'      => 'Дополнительно',
     ],
+    'flash' => [
+        'success' => 'Успешно'
+    ]
 ];

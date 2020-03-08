@@ -12,4 +12,13 @@ class WelcomeControllerTest extends TestCase
 
         $response->assertOk();
     }
+
+    public function testNotSeeDevLogin()
+    {
+        $response = $this->get('/');
+
+        $response->assertDontSee(
+            route('auth.dev-login')
+        );
+    }
 }

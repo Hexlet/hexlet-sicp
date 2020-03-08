@@ -27,6 +27,8 @@ $ make start # start server http://127.0.0.1:8000/
 $ make test # run tests
 ```
 
+Для генераций файлов-помощников (для автодополнения) используйте `make ide-helper`
+
 ### Смысл
 
 
