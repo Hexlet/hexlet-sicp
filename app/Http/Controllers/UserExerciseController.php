@@ -12,19 +12,19 @@ class UserExerciseController extends Controller
     {
         $exercise = Exercise::findOrFail($request->get('exercise_id'));
 
-        $this->completeChapter($user, $exercise);
+        $this->completeExercise($user, $exercise);
 
         return redirect()->back();
     }
 
-    public function update(Request $request, User $user, Exercise $exercise)
+    public function update(User $user, Exercise $exercise)
     {
-        $this->completeChapter($user, $exercise);
+        $this->completeExercise($user, $exercise);
 
         return redirect()->back();
     }
 
-    private function completeChapter(User $user, Exercise $exercise): void
+    private function completeExercise(User $user, Exercise $exercise): void
     {
         $user->exercises()->syncWithoutDetaching($exercise);
 

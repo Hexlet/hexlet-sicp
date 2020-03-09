@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Chapter;
+use App\User;
 
 class ChapterController extends Controller
 {
@@ -22,6 +23,9 @@ class ChapterController extends Controller
             'exercises',
             'comments'
         ]);
-        return view('chapter.show', compact('chapter'));
+        /** @var User $user */
+        $user = auth()->user() ?? User::make([]);
+        $isCompletedChapter = $user->readChapters()->where('chapter_id', $chapter->id)->exists();
+        return view('chapter.show', compact('chapter', 'isCompletedChapter'));
     }
 }

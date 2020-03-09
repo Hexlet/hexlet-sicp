@@ -5,6 +5,8 @@ namespace Tests\Feature\Http\Controllers;
 use App\Chapter;
 use App\ReadChapter;
 use App\User;
+use Illuminate\Auth\AuthenticationException;
+use Illuminate\Validation\UnauthorizedException;
 use Tests\TestCase;
 
 class UserChapterControllerTest extends TestCase
@@ -16,26 +18,31 @@ class UserChapterControllerTest extends TestCase
         parent::setUp();
 
         $this->user = factory(User::class)->create();
-        $this->actingAs($this->user);
+        factory(Chapter::class, 3)->create();
     }
 
     public function testStore()
     {
-        $quantity = 3;
+        $myPage = route('my');
+        $chapters = Chapter::all();
 
-        factory(ReadChapter::class)->create(['user_id' => $this->user->id]);
-
-        $this->assertCount(1, $this->user->readChapters);
-
-        $chapters = factory(Chapter::class, $quantity)->create();
-
-        $this->post(route('users.chapters.store', [$this->user->id]), [
+        $this
+            ->actingAs($this->user)
+            ->from($myPage)
+            ->post(route('users.chapters.store', [$this->user]), [
                 'chapters_id' => $chapters->pluck('id')->toArray(),
             ])
-            ->assertRedirect(route('my'));
+            ->assertRedirect($myPage);
 
-        $this->user->refresh();
+        $this->assertEquals($chapters->count(), $this->user->readChapters->count());
+    }
 
-        $this->assertCount($quantity, $this->user->readChapters);
+    public function testStoreAsGuest()
+    {
+        $this->expectException(AuthenticationException::class);
+
+        $this->post(route('users.chapters.store', [$this->user]), [
+                'chapters_id' => [],
+            ]);
     }
 }
