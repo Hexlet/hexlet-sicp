@@ -31,19 +31,30 @@
                 <li><a href="{{ route('exercises.show', $exercise) }}">{{ $exercise->path }}</a> </li>
                 @endforeach
             </ul>
-            @else
-            <p>{{ __('chapter.show.no_exercises') }}</p>
             @endif
-
-            @if ($chapter->users->isNotEmpty())
-            <p>{{ __('chapter.show.who_completed') }}</p>
-            <ul>
-                @foreach ($chapter->users as $user)
-                <li><a href="{{ route('users.show', $user) }}">{{ $user->name }}</a> </li>
+            @if($chapter->can_read)
+                @if ($chapter->users->isNotEmpty())
+                <p>{{ __('chapter.show.who_completed') }}</p>
+                <ul>
+                    @foreach ($chapter->users as $user)
+                    <li><a href="{{ route('users.show', $user) }}">{{ $user->name }}</a></li>
+                    @endforeach
+                </ul>
+                @else
+                <p>{{ __('chapter.show.nobody_completed') }}</p>
+                @endif
+                @auth
+                {!! Form::open()->route('users.chapters.store', [auth()->user()])->post() !!}
+                @foreach(auth()->user()->chapters as $userChapter)
+                {!! Form::hidden('chapters_id[]', $userChapter->id) !!}
                 @endforeach
-            </ul>
-            @else
-            <p>{{ __('chapter.show.nobody_completed') }}</p>
+                {!! Form::hidden('chapters_id[]', $chapter->id) !!}
+                {!! Form::submit(($isCompletedChapter ? '<i class="fas fa-check"></i> ' : '')
+                    . __(sprintf('chapter.show.%s', $isCompletedChapter ? 'already_completed' : 'mark_read')))
+                            ->success()
+                            ->disabled($isCompletedChapter) !!}
+                {!! Form::close() !!}
+                @endauth
             @endif
             @comments(['model' => $chapter])
         </div>

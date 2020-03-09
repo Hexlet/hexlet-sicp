@@ -39,7 +39,10 @@
                 @auth
                     {!! Form::open()->route('users.exercises.store', [auth()->user()])->post() !!}
                     {!! Form::hidden('exercise_id', $exercise->id) !!}
-                    {!! Form::submit(__(sprintf('exercise.show.%s', $userCompletedExercise ? 'already_completed' : 'mark_complete')))
+                    {!! Form::submit(($userCompletedExercise ? '<i class="fas fa-check"></i> ' : '')
+                        . __(sprintf('exercise.show.%s', $userCompletedExercise
+                            ? 'already_completed'
+                            : 'mark_complete')))
                                 ->success()
                                 ->disabled($userCompletedExercise) !!}
                     {!! Form::close() !!}

@@ -25,7 +25,8 @@ class UserChapterController extends Controller
                 )
                 ->log($log);
         }
+        flash()->success(__('layout.flash.success'));
 
-        return redirect(route('my'));
+        return redirect()->back();
     }
 }

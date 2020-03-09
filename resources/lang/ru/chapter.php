@@ -7,5 +7,7 @@ return [
         'no_exercises' => 'Упражнений нет',
         'who_completed' => 'Эту главу завершили эти ребята:',
         'nobody_completed' => 'Эту главу еще никто не завершил.',
+        'already_completed' => 'Завершено',
+        'mark_read' => 'Отметить прочитанным'
     ]
 ];
