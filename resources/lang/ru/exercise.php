@@ -9,5 +9,8 @@ return [
         'mark_complete' => 'Отметить упражнение выполненным',
         'already_completed' => 'Завершено',
         'help_us' => 'Помогите нам добавляя новые упражнения'
+    ],
+    'my_page' => [
+        'mark_exercise' => 'Отметить упражнение :exercise_path выполненным'
     ]
 ];

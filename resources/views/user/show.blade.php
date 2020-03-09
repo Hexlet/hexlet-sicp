@@ -1,5 +1,13 @@
 @extends('layouts.app')
 
+@php
+/**
+ * @var \Illuminate\Support\Collection $chapters
+ * @var \App\Chapter $chapter
+ * @var \App\Exercise $exercise
+ * @var \Illuminate\Support\Collection $completedExercises
+ */
+@endphp
 @section('content')
     <div class="row my-4">
         <div class="col-12 col-md-3">
@@ -25,9 +33,22 @@
                     @else
                         <h4 class="h6"><a href="{{ route('chapters.show', $chapter) }}">{{ $chapter->path }} {{ getChapterName($chapter->path) }}</a></h4>
                     @endif
+                    @foreach($chapter->exercises as $exercise)
+                        <a href="{{ route('exercises.show', $exercise) }}"
+                           class="text-decoration-none"
+                           data-toggle="tooltip"
+                           data-placement="bottom"
+                           title="{{ $exercise->path }}">
+                            @if($completedExercises->has($exercise->id))
+                            <i class="fa fa-check-square text-success"></i>
+                            @else
+                            <i class="far fa-square text-muted"></i>
+                            @endif
+                        </a>
+                    @endforeach
                 </li>
                 @endforeach
-            <ul>
+            </ul>
         </div>
     </div>
 @endsection

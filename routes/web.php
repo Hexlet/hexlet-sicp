@@ -21,7 +21,7 @@ Route::group([
     );
     Route::middleware('auth')->group(function () {
         Route::resource('users.chapters', 'UserChapterController')->only('store');
-        Route::resource('users.exercises', 'UserExerciseController')->only('store');
+        Route::resource('users.exercises', 'UserExerciseController')->only('store', 'update');
 
         Route::get('/my', 'MyController')->name('my');
         Route::resource('account', 'AccountController')->only('index', 'edit', 'update', 'destroy');
