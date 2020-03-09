@@ -9,13 +9,13 @@ class UserController extends Controller
 {
     public function show(User $user)
     {
-        $user->load('readChapters');
-
-        $chapters = Chapter::with('children')->get();
+        $user->load('readChapters', 'completedExercises');
+        $chapters = Chapter::with('children', 'exercises')->get();
 
         return view('user.show', [
             'user' => $user,
             'chapters' => $chapters,
+            'completedExercises' => $user->completedExercises->keyBy('exercise_id')
         ]);
     }
 }

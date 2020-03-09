@@ -15,4 +15,9 @@ class Exercise extends Model
     {
         return $this->morphMany(Comment::class, 'commentable');
     }
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class, 'completed_exercises');
+    }
 }

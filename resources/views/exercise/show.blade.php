@@ -3,7 +3,6 @@
 @endphp
 
 @extends('layouts.app')
-
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
@@ -27,7 +26,16 @@
                         </p>
                     @endif
                 </div>
+                @if($exercise->users->isEmpty())
                 <p>{{ __('exercise.show.nobody_completed') }}</p>
+                @else
+                    <p>@lang('exercise.show.who_completed')</p>
+                    <ul>
+                    @foreach($exercise->users as $user)
+                        <li>{{ $user->name }}</li>
+                    @endforeach
+                    </ul>
+                @endif
                 @auth
                     {!! Form::open()->route('users.exercises.store', [auth()->user()])->post() !!}
                     {!! Form::hidden('exercise_id', $exercise->id) !!}

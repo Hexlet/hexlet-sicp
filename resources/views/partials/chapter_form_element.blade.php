@@ -12,5 +12,24 @@
     <label for="subChapter{{ $chapter->id }}" class="form-check-label">
         {{ $chapter->path }} {{ getChapterName($chapter->path) }}
     </label>
+    <div>
+        @foreach($chapter->exercises as $exercise)
+            {!! Form::open()->route('users.exercises.store', [auth()->user()])->formInline() !!}
+            <span>
+                @if($completedExercises->has($exercise->id))
+                    <i class="fa fa-check-square text-success"></i>
+                @else
+                    <a href="{{ route('users.exercises.update', [auth()->user(), $exercise]) }}"
+                       class="text-decoration-none"
+                       data-toggle="tooltip"
+                       data-placement="bottom"
+                       title="@lang('exercise.my_page.mark_exercise', ['exercise_path' => $exercise->path])"
+                       data-method="patch">
+                    <i class="far fa-square text-secondary"></i>
+                </a>
+                @endif
+            </span>
+        @endforeach
+    </div>
 </div>
 @endif

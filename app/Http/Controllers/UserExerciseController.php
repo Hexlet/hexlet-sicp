@@ -12,6 +12,20 @@ class UserExerciseController extends Controller
     {
         $exercise = Exercise::findOrFail($request->get('exercise_id'));
 
+        $this->completeChapter($user, $exercise);
+
+        return redirect()->back();
+    }
+
+    public function update(Request $request, User $user, Exercise $exercise)
+    {
+        $this->completeChapter($user, $exercise);
+
+        return redirect()->back();
+    }
+
+    private function completeChapter(User $user, Exercise $exercise): void
+    {
         $user->exercises()->syncWithoutDetaching($exercise);
 
         activity()
@@ -23,7 +37,5 @@ class UserExerciseController extends Controller
             ->log('completed_exercise');
 
         flash()->success(__('layout.flash.success'));
-
-        return redirect()->back();
     }
 }
