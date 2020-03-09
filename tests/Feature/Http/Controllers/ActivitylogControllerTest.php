@@ -19,8 +19,10 @@ class ActivityControllerTest extends TestCase
         $this->actingAs($this->user);
     }
 
-    public function testStore()
+    public function testStoreOnMyPage()
     {
+        $myPage = route('my');
+        $this->from($myPage);
         $quantity = 3;
 
         factory(ReadChapter::class)->create(['user_id' => $this->user->id]);
@@ -32,7 +34,7 @@ class ActivityControllerTest extends TestCase
         $this->post(route('users.chapters.store', [$this->user->id]), [
                 'chapters_id' => $chapters->pluck('id')->toArray(),
             ])
-            ->assertRedirect(route('my'));
+            ->assertRedirect($myPage);
 
         $this->user->refresh();
 
