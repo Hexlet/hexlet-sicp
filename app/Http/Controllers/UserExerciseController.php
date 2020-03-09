@@ -24,10 +24,6 @@ class UserExerciseController extends Controller
         return redirect()->back();
     }
 
-    /**
-     * @param User $user
-     * @param $exercise
-     */
     private function completeChapter(User $user, Exercise $exercise): void
     {
         $user->exercises()->syncWithoutDetaching($exercise);
@@ -42,5 +38,4 @@ class UserExerciseController extends Controller
 
         flash()->success(__('layout.flash.success'));
     }
-
 }
