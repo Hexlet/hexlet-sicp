@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Chapter;
 use App\Http\Requests\User\SaveChapterRequest;
 use App\User;
 
@@ -25,6 +26,21 @@ class UserChapterController extends Controller
                 )
                 ->log($log);
         }
+        flash()->success(__('layout.flash.success'));
+
+        return redirect()->back();
+    }
+
+    public function destroy(User $user, Chapter $chapter)
+    {
+        $user->chapters()->detach($chapter);
+
+        activity()
+            ->performedOn($user)
+            ->causedBy($user)
+            ->withProperties(
+                ['chapters' => [$chapter->path], 'count' => 1, 'url' => route('users.show', $user)]
+            )->log('removed');
         flash()->success(__('layout.flash.success'));
 
         return redirect()->back();

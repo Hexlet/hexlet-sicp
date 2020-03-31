@@ -21,7 +21,7 @@ Route::group([
     );
     Route::middleware('auth')->group(function () {
         Route::resource('users.chapters', 'UserChapterController')
-            ->only('store');
+            ->only('store', 'destroy');
         Route::resource('users.exercises', 'UserExerciseController')
             ->only('store', 'update', 'destroy');
 
