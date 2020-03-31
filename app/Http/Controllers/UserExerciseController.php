@@ -24,6 +24,14 @@ class UserExerciseController extends Controller
         return redirect()->back();
     }
 
+    public function destroy(User $user, Exercise $exercise)
+    {
+        $user->exercises()->detach($exercise);
+
+        flash()->success(__('layout.flash.success'));
+        return redirect()->back();
+    }
+
     private function completeExercise(User $user, Exercise $exercise): void
     {
         $user->exercises()->syncWithoutDetaching($exercise);
