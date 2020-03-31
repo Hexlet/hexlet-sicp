@@ -1,5 +1,7 @@
 @extends('layouts.app')
-
+@php
+/** @var \Illuminate\Support\Collection|\App\Activity[] $logItems */
+@endphp
 @section('content')
 <h1 class="my-4">{{ __('welcome.title') }}</h1>
 <p>{{ __('welcome.description') }}</p>
@@ -11,9 +13,6 @@
         @include('components.activity_chart')
         <h3 class="my-3"><a href="{{ (route('log.index')) }}">{{ __('activitylog.title') }}</a></h3>
         @foreach($logItems as $logItem)
-            @php
-            /** @var \App\Activity $logItem */
-            @endphp
         <div class="media text-muted pt-1">
             <div class="media-body pb-1 mb-0 small lh-125 border-bottom border-gray">
                 <div class="d-flex justify-content-between align-items-center w-100">
@@ -38,6 +37,7 @@
                         {{ $logItem->getExtraProperty('comment.content') }}
                         </span>
                         @break
+                    @case('removed')
                     @case('added')
                         <div class="d-block">
                             <a data-toggle="collapse"

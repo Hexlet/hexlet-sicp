@@ -28,5 +28,8 @@ return [
     ],
     'flash' => [
         'success' => 'Success'
+    ],
+    'common' => [
+        'cancel' => 'Сancel'
     ]
 ];

@@ -1,3 +1,9 @@
+@php
+/**
+ * @var \App\User $user
+ */
+@endphp
+
 @if($chapter->children->count())
     <{{ getChapterHeaderTag($chapter) }} class="mt-3">
         {{ $chapter->path }} {{ getChapterName($chapter->path) }}
@@ -14,17 +20,25 @@
     </label>
     <div>
         @foreach($chapter->exercises as $exercise)
-            {!! Form::open()->route('users.exercises.store', [auth()->user()])->formInline() !!}
+            {!! Form::open()->route('users.exercises.store', [$user])->formInline() !!}
             <span>
                 @if($completedExercises->has($exercise->id))
+                <a href="{{ route('users.exercises.destroy', [$user, $exercise]) }}"
+                   class="text-decoration-none"
+                   data-toggle="tooltip"
+                   data-placement="bottom"
+                   title="{{ __('exercise.my_page.remove_completed_exercise', ['exercise_path' => $exercise->path]) }}"
+                   data-confirm="{{ __('account.are_you_sure') }}"
+                   data-method="delete">
                     <i class="fa fa-check-square text-success"></i>
+                </a>
                 @else
-                    <a href="{{ route('users.exercises.update', [auth()->user(), $exercise]) }}"
-                       class="text-decoration-none"
-                       data-toggle="tooltip"
-                       data-placement="bottom"
-                       title="@lang('exercise.my_page.mark_exercise', ['exercise_path' => $exercise->path])"
-                       data-method="patch">
+                <a href="{{ route('users.exercises.update', [$user, $exercise]) }}"
+                   class="text-decoration-none"
+                   data-toggle="tooltip"
+                   data-placement="bottom"
+                   title="{{ __('exercise.my_page.mark_exercise', ['exercise_path' => $exercise->path]) }}"
+                   data-method="patch">
                     <i class="far fa-square text-secondary"></i>
                 </a>
                 @endif

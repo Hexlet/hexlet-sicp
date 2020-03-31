@@ -1,3 +1,12 @@
+@php
+/**
+ * @var \Illuminate\Database\Eloquent\Model $model
+ * @var string $modalTitle
+ * @var string $content
+ * @var string $submitLabel
+ * @var string $method
+ */
+@endphp
 <div class="modal fade" id="comment-modal-{{ $comment->id }}" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
         <div class="modal-content">

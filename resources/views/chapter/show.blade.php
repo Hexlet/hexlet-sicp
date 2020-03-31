@@ -1,5 +1,12 @@
 @extends('layouts.app')
-
+@php
+/**
+ * @var \App\Chapter $chapter
+ * @var \App\Exercise $exercise
+ * @var \App\User $authUser
+ * @var bool $isCompletedChapter
+ */
+@endphp
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -44,8 +51,8 @@
                 <p>{{ __('chapter.show.nobody_completed') }}</p>
                 @endif
                 @auth
-                {!! Form::open()->route('users.chapters.store', [auth()->user()])->post() !!}
-                @foreach(auth()->user()->chapters as $userChapter)
+                {!! Form::open()->route('users.chapters.store', [$authUser])->post() !!}
+                @foreach($authUser->chapters as $userChapter)
                 {!! Form::hidden('chapters_id[]', $userChapter->id) !!}
                 @endforeach
                 {!! Form::hidden('chapters_id[]', $chapter->id) !!}
@@ -53,6 +60,16 @@
                     . __(sprintf('chapter.show.%s', $isCompletedChapter ? 'already_completed' : 'mark_read')))
                             ->success()
                             ->disabled($isCompletedChapter) !!}
+                @if ($isCompletedChapter)
+                    <a href="{{ route('users.chapters.destroy', [$authUser, $chapter]) }}"
+                       class="text-decoration-none"
+                       data-toggle="tooltip"
+                       data-placement="bottom"
+                       data-confirm="{{ __('account.are_you_sure') }}"
+                       data-method="delete">
+                        <span class="pl-2">{{ __('layout.common.cancel') }}</span>
+                    </a>
+                @endif
                 {!! Form::close() !!}
                 @endauth
             @endif

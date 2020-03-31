@@ -3,10 +3,16 @@
 namespace Tests\Feature\Http\Controllers;
 
 use App\Chapter;
+use App\CompletedExercise;
 use App\Exercise;
 use App\User;
 use Tests\TestCase;
 
+/**
+ * Class UserExerciseControllerTest
+ * @package Tests\Feature\Http\Controllers
+ * @property User $user
+ */
 class UserExerciseControllerTest extends TestCase
 {
     private $user;
@@ -34,14 +40,42 @@ class UserExerciseControllerTest extends TestCase
         $this->from($exercisePage)
             ->actingAs($this->user);
 
-        $this->post(route('users.exercises.store', $this->user), [
-                'exercise_id' => $exercise->id,
-            ])
-            ->assertRedirect($exercisePage);
+        $response = $this->post(route('users.exercises.store', $this->user), [
+            'exercise_id' => $exercise->id,
+        ]);
+
+        $response->assertRedirect($exercisePage);
 
         $this->assertDatabaseHas('completed_exercises', [
             'user_id'     => $this->user->id,
             'exercise_id' => $exercise->id
+        ]);
+    }
+
+    public function testDestroy()
+    {
+        /** @var CompletedExercise $completedExercise */
+        $completedExercise = factory(CompletedExercise::class)->create();
+
+        $exercisePage = route('exercises.show', $completedExercise->exercise_id);
+
+        $this->actingAs($this->user)->from($exercisePage);
+
+        $this->assertDatabaseHas('completed_exercises', [
+            'user_id'     => $completedExercise->user_id,
+            'exercise_id' => $completedExercise->exercise_id
+        ]);
+
+        $response = $this->delete(route('users.exercises.destroy', [
+            $completedExercise->user_id,
+            $completedExercise->exercise_id
+        ]));
+
+        $response->assertRedirect($exercisePage);
+
+        $this->assertDatabaseMissing('completed_exercises', [
+            'user_id'     => $completedExercise->user_id,
+            'exercise_id' => $completedExercise->exercise_id
         ]);
     }
 }

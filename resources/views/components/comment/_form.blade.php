@@ -1,3 +1,8 @@
+@php
+/**
+ * @var \Illuminate\Database\Eloquent\Model $model
+ */
+@endphp
 <div class="card">
     <div class="card-body">
         {!! Form::open()->route('comments.store') !!}
