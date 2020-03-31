@@ -9,11 +9,11 @@
     @include('account._menu')
         <div class="col-12 col-md-9">
             <h3>
-                @lang('account.profile'): {{ $user->email }}
+                {{ __('account.profile') }}: {{ $user->email }}
             </h3>
             <div class="card">
                 <div class="card-header">
-                    @lang('account.сhange_name')
+                    {{ __('account.сhange_name') }}
                 </div>
                 <div class="card-body">
                     {!! Form::open()->patch()->route('account.update', [$user]) !!}

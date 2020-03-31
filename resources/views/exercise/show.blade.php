@@ -26,7 +26,7 @@
                     <p>
                         <i class="fas fa-github-alt"></i>
                         <a href="https://github.com/Hexlet/hexlet-sicp/issues/122">
-                            @lang('exercise.show.help_us')
+                            {{ __('exercise.show.help_us') }}
                         </a>
                     </p>
                     @endif
@@ -34,7 +34,7 @@
                 @if($exercise->users->isEmpty())
                 <p>{{ __('exercise.show.nobody_completed') }}</p>
                 @else
-                <p>@lang('exercise.show.who_completed')</p>
+                <p>{{ __('exercise.show.who_completed') }}</p>
                 <ul>
                     @foreach($exercise->users as $user)
                     <li>{{ $user->name }}</li>
@@ -55,10 +55,10 @@
                    class="text-decoration-none"
                    data-toggle="tooltip"
                    data-placement="bottom"
-                   title="@lang('exercise.my_page.remove_completed_exercise', ['exercise_path' => $exercise->path])"
+                   title="{{ __('exercise.my_page.remove_completed_exercise', ['exercise_path' => $exercise->path]) }}"
                    data-confirm="{{ __('account.are_you_sure') }}"
                    data-method="delete">
-                    <span class="pl-2">@lang('layout.common.cancel')</span>
+                    <span class="pl-2">{{ __('layout.common.cancel') }}</span>
                 </a>
                 @endif
                 {!! Form::close() !!}

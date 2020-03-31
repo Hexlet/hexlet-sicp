@@ -1,3 +1,8 @@
+@php
+/**
+ * @var \App\Comment $comment
+ */
+@endphp
 <div id="comment-{{ $comment->id }}" class="media">
     <div class="mr-3"></div>
     <div class="media-body">
@@ -13,14 +18,14 @@
                     data-toggle="modal"
                     data-target="#reply-modal-{{ $comment->id }}"
                     class="btn btn-sm btn-link text-uppercase">
-                    @lang('comment.reply')
+                    {{ __('comment.reply') }}
                 </button>
             @endcan
             @can('update', $comment)
                 <button data-toggle="modal"
                         data-target="#comment-modal-{{ $comment->id }}"
                         class="btn btn-sm btn-link text-uppercase">
-                    @lang('comment.edit')
+                    {{ __('comment.edit') }}
                 </button>
             @endcan
             @can('delete', $comment)
@@ -29,7 +34,7 @@
                    data-confirm="Вы уверены?"
                    data-method="delete"
                    rel="nofollow">
-                    @lang('comment.delete')
+                    {{ __('comment.delete') }}
                 </a>
             @endcan
         </div>

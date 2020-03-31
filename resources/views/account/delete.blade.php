@@ -9,18 +9,18 @@
     @include('account._menu')
     <div class="col-12 col-md-9 my-4">
         <h3>
-            @lang('account.profile'): {{ $user->email }}
+            {{ __('account.profile') }}: {{ $user->email }}
         </h3>
         <div class="card">
             <div class="card-header">
-                @lang('account.delete_account')
+                {{ __('account.delete_account') }}
             </div>
             <div class="card-body">
                 <a href="{{ route('account.destroy', $user) }}"
                    class="btn btn-danger"
                    data-method="delete"
                    data-confirm="{{ __('account.are_you_sure') }}">
-                    @lang('account.delete_account')
+                    {{ __('account.delete_account') }}
                 </a>
             </div>
         </div>

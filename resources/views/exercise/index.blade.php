@@ -1,5 +1,10 @@
 @extends('layouts.app')
-
+@php
+/**
+ * @var \Illuminate\Support\Collection|\Illuminate\Support\Collection[] $exercisesGroups
+ * @var \Illuminate\Support\Collection|\App\Exercise[] $exercises
+ */
+@endphp
 @section('content')
     <div class="row">
         <div class="col">
@@ -13,7 +18,8 @@
                     <a class="nav-item nav-link {{ $rootChapterPath === 1 ? 'active' : '' }}"
                        id="subChapters{{ $rootChapterPath }}-tab"
                        href="#subChapters{{ $rootChapterPath }}" data-toggle="tab" role="tab"
-                       aria-controls="subChapters{{ $rootChapterPath }}" aria-selected="{{ $rootChapterPath === '1' ? 'true' : 'false' }}">
+                       aria-controls="subChapters{{ $rootChapterPath }}"
+                       aria-selected="{{ $rootChapterPath === '1' ? 'true' : 'false' }}">
                         {{ __('chapter.chapter') }} {{ $rootChapterPath }}
                     </a>
                 @endforeach
@@ -27,13 +33,13 @@
                          id="subChapters{{ $rootChapterPath }}" role="tabpanel"
                          aria-labelledby="subChapters{{ $rootChapterPath }}-tab">
                         <p>
-                        @foreach($exercises as $exercise)
+                            @foreach($exercises as $exercise)
                             <a title="{{ __('exercise.exercise') }} {{ $exercise->path }}"
                                href="{{ route('exercises.show', $exercise) }}">
                                 {{ $exercise->path }}
                                 <br>
                             </a>
-                        @endforeach
+                            @endforeach
                         </p>
                     </div>
                 @endforeach

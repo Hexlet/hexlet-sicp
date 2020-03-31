@@ -27,7 +27,7 @@
                    class="text-decoration-none"
                    data-toggle="tooltip"
                    data-placement="bottom"
-                   title="@lang('exercise.my_page.remove_completed_exercise', ['exercise_path' => $exercise->path])"
+                   title="{{ __('exercise.my_page.remove_completed_exercise', ['exercise_path' => $exercise->path]) }}"
                    data-confirm="{{ __('account.are_you_sure') }}"
                    data-method="delete">
                     <i class="fa fa-check-square text-success"></i>
@@ -37,7 +37,7 @@
                    class="text-decoration-none"
                    data-toggle="tooltip"
                    data-placement="bottom"
-                   title="@lang('exercise.my_page.mark_exercise', ['exercise_path' => $exercise->path])"
+                   title="{{ __('exercise.my_page.mark_exercise', ['exercise_path' => $exercise->path]) }}"
                    data-method="patch">
                     <i class="far fa-square text-secondary"></i>
                 </a>
