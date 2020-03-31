@@ -1,5 +1,11 @@
 @extends('layouts.app')
-
+@php
+/**
+ * @var \App\Chapter $chapter
+ * @var \App\Exercise $exercise
+ * @var \App\User $user
+ */
+@endphp
 @section('content')
 <div class="container">
     <div class="row justify-content-center">

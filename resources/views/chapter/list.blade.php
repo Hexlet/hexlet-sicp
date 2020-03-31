@@ -1,3 +1,9 @@
+@php
+/**
+ * @var \Illuminate\Support\Collection|\App\Chapter[] $chapters
+ * @var \App\Chapter $chapter
+ */
+@endphp
 <ol>
     @foreach ($chapters[$parent] as $chapter)
     <li>
