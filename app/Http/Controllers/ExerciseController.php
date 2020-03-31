@@ -18,13 +18,12 @@ class ExerciseController extends Controller
 
     public function show(Exercise $exercise)
     {
-        /** @var User $user */
         $exercise->load('chapter', 'users');
-        $user = auth()->user() ?? User::make([]);
-        $userCompletedExercise = $user->completedExercises()
+        $authUser = auth()->user() ?? User::make([]);
+        $userCompletedExercise = $authUser->completedExercises()
             ->where('exercise_id', $exercise->id)
             ->exists();
 
-        return view('exercise.show', compact('exercise', 'userCompletedExercise'));
+        return view('exercise.show', compact('exercise', 'userCompletedExercise', 'authUser'));
     }
 }

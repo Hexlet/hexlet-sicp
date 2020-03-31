@@ -3,6 +3,7 @@
 /**
  * @var \App\Exercise $exercise
  * @var bool $userCompletedExercise
+ * @var \App\User $authUser
  */
 @endphp
 @section('content')
@@ -41,7 +42,7 @@
                 </ul>
                 @endif
                 @auth
-                {!! Form::open()->route('users.exercises.store', [auth()->user()])->post() !!}
+                {!! Form::open()->route('users.exercises.store', [$authUser])->post() !!}
                 {!! Form::hidden('exercise_id', $exercise->id) !!}
                 {!! Form::submit(($userCompletedExercise ? '<i class="fas fa-check"></i> ' : '')
                     . __(sprintf('exercise.show.%s', $userCompletedExercise
@@ -50,14 +51,14 @@
                             ->success()
                             ->disabled($userCompletedExercise) !!}
                 @if ($userCompletedExercise)
-                <a href="{{ route('users.exercises.destroy', [$user, $exercise]) }}"
+                <a href="{{ route('users.exercises.destroy', [$authUser, $exercise]) }}"
                    class="text-decoration-none"
                    data-toggle="tooltip"
                    data-placement="bottom"
                    title="@lang('exercise.my_page.remove_completed_exercise', ['exercise_path' => $exercise->path])"
                    data-confirm="{{ __('account.are_you_sure') }}"
                    data-method="delete">
-                    Отменить
+                    <span class="pl-2">@lang('layout.common.cancel')</span>
                 </a>
                 @endif
                 {!! Form::close() !!}

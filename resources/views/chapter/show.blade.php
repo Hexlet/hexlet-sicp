@@ -67,7 +67,7 @@
                        data-placement="bottom"
                        data-confirm="{{ __('account.are_you_sure') }}"
                        data-method="delete">
-                        Отменить
+                        <span class="pl-2">@lang('layout.common.cancel')</span>
                     </a>
                 @endif
                 {!! Form::close() !!}
