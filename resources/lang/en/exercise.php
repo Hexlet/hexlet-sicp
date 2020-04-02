@@ -10,8 +10,6 @@ return [
         'already_completed' => 'Completed',
         'help_us' => 'Help us by adding new exercises'
     ],
-    'my_page' => [
-        'mark_exercise' => 'Mark :exercise_path completed',
-        'remove_completed_exercise' => 'Remove :exercise_path from completed'
-    ]
+    'mark_exercise' => 'Mark :exercise_path completed',
+    'remove_completed_exercise' => 'Remove :exercise_path from completed'
 ];
