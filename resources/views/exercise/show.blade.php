@@ -55,8 +55,8 @@
                    class="text-decoration-none"
                    data-toggle="tooltip"
                    data-placement="bottom"
-                   title="{{ __('exercise.my_page.remove_completed_exercise', ['exercise_path' => $exercise->path]) }}"
-                   data-confirm="{{ __('account.are_you_sure') }}"
+                   title="{{ __('exercise.remove_completed_exercise', ['exercise_path' => $exercise->path]) }}"
+                   data-confirm="{{ __('exercise.remove_completed_exercise', ['exercise_path' => $exercise->path]) }}?"
                    data-method="delete">
                     <span class="pl-2">{{ __('layout.common.cancel') }}</span>
                 </a>

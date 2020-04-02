@@ -10,8 +10,6 @@ return [
         'already_completed' => 'Завершено',
         'help_us' => 'Помогите нам добавляя новые упражнения'
     ],
-    'my_page' => [
-        'mark_exercise' => 'Отметить упражнение :exercise_path выполненным',
-        'remove_completed_exercise' => 'Удалить упражнение :exercise_path из выполненных'
-    ]
+    'mark_exercise' => 'Отметить упражнение :exercise_path выполненным',
+    'remove_completed_exercise' => 'Удалить упражнение :exercise_path из выполненных'
 ];
