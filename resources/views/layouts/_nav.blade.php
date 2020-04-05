@@ -4,7 +4,7 @@
     $otherLocales = getOtherLocales($currentLocale, $locales);
 @endphp
 <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-    <div class="container">
+    <div class="container-fluid px-xl-5 px-lg-3">
         <a class="navbar-brand" href="{{ LaravelLocalization::getLocalizedURL($currentLocale, '/') }}">
             {{ __('layout.nav.name') }}
         </a>
@@ -15,23 +15,23 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- Left Side Of Navbar -->
-            <ul class="navbar-nav mr-auto">
+            <ul class="navbar-nav mr-auto align-items-center">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('chapters.index') }}">
+                    <a class="nav-link px-0 px-lg-2" href="{{ route('chapters.index') }}">
                         <i class="fas fa-book"></i>
 
                         {{ __('layout.nav.chapters') }}
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('exercises.index') }}">
+                    <a class="nav-link px-0 px-lg-2" href="{{ route('exercises.index') }}">
                         <i class="fas fa-dumbbell"></i>
 
                         {{ __('layout.nav.exercises') }}
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" target="_blank" href="https://guides.hexlet.io/how-to-learn-sicp/">
+                    <a class="nav-link px-0 px-lg-2" target="_blank" href="https://guides.hexlet.io/how-to-learn-sicp/">
                         <i class="far fa-hand-point-right"></i>
                         {{ __('layout.nav.sicp_read') }}
                     </a>
