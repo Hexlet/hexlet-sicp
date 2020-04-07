@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9484a0fff65d6db2783ae4e3ae04f0b9",
+    "content-hash": "6334c8276c82d7b2205b0684e2f75fd1",
     "packages": [
         {
             "name": "brick/math",
@@ -1263,16 +1263,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v7.5.0",
+            "version": "v7.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "0e71d781854723d9428e1ae921a7edfe0a10c8ec"
+                "reference": "b2457b1ddb9c59396313eae4e948bdc5fa5251db"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/0e71d781854723d9428e1ae921a7edfe0a10c8ec",
-                "reference": "0e71d781854723d9428e1ae921a7edfe0a10c8ec",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/b2457b1ddb9c59396313eae4e948bdc5fa5251db",
+                "reference": "b2457b1ddb9c59396313eae4e948bdc5fa5251db",
                 "shasum": ""
             },
             "require": {
@@ -1410,7 +1410,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2020-04-07T14:47:48+00:00"
+            "time": "2020-04-07T18:52:38+00:00"
         },
         {
             "name": "laravel/helpers",
@@ -7364,78 +7364,6 @@
             "time": "2020-04-04T19:56:08+00:00"
         },
         {
-            "name": "nunomaduro/larastan",
-            "version": "v0.5.5",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/nunomaduro/larastan.git",
-                "reference": "0a24d9c809185b04d00d8b8c1b58a6581cae6c40"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/nunomaduro/larastan/zipball/0a24d9c809185b04d00d8b8c1b58a6581cae6c40",
-                "reference": "0a24d9c809185b04d00d8b8c1b58a6581cae6c40",
-                "shasum": ""
-            },
-            "require": {
-                "composer/composer": "^1.0",
-                "ext-json": "*",
-                "illuminate/console": "^6.0 || ^7.0",
-                "illuminate/container": "^6.0 || ^7.0",
-                "illuminate/contracts": "^6.0 || ^7.0",
-                "illuminate/database": "^6.0 || ^7.0",
-                "illuminate/http": "^6.0 || ^7.0",
-                "illuminate/pipeline": "^6.0 || ^7.0",
-                "illuminate/support": "^6.0 || ^7.0",
-                "mockery/mockery": "^0.9 || ^1.0",
-                "php": "^7.2",
-                "phpstan/phpstan": "^0.12",
-                "symfony/process": "^4.3 || ^5.0"
-            },
-            "require-dev": {
-                "orchestra/testbench": "^4.0 || ^5.0",
-                "phpunit/phpunit": "^7.3 || ^8.2"
-            },
-            "suggest": {
-                "orchestra/testbench": "^4.0 || ^5.0"
-            },
-            "type": "phpstan-extension",
-            "extra": {
-                "phpstan": {
-                    "includes": [
-                        "extension.neon"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "NunoMaduro\\Larastan\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Nuno Maduro",
-                    "email": "enunomaduro@gmail.com"
-                }
-            ],
-            "description": "Larastan - Discover bugs in your code without running it. A phpstan/phpstan wrapper for Laravel",
-            "keywords": [
-                "PHPStan",
-                "code analyse",
-                "code analysis",
-                "larastan",
-                "laravel",
-                "package",
-                "php",
-                "static analysis"
-            ],
-            "time": "2020-03-26T18:13:35+00:00"
-        },
-        {
             "name": "phar-io/manifest",
             "version": "1.0.3",
             "source": {
@@ -7750,45 +7678,6 @@
                 "stub"
             ],
             "time": "2020-03-05T15:02:03+00:00"
-        },
-        {
-            "name": "phpstan/phpstan",
-            "version": "0.12.18",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "1ce27fe29c8660a27926127d350d53d80c4d4286"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/1ce27fe29c8660a27926127d350d53d80c4d4286",
-                "reference": "1ce27fe29c8660a27926127d350d53d80c4d4286",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^7.1"
-            },
-            "bin": [
-                "phpstan",
-                "phpstan.phar"
-            ],
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "0.12-dev"
-                }
-            },
-            "autoload": {
-                "files": [
-                    "bootstrap.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "PHPStan - PHP Static Analysis Tool",
-            "time": "2020-03-22T16:51:47+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",

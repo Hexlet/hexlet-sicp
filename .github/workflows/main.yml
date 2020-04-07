@@ -23,9 +23,6 @@ jobs:
     - name: Check lint
       run: make lint
 
-    - name: Analyse by phpstan
-      run: make analyse
-
     - name: Execute tests (Unit and Feature tests) via PHPUnit
       run: make test
 
