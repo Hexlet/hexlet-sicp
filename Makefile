@@ -1,5 +1,5 @@
 test:
-	composer run phpunit
+	php artisan test
 
 setup: env-prepare sqlite-prepare install key db-prepare self-check
 
