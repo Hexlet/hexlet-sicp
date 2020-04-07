@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "axios": "^0.18",
-    "bootstrap": "^4.1.0",
+    "bootstrap": "^4.4.1",
     "cross-env": "^5.1",
     "jquery": "^3.2",
     "jquery-ujs": "^1.2.2",
