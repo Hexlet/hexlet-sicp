@@ -13,9 +13,6 @@ start:
 db-prepare:
 	php artisan migrate --seed
 
-analyse:
-	composer phpstan analyse
-
 lint:
 	composer phpcs
 
