@@ -1,7 +1,7 @@
 test:
-	composer run phpunit
+	php artisan test
 
-setup: env-prepare sqlite-prepare install key db-prepare self-check
+setup: env-prepare sqlite-prepare install key db-prepare
 
 install:
 	composer install
@@ -12,9 +12,6 @@ start:
 
 db-prepare:
 	php artisan migrate --seed
-
-analyse:
-	php artisan code:analyse
 
 lint:
 	composer phpcs
@@ -33,9 +30,6 @@ sqlite-prepare:
 
 key:
 	php artisan key:generate
-
-self-check:
-	php artisan self-diagnosis
 
 ide-helper:
 	php artisan ide-helper:eloquent
