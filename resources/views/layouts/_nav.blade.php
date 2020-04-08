@@ -18,16 +18,16 @@
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPages" role="button" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">Pages</a>
+                        aria-haspopup="true" aria-expanded="false">
+                        Pages
+                    </a>
                     <div class="dropdown-menu border-white tex" aria-labelledby="navbarDropdownPages">
                         <a class="nav-link text-secondary" href="{{ route('chapters.index') }}">
                             <i class="fas fa-book"></i>
-
                             {{ __('layout.nav.chapters') }}
                         </a>
                         <a class="nav-link text-secondary" href="{{ route('exercises.index') }}">
                             <i class="fas fa-dumbbell"></i>
-
                             {{ __('layout.nav.exercises') }}
                         </a>
                         <a class="nav-link text-secondary" target="_blank" href="https://guides.hexlet.io/how-to-learn-sicp/">
@@ -44,7 +44,6 @@
                             <i class="fas fa-list-ol"></i>
                             {{ __('layout.nav.rating') }}
                         </a>
-                        
                     </div>
                 </li>
             </ul>
@@ -64,8 +63,8 @@
                 @endif
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('login') }}">
-                            <i class="fas fa-sign-in-alt"></i>
-                            {{ __('layout.nav.login') }}
+                        <i class="fas fa-sign-in-alt"></i>
+                        {{ __('layout.nav.login') }}
                     </a>
                 </li>
                 <li class="nav-item">
