@@ -21,7 +21,7 @@
                         aria-haspopup="true" aria-expanded="false">
                         Pages
                     </a>
-                    <div class="dropdown-menu border-white tex" aria-labelledby="navbarDropdownPages">
+                    <div class="dropdown-menu border-white" aria-labelledby="navbarDropdownPages">
                         <a class="nav-link text-secondary" href="{{ route('chapters.index') }}">
                             <i class="fas fa-book"></i>
                             {{ __('layout.nav.chapters') }}
