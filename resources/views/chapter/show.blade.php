@@ -65,7 +65,7 @@
                        class="text-decoration-none"
                        data-toggle="tooltip"
                        data-placement="bottom"
-                       data-confirm="{{ __('account.are_you_sure') }}"
+                       data-confirm="{{ __('chapter.remove_completed_chapter', ['chapter_path' => $chapter->path]) }}"
                        data-method="delete">
                         <span class="pl-2">{{ __('layout.common.cancel') }}</span>
                     </a>

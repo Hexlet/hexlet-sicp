@@ -9,5 +9,6 @@ return [
         'nobody_completed' => 'Эту главу еще никто не завершил.',
         'already_completed' => 'Завершено',
         'mark_read' => 'Отметить прочитанным'
-    ]
+    ],
+    'remove_completed_chapter' => 'Удалить главу :chapter_path из выполненных'
 ];
