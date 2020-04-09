@@ -16,7 +16,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item dropdown">
+                <li class="nav-item dropdown d-none d-md-block">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPages" role="button" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">
                         Pages
@@ -45,6 +45,28 @@
                             {{ __('layout.nav.rating') }}
                         </a>
                     </div>
+                </li>
+                <li class="d-md-none">
+                    <a class="nav-link" href="{{ route('chapters.index') }}">
+                        <i class="fas fa-book"></i>
+                        {{ __('layout.nav.chapters') }}
+                    </a>
+                    <a class="nav-link" href="{{ route('exercises.index') }}">
+                        <i class="fas fa-dumbbell"></i>
+                        {{ __('layout.nav.exercises') }}
+                    </a>
+                    <a class="nav-link" target="_blank" href="https://guides.hexlet.io/how-to-learn-sicp/">
+                        <i class="far fa-hand-point-right"></i>
+                        {{ __('layout.nav.sicp_read') }}
+                    </a>
+                    <a class="nav-link" target="_blank" href="https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book.html">
+                        <i class="fas fa-book-open"></i>
+                        {{ __('layout.nav.sicp_book') }}
+                    </a>
+                    <a class="nav-link" href="{{ route('ratings.index') }}">
+                        <i class="fas fa-list-ol"></i>
+                        {{ __('layout.nav.rating') }}
+                    </a>
                 </li>
             </ul>
 
