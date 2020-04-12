@@ -4,7 +4,7 @@
     $otherLocales = getOtherLocales($currentLocale, $locales);
 @endphp
 <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-    <div class="container-fluid px-xl-5 px-lg-3">
+    <div class="container-lg">
         <a class="navbar-brand" href="{{ LaravelLocalization::getLocalizedURL($currentLocale, '/') }}">
             {{ __('layout.nav.name') }}
         </a>
@@ -15,23 +15,52 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- Left Side Of Navbar -->
-            <ul class="navbar-nav mr-auto align-items-center">
-                <li class="nav-item">
-                    <a class="nav-link px-0 px-lg-2" href="{{ route('chapters.index') }}">
-                        <i class="fas fa-book"></i>
+            <ul class="navbar-nav mr-auto d-none d-md-block">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPages" role="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        Pages
+                    </a>
+                    <div class="dropdown-menu border-white" aria-labelledby="navbarDropdownPages">
+                        <a class="nav-link text-secondary" href="{{ route('chapters.index') }}">
+                            <i class="fas fa-book"></i>
+                            {{ __('layout.nav.chapters') }}
+                        </a>
+                        <a class="nav-link text-secondary" href="{{ route('exercises.index') }}">
+                            <i class="fas fa-dumbbell"></i>
+                            {{ __('layout.nav.exercises') }}
+                        </a>
+                        <a class="nav-link text-secondary" target="_blank" href="https://guides.hexlet.io/how-to-learn-sicp/">
+                            <i class="far fa-hand-point-right"></i>
+                            {{ __('layout.nav.sicp_read') }}
+                        </a>
+                        <a class="nav-link text-secondary" target="_blank" href="https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book.html">
+                            <i class="fas fa-book-open"></i>
+                            {{ __('layout.nav.sicp_book') }}
+                        </a>
+                        <a class="nav-link text-secondary" href="{{ route('ratings.index') }}">
+                            <i class="fas fa-list-ol"></i>
+                            {{ __('layout.nav.rating') }}
+                        </a>
+                    </div>
+                </li>
+            </ul>
 
+            <ul class="navbar-nav mr-auto d-md-none">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('chapters.index') }}">
+                        <i class="fas fa-book"></i>
                         {{ __('layout.nav.chapters') }}
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link px-0 px-lg-2" href="{{ route('exercises.index') }}">
+                    <a class="nav-link" href="{{ route('exercises.index') }}">
                         <i class="fas fa-dumbbell"></i>
-
                         {{ __('layout.nav.exercises') }}
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link px-0 px-lg-2" target="_blank" href="https://guides.hexlet.io/how-to-learn-sicp/">
+                    <a class="nav-link" target="_blank" href="https://guides.hexlet.io/how-to-learn-sicp/">
                         <i class="far fa-hand-point-right"></i>
                         {{ __('layout.nav.sicp_read') }}
                     </a>
@@ -65,8 +94,8 @@
                 @endif
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('login') }}">
-                            <i class="fas fa-sign-in-alt"></i>
-                            {{ __('layout.nav.login') }}
+                        <i class="fas fa-sign-in-alt"></i>
+                        {{ __('layout.nav.login') }}
                     </a>
                 </li>
                 <li class="nav-item">
