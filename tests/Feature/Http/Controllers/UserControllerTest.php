@@ -38,7 +38,7 @@ class UserControllerTest extends TestCase
         $response = $this->get(route('users.show', $user));
 
         $response->assertStatus(200)
-            ->assertSee(e($user->name));
+            ->assertSee($user->name);
     }
 
     public function testInvalidShow()
