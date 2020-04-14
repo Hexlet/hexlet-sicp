@@ -27,11 +27,18 @@
             </div>
             <ul class="list-group">
                 @foreach($chapters as $chapter)
-                <li class="list-group-item {{ haveRead($user, $chapter) ? 'list-group-item-success' : '' }}">
+                <li class="list-group-item">
                     @if(!$chapter->can_read)
                         <h3 class="h4"><a href="{{ route('chapters.show', $chapter) }}">{{ $chapter->path }} {{ getChapterName($chapter->path) }}</a></h3>
                     @else
-                        <h4 class="h6"><a href="{{ route('chapters.show', $chapter) }}">{{ $chapter->path }} {{ getChapterName($chapter->path) }}</a></h4>
+                        <h4 class="h6">
+                            <a class="d-flex" href="{{ route('chapters.show', $chapter) }}">
+                                {{ $chapter->path }} {{ getChapterName($chapter->path) }}
+                                @if (haveRead($user, $chapter))
+                                <div class="ml-auto"><i class="text-primary fas fa-check"></i></div>
+                                @endif
+                            </a>
+                        </h4>
                     @endif
                     @foreach($chapter->exercises as $exercise)
                         <a href="{{ route('exercises.show', $exercise) }}"
