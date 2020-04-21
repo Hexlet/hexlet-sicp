@@ -14,7 +14,6 @@
     <div class="col-md-4">
         <h2 class="my-3">{{ __('welcome.what_is_here') }}</h2>
         <p>{{ __('welcome.about_sicp') }}
-            <br>
             <a href="https://guides.hexlet.io/how-to-learn-sicp/">{{ __('layout.nav.sicp_read') }}</a>
         </p>
         <h2 class="my-3">{{ __('welcome.features') }}</h2>
@@ -30,7 +29,7 @@
             @endforeach
 
         </ul>
-        <a class="btn btn-primary" href="{{ (route('my')) }}" role="button">{{ __('layout.welcome.mark_read') }}</a>
+        <a class="btn btn-primary" href="{{ (route('my')) }}">{{ __('layout.welcome.mark_read') }}</a>
     </div>
 </div>
 
