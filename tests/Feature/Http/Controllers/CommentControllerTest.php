@@ -16,8 +16,6 @@ use Tests\TestCase;
  */
 class CommentControllerTest extends TestCase
 {
-    use WithFaker;
-
     private $user;
 
     public function setUp(): void
@@ -40,6 +38,7 @@ class CommentControllerTest extends TestCase
      */
     public function testStoreChapter(string $commentableClass)
     {
+        /** @var Model $commentableClass */
         $commentable = $commentableClass::inRandomOrder()->first();
         $visitedPage = $this->getCommentableActionRoute('show', $commentable);
         $user = $this->user;
@@ -65,6 +64,7 @@ class CommentControllerTest extends TestCase
      */
     public function testUpdate(string $commentableClass)
     {
+        /** @var Model $commentableClass */
         $commentable = $commentableClass::inRandomOrder()->first();
         $visitedPage = $this->getCommentableActionRoute('show', $commentable);
         $user = $this->user;
@@ -89,10 +89,11 @@ class CommentControllerTest extends TestCase
             route('comments.update', compact('comment')),
             $commentData
         );
-        $this->assertDatabaseHas('comments', array_merge($commentData, ['id' => $comment->id]));
-
+        $response->assertSessionDoesntHaveErrors();
         $response->assertRedirect(sprintf("%s#comment-%s", $visitedPage, $comment->id));
         $this->get($visitedPage)->assertSee($commentData['content']);
+
+        $this->assertDatabaseHas('comments', array_merge($commentData, ['id' => $comment->id]));
     }
 
     /**
@@ -100,6 +101,7 @@ class CommentControllerTest extends TestCase
      */
     public function testDestroy(string $commentableClass)
     {
+        /** @var Model $commentableClass */
         $commentable = $commentableClass::inRandomOrder()->first();
         $visitedPage = $this->getCommentableActionRoute('show', $commentable);
         $user = $this->user;
@@ -122,6 +124,7 @@ class CommentControllerTest extends TestCase
         );
 
         $response->assertRedirect($visitedPage);
+        $response->assertSessionDoesntHaveErrors();
         $this->assertDatabaseMissing('comments', $commentData);
         $this->get($visitedPage)->assertDontSee($commentData['content']);
     }
@@ -131,6 +134,7 @@ class CommentControllerTest extends TestCase
      */
     public function testUpdateByOtherUser(string $commentableClass)
     {
+        /** @var Model $commentableClass */
         $commentable = $commentableClass::inRandomOrder()->first();
         $visitedPage = $this->getCommentableActionRoute('show', $commentable);
         $user = $this->user;
@@ -158,6 +162,7 @@ class CommentControllerTest extends TestCase
     public function testDestroyByOtherUser(
         string $commentableClass
     ) {
+        /** @var Model $commentableClass */
         $commentable = $commentableClass::inRandomOrder()->first();
         $visitedPage = $this->getCommentableActionRoute('show', $commentable);
         $user = $this->user;

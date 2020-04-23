@@ -45,6 +45,7 @@ class UserExerciseControllerTest extends TestCase
         ]);
 
         $response->assertRedirect($exercisePage);
+        $response->assertSessionDoesntHaveErrors();
 
         $this->assertDatabaseHas('completed_exercises', [
             'user_id'     => $this->user->id,
@@ -72,6 +73,7 @@ class UserExerciseControllerTest extends TestCase
         ]));
 
         $response->assertRedirect($exercisePage);
+        $response->assertSessionDoesntHaveErrors();
 
         $this->assertDatabaseMissing('completed_exercises', [
             'user_id'     => $completedExercise->user_id,

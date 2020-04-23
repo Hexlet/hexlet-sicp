@@ -4,7 +4,6 @@ namespace Tests\Feature\Http\Controllers;
 
 use App\Chapter;
 use App\User;
-use Illuminate\Auth\AuthenticationException;
 use Tests\TestCase;
 
 class UserChapterControllerTest extends TestCase
@@ -33,45 +32,46 @@ class UserChapterControllerTest extends TestCase
             route('chapters.show', $chapter)
         );
 
-        $this->assertDatabaseHas('read_chapters', [
+        $completedChapterData = [
             'chapter_id' => $chapter->id,
             'user_id' => $user->id,
-        ]);
+        ];
+        $this->assertDatabaseHas('read_chapters', $completedChapterData);
 
         $response = $this->delete(
             route('users.chapters.destroy', [$user, $chapter])
         );
 
         $response->assertRedirect(route('chapters.show', $chapter));
+        $response->assertSessionDoesntHaveErrors();
 
-        $this->assertDatabaseMissing('read_chapters', [
-            'chapter_id' => $chapter->id,
-            'user_id' => $user->id,
-        ]);
+        $this->assertDatabaseMissing('read_chapters', $completedChapterData);
     }
 
     public function testStore()
     {
         $myPage = route('my');
-        $chapters = Chapter::all();
+        $chapters = Chapter::inRandomOrder()->limit(2)->get();
+
+        $postData = [
+            'chapters_id' => $chapters->pluck('id')->toArray(),
+        ];
 
         $this
             ->actingAs($this->user)
             ->from($myPage)
-            ->post(route('users.chapters.store', [$this->user]), [
-                'chapters_id' => $chapters->pluck('id')->toArray(),
-            ])
-            ->assertRedirect($myPage);
+            ->post(route('users.chapters.store', [$this->user]), $postData)
+            ->assertRedirect($myPage)
+            ->assertSessionDoesntHaveErrors();
 
-        $this->assertEquals($chapters->count(), $this->user->readChapters->count());
-    }
+        $this->assertEquals(
+            $chapters->count(),
+            $this->user->readChapters->count()
+        );
 
-    public function testStoreAsGuest()
-    {
-        $this->expectException(AuthenticationException::class);
-
-        $this->post(route('users.chapters.store', [$this->user]), [
-            'chapters_id' => [],
+        $this->assertDatabaseHas('read_chapters', [
+                'chapter_id' => $chapters->first()->id,
+                'user_id' => $this->user->id,
         ]);
     }
 }

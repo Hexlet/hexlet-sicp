@@ -30,7 +30,7 @@ class SitemapControllerTest extends TestCase
 
         $response = $this->get('/sitemap.xml');
 
-        $response->assertStatus(200);
+        $response->assertOk();
     }
 
     private function getFixture()

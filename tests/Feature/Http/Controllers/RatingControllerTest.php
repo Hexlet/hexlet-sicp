@@ -19,6 +19,6 @@ class RatingControllerTest extends TestCase
             });
 
         $this->get(route('ratings.index'))
-            ->assertStatus(200);
+            ->assertOk();
     }
 }

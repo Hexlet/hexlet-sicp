@@ -22,32 +22,14 @@ class ChapterControllerTest extends TestCase
             });
     }
 
-    public function testIndexAsGuest()
+    public function testIndex()
     {
         $response = $this->get(route('chapters.index'));
 
-        $response->assertStatus(200);
-    }
-
-    public function testIndexAsUser()
-    {
-        $user = factory(User::class)->create();
-        $this->actingAs($user);
-
-        $response = $this->get(route('chapters.index'));
-
-        $response->assertStatus(200);
+        $response->assertOk();
     }
 
     public function testShow()
-    {
-        $chapter = Chapter::inRandomOrder()->first();
-        $response = $this->get(route('chapters.show', $chapter));
-
-        $response->assertStatus(200);
-    }
-
-    public function testShowWithComments()
     {
         $chapter = Chapter::inRandomOrder()->first();
         $chapter->comments()->saveMany(
@@ -55,13 +37,6 @@ class ChapterControllerTest extends TestCase
         );
         $response = $this->get(route('chapters.show', $chapter));
 
-        $response->assertStatus(200);
-    }
-
-    public function testInvalidShow()
-    {
-        $this->expectException(NotFoundHttpException::class);
-        $response = $this->get(route('chapters.show', ['chapter' => 'foo']));
-        $response->assertNotFound();
+        $response->assertOk();
     }
 }
