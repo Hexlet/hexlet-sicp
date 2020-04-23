@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\User;
 
@@ -34,6 +35,13 @@ class LoginController extends Controller
 
         Auth::login($user);
 
+        return redirect()->back();
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        flash(__('auth.logout'))->success();
         return redirect()->back();
     }
 }
