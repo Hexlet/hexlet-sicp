@@ -1,3 +1,2 @@
 web: php artisan serve
 frontend: npm run watch
-
