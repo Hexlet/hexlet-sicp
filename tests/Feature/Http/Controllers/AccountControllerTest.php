@@ -4,8 +4,6 @@ namespace Tests\Feature\Http\Controllers;
 
 use Tests\TestCase;
 use App\User;
-use App\Chapter;
-use App\ReadChapter;
 
 class AccountControllerTest extends TestCase
 {
@@ -22,38 +20,36 @@ class AccountControllerTest extends TestCase
     public function testIndex()
     {
         $response = $this->get(route('account.index'));
-        $response->assertStatus(302);
+        $response->assertRedirect();
     }
 
     public function testDelete()
     {
         $response = $this->get(route('account.delete'));
-        $response->assertStatus(200)
-            ->assertSee(e($this->user->email));
+        $response->assertOk()
+            ->assertSee($this->user->email);
     }
+
     public function testDestroy()
     {
-        $chapter = factory(Chapter::class)->create();
-
-        factory(ReadChapter::class)->create([
-            'user_id' => $this->user->id,
-            'chapter_id' => $chapter->id,
-        ]);
-
+        $this->actingAs($this->user);
+        $this->assertAuthenticatedAs($this->user);
         $response = $this->delete(route('account.destroy', $this->user));
-        $response->assertStatus(302);
+        $response->assertRedirect();
+        $this->assertGuest();
 
-        $user2 = User::find($this->user->id);
-        $this->assertNull($user2);
+        $this->assertNull(User::find($this->user->id));
     }
 
-    public function testUpdateName()
+    public function testUpdate()
     {
-        $this->patch(route('account.update', $this->user), [
-            'name' => 'Claus',
+        $name = $this->faker->name;
+        $response = $this->patch(route('account.update', $this->user), [
+            'name' => $name,
         ]);
-        $storedUser = User::find($this->user->id);
-        $this->assertEquals('Claus', $storedUser->name);
+        $response->assertSessionHasNoErrors();
+
+        $this->assertDatabaseHas('users', ['id' => $this->user->id, 'name' => $name]);
     }
 
     public function testEdit()

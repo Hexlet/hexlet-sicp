@@ -31,14 +31,15 @@ class MyControllerTest extends TestCase
 
         $response = $this->get(route('my'));
 
-        $response->assertStatus(200)
-            ->assertSee(e($this->user->name))
-            ->assertSee(e($chapter->path));
+        $response->assertOk()
+            ->assertSee($this->user->name)
+            ->assertSee($chapter->path);
     }
 
     public function testShowAsGuest()
     {
         $this->expectException(AuthenticationException::class);
+
         $this->followingRedirects()->get(route('my'));
     }
 }

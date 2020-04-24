@@ -8,11 +8,6 @@ use Tests\TestCase;
 
 class SitemapControllerTest extends TestCase
 {
-    /**
-     * A basic feature test example.
-     *
-     * @return void
-     */
     public function testIndex()
     {
         $gists = $this->createMock(Gists::class);
@@ -30,7 +25,7 @@ class SitemapControllerTest extends TestCase
 
         $response = $this->get('/sitemap.xml');
 
-        $response->assertStatus(200);
+        $response->assertOk();
     }
 
     private function getFixture()

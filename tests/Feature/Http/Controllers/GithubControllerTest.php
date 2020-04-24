@@ -10,8 +10,6 @@ use Laravel\Socialite\Two\User;
 
 class GithubControllerTest extends TestCase
 {
-    use WithFaker;
-
     public function mockSocialiteFacade($email, $name, $nickname, $token, $id)
     {
         $user = new User();
@@ -43,7 +41,8 @@ class GithubControllerTest extends TestCase
         $token = $this->faker->randomAscii;
         $email = $this->faker->email;
         $this->mockSocialiteFacade($email, $name, $nickname, $token, random_int(1, 100));
-        $this->json('GET', '/oauth/github/callback')->assertLocation(route('my'));
+        $githubCallback = route('oauth.github-callback');
+        $this->get($githubCallback)->assertLocation(route('my'));
 
         $user = AppUser::where('email', $email)->firstOrFail();
         $this->assertDatabaseHas('users', ['email' => $email]);
@@ -56,32 +55,35 @@ class GithubControllerTest extends TestCase
         $token = $this->faker->randomAscii;
         $email = $this->faker->email;
         $this->mockSocialiteFacade($email, $name, $nickname, $token, random_int(1, 100));
-        $this->json('GET', '/oauth/github/callback')->assertLocation(route('my'));
+        $githubCallback = route('oauth.github-callback');
+        $this->get($githubCallback)->assertLocation(route('my'));
 
         $user = AppUser::where('email', $email)->firstOrFail();
         $this->assertDatabaseHas('users', ['email' => $email]);
 
         $response = $this->delete(route('account.destroy', $user));
-        $response->assertStatus(302);
+        $response->assertRedirect();
 
         $user2 = AppUser::find($user->id);
         $this->assertNull($user2);
 
         $this->mockSocialiteFacade($email, $name, $nickname, $token, random_int(1, 100));
-        $this->json('GET', '/oauth/github/callback')->assertLocation(route('my'));
+        $githubCallback = route('oauth.github-callback');
+        $this->get($githubCallback)->assertLocation(route('my'));
 
-        $user = AppUser::where('email', $email)->firstOrFail();
         $this->assertDatabaseHas('users', ['email' => $email]);
     }
 
     public function testCreateEmptyUserNameAndLogin()
     {
-        $name  = "";
+        $name  = '';
         $nickname = $this->faker->name;
         $token = $this->faker->randomAscii;
         $email = $this->faker->email;
+
         $this->mockSocialiteFacade($email, $name, $nickname, $token, random_int(1, 100));
-        $this->json('GET', '/oauth/github/callback')->assertLocation(route('my'));
+        $githubCallback = route('oauth.github-callback');
+        $this->get($githubCallback)->assertLocation(route('my'));
 
         $this->assertDatabaseHas('users', [ 'email' => $email, 'name' => $nickname ]);
     }

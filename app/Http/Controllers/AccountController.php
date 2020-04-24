@@ -40,6 +40,8 @@ class AccountController extends Controller
         $user = Auth::user();
         $user->delete();
         flash(__('account.your_account_deleted'));
+
+        Auth::logout();
         return redirect()->route('index');
     }
 

@@ -34,15 +34,16 @@ class ActivityControllerTest extends TestCase
         $this->post(route('users.chapters.store', [$this->user->id]), [
                 'chapters_id' => $chapters->pluck('id')->toArray(),
             ])
-            ->assertRedirect($myPage);
+            ->assertRedirect($myPage)
+            ->assertSessionDoesntHaveErrors();
 
         $this->user->refresh();
 
         $response = $this->get(route('log.index'));
-        $response->assertStatus(200)->assertSee($chapters[0]->path);
+        $response->assertOk()->assertSee($chapters->first()->path);
 
         $response = $this->get(route('index'));
-        $response->assertStatus(200)->assertSee($chapters[0]->path);
+        $response->assertOk()->assertSee($chapters->first()->path);
 
         $this->assertDatabaseHas('activity_log', [
             'description' => 'added'

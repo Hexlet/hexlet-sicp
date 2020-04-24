@@ -8,7 +8,6 @@ use App\Exercise;
 use App\User;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 /**
@@ -16,8 +15,6 @@ use Tests\TestCase;
  */
 class CommentControllerTest extends TestCase
 {
-    use WithFaker;
-
     private $user;
 
     public function setUp(): void
@@ -40,6 +37,7 @@ class CommentControllerTest extends TestCase
      */
     public function testStoreChapter(string $commentableClass)
     {
+        /** @var Model $commentableClass */
         $commentable = $commentableClass::inRandomOrder()->first();
         $visitedPage = $this->getCommentableActionRoute('show', $commentable);
         $user = $this->user;
@@ -65,6 +63,7 @@ class CommentControllerTest extends TestCase
      */
     public function testUpdate(string $commentableClass)
     {
+        /** @var Model $commentableClass */
         $commentable = $commentableClass::inRandomOrder()->first();
         $visitedPage = $this->getCommentableActionRoute('show', $commentable);
         $user = $this->user;
@@ -89,10 +88,11 @@ class CommentControllerTest extends TestCase
             route('comments.update', compact('comment')),
             $commentData
         );
-        $this->assertDatabaseHas('comments', array_merge($commentData, ['id' => $comment->id]));
-
+        $response->assertSessionDoesntHaveErrors();
         $response->assertRedirect(sprintf("%s#comment-%s", $visitedPage, $comment->id));
         $this->get($visitedPage)->assertSee($commentData['content']);
+
+        $this->assertDatabaseHas('comments', array_merge($commentData, ['id' => $comment->id]));
     }
 
     /**
@@ -100,6 +100,7 @@ class CommentControllerTest extends TestCase
      */
     public function testDestroy(string $commentableClass)
     {
+        /** @var Model $commentableClass */
         $commentable = $commentableClass::inRandomOrder()->first();
         $visitedPage = $this->getCommentableActionRoute('show', $commentable);
         $user = $this->user;
@@ -122,6 +123,7 @@ class CommentControllerTest extends TestCase
         );
 
         $response->assertRedirect($visitedPage);
+        $response->assertSessionDoesntHaveErrors();
         $this->assertDatabaseMissing('comments', $commentData);
         $this->get($visitedPage)->assertDontSee($commentData['content']);
     }
@@ -131,6 +133,7 @@ class CommentControllerTest extends TestCase
      */
     public function testUpdateByOtherUser(string $commentableClass)
     {
+        /** @var Model $commentableClass */
         $commentable = $commentableClass::inRandomOrder()->first();
         $visitedPage = $this->getCommentableActionRoute('show', $commentable);
         $user = $this->user;
@@ -146,8 +149,8 @@ class CommentControllerTest extends TestCase
         $response = $this->put(
             route('comments.update', compact('comment'))
         );
+        $response->assertForbidden();
 
-        $response->assertStatus(401);
         $this->assertDatabaseHas('comments', $commentData);
         $this->get($visitedPage)->assertSee($commentData['content']);
     }
@@ -158,6 +161,7 @@ class CommentControllerTest extends TestCase
     public function testDestroyByOtherUser(
         string $commentableClass
     ) {
+        /** @var Model $commentableClass */
         $commentable = $commentableClass::inRandomOrder()->first();
         $visitedPage = $this->getCommentableActionRoute('show', $commentable);
         $user = $this->user;
@@ -174,7 +178,7 @@ class CommentControllerTest extends TestCase
         );
         $commentData = $comment->only('id', 'user_id', 'content', 'deleted_at');
 
-        $response->assertStatus(401);
+        $response->assertForbidden();
         $this->assertDatabaseHas('comments', $commentData);
         $this->get($visitedPage)->assertSee($commentData['content']);
     }

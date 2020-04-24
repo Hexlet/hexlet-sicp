@@ -16,8 +16,8 @@ class UserControllerTest extends TestCase
 
         $response = $this->get(route('users.show', $user));
 
-        $response->assertStatus(200)
-            ->assertSee(e($user->name));
+        $response->assertOk()
+            ->assertSee($user->name);
     }
 
     public function testVisitByOtherUser()
@@ -28,8 +28,8 @@ class UserControllerTest extends TestCase
 
         $response = $this->get(route('users.show', $user));
 
-        $response->assertStatus(200)
-            ->assertSee(e($user->name));
+        $response->assertOk()
+            ->assertSee($user->name);
     }
 
     public function testVisitByGuest()
@@ -37,7 +37,7 @@ class UserControllerTest extends TestCase
         $user = factory(User::class)->create();
         $response = $this->get(route('users.show', $user));
 
-        $response->assertStatus(200)
+        $response->assertOk()
             ->assertSee($user->name);
     }
 
@@ -46,6 +46,5 @@ class UserControllerTest extends TestCase
         $this->expectException(NotFoundHttpException::class);
         $response = $this->get(route('users.show', ['user' => 'foo']));
         $response->assertNotFound();
-        $response->assertStatus(404);
     }
 }

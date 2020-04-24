@@ -21,17 +21,7 @@ class ExerciseControllerTest extends TestCase
                 );
             });
     }
-
-    public function testIndexAsGuest()
-    {
-        $response = $this->get(route('exercises.index'));
-        $exercise = Exercise::inRandomOrder()->first();
-
-        $response->assertStatus(200);
-        $response->assertSee($exercise->path);
-    }
-
-    public function testIndexAsUser()
+    public function testIndex()
     {
         $user = factory(User::class)->create();
         $this->actingAs($user);
@@ -39,20 +29,11 @@ class ExerciseControllerTest extends TestCase
         $response = $this->get(route('exercises.index'));
         $exercise = Exercise::inRandomOrder()->first();
 
-        $response->assertStatus(200);
+        $response->assertOk();
         $response->assertSee($exercise->path);
     }
 
     public function testShow()
-    {
-        $exercise = Exercise::inRandomOrder()->first();
-        $response = $this->get(route('exercises.show', $exercise));
-
-        $response->assertStatus(200);
-        $response->assertSee($exercise->path);
-    }
-
-    public function testShowWithComments()
     {
         $exercise = Exercise::inRandomOrder()->first();
         $exercise->comments()->saveMany(
@@ -61,7 +42,7 @@ class ExerciseControllerTest extends TestCase
 
         $response = $this->get(route('exercises.show', $exercise));
 
-        $response->assertStatus(200);
+        $response->assertOk();
         $response->assertSee($exercise->path);
     }
 }
