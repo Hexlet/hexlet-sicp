@@ -8,11 +8,6 @@ use Tests\TestCase;
 
 class SitemapControllerTest extends TestCase
 {
-    /**
-     * A basic feature test example.
-     *
-     * @return void
-     */
     public function testIndex()
     {
         $gists = $this->createMock(Gists::class);

@@ -2,16 +2,11 @@
 
 namespace Tests\Feature\Http\Controllers;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 use App\User;
 
 class AccountControllerTest extends TestCase
 {
-    use WithFaker;
-    use RefreshDatabase;
-
     private $user;
 
     protected function setUp(): void
@@ -25,14 +20,14 @@ class AccountControllerTest extends TestCase
     public function testIndex()
     {
         $response = $this->get(route('account.index'));
-        $response->assertStatus(302);
+        $response->assertRedirect();
     }
 
     public function testDelete()
     {
         $response = $this->get(route('account.delete'));
-        $response->assertStatus(200)
-            ->assertSee(e($this->user->email));
+        $response->assertOk()
+            ->assertSee($this->user->email);
     }
 
     public function testDestroy()

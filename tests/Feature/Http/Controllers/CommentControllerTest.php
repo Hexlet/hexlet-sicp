@@ -8,7 +8,6 @@ use App\Exercise;
 use App\User;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 /**
@@ -150,8 +149,8 @@ class CommentControllerTest extends TestCase
         $response = $this->put(
             route('comments.update', compact('comment'))
         );
+        $response->assertForbidden();
 
-        $response->assertStatus(401);
         $this->assertDatabaseHas('comments', $commentData);
         $this->get($visitedPage)->assertSee($commentData['content']);
     }
@@ -179,7 +178,7 @@ class CommentControllerTest extends TestCase
         );
         $commentData = $comment->only('id', 'user_id', 'content', 'deleted_at');
 
-        $response->assertStatus(401);
+        $response->assertForbidden();
         $this->assertDatabaseHas('comments', $commentData);
         $this->get($visitedPage)->assertSee($commentData['content']);
     }
