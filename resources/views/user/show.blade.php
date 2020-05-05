@@ -9,6 +9,13 @@
  */
 @endphp
 @section('content')
+
+    @if (session('status'))
+        <div class="alert alert-success" role="alert">
+            {{ __('passwords.reset') }}
+        </div>
+    @endif
+                    
     <div class="row my-4">
         <div class="col-12 col-md-3">
             <div class="position-sticky sticky-top pt-4 mb-4">
