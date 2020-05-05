@@ -23,7 +23,7 @@ class ResetPasswordController extends Controller
     public function redirectTo()
     {
         $user = Auth::user();
-
+        flash(__('passwords.reset'))->success();
         return route('users.show', $user);
     }
 }
