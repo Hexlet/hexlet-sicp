@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Activity;
+use App\Comment;
 use Carbon\Carbon;
 use Carbon\CarbonPeriod;
 use Illuminate\Support\Collection;
@@ -39,11 +40,14 @@ class WelcomeController extends Controller
                 endif;
             });
 
+        $comments = Comment::latest()->limit(10)->get();
+
         return view(
             'welcome',
             [
                 'logItems' => $logItems,
                 'chart' => $chart,
+                'comments' => $comments
             ]
         );
     }

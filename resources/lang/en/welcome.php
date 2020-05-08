@@ -21,4 +21,7 @@ return [
     'coming_soon_list' => [
         'Bind repository with resolved exercises',
     ],
+    'comments' => [
+        'latest' => 'Latest comments'
+    ]
 ];
