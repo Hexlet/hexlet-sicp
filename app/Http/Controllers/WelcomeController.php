@@ -13,33 +13,7 @@ class WelcomeController extends Controller
     public function index()
     {
         $logItems = Activity::latest()->with('causer')->limit(10)->get();
-
-        $countActivitiesByDays = Activity::all()
-            ->groupBy(function (Activity $activity) {
-                    return $activity->created_at->format('Y-m-d');
-            })
-            ->map(function (Collection $group) {
-                    return $group->count();
-            });
-
-        $chart = CarbonPeriod::create(now()->subMonths(12), '1 day', now())
-            ->map(function (Carbon $dayDate) use ($countActivitiesByDays) {
-                    $day = $dayDate->format('Y-m-d');
-                    $dayActivitiesCount = $countActivitiesByDays->get($day, 0);
-
-                if ($dayActivitiesCount < 1) :
-                    return 0;
-                elseif ($dayActivitiesCount < 5) :
-                    return 1;
-                elseif ($dayActivitiesCount < 10) :
-                    return 2;
-                elseif ($dayActivitiesCount < 15) :
-                    return 3;
-                else :
-                    return 4;
-                endif;
-            });
-
+        $chart = $this->getChart();
         $comments = Comment::latest()->limit(10)->get();
 
         return view(
@@ -50,5 +24,32 @@ class WelcomeController extends Controller
                 'comments' => $comments
             ]
         );
+    }
+
+    /**
+     * @return \Generator
+     */
+    private function getChart(): \Generator
+    {
+        $countActivitiesByDays = Activity::all()
+            ->groupBy(function (Activity $activity) {
+                return $activity->created_at->format('Y-m-d');
+            })
+            ->map(function (Collection $group) {
+                return $group->count();
+            });
+
+        $chart = CarbonPeriod::create(now()->subMonths(12), '1 day', now())
+            ->map(function (Carbon $dayDate) use ($countActivitiesByDays): int {
+                $day = $dayDate->format('Y-m-d');
+                $dayActivitiesCount = $countActivitiesByDays->get($day, 0);
+                $magicNumber = 4;
+                $maxDayActivityLevel = 4;
+                $dayActivityLevel = (ceil(($dayActivitiesCount) / $magicNumber));
+
+                return min($dayActivityLevel, $maxDayActivityLevel);
+            });
+
+        return $chart;
     }
 }
