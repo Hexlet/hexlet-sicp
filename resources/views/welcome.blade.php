@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @php
 /** @var \Illuminate\Support\Collection|\App\Activity[] $logItems */
+/** @var \Illuminate\Support\Collection|\App\Comment[] $comments */
 @endphp
 @section('content')
 <h1 class="my-4">{{ __('welcome.title') }}</h1>
@@ -40,7 +41,7 @@
 </div>
 
 <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-6">
         <h3 class="my-3"><a href="{{ (route('log.index')) }}">{{ __('activitylog.title') }}</a></h3>
         @foreach($logItems as $logItem)
         <div class="media text-muted pt-1">
@@ -91,6 +92,24 @@
                     @default
                     <span>{{ __('activitylog.action_unknown') }}</span>
                 @endswitch
+            </div>
+        </div>
+        @endforeach
+    </div>
+    <div class="col-md-6">
+        <h3 class="h4 my-3">@lang('welcome.comments.latest')</h3>
+        @foreach($comments as $comment)
+        <div class="media text-muted pt-1">
+            <div class="media-body pb-1 mb-0 small lh-125 border-bottom border-gray">
+                <div class="d-flex justify-content-between align-items-center w-100">
+                    <strong class="text-gray-dark">
+                        @if($comment->user)
+                            <a href="{{ route('users.show', $comment->user->id) }}">{{ $comment->user->name }}</a>
+                        @endif
+                    </strong>
+                    <a href="{{ getCommentLink($comment) }}">{{ $comment->created_at }}</a>
+                </div>
+                    <span>{{ str_limit($comment->content, 80) }}</span>
             </div>
         </div>
         @endforeach
