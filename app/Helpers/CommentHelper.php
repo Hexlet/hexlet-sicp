@@ -8,7 +8,6 @@ if (!function_exists('getCommentLink')) {
         $commentableResourceName = str_plural(strtolower(class_basename($comment->commentable_type)));
         $commentableUrl = route("{$commentableResourceName}.show", $comment->commentable);
         $commentUrl = "{$commentableUrl}#comment-{$comment->id}";
-
         return $commentUrl;
     }
 }
