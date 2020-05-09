@@ -1,5 +1,7 @@
 @extends('layouts.app')
-
+@php
+/** @var \Illuminate\Support\Collection $rating */
+@endphp
 @section('content')
     <div class="row my-4">
         <div class="col-12 my-4">
@@ -15,11 +17,11 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($users as $user)
+                        @foreach($rating as $position => ['user' => $user, 'points' => $points])
                             <tr>
-                                <td>{{ $loop->index + 1 }}</td>
+                                <td>{{ $position }}</td>
                                 <td><a href="{{ route('users.show', $user) }}">{{ $user->name }}</a></td>
-                                <td>{{ $user->read_chapters_count }}</td>
+                                <td>{{ $points }}</td>
                             </tr>
                         @endforeach
                     </tbody>

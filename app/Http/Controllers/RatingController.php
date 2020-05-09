@@ -8,12 +8,10 @@ class RatingController extends Controller
 {
     public function index()
     {
-        $users = User::withCount('readChapters')
-            ->orderBy('read_chapters_count', 'DESC')
-            ->get();
+        $rating = getCalculatedRating();
 
         return view('rating.index', [
-           'users' => $users,
+           'rating' => $rating,
         ]);
     }
 }
