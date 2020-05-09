@@ -8,6 +8,11 @@ use Auth;
 
 class MyController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function __invoke()
     {
         $user = User::with('readChapters', 'completedExercises')->find(Auth::id());

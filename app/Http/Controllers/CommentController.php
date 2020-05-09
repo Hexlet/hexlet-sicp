@@ -60,6 +60,8 @@ class CommentController extends Controller
 
         if ($comment->save()) {
             flash()->success(__('layout.flash.success'));
+        } else {
+            flash()->error(__('layout.flash.error'));
         }
 
         return redirect(getCommentLink($comment));
@@ -74,7 +76,11 @@ class CommentController extends Controller
 
     public function destroy(Comment $comment)
     {
-        $comment->delete();
+        if ($comment->delete()) {
+            flash()->success(__('layout.flash.success'));
+        } else {
+            flash()->error(__('layout.flash.error'));
+        }
 
         return back();
     }

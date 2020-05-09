@@ -27,7 +27,8 @@ return [
         'additionally'      => 'Дополнительно',
     ],
     'flash' => [
-        'success' => 'Успешно'
+        'success' => 'Успешно',
+        'error' => 'Упс! Что-то пошло не так'
     ],
     'common' => [
         'cancel' => 'Отменить'

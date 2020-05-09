@@ -8,6 +8,11 @@ use Illuminate\Http\Request;
 
 class UserExerciseController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function store(Request $request, User $user)
     {
         $exercise = Exercise::findOrFail($request->get('exercise_id'));

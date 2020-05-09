@@ -7,10 +7,16 @@ use Auth;
 
 class AccountController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         /** @var User $user */
         $user = Auth::user();
+
         return redirect()->route('account.edit', $user->id);
     }
 
@@ -22,33 +28,45 @@ class AccountController extends Controller
             'name' => 'required|min:2||max:255|unique:users',
         ]);
         $user->name = request('name');
-        $user->save();
-        flash(__('account.name_updated'))->success();
+
+        if ($user->save()) {
+            flash()->success(__('account.name_updated'));
+        } else {
+            flash()->error(__('layout.flash.error'));
+        }
+
         return redirect()->route('account.edit', $user->id);
     }
 
-    public function edit(User $user)
+    public function edit()
     {
         /** @var User $user */
         $user = Auth::user();
+
         return view('account.edit', compact('user'));
     }
 
-    public function destroy(User $user)
+    public function destroy()
     {
         /** @var User $user */
         $user = Auth::user();
-        $user->delete();
-        flash(__('account.your_account_deleted'));
+
+        if ($user->delete()) {
+            flash()->success(__('account.your_account_deleted'));
+        } else {
+            flash()->error(__('layout.flash.error'));
+        }
 
         Auth::logout();
+
         return redirect()->route('index');
     }
 
-    public function delete(User $user)
+    public function delete()
     {
         /** @var User $user */
         $user = Auth::user();
+
         return view('account.delete', compact('user'));
     }
 }

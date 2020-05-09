@@ -8,9 +8,13 @@ use App\User;
 
 class UserChapterController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function store(SaveChapterRequest $request, User $user)
     {
-        //TODO Добавить guard, авторизованный польтзователь может изменять только свой список глав
         $userChaptersOld = $user->chapters()->pluck('path');
         $user->chapters()->sync($request->get('chapters_id', []));
         $userChaptersNew = $user->chapters()->pluck('path');

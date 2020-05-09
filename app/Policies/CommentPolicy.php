@@ -22,7 +22,7 @@ class CommentPolicy
 
     public function create()
     {
-        return true;
+        return \Auth::check();
     }
 
     public function update(User $user, Comment $comment)
