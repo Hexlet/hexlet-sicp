@@ -6,15 +6,29 @@
  * @var \App\Chapter $chapter
  * @var \App\Exercise $exercise
  * @var \Illuminate\Support\Collection $completedExercises
+ * @var \App\User $user
  */
 @endphp
 @section('content')
     <div class="row my-4">
         <div class="col-12 col-md-3">
-            <div class="position-sticky sticky-top pt-4 mb-4">
-                <p class="h2 mb-2">
-                    {{ $user->name }}
-                </p>
+            <div class="position-sticky sticky-top pt-4 mb-4" style="z-index: -1">
+                <div class="card">
+                    <div class="card-head"></div>
+                    <img class="card-img-top" src="https://www.gravatar.com/avatar/{{ md5($user->email) }}?s=500" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            {{ $user->name }}
+                        </h5>
+                    </div>
+                    <ul class="list-group-flush list-group border-top">
+                        <li class="list-group-item">Место в рейтинге: {{ $userRatingPosition }}</li>
+                        <li class="list-group-item">Баллов: {{ $points }}</li>
+                        <li class="list-group-item">Прочитано глав: {{ $user->readChapters->count() }} / {{ $chapters->count() }}</li>
+                        <li class="list-group-item">Выполнено заданий: {{ $user->completedExercises()->count() }} / {{ $exercises->count() }}</li>
+                        <li class="list-group-item">Оставлено комментариев: {{ $user->comments->count() }}</li>
+                    </ul>
+                </div>
             </div>
         </div>
         <div class="col-12 col-md-9 my-4">
