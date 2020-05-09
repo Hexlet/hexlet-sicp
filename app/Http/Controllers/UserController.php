@@ -24,7 +24,8 @@ class UserController extends Controller
         $exercises = Exercise::all();
 
 
-        return view('user.show',
+        return view(
+            'user.show',
             [
                 'user' => $user,
                 'chapters' => $chapters,
@@ -32,6 +33,7 @@ class UserController extends Controller
                 'completedExercises' => $user->completedExercises->keyBy('exercise_id'),
                 'userRatingPosition' => $userRatingPosition,
                 'points' => $points
-            ]);
+            ]
+        );
     }
 }
