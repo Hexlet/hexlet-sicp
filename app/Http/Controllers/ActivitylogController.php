@@ -11,6 +11,7 @@ class ActivitylogController extends Controller
         $logItems = Activity::with('causer')
             ->orderBy('created_at', 'DESC')
             ->paginate(15);
+
         return view('log.index', compact('logItems'));
     }
 }

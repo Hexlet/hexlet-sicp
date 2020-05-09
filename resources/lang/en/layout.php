@@ -27,7 +27,8 @@ return [
         'additionally'      => 'Additionally',
     ],
     'flash' => [
-        'success' => 'Success'
+        'success' => 'Success',
+        'error' => 'Aw, Snap! Something went wrong'
     ],
     'common' => [
         'cancel' => 'Сancel'
