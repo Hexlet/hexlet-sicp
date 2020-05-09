@@ -7,7 +7,7 @@ use App\ReadChapter;
 use App\User;
 use Tests\TestCase;
 
-class ActivityControllerTest extends TestCase
+class ActivitylogControllerTest extends TestCase
 {
     private $user;
 
