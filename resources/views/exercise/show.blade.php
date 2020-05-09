@@ -37,7 +37,7 @@
                 <p>{{ __('exercise.show.who_completed') }}</p>
                 <ul>
                     @foreach($exercise->users as $user)
-                    <li>{{ $user->name }}</li>
+                    <li><a href="{{ route('users.show', $user) }}">{{ $user->name }}</a></li>
                     @endforeach
                 </ul>
                 @endif

@@ -18,6 +18,8 @@
                 </button>
             </div>
             <div class="modal-body">
+                {!! Form::hidden('commentable_type', $comment->commentable_type) !!}
+                {!! Form::hidden('commentable_id', $comment->commentable_id) !!}
                 {!! Form::textarea('content', __('comment.update_comment_here'), $content)->attrs(['rows' => 3])->required() !!}
             </div>
             <div class="modal-footer text-left">
