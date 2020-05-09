@@ -17,23 +17,25 @@ class UserController extends Controller
 
                 return $ratingUser->id === $user->id;
             });
-        ['points' => $points] = $rating->get($userRatingPosition);
+
+        if ($userRatingPosition) {
+            ['points' => $points] = $rating->get($userRatingPosition);
+        } else {
+            $points = 0;
+            $userRatingPosition = 'N/A';
+        }
 
         $user->load('readChapters', 'completedExercises');
         $chapters = Chapter::with('children', 'exercises')->get();
         $exercises = Exercise::all();
 
-
-        return view(
-            'user.show',
-            [
+        return view('user.show', [
                 'user' => $user,
                 'chapters' => $chapters,
                 'exercises' => $exercises,
                 'completedExercises' => $user->completedExercises->keyBy('exercise_id'),
                 'userRatingPosition' => $userRatingPosition,
-                'points' => $points
-            ]
-        );
+                'points' => $points,
+        ]);
     }
 }
