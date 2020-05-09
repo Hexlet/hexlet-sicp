@@ -17,16 +17,14 @@
                     <div class="card-head"></div>
                     <img class="card-img-top" src="https://www.gravatar.com/avatar/{{ md5($user->email) }}?s=500" alt="Card image cap">
                     <div class="card-body">
-                        <h5 class="card-title">
-                            {{ $user->name }}
-                        </h5>
+                        <h3 class="card-text">{{ $user->name }}</h3>
                     </div>
                     <ul class="list-group-flush list-group border-top">
-                        <li class="list-group-item">Место в рейтинге: {{ $userRatingPosition }}</li>
-                        <li class="list-group-item">Баллов: {{ $points }}</li>
-                        <li class="list-group-item">Прочитано глав: {{ $user->readChapters->count() }} / {{ $chapters->count() }}</li>
-                        <li class="list-group-item">Выполнено заданий: {{ $user->completedExercises()->count() }} / {{ $exercises->count() }}</li>
-                        <li class="list-group-item">Оставлено комментариев: {{ $user->comments->count() }}</li>
+                        <li class="list-group-item">{{ __('user.show.statistics.rating_position') }} {{ $userRatingPosition }}</li>
+                        <li class="list-group-item">{{ __('user.show.statistics.points') }} {{ $points }}</li>
+                        <li class="list-group-item">{{ __('user.show.statistics.read_chapters') }} {{ $user->readChapters->count() }} / {{ $chapters->count() }}</li>
+                        <li class="list-group-item">{{ __('user.show.statistics.completed_exercises') }} {{ $user->completedExercises()->count() }} / {{ $exercises->count() }}</li>
+                        <li class="list-group-item">{{ __('user.show.statistics.left_comments') }} {{ $user->comments->count() }}</li>
                     </ul>
                 </div>
             </div>
@@ -34,11 +32,6 @@
         <div class="col-12 col-md-9 my-4">
             <h1 class="h3">{{ __('sicp.title') }}</h1>
             <h2 class="h4">by {{ __('sicp.authors') }}</h2>
-            <div class="progress">
-                <div class="progress-bar bg-success"
-                    role="progressbar" style="width: {{ getReadChapterPercent($user->readChapters, $chapters) }}%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-                </div>
-            </div>
             <ul class="list-group">
                 @foreach($chapters as $chapter)
                 <li class="list-group-item">
@@ -49,7 +42,7 @@
                             <a class="d-flex" href="{{ route('chapters.show', $chapter) }}">
                                 {{ $chapter->path }} {{ getChapterName($chapter->path) }}
                                 @if (haveRead($user, $chapter))
-                                <div class="ml-auto"><i class="text-primary fas fa-check"></i></div>
+                                <div class="ml-auto"><i class="text-success fas fa-check"></i></div>
                                 @endif
                             </a>
                         </h4>
