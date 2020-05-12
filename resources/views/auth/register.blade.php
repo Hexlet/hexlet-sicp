@@ -23,9 +23,9 @@
                         {!! Form::text('name', __('register.namePlaceholder'))->wrapperAttrs(['class' => 'col-sm-6']) !!}
                         {!! Form::text('password', __('register.passwordPlaceholder'))->type('password')->wrapperAttrs(['class' => 'col-sm-6']) !!}
                         {!! Form::text('password_confirmation', __('register.passwordConfirmationPlaceholder'))->type('password')->wrapperAttrs(['class' => 'col-sm-6']) !!}
-                        <div class="form-group mb-0">
+                        <div class="form-group mb-0 col-sm-6">
                             {!! Form::submit(__('register.registerButton')) !!}
-                            <p class="mt-2">{{ __('register.accountExists') }} <a href="{{ route('login') }}">{{ __('register.logIn') }}</a></p>
+                            <span class="ml-2">{{ __('register.accountExists') }} <a href="{{ route('login') }}">{{ __('register.logIn') }}</a></span>
                         </div>
                     {!! Form::close() !!}
                 </div>
