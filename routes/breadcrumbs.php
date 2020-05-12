@@ -18,3 +18,8 @@ Breadcrumbs::for('chapter', function (BreadcrumbsGenerator $trail, \App\Chapter 
 
     $pushChapters($chapter);
 });
+
+Breadcrumbs::for('exercise', function (BreadcrumbsGenerator $trail, \App\Exercise $exercise) {
+    $trail->parent('chapter', $exercise->chapter);
+    $trail->push('Exercise ' . $exercise->path, route('exercises.show', $exercise));
+});
