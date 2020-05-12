@@ -9,6 +9,7 @@
 @endphp
 @section('content')
 <div class="container">
+    {{ Breadcrumbs::render('chapter', $chapter) }}
     <div class="row justify-content-center">
         <div class="col-md-8">
             <small>

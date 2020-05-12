@@ -20,6 +20,7 @@
         "ext-xml": "*",
         "ext-zip": "*",
         "browner12/helpers": "^3.0",
+        "davejamesmiller/laravel-breadcrumbs": "5.x",
         "doctrine/dbal": "^2.10",
         "fideloper/proxy": "~4.0",
         "graham-campbell/github": "^8.4",

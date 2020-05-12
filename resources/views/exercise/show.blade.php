@@ -8,6 +8,7 @@
 @endphp
 @section('content')
     <div class="container">
+        {{ Breadcrumbs::render('exercise', $exercise) }}
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <small>
