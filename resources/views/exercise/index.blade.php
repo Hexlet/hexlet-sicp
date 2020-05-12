@@ -13,7 +13,7 @@
     </div>
     <div class="row mt-2">
         <div class="col-12 col-md-4 mb-2">
-            <div class="nav nav-pills flex-column position-sticky sticky-top" role="tablist">
+            <div class="nav nav-pills flex-column sticky-top x-z-index-0" role="tablist">
                 @foreach($exercisesGroups->keys() as $rootChapterPath)
                     <a class="nav-item nav-link {{ $rootChapterPath === 1 ? 'active' : '' }}"
                        id="subChapters{{ $rootChapterPath }}-tab"
