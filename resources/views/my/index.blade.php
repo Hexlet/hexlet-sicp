@@ -11,7 +11,7 @@
 </div>
 <div class="row mt-2">
     <div class="col-12 col-md-4 mb-2">
-        <div class="nav nav-pills flex-column sticky-top no-z-index" role="tablist">
+        <div class="nav nav-pills flex-column sticky-top x-z-index-0" role="tablist">
             @foreach($mainChapters as $mainChapter)
             <a class="nav-item nav-link {{ $mainChapter->path === '1' ? 'active' : '' }}"
                id="subChapters{{ $mainChapter->id }}-tab"

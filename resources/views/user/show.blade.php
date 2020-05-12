@@ -12,7 +12,7 @@
 @section('content')
     <div class="row my-4">
         <div class="col-12 col-md-3">
-            <div class="position-sticky sticky-top pt-4 mb-4 no-z-index" style="z-index: -1">
+            <div class="position-sticky sticky-top pt-4 mb-4 x-z-index-0" style="z-index: -1">
                 <div class="card">
                     <div class="card-head"></div>
                     <img class="card-img-top" src="https://www.gravatar.com/avatar/{{ md5($user->email) }}?s=500" alt="Card image cap">
