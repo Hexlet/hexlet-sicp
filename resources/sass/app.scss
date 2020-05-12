@@ -10,3 +10,7 @@
 @import 'profile';
 
 @import 'activity_chart';
+
+.no-z-index {
+    z-index: 0;
+}
