@@ -1,5 +1,5 @@
-<div class="row mt-2">
-    <div class="col-md-10 col-lg-6 mx-auto">
+<div class="row mt-2 justify-content-center">
+    <div class="col-md-8">
         <div class="card text-white">
             <div class="card-body text-center">
                 <a href="{{ route('oauth.github') }}" class="btn btn-outline-secondary">
