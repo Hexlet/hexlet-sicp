@@ -20,7 +20,7 @@
                        href="#subChapters{{ $rootChapterPath }}" data-toggle="tab" role="tab"
                        aria-controls="subChapters{{ $rootChapterPath }}"
                        aria-selected="{{ $rootChapterPath === '1' ? 'true' : 'false' }}">
-                        {{ __('chapter.chapter') }} {{ $rootChapterPath }}
+                    {{$rootChapterPath}}. {{ getChapterName($rootChapterPath)  }}
                     </a>
                 @endforeach
             </div>
