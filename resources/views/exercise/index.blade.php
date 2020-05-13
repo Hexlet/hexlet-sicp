@@ -36,7 +36,7 @@
                             @foreach($exercises as $exercise)
                             <a title="{{ __('exercise.exercise') }} {{ $exercise->path }}"
                                href="{{ route('exercises.show', $exercise) }}">
-                                {{ $exercise->path }}
+                                {{ $exercise->path }} {{ getExerciseTitle($exercise) }}
                                 <br>
                             </a>
                             @endforeach
