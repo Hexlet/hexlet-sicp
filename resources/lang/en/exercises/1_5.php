@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'title' => 'Calculation order',
     'description' => [
         '1' =>
             'Ben Bitdiddle has invented a test to determine whether the interpreter ' .

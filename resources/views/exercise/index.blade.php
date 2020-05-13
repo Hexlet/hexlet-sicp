@@ -20,7 +20,7 @@
                        href="#subChapters{{ $rootChapterPath }}" data-toggle="tab" role="tab"
                        aria-controls="subChapters{{ $rootChapterPath }}"
                        aria-selected="{{ $rootChapterPath === '1' ? 'true' : 'false' }}">
-                        {{ __('chapter.chapter') }} {{ $rootChapterPath }}
+                    {{$rootChapterPath}}. {{ getChapterName($rootChapterPath)  }}
                     </a>
                 @endforeach
             </div>
@@ -36,7 +36,7 @@
                             @foreach($exercises as $exercise)
                             <a title="{{ __('exercise.exercise') }} {{ $exercise->path }}"
                                href="{{ route('exercises.show', $exercise) }}">
-                                {{ $exercise->path }}
+                                {{ $exercise->path }} {{ getExerciseTitle($exercise) }}
                                 <br>
                             </a>
                             @endforeach
