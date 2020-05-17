@@ -14,4 +14,13 @@ class RatingController extends Controller
            'rating' => $rating,
         ]);
     }
+
+    public function showCommentsRating()
+    {
+        $commentsRating = getCommentsRating();
+
+        return view('rating.comments', [
+            'commentsRating' => $commentsRating,
+        ]);
+    }
 }

@@ -21,6 +21,7 @@ Route::group([
     Route::resource('users.chapters', 'UserChapterController')->only('store', 'destroy');
     Route::resource('users.exercises', 'UserExerciseController')->only('store', 'update', 'destroy');
     Route::resource('ratings', 'RatingController')->only('index');
+    Route::get('/ratings/comments', 'RatingController@showCommentsRating')->name('ratings.comments');
     Route::resource('chapters', 'ChapterController')->only('index', 'show');
     Route::resource('exercises', 'ExerciseController')->only('index', 'show');
     Route::resource('log', 'ActivitylogController')->only('index');
