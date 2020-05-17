@@ -19,6 +19,6 @@ if (!function_exists('getCommentsRating')) {
             ->values()
             ->keyBy(fn($ratingPosition, $index) => $index + 1);
 
-       return $commentsRating;
+        return $commentsRating;
     }
 }
