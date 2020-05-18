@@ -4,8 +4,8 @@ return [
     'title' => 'Special form',
     'description' => [
         '1' =>
-        "Alyssa P. Hacker doesn't see why if needs to be provided as a special form. ".
-        "''Why can't I just define it as an ordinary procedure in terms of cond?'' ".
+        "Alyssa P. Hacker doesn't see why if needs to be provided as a special form. " .
+        "''Why can't I just define it as an ordinary procedure in terms of cond?'' " .
         "she asks. Alyssa's friend Eva Lu Ator claims this can indeed be done, and she defines a new version of if:",
         '2' =>
         "Eva demonstrates the program for Alyssa:",
