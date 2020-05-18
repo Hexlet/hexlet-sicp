@@ -20,8 +20,10 @@ Route::group([
     Route::resource('users', 'UserController')->only('show');
     Route::resource('users.chapters', 'UserChapterController')->only('store', 'destroy');
     Route::resource('users.exercises', 'UserExerciseController')->only('store', 'update', 'destroy');
-    Route::resource('ratings', 'RatingController')->only('index');
-    Route::get('/ratings/comments', 'RatingController@showCommentsRating')->name('ratings.comments');
+    Route::prefix('ratings')->group(function () {
+        Route::resource('top', 'RatingTopController')->only('index');
+        Route::resource('comments_top', 'RatingTopCommentsController')->only('index');
+    });
     Route::resource('chapters', 'ChapterController')->only('index', 'show');
     Route::resource('exercises', 'ExerciseController')->only('index', 'show');
     Route::resource('log', 'ActivitylogController')->only('index');

@@ -38,7 +38,7 @@
                             <i class="fas fa-book-open"></i>
                             {{ __('layout.nav.sicp_book') }}
                         </a>
-                        <a class="nav-link text-secondary" href="{{ route('ratings.index') }}">
+                        <a class="nav-link text-secondary" href="{{ route('top.index') }}">
                             <i class="fas fa-list-ol"></i>
                             {{ __('layout.nav.rating') }}
                         </a>
@@ -72,7 +72,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('ratings.index') }}">
+                    <a class="nav-link" href="{{ route('top.index') }}">
                         <i class="fas fa-list-ol"></i>
                         {{ __('layout.nav.rating') }}
                     </a>
