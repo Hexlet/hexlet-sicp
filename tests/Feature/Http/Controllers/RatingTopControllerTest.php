@@ -6,7 +6,7 @@ use App\ReadChapter;
 use App\User;
 use Tests\TestCase;
 
-class RatingControllerTest extends TestCase
+class RatingTopControllerTest extends TestCase
 {
     public function testIndex()
     {
@@ -18,7 +18,7 @@ class RatingControllerTest extends TestCase
                 ]);
             });
 
-        $this->get(route('ratings.index'))
+        $this->get(route('top.index'))
             ->assertOk();
     }
 }

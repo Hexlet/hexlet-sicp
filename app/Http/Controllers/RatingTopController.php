@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 
-class RatingController extends Controller
+class RatingTopController extends Controller
 {
     public function index()
     {

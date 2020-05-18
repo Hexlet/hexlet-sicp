@@ -1,12 +1,9 @@
 @extends('layouts.app')
-@php
-/** @var \Illuminate\Support\Collection $rating */
-@endphp
 @section('content')
     <div class="my-4">
         @include('rating.menu')
 
-        <h3>{{ __('rating.page_title') }}</h3>
+        <h3>{{ __('rating.page_title_comments') }}</h3>
 
         <div class="table-responsive">
             <table class="table table-striped">
@@ -14,15 +11,15 @@
                     <tr>
                         <th>{{ __('rating.positions') }}</th>
                         <th>{{ __('rating.user') }}</th>
-                        <th>{{ __('rating.number_of_points') }}</th>
+                        <th>{{ __('rating.number_of_comments') }}</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($rating as $position => ['user' => $user, 'points' => $points])
+                    @foreach($commentsRating as $position => ['user' => $user, 'commentsCount' => $commentsCount])
                         <tr>
                             <td>{{ $position }}</td>
                             <td><a href="{{ route('users.show', $user) }}">{{ $user->name }}</a></td>
-                            <td>{{ $points }}</td>
+                            <td>{{ $commentsCount }}</td>
                         </tr>
                     @endforeach
                 </tbody>
