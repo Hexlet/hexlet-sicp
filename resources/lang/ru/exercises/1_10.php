@@ -1,16 +1,16 @@
 <?php
 
 return [
-    'title' => "Ackermann's function",
+    'title' => 'Функция Аккермана',
     'description' => [
         '1' =>
-        "The following procedure computes a mathematical function called Ackermann's function.",
+        "Следующая процедура вычисляет математическую функцию, называемую функцией Аккермана.",
         '2' =>
-        "What are the values of the following expressions?",
+        "Каковы значения следующих выражений?",
         '3' =>
-        "Consider the following procedures, where A is the procedure defined above:",
+        "Рассмотрим следующие процедуры, где A — процедура, определенная выше:",
         '4' =>
-        "Give concise mathematical definitions for the functions computed by the procedures f, g, and h for positive integer values of n. " .
-        "For example, (k n) computes 5 * n * n."
+        "Дайте краткие математические определения функций, вычисляемых процедурами f, g и h для положительных целых значений n. " .
+        "Например, (k n) вычисляет 5 * n * n."
     ]
 ];
