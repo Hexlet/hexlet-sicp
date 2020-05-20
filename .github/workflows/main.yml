@@ -24,7 +24,7 @@ jobs:
       run: make lint
 
     - name: Execute tests (Unit and Feature tests) via PHPUnit
-      run: make test
+      run: test-coverage
 
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v1
