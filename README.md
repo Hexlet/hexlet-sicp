@@ -21,9 +21,9 @@
     - zip
     - sqlite
 * Composer
-* Node.js & npm
+* Node.js (v13.11+) & NPM (6.13+)
 * SQLite for local, PostgreSQL for production
-* [heroku cli](https://devcenter.heroku.com/articles/heroku-cli#download-and-install)
+* [heroku cli](https://devcenter.heroku.com/articles/heroku-cli#download-and-install) [Как развернуть приложение на Heroku](https://ru.hexlet.io/blog/posts/kak-razvernut-prilozhenie-laravel-na-heroku)
 
 ### Setup
 
@@ -32,17 +32,6 @@ $ make setup
 $ make start # start server http://127.0.0.1:8000/
 $ make test # run tests
 ```
-
-Для генераций файлов-помощников (для автодополнения) используйте `make ide-helper`
-
-### Смысл
-
-
-### MVP
-
-Включает в себя регистрацию и возможность отмечать пройденные главы и профиль, в котором можно посмотреть прогресс. Регистрация возможна:
-* по паролю
-* через соцсети
 
 ### Стандарты
 
@@ -58,6 +47,7 @@ $ make test # run tests
 * Тексты только через локали
 * Чтобы включить логирование Rollbar, необходимо установить переменную `LOG_CHANNEL=rollbar` и `ROLLBAR_TOKEN=`
 * Чтобы добавить упражнение, необходимо добавить его содержимое (код или картинка) по пути `resources/views/exercise/listing/#_#.blade.php`, а текстовое описание в `resources/lang/{locale}/sicp.php` под ключем `exercises.#.#` на соответствующем языке.
+* Для генераций файлов-помощников (для автодополнения) используйте `make ide-helpe
 
 #### Альтернативный профиль БД для тестирования
 
