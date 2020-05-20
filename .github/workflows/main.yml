@@ -12,7 +12,16 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
+
+    - name: Install PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        extensions: mbstring, curl, dom, xml, zip, sqlite
+        php-version: '7.4'
+        tools: pecl
+        ini-values: pcov.directory=app
+        coverage: pcov
 
     - name: PHP Security Checker
       uses: StephaneBour/actions-php-security-checker@1.0
