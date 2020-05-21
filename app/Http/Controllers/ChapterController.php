@@ -30,6 +30,10 @@ class ChapterController extends Controller
         $authUser = auth()->user() ?? User::make([]);
         $isCompletedChapter = $authUser->readChapters()->where('chapter_id', $chapter->id)->exists();
 
-        return view('chapter.show', compact('chapter', 'isCompletedChapter', 'authUser'));
+        return view('chapter.show', compact(
+            'chapter',
+            'isCompletedChapter',
+            'authUser'
+        ));
     }
 }

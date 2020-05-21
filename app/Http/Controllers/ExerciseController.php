@@ -24,6 +24,10 @@ class ExerciseController extends Controller
             ->where('exercise_id', $exercise->id)
             ->exists();
 
-        return view('exercise.show', compact('exercise', 'userCompletedExercise', 'authUser'));
+        return view('exercise.show', compact(
+            'exercise',
+            'userCompletedExercise',
+            'authUser'
+        ));
     }
 }

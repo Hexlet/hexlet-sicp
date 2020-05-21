@@ -18,12 +18,13 @@ class MyController extends Controller
         $user = User::with('readChapters', 'completedExercises')->find(Auth::id());
         $chapters = Chapter::with('children', 'exercises')->get();
         $mainChapters = $chapters->where('parent_id', null);
+        $completedExercises = $user->completedExercises->keyBy('exercise_id');
 
-        return view('my.index', [
-                'user' => $user,
-                'chapters' => $chapters,
-                'mainChapters' => $mainChapters,
-                'completedExercises' => $user->completedExercises->keyBy('exercise_id'),
-        ]);
+        return view('my.index', compact(
+            'user',
+            'chapters',
+            'mainChapters',
+            'completedExercises'
+        ));
     }
 }
