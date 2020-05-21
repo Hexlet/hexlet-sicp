@@ -10,8 +10,6 @@ class RatingTopController extends Controller
     {
         $rating = getCalculatedRating();
 
-        return view('rating.index', [
-           'rating' => $rating,
-        ]);
+        return view('rating.index', compact('rating'));
     }
 }

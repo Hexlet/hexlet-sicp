@@ -16,14 +16,11 @@ class WelcomeController extends Controller
         $chart = $this->getChart();
         $comments = Comment::latest()->limit(10)->get();
 
-        return view(
-            'welcome',
-            [
-                'logItems' => $logItems,
-                'chart' => $chart,
-                'comments' => $comments
-            ]
-        );
+        return view('welcome', compact(
+            'logItems',
+            'chart',
+            'comments'
+        ));
     }
 
     /**

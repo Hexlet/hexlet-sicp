@@ -8,8 +8,6 @@ class RatingTopCommentsController extends Controller
     {
         $commentsRating = getCommentsRating();
 
-        return view('rating.comments', [
-            'commentsRating' => $commentsRating,
-        ]);
+        return view('rating.comments', compact('commentsRating'));
     }
 }
