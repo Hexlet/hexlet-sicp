@@ -1,5 +1,5 @@
 <p>{{ __('exercises/1_15.description.1') }}</p>
-<pre><code>sinx = 3sin(x/3)−4sin³(x/3)</code></pre>
+<pre><code>sin(x) = 3sin(x / 3) − 4sin³(x / 3)</code></pre>
 <p>{{ __('exercises/1_15.description.2') }}</p>
 <pre><code>(define (cube x) (* x x x))
 
