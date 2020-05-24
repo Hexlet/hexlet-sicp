@@ -32,16 +32,7 @@
                     </p>
                     @endif
                 </div>
-                @if($exercise->users->isEmpty())
-                <p>{{ __('exercise.show.nobody_completed') }}</p>
-                @else
-                <p>{{ __('exercise.show.who_completed') }}</p>
-                <ul>
-                    @foreach($exercise->users as $user)
-                    <li><a href="{{ route('users.show', $user) }}">{{ $user->name }}</a></li>
-                    @endforeach
-                </ul>
-                @endif
+                <div>
                 @auth
                 {!! Form::open()->route('users.exercises.store', [$authUser])->post() !!}
                 {!! Form::hidden('exercise_id', $exercise->id) !!}
@@ -64,6 +55,23 @@
                 @endif
                 {!! Form::close() !!}
                 @endauth
+                @if($exercise->users->isEmpty())
+                <p>{{ __('exercise.show.nobody_completed') }}</p>
+                @else
+                <br/>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-sm">{{ __('exercise.show.who_completed') }}</button>
+                <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog modal-sm">
+                         <div class="modal-content">
+                            <ul>
+                                @foreach($exercise->users as $user)
+                                <li><a href="{{ route('users.show', $user) }}">{{ $user->name }}</a></li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                @endif
                 @comments(['model' => $exercise])
             </div>
         </div>
