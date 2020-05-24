@@ -41,16 +41,6 @@
             </ul>
             @endif
             @if($chapter->can_read)
-                @if ($chapter->users->isNotEmpty())
-                <p>{{ __('chapter.show.who_completed') }}</p>
-                <ul>
-                    @foreach ($chapter->users as $user)
-                    <li><a href="{{ route('users.show', $user) }}">{{ $user->name }}</a></li>
-                    @endforeach
-                </ul>
-                @else
-                <p>{{ __('chapter.show.nobody_completed') }}</p>
-                @endif
                 @auth
                 {!! Form::open()->route('users.chapters.store', [$authUser])->post() !!}
                 @foreach($authUser->chapters as $userChapter)
@@ -73,6 +63,23 @@
                 @endif
                 {!! Form::close() !!}
                 @endauth
+                @if ($chapter->users->isNotEmpty())
+                <br/>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-sm">{{ __('chapter.show.who_completed') }}</button>
+                <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog modal-sm">
+                         <div class="modal-content">
+                            <ul>
+                                @foreach ($chapter->users as $user)
+                                <li><a href="{{ route('users.show', $user) }}">{{ $user->name }}</a></li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                @else
+                <p>{{ __('chapter.show.nobody_completed') }}</p>
+                @endif
             @endif
             @comments(['model' => $chapter])
         </div>
