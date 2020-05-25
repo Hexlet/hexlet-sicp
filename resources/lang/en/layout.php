@@ -39,6 +39,7 @@ return [
         'error' => 'Aw, Snap! Something went wrong'
     ],
     'common' => [
-        'cancel' => 'Сancel'
+        'cancel' => 'Сancel',
+        'close' => 'Close'
     ]
 ];

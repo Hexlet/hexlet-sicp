@@ -83,7 +83,7 @@
                                 </ul>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-outline-primary" data-dismiss="modal">{{ __('chapter.show.close') }}</button>
+                                <button type="button" class="btn btn-outline-primary" data-dismiss="modal">{{ __('layout.common.close') }}</button>
                             </div>
                         </div>
                     </div>
