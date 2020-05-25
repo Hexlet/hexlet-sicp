@@ -9,8 +9,7 @@ return [
         'mark_complete' => 'Mark exercise as completed',
         'already_completed' => 'Completed',
         'help_us' => 'Help us by adding new exercises',
-        'completed_by' => 'Completed by:',
-        'close' => 'Close'
+        'completed_by' => 'Completed by:'
     ],
     'mark_exercise' => 'Mark :exercise_path completed',
     'remove_completed_exercise' => 'Remove :exercise_path from completed'

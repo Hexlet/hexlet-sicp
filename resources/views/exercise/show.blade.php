@@ -71,7 +71,7 @@
                             </div>
                             <div class="modal-body">
                                 <ul>
-                                    @foreach ($chapter->users as $user)
+                                    @foreach ($exercise->users as $user)
                                     <li><a href="{{ route('users.show', $user) }}">{{ $user->name }}</a></li>
                                     @endforeach
                                 </ul>
