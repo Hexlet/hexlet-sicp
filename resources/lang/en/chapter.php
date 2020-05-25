@@ -9,7 +9,9 @@ return [
         'nobody_completed' => 'No one has completed this chapter yet.',
         'already_completed' => 'Completed',
         'mark_read' => 'Mark as read',
-        'completed_by' => 'Was completed by:'
+        'completed_by' => 'Was completed by:',
+        'previous_chapter' => 'Previous chapter',
+        'next_chapter' => 'Next chapter'
     ],
     'remove_completed_chapter' => 'Remove chapter :chapter_path from completed'
 ];

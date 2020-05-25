@@ -4,8 +4,6 @@ namespace Tests\Feature\Http\Controllers;
 
 use App\Chapter;
 use App\Comment;
-use App\User;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Tests\TestCase;
 
 class ChapterControllerTest extends TestCase
