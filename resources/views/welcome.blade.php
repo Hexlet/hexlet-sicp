@@ -9,7 +9,11 @@
 <div class="row">
     <div class="col-md-8">
         <a href="https://mitpress.mit.edu/sites/default/files/sicp/index.html">
-            <img class="img-fluid" src="{{ asset('img/Patchouli_Gives_SICP.png') }}" alt="Начать изучать sicp">
+            @if(rand(0, 10) === 0)
+                <img class="img-fluid" src="{{ asset('img/advice_dog.jpg') }}" alt="Начать изучать sicp">
+            @else
+                <img class="img-fluid" src="{{ asset('img/Patchouli_Gives_SICP.png') }}" alt="Начать изучать sicp">
+            @endif
         </a>
     </div>
     <div class="col-md-4">
