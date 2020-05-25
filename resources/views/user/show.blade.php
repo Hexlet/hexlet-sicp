@@ -12,7 +12,7 @@
 @section('content')
     <div class="row my-4">
         <div class="col-12 col-md-3">
-            <div class="sticky-top pt-4 mb-4 x-z-index-0" style="z-index: -1">
+            <div class="sticky-top pt-4 mb-4 x-z-index-0">
                 <div class="card">
                     <div class="card-head"></div>
                     <img class="card-img-top" src="{{ getProfileImageLink($user) }}" alt="Card image cap">

@@ -1,7 +1,5 @@
 <?php
 
-use Illuminate\Support\Collection;
-
 if (!function_exists('getChapterName')) {
     function getChapterName(string $chapter): string
     {

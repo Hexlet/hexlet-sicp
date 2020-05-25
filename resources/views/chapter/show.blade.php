@@ -2,6 +2,8 @@
 @php
 /**
  * @var \App\Chapter $chapter
+ * @var \App\Chapter $previousChapter
+ * @var \App\Chapter $nextChapter
  * @var \App\Exercise $exercise
  * @var \App\User $authUser
  * @var bool $isCompletedChapter
@@ -11,6 +13,14 @@
 <div class="container">
     {{ Breadcrumbs::render('chapter', $chapter) }}
     <div class="row justify-content-center">
+        <div class="sticky-top col-md-12 d-flex justify-content-between">
+            @if($previousChapter->exists)
+            <a class="mr-auto" href="{{ route('chapters.show', $previousChapter) }}">@lang('chapter.show.previous_chapter')</a>
+            @endif
+            @if($nextChapter->exists)
+            <a class="ml-auto" href="{{ route('chapters.show', $nextChapter) }}">@lang('chapter.show.next_chapter')</a>
+            @endif
+        </div>
         <div class="col-md-8">
             <small>
                 @if ($chapter->parent)
