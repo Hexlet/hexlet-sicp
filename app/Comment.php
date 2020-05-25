@@ -11,7 +11,7 @@ class Comment extends Model
     use SoftDeletes;
 
     protected $with = ['user'];
-    protected $fillable = ['content', 'commentable_type', 'commentable_id'];
+    protected $fillable = ['content', 'commentable_type', 'commentable_id', 'parent_id'];
 
     public function user()
     {
@@ -30,5 +30,20 @@ class Comment extends Model
         static::addGlobalScope('order', function (Builder $builder) {
             $builder->orderBy('created_at', 'asc');
         });
+    }
+
+    public function replies()
+    {
+        return $this->hasMany('App\Comment', 'parent_id');
+    }
+
+    public function parent()
+    {
+        return $this->belongsTo('App\Comment', 'parent_id');
+    }
+
+    public function isReply()
+    {
+        return isset($this->parent);
     }
 }

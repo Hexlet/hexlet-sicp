@@ -14,4 +14,6 @@ return [
     'delete' => 'Delete',
     'reply' => 'Reply',
     'reply_to_comment' => 'Reply to Comment',
+    'replied_to' => 'Replied to',
+    'sure' => 'Are you sure you want to delete the comment?'
 ];
