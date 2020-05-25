@@ -7,7 +7,7 @@
  * @var string $method
  */
 @endphp
-<div class="modal fade" id="comment-modal-{{ $comment->id }}" tabindex="-1" role="dialog">
+<div class="modal fade" id="comment-modal-{{ $comment->id }}" tabindex="-1">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             {!! Form::open()->route('comments.update', ['comment' => $comment])->method($method) !!}

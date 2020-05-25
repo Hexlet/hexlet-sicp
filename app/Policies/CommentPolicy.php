@@ -44,4 +44,9 @@ class CommentPolicy
     {
         return false;
     }
+
+    public function reply()
+    {
+        return \Auth::check();
+    }
 }
