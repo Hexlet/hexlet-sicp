@@ -4,7 +4,7 @@
  * @var \App\Comment $comment
  */
 @endphp
-<div class="mt-5">
+<div class="mt-2">
     @if($model->comments->isEmpty())
         <p>
             {{ __('comment.none_comments') }}

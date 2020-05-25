@@ -36,7 +36,7 @@
             <p>{{ __('chapter.show.exercises_list') }}:</p>
             <ul>
                 @foreach ($chapter->exercises as $exercise)
-                <li><a href="{{ route('exercises.show', $exercise) }}">{{ $exercise->path }}</a> </li>
+                <li><a href="{{ route('exercises.show', $exercise) }}">{{ $exercise->path }}. {{ getExerciseTitle($exercise) }}</a> </li>
                 @endforeach
             </ul>
             @endif
@@ -89,7 +89,7 @@
                     </div>
                 </div>
                 @else
-                <p>{{ __('chapter.show.nobody_completed') }}</p>
+                <p class="mt-3">{{ __('chapter.show.nobody_completed') }}</p>
                 @endif
             @endif
             @comments(['model' => $chapter])
