@@ -59,15 +59,26 @@
                 <p>{{ __('exercise.show.nobody_completed') }}</p>
                 @else
                 <br/>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-sm">{{ __('exercise.show.who_completed') }}</button>
-                <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-hidden="true">
-                    <div class="modal-dialog modal-sm">
-                         <div class="modal-content">
-                            <ul>
-                                @foreach($exercise->users as $user)
-                                <li><a href="{{ route('users.show', $user) }}">{{ $user->name }}</a></li>
-                                @endforeach
-                            </ul>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalCart">{{ __('exercise.show.who_completed') }}</button>
+                <div class="modal fade" id="modalCart" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="myModalLabel">{{ __('exercise.show.completed_by') }}</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <ul>
+                                    @foreach ($chapter->users as $user)
+                                    <li><a href="{{ route('users.show', $user) }}">{{ $user->name }}</a></li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-outline-primary" data-dismiss="modal">{{ __('exercise.show.close') }}</button>
+                            </div>
                         </div>
                     </div>
                 </div>
