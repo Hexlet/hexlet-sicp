@@ -2,6 +2,7 @@
 
 return [
     'exercise' => 'Упражнение',
+    'exercises' => 'Упражнения',
     'show' => [
         'who_completed' => 'Показать кто завершил',
         'empty_description' => 'Для этого упражнения еще нет описания',

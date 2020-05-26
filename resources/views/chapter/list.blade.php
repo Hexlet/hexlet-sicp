@@ -14,14 +14,14 @@
             </a>
         </abbr>
         @if($chapter->exercises->isNotEmpty())
-        <p>
+        <ul class="list-group list-group-flush">
+            <li>{{ __('exercise.exercises') }}</li>
             @foreach($chapter->exercises as $exercise)
-            <a title="{{ __('exercise.exercise') }} {{ $exercise->path }}"
-               href="{{ route('exercises.show', $exercise) }}">
-                {{ $exercise->path }}
+            <a href="{{ route('exercises.show', [$exercise]) }}">
+                {{ $exercise->path }} {{ $exercise->getExerciseTitle() }}
             </a>
             @endforeach
-        </p>
+        </ul>
         @endIf
         @includeWhen(isset($chapters[$chapter->id]), 'chapter.list', ['chapters' => $chapters, 'parent' => $chapter->id])
     </li>

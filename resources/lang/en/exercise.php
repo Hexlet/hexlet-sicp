@@ -2,6 +2,7 @@
 
 return [
     'exercise' => 'Exercise',
+    'exercises' => 'Exercises',
     'show' => [
         'who_completed' => 'Show who completed',
         'empty_description' => 'No description for this exercise',
