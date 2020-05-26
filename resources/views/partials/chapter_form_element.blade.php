@@ -19,6 +19,7 @@
         {{ $chapter->path }} {{ getChapterName($chapter->path) }}
     </label>
     <div>
+        <ul class="list-group list-group-flush">
         @foreach($chapter->exercises as $exercise)
             {!! Form::open()->route('users.exercises.store', [$user])->formInline() !!}
             <span>
@@ -42,8 +43,12 @@
                     <i class="far fa-square text-secondary"></i>
                 </a>
                 @endif
+                <a href="{{ route('exercises.show', [$exercise]) }}">
+                    {{ $exercise->path }} {{ $exercise->getExerciseTitle() }}
+                </a>
             </span>
         @endforeach
+        </ul>
     </div>
 </div>
 @endif

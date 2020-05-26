@@ -20,4 +20,11 @@ class Exercise extends Model
     {
         return $this->belongsToMany(User::class, 'completed_exercises');
     }
+
+    public function getExerciseTitle()
+    {
+        $exerciseNumber = str_replace('.', '_', $this->path);
+        $title = __("exercises/{$exerciseNumber}.title");
+        return $title;
+    }
 }
