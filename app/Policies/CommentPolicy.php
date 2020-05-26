@@ -22,17 +22,17 @@ class CommentPolicy
 
     public function create()
     {
-        return \Auth::check();
+        return true;
     }
 
     public function update(User $user, Comment $comment)
     {
-        return $user->id === $comment->user->id;
+        return $comment->user->is($user);
     }
 
     public function delete(User $user, Comment $comment)
     {
-        return $user->id === $comment->user->id;
+        return $comment->user->is($user);
     }
 
     public function restore()
@@ -47,6 +47,6 @@ class CommentPolicy
 
     public function reply()
     {
-        return \Auth::check();
+        return true;
     }
 }

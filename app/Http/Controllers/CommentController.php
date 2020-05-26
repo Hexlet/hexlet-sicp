@@ -13,6 +13,7 @@ class CommentController extends Controller
     public function __construct()
     {
         $this->authorizeResource(Comment::class, 'comment');
+        $this->middleware('auth');
     }
 
     public function store(CommentRequest $request)
