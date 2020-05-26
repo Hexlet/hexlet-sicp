@@ -8,7 +8,7 @@
 @section('content')
     <div class="row">
         <div class="col">
-            <h3>{{ __('Exercises') }}</h3>
+            <h3>{{ __('layout.nav.exercises') }}</h3>
         </div>
     </div>
     <div class="row mt-2">

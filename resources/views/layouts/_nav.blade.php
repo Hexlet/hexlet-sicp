@@ -19,7 +19,7 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPages" role="button" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">
-                        Pages
+                        {{ __('layout.nav.pages') }}
                     </a>
                     <div class="dropdown-menu border-white" aria-labelledby="navbarDropdownPages">
                         <a class="nav-link text-secondary" href="{{ route('chapters.index') }}">
