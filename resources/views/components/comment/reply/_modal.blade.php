@@ -1,5 +1,5 @@
-<div class="modal fade" id="reply-modal-{{ $comment->id }}" tabindex="-1">
-    <div class="modal-dialog" role="document">
+<div class="modal fade" id="reply-modal-{{ $comment->id }}" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
         <div class="modal-content">
             {!! Form::open()->route('comments.store') !!}
                 <div class="modal-header">
