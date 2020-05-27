@@ -18,7 +18,18 @@
     <label for="subChapter{{ $chapter->id }}" class="form-check-label">
         {{ $chapter->path }} {{ getChapterName($chapter->path) }}
     </label>
+    @if ($chapter->exercises->isNotEmpty())
     <div>
+    <button
+        class="btn btn-info btn-sm"
+        type="button"
+        data-toggle="collapse"
+        data-target="#collapse{{ $chapter->id }}"
+        aria-expanded="false"
+        aria-controls="collapse{{ $chapter->id }}">{{ __('exercise.exercises') }}
+    </button>
+    </div>
+    <div class="collapse" id="collapse{{ $chapter->id }}">
         <ul class="list-group list-group-flush">
         @foreach($chapter->exercises as $exercise)
             {!! Form::open()->route('users.exercises.store', [$user])->formInline() !!}
@@ -44,11 +55,12 @@
                 </a>
                 @endif
                 <a href="{{ route('exercises.show', [$exercise]) }}">
-                    {{ $exercise->path }} {{ $exercise->getExerciseTitle() }}
+                    {{ $exercise->path }} {{ getExerciseTitle($exercise) }}
                 </a>
             </span>
         @endforeach
         </ul>
     </div>
+    @endif
 </div>
 @endif
