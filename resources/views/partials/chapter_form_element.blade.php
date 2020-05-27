@@ -19,21 +19,21 @@
         {{ $chapter->path }} {{ getChapterName($chapter->path) }}
     </label>
     @if ($chapter->exercises->isNotEmpty())
-    <div>
-    <button
-        class="btn btn-info btn-sm"
-        type="button"
-        data-toggle="collapse"
-        data-target="#collapse{{ $chapter->id }}"
-        aria-expanded="false"
-        aria-controls="collapse{{ $chapter->id }}">{{ __('exercise.exercises') }}
-    </button>
+    <div class="collapse-button">
+        <button class="btn btn-outline-dark btn-sm"
+                type="button"
+                data-toggle="collapse"
+                data-target="#collapse{{ $chapter->id }}"
+                aria-expanded="false"
+                aria-controls="collapse{{ $chapter->id }}">
+            {{ __('exercise.exercises') }} <i class="far fa-caret-square-down"></i>
+        </button>
     </div>
     <div class="collapse" id="collapse{{ $chapter->id }}">
-        <ul class="list-group list-group-flush">
+        <ul class="list-unstyled">
         @foreach($chapter->exercises as $exercise)
             {!! Form::open()->route('users.exercises.store', [$user])->formInline() !!}
-            <span>
+            <li>
                 @if($completedExercises->has($exercise->id))
                 <a href="{{ route('users.exercises.destroy', [$user, $exercise]) }}"
                    class="text-decoration-none"
@@ -54,10 +54,11 @@
                     <i class="far fa-square text-secondary"></i>
                 </a>
                 @endif
-                <a href="{{ route('exercises.show', [$exercise]) }}">
+                <a href="{{ route('exercises.show', [$exercise]) }}"
+                   class="text-dark">
                     {{ $exercise->path }} {{ getExerciseTitle($exercise) }}
                 </a>
-            </span>
+            </li>
         @endforeach
         </ul>
     </div>
