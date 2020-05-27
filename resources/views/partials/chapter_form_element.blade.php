@@ -19,15 +19,14 @@
         {{ $chapter->path }} {{ getChapterName($chapter->path) }}
     </label>
     @if ($chapter->exercises->isNotEmpty())
-    <div class="collapse-button">
-        <button class="btn btn-outline-dark btn-sm"
-                type="button"
-                data-toggle="collapse"
-                data-target="#collapse{{ $chapter->id }}"
-                aria-expanded="false"
-                aria-controls="collapse{{ $chapter->id }}">
+    <div>
+        <a class="badge badge-dark text-wrap"
+           data-toggle="collapse"
+           href="#collapse{{ $chapter->id }}"
+           aria-expanded="false"
+           aria-controls="collapse{{ $chapter->id }}">
             {{ __('exercise.exercises') }} <i class="far fa-caret-square-down"></i>
-        </button>
+        </a>
     </div>
     <div class="collapse" id="collapse{{ $chapter->id }}">
         <ul class="list-unstyled">

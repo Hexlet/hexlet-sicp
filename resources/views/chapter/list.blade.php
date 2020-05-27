@@ -4,25 +4,21 @@
  * @var \App\Chapter $chapter
  */
 @endphp
-<ol>
+<ul type="circle">
     @foreach ($chapters[$parent] as $chapter)
     <li>
-        <abbr >
-            <a title="{{ $chapter->path }} {{ getChapterName($chapter->path) }}"
-               href="{{ route('chapters.show', $chapter) }}">
-                {{ getChapterName($chapter->path) }}
-            </a>
-        </abbr>
+        <a href="{{ route('chapters.show', $chapter) }}">
+            {{ $chapter->path }} {{ getChapterName($chapter->path) }}
+        </a>
         @if($chapter->exercises->isNotEmpty())
-        <div class="collapse-button">
-            <button class="btn btn-outline-primary btn-sm"
-                    type="button"
-                    data-toggle="collapse"
-                    data-target="#collapse{{ $chapter->id }}"
-                    aria-expanded="false"
-                    aria-controls="collapse{{ $chapter->id }}">
+        <div>
+            <a class="badge badge-primary text-wrap"
+               data-toggle="collapse"
+               href="#collapse{{ $chapter->id }}"
+               aria-expanded="false"
+               aria-controls="collapse{{ $chapter->id }}">
                 {{ __('exercise.exercises') }} <i class="far fa-caret-square-down"></i>
-            </button>
+            </a>
         </div>
         <div class="collapse" id="collapse{{ $chapter->id }}">
             @foreach($chapter->exercises as $exercise)
@@ -37,4 +33,4 @@
         @includeWhen(isset($chapters[$chapter->id]), 'chapter.list', ['chapters' => $chapters, 'parent' => $chapter->id])
     </li>
     @endforeach
-</ol>
+</ul>
