@@ -11,9 +11,9 @@
             <strong class="text-dark">{{ $chapter->path }}</strong>
             {{ getChapterName($chapter->path) }}
         </a>
+        <br>
         @if($chapter->exercises->isNotEmpty())
-        <a class="float-right"
-           data-toggle="collapse"
+        <a data-toggle="collapse"
            href="#collapse{{ $chapter->id }}"
            aria-expanded="false"
            aria-controls="collapse{{ $chapter->id }}">
