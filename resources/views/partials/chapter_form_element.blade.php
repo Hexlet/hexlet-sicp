@@ -20,12 +20,11 @@
     </label>
     @if ($chapter->exercises->isNotEmpty())
     <div>
-        <a class="badge badge-dark text-wrap"
-           data-toggle="collapse"
+        <a data-toggle="collapse"
            href="#collapse{{ $chapter->id }}"
            aria-expanded="false"
            aria-controls="collapse{{ $chapter->id }}">
-            {{ __('exercise.exercises') }} <i class="far fa-caret-square-down"></i>
+            {{ __('exercise.show.exercises') }}
         </a>
     </div>
     <div class="collapse" id="collapse{{ $chapter->id }}">
