@@ -20,18 +20,16 @@
             <small>{{ __('exercise.show.exercises') }}</small>
             <span class="badge badge-info text-light">{{ count($chapter->exercises) }}</span>
         </a>
-        <div class="collapse" id="collapse{{ $chapter->id }}">
-            <ul class="list-group">
-                @foreach($chapter->exercises as $exercise)
-                <li class="list-group-item p-1">
-                    <i class="fas fa-dumbbell"></i>
-                    <a href="{{ route('exercises.show', [$exercise]) }}">
-                        {{ $exercise->path }} {{ getExerciseTitle($exercise) }}
-                    </a>
-                </li>
-                @endforeach
-            </ul>
-        </div>
+        <ul class="collapse list-group" id="collapse{{ $chapter->id }}">
+            @foreach($chapter->exercises as $exercise)
+            <li class="list-group-item p-1">
+                <i class="fas fa-dumbbell"></i>
+                <a href="{{ route('exercises.show', [$exercise]) }}">
+                    {{ $exercise->path }} {{ getExerciseTitle($exercise) }}
+                </a>
+            </li>
+            @endforeach
+        </ul>
         @endif
         @includeWhen(isset($chapters[$chapter->id]), 'chapter.list', ['chapters' => $chapters, 'parent' => $chapter->id])
     </div>
