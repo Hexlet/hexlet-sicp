@@ -3,6 +3,7 @@
 return [
     'exercise' => 'Exercise',
     'show' => [
+        'exercises' => 'show exercises',
         'who_completed' => 'Show who completed',
         'empty_description' => 'No description for this exercise',
         'nobody_completed' => 'Nobody\'s finished this exercise yet. You\'ll be the first!',

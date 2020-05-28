@@ -4,26 +4,34 @@
  * @var \App\Chapter $chapter
  */
 @endphp
-<ol>
+<div class="list-group list-group-flush">
     @foreach ($chapters[$parent] as $chapter)
-    <li>
-        <abbr >
-            <a title="{{ $chapter->path }} {{ getChapterName($chapter->path) }}"
-               href="{{ route('chapters.show', $chapter) }}">
-                {{ getChapterName($chapter->path) }}
-            </a>
-        </abbr>
+    <div class="list-group-item">
+        <a href="{{ route('chapters.show', $chapter) }}">
+            <strong class="text-dark">{{ $chapter->path }}</strong>
+            {{ getChapterName($chapter->path) }}
+        </a>
+        <br>
         @if($chapter->exercises->isNotEmpty())
-        <p>
+        <a data-toggle="collapse"
+           href="#collapse{{ $chapter->id }}"
+           aria-expanded="false"
+           aria-controls="collapse{{ $chapter->id }}">
+            <small>{{ __('exercise.show.exercises') }}</small>
+            <span class="badge badge-info text-light">{{ count($chapter->exercises) }}</span>
+        </a>
+        <ul class="collapse list-group" id="collapse{{ $chapter->id }}">
             @foreach($chapter->exercises as $exercise)
-            <a title="{{ __('exercise.exercise') }} {{ $exercise->path }}"
-               href="{{ route('exercises.show', $exercise) }}">
-                {{ $exercise->path }}
-            </a>
+            <li class="list-group-item p-1">
+                <i class="fas fa-dumbbell"></i>
+                <a href="{{ route('exercises.show', [$exercise]) }}">
+                    {{ $exercise->path }} {{ getExerciseTitle($exercise) }}
+                </a>
+            </li>
             @endforeach
-        </p>
-        @endIf
+        </ul>
+        @endif
         @includeWhen(isset($chapters[$chapter->id]), 'chapter.list', ['chapters' => $chapters, 'parent' => $chapter->id])
-    </li>
+    </div>
     @endforeach
-</ol>
+</div>
