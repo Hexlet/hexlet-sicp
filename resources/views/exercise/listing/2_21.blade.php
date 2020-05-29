@@ -6,8 +6,8 @@
 <pre><code>(define (square-list items)
   (if (null? items)
       nil
-      (cons <??> <??>)))
+      (cons ?? ??)))
 
 (define (square-list items)
-  (map <??> <??>))
+  (map ?? ??))
 </code></pre>

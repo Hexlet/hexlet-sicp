@@ -1,11 +1,11 @@
 <p>{{ __('exercises/2_20.description.1') }}</p>
-<pre><code>(define (f x y . z) <body>)
+<pre><code>(define (f x y . z) ??)
 </code></pre>
 <p>{{ __('exercises/2_20.description.2') }}</p>
 <pre><code>(f 1 2 3 4 5 6)
 </code></pre>
 <p>{{ __('exercises/2_20.description.3') }}</p>
-<pre><code>(define (g . w) <body>)
+<pre><code>(define (g . w) ??)
 </code></pre>
 <p>{{ __('exercises/2_20.description.4') }}</p>
 <pre><code>(g 1 2 3 4 5 6)
