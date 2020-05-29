@@ -2,8 +2,8 @@
 <pre><code>
 (define (sum term a next b)
   (define (iter a result)
-    (if <??>
-        <??>
-        (iter <??> <??>)))
-(iter <??> <??>))
+    (if &lt;??&gt;
+        &lt;??&gt;
+        (iter &lt;??&gt; &lt;??&gt;)))
+(iter &lt;??&gt; &lt;??&gt;))
 </code></pre>
