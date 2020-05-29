@@ -18,7 +18,6 @@
            aria-expanded="false"
            aria-controls="collapse{{ $chapter->id }}">
             <small>{{ __('exercise.show.exercises') }}</small>
-            <span class="badge badge-info text-light">{{ count($chapter->exercises) }}</span>
         </a>
         <ul class="collapse list-group" id="collapse{{ $chapter->id }}">
             @foreach($chapter->exercises as $exercise)
