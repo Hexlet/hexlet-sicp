@@ -39,7 +39,7 @@
                 </div>
                 @endforeach
                 <div class="form-group text-right">
-                    {!! Form::submit(__('Save')) !!}
+                    {!! Form::submit(__('user.my_progress.save')) !!}
                 </div>
             </div>
             {!! Form::close() !!}

@@ -9,5 +9,8 @@ return [
             'completed_exercises' => 'Выполнено заданий',
             'left_comments' => 'Оставлено комментариев',
         ]
+    ],
+    'my_progress' => [
+        'save' => 'Сохранить',
     ]
 ];
