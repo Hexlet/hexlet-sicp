@@ -22,6 +22,7 @@ Route::group([
     Route::resource('users.exercises', 'UserExerciseController')->only('store', 'update', 'destroy');
     Route::prefix('ratings')->group(function () {
         Route::resource('top', 'RatingTopController')->only('index');
+        Route::resource('progress_top', 'RatingTopProgressController')->only('index');
         Route::resource('comments_top', 'RatingTopCommentsController')->only('index');
     });
     Route::resource('chapters', 'ChapterController')->only('index', 'show');
