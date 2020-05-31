@@ -14,7 +14,7 @@ class AddOriginLinkToExercisesTable extends Migration
     public function up()
     {
         Schema::table('exercises', function (Blueprint $table) {
-            //
+            $table->addColumn('text', 'link_to_origin')->nullable();
         });
     }
 
@@ -26,7 +26,7 @@ class AddOriginLinkToExercisesTable extends Migration
     public function down()
     {
         Schema::table('exercises', function (Blueprint $table) {
-            //
+            $table->dropColumn('lint_to_origin');
         });
     }
 }
