@@ -16,17 +16,15 @@ class ExercisesTableSeeder extends Seeder
     public function run()
     {
         $exercises =  Yaml::parseFile(database_path('exercises.yml'));
-        $linksToOrigin = Yaml::parseFile(database_path('exercise-links.yml'));
         DB::beginTransaction();
-        $createExercises = function ($exercises) use ($linksToOrigin) {
+        $createExercises = function ($exercises) {
             foreach ($exercises as ['chapter_path' => $chapter_path, 'children' => $children]) {
                 $chapter = Chapter::where('path', $chapter_path)->value('id');
 
-                array_map(function ($exercise) use ($chapter, $linksToOrigin) {
+                array_map(function ($exercise) use ($chapter) {
                     $exerciseModel = new Exercise();
                     $exerciseModel->chapter_id = $chapter;
                     $exerciseModel->path = $exercise;
-                    $exerciseModel->link_to_origin = $linksToOrigin[$exercise];
                     $exerciseModel->save();
                 }, $children);
             }

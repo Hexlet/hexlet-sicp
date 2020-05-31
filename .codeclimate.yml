@@ -1,9 +1,35 @@
-version: "2"
+version: "2"         # required to adjust maintainability checks
 checks:
-  similar-code:
-    enabled: true
+  argument-count:
     config:
-      threshold: #language-specific defaults. overrides affect all languages.
+      threshold: 4
+  complex-logic:
+    config:
+      threshold: 4
+  file-lines:
+    config:
+      threshold: 400
+  method-complexity:
+    config:
+      threshold: 5
+  method-count:
+    config:
+      threshold: 20
+  method-lines:
+    config:
+      threshold: 25
+  nested-control-flow:
+    config:
+      threshold: 4
+  return-statements:
+    config:
+      threshold: 4
+  similar-code:
+    config:
+      threshold: # language-specific defaults. an override will affect all languages.
+  identical-code:
+    config:
+      threshold: # language-specific defaults. an override will affect all languages.
 plugins:
   phpcodesniffer:
     enabled: true
