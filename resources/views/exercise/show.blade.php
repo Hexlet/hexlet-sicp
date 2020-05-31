@@ -18,7 +18,18 @@
                     </a>
                     @endif
                 </small>
-                <h1 class="h2">{{ __('exercise.exercise') }} {{ $exercise->path }}</h1>
+                <h1>
+                    {{ __('exercise.exercise') }} {{ $exercise->path }}
+                    <small>
+                        <a class="text-muted"
+                           href="{{ $exercise->link_to_origin }}"
+                           data-toggle="tooltip"
+                           data-placement="right"
+                           title="{{ __('layout.common.origin') }}">
+                            <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </small>
+                </h1>
                 <div>
                     @if(view()->exists(getExerciseListingViewFilepath($exercise->path)))
                     @include(getExerciseListingViewFilepath($exercise->path))
@@ -58,7 +69,7 @@
                 @if($exercise->users->isEmpty())
                 <p>{{ __('exercise.show.nobody_completed') }}</p>
                 @else
-                <br/>
+                <br>
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalCart">{{ __('exercise.show.who_completed') }}</button>
                 <div class="modal fade" id="modalCart" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
