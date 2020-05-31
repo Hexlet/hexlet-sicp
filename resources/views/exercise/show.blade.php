@@ -22,6 +22,7 @@
                     {{ __('exercise.exercise') }} {{ $exercise->path }}
                     <small>
                         <a class="text-muted"
+                           target="_blank"
                            href="{{ $exercise->link_to_origin }}"
                            data-toggle="tooltip"
                            data-placement="right"
