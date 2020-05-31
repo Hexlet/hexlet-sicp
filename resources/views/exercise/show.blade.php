@@ -23,7 +23,7 @@
                     <small>
                         <a class="text-muted"
                            target="_blank"
-                           href="{{ $exercise->link_to_origin }}"
+                           href="{{ getOriginLink($exercise) }}"
                            data-toggle="tooltip"
                            data-placement="right"
                            title="{{ __('layout.common.origin') }}">
