@@ -22,7 +22,8 @@
                     {{ __('exercise.exercise') }} {{ $exercise->path }}
                     <small>
                         <a class="text-muted"
-                           href="{{ $exercise->link_to_origin }}"
+                           target="_blank"
+                           href="{{ getOriginLink($exercise) }}"
                            data-toggle="tooltip"
                            data-placement="right"
                            title="{{ __('layout.common.origin') }}">

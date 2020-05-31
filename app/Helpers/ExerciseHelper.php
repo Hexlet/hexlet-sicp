@@ -24,3 +24,12 @@ if (!function_exists('getExerciseTitle')) {
         return null;
     }
 }
+
+if (!function_exists('getOriginLink')) {
+    function getOriginLink(Exercise $exercise): ?string
+    {
+        $links = require resource_path('exercise-links.php');
+
+        return $links[$exercise->path] ?? null;
+    }
+}
