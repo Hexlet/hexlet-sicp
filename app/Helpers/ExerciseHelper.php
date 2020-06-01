@@ -25,8 +25,8 @@ if (!function_exists('getExerciseTitle')) {
     }
 }
 
-if (!function_exists('getOriginLink')) {
-    function getOriginLink(Exercise $exercise): ?string
+if (!function_exists('getExerciseOriginLink')) {
+    function getExerciseOriginLink(Exercise $exercise): ?string
     {
         $links = require resource_path('exercise-links.php');
 
