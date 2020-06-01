@@ -29,7 +29,19 @@
                 </a>
                 @endif
             </small>
-            <h1 class="h2">{{ $chapter->path }}. {{ getChapterName($chapter->path) }}</h1>
+            <h1 class="h2">
+                {{ $chapter->path }}. {{ getChapterName($chapter->path) }}
+                <small>
+                    <a class="text-muted"
+                       target="_blank"
+                       href="{{ getChapterOriginLink($chapter) }}"
+                       data-toggle="tooltip"
+                       data-placement="right"
+                       title="{{ __('layout.common.origin') }}">
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </small>
+            </h1>
             <ul>
                 @foreach ($chapter->children as $child)
                 <li>
