@@ -30,6 +30,6 @@ if (!function_exists('getChapterOriginLink')) {
     {
         $links = require resource_path('chapter-links.php');
 
-        return $links[$exercise->path] ?? null;
+        return $links[$chapter->path] ?? null;
     }
 }
