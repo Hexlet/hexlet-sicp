@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'title' => "",
+    'title' => "Matrix operations",
     'description' => [
         '1' =>
         "Suppose we represent vectors v = (vᵢ) as sequences of numbers, and matrices m = (mᵢⱼ) as sequences of vectors (the rows of the matrix). For example, the matrix",
