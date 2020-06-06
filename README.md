@@ -57,9 +57,7 @@ DB_PASSWORD=secret
 
 3. Запустить контейнер с БД и сгенерировать записи
 ```sh
-$ php artisan config:clear
-$ make docker-postgres-start
-$ make db-prepare
+$ make compose-setup
 ```
 
 4. Запустить локальный веб-сервер
