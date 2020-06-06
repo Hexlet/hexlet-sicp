@@ -40,14 +40,7 @@ ide-helper:
 	php artisan ide-helper:meta
 	php artisan ide-helper:mod -n
 
-CONTAINER_NAME ?= php
-
-# Launch app through docker
-docker-build:
-	docker-compose up -d --build
-	docker-compose exec $(CONTAINER_NAME) cp -n .env.docker.example .env || true
-	docker-compose exec $(CONTAINER_NAME) composer install && npm install
-	docker-compose exec $(CONTAINER_NAME) php artisan key:generate
-	docker-compose exec $(CONTAINER_NAME) php artisan migrate --seed
+docker-postgres-start:
+	docker-compose up -d
 
 .PHONY: test

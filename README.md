@@ -35,6 +35,38 @@ $ make start # start server http://127.0.0.1:8000/
 $ make test # run tests
 ```
 
+### Запуск с БД PostgreSQL (разворачивается в docker-контейнере)
+
+1. Установить зависимости и подготовить конфигурационный файл
+```sh
+$ make env-prepare
+$ make install
+$ make key
+```
+
+2. Указать параметры подключения к БД в файле .env
+
+```
+DB_CONNECTION=pgsql
+DB_HOST=localhost
+DB_PORT=54320
+DB_DATABASE=homestead
+DB_USERNAME=homestead
+DB_PASSWORD=secret
+```
+
+3. Запустить контейнер с БД и сгенерировать записи
+```sh
+$ php artisan config:clear
+$ make docker-postgres-start
+$ make db-prepare
+```
+
+4. Запустить локальный веб-сервер
+```sh
+$ make start
+```
+
 ### Стандарты
 
 * Пулреквесты должны быть настолько маленькими, насколько это возможно с точки зрения здравого смысла
