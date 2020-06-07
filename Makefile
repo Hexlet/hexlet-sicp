@@ -6,6 +6,8 @@ test-coverage:
 
 setup: env-prepare sqlite-prepare install key db-prepare
 
+compose-setup: compose-postgres-start config-clear db-prepare
+
 install:
 	composer install
 	npm install
@@ -21,6 +23,9 @@ lint:
 
 lint-fix:
 	composer phpcbf
+
+config-clear:
+	php artisan config:clear
 
 deploy:
 	git push heroku master
@@ -39,5 +44,8 @@ ide-helper:
 	php artisan ide-helper:gen
 	php artisan ide-helper:meta
 	php artisan ide-helper:mod -n
+
+compose-postgres-start:
+	docker-compose up --build -d
 
 .PHONY: test
