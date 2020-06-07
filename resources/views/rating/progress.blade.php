@@ -11,7 +11,7 @@
                     <tr>
                         <th>{{ __('rating.positions') }}</th>
                         <th>{{ __('rating.user') }}</th>
-                        <th>{{ __('rating.read_chapters_from') }} {{ $chapters->count() }}</th>
+                        <th>{{ __('rating.read_chapters_from') }} {{ App\Chapter::MARKABLE_COUNT }}</th>
                         <th>{{ __('rating.completed_exercises_from') }} {{ $exercises->count() }}</th>
                     </tr>
                 </thead>

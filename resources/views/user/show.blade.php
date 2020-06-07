@@ -22,7 +22,7 @@
                     <ul class="list-group-flush list-group border-top">
                         <li class="list-group-item">{{ __('user.show.statistics.rating_position') }} {{ $userRatingPosition }}</li>
                         <li class="list-group-item">{{ __('user.show.statistics.points') }} {{ $points }}</li>
-                        <li class="list-group-item">{{ __('user.show.statistics.read_chapters') }} {{ $user->readChapters->count() }} / {{ $chapters->count() }}</li>
+                        <li class="list-group-item">{{ __('user.show.statistics.read_chapters') }} {{ $user->readChapters->count() }} / {{ App\Chapter::MARKABLE_COUNT }}</li>
                         <li class="list-group-item">{{ __('user.show.statistics.completed_exercises') }} {{ $user->completedExercises()->count() }} / {{ $exercises->count() }}</li>
                         <li class="list-group-item">{{ __('user.show.statistics.left_comments') }} {{ $user->comments->count() }}</li>
                     </ul>
