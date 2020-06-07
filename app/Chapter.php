@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Chapter extends Model
 {
+    public const MARKABLE_COUNT = 101;
+
     public function users()
     {
         return $this->belongsToMany(User::class, 'read_chapters');
