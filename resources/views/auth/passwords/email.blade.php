@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Reset Password') }}</div>
+                <div class="card-header">{{ __('passwords.reset_password.form_header') }}</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -16,12 +16,12 @@
 
                     {!! Form::open()->route('password.email') !!}
                         {!!
-                            Form::text('email', __('E-Mail Address'))
+                            Form::text('email', __('passwords.reset_password.email'))
                                 ->wrapperAttrs(['class' => 'col-sm-6'])
                         !!}
 
                         <div class="form-group col-sm-6 mb-0">
-                            {!! Form::submit(__('Send Password Reset Link')) !!}
+                            {!! Form::submit(__('passwords.reset_password.button_send_link')) !!}
                         </div>
 
                     {!! Form::close() !!}
