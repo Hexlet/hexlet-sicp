@@ -19,18 +19,28 @@
                             <tr>
                                 <td>{{ $logItem->created_at }}</td>
                                 <td>
-                                    @if($logItem->getExtraProperty('chapters'))
-                                    {{ __('activitylog.action_'.$logItem->description) }}
-                                    <ul>
-                                        @foreach($logItem->getExtraProperty('chapters') as $chapter)
-                                        <li>{{ $chapter }} {{ getChapterName($chapter) }}</li>
-                                        @endforeach
-                                    </ul>
-                                    @endif
+                                @switch($logItem->description)
+                                    @case('added')
+                                        {{ __('activitylog.action_'.$logItem->description) }}
+                                        <ul>
+                                            @foreach($logItem->getExtraProperty('chapters') as $chapter)
+                                            <li>{{ $chapter }} {{ getChapterName($chapter) }}</li>
+                                            @endforeach
+                                        </ul>
+                                        @break
+                                    @case('completed_exercise')
+                                        <a href="{{ route('exercises.show', $logItem->getExtraProperty('exercise_id')) }}">
+                                            {{ __('activitylog.action_'.$logItem->description) }}:
+                                            {{ getExerciseTitle(getExerciseById($logItem->subject_id)) }}
+                                        </a>
+                                        @break
+                                @endswitch
                                 </td>
                                 <td>
                                 @if($logItem->causer)
-                                <a href="{{ route('users.show', $logItem->causer->id) }}">{{ $logItem->causer->name }}</a>
+                                    <a href="{{ route('users.show', $logItem->causer->id) }}">
+                                        {{ $logItem->causer->name }}
+                                    </a>
                                 @endif
                                 </td>
                             </tr>
