@@ -24,10 +24,15 @@ class ExerciseController extends Controller
             ->where('exercise_id', $exercise->id)
             ->exists();
 
+        $previousExercise = Exercise::whereId($exercise->id - 1)->firstOrNew([]);
+        $nextExercise = Exercise::whereId($exercise->id + 1)->firstOrNew([]);
+
         return view('exercise.show', compact(
             'exercise',
             'userCompletedExercise',
-            'authUser'
+            'authUser',
+            'previousExercise',
+            'nextExercise',
         ));
     }
 }
