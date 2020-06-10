@@ -28,10 +28,18 @@
                                             @endforeach
                                         </ul>
                                         @break
+                                    @case('removed')
+                                        {{ __('activitylog.action_'.$logItem->description) }}
+                                        <ul>
+                                            @foreach($logItem->getExtraProperty('chapters') as $chapter)
+                                            <li>{{ $chapter }} {{ getChapterName($chapter) }}</li>
+                                            @endforeach
+                                        </ul>
+                                        @break
                                     @case('completed_exercise')
                                         <a href="{{ route('exercises.show', $logItem->getExtraProperty('exercise_id')) }}">
                                             {{ __('activitylog.action_'.$logItem->description) }}:
-                                            {{ getExerciseTitle(getExerciseById($logItem->subject_id)) }}
+                                            {{ getExerciseTitle(getExerciseById($logItem->subject_id)) ?? $logItem->subject_id }}
                                         </a>
                                         @break
                                 @endswitch
