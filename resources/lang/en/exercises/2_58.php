@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'title' => "Modifycation of the differentiation program",
+    'title' => "Modification of the differentiation program",
     'description' => [
         '1' =>
         "Suppose we want to modify the differentiation program so that it works with ordinary mathematical notation, in which + and * are infix rather than prefix operators. " .
