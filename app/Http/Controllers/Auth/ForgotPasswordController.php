@@ -18,4 +18,10 @@ class ForgotPasswordController extends Controller
     {
         $this->middleware('guest');
     }
+
+    public function sendResetLinkResponse()
+    {
+        flash(__('passwords.sent'))->success();
+        return redirect()->route('index');
+    }
 }
