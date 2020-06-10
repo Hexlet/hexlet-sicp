@@ -42,6 +42,12 @@
                                             {{ getExerciseTitle(getExerciseById($logItem->subject_id)) ?? $logItem->subject_id }}
                                         </a>
                                         @break
+                                    @case('destroy_exercise')
+                                        <a href="{{ route('exercises.show', $logItem->getExtraProperty('exercise_id')) }}">
+                                            {{ __('activitylog.action_'.$logItem->description) }}:
+                                            {{ getExerciseTitle(getExerciseById($logItem->subject_id)) ?? $logItem->subject_id }}
+                                        </a>
+                                        @break
                                 @endswitch
                                 </td>
                                 <td>
