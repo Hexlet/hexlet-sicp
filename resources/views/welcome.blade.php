@@ -64,6 +64,11 @@
                             {{ __('activitylog.action_'.$logItem->description) }}
                         </a>
                         @break
+                    @case('destroy_exercise')
+                        <a href="{{ route('exercises.show', $logItem->getExtraProperty('exercise_id')) }}">
+                            {{ __('activitylog.action_'.$logItem->description) }}
+                        </a>
+                        @break
                     @case('commented')
                         <a href="{{ $logItem->getExtraProperty('url') }}">
                             {{ __('activitylog.action_'.$logItem->description) }}
