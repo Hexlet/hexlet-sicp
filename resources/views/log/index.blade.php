@@ -21,7 +21,7 @@
                                 <td>
                                 @switch($logItem->description)
                                     @case('added')
-                                        {{ __('activitylog.action_'.$logItem->description) }}
+                                        {{ getLogItemDescription($logItem) }}
                                         <ul>
                                             @foreach($logItem->getExtraProperty('chapters') as $chapter)
                                             <li>{{ $chapter }} {{ getChapterName($chapter) }}</li>
@@ -29,7 +29,7 @@
                                         </ul>
                                         @break
                                     @case('removed')
-                                        {{ __('activitylog.action_'.$logItem->description) }}
+                                        {{ getLogItemDescription($logItem) }}
                                         <ul>
                                             @foreach($logItem->getExtraProperty('chapters') as $chapter)
                                             <li>{{ $chapter }} {{ getChapterName($chapter) }}</li>
@@ -38,13 +38,13 @@
                                         @break
                                     @case('completed_exercise')
                                         <a href="{{ route('exercises.show', $logItem->getExtraProperty('exercise_id')) }}">
-                                            {{ __('activitylog.action_'.$logItem->description) }}:
+                                            {{ getLogItemDescription($logItem) }}:
                                             {{ getExerciseTitle(getExerciseById($logItem->subject_id)) ?? $logItem->subject_id }}
                                         </a>
                                         @break
                                     @case('destroy_exercise')
                                         <a href="{{ route('exercises.show', $logItem->getExtraProperty('exercise_id')) }}">
-                                            {{ __('activitylog.action_'.$logItem->description) }}:
+                                            {{ getLogItemDescription($logItem) }}:
                                             {{ getExerciseTitle(getExerciseById($logItem->subject_id)) ?? $logItem->subject_id }}
                                         </a>
                                         @break
