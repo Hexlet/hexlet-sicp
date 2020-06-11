@@ -36,6 +36,12 @@
                                             @endforeach
                                         </ul>
                                         @break
+                                    @case('commented')
+                                        <a href="{{ $logItem->getExtraProperty('url') }}">
+                                            {{ getLogItemDescription($logItem) }}:
+                                            {{ $logItem->getExtraProperty('comment.content') }}
+                                        </a>
+                                        @break
                                     @case('completed_exercise')
                                         <a href="{{ route('exercises.show', $logItem->getExtraProperty('exercise_id')) }}">
                                             {{ getLogItemDescription($logItem) }}:
@@ -48,6 +54,8 @@
                                             {{ getExerciseTitle(getExerciseById($logItem->subject_id)) ?? $logItem->subject_id }}
                                         </a>
                                         @break
+                                    @default
+                                        <span>{{ __('activitylog.action_unknown') }}</span>
                                 @endswitch
                                 </td>
                                 <td>
