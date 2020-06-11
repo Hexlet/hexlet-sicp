@@ -33,10 +33,3 @@ if (!function_exists('getExerciseOriginLink')) {
         return $links[$exercise->path] ?? null;
     }
 }
-
-if (!function_exists('getExerciseById')) {
-    function getExerciseById($id)
-    {
-        return Exercise::find($id) ?? null;
-    }
-}
