@@ -27,7 +27,7 @@
 * SQLite for local, PostgreSQL for production
 * [heroku cli](https://devcenter.heroku.com/articles/heroku-cli#download-and-install) [Как развернуть приложение на Heroku](https://ru.hexlet.io/blog/posts/kak-razvernut-prilozhenie-laravel-na-heroku)
 
-### Setup
+### Setup или [Setup in docker](#setup-in-docker)
 
 ```sh
 $ make setup
@@ -57,12 +57,42 @@ DB_PASSWORD=secret
 
 3. Запустить контейнер с БД и сгенерировать записи
 ```sh
-$ make compose-setup
+$ make compose-postgres-start
+$ make config-clear
+$ make db-prepare
 ```
 
 4. Запустить локальный веб-сервер
 ```sh
 $ make start
+```
+
+### Setup in docker
+
+1. Подготовить `.env` файл
+```sh
+$ make env-prepare
+```
+
+2. Указать параметры подключения к БД в файле `.env`
+```
+DB_CONNECTION=pgsql
+DB_HOST=db
+DB_PORT=5432
+DB_DATABASE=hexlet_sicp_development
+DB_USERNAME=postgres
+DB_PASSWORD=secret
+DB_SCHEMA=public
+```
+
+3. Собрать и запустить приложение
+```sh
+$ make compose-setup # build project
+$ make compose-start # start server http://127.0.0.1:8000/
+```
+```sh
+$ make compose-bash  # start bash session inside docker container
+$ make test          # run tests inside docker container
 ```
 
 ### Стандарты
