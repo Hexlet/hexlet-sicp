@@ -37,21 +37,21 @@
                                         </ul>
                                         @break
                                     @case('commented')
+                                        {{ getLogItemDescription($logItem) }}
                                         <a href="{{ $logItem->getExtraProperty('url') }}">
-                                            {{ getLogItemDescription($logItem) }}:
                                             {{ $logItem->getExtraProperty('comment.content') }}
                                         </a>
                                         @break
                                     @case('completed_exercise')
+                                        {{ getLogItemDescription($logItem) }}
                                         <a href="{{ route('exercises.show', $logItem->getExtraProperty('exercise_id')) }}">
-                                            {{ getLogItemDescription($logItem) }}:
-                                            {{ getExerciseTitleByItemLog($logItem) }}
+                                            {{ getExerciseTitle($logItem->subject) }}
                                         </a>
                                         @break
                                     @case('destroy_exercise')
+                                        {{ getLogItemDescription($logItem) }}
                                         <a href="{{ route('exercises.show', $logItem->getExtraProperty('exercise_id')) }}">
-                                            {{ getLogItemDescription($logItem) }}:
-                                            {{ getExerciseTitleByItemLog($logItem) }}
+                                            {{ getExerciseTitle($logItem->subject) }}
                                         </a>
                                         @break
                                     @default

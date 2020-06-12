@@ -10,12 +10,3 @@ if (!function_exists('getLogItemDescription')) {
         return __('activitylog.action_' . $description);
     }
 }
-
-if (!function_exists('getExerciseTitleByItemLog')) {
-
-    function getExerciseTitleByItemLog(Activity $logItem): string
-    {
-        $exercise = $logItem->subject;
-        return getExerciseTitle($exercise) ?? $logItem->subject_id;
-    }
-}
