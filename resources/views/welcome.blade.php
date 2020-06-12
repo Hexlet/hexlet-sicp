@@ -61,12 +61,17 @@
                 @switch($logItem->description)
                     @case('completed_exercise')
                         <a href="{{ route('exercises.show', $logItem->getExtraProperty('exercise_id')) }}">
-                            {{ __('activitylog.action_'.$logItem->description) }}
+                            {{ getLogItemDescription($logItem) }}
+                        </a>
+                        @break
+                    @case('destroy_exercise')
+                        <a href="{{ route('exercises.show', $logItem->getExtraProperty('exercise_id')) }}">
+                            {{ getLogItemDescription($logItem) }}
                         </a>
                         @break
                     @case('commented')
                         <a href="{{ $logItem->getExtraProperty('url') }}">
-                            {{ __('activitylog.action_'.$logItem->description) }}
+                            {{ getLogItemDescription($logItem) }}
                         </a>
                         <span>
                         {{ $logItem->getExtraProperty('comment.content') }}
@@ -79,7 +84,7 @@
                                href="#collapseExp{{ $logItem->id }}"
                                aria-expanded="false"
                                aria-controls="collapseExp{{ $logItem->id }}">
-                                {{ __('activitylog.action_'.$logItem->description) }}
+                                {{ getLogItemDescription($logItem) }}
                                 {{ $logItem->getExtraProperty('count') ?? count($logItem->getExtraProperty('chapters')) }}
                             </a>
                             <div class="collapse" id="collapseExp{{ $logItem->id }}">

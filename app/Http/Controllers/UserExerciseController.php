@@ -33,6 +33,14 @@ class UserExerciseController extends Controller
     {
         $user->exercises()->detach($exercise);
 
+        activity()
+            ->performedOn($exercise)
+            ->causedBy($user)
+            ->withProperties(
+                ['exercise_id' => $exercise->id]
+            )
+            ->log('destroy_exercise');
+
         flash()->success(__('layout.flash.success'));
         return redirect()->back();
     }
