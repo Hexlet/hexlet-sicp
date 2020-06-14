@@ -26,7 +26,7 @@
                             <i class="fas fa-book"></i>
                             {{ __('layout.nav.chapters') }}
                         </a>
-                        <a class="nav-link text-secondary" href="{{ route('exercises.index') }}">
+                        <a class="nav-link text-secondary text-nowrap" href="{{ route('exercises.index') }}">
                             <i class="fas fa-dumbbell"></i>
                             {{ __('layout.nav.exercises') }}
                         </a>
