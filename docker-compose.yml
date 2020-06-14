@@ -1,11 +1,25 @@
 version: '3.7'
 
 services:
-    db:
-        image: postgres
-        environment:
-            POSTGRES_PASSWORD: ${DB_PASSWORD}
-            POSTGRES_DB: ${DB_DATABASE}
-            POSTGRES_USER: ${DB_USERNAME}
-        ports:
-            - 54320:5432
+  app:
+    build: .
+    volumes:
+      - .:/app:cached
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    command: make compose
+    stdin_open: true
+    tty: true
+    env_file:
+      - ./.env
+
+  db:
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_DATABASE}
+      POSTGRES_USER: ${DB_USERNAME}
+    ports:
+      - 54320:5432
