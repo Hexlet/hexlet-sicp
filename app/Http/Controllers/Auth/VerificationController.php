@@ -26,9 +26,7 @@ class VerificationController extends Controller
 
     public function redirectTo()
     {
-        $user = Auth::user();
-
-        return route('users.show', $user);
+        return route('my');
     }
 
     public function verify(\Illuminate\Http\Request $request)

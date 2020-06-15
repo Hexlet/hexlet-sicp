@@ -24,9 +24,8 @@ class LoginController extends Controller
 
     public function redirectTo()
     {
-        $user = Auth::user();
-
-        return route('users.show', $user);
+        flash(__('auth.logged_in'))->success();
+        return route('my');
     }
 
     public function devLogin()
