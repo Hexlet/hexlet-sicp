@@ -37,7 +37,8 @@
                 </a>
                 @endif
             </small>
-            <h1>
+            
+            <div class="h4 mt-2">
                 {{ __('exercise.exercise') }} {{ $exercise->path }}
                 <small>
                     <a class="text-muted"
@@ -49,7 +50,8 @@
                         <i class="fas fa-external-link-alt"></i>
                     </a>
                 </small>
-            </h1>
+            </div>
+            <h1 class="mb-2">{{ getExerciseTitle($exercise) }}</h1>
             <div>
                 @if(view()->exists(getExerciseListingViewFilepath($exercise->path)))
                 @include(getExerciseListingViewFilepath($exercise->path))
@@ -87,6 +89,7 @@
             {!! Form::close() !!}
             @endauth
             @if($exercise->users->isEmpty())
+            <hr>
             <p>{{ __('exercise.show.nobody_completed') }}</p>
             @else
             <br>
@@ -114,6 +117,7 @@
                 </div>
             </div>
             @endif
+            <hr>
             @comments(['model' => $exercise])
         </div>
     </div>
