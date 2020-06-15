@@ -19,7 +19,7 @@
                     {!! Form::open()->patch()->route('account.update', [$user]) !!}
                     {!! Form::text('name', __('register.namePlaceholder'))->value($user->name) !!}
                     <div class="form-group mb-0">
-                        {!! Form::submit(__('Save')) !!}
+                        {!! Form::submit(__('layout.common.save')) !!}
                     </div>
                     {!! Form::close() !!}
                 </div>

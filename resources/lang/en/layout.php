@@ -42,6 +42,7 @@ return [
     'common' => [
         'cancel' => 'Сancel',
         'close' => 'Close',
-        'origin' => 'Go to origin'
+        'origin' => 'Go to origin',
+        'save' => 'Save',
     ]
 ];
