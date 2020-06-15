@@ -9,15 +9,21 @@
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th>{{ __('activitylog.time') }}</th>
-                            <th>{{ __('activitylog.description') }}</th>
                             <th>{{ __('activitylog.user') }}</th>
+                            <th>{{ __('activitylog.description') }}</th>
+                            <th>{{ __('activitylog.time') }}</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($logItems as $logItem)
                             <tr>
-                                <td>{{ $logItem->created_at }}</td>
+                                <td>
+                                @if($logItem->causer)
+                                    <a href="{{ route('users.show', $logItem->causer->id) }}">
+                                        {{ $logItem->causer->name }}
+                                    </a>
+                                @endif
+                                </td>
                                 <td>
                                 @switch($logItem->description)
                                     @case('added')
@@ -58,13 +64,7 @@
                                         <span>{{ __('activitylog.action_unknown') }}</span>
                                 @endswitch
                                 </td>
-                                <td>
-                                @if($logItem->causer)
-                                    <a href="{{ route('users.show', $logItem->causer->id) }}">
-                                        {{ $logItem->causer->name }}
-                                    </a>
-                                @endif
-                                </td>
+                                <td>{{ $logItem->created_at }}</td>
                             </tr>
                         @endforeach
                     </tbody>
