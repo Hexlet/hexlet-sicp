@@ -92,8 +92,7 @@
             <hr>
             <p>{{ __('exercise.show.nobody_completed') }}</p>
             @else
-            <br>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalCart">{{ __('exercise.show.who_completed') }}</button>
+            <button type="button" class="btn btn-primary mt-4" data-toggle="modal" data-target="#modalCart">{{ __('exercise.show.who_completed') }}</button>
             <div class="modal fade" id="modalCart" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
