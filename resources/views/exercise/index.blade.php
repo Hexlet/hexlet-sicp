@@ -13,34 +13,37 @@
     </div>
     <div class="row mt-2">
         <div class="col-12 col-md-4 mb-2">
-            <div class="nav nav-pills flex-column sticky-top x-z-index-0" role="tablist">
+            <ul class="nav nav-pills flex-column sticky-top x-z-index-0" role="tablist">
                 @foreach($exercisesGroups->keys() as $rootChapterPath)
-                    <a class="nav-item nav-link {{ $rootChapterPath === 1 ? 'active' : '' }}"
-                       id="subChapters{{ $rootChapterPath }}-tab"
-                       href="#subChapters{{ $rootChapterPath }}" data-toggle="tab" role="tab"
-                       aria-controls="subChapters{{ $rootChapterPath }}"
-                       aria-selected="{{ $rootChapterPath === '1' ? 'true' : 'false' }}">
-                    {{$rootChapterPath}}. {{ getChapterName($rootChapterPath)  }}
-                    </a>
+                    <li class="nav-item">
+                        <a class="nav-link {{ $rootChapterPath === 1 ? 'active' : '' }}"
+                            id="subChapters{{ $rootChapterPath }}-tab"
+                            href="#subChapters{{ $rootChapterPath }}" data-toggle="tab" role="tab"
+                            aria-controls="subChapters{{ $rootChapterPath }}"
+                            aria-selected="{{ $rootChapterPath === '1' ? 'true' : 'false' }}">
+                            {{ $rootChapterPath }}. {{ getChapterName($rootChapterPath) }}
+                        </a>
+                    </li>
                 @endforeach
-            </div>
+            </ul>
         </div>
         <div class="col-12 col-md-8">
             <div class="card pl-2 pr-3">
                 <div class="tab-content">
                 @foreach($exercisesGroups as $rootChapterPath => $exercises)
                     <div class="tab-pane card-body {{ $rootChapterPath === 1 ? 'active' : '' }}"
-                         id="subChapters{{ $rootChapterPath }}" role="tabpanel"
-                         aria-labelledby="subChapters{{ $rootChapterPath }}-tab">
-                        <p>
-                            @foreach($exercises as $exercise)
-                            <a title="{{ __('exercise.exercise') }} {{ $exercise->path }}"
-                               href="{{ route('exercises.show', $exercise) }}">
-                                {{ $exercise->path }} {{ getExerciseTitle($exercise) }}
-                                <br>
-                            </a>
-                            @endforeach
-                        </p>
+                        id="subChapters{{ $rootChapterPath }}" role="tabpanel"
+                        aria-labelledby="subChapters{{ $rootChapterPath }}-tab">
+                        <ul class="list-unstyled">
+                        @foreach($exercises as $exercise)
+                            <li>
+                                <a title="{{ __('exercise.exercise') }} {{ $exercise->path }}"
+                                    href="{{ route('exercises.show', $exercise) }}">
+                                    {{ $exercise->path }} {{ getExerciseTitle($exercise) }}
+                                </a>
+                            </li>
+                        @endforeach
+                    </ul>
                     </div>
                 @endforeach
                 </div>
