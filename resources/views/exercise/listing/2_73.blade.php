@@ -11,7 +11,7 @@
                          (deriv (multiplicand exp) var))
            (make-product (deriv (multiplier exp) var)
                          (multiplicand exp))))
-        <more rules can be added here>
+        &lt;more rules can be added here&gt;
         (else (error "unknown expression type -- DERIV" exp))))
 </code></pre>
 <p>{{ __('exercises/2_73.description.2') }}</p>
