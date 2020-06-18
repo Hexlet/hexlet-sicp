@@ -61,7 +61,7 @@ class GithubControllerTest extends TestCase
         $user = AppUser::where('email', $email)->firstOrFail();
         $this->assertDatabaseHas('users', ['email' => $email]);
 
-        $response = $this->delete(route('account.destroy', $user));
+        $response = $this->delete(route('settings.account.destroy', $user));
         $response->assertRedirect();
 
         $user2 = AppUser::find($user->id);

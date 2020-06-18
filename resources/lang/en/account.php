@@ -9,4 +9,6 @@ return [
     'your_account_deleted' => 'your account has been successfully deleted !!!',
     'name_updated' => 'Name successfully updated',
     'сhange_name' => 'Change name',
+    'current_email' => 'Current email',
+    'go_to_gravatar' => 'Перейти на Gravatar.com'
 ];
