@@ -1,4 +1,4 @@
-<div class="col-lg-3 col-md-3 mb-2">
+<div class="col-md-3 mb-2">
     <div class="card shadow-sm">
         <div class="card-header font-weight-bold text-muted">
             {{ __('account.settings') }}

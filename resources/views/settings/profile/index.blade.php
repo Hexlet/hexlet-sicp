@@ -7,7 +7,7 @@
 @section('content')
 <div class="row my-4">
     @include('settings._menu')
-        <div class="col-lg-9 col-md-9 col-12">
+        <div class="col-md-9">
             <div class="row">
                 <div class="col-md-8">
                     <div class="card mb-2">
@@ -22,7 +22,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-12 col-md-4">
+                <div class="col-md-4">
                     <div class="card">
                         <img class="card-img-top" src="{{ getProfileImageLink($user) }}" alt="Card image cap">
                         <div class="card-body">
