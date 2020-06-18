@@ -14,7 +14,6 @@
         <div class="col-12 col-md-3">
             <div class="sticky-top pt-4 mb-4 x-z-index-0">
                 <div class="card">
-                    <div class="card-head"></div>
                     <img class="card-img-top" src="{{ getProfileImageLink($user) }}" alt="Card image cap">
                     <div class="card-body">
                         <h3 class="card-text">{{ $user->name }}</h3>
