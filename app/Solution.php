@@ -7,11 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Solution extends Model
 {
     protected $fillable = [
-        'description'
+        'solution'
     ];
-
-    public function completedExercise()
-    {
-        return $this->hasOne('App\CompletedExercise');
-    }
 }
