@@ -66,7 +66,7 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(Comment::class);
     }
 
-    public function solutions()
+    public function exercisesForSolutions()
     {
         return $this->belongsToMany(Exercise::class, 'solutions', 'user_id', 'exercise_id')->withTimestamps();
     }
