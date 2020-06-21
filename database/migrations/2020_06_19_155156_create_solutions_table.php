@@ -17,7 +17,7 @@ class CreateSolutionsTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('exercise_id');
             $table->bigInteger('user_id');
-            $table->text('content')->nullable();
+            $table->text('content');
             $table->timestamps();
 
             $table->foreign('exercise_id')
