@@ -20,4 +20,9 @@ class Exercise extends Model
     {
         return $this->belongsToMany(User::class, 'completed_exercises');
     }
+
+    public function solutions()
+    {
+        return $this->hasMany(Solution::class);
+    }
 }
