@@ -20,8 +20,6 @@ class CreateSolutionsTable extends Migration
             $table->text('content')->nullable();
             $table->timestamps();
 
-            $table->unique(['exercise_id', 'user_id']);
-
             $table->foreign('exercise_id')
                 ->references('id')
                 ->on('exercises');

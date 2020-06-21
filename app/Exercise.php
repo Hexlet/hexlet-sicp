@@ -21,8 +21,8 @@ class Exercise extends Model
         return $this->belongsToMany(User::class, 'completed_exercises');
     }
 
-    public function usersForSolutions()
+    public function solutions()
     {
-        return $this->belongsToMany(User::class, 'solutions', 'exercise_id', 'user_id');
+        return $this->hasMany(Solution::class);
     }
 }
