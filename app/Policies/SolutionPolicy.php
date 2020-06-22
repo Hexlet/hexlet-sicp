@@ -5,6 +5,7 @@ namespace App\Policies;
 use App\Solution;
 use App\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
+use Auth;
 
 class SolutionPolicy
 {
@@ -12,7 +13,7 @@ class SolutionPolicy
     
     public function create(User $user)
     {
-        return \Auth::check();
+        return Auth::check();
     }
 
     public function delete(User $user, Solution $solution)

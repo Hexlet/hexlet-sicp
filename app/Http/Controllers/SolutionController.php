@@ -4,14 +4,25 @@ namespace App\Http\Controllers;
 
 use App\Solution;
 use App\User;
-use App\Http\Requests\SolutionRequest;
+use Illuminate\Http\Request;
 
 class SolutionController extends Controller
 {
     
-    public function store(SolutionRequest $request, User $user)
+    public function __construct()
     {
-        if (Solution::create($request->validated())) {
+        $this->authorizeResource(Solution::class, 'solution');
+    }
+
+    public function store(Request $request, User $user)
+    {
+        $validatedData = $request->validate([
+            'exercise_id' => 'required|integer|min:1',
+            'user_id' => 'required|integer|min:1',
+            'content' => 'required|string|min:1'
+        ]);
+
+        if (Solution::create($validatedData)) {
             flash()->success(__('layout.flash.success'));
         } else {
             flash()->error(__('layout.flash.error'));
