@@ -31,5 +31,5 @@ Route::group([
     Route::resource('exercises', 'ExerciseController')->only('index', 'show');
     Route::resource('log', 'ActivitylogController')->only('index');
     Route::resource('comments', 'CommentController')->only('store', 'update', 'show', 'destroy');
-    Route::resource('solutions', 'SolutionController')->only('store', 'destroy');
+    Route::resource('users.solutions', 'SolutionController')->only('store', 'destroy');
 });

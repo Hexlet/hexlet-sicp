@@ -2,12 +2,12 @@
 
 namespace Tests\Feature\Http\Controllers;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 use App\Solution;
 use App\Exercise;
 use App\User;
+use Illuminate\Auth\Access\AuthorizationException;
+use Illuminate\Database\Eloquent\Model;
 
 class SolutionControllerTest extends TestCase
 {
@@ -19,7 +19,6 @@ class SolutionControllerTest extends TestCase
         $this->user = factory(User::class)->create();
 
         $this->actingAs($this->user)
-            ->withSession(['foo' => 'bar'])
             ->get('/');
     }
 
@@ -29,7 +28,7 @@ class SolutionControllerTest extends TestCase
             'user_id' => $this->user->id
         ])->toArray();
         $data = \Arr::only($factoryData, ['exercise_id', 'user_id', 'content']);
-        $response = $this->post(route('solutions.store'), $data);
+        $response = $this->post(route('users.solutions.store', $this->user), $data);
         
         $response->assertSessionHasNoErrors();
         $response->assertRedirect();
@@ -42,7 +41,7 @@ class SolutionControllerTest extends TestCase
         $solution = factory(Solution::class)->create([
             'user_id' => $this->user->id
         ]);
-        $response = $this->delete(route('solutions.destroy', $solution));
+        $response = $this->delete(route('users.solutions.destroy', [$this->user, $solution]));
         $response->assertSessionHasNoErrors();
         $response->assertRedirect();
 
