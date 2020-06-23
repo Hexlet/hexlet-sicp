@@ -18,17 +18,17 @@ class SolutionController extends Controller
     {
         $validatedData = $request->validate([
             'exercise_id' => 'required|integer|min:1',
-            'user_id' => 'required|integer|min:1',
             'content' => 'required|string|min:1'
         ]);
 
-        if (Solution::create($validatedData)) {
+        if (Solution::create(array_merge($validatedData, ['user_id' => $user->id]))) {
             flash()->success(__('layout.flash.success'));
         } else {
             flash()->error(__('layout.flash.error'));
         }
 
-        return back()->withInput();
+        //return back()->withInput();
+        return back();
     }
 
     public function destroy(User $user, Solution $solution)

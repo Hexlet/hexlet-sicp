@@ -2,6 +2,7 @@
 @php
 /**
  * @var \App\Exercise $exercise
+ * @var \App\Solution $solution
  * @var bool $userCompletedExercise
  * @var \App\User $authUser
  */
@@ -66,6 +67,9 @@
                 @endif
             </div>
             <div>
+                <hr>
+                @solutions(['exercise' => $exercise, 'solution' => $solution])
+                <hr>
             @auth
             {!! Form::open()->route('users.exercises.store', [$authUser])->post() !!}
             {!! Form::hidden('exercise_id', $exercise->id) !!}
