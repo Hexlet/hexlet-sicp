@@ -8,7 +8,6 @@ class Solution extends Model
 {
     protected $fillable = [
         'exercise_id',
-        'user_id',
         'content'
     ];
 

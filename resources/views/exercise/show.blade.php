@@ -38,7 +38,7 @@
                 </a>
                 @endif
             </small>
-            
+
             <div class="h4 mt-2">
                 {{ __('exercise.exercise') }} {{ $exercise->path }}
                 <small>
@@ -67,9 +67,9 @@
                 @endif
             </div>
             <div>
-                <hr>
-                @solutions(['exercise' => $exercise, 'solution' => $solution])
-                <hr>
+            <hr>
+            @solutions(['exercise' => $exercise, 'solution' => $solution])
+            <hr>
             @auth
             {!! Form::open()->route('users.exercises.store', [$authUser])->post() !!}
             {!! Form::hidden('exercise_id', $exercise->id) !!}
