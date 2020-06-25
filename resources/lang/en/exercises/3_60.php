@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'title' => "",
+    'title' => "Procedure for multiplying series",
     'description' => [
         '1' =>
         "With power series represented as streams of coefficients as in exercise 3.59, adding series is implemented by add-streams. " .
