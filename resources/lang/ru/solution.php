@@ -3,7 +3,8 @@
 return [
     'save' => 'Сохранить',
     'placeholder' => 'Введите свое решение',
-    'title' => 'Решение',
-    'authentication_required' => 'Необходима авторизация',
-    'must_log_in' => 'Вы должны авторизоваться, чтобы сохранить свое решение.'
+    'title_add_solution' => 'Решение',
+    'title_output_solution' => 'Мое решение',
+    'add_solution' => 'Добавить решение',
+    'show_solution' => 'Показать мое решение'
 ];

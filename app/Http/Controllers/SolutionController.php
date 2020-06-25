@@ -21,9 +21,10 @@ class SolutionController extends Controller
             'content' => 'required|string|min:1'
         ]);
 
-        if ($user->solutions()->save(new Solution($validatedData))) {
-            flash()->success(__('layout.flash.success'));
-        } else {
+        $solution = new Solution($validatedData);
+        $solution->user()->associate($user);
+
+        if (!$solution->save()) {
             flash()->error(__('layout.flash.error'));
         }
 

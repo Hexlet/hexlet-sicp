@@ -3,7 +3,8 @@
 return [
     'save' => 'Save',
     'placeholder' => 'Enter your solution',
-    'title' => 'Solution',
-    'authentication_required' => 'Authentication required',
-    'must_log_in' => 'You must log in to save your solution.'
+    'title_add_solution' => 'Solution',
+    'title_output_solution' => 'My solution',
+    'add_solution' => 'Add solution',
+    'show_solution' => 'Show solution'
 ];

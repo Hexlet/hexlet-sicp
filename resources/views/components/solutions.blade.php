@@ -1,20 +1,45 @@
 @php
 /**
- * @var \Illuminate\Database\Eloquent\Model $model
- * @var \App\Comment $comment
+ * @var \App\Exercise $exercise
+ * @var \App\Solution $solutions
+ * @var \App\User $authUser
  */
 @endphp
-<div class="mt-2">
-    <span class="h4 mt-2 mb-0 position-relative">{{ __('solution.title') }}</span>
-    @auth
-        @include('components.solution._form')
-    @else
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">{{ __('comment.authentication_required') }}</h5>
-                <p class="card-text">{{ __('comment.must_log_in') }}</p>
-                <a href="{{ route('login') }}" class="btn btn-primary">{{ __('layout.nav.login') }}</a>
+
+<div class="modal fade" id="modalInterExercise" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">{{ __('solution.title_add_solution') }}</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                @include('components.solution._form')
             </div>
         </div>
-    @endauth
+    </div>
+</div>
+
+<div class="modal fade" id="modalShowExercises" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">{{ __('solution.title_output_solution') }}</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                @foreach ($solutions as $solution)
+                <div class="bg-light py-2 pl-1">{{ $solution->created_at }}</div>
+                <pre class="ml-4 mb-2"><code>{{ $solution->content }}</code></pre>
+                @endforeach
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">{{ __('layout.common.close') }}</button>
+            </div>
+        </div>
+    </div>
 </div>
