@@ -71,7 +71,7 @@
             @auth
             <div class="row justify-content-start mx-0 my-4">
                 <button type="button" class="mr-1 btn btn-primary" data-toggle="modal" data-target="#modalInterExercise">{{ __('solution.add_solution') }}</button>
-                @if($solutions)
+                @if(!$solutions->isEmpty())
                 <button type="button" class="mr-1 btn btn-primary" data-toggle="modal" data-target="#modalShowExercises">{{ __('solution.show_solution') }}</button>
                 @endif
 

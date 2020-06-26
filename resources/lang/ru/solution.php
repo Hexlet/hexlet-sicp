@@ -6,5 +6,5 @@ return [
     'title_add_solution' => 'Решение',
     'title_output_solution' => 'Мое решение',
     'add_solution' => 'Добавить решение',
-    'show_solution' => 'Показать мое решение'
+    'show_solution' => 'Мои решения'
 ];
