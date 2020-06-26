@@ -69,7 +69,7 @@
             <hr>
             <div>
             @auth
-            <div class="d-flex justify-content-start mb-4">
+            <div class="d-flex mb-4">
                 <button type="button" class="mr-1 btn btn-primary" data-toggle="modal" data-target="#interExercise">{{ __('solution.add_solution') }}</button>
                 @if(!$solutions->isEmpty())
                 <button type="button" class="mr-1 btn btn-primary" data-toggle="modal" data-target="#showExercises">{{ __('solution.show_solution') }}</button>
