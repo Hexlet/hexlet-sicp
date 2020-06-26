@@ -6,11 +6,11 @@
  */
 @endphp
 
-<div class="modal fade" id="modalInterExercise" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="interExercise" tabindex="-1" role="dialog" aria-labelledby="modal interExercise" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="myModalLabel">{{ __('solution.title_add_solution') }}</h4>
+                <h4 class="modal-title" id="interExerciseTitle">{{ __('solution.title_add_solution') }}</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
@@ -22,11 +22,11 @@
     </div>
 </div>
 
-<div class="modal fade" id="modalShowExercises" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="showExercises" tabindex="-1" role="dialog" aria-labelledby="modal showExercises" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="myModalLabel">{{ __('solution.title_output_solution') }}</h4>
+                <h4 class="modal-title" id="showExercisesTitle">{{ __('solution.title_output_solution') }}</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
