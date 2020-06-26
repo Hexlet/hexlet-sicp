@@ -9,6 +9,8 @@
     {!! Form::open()->route('users.solutions.store', [$authUser]) !!}
     {!! Form::textarea('content')->placeholder(__('solution.placeholder'))->attrs(['rows' => 10])->required() !!}
     {!! Form::hidden('exercise_id', $exercise->id) !!}
-    {!! Form::submit(__('solution.save'), 'primary float-right') !!}
+    <div class="d-flex justify-content-end">
+        {!! Form::submit(__('solution.save'), 'primary') !!}
+    </div>
     {!! Form::close() !!}
 </div>
