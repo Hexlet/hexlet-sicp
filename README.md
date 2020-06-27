@@ -118,19 +118,19 @@ $ make test          # run tests inside docker container
 Зарегистрируйте приложение на GitHub (подробнее https://developer.github.com/apps/about-apps/). Для этого:
 * В меню учетной записи GitHub выберите пункт “Settings”
 * В открывшемся окне в панели навигации, справа, выберите “GitHub Apps”, затем нажмите кнопку “New GitHub App”
-* В открывшейся форме в поле GitHub App name введите название приложения (например, Hexlet-SICP)
+* В открывшейся форме в поле "GitHub App name" введите название приложения (например, Hexlet-SICP)
 * В поле Homepage URL - адрес ресурса (например, https://hexlet-sicp.herokuapp.com)
-* В поле User authorization callback URL введите полный URL-адрес для перенаправления после того, как пользователь авторизует приложение на GitHub. (например, https://hexlet-sicp.herokuapp.com/oauth/github/callback)
-* В поле Webhook URL укажите URL-адрес, по которому будут отправляться события (например, https://hexlet-sicp.herokuapp.com/oauth/github/callback)
+* В поле "User authorization callback URL" введите полный URL-адрес для перенаправления после того, как пользователь авторизует приложение на GitHub. (например, https://hexlet-sicp.herokuapp.com/oauth/github/callback)
+* В поле "Webhook URL" укажите URL-адрес, по которому будут отправляться события (например, https://hexlet-sicp.herokuapp.com/oauth/github/callback)
 * Откройте права на получение информации о e-mail пользователя (User permissions->Email addresses->Read only)
-* Сохраните данные регистрации приложения (кнопка Create GitHub App)
+* Сохраните данные регистрации приложения (кнопка "Create GitHub App")
 * На открывшейся странице приложения скопируйте Client ID и Client secret
-* Cгенерируйте закрытый ключ (generate a private key)
+* Cгенерируйте закрытый ключ (кнопка Generate a private key)
 
 В случае деплоя на Heroku, задайте переменные окружения для развернутого приложения. Для этого:
-* Перейдите на вкладку Settings
-* В настройке Config Vars добавьте переменные GITHUB_CLIENT_ID, GITHUB_CLIENT_SECRET и GITHUB_URL_REDIRECT указав для них соответвенно значения Client ID, Client secret и User authorization callback URL
-* После чего выпольните сброс кеша конфигурации: heroku run php artisan config:cache
+* Перейдите на вкладку "Settings"
+* В настройке "Config Vars" добавьте переменные GITHUB_CLIENT_ID, GITHUB_CLIENT_SECRET и GITHUB_URL_REDIRECT указав для них соответвенно значения Client ID, Client secret и User authorization callback URL
+* После чего выпольните сброс кеша конфигурации: ```heroku run php artisan config:cache```
 
 #### Альтернативный профиль БД для тестирования
 
