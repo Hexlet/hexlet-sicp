@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class SolutionController extends Controller
 {
-    
+
     public function __construct()
     {
         $this->authorizeResource(Solution::class, 'solution');
@@ -18,17 +18,17 @@ class SolutionController extends Controller
     {
         $validatedData = $request->validate([
             'exercise_id' => 'required|integer|min:1',
-            'user_id' => 'required|integer|min:1',
             'content' => 'required|string|min:1'
         ]);
 
-        if (Solution::create($validatedData)) {
-            flash()->success(__('layout.flash.success'));
-        } else {
+        $solution = new Solution($validatedData);
+        $solution->user()->associate($user);
+
+        if (!$solution->save()) {
             flash()->error(__('layout.flash.error'));
         }
 
-        return back()->withInput();
+        return back();
     }
 
     public function destroy(User $user, Solution $solution)

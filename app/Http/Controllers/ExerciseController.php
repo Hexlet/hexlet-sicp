@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Exercise;
 use App\User;
+use App\Solution;
 
 class ExerciseController extends Controller
 {
@@ -27,12 +28,18 @@ class ExerciseController extends Controller
         $previousExercise = Exercise::whereId($exercise->id - 1)->firstOrNew([]);
         $nextExercise = Exercise::whereId($exercise->id + 1)->firstOrNew([]);
 
+        $solutions = $authUser->solutions()
+            ->where('exercise_id', $exercise->id)
+            ->orderBy('id', 'desc')
+            ->get();
+
         return view('exercise.show', compact(
             'exercise',
             'userCompletedExercise',
             'authUser',
             'previousExercise',
             'nextExercise',
+            'solutions'
         ));
     }
 }

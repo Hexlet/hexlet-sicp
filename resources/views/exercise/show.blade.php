@@ -2,6 +2,7 @@
 @php
 /**
  * @var \App\Exercise $exercise
+ * @var \App\Solution $solutions
  * @var bool $userCompletedExercise
  * @var \App\User $authUser
  */
@@ -37,7 +38,7 @@
                 </a>
                 @endif
             </small>
-            
+
             <div class="h4 mt-2">
                 {{ __('exercise.exercise') }} {{ $exercise->path }}
                 <small>
@@ -65,34 +66,43 @@
                 </p>
                 @endif
             </div>
+            <hr>
             <div>
             @auth
-            {!! Form::open()->route('users.exercises.store', [$authUser])->post() !!}
-            {!! Form::hidden('exercise_id', $exercise->id) !!}
-            {!! Form::submit(($userCompletedExercise ? '<i class="fas fa-check"></i> ' : '')
-                . __(sprintf('exercise.show.%s', $userCompletedExercise
-                    ? 'already_completed'
-                    : 'mark_complete')))
-                        ->success()
-                        ->disabled($userCompletedExercise) !!}
-            @if ($userCompletedExercise)
-            <a href="{{ route('users.exercises.destroy', [$authUser, $exercise]) }}"
-                class="text-decoration-none"
-                data-toggle="tooltip"
-                data-placement="bottom"
-                title="{{ __('exercise.remove_completed_exercise', ['exercise_path' => $exercise->path]) }}"
+            <div class="d-flex mb-4">
+                <button type="button" class="mr-1 btn btn-primary" data-toggle="modal" data-target="#interExercise">{{ __('solution.add_solution') }}</button>
+                @if(!$solutions->isEmpty())
+                <button type="button" class="mr-1 btn btn-primary" data-toggle="modal" data-target="#showExercises">{{ __('solution.show_solution') }}</button>
+                @endif
+
+                @solutions(['exercise' => $exercise, 'solutions' => $solutions])
+
+                {!! Form::open()->route('users.exercises.store', [$authUser])->post() !!}
+                {!! Form::hidden('exercise_id', $exercise->id) !!}
+                {!! Form::submit(($userCompletedExercise ? '<i class="fas fa-check"></i> ' : '')
+                    . __(sprintf('exercise.show.%s', $userCompletedExercise
+                        ? 'already_completed'
+                        : 'mark_complete')))
+                            ->success()
+                            ->disabled($userCompletedExercise) !!}
+                @if ($userCompletedExercise)
+                <a href="{{ route('users.exercises.destroy', [$authUser, $exercise]) }}"
+                   class="text-decoration-none"
+                   data-toggle="tooltip"
+                   data-placement="bottom"
+                   title="{{ __('exercise.remove_completed_exercise', ['exercise_path' => $exercise->path]) }}"
                    data-confirm="{{ __('exercise.remove_completed_exercise', ['exercise_path' => $exercise->path]) }}?"
                    data-method="delete">
-                <span class="pl-2">{{ __('layout.common.cancel') }}</span>
-            </a>
-            @endif
-            {!! Form::close() !!}
+                    <span class="pl-2">{{ __('layout.common.cancel') }}</span>
+                </a>
+                @endif
+                {!! Form::close() !!}
+            </div>
             @endauth
             @if($exercise->users->isEmpty())
-            <hr>
             <p>{{ __('exercise.show.nobody_completed') }}</p>
             @else
-            <button type="button" class="btn btn-primary mt-4" data-toggle="modal" data-target="#modalCart">{{ __('exercise.show.who_completed') }}</button>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalCart">{{ __('exercise.show.who_completed') }}</button>
             <div class="modal fade" id="modalCart" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
