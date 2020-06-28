@@ -35,8 +35,7 @@ class SolutionController extends Controller
                 'exercise_path' => $exercise->path
             ])
             ->log('add_solution');
-        }
-        else {
+        } else {
             flash()->error(__('layout.flash.error'));
         }
 
