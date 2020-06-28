@@ -60,6 +60,12 @@
                                             {{ getExerciseTitle($logItem->subject) }}
                                         </a>
                                         @break
+                                    @case('add_solution')
+                                        {{ getLogItemDescription($logItem) }}
+                                        <a href="{{ route('exercises.show', $logItem->getExtraProperty('exercise_id')) }}">
+                                            {{ getExerciseTitle($logItem->subject) }} {{ $logItem->getExtraProperty('exercise_path') }}
+                                        </a>
+                                        @break
                                     @default
                                         <span>{{ __('activitylog.action_unknown') }}</span>
                                 @endswitch

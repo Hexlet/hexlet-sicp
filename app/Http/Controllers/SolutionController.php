@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Solution;
 use App\User;
+use App\Exercise;
 use Illuminate\Http\Request;
 
 class SolutionController extends Controller
@@ -23,8 +24,19 @@ class SolutionController extends Controller
 
         $solution = new Solution($validatedData);
         $solution->user()->associate($user);
+        $exercise = Exercise::findOrFail($request->get('exercise_id'));
 
-        if (!$solution->save()) {
+        if ($solution->save()) {
+            activity()
+            ->performedOn($solution)
+            ->causedBy($user)
+            ->withProperties([
+                'exercise_id' => $exercise->id,
+                'exercise_path' => $exercise->path
+            ])
+            ->log('add_solution');
+        }
+        else {
             flash()->error(__('layout.flash.error'));
         }
 
