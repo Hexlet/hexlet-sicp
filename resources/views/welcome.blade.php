@@ -77,6 +77,11 @@
                         {{ $logItem->getExtraProperty('comment.content') }}
                         </span>
                         @break
+                     @case('add_solution')
+                        <a href="{{ route('exercises.show', $logItem->getExtraProperty('exercise_id')) }}">
+                            {{ getLogItemDescription($logItem) }} {{ $logItem->getExtraProperty('exercise_path') }}
+                        </a>
+                        @break
                     @case('removed')
                     @case('added')
                         <div class="d-block">
