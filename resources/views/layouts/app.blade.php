@@ -31,7 +31,7 @@
     @endif
     <div class="d-flex flex-column min-vh-100">
         @include('layouts._nav')
-        <main class="my-5">
+        <main class="my-4">
             <div class="container mb-3">
                 @include('flash::message')
                 @yield('content')
