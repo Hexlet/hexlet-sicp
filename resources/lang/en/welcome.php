@@ -3,7 +3,7 @@
 return [
     'title' => 'Hexlet SICP',
     'what_is_here' => 'What is here',
-    'about_sicp' => 'SICP — a book on computer science (computer science).
+    'about_sicp' => 'SICP — a book on computer science.
                      Perception of computers as abstract machines used to manipulate data.
                      Despite the fact that the book was first published in 1979,
                      it still has not lost its relevance and will not lose in the future.
