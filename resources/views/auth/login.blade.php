@@ -3,7 +3,11 @@
 <div class="row">
     <div class="col-md-5 mx-auto">
         <div class="card">
-            <div class="card-header"><h1 class="h4 text-center">{{ __('layout.login.form_header') }}</h1></div>
+            <div class="card-header">
+                <h4 class="text-center">
+                    {{ __('layout.login.form_header') }}
+                </h4>
+            </div>
             <div class="card-body">
                 {!! Form::open()->route('login') !!}
                     {!! Form::text('email', __('layout.login.email')) !!}
@@ -21,11 +25,8 @@
                 </div>
                 {!! Form::close() !!}
             </div>
-            <div class="card-footer d-flex justify-content-center bg-transparent">
-                <a href="{{ route('oauth.github') }}" class="btn btn-outline-secondary m-3">
-                    {{ __('auth.with_github') }}
-                    <img src="{{ url('icons/octoface.svg') }}" alt="" />
-                </a>
+            <div class="card-footer p-4 d-flex justify-content-center bg-transparent">
+                @include('components.social_login')
             </div>
         </div>
     </div>
