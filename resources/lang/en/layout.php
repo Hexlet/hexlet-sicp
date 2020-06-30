@@ -19,7 +19,7 @@ return [
         'remember_me' => 'Remember Me',
         'password' => 'Password',
         'button' => 'Login',
-        'email' => 'Email',
+        'email' => 'E-mail',
         'reset_password' => 'Forgot Your Password?'
     ],
     'welcome' => [

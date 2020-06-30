@@ -17,6 +17,7 @@ return [
     'login' => [
         'form_header' => 'Войти',
         'remember_me' => 'Запомнить меня',
+        'email' => 'Электронная почта',
         'password' => 'Пароль',
         'reset_password' => 'Забыли пароль?',
         'button' => 'Войти',

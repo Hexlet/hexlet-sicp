@@ -20,10 +20,10 @@ return [
     'user' => "We can't find a user with that e-mail address.",
     'reset_password' => [
         'form_header' => 'Reset Password',
-        'email' => 'Email',
+        'email' => 'E-mail',
         'password' => 'Password',
         'confirm_password' => 'Confirm Password',
         'button' => 'Reset Password',
-        'button_send_link' => 'Send Password Reset Link'
+        'button_send_link' => 'Send link'
     ],
 ];

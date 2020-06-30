@@ -3,6 +3,7 @@
 return [
     'title' => 'Регистрация',
     'namePlaceholder' => 'Имя',
+    'emailPlaceholder' => 'Электронная почта',
     'passwordPlaceholder' => 'Пароль',
     'passwordConfirmationPlaceholder' => 'Подтверждение пароля',
     'registerButton' => 'Зарегистрироваться',
