@@ -13,7 +13,7 @@
             <div class="col-sm-6 col-md-3 col-lg-auto">
                 <h2 class="h5 mb-3">{{ __('layout.footer.other_os_projects') }}</h2>
                 <ul class="list-unstyled">
-                    <li><a target="_blank" href="https://github.com/Hexlet/hexlet-interview">NodeJS</a></li>
+                    <li><a target="_blank" href="https://github.com/Hexlet/hexlet-editor">NodeJS</a></li>
                     <li><a target="_blank" href="https://github.com/Hexlet/hexlet-cv">Ruby</a></li>
                     <li><a target="_blank" href="https://github.com/Hexlet/hexlet-correction">Java</a></li>
                     <li><a target="_blank" href="https://github.com/Hexlet/hexlet-friends">Python</a></li>
