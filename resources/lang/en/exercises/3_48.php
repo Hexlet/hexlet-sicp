@@ -7,4 +7,3 @@ return [
         "Rewrite serialized-exchange to incorporate this idea. " .
         "(You will also need to modify make-account so that each account is created with a number, which can be accessed by sending an appropriate message.)"
 ];
-
