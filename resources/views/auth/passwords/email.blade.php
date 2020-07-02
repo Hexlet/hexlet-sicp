@@ -19,7 +19,7 @@
                         Form::text('email', __('passwords.reset_password.email'))
                     !!}
 
-                    <div class="flex-row mt-4">
+                    <div class="mt-4">
                         {!! Form::submit(__('passwords.reset_password.button_send_link'))->block() !!}
                     </div>
 

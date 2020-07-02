@@ -18,7 +18,7 @@
 
                     {!! Form::text('password_confirmation', __('passwords.reset_password.confirm_password'))->type('password') !!}
 
-                    <div class="flex-row mt-4">
+                    <div class="mt-4">
                         {!! Form::submit(__('passwords.reset_password.button'))->block() !!}
                     </div>
 

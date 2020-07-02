@@ -13,7 +13,7 @@
                     {!! Form::text('name', __('register.namePlaceholder')) !!}
                     {!! Form::text('password', __('register.passwordPlaceholder'))->type('password') !!}
                     {!! Form::text('password_confirmation', __('register.passwordConfirmationPlaceholder'))->type('password') !!}
-                    <div class="flex-row mt-4">
+                    <div class="mt-4">
                         {!! Form::submit(__('register.registerButton'))->block() !!}
                         <div class="mt-2">
                             <a href="{{ route('login') }}">

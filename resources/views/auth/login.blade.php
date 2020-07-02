@@ -13,7 +13,6 @@
                 <div class="form-group">
                     {!! Form::checkbox('remember', __('layout.login.remember_me')) !!}
                 </div>
-                <div class="flex-row">
                     {!! Form::submit(__('layout.login.button'))->block() !!}
                     <div class="mt-2">
                         @if (Route::has('password.request'))
@@ -22,7 +21,6 @@
                         </a>
                         @endif
                     </div>
-                </div>
                 {!! Form::close() !!}
             </div>
             <div class="card-footer p-4 text-center bg-transparent">
