@@ -4,7 +4,7 @@
 <div class="row">
     <div class="col-md-5 mx-auto">
         <div class="card">
-            <h1 class="h4 text-center card-header">
+            <h1 class="h4 text-center card-header p-3">
                 {{ __('register.title') }}
             </h1>
             <div class="card-body">
