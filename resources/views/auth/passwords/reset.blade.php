@@ -4,12 +4,9 @@
 <div class="row">
     <div class="col-md-5 mx-auto">
         <div class="card">
-            <div class="card-header">
-                <h4 class="text-center">
-                    {{ __('passwords.reset_password.form_header') }}
-                </h4>
-            </div>
-
+            <h1 class="h4 text-center card-header">
+                {{ __('passwords.reset_password.form_header') }}
+            </h1>
             <div class="card-body">
                 {!! Form::open()->route('password.update') !!}
 

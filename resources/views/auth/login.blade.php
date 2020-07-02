@@ -3,11 +3,9 @@
 <div class="row">
     <div class="col-md-5 mx-auto">
         <div class="card">
-            <div class="card-header">
-                <h4 class="text-center">
-                    {{ __('layout.login.form_header') }}
-                </h4>
-            </div>
+            <h1 class="h4 text-center card-header">
+                {{ __('layout.login.form_header') }}
+            </h1>
             <div class="card-body">
                 {!! Form::open()->route('login') !!}
                     {!! Form::text('email', __('layout.login.email')) !!}
@@ -25,7 +23,7 @@
                 </div>
                 {!! Form::close() !!}
             </div>
-            <div class="card-footer p-4 d-flex justify-content-center bg-transparent">
+            <div class="card-footer p-4 text-center bg-transparent">
                 @include('components.social_login')
             </div>
         </div>
