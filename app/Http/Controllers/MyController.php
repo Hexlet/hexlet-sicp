@@ -21,18 +21,18 @@ class MyController extends Controller
         $chapters = Chapter::with('children', 'exercises')->get();
         $mainChapters = $chapters->where('parent_id', null);
         $completedExercises = $user->completedExercises->keyBy('exercise_id');
-        $lastSolutions = $user->solutions()
-        ->with('exercise')
-        ->distinct('exercise_id')
-        ->orderBy('exercise_id')
-        ->paginate(10);
+        $savedSolutionsExercises = $user->solutions()
+            ->with('exercise')
+            ->distinct('exercise_id')
+            ->orderBy('exercise_id')
+            ->paginate(10);
 
         return view('my.index', compact(
             'user',
             'chapters',
             'mainChapters',
             'completedExercises',
-            'lastSolutions'
+            'savedSolutionsExercises'
         ));
     }
 }

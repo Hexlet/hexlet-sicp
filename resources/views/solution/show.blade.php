@@ -5,15 +5,16 @@
 <div class="d-flex flex-wrap justify-content-between mb-4">
     <div class="h5">
         <a href="{{ route('exercises.show', $currentExercise) }}">
-        Exercise {{ $currentExercise->path }}: {{ getExerciseTitle($currentExercise) }}
+        {{ __('solution.exercise') }} {{ $currentExercise->path }}: {{ getExerciseTitle($currentExercise) }}
     </div>
     <div class="h5">
         <a href="{{ route('users.show', $user) }}">{{ $user->name }}</a>
     </div>
 </div>
-<div class="h1 text-center mb-4">Code Review</div>
 
-<div class="d-flex flex-wrap border-top">
+<div class="h1 text-center mb-4">{{ __('solution.code_review') }}</div>
+
+<div class="d-flex flex-wrap">
     <div class="flex-grow-1 flex-shrink-1 p-4">
         <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
             @foreach ($solutionsListForCurrentExercise as $currentSolution)

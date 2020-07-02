@@ -1,7 +1,7 @@
 
 <div class="d-flex border border-top-0 flex-wrap">
     <div class="flex-grow-1 flex-lg-grow-0 flex-shrink-0 border-right">
-        <div class="nav nav-pills flex-column sticky-top x-z-index-0 m-2 pt-2" role="tablist">
+        <div class="nav nav-pills flex-column sticky-top m-2 pt-2" role="tablist">
             @foreach($mainChapters as $mainChapter)
             <a class="nav-item nav-link {{ $mainChapter->path === '1' ? 'active' : '' }}"
                id="subChapters{{ $mainChapter->id }}-tab"
