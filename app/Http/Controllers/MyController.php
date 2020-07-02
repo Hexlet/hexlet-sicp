@@ -23,7 +23,7 @@ class MyController extends Controller
         $completedExercises = $user->completedExercises->keyBy('exercise_id');
         $lastSolutions = $user->solutions()
         ->with('exercise')
-        ->groupBy('exercise_id', 'id')
+        ->distinct('exercise_id')
         ->orderBy('exercise_id')
         ->paginate(10);
 
