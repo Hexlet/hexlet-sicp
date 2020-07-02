@@ -13,12 +13,14 @@
                     {!! Form::text('name', __('register.namePlaceholder')) !!}
                     {!! Form::text('password', __('register.passwordPlaceholder'))->type('password') !!}
                     {!! Form::text('password_confirmation', __('register.passwordConfirmationPlaceholder'))->type('password') !!}
-                    <div class="form-group mt-4">
-                        {!! Form::submit(__('register.registerButton')) !!}
-                        <a class="btn btn-link float-right" href="{{ route('login') }}">
-                            {{ __('register.accountExists') }}
-                            {{ __('register.logIn') }}
-                        </a>
+                    <div class="flex-row mt-4">
+                        {!! Form::submit(__('register.registerButton'))->block() !!}
+                        <div class="mt-2">
+                            <a href="{{ route('login') }}">
+                                {{ __('register.accountExists') }}
+                                {{ __('register.logIn') }}
+                            </a>
+                        </div>
                     </div>
                 {!! Form::close() !!}
             </div>

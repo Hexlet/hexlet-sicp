@@ -7,7 +7,7 @@
             <h1 class="h4 text-center card-header p-3">
                 {{ __('passwords.reset_password.form_header') }}
             </h1>
-            <div class="card-body">
+            <div class="card-body mb-3">
                 @if (session('status'))
                     <div class="alert alert-success" role="alert">
                         {{ session('status') }}
@@ -19,8 +19,8 @@
                         Form::text('email', __('passwords.reset_password.email'))
                     !!}
 
-                    <div class="form-group mt-4">
-                        {!! Form::submit(__('passwords.reset_password.button_send_link')) !!}
+                    <div class="flex-row mt-4">
+                        {!! Form::submit(__('passwords.reset_password.button_send_link'))->block() !!}
                     </div>
 
                 {!! Form::close() !!}

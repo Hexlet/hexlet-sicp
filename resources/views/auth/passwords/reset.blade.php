@@ -7,7 +7,7 @@
             <h1 class="h4 text-center card-header p-3">
                 {{ __('passwords.reset_password.form_header') }}
             </h1>
-            <div class="card-body">
+            <div class="card-body mb-3">
                 {!! Form::open()->route('password.update') !!}
 
                     {!!Form::hidden('token', $token)!!}
@@ -18,8 +18,8 @@
 
                     {!! Form::text('password_confirmation', __('passwords.reset_password.confirm_password'))->type('password') !!}
 
-                    <div class="form-group mt-4">
-                        {!! Form::submit(__('passwords.reset_password.button')) !!}
+                    <div class="flex-row mt-4">
+                        {!! Form::submit(__('passwords.reset_password.button'))->block() !!}
                     </div>
 
                 {!! Form::close() !!}

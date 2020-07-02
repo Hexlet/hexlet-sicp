@@ -13,13 +13,15 @@
                 <div class="form-group">
                     {!! Form::checkbox('remember', __('layout.login.remember_me')) !!}
                 </div>
-                <div class="form-group">
-                    {!! Form::submit(__('layout.login.button')) !!}
-                    @if (Route::has('password.request'))
-                    <a class="btn btn-link float-right" href="{{ route('password.request') }}">
-                        {{ __('layout.login.reset_password') }}
-                    </a>
-                    @endif
+                <div class="flex-row">
+                    {!! Form::submit(__('layout.login.button'))->block() !!}
+                    <div class="mt-2">
+                        @if (Route::has('password.request'))
+                        <a href="{{ route('password.request') }}">
+                            {{ __('layout.login.reset_password') }}
+                        </a>
+                        @endif
+                    </div>
                 </div>
                 {!! Form::close() !!}
             </div>
