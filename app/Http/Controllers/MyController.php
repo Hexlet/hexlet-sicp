@@ -6,6 +6,7 @@ use App\Chapter;
 use App\User;
 use App\Exercise;
 use Auth;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class MyController extends Controller
 {
@@ -20,20 +21,18 @@ class MyController extends Controller
         $chapters = Chapter::with('children', 'exercises')->get();
         $mainChapters = $chapters->where('parent_id', null);
         $completedExercises = $user->completedExercises->keyBy('exercise_id');
-        $completedExercisesList = $user->solutions()
-            ->get()
-            ->countBy('exercise_id')
-            ->sortKeys()
-            ->map(function ($value, $key) {
-                return ['count' => $value, 'exercise' => Exercise::find($key)];
-            });
+        $lastSolutions = $user->solutions()
+        ->with('exercise')
+        ->groupBy('exercise_id')
+        ->orderBy('exercise_id')
+        ->paginate(10);
 
         return view('my.index', compact(
             'user',
             'chapters',
             'mainChapters',
             'completedExercises',
-            'completedExercisesList'
+            'lastSolutions'
         ));
     }
 }

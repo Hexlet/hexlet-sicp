@@ -18,13 +18,14 @@ class SolutionController extends Controller
     public function store(Request $request, User $user)
     {
         $validatedData = $request->validate([
-            'exercise_id' => 'required|integer|min:1',
             'content' => 'required|string|min:1'
         ]);
 
-        $solution = new Solution($validatedData);
-        $solution->user()->associate($user);
         $exercise = Exercise::findOrFail($request->get('exercise_id'));
+
+        $solution = new Solution($validatedData);
+        $solution->user()->associate($user)->exercise()->associate($exercise);
+
 
         if ($solution->save()) {
             activity()
@@ -40,6 +41,23 @@ class SolutionController extends Controller
         }
 
         return back();
+    }
+
+    public function show(User $user, Solution $solution)
+    {
+
+        $currentExercise = $solution->exercise;
+
+        $solutionsListForCurrentExercise = $solution->exercise
+        ->solutions()
+        ->where('user_id', $user->id)
+        ->get();
+
+        return view('solution.show', compact(
+            'currentExercise',
+            'solutionsListForCurrentExercise',
+            'user'
+        ));
     }
 
     public function destroy(User $user, Solution $solution)

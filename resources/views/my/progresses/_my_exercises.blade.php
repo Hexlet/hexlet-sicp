@@ -3,18 +3,23 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th class="border-top h5">Chapter</th>
-                    <th class="border-top h5">Exercise</th>
-                    <th class="border-top h5">Versions</th>
+                    <th class="border-top h5">Exercises</th>
+                    <th class="border-top h5">Solutions</th>
                 </tr>
-                @foreach ($completedExercisesList as $completedExercise)
+                @foreach ($lastSolutions as $solution)
                 <tr>
-                    <td>{{ $completedExercise['exercise']->chapter->path }} {{ getChapterName($completedExercise['exercise']->chapter->path) }}</td>
-                    <td><a href="{{ route('exercises.show', $completedExercise['exercise']) }}">Exersise {{ $completedExercise['exercise']->path }}</td>
-                    <td>{{ $completedExercise['count'] }}</td>
+                    <td>
+                        <a href="{{ route('exercises.show', $solution['exercise']) }}">
+                        Exercise {{ $solution->exercise->path }} {{ getExerciseTitle($solution->exercise) }} (Chapter {{ $solution->exercise->chapter->path }})
+                    </td>
+                    <td>
+                        <a href="{{ route('users.solutions.show', [$user, $solution]) }}">
+                        See details
+                    </td>
                 </tr>
                 @endforeach
             </thead>
         </table>
     </div>
+    {{ $lastSolutions->withQueryString()->links() }}
 </div>

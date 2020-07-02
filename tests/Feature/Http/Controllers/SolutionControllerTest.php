@@ -29,11 +29,25 @@ class SolutionControllerTest extends TestCase
         ])->toArray();
         $data = \Arr::only($factoryData, ['exercise_id', 'user_id', 'content']);
         $response = $this->post(route('users.solutions.store', $this->user), $data);
-        
+
         $response->assertSessionHasNoErrors();
         $response->assertRedirect();
 
         $this->assertDatabaseHas('solutions', $data);
+    }
+
+    public function testShow()
+    {
+        $solutions = $this->user->solutions()->saveMany(
+            factory(Solution::class, 5)
+            ->make()
+        );
+
+        $solution = $solutions->first();
+
+        $response = $this->get(route('users.solutions.show', [$this->user, $solution]));
+
+        $response->assertOk();
     }
 
     public function testDestroy()

@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="d-flex justify-content-between mb-4">
-    <div class="h3">{{ __('layout.nav.my_progress') }}</h3></div>
-    <div class="h5">
+<div class="d-flex flex-wrap justify-content-between mb-4">
+    <div class="h3 flex-grow-1 flex-shrink-1">{{ __('layout.nav.my_progress') }}</h3></div>
+    <div class="h5 flex-grow-1 flex-shrink-1">
         <a href="{{ route('users.show', $user) }}">{{ $user->name }}</a>
     </div>
 </div>
@@ -17,4 +17,5 @@
   <div class="tab-pane fade show active" id="nav-chapters" role="tabpanel">@include('my.progresses._my_chapters')</div>
   <div class="tab-pane fade" id="nav-exercises" role="tabpanel">@include('my.progresses._my_exercises')</div>
 </div>
+
 @endsection
