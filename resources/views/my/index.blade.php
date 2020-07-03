@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="d-flex flex-wrap justify-content-between mb-4">
+<div class="d-flex flex-wrap justify-content-between">
     <div class="h3">{{ __('layout.nav.my_progress') }}</h3></div>
-    <div class="h5">
+    <div class="h5 align-self-center">
         <a href="{{ route('users.show', $user) }}">{{ $user->name }}</a>
     </div>
 </div>

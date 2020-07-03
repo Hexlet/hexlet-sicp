@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="d-flex flex-wrap justify-content-between mb-4">
+<div class="d-flex flex-wrap justify-content-between mb-2 mb-lg-4">
     <div class="h5">
         <a href="{{ route('exercises.show', $currentExercise) }}">
         {{ __('solution.exercise') }} {{ $currentExercise->path }}: {{ getExerciseTitle($currentExercise) }}
@@ -12,10 +12,11 @@
     </div>
 </div>
 
-<h1 class="text-center">{{ __('solution.code_review') }}</h1>
-<div class="d-flex flex-wrap">
-    <div class="card flex-grow-1">
-        <div class="card-header">
+<h2 class="text-center">{{ __('solution.code_review') }}</h2>
+<div class="text-center h5">Compare your versions</div>
+<hr>
+<div class="row no-gutters row-cols-1 row-cols-md-2">
+    <div class="col p-2 p-lg-4">
         <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
             @foreach ($solutionsListForCurrentExercise as $currentSolution)
                 @if ($loop->first)
@@ -29,7 +30,6 @@
                 @endif
             @endforeach
         </ul>
-        </div>
         <div class="tab-content card-body" id="pills-tabContent">
             @foreach ($solutionsListForCurrentExercise as $currentSolution)
                 @if ($loop->first)
@@ -46,8 +46,7 @@
     </div>
 
     @if (count($solutionsListForCurrentExercise) > 1)
-    <div class="card flex-grow-1 flex-lg-grow-0 w-50">
-        <div class="card-header">
+    <div class="col border-left p-2 p-lg-4">
         <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
             @foreach ($solutionsListForCurrentExercise as $currentSolution)
                 @if ($loop->first)
@@ -61,7 +60,6 @@
                 @endif
             @endforeach
         </ul>
-        </div>
         <div class="tab-content card-body" id="pills-tabContent">
             @foreach ($solutionsListForCurrentExercise as $currentSolution)
                 @if ($loop->first)
@@ -78,8 +76,4 @@
     </div>
     @endif
 </div>
-
-
-
-
 @endsection
