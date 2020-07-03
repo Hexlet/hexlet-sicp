@@ -17,5 +17,4 @@
   <div class="tab-pane fade show active" id="nav-chapters" role="tabpanel" aria-labelledby="nav-chapters-tab">@include('my.progresses._my_chapters')</div>
   <div class="tab-pane fade show" id="nav-exercises" role="tabpanel" aria-labelledby="nav-exercises-tab">@include('my.progresses._my_exercises')</div>
 </div>
-
 @endsection

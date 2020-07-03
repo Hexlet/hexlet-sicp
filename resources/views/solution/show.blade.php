@@ -12,10 +12,10 @@
     </div>
 </div>
 
-<div class="h1 text-center mb-4">{{ __('solution.code_review') }}</div>
-
+<h1 class="text-center">{{ __('solution.code_review') }}</h1>
 <div class="d-flex flex-wrap">
-    <div class="flex-grow-1 flex-shrink-1 p-4">
+    <div class="card flex-grow-1">
+        <div class="card-header">
         <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
             @foreach ($solutionsListForCurrentExercise as $currentSolution)
                 @if ($loop->first)
@@ -29,7 +29,8 @@
                 @endif
             @endforeach
         </ul>
-        <div class="tab-content" id="pills-tabContent">
+        </div>
+        <div class="tab-content card-body" id="pills-tabContent">
             @foreach ($solutionsListForCurrentExercise as $currentSolution)
                 @if ($loop->first)
                 <div class="tab-pane fade show active" id="pills-{{ $currentSolution->id }}" role="tabpanel" aria-labelledby="pills-{{ $currentSolution->id }}-tab">
@@ -45,7 +46,8 @@
     </div>
 
     @if (count($solutionsListForCurrentExercise) > 1)
-    <div class="flex-grow-1 flex-shrink-1 p-4 border-left">
+    <div class="card flex-grow-1 flex-lg-grow-0 w-50">
+        <div class="card-header">
         <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
             @foreach ($solutionsListForCurrentExercise as $currentSolution)
                 @if ($loop->first)
@@ -59,7 +61,8 @@
                 @endif
             @endforeach
         </ul>
-        <div class="tab-content" id="pills-tabContent">
+        </div>
+        <div class="tab-content card-body" id="pills-tabContent">
             @foreach ($solutionsListForCurrentExercise as $currentSolution)
                 @if ($loop->first)
                 <div class="tab-pane fade show active" id="pills-{{ $currentSolution->id }}double" role="tabpanel" aria-labelledby="pills-{{ $currentSolution->id }}double-tab">

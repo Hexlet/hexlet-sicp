@@ -1,4 +1,4 @@
-<div class="tab-content">
+
     <div class="table-responsive border border-top-0 p-4">
         <table class="table">
             <thead>
@@ -21,4 +21,3 @@
         </table>
     </div>
     {{ $savedSolutionsExercises->withQueryString()->links() }}
-</div>
