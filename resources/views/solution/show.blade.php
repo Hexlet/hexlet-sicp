@@ -15,8 +15,8 @@
 <h2 class="text-center">{{ __('solution.code_review') }}</h2>
 <div class="text-center h5">Compare your versions</div>
 <hr>
-<div class="row no-gutters row-cols-1 row-cols-md-2">
-    <div class="col p-2 p-lg-4">
+<div class="row no-gutters">
+    <div class="col-12 col-md p-2 p-lg-4">
         <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
             @foreach ($solutionsListForCurrentExercise as $currentSolution)
                 @if ($loop->first)
@@ -30,7 +30,7 @@
                 @endif
             @endforeach
         </ul>
-        <div class="tab-content card-body" id="pills-tabContent">
+        <div class="tab-content" id="pills-tabContent">
             @foreach ($solutionsListForCurrentExercise as $currentSolution)
                 @if ($loop->first)
                 <div class="tab-pane fade show active" id="pills-{{ $currentSolution->id }}" role="tabpanel" aria-labelledby="pills-{{ $currentSolution->id }}-tab">
@@ -46,7 +46,8 @@
     </div>
 
     @if (count($solutionsListForCurrentExercise) > 1)
-    <div class="col border-left p-2 p-lg-4">
+    <div class="d-none d-md-block border-left"></div>
+    <div class="col p-2 p-lg-4">
         <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
             @foreach ($solutionsListForCurrentExercise as $currentSolution)
                 @if ($loop->first)
@@ -60,7 +61,7 @@
                 @endif
             @endforeach
         </ul>
-        <div class="tab-content card-body" id="pills-tabContent">
+        <div class="tab-content" id="pills-tabContent">
             @foreach ($solutionsListForCurrentExercise as $currentSolution)
                 @if ($loop->first)
                 <div class="tab-pane fade show active" id="pills-{{ $currentSolution->id }}double" role="tabpanel" aria-labelledby="pills-{{ $currentSolution->id }}double-tab">
