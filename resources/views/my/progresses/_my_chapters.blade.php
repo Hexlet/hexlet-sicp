@@ -1,5 +1,5 @@
 <div class="row row-cols-1 row-cols-md-2 no-gutters border border-top-0">
-    <div class="col col-md-4 border-right">
+    <div class="col col-md-4 border-right x-z-index-0">
         <div class="nav nav-pills flex-column sticky-top m-2 pt-2" role="tablist">
             @foreach($mainChapters as $mainChapter)
             <a class="nav-item nav-link {{ $mainChapter->path === '1' ? 'active' : '' }}"

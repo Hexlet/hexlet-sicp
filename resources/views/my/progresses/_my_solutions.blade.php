@@ -20,4 +20,4 @@
             </thead>
         </table>
     </div>
-    {{ $savedSolutionsExercises->withQueryString()->links() }}
+    {{ $savedSolutionsExercises->fragment('nav-solutions')->links() }}

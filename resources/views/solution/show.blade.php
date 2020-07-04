@@ -13,7 +13,7 @@
 </div>
 
 <h2 class="text-center">{{ __('solution.code_review') }}</h2>
-<div class="text-center h5">Compare your versions</div>
+<div class="text-center h5">{{ __('solution.sub_title') }}</div>
 <hr>
 <div class="row no-gutters">
     <div class="col-12 col-md p-2 p-lg-4">

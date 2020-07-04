@@ -8,5 +8,6 @@ return [
     'add_solution' => 'Добавить решение',
     'show_solution' => 'Мои решения',
     'exercise' => 'Упражнение',
-    'code_review' => 'Код Ревью'
+    'code_review' => 'Код Ревью',
+    'sub_title' => 'Сравни свои решения'
 ];

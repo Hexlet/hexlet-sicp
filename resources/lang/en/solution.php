@@ -8,5 +8,6 @@ return [
     'add_solution' => 'Add solution',
     'show_solution' => 'My solutions',
     'exercise' => 'Exercise',
-    'code_review' => 'Code Review'
+    'code_review' => 'Code Review',
+    'sub_title' => 'Compare your versions'
 ];
