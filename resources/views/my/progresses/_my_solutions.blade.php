@@ -1,5 +1,5 @@
 
-    <div class="table-responsive border border-top-0 p-4">
+    <div class="table-responsive border border-top-0 p-2 p-lg-4">
         <table class="table">
             <thead>
                 <tr>
