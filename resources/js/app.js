@@ -14,7 +14,7 @@ hljs.registerLanguage('scheme', scheme);
 $('#flash-overlay-modal').modal();
 hljs.initHighlightingOnLoad();
 
-// LINK TO TABS https://github.com/twbs/bootstrap/issues/25220#issuecomment-535915733
+// LINK TO TABS from https://github.com/twbs/bootstrap/issues/25220#issuecomment-535915733
 $(document).ready(() => {
     var url = window.location.href;
     if (url.indexOf("#") > 0) {
