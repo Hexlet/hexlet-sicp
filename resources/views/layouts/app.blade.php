@@ -25,20 +25,20 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 
-<body class="d-flex flex-column">
+<body class="d-flex flex-column min-vh-100">
     @if (config('app.env') == 'production')
     @include('layouts.deps._gtm_body')
     @endif
-    <div class="d-flex flex-column min-vh-100">
+    <div class="flex-grow-1">
         @include('layouts._nav')
-        <main class="my-5">
+        <main class="my-4">
             <div class="container mb-3">
                 @include('flash::message')
                 @yield('content')
             </div>
         </main>
-        @include('layouts._footer')
     </div>
+    @include('layouts._footer')
 
 </body>
 
