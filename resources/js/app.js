@@ -15,14 +15,14 @@ $('#flash-overlay-modal').modal();
 hljs.initHighlightingOnLoad();
 
 // LINK TO TABS from https://github.com/twbs/bootstrap/issues/25220#issuecomment-535915733
-$(document).ready(() => {
+$(document).ready(function () {
     var url = window.location.href;
     if (url.indexOf("#") > 0) {
         var activeTab = url.substring(url.indexOf("#") + 1);
         $('.nav[role="tablist"] a[href="#' + activeTab + '"]').tab('show');
     }
 
-    $('a[role="tab"]').on("click", () => {
+    $('a[role="tab"]').on("click", function () {
         var newUrl;
         const hash = $(this).attr("href");
         newUrl = url.split("#")[0] + hash;
