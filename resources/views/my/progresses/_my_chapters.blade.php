@@ -1,5 +1,5 @@
-<div class="row row-cols-1 row-cols-md-2 no-gutters border border-top-0">
-    <div class="col col-md-4 border-right x-z-index-0">
+<div class="row no-gutters border border-top-0">
+    <div class="col-12 col-md-4 border-right x-z-index-0">
         <div class="nav nav-pills flex-column sticky-top m-2 pt-2" role="tablist">
             @foreach($mainChapters as $mainChapter)
             <a class="nav-item nav-link {{ $mainChapter->path === '1' ? 'active' : '' }}"
@@ -14,7 +14,7 @@
             @endforeach
         </div>
     </div>
-    <div class="col col-md-8">
+    <div class="col-12 col-md-8">
             {!! Form::open()->route('users.chapters.store', [$user]) !!}
             <div class="tab-content m-2 m-lg-4">
                 @foreach($mainChapters as $mainChapter)
