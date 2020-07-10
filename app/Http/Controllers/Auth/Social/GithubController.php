@@ -61,7 +61,7 @@ class GithubController extends Controller
     {
         $userForAuth = User::firstOrNew(['email' => $email]);
 
-        if (false === $userForAuth->exists) {
+        if (User::where('email', $email)->doesntExist()) {
             $deleteUser = User::withTrashed()->where('email', $email)->first();
 
             if ($deleteUser) {
@@ -84,7 +84,7 @@ class GithubController extends Controller
     protected function sendFailedResponse($msg = null)
     {
         flash()->error($msg ?:  __('auth.provider_fails'));
-        return redirect()->route('my');
+        return redirect()->back()->withInput();
     }
 
     protected function validator(array $data)
