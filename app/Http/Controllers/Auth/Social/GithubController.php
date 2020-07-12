@@ -66,12 +66,15 @@ class GithubController extends Controller
 
             if ($deleteUser) {
                 $deleteUser->restore();
+                Auth::login($deleteUser, true);
+                flash()->success(__('auth.logged_in'));
                 return redirect()->route('my');
             }
 
             $userForAuth->name              = $name;
             $userForAuth->email_verified_at = now();
             $userForAuth->password          = Hash::make(random_bytes(10));
+
             $userForAuth->saveOrFail();
         }
 
@@ -83,7 +86,7 @@ class GithubController extends Controller
 
     protected function sendFailedResponse($msg = null)
     {
-        flash()->error($msg ?:  __('auth.provider_fails'));
+        flash()->error($msg ?? __('auth.provider_fails'));
         return redirect()->back()->withInput();
     }
 
