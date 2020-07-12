@@ -33,3 +33,15 @@ if (!function_exists('getExerciseOriginLink')) {
         return $links[$exercise->path] ?? null;
     }
 }
+
+if (!function_exists('getSeeExerciseLink')) {
+    function getSeeExerciseLink(string $path): string
+    {
+        $target = Exercise::all()
+            ->where('path', $path)
+            ->pluck('id')
+            ->first();
+
+        return $target;
+    }
+}
