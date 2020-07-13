@@ -29,7 +29,6 @@ Route::group([
     });
     Route::resource('chapters', 'ChapterController')->only('index', 'show');
     Route::resource('exercises', 'ExerciseController')->only('index', 'show');
-    Route::get('/exercise/{id}', 'ExerciseController@seeExercise')->name('seeExercise');
     Route::resource('log', 'ActivitylogController')->only('index');
     Route::resource('comments', 'CommentController')->only('store', 'update', 'show', 'destroy');
     Route::resource('users.solutions', 'SolutionController')->only('store', 'show', 'destroy');

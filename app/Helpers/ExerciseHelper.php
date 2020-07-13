@@ -34,14 +34,13 @@ if (!function_exists('getExerciseOriginLink')) {
     }
 }
 
-if (!function_exists('getExerciseId')) {
-    function getExerciseId(string $path): string
+if (!function_exists('getExercise')) {
+    function getExercise(string $path): Exercise
     {
-        $id = Exercise::all()
+        $exercise = Exercise::all()
             ->where('path', $path)
-            ->pluck('id')
             ->first();
 
-        return $id;
+        return $exercise;
     }
 }

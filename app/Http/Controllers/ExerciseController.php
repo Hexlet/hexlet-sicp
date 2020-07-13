@@ -42,9 +42,4 @@ class ExerciseController extends Controller
             'solutions'
         ));
     }
-
-    public function seeExercise($id)
-    {
-        return redirect()->route('exercises.show', ['exercise' => $id]);
-    }
 }
