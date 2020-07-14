@@ -19,13 +19,13 @@
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 
-<body class="min-vh-100">
+<body class="min-vh-100 d-flex flex-column">
     @if (config('app.env') == 'production')
     @include('layouts.deps._gtm_body')
     @endif

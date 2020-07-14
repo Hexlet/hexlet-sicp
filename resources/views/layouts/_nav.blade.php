@@ -37,12 +37,9 @@
                 </li>
             </ul>
 
-            <div class="d-md-none">
-                <hr>
-            </div>
+            <hr class="d-md-none">
 
             <!-- Right Side Of Navbar -->
-
 
             <!-- Authentication Links -->
             <ul class="navbar-nav ml-auto">
@@ -121,7 +118,7 @@
                     <a class="nav-link dropdown-toggle" id="dropdownFlagButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">
                         <img src="{{ getPathToLocaleFlag($currentLocale) }}" alt="{{ getNativeLanguageName($currentLocale) }}" class="mr-1" width="24">
                     </a>
-                    <div class="dropdown-menu dropdown-menu-right" style="min-width: 0px;" aria-labelledby="dropdownFlagButton">
+                    <div class="dropdown-menu dropdown-menu-right min-width-0" aria-labelledby="dropdownFlagButton">
                         @foreach($otherLocales as $localeCode => ['native' => $language])
                             <a rel="alternate" class="dropdown-item pl-2 py-0" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
                                 <img src="{{ getPathToLocaleFlag($localeCode) }}" alt="{{ normalizeNativeLanguageName($language) }}" class="mr-1" width="24">
