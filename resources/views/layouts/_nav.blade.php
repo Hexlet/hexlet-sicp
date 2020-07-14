@@ -3,7 +3,7 @@
     $locales = LaravelLocalization::getSupportedLocales();
     $otherLocales = getOtherLocales($currentLocale, $locales);
 @endphp
-<nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom">
+<nav class="navbar navbar-expand-md navbar-light bg-white border-bottom">
         <a class="navbar-brand" href="{{ LaravelLocalization::getLocalizedURL($currentLocale, '/') }}">
             {{ __('layout.nav.name') }}
         </a>
@@ -31,11 +31,15 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-secondary" target="_blank" href="https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book.html">
+                    <a class="nav-link text-info" target="_blank" href="https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book.html">
                         {{ __('layout.nav.sicp_book') }}
                     </a>
                 </li>
             </ul>
+
+            <div class="d-md-none">
+                <hr>
+            </div>
 
             <!-- Right Side Of Navbar -->
 
@@ -87,7 +91,6 @@
                 </li>
 
                 <div class="d-md-none">
-                    <hr>
                     <li class="nav-item">
                         <a class="nav-link text-secondary" href="{{ route('settings.account.index') }}">
                             {{ __('account.settings') }}
