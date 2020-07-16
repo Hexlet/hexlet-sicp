@@ -32,13 +32,12 @@
             @foreach (__('welcome.coming_soon_list') as $key => $item)
             <li>{{ __(sprintf('welcome.coming_soon_list.%s', $key)) }}</li>
             @endforeach
+
         </ul>
-        @auth
         <a class="btn btn-primary" href="{{ (route('my')) }}">{{ __('layout.welcome.mark_read') }}</a>
-        @endauth
     </div>
 </div>
-@auth
+
 <div class="row">
     <div class="col-md-12">
         @include('components.activity_chart')
@@ -130,43 +129,6 @@
         @endforeach
     </div>
 </div>
-@else
-<hr>
-<div class="row no-gutters">
-    <div class="col-6 col-md d-flex flex-column align-items-center">
-        <div class="h2 text-info">
-            {{ $countChapters }}
-        </div>
-        <div class="text-secondary">
-            разделов
-        </div>
-    </div>
-    <div class="col-6 col-md d-flex flex-column align-items-center">
-        <div class="h2 text-info">
-            {{ $countExercises }}
-        </div>
-        <div class="text-secondary">
-            упражнений
-        </div>
-    </div>
-    <div class="col-6 col-md d-flex flex-column align-items-center">
-        <div class="h2 text-info">
-            {{ $countUsers }}
-        </div>
-        <div class="text-secondary">
-            участников
-        </div>
-    </div>
-    <div class="col-6 col-md d-flex flex-column align-items-center">
-        <div class="h2 text-info">
-            {{ $countComments }}
-        </div>
-        <div class="text-secondary">
-            комментариев
-        </div>
-    </div>
-</div>
-<hr class="mb-4">
-@endauth
+
 <!-- /.row -->
 @endsection

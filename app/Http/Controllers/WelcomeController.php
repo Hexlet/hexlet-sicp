@@ -4,9 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Activity;
 use App\Comment;
-use App\Chapter;
-use App\Exercise;
-use App\User;
 use Carbon\Carbon;
 use Carbon\CarbonPeriod;
 use Illuminate\Support\Collection;
@@ -18,19 +15,11 @@ class WelcomeController extends Controller
         $logItems = Activity::latest()->with('causer')->limit(10)->get();
         $chart = $this->getChart();
         $comments = Comment::latest()->limit(10)->get();
-        $countChapters = Chapter::count();
-        $countExercises = Exercise::count();
-        $countUsers = User::count();
-        $countComments = Comment::count();
 
         return view('welcome', compact(
             'logItems',
             'chart',
-            'comments',
-            'countChapters',
-            'countExercises',
-            'countUsers',
-            'countComments'
+            'comments'
         ));
     }
 
