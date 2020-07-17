@@ -23,7 +23,7 @@ return [
         'button' => 'Войти',
     ],
     'welcome' => [
-        'mark_read' => 'Отметить прочитанное',
+        'start_learning' => 'Начать учиться',
     ],
     'footer' => [
         'about'             => 'О проекте',
