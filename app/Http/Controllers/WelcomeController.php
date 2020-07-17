@@ -6,11 +6,14 @@ use App\Activity;
 use App\Comment;
 use Carbon\Carbon;
 use Carbon\CarbonPeriod;
+use Generator;
 use Illuminate\Support\Collection;
+use Illuminate\View\Factory;
+use Illuminate\View\View;
 
 class WelcomeController extends Controller
 {
-    public function index()
+    public function index(): View
     {
         $logItems = Activity::latest()->with('causer')->limit(10)->get();
         $chart = $this->getChart();
@@ -23,10 +26,7 @@ class WelcomeController extends Controller
         ));
     }
 
-    /**
-     * @return \Generator
-     */
-    private function getChart(): \Generator
+    private function getChart(): Generator
     {
         $countActivitiesByDays = Activity::all()
             ->groupBy(function (Activity $activity) {
@@ -44,7 +44,7 @@ class WelcomeController extends Controller
                 $maxDayActivityLevel = 4;
                 $dayActivityLevel = (ceil(($dayActivitiesCount) / $magicNumber));
 
-                return min($dayActivityLevel, $maxDayActivityLevel);
+                return (int)min($dayActivityLevel, $maxDayActivityLevel);
             });
 
         return $chart;

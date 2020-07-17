@@ -10,7 +10,7 @@ if (!function_exists('getChapterName')) {
 }
 
 if (!function_exists('haveRead')) {
-    function haveRead(App\User $user, App\Chapter $chapter)
+    function haveRead(App\User $user, App\Chapter $chapter): bool
     {
         return $user->chapters->contains($chapter);
     }

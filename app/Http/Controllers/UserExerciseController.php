@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Exercise;
 use App\User;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 class UserExerciseController extends Controller
@@ -13,8 +14,9 @@ class UserExerciseController extends Controller
         $this->middleware('auth');
     }
 
-    public function store(Request $request, User $user)
+    public function store(Request $request, User $user): RedirectResponse
     {
+        /** @var Exercise $exercise */
         $exercise = Exercise::findOrFail($request->get('exercise_id'));
 
         $this->completeExercise($user, $exercise);
@@ -22,14 +24,14 @@ class UserExerciseController extends Controller
         return redirect()->back();
     }
 
-    public function update(User $user, Exercise $exercise)
+    public function update(User $user, Exercise $exercise): RedirectResponse
     {
         $this->completeExercise($user, $exercise);
 
         return redirect()->back();
     }
 
-    public function destroy(User $user, Exercise $exercise)
+    public function destroy(User $user, Exercise $exercise): RedirectResponse
     {
         $user->exercises()->detach($exercise);
 
@@ -42,6 +44,7 @@ class UserExerciseController extends Controller
             ->log('destroy_exercise');
 
         flash()->success(__('layout.flash.success'));
+
         return redirect()->back();
     }
 

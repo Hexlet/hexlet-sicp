@@ -10,42 +10,42 @@ class CommentPolicy
 {
     use HandlesAuthorization;
 
-    public function viewAny()
+    public function viewAny(): bool
     {
         return true;
     }
 
-    public function view()
+    public function view(): bool
     {
         return true;
     }
 
-    public function create()
+    public function create(): bool
     {
         return \Auth::check();
     }
 
-    public function update(User $user, Comment $comment)
+    public function update(User $user, Comment $comment): bool
     {
         return $user->id === $comment->user->id;
     }
 
-    public function delete(User $user, Comment $comment)
+    public function delete(User $user, Comment $comment): bool
     {
         return $user->id === $comment->user->id;
     }
 
-    public function restore()
+    public function restore(): bool
     {
         return false;
     }
 
-    public function forceDelete()
+    public function forceDelete(): bool
     {
         return false;
     }
 
-    public function reply()
+    public function reply(): bool
     {
         return \Auth::check();
     }

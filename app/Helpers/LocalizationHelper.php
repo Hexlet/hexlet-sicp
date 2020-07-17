@@ -26,7 +26,7 @@ if (!function_exists('getLocalizedURL')) {
 }
 
 if (!function_exists('getOtherLocales')) {
-    function getOtherLocales($currentLocale, $locales)
+    function getOtherLocales(string $currentLocale, array $locales): array
     {
         return array_filter(
             $locales,
@@ -47,7 +47,7 @@ if (!function_exists('getNativeLanguageName')) {
 }
 
 if (!function_exists('normalizeNativeLanguageName')) {
-    function normalizeNativeLanguageName(string $language, $encoding = 'utf-8'): string
+    function normalizeNativeLanguageName(string $language, string $encoding = 'utf-8'): string
     {
         // multi-bytes strtolower()
         $lower = mb_strtolower($language, $encoding);

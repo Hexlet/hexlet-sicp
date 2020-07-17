@@ -5,10 +5,11 @@ namespace App\Http\Controllers;
 use App\Chapter;
 use App\Exercise;
 use App\User;
+use Illuminate\View\View;
 
 class UserController extends Controller
 {
-    public function show(User $user)
+    public function show(User $user): View
     {
         $rating = getCalculatedRating();
         $userRatingPosition = $rating

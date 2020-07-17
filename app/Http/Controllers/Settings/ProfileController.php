@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers\Settings;
 
+use App\User;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Auth;
+use Illuminate\View\View;
 
 class ProfileController extends Controller
 {
@@ -13,14 +16,14 @@ class ProfileController extends Controller
         $this->middleware('auth');
     }
 
-    public function index()
+    public function index(): View
     {
         $user = auth()->user();
 
         return view('settings.profile.index', compact('user'));
     }
 
-    public function update(Request $request)
+    public function update(Request $request): RedirectResponse
     {
         /** @var User $user */
         $user = Auth::user();

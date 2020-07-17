@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Solution;
 use App\User;
 use App\Exercise;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class SolutionController extends Controller
 {
@@ -15,7 +17,7 @@ class SolutionController extends Controller
         $this->authorizeResource(Solution::class, 'solution');
     }
 
-    public function store(Request $request, User $user)
+    public function store(Request $request, User $user): RedirectResponse
     {
         $validatedData = $request->validate([
             'content' => 'required|string|min:1'
@@ -24,8 +26,9 @@ class SolutionController extends Controller
         $exercise = Exercise::findOrFail($request->get('exercise_id'));
 
         $solution = new Solution($validatedData);
-        $solution->user()->associate($user)->exercise()->associate($exercise);
-
+        /** @var Solution $solution */
+        $solution = $solution->user()->associate($user);
+        $solution = $solution->exercise()->associate($exercise);
 
         if ($solution->save()) {
             activity()
@@ -43,7 +46,7 @@ class SolutionController extends Controller
         return back();
     }
 
-    public function show(User $user, Solution $solution)
+    public function show(User $user, Solution $solution): View
     {
 
         $currentExercise = $solution->exercise;
@@ -60,7 +63,7 @@ class SolutionController extends Controller
         ));
     }
 
-    public function destroy(User $user, Solution $solution)
+    public function destroy(User $user, Solution $solution): RedirectResponse
     {
         if ($solution->delete()) {
             flash()->success(__('layout.flash.success'));

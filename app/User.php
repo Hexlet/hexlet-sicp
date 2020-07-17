@@ -2,11 +2,38 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+/**
+ * App\User
+ * @property int $id
+ * @property string $name
+ * @property string $email
+ * @property \Illuminate\Support\Carbon|null $email_verified_at
+ * @property string $password
+ * @property string|null $remember_token
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property \Illuminate\Support\Carbon|null $deleted_at
+ * @property-read Collection|Chapter[] $chapters
+ * @property-read int|null $chapters_count
+ * @property-read Collection|Comment[] $comments
+ * @property-read int|null $comments_count
+ * @property-read Collection|CompletedExercise[] $completedExercises
+ * @property-read int|null $completed_exercises_count
+ * @property-read Collection|Exercise[] $exercises
+ * @property-read int|null $exercises_count
+ * @property-read Collection|ReadChapter[] $readChapters
+ * @property-read int|null $read_chapters_count
+ * @property-read Collection|Solution[] $solutions
+ * @property-read int|null $solutions_count
+ */
 class User extends Authenticatable implements MustVerifyEmail
 {
     use Notifiable;
@@ -41,32 +68,32 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
     ];
 
-    public function chapters()
+    public function chapters(): BelongsToMany
     {
         return $this->belongsToMany(Chapter::class, 'read_chapters')->withTimestamps();
     }
 
-    public function readChapters()
+    public function readChapters(): HasMany
     {
         return $this->hasMany(ReadChapter::class);
     }
 
-    public function completedExercises()
+    public function completedExercises(): HasMany
     {
         return $this->hasMany(CompletedExercise::class);
     }
 
-    public function exercises()
+    public function exercises(): BelongsToMany
     {
         return $this->belongsToMany(Exercise::class, 'completed_exercises')->withTimestamps();
     }
 
-    public function comments()
+    public function comments(): HasMany
     {
         return $this->hasMany(Comment::class);
     }
 
-    public function solutions()
+    public function solutions(): HasMany
     {
         return $this->hasMany(Solution::class);
     }
