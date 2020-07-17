@@ -8,7 +8,7 @@ use Tests\TestCase;
 
 class SitemapControllerTest extends TestCase
 {
-    public function testIndex()
+    public function testIndex(): void
     {
         $gists = $this->createMock(Gists::class);
         $gists->method('show')->willReturn(
@@ -28,7 +28,7 @@ class SitemapControllerTest extends TestCase
         $response->assertOk();
     }
 
-    private function getFixture()
+    private function getFixture(): array
     {
         $sitemapFilepath = base_path('tests/fixtures/sitemap.xml');
         return [

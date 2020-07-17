@@ -12,7 +12,8 @@ class CreateActivityLogTable extends Migration
     public function up(): void
     {
         Schema::connection(config('activitylog.database_connection'))
-            ->create(config('activitylog.table_name'),
+            ->create(
+                config('activitylog.table_name'),
                 function (Blueprint $table) {
                     $table->bigIncrements('id');
 
@@ -28,7 +29,8 @@ class CreateActivityLogTable extends Migration
                     $table->index('log_name');
                     $table->index(['subject_id', 'subject_type'], 'subject');
                     $table->index(['causer_id', 'causer_type'], 'causer');
-                });
+                }
+            );
     }
 
     /**

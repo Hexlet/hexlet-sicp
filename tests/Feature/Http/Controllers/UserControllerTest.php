@@ -8,7 +8,7 @@ use Tests\TestCase;
 
 class UserControllerTest extends TestCase
 {
-    public function testShow()
+    public function testShow(): void
     {
         $user = factory(User::class)->create();
 
@@ -20,7 +20,7 @@ class UserControllerTest extends TestCase
             ->assertSee($user->name);
     }
 
-    public function testVisitByOtherUser()
+    public function testVisitByOtherUser(): void
     {
         $user = factory(User::class)->create();
         $visitor = factory(User::class)->create();
@@ -32,7 +32,7 @@ class UserControllerTest extends TestCase
             ->assertSee($user->name);
     }
 
-    public function testVisitByGuest()
+    public function testVisitByGuest(): void
     {
         $user = factory(User::class)->create();
         $response = $this->get(route('users.show', $user));
@@ -41,7 +41,7 @@ class UserControllerTest extends TestCase
             ->assertSee($user->name);
     }
 
-    public function testInvalidShow()
+    public function testInvalidShow(): void
     {
         $this->expectException(NotFoundHttpException::class);
         $response = $this->get(route('users.show', ['user' => 'foo']));

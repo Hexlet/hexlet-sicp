@@ -9,7 +9,7 @@ use Tests\TestCase;
 
 class ActivitylogControllerTest extends TestCase
 {
-    private $user;
+    private User $user;
 
     protected function setUp(): void
     {
@@ -19,7 +19,7 @@ class ActivitylogControllerTest extends TestCase
         $this->actingAs($this->user);
     }
 
-    public function testStoreOnMyPage()
+    public function testStoreOnMyPage(): void
     {
         $myPage = route('my');
         $this->from($myPage);

@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Http\Controllers;
 
+use Illuminate\Support\Collection;
 use Tests\TestCase;
 use App\Solution;
 use App\Exercise;
@@ -11,7 +12,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class SolutionControllerTest extends TestCase
 {
-    private $user;
+    private User $user;
 
     public function setUp(): void
     {
@@ -22,7 +23,7 @@ class SolutionControllerTest extends TestCase
             ->get('/');
     }
 
-    public function testStore()
+    public function testStore(): void
     {
         $factoryData = factory(Solution::class)->make([
             'user_id' => $this->user->id
@@ -36,8 +37,9 @@ class SolutionControllerTest extends TestCase
         $this->assertDatabaseHas('solutions', $data);
     }
 
-    public function testShow()
+    public function testShow(): void
     {
+        /** @var Collection $solutions */
         $solutions = $this->user->solutions()->saveMany(
             factory(Solution::class, 5)
             ->make()
@@ -50,7 +52,7 @@ class SolutionControllerTest extends TestCase
         $response->assertOk();
     }
 
-    public function testDestroy()
+    public function testDestroy(): void
     {
         $solution = factory(Solution::class)->create([
             'user_id' => $this->user->id

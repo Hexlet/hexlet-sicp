@@ -21,7 +21,7 @@ class ExerciseControllerTest extends TestCase
                 );
             });
     }
-    public function testIndex()
+    public function testIndex(): void
     {
         $user = factory(User::class)->create();
         $this->actingAs($user);
@@ -33,7 +33,7 @@ class ExerciseControllerTest extends TestCase
         $response->assertSee($exercise->path);
     }
 
-    public function testShow()
+    public function testShow(): void
     {
         $exercise = Exercise::inRandomOrder()->first();
         $exercise->comments()->saveMany(

@@ -8,7 +8,7 @@ use Tests\TestCase;
 
 class RatingTopControllerTest extends TestCase
 {
-    public function testIndex()
+    public function testIndex(): void
     {
         factory(User::class, 10)
             ->create()

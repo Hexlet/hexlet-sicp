@@ -10,7 +10,7 @@ use Tests\TestCase;
 
 class UserTest extends TestCase
 {
-    public function testChapter()
+    public function testChapter(): void
     {
         $user = factory(User::class)->create();
 

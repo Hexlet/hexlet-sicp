@@ -3,6 +3,7 @@
 namespace Tests\Feature\Http\Controllers;
 
 use App\User as AppUser;
+use Illuminate\Http\RedirectResponse;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Laravel\Socialite\Contracts\Factory as Socialite;
@@ -10,7 +11,7 @@ use Laravel\Socialite\Two\User;
 
 class GithubControllerTest extends TestCase
 {
-    public function mockSocialiteFacade($email, $name, $nickname, $token, $id)
+    public function mockSocialiteFacade(string $email, string $name, string $nickname, string $token, int $id): void
     {
         $user = new User();
         $user->token = $token;
@@ -27,14 +28,15 @@ class GithubControllerTest extends TestCase
 
         $this->app->instance(Socialite::class, $stub);
     }
-    public function testRedirectToGithub()
+    public function testRedirectToGithub(): void
     {
+        /** @var RedirectResponse $response */
         $response = $this->call('GET', '/oauth/github');
 
         $this->assertStringContainsString('github.com/login/oauth', $response->getTargetUrl());
     }
 
-    public function testCreateUserAndLogin()
+    public function testCreateUserAndLogin(): void
     {
         $name  = $this->faker->name;
         $nickname = $this->faker->name;
@@ -48,7 +50,7 @@ class GithubControllerTest extends TestCase
         $this->assertDatabaseHas('users', ['email' => $email]);
     }
 
-    public function testUserDeleteAndLogin()
+    public function testUserDeleteAndLogin(): void
     {
         $name  = $this->faker->name;
         $nickname = $this->faker->name;
@@ -74,7 +76,7 @@ class GithubControllerTest extends TestCase
         $this->assertDatabaseHas('users', ['email' => $email]);
     }
 
-    public function testCreateEmptyUserNameAndLogin()
+    public function testCreateEmptyUserNameAndLogin(): void
     {
         $name  = '';
         $nickname = $this->faker->name;

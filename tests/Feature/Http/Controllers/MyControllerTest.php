@@ -7,13 +7,9 @@ use App\User;
 use Illuminate\Auth\AuthenticationException;
 use Tests\TestCase;
 
-/**
- * Class ProfileControllerTest
- * @property User $user
- */
 class MyControllerTest extends TestCase
 {
-    private $user;
+    private User $user;
 
     public function setUp(): void
     {
@@ -24,7 +20,7 @@ class MyControllerTest extends TestCase
         );
     }
 
-    public function testShow()
+    public function testShow(): void
     {
         $this->actingAs($this->user);
         $chapter = Chapter::first();
@@ -36,7 +32,7 @@ class MyControllerTest extends TestCase
             ->assertSee($chapter->path);
     }
 
-    public function testShowAsGuest()
+    public function testShowAsGuest(): void
     {
         $this->expectException(AuthenticationException::class);
 

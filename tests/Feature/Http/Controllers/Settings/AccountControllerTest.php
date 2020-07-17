@@ -7,7 +7,7 @@ use App\User;
 
 class AccountControllerTest extends TestCase
 {
-    private $user;
+    private User $user;
 
     protected function setUp(): void
     {
@@ -17,13 +17,13 @@ class AccountControllerTest extends TestCase
         $this->actingAs($this->user);
     }
 
-    public function testIndex()
+    public function testIndex(): void
     {
         $response = $this->get(route('settings.account.index'));
         $response->assertOk();
     }
 
-    public function testDestroy()
+    public function testDestroy(): void
     {
         $this->actingAs($this->user);
         $this->assertAuthenticatedAs($this->user);

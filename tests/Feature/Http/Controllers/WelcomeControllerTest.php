@@ -6,14 +6,14 @@ use Tests\TestCase;
 
 class WelcomeControllerTest extends TestCase
 {
-    public function testIndex()
+    public function testIndex(): void
     {
         $response = $this->get('/');
 
         $response->assertOk();
     }
 
-    public function testNotSeeDevLogin()
+    public function testNotSeeDevLogin(): void
     {
         $response = $this->get('/');
 
