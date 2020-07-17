@@ -5,9 +5,15 @@ parameters:
 
     paths:
         - app
+        - database
 
     # The level 8 is the highest level
-    level: 6
+    level: 7
+
+    ignoreErrors:
+        -
+            message: '#Variable \$factory might not be defined.#'
+            path: database/factories/*
 
     excludes_analyse:
         - app/Http/Controllers/Auth/*
