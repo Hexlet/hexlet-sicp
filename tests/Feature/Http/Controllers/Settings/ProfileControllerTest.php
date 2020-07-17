@@ -7,7 +7,7 @@ use Tests\TestCase;
 
 class ProfileControllerTest extends TestCase
 {
-    private $user;
+    private User $user;
 
     protected function setUp(): void
     {
@@ -17,7 +17,7 @@ class ProfileControllerTest extends TestCase
         $this->actingAs($this->user);
     }
 
-    public function testIndex()
+    public function testIndex(): void
     {
         $this->actingAs($this->user);
 
@@ -26,7 +26,7 @@ class ProfileControllerTest extends TestCase
         $response->assertOk();
     }
 
-    public function testUpdate()
+    public function testUpdate(): void
     {
         $name = $this->faker->name;
         $response = $this->patch(route('settings.profile.update', $this->user), [

@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Settings;
 use App\User;
 use Auth;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
 
 class AccountController extends Controller
 {
@@ -13,7 +15,7 @@ class AccountController extends Controller
         $this->middleware('auth');
     }
 
-    public function index()
+    public function index(): View
     {
         /** @var User $user */
         $user = Auth::user();
@@ -21,7 +23,7 @@ class AccountController extends Controller
         return view('settings.account.index', compact('user'));
     }
 
-    public function destroy()
+    public function destroy(): RedirectResponse
     {
         /** @var User $user */
         $user = Auth::user();

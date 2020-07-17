@@ -11,7 +11,7 @@ class GenerateSitemap extends Command
     protected $signature = 'sitemap:generate';
     protected $description = 'Generate the sitemap.';
 
-    private $github;
+    private GithubManager $github;
 
     public function __construct(GitHubManager $github)
     {
@@ -19,7 +19,7 @@ class GenerateSitemap extends Command
         $this->github = $github;
     }
 
-    public function handle()
+    public function handle(): void
     {
         $sitemap = SitemapGenerator::create(config('app.url'))->getSitemap();
         $this->info(__('console.generate_sitemap'));

@@ -48,6 +48,7 @@
         "heroku/heroku-buildpack-php": "^164.0",
         "mockery/mockery": "^1.3",
         "nunomaduro/collision": "~4.2",
+        "nunomaduro/larastan": "^0.6.1",
         "phpunit/phpunit": "^9.0",
         "roave/security-advisories": "dev-master",
         "squizlabs/php_codesniffer": "*"
@@ -82,6 +83,7 @@
         "phpcs": "phpcs",
         "phpunit": "phpunit",
         "phpcbf": "phpcbf",
+        "phpstan": "phpstan",
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump"
         ],

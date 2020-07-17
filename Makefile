@@ -24,6 +24,9 @@ lint:
 lint-fix:
 	composer phpcbf
 
+analyse:
+	composer run-script phpstan analyse
+
 config-clear:
 	php artisan config:clear
 

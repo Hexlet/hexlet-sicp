@@ -10,12 +10,9 @@ use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Database\Eloquent\Model;
 use Tests\TestCase;
 
-/**
- * @property-read User $user
- */
 class CommentControllerTest extends TestCase
 {
-    private $user;
+    private User $user;
 
     public function setUp(): void
     {
@@ -35,7 +32,7 @@ class CommentControllerTest extends TestCase
     /**
      * @dataProvider dataCommentable
      */
-    public function testStoreChapter(string $commentableClass)
+    public function testStoreChapter(string $commentableClass): void
     {
         /** @var Model $commentableClass */
         $commentable = $commentableClass::inRandomOrder()->first();
@@ -61,7 +58,7 @@ class CommentControllerTest extends TestCase
     /**
      * @dataProvider dataCommentable
      */
-    public function testUpdate(string $commentableClass)
+    public function testUpdate(string $commentableClass): void
     {
         /** @var Model $commentableClass */
         $commentable = $commentableClass::inRandomOrder()->first();
@@ -71,12 +68,7 @@ class CommentControllerTest extends TestCase
             ->from($visitedPage)
             ->actingAs($user);
 
-        /** @var Comment $comment */
-        $comment = factory(Comment::class)->make();
-        $comment
-            ->user()->associate($user)
-            ->commentable()->associate($commentable)
-            ->save();
+        $comment = $this->createComment($user, $commentable);
 
         $commentData = [
             'content' => $this->faker->text,
@@ -98,7 +90,7 @@ class CommentControllerTest extends TestCase
     /**
      * @dataProvider dataCommentable
      */
-    public function testDestroy(string $commentableClass)
+    public function testDestroy(string $commentableClass): void
     {
         /** @var Model $commentableClass */
         $commentable = $commentableClass::inRandomOrder()->first();
@@ -109,11 +101,7 @@ class CommentControllerTest extends TestCase
             ->actingAs($user);
 
         /** @var Comment $comment */
-        $comment = factory(Comment::class)->make();
-        $comment
-            ->user()->associate($user)
-            ->commentable()->associate($commentable)
-            ->save();
+        $comment = $this->createComment($user, $commentable);
 
         $commentData = $comment->only('id', 'user_id', 'content', 'deleted_at');
 
@@ -131,7 +119,7 @@ class CommentControllerTest extends TestCase
     /**
      * @dataProvider dataCommentable
      */
-    public function testUpdateByOtherUser(string $commentableClass)
+    public function testUpdateByOtherUser(string $commentableClass): void
     {
         /** @var Model $commentableClass */
         $commentable = $commentableClass::inRandomOrder()->first();
@@ -158,9 +146,8 @@ class CommentControllerTest extends TestCase
     /**
      * @dataProvider dataCommentable
      */
-    public function testDestroyByOtherUser(
-        string $commentableClass
-    ) {
+    public function testDestroyByOtherUser(string $commentableClass): void
+    {
         /** @var Model $commentableClass */
         $commentable = $commentableClass::inRandomOrder()->first();
         $visitedPage = $this->getCommentableActionRoute('show', $commentable);
@@ -183,7 +170,7 @@ class CommentControllerTest extends TestCase
         $this->get($visitedPage)->assertSee($commentData['content']);
     }
 
-    public function dataCommentable()
+    public function dataCommentable(): array
     {
         return [
             'test with chapter'  => [Chapter::class, 'chapters', 'chapter'],
@@ -197,5 +184,16 @@ class CommentControllerTest extends TestCase
         return route("{$routesGroup}.{$action}", [
             str_singular($routesGroup) => $model
         ]);
+    }
+
+    private function createComment(User $user, Model $commentable): Comment
+    {
+        $comment = factory(Comment::class)->make();
+        $comment = $comment->user()->associate($user);
+        /** @var Comment $comment */
+        $comment = $comment->commentable()->associate($commentable);
+        $comment->save();
+
+        return $comment;
     }
 }

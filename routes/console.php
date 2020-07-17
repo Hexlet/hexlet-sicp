@@ -12,7 +12,8 @@ use Illuminate\Foundation\Inspiring;
 | simple approach to interacting with each command's IO methods.
 |
 */
-
+/** @var \Illuminate\Console\Command $this */
 Artisan::command('inspire', function () {
+    /** @var \Illuminate\Console\Command $this */
     $this->comment(Inspiring::quote());
 })->describe('Display an inspiring quote');

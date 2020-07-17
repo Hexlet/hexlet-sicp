@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Chapter;
 use App\Http\Requests\User\SaveChapterRequest;
 use App\User;
+use Illuminate\Http\RedirectResponse;
 
 class UserChapterController extends Controller
 {
@@ -13,7 +14,7 @@ class UserChapterController extends Controller
         $this->middleware('auth');
     }
 
-    public function store(SaveChapterRequest $request, User $user)
+    public function store(SaveChapterRequest $request, User $user): RedirectResponse
     {
         $userChaptersOld = $user->chapters()->pluck('path');
         $user->chapters()->sync($request->get('chapters_id', []));
@@ -35,7 +36,7 @@ class UserChapterController extends Controller
         return redirect()->back();
     }
 
-    public function destroy(User $user, Chapter $chapter)
+    public function destroy(User $user, Chapter $chapter): RedirectResponse
     {
         $user->chapters()->detach($chapter);
 

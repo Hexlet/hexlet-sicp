@@ -20,14 +20,14 @@ class ChapterControllerTest extends TestCase
             });
     }
 
-    public function testIndex()
+    public function testIndex(): void
     {
         $response = $this->get(route('chapters.index'));
 
         $response->assertOk();
     }
 
-    public function testShow()
+    public function testShow(): void
     {
         $chapter = Chapter::inRandomOrder()->first();
         $chapter->comments()->saveMany(

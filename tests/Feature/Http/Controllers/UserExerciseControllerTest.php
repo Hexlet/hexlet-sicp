@@ -15,7 +15,7 @@ use Tests\TestCase;
  */
 class UserExerciseControllerTest extends TestCase
 {
-    private $user;
+    private User $user;
 
     protected function setUp(): void
     {
@@ -32,7 +32,7 @@ class UserExerciseControllerTest extends TestCase
             });
     }
 
-    public function testStore()
+    public function testStore(): void
     {
         $exercise = Exercise::inRandomOrder()->first();
         $exercisePage = route('exercises.show', $exercise);
@@ -53,7 +53,7 @@ class UserExerciseControllerTest extends TestCase
         ]);
     }
 
-    public function testDestroy()
+    public function testDestroy(): void
     {
         /** @var CompletedExercise $completedExercise */
         $completedExercise = factory(CompletedExercise::class)->create();

@@ -16,7 +16,7 @@ class ChaptersTableSeeder extends Seeder
     {
         $chapters = Yaml::parseFile(database_path('chapters.yml'));
         DB::beginTransaction();
-        $createChapters = function ($chapters, Chapter $parent = null) use (&$createChapters) {
+        $createChapters = function ($chapters, ?Chapter $parent) use (&$createChapters) {
             foreach ($chapters as $chapter) {
                 $children = $chapter['children'] ?? null;
 

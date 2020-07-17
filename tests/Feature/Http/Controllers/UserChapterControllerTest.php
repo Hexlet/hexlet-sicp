@@ -8,7 +8,7 @@ use Tests\TestCase;
 
 class UserChapterControllerTest extends TestCase
 {
-    private $user;
+    private User $user;
 
     protected function setUp(): void
     {
@@ -18,7 +18,7 @@ class UserChapterControllerTest extends TestCase
         factory(Chapter::class, 3)->create();
     }
 
-    public function testDestroy()
+    public function testDestroy(): void
     {
         /** @var User $user */
         $user = factory(User::class)->create();
@@ -48,7 +48,7 @@ class UserChapterControllerTest extends TestCase
         $this->assertDatabaseMissing('read_chapters', $completedChapterData);
     }
 
-    public function testStore()
+    public function testStore(): void
     {
         $myPage = route('my');
         $chapters = Chapter::inRandomOrder()->limit(2)->get();

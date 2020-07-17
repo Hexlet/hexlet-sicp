@@ -5,10 +5,11 @@ namespace App\Http\Controllers;
 use App\Exercise;
 use App\User;
 use App\Solution;
+use Illuminate\View\View;
 
 class ExerciseController extends Controller
 {
-    public function index()
+    public function index(): View
     {
         $exercisesGroups = Exercise::all()
             ->groupBy(function (Exercise $exercise) {
@@ -17,7 +18,7 @@ class ExerciseController extends Controller
         return view('exercise.index', compact('exercisesGroups'));
     }
 
-    public function show(Exercise $exercise)
+    public function show(Exercise $exercise): View
     {
         $exercise->load('chapter', 'users');
         $authUser = auth()->user() ?? User::make([]);

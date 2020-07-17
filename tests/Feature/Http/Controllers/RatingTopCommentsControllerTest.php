@@ -6,7 +6,7 @@ use Tests\TestCase;
 
 class RatingTopCommentsControllerTest extends TestCase
 {
-    public function testIndex()
+    public function testIndex(): void
     {
         $this->get(route('comments_top.index'))
             ->assertOk();
