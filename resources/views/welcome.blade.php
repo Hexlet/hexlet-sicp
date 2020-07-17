@@ -34,7 +34,7 @@
             @endforeach
 
         </ul>
-        <a class="btn btn-primary" href="{{ (route('my')) }}">{{ __('layout.welcome.mark_read') }}</a>
+        <a class="btn btn-primary btn-lg" href="{{ (route('my')) }}">{{ __('layout.welcome.start_learning') }}</a>
     </div>
 </div>
 

@@ -23,7 +23,7 @@ return [
         'reset_password' => 'Forgot Your Password?'
     ],
     'welcome' => [
-        'mark_read' => 'Mark read',
+        'start_learning' => 'Start learning',
     ],
     'footer' => [
         'about'             => 'About',
