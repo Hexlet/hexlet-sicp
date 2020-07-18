@@ -19,18 +19,18 @@
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 
-<body class="d-flex flex-column min-vh-100">
+<body class="min-vh-100 d-flex flex-column">
     @if (config('app.env') == 'production')
     @include('layouts.deps._gtm_body')
     @endif
+    @include('layouts._nav')
     <div class="flex-grow-1">
-        @include('layouts._nav')
         <main class="my-4">
             <div class="container mb-3">
                 @include('flash::message')

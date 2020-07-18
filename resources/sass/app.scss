@@ -1,5 +1,5 @@
 // Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
 
 // Variables
 @import 'variables';
@@ -13,4 +13,8 @@
 
 .x-z-index-0 {
     z-index: 0 !important;
+}
+
+.x-min-w-0 {
+    min-width: 0px !important;
 }
