@@ -13,15 +13,29 @@
 * Обсуждение в канале #hexlet-volunteers слака http://slack-ru.hexlet.io
 
 ### Requirements
-
+Проверить зависимости PHP можно командой `composer check-platform-reqs`
 * PHP ^7.4
 * Extensions:
-    - mbstring
+    - bcmath
     - curl
     - dom
+    - exif
+    - fileinfo
+    - filter
+    - json
+    - libxml
+    - mbstring
+    - openssl
+    - pcre
+    - PDO
+    - pgsql
+    - Phar
+    - SimpleXML
+    - sqlite3
+    - tokenizer
     - xml
+    - xmlwriter
     - zip
-    - sqlite
 * Composer
 * Node.js (v13.11+) & NPM (6.13+)
 * SQLite for local, PostgreSQL for production
