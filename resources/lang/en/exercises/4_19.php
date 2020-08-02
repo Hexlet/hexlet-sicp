@@ -14,6 +14,6 @@ return [
         "the definitions of a and b are truly meant to be simultaneous, then the value 5 for a should be used in " .
         "evaluating b. Hence, in Eva's view a should be 5, b should be 15, and the result should be 20. Which (if " .
         "any) of these viewpoints do you support? Can you devise a way to implement internal definitions so that " .
-        "they behave as Eva prefers?"
-    ]
+        "they behave as Eva prefers?",
+    ],
 ];

@@ -12,12 +12,11 @@ class AppServiceProvider extends ServiceProvider
     /**
      * Register any application services.
      *
-     * @return void
      */
-    public function register()
+    public function register(): void
     {
         if (config('logging.log_sql_queries')) {
-            DB::listen(function ($query) {
+            DB::listen(function ($query): void {
                     info($query->sql, [
                             'bind' => $query->bindings,
                             'time' => $query->time,
@@ -29,9 +28,8 @@ class AppServiceProvider extends ServiceProvider
     /**
      * Bootstrap any application services.
      *
-     * @return void
      */
-    public function boot()
+    public function boot(): void
     {
         if (config('app.env') === 'production') {
             URL::forceScheme('https');

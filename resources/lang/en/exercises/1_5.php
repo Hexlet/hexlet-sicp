@@ -14,5 +14,5 @@ return [
             'What behavior will he observe with an interpreter that uses normal-order evaluation? Explain your answer.' .
             '(Assume that the evaluation rule for the special form if is the same whether the interpreter is using normal or applicative order: ' .
             'The predicate expression is evaluated first, and the result determines whether to evaluate the consequent or the alternative expression.)',
-    ]
+    ],
 ];

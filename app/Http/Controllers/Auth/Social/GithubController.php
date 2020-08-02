@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Session;
 use Socialite;
 use Validator;
 use Exception;
@@ -21,6 +20,7 @@ class GithubController extends Controller
         $this->socialite = $socialite;
         $this->user      = $user;
     }
+
     /**
      * Redirect the user to the GitHub authentication page.
      */

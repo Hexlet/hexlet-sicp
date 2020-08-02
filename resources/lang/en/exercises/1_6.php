@@ -12,6 +12,6 @@ return [
         '3' =>
         "Delighted, Alyssa uses new-if to rewrite the square-root program:",
         '4' =>
-        "What happens when Alyssa attempts to use this to compute square roots? Explain."
-    ]
+        "What happens when Alyssa attempts to use this to compute square roots? Explain.",
+    ],
 ];

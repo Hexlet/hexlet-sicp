@@ -8,7 +8,6 @@ use Carbon\Carbon;
 use Carbon\CarbonPeriod;
 use Generator;
 use Illuminate\Support\Collection;
-use Illuminate\View\Factory;
 use Illuminate\View\View;
 
 class WelcomeController extends Controller

@@ -11,6 +11,6 @@ return [
         "Devise an analogous expression for computing Fibonacci numbers.",
         '3' => "b. Consider the following procedure, which includes mutually recursive internal definitions:",
         '4' => "Fill in the missing expressions to complete an alternative definition of f, which uses " .
-        "neither internal definitions nor letrec:"
-    ]
+        "neither internal definitions nor letrec:",
+    ],
 ];

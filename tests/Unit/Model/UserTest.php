@@ -5,7 +5,6 @@ namespace Tests\Unit\Model;
 use App\Chapter;
 use App\ReadChapter;
 use App\User;
-use DB;
 use Tests\TestCase;
 
 class UserTest extends TestCase

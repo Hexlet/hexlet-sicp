@@ -17,6 +17,6 @@ return [
         '5' =>
         "then in the body of g, w will be the list (1 2 3 4 5 6).",
         '6' =>
-        "Use this notation to write a procedure same-parity that takes one or more integers and returns a list of all the arguments that have the same even-odd parity as the first argument. For example,"
-    ]
+        "Use this notation to write a procedure same-parity that takes one or more integers and returns a list of all the arguments that have the same even-odd parity as the first argument. For example,",
+    ],
 ];

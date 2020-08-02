@@ -8,6 +8,6 @@ return [
         '2' =>
         "a. Fill in the missing expressions in Alyssa's program.",
         '3' =>
-        "b. Does the query system's behavior change if we change it in this way?"
-    ]
+        "b. Does the query system's behavior change if we change it in this way?",
+    ],
 ];

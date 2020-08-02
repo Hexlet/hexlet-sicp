@@ -15,12 +15,13 @@ class ExerciseControllerTest extends TestCase
         parent::setUp();
         factory(Chapter::class, 2)
             ->create()
-            ->each(function (Chapter $chapter) {
+            ->each(function (Chapter $chapter): void {
                 $chapter->exercises()->saveMany(
                     factory(Exercise::class, mt_rand(1, 3))->make()
                 );
             });
     }
+
     public function testIndex(): void
     {
         $user = factory(User::class)->create();

@@ -13,7 +13,7 @@ class ChapterControllerTest extends TestCase
         parent::setUp();
         factory(Chapter::class, 2)
             ->create()
-            ->each(function (Chapter $chapter) {
+            ->each(function (Chapter $chapter): void {
                 $chapter->children()->saveMany(
                     factory(Chapter::class, mt_rand(0, 3))->make()
                 );

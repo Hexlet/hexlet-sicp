@@ -3,11 +3,10 @@
 namespace Tests\Feature\Http\Controllers;
 
 use App\User as AppUser;
-use Illuminate\Http\RedirectResponse;
 use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Laravel\Socialite\Contracts\Factory as Socialite;
 use Laravel\Socialite\Two\User;
+use Illuminate\Http\RedirectResponse;
 
 class GithubControllerTest extends TestCase
 {
@@ -28,6 +27,7 @@ class GithubControllerTest extends TestCase
 
         $this->app->instance(Socialite::class, $stub);
     }
+
     public function testRedirectToGithub(): void
     {
         /** @var RedirectResponse $response */
@@ -46,7 +46,6 @@ class GithubControllerTest extends TestCase
         $githubCallback = route('oauth.github-callback');
         $this->get($githubCallback)->assertLocation(route('my'));
 
-        $user = AppUser::where('email', $email)->firstOrFail();
         $this->assertDatabaseHas('users', ['email' => $email]);
     }
 

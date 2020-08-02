@@ -8,7 +8,9 @@ use GrahamCampbell\GitHub\GitHubManager;
 
 class GenerateSitemap extends Command
 {
+    /** @var string */
     protected $signature = 'sitemap:generate';
+    /** @var string  */
     protected $description = 'Generate the sitemap.';
 
     private GithubManager $github;
@@ -26,9 +28,9 @@ class GenerateSitemap extends Command
         $this->github->gists()->update(config('sitemap.gist_id'), [
             'files' => [
                 'sitemap.xml' => [
-                    'content' => $sitemap->render()
+                    'content' => $sitemap->render(),
                 ],
-            ]
+            ],
         ]);
     }
 }

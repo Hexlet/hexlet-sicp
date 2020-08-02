@@ -13,6 +13,6 @@ return [
         "Implement for the query language a rule-application method that uses environments rather than renaming. " .
         "See if you can build on your environment structure to create constructs in the query language for dealing with large systems, such as the rule analog of block-structured procedures. " .
         "Can you relate any of this to the problem of making deductions in a context (e.g., ''If I supposed that P were true, then I would be able to deduce A and B.'') as a method of problem solving? " .
-        "(This problem is open-ended. A good answer is probably worth a Ph.D.)"
-    ]
+        "(This problem is open-ended. A good answer is probably worth a Ph.D.)",
+    ],
 ];

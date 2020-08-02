@@ -20,7 +20,7 @@ return [
         'password' => 'Password',
         'button' => 'Login',
         'email' => 'E-mail',
-        'reset_password' => 'Forgot Your Password?'
+        'reset_password' => 'Forgot Your Password?',
     ],
     'welcome' => [
         'start_learning' => 'Start learning',
@@ -37,12 +37,12 @@ return [
     ],
     'flash' => [
         'success' => 'Success',
-        'error' => 'Aw, Snap! Something went wrong'
+        'error' => 'Aw, Snap! Something went wrong',
     ],
     'common' => [
         'cancel' => 'Сancel',
         'close' => 'Close',
         'origin' => 'Go to origin',
         'save' => 'Save',
-    ]
+    ],
 ];

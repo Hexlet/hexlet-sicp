@@ -8,7 +8,6 @@ class Authenticate extends Middleware
 {
     /**
      * @param \Illuminate\Http\Request $request
-     * @return string|null
      */
     protected function redirectTo($request): ?string
     {

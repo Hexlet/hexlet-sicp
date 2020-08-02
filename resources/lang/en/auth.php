@@ -22,5 +22,5 @@ return [
         'verified'  => 'Email Confirmed',
     ],
     'provider_fails' => 'Unable to login, try with another provider to login.',
-    'logout' => 'You successfully logged out!'
+    'logout' => 'You successfully logged out!',
 ];

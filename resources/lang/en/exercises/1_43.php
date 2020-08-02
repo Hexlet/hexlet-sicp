@@ -11,6 +11,6 @@ return [
         "Write a procedure that takes as inputs a procedure that computes f and a positive integer n and returns the procedure " .
         "that computes the nth repeated application of f. Your procedure should be able to be used as follows:",
         '2' =>
-        "Hint: You may find it convenient to use compose from exercise 1.42."
-    ]
+        "Hint: You may find it convenient to use compose from exercise 1.42.",
+    ],
 ];

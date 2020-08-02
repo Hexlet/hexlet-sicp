@@ -6,5 +6,5 @@ return [
     'exercise' => 'Упражнение',
     'see_details' => 'Подробнее',
     'solutions' => 'Решения',
-    'exercises' => 'Упражнения'
+    'exercises' => 'Упражнения',
 ];

@@ -17,7 +17,7 @@ if (!function_exists('getCalculatedRating')) {
             ->get()
             ->map(fn(User $user) => [
                 'user' => $user,
-                'points' => $user->read_chapters_count + $user->completed_exercises_count * 3
+                'points' => $user->read_chapters_count + $user->completed_exercises_count * 3,
 
             ])
             ->sortByDesc('points')

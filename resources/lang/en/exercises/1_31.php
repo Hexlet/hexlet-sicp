@@ -9,6 +9,6 @@ return [
         "Show how to define factorial in terms of product. Also use product to compute approximations to using the formula(52)",
         '2' =>
         "b.  If your product procedure generates a recursive process, write one that generates an iterative process. " .
-        "If it generates an iterative process, write one that generates a recursive process. "
-    ]
+        "If it generates an iterative process, write one that generates a recursive process. ",
+    ],
 ];

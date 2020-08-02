@@ -9,5 +9,5 @@ return [
     'show_solution' => 'My solutions',
     'exercise' => 'Exercise',
     'code_review' => 'Code Review',
-    'sub_title' => 'Compare your versions'
+    'sub_title' => 'Compare your versions',
 ];

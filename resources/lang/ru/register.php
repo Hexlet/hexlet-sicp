@@ -9,5 +9,5 @@ return [
     'registerButton' => 'Зарегистрироваться',
     'accountExists' => 'Уже есть аккаунт?',
     'logIn' => 'Войти',
-    'or' => 'или'
+    'or' => 'или',
 ];

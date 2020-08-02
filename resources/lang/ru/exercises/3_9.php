@@ -13,5 +13,5 @@ return [
     'description5' =>
         ' с каждой из версий процедуры ',
     'description6' =>
-        '.'
+        '.',
 ];

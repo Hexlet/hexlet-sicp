@@ -25,7 +25,7 @@ class UserExerciseControllerTest extends TestCase
         $this->actingAs($this->user);
         factory(Chapter::class, 2)
             ->create()
-            ->each(function (Chapter $chapter) {
+            ->each(function (Chapter $chapter): void {
                 $chapter->exercises()->saveMany(
                     factory(Exercise::class, mt_rand(1, 3))->make()
                 );
@@ -49,7 +49,7 @@ class UserExerciseControllerTest extends TestCase
 
         $this->assertDatabaseHas('completed_exercises', [
             'user_id'     => $this->user->id,
-            'exercise_id' => $exercise->id
+            'exercise_id' => $exercise->id,
         ]);
     }
 
@@ -64,12 +64,12 @@ class UserExerciseControllerTest extends TestCase
 
         $this->assertDatabaseHas('completed_exercises', [
             'user_id'     => $completedExercise->user_id,
-            'exercise_id' => $completedExercise->exercise_id
+            'exercise_id' => $completedExercise->exercise_id,
         ]);
 
         $response = $this->delete(route('users.exercises.destroy', [
             $completedExercise->user_id,
-            $completedExercise->exercise_id
+            $completedExercise->exercise_id,
         ]));
 
         $response->assertRedirect($exercisePage);
@@ -77,7 +77,7 @@ class UserExerciseControllerTest extends TestCase
 
         $this->assertDatabaseMissing('completed_exercises', [
             'user_id'     => $completedExercise->user_id,
-            'exercise_id' => $completedExercise->exercise_id
+            'exercise_id' => $completedExercise->exercise_id,
         ]);
     }
 }

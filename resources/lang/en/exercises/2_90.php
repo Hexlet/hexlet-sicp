@@ -8,5 +8,5 @@ return [
         "The situation is analogous to the complex-number example of section 2.4, where we allowed both rectangular and polar representations. " .
         "To do this we must distinguish different types of term lists and make the operations on term lists generic. " .
         "Redesign the polynomial system to implement this generalization. " .
-        "This is a major effort, not a local change."
+        "This is a major effort, not a local change.",
 ];

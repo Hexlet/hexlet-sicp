@@ -12,6 +12,6 @@ return [
         '4' =>
         "c.  The painter that draws a diamond shape by connecting the midpoints of the sides of the frame.",
         '5' =>
-        "d.  The wave painter."
-    ]
+        "d.  The wave painter.",
+    ],
 ];

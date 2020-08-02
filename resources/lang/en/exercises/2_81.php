@@ -19,6 +19,6 @@ return [
         '6' =>
         "b. Is Louis correct that something had to be done about coercion with arguments of the same type, or does apply-generic work correctly as is?",
         '7' =>
-        "c. Modify apply-generic so that it doesn't try coercion if the two arguments have the same type."
-    ]
+        "c. Modify apply-generic so that it doesn't try coercion if the two arguments have the same type.",
+    ],
 ];

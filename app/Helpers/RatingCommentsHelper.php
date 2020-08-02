@@ -13,7 +13,7 @@ if (!function_exists('getCommentsRating')) {
             ->get()
             ->map(fn(User $user) => [
                 'user' => $user,
-                'commentsCount' => $user->comments_count
+                'commentsCount' => $user->comments_count,
             ])
             ->sortByDesc('commentsCount')
             ->values()

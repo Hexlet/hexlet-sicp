@@ -11,13 +11,13 @@ class SaveChapterRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         return [
             'chapters_id.*' => [
                 'integer',
                 'exists:chapters,id',
-            ]
+            ],
         ];
     }
 }

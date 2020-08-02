@@ -13,6 +13,6 @@ return [
         '5' => 'Joan: "I was third, and poor old Ethel was bottom."',
         '6' => 'Kitty: "I came out second. Mary was only fourth."',
         '7' => 'Mary: "I was fourth. Top place was taken by Betty."',
-        '8' => 'What in fact was the order in which the five girls were placed?'
-    ]
+        '8' => 'What in fact was the order in which the five girls were placed?',
+    ],
 ];

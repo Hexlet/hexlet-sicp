@@ -4,9 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Chapter;
 use App\User;
-use App\Exercise;
 use Auth;
-use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\View\View;
 
 class MyController extends Controller

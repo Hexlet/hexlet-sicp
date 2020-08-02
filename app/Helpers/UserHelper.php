@@ -8,7 +8,7 @@ if (!function_exists('getProfileImageLink')) {
     {
         $email = $user->email;
         $encryptEmail = md5($email);
-        $link = "https://www.gravatar.com/avatar/{$encryptEmail}?s=500";
-        return $link;
+
+        return "https://www.gravatar.com/avatar/{$encryptEmail}?s=500";
     }
 }

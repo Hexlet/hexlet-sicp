@@ -9,5 +9,5 @@ return [
         'Furthermore, a point can be represented as a pair of numbers: the x coordinate and the y coordinate. ' .
         'Accordingly, specify a constructor make-point and selectors x-point and y-point that define this representation. ' .
         'Finally, using your selectors and constructors, define a procedure midpoint-segment that takes a line segment as argument and returns its midpoint (the point whose coordinates are the average of the coordinates of the endpoints). ' .
-        "To try your procedures, you'll need a way to print points:"
+        "To try your procedures, you'll need a way to print points:",
 ];

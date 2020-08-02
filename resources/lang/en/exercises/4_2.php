@@ -12,5 +12,5 @@ return [
         "recognize procedure applications before it checks for most other kinds of expressions. Help him by changing the " .
         "syntax of the evaluated language so that procedure applications start with call. For example, instead of " .
         "(factorial 3) we will now have to write (call factorial 3) and instead of (+ 1 2) we will have to write (call + 1 2).",
-    ]
+    ],
 ];

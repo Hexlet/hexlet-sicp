@@ -56,5 +56,5 @@ return [
     'description22' =>
         ' procedure used in section ',
     'description23' =>
-        ', which returns a nonnegative number less than its input.'
+        ', which returns a nonnegative number less than its input.',
 ];

@@ -10,6 +10,6 @@ return [
         '3' =>
         "b. the names and jobs of all people in the accounting division;",
         '4' =>
-        "c. the names and addresses of all people who live in Slumerville."
-    ]
+        "c. the names and addresses of all people who live in Slumerville.",
+    ],
 ];

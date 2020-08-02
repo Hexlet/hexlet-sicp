@@ -17,6 +17,6 @@ return [
         "To do this will require changing the program cc somewhat. It will still have the same form, but it will access its second argument differently, as follows:",
         '5' =>
         "Define the procedures first-denomination, except-first-denomination, and no-more? in terms of primitive operations on list structures. " .
-        "Does the order of the list coin-values affect the answer produced by cc? Why or why not?"
-    ]
+        "Does the order of the list coin-values affect the answer produced by cc? Why or why not?",
+    ],
 ];

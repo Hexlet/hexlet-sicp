@@ -5,10 +5,7 @@ namespace Tests\Feature\Http\Controllers;
 use Illuminate\Support\Collection;
 use Tests\TestCase;
 use App\Solution;
-use App\Exercise;
 use App\User;
-use Illuminate\Auth\Access\AuthorizationException;
-use Illuminate\Database\Eloquent\Model;
 
 class SolutionControllerTest extends TestCase
 {
@@ -26,7 +23,7 @@ class SolutionControllerTest extends TestCase
     public function testStore(): void
     {
         $factoryData = factory(Solution::class)->make([
-            'user_id' => $this->user->id
+            'user_id' => $this->user->id,
         ])->toArray();
         $data = \Arr::only($factoryData, ['exercise_id', 'user_id', 'content']);
         $response = $this->post(route('users.solutions.store', $this->user), $data);
@@ -55,7 +52,7 @@ class SolutionControllerTest extends TestCase
     public function testDestroy(): void
     {
         $solution = factory(Solution::class)->create([
-            'user_id' => $this->user->id
+            'user_id' => $this->user->id,
         ]);
         $response = $this->delete(route('users.solutions.destroy', [$this->user, $solution]));
         $response->assertSessionHasNoErrors();

@@ -13,6 +13,6 @@ return [
         '3' =>
         "Try to write the program so that it runs efficiently (see exercise ",
         '4' =>
-        "). Also determine how many solutions there are if we are not told that Mary Ann's last name is Moore."
-    ]
+        "). Also determine how many solutions there are if we are not told that Mary Ann's last name is Moore.",
+    ],
 ];

@@ -8,6 +8,6 @@ return [
             'read_chapters' => 'Read chapters',
             'completed_exercises' => 'Completed Exercises',
             'left_comments' => 'Left comments',
-        ]
-    ]
+        ],
+    ],
 ];

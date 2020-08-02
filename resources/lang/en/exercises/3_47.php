@@ -10,6 +10,6 @@ return [
         '2' =>
         "a. in terms of mutexes",
         '3' =>
-        "b. in terms of atomic test-and-set! operations."
-    ]
+        "b. in terms of atomic test-and-set! operations.",
+    ],
 ];

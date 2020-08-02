@@ -13,6 +13,6 @@ return [
         '2' =>
         "To test your code, start by defining a procedure f that calls a procedure g. " .
         "Use compile-and-go to compile the definition of f and start the evaluator. " .
-        "Now, typing at the evaluator, define g and try to call f."
-    ]
+        "Now, typing at the evaluator, define g and try to call f.",
+    ],
 ];

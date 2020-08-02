@@ -8,6 +8,6 @@ return [
         '2' =>
         "Then we have",
         '3' =>
-        "What happens if we (perversely) ask the interpreter to evaluate the combination (f f)? Explain."
-    ]
+        "What happens if we (perversely) ask the interpreter to evaluate the combination (f f)? Explain.",
+    ],
 ];

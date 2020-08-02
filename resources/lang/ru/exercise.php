@@ -12,8 +12,8 @@ return [
         'help_us' => 'Помогите нам добавляя новые упражнения',
         'completed_by' => 'Завершено пользователями:',
         'previous' => 'Предыдущее',
-        'next' => 'Следующее'
+        'next' => 'Следующее',
     ],
     'mark_exercise' => 'Отметить упражнение :exercise_path выполненным',
-    'remove_completed_exercise' => 'Удалить упражнение :exercise_path из выполненных'
+    'remove_completed_exercise' => 'Удалить упражнение :exercise_path из выполненных',
 ];

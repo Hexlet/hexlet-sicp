@@ -9,11 +9,10 @@ class CreateReadChaptersTable extends Migration
     /**
      * Run the migrations.
      *
-     * @return void
      */
-    public function up()
+    public function up(): void
     {
-        Schema::create('read_chapters', function (Blueprint $table) {
+        Schema::create('read_chapters', function (Blueprint $table): void {
             $table->bigIncrements('id');
             $table->bigInteger('chapter_id')->unsigned();
             $table->bigInteger('user_id')->unsigned();
@@ -34,9 +33,8 @@ class CreateReadChaptersTable extends Migration
     /**
      * Reverse the migrations.
      *
-     * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('read_chapters');
     }

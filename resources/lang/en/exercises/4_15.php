@@ -9,6 +9,6 @@ return [
         "p halts on a for any procedure p and object a. Use the following reasoning: If you had such a " .
         "procedure halts?, you could implement the following program:",
         '2' => "Now consider evaluating the expression (try try) and show that any possible outcome (either " .
-        "halting or running forever) violates the intended behavior of halts?."
-    ]
+        "halting or running forever) violates the intended behavior of halts?.",
+    ],
 ];

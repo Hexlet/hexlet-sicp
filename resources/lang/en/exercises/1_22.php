@@ -13,6 +13,6 @@ return [
         "Note the time needed to test each prime. Since the testing algorithm has order of growth of Θ(√n), " .
         "you should expect that testing for primes around 10,000 should take about √10 times as long as testing for primes around 1000. " .
         "Do your timing data bear this out? How well do the data for 100,000 and 1,000,000 support the √n prediction? " .
-        "Is your result compatible with the notion that programs on your machine run in time proportional to the number of steps required for the computation? "
-    ]
+        "Is your result compatible with the notion that programs on your machine run in time proportional to the number of steps required for the computation? ",
+    ],
 ];

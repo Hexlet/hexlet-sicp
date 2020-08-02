@@ -9,6 +9,6 @@ return [
         "then list-of-values will evaluate operands from left to right; and if the arguments to cons are evaluated from right to left, " .
         "then list-of-values will evaluate operands from right to left.",
         '2' => "Write a version of list-of-values that evaluates operands from left to right regardless of the order of evaluation in the underlying Lisp. " .
-        "Also write a version of list-of-values that evaluates operands from right to left."
-    ]
+        "Also write a version of list-of-values that evaluates operands from right to left.",
+    ],
 ];

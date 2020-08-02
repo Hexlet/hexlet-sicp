@@ -20,6 +20,6 @@ return [
         "Compare the ratios for special-purpose versus interpreted code to the ratios for compiled versus interpreted code. " .
         "You should find that the special-purpose machine does much better than the compiled code, since the hand-tailored controller code should be much better than what is produced by our rudimentary general-purpose compiler.",
         '7' =>
-        "b. Can you suggest improvements to the compiler that would help it generate code that would come closer in performance to the hand-tailored version?"
-    ]
+        "b. Can you suggest improvements to the compiler that would help it generate code that would come closer in performance to the hand-tailored version?",
+    ],
 ];

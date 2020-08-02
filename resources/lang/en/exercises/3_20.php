@@ -8,5 +8,5 @@ return [
         ' using the procedural implementation of pairs given above. ' .
         '(Compare exercise ',
     'description3' =>
-        '.)'
+        '.)',
 ];

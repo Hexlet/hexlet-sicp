@@ -8,6 +8,6 @@ return [
         '2' =>
         "Just after Louis types this information into the system, DeWitt Aull comes by to find out who outranks Ben Bitdiddle. He issues the query",
         '3' =>
-        "After answering, the system goes into an infinite loop. Explain why."
-    ]
+        "After answering, the system goes into an infinite loop. Explain why.",
+    ],
 ];

@@ -14,6 +14,6 @@ return [
         '3' => "Compare the two versions of analyze-sequence. For example, consider the common case " .
         "(typical of procedure bodies) where the sequence has just one expression. What work will the " .
         "execution procedure produced by Alyssa's program do? What about the execution procedure produced " .
-        "by the program in the text above? How do the two versions compare for a sequence with two expressions?"
-    ]
+        "by the program in the text above? How do the two versions compare for a sequence with two expressions?",
+    ],
 ];

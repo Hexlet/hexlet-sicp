@@ -14,6 +14,6 @@ return [
         "example, the sources for register val in the factorial machine of figure 5.11 are (const 1) and ((op *) " .
         "(reg n) (reg val))).",
         '6' => "Extend the message-passing interface to the machine to provide access to this new information. To " .
-        "test your analyzer, define the Fibonacci machine from figure 5.12 and examine the lists you constructed."
-    ]
+        "test your analyzer, define the Fibonacci machine from figure 5.12 and examine the lists you constructed.",
+    ],
 ];

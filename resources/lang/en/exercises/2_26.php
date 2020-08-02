@@ -6,6 +6,6 @@ return [
         '1' =>
         "Suppose we define x and y to be two lists:",
         '2' =>
-        "What result is printed by the interpreter in response to evaluating each of the following expressions:"
-    ]
+        "What result is printed by the interpreter in response to evaluating each of the following expressions:",
+    ],
 ];

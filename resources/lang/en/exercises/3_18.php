@@ -8,5 +8,5 @@ return [
     'description2' =>
         's would go into an infinite loop. Exercise ',
     'description3' =>
-        ' constructed such lists.'
+        ' constructed such lists.',
 ];

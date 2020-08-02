@@ -20,6 +20,6 @@ return [
         '7' =>
         "We can define the dot product as",
         '8' =>
-        "Fill in the missing expressions in the following procedures for computing the other matrix operations. (The procedure accumulate-n is defined in exercise 2.36.)"
-    ]
+        "Fill in the missing expressions in the following procedures for computing the other matrix operations. (The procedure accumulate-n is defined in exercise 2.36.)",
+    ],
 ];

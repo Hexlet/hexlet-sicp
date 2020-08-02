@@ -19,5 +19,5 @@ return [
         '. Thus, by resetting the state, one can generate repeatable sequences. ' .
         'These are very handy to have when testing and debugging programs that use random numbers.',
     'description8' =>
-        'new-value'
+        'new-value',
 ];

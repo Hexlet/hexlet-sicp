@@ -8,6 +8,6 @@ return [
             'read_chapters' => 'Прочитано глав',
             'completed_exercises' => 'Выполнено заданий',
             'left_comments' => 'Оставлено комментариев',
-        ]
-    ]
+        ],
+    ],
 ];

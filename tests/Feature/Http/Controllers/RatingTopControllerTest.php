@@ -12,7 +12,7 @@ class RatingTopControllerTest extends TestCase
     {
         factory(User::class, 10)
             ->create()
-            ->each(function ($user) {
+            ->each(function ($user): void {
                 factory(ReadChapter::class, mt_rand(0, 10))->create([
                     'user_id' => $user->id,
                 ]);

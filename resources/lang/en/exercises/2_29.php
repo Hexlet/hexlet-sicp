@@ -19,6 +19,6 @@ return [
         '6' =>
         "d.  Suppose we change the representation of mobiles so that the constructors are",
         '7' =>
-        "How much do you need to change your programs to convert to the new representation?"
-    ]
+        "How much do you need to change your programs to convert to the new representation?",
+    ],
 ];

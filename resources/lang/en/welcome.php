@@ -22,6 +22,6 @@ return [
         'Bind repository with resolved exercises',
     ],
     'comments' => [
-        'latest' => 'Latest comments'
-    ]
+        'latest' => 'Latest comments',
+    ],
 ];

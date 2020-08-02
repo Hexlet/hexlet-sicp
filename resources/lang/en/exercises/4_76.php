@@ -10,6 +10,6 @@ return [
         "If each query produces N/k output frames, then this means that we must perform N²/k² compatibility checks -- a factor of k fewer than the number of matches required in our current method.",
         '2' =>
         "Devise an implementation of and that uses this strategy. " .
-        "You must implement a procedure that takes two frames as inputs, checks whether the bindings in the frames are compatible, and, if so, produces a frame that merges the two sets of bindings. This operation is similar to unification."
-    ]
+        "You must implement a procedure that takes two frames as inputs, checks whether the bindings in the frames are compatible, and, if so, produces a frame that merges the two sets of bindings. This operation is similar to unification.",
+    ],
 ];

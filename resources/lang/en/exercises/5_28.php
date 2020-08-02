@@ -8,6 +8,6 @@ return [
         '2' =>
         " and ",
         '3' =>
-        " to demonstrate that both versions of the factorial procedure now require space that grows linearly with their input."
-    ]
+        " to demonstrate that both versions of the factorial procedure now require space that grows linearly with their input.",
+    ],
 ];

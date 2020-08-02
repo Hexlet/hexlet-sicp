@@ -13,5 +13,5 @@ return [
         "Show how to implement this idea in detail, by writing a drop procedure that drops an object as far as possible. " .
         "You will need to design the various projection operations and install project as a generic operation in the system. " .
         "You will also need to make use of a generic equality predicate, such as described in exercise 2.79. " .
-        "Finally, use drop to rewrite apply-generic from exercise 2.84 so that it ''simplifies'' its answers."
+        "Finally, use drop to rewrite apply-generic from exercise 2.84 so that it ''simplifies'' its answers.",
 ];

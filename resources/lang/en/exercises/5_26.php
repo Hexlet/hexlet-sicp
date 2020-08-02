@@ -10,6 +10,6 @@ return [
         '3' =>
         "a. You will find that the maximum depth required to evaluate n! is independent of n. What is that depth?",
         '4' =>
-        "b. Determine from your data a formula in terms of n for the total number of push operations used in evaluating n! for any n ≥ 1. Note that the number of operations used is a linear function of n and is thus determined by two constants."
-    ]
+        "b. Determine from your data a formula in terms of n for the total number of push operations used in evaluating n! for any n ≥ 1. Note that the number of operations used is a linear function of n and is thus determined by two constants.",
+    ],
 ];

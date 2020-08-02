@@ -10,6 +10,6 @@ return [
         "She explains the problem to her assistant, Louis Reasoner, who attempts to implement the idea, altering Alyssa's program as follows:",
         '2' =>
         "This does not correctly implement Alyssa's plan. Find the bug that Louis has installed and fix it without changing the structure of the program. " .
-        "(Hint: You will need to increase the number of arguments to make-zero-crossings.)"
-    ]
+        "(Hint: You will need to increase the number of arguments to make-zero-crossings.)",
+    ],
 ];

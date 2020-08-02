@@ -9,11 +9,10 @@ class CreateCompletedExercisesTable extends Migration
     /**
      * Run the migrations.
      *
-     * @return void
      */
-    public function up()
+    public function up(): void
     {
-        Schema::create('completed_exercises', function (Blueprint $table) {
+        Schema::create('completed_exercises', function (Blueprint $table): void {
             $table->bigIncrements('id');
             $table->bigInteger('exercise_id');
             $table->bigInteger('user_id');
@@ -34,9 +33,8 @@ class CreateCompletedExercisesTable extends Migration
     /**
      * Reverse the migrations.
      *
-     * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('completed_exercises');
     }

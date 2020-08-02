@@ -10,6 +10,6 @@ return [
         '2' =>
         "Then deposits are handled as with the original make-account:",
         '3' =>
-        "Explain what is wrong with Louis's reasoning. In particular, consider what happens when serialized-exchange is called."
-    ]
+        "Explain what is wrong with Louis's reasoning. In particular, consider what happens when serialized-exchange is called.",
+    ],
 ];

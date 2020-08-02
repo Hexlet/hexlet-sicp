@@ -8,6 +8,6 @@ return [
         '2' =>
         "Make-leaf-set is the procedure given above that transforms the list of pairs into an ordered set of leaves. " .
         "Successive-merge is the procedure you must write, using make-code-tree to successively merge the smallest-weight elements of the set until there is only one element left, which is the desired Huffman tree. " .
-        "(This procedure is slightly tricky, but not really complicated. If you find yourself designing a complex procedure, then you are almost certainly doing something wrong. You can take significant advantage of the fact that we are using an ordered set representation.)"
-    ]
+        "(This procedure is slightly tricky, but not really complicated. If you find yourself designing a complex procedure, then you are almost certainly doing something wrong. You can take significant advantage of the fact that we are using an ordered set representation.)",
+    ],
 ];

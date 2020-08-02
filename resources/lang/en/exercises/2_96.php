@@ -21,6 +21,6 @@ return [
         "The result of this operation will be a numerator and denominator with integer coefficients. " .
         "The coefficients will normally be very large because of all of the integerizing factors, " .
         "so the last step is to remove the redundant factors by computing the (integer) greatest common divisor " .
-        "of all the coefficients of the numerator and the denominator and dividing through by this factor. "
-    ]
+        "of all the coefficients of the numerator and the denominator and dividing through by this factor. ",
+    ],
 ];

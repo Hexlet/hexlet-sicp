@@ -10,13 +10,12 @@ class ChaptersTableSeeder extends Seeder
     /**
      * Run the database seeds.
      *
-     * @return void
      */
-    public function run()
+    public function run(): void
     {
         $chapters = Yaml::parseFile(database_path('chapters.yml'));
         DB::beginTransaction();
-        $createChapters = function ($chapters, ?Chapter $parent) use (&$createChapters) {
+        $createChapters = function ($chapters, ?Chapter $parent) use (&$createChapters): void {
             foreach ($chapters as $chapter) {
                 $children = $chapter['children'] ?? null;
 

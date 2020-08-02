@@ -12,6 +12,6 @@ return [
         "Fill in the following template to produce a procedure that evaluates a polynomial using Horner's rule. " .
         "Assume that the coefficients of the polynomial are arranged in a sequence, from a₀ through aₙ.",
         '4' =>
-        "For example, to compute 1 + 3x + 5x³ + x⁵ at x = 2 you would evaluate"
-    ]
+        "For example, to compute 1 + 3x + 5x³ + x⁵ at x = 2 you would evaluate",
+    ],
 ];

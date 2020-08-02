@@ -13,6 +13,6 @@ return [
         "The major drawback of the ripple-carry adder is the need to wait for the carry signals to propagate. " .
         "What is the delay needed to obtain the complete output from an n-bit ripple-carry adder, expressed in terms of the delays for and-gates, or-gates, and inverters?",
         '2' =>
-        "Figure 3.27:  A ripple-carry adder for n-bit numbers."
-    ]
+        "Figure 3.27:  A ripple-carry adder for n-bit numbers.",
+    ],
 ];
