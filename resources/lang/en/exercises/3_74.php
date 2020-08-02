@@ -16,6 +16,6 @@ return [
         '3' =>
         "Alyssa's boss, Eva Lu Ator, walks by and suggests that this program is approximately equivalent to the following one, which uses the generalized version of stream-map from exercise 3.50:",
         '4' =>
-        "Complete the program by supplying the indicated <expression>."
-    ]
+        "Complete the program by supplying the indicated <expression>.",
+    ],
 ];

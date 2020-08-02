@@ -13,7 +13,7 @@ use Illuminate\Foundation\Inspiring;
 |
 */
 /** @var \Illuminate\Console\Command $this */
-Artisan::command('inspire', function () {
+Artisan::command('inspire', function (): void {
     /** @var \Illuminate\Console\Command $this */
     $this->comment(Inspiring::quote());
 })->describe('Display an inspiring quote');

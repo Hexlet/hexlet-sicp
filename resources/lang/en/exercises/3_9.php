@@ -13,5 +13,5 @@ return [
     'description5' =>
         ' using each version of the ',
     'description6' =>
-        ' procedure.'
+        ' procedure.',
 ];

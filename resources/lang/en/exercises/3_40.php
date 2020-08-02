@@ -6,6 +6,6 @@ return [
         '1' =>
         "Give all possible values of x that can result from executing",
         '2' =>
-        "Which of these possibilities remain if we instead use serialized procedures:"
-    ]
+        "Which of these possibilities remain if we instead use serialized procedures:",
+    ],
 ];

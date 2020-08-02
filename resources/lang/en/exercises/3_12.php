@@ -40,5 +40,5 @@ return [
     'description18' =>
         'response',
     'description19' =>
-        'response'
+        'response',
 ];

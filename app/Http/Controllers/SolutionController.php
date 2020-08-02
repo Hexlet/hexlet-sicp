@@ -20,7 +20,7 @@ class SolutionController extends Controller
     public function store(Request $request, User $user): RedirectResponse
     {
         $validatedData = $request->validate([
-            'content' => 'required|string|min:1'
+            'content' => 'required|string|min:1',
         ]);
 
         $exercise = Exercise::findOrFail($request->get('exercise_id'));
@@ -36,7 +36,7 @@ class SolutionController extends Controller
             ->causedBy($user)
             ->withProperties([
                 'exercise_id' => $exercise->id,
-                'exercise_path' => $exercise->path
+                'exercise_path' => $exercise->path,
             ])
             ->log('add_solution');
         } else {

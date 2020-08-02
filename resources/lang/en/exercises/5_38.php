@@ -23,6 +23,6 @@ return [
         '6' =>
         "c.  Try your new compiler on the factorial example. Compare the resulting code with the result produced without open coding.",
         '7' =>
-        "d.  Extend your code generators for + and * so that they can handle expressions with arbitrary numbers of operands. An expression with more than two operands will have to be compiled into a sequence of operations, each with only two inputs."
-    ]
+        "d.  Extend your code generators for + and * so that they can handle expressions with arbitrary numbers of operands. An expression with more than two operands will have to be compiled into a sequence of operations, each with only two inputs.",
+    ],
 ];

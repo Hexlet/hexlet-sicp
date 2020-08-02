@@ -33,5 +33,5 @@ return [
     'description15' =>
         ' and ',
     'description16' =>
-        ' ?'
+        ' ?',
 ];

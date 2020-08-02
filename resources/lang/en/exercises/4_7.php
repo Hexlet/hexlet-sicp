@@ -10,6 +10,6 @@ return [
         "write a procedure let*->nested-lets that performs this transformation. If we have already implemented let " .
         "(exercise 4.6) and we want to extend the evaluator to handle let*, is it sufficient to add a clause to " .
         "eval whose action is",
-        '3' => "or must we explicitly expand let* in terms of non-derived expressions?"
-    ]
+        '3' => "or must we explicitly expand let* in terms of non-derived expressions?",
+    ],
 ];

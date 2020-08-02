@@ -10,5 +10,5 @@ return [
     'name_updated' => 'Ваше имя успешно изменено!',
     'сhange_name' => 'Изменить имя',
     'current_email' => 'Текущий email',
-    'go_to_gravatar' => 'Перейти на Gravatar.com'
+    'go_to_gravatar' => 'Перейти на Gravatar.com',
 ];

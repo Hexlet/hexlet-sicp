@@ -7,6 +7,6 @@ return [
         '2' => "Here a and b are meant to represent new variable names, created by the interpreter, that do not appear " .
         "in the user's program. Consider the solve procedure from section 3.5.4:",
         '3' => "Will this procedure work if internal definitions are scanned out as shown in this exercise? What if " .
-        "they are scanned out as shown in the text? Explain."
-    ]
+        "they are scanned out as shown in the text? Explain.",
+    ],
 ];

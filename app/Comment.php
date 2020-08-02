@@ -45,15 +45,6 @@ class Comment extends Model
         return $this->morphTo();
     }
 
-    protected static function boot()
-    {
-        parent::boot();
-
-        static::addGlobalScope('order', function (Builder $builder): void {
-            $builder->orderBy('created_at', 'asc');
-        });
-    }
-
     public function replies(): HasMany
     {
         return $this->hasMany('App\Comment', 'parent_id');
@@ -67,5 +58,14 @@ class Comment extends Model
     public function isReply(): bool
     {
         return isset($this->parent);
+    }
+
+    protected static function boot(): void
+    {
+        parent::boot();
+
+        static::addGlobalScope('order', function (Builder $builder): void {
+            $builder->orderBy('created_at', 'asc');
+        });
     }
 }

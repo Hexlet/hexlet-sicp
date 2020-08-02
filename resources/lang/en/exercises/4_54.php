@@ -8,6 +8,6 @@ return [
         '2' =>
         "and a new clause in the dispatch in analyze",
         '3' =>
-        "as well the procedure analyze-require that handles require expressions. Complete the following definition of analyze-require."
-    ]
+        "as well the procedure analyze-require that handles require expressions. Complete the following definition of analyze-require.",
+    ],
 ];

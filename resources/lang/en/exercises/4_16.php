@@ -10,6 +10,6 @@ return [
         '3' => "b. Write a procedure scan-out-defines that takes a procedure body and returns an " .
         "equivalent one that has no internal definitions, by making the transformation described above.",
         '4' => "c. Install scan-out-defines in the interpreter, either in make-procedure or in " .
-        "procedure-body (see section 4.1.3). Which place is better? Why?"
-    ]
+        "procedure-body (see section 4.1.3). Which place is better? Why?",
+    ],
 ];

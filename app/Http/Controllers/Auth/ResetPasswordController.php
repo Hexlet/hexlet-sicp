@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ResetsPasswords;
-use Illuminate\Support\Facades\Auth;
 
 class ResetPasswordController extends Controller
 {
@@ -20,19 +19,19 @@ class ResetPasswordController extends Controller
         $this->middleware('guest');
     }
 
+    public function redirectTo()
+    {
+        flash(__('passwords.reset'))->success();
+        return route('my');
+    }
+
     protected function rules()
     {
         return [
             'token' => 'required',
             'email' => 'required|email',
             'password' => 'required|confirmed|min:8',
-            'password_confirmation' => 'required|same:password'
+            'password_confirmation' => 'required|same:password',
         ];
-    }
-
-    public function redirectTo()
-    {
-        flash(__('passwords.reset'))->success();
-        return route('my');
     }
 }

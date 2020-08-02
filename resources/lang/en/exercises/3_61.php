@@ -8,6 +8,6 @@ return [
         "Write S = 1 + SR where SR is the part of S after the constant term. Then we can solve for X as follows:",
         '2' =>
         "In other words, X is the power series whose constant term is 1 and whose higher-order terms are given by the negative of SR times X. " .
-        "Use this idea to write a procedure invert-unit-series that computes 1/S for a power series S with constant term 1. You will need to use mul-series from exercise 3.60."
-    ]
+        "Use this idea to write a procedure invert-unit-series that computes 1/S for a power series S with constant term 1. You will need to use mul-series from exercise 3.60.",
+    ],
 ];

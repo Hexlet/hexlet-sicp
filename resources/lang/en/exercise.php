@@ -12,8 +12,8 @@ return [
         'help_us' => 'Help us by adding new exercises',
         'completed_by' => 'Completed by:',
         'previous' => 'Previous',
-        'next' => 'Next'
+        'next' => 'Next',
     ],
     'mark_exercise' => 'Mark :exercise_path completed',
-    'remove_completed_exercise' => 'Remove :exercise_path from completed'
+    'remove_completed_exercise' => 'Remove :exercise_path from completed',
 ];

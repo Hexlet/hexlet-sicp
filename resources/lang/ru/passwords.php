@@ -9,7 +9,7 @@ return [
         'password' => 'Пароль',
         'confirm_password' => 'Подтверждение пароля',
         'button' => 'Сбросить пароль',
-        'button_send_link' => 'Отправить ссылку'
+        'button_send_link' => 'Отправить ссылку',
     ],
 
 ];

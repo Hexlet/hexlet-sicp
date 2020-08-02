@@ -23,5 +23,5 @@ return [
     'description8' =>
         ' and ',
     'description9' =>
-        '?'
+        '?',
 ];

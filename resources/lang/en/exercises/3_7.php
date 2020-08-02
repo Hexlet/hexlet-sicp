@@ -30,5 +30,5 @@ return [
     'description13' =>
         '. You may wish to modify your solution to exercise ',
     'description14' =>
-        ' to accommodate this new feature.'
+        ' to accommodate this new feature.',
 ];

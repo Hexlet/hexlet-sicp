@@ -10,6 +10,6 @@ return [
         '3' =>
         "Louis then tries to fix his bug by interchanging the arguments to cons:",
         '4' =>
-        "This doesn't work either. Explain."
-    ]
+        "This doesn't work either. Explain.",
+    ],
 ];

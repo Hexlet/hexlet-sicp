@@ -22,6 +22,6 @@ return [
         "For each frame in the stream, it should use qeval to find the stream of all extensions to the frame that satisfy the given query. " .
         "Any stream that does not have exactly one item in it should be eliminated. The remaining streams should be passed back to be accumulated into one big stream that is the result of the unique query. This is similar to the implementation of the not special form.",
         '9' =>
-        "Test your implementation by forming a query that lists all people who supervise precisely one person."
-    ]
+        "Test your implementation by forming a query that lists all people who supervise precisely one person.",
+    ],
 ];

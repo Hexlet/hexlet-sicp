@@ -9,6 +9,6 @@ return [
         "an-integer-starting-from in the procedure in exercise ",
         '3' => " is not an adequate way to generate arbitrary Pythagorean triples. Write a procedure that actually " .
         "will accomplish this. (That is, write a procedure for which repeatedly typing try-again would in " .
-        "principle eventually generate all Pythagorean triples.)"
-    ]
+        "principle eventually generate all Pythagorean triples.)",
+    ],
 ];

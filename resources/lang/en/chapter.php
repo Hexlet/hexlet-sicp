@@ -11,7 +11,7 @@ return [
         'mark_read' => 'Mark as read',
         'completed_by' => 'Was completed by:',
         'previous_chapter' => 'Previous chapter',
-        'next_chapter' => 'Next chapter'
+        'next_chapter' => 'Next chapter',
     ],
-    'remove_completed_chapter' => 'Remove chapter :chapter_path from completed'
+    'remove_completed_chapter' => 'Remove chapter :chapter_path from completed',
 ];

@@ -13,7 +13,7 @@ class SitemapController extends Controller
         $gist = $github->gists()->show($gistId);
         $sitemap = $gist['files']['sitemap.xml'];
         return response($sitemap['content'], 200, [
-            'Content-Type' => 'application/xml'
+            'Content-Type' => 'application/xml',
         ]);
     }
 }

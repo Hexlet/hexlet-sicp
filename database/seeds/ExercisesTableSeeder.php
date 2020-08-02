@@ -11,17 +11,16 @@ class ExercisesTableSeeder extends Seeder
     /**
      * Run the database seeds.
      *
-     * @return void
      */
-    public function run()
+    public function run(): void
     {
         $exercises =  Yaml::parseFile(database_path('exercises.yml'));
         DB::beginTransaction();
-        $createExercises = function ($exercises) {
+        $createExercises = function ($exercises): void {
             foreach ($exercises as ['chapter_path' => $chapter_path, 'children' => $children]) {
                 $chapter = Chapter::where('path', $chapter_path)->value('id');
 
-                array_map(function ($exercise) use ($chapter) {
+                array_map(function ($exercise) use ($chapter): void {
                     $exerciseModel = new Exercise();
                     $exerciseModel->chapter_id = $chapter;
                     $exerciseModel->path = $exercise;

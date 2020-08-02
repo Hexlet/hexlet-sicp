@@ -29,5 +29,5 @@ return [
         ' on that input and increments the counter. ' .
         'For instance, we could make a monitored version of the ',
     'description11' =>
-        ' procedure:'
+        ' procedure:',
 ];

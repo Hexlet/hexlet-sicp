@@ -8,5 +8,5 @@ return [
     "them. For example, most of the restrictions depend on only one or two of the person-floor variables, and can " .
     "thus be imposed before floors have been selected for all the people. Write and demonstrate a much more " .
     "efficient nondeterministic procedure that solves this problem based upon generating only those possibilities " .
-    "that are not already ruled out by previous restrictions. (Hint: This will require a nest of let expressions.)"
+    "that are not already ruled out by previous restrictions. (Hint: This will require a nest of let expressions.)",
 ];

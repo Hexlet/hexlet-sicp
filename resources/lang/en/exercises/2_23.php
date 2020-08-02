@@ -10,6 +10,6 @@ return [
         "For example,",
         '2' =>
         "The value returned by the call to for-each (not illustrated above) can be something arbitrary, such as true. " .
-        "Give an implementation of for-each."
-    ]
+        "Give an implementation of for-each.",
+    ],
 ];

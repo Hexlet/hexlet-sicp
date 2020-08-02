@@ -18,6 +18,6 @@ return [
         '6' =>
         "d.  In this simple algebraic manipulator the type of an expression is the algebraic operator that binds it together. Suppose, however, we indexed the procedures in the opposite way, so that the dispatch line in deriv looked like",
         '7' =>
-        "What corresponding changes to the derivative system are required?"
-    ]
+        "What corresponding changes to the derivative system are required?",
+    ],
 ];

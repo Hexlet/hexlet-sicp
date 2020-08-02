@@ -7,5 +7,5 @@ return [
     "order as a special form. Alyssa counters that, if one did that, unless would be merely syntax, not a " .
     "procedure that could be used in conjunction with higher-order procedures. Fill in the details on both sides " .
     "of the argument. Show how to implement unless as a derived expression (like cond or let), and give an example " .
-    "of a situation where it might be useful to have unless available as a procedure, rather than as a special form."
+    "of a situation where it might be useful to have unless available as a procedure, rather than as a special form.",
 ];

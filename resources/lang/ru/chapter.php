@@ -13,5 +13,5 @@ return [
         'next_chapter' => 'Следующая глава',
         'previous_chapter' => 'Предыдущая глава',
     ],
-    'remove_completed_chapter' => 'Удалить главу :chapter_path из выполненных'
+    'remove_completed_chapter' => 'Удалить главу :chapter_path из выполненных',
 ];

@@ -9,5 +9,5 @@ return [
     'show_solution' => 'Мои решения',
     'exercise' => 'Упражнение',
     'code_review' => 'Код Ревью',
-    'sub_title' => 'Сравни свои решения'
+    'sub_title' => 'Сравни свои решения',
 ];

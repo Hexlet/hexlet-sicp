@@ -9,5 +9,5 @@ return [
     'description3' =>
         ' and ',
     'description4' =>
-        ' above.'
+        ' above.',
 ];

@@ -11,6 +11,6 @@ return [
         "that value is returned; any remaining expressions are not evaluated. If all expressions evaluate to false, or " .
         "if there are no expressions, then false is returned.",
         '4' => "Install and and or as new special forms for the evaluator by defining appropriate syntax procedures and " .
-        "evaluation procedures eval-and and eval-or. Alternatively, show how to implement and and or as derived expressions."
-    ]
+        "evaluation procedures eval-and and eval-or. Alternatively, show how to implement and and or as derived expressions.",
+    ],
 ];

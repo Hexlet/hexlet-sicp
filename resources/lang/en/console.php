@@ -1,5 +1,5 @@
 <?php
 
 return [
-    'generate_sitemap' => 'Generating sitemap'
+    'generate_sitemap' => 'Generating sitemap',
 ];

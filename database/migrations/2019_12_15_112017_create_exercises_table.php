@@ -9,11 +9,10 @@ class CreateExercisesTable extends Migration
     /**
      * Run the migrations.
      *
-     * @return void
      */
-    public function up()
+    public function up(): void
     {
-        Schema::create('exercises', function (Blueprint $table) {
+        Schema::create('exercises', function (Blueprint $table): void {
             $table->bigIncrements('id');
             $table->string('path')->nullable();
             $table->bigInteger('chapter_id');
@@ -28,9 +27,8 @@ class CreateExercisesTable extends Migration
     /**
      * Reverse the migrations.
      *
-     * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('exercises');
     }

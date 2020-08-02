@@ -17,6 +17,6 @@ return [
         "or successive values of k. How large must you make k in order to get an approximation that is accurate to 4 decimal places?",
         '5' =>
         "b. If your cont-frac procedure generates a recursive process, write one that generates an iterative process. " .
-        "If it generates an iterative process, write one that generates a recursive process. "
-    ]
+        "If it generates an iterative process, write one that generates a recursive process. ",
+    ],
 ];

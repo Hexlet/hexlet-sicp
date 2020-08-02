@@ -19,6 +19,6 @@ return [
         '5' =>
         "c.  Implement for headquarters a find-employee-record procedure. This should search all the divisions' files for the record of a given employee and return the record. Assume that this procedure takes as arguments an employee's name and a list of all the divisions' files.",
         '6' =>
-        "d.  When Insatiable takes over a new company, what changes must be made in order to incorporate the new personnel information into the central system?"
-    ]
+        "d.  When Insatiable takes over a new company, what changes must be made in order to incorporate the new personnel information into the central system?",
+    ],
 ];

@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Solution extends Model
 {
     protected $fillable = [
-        'content'
+        'content',
     ];
 
     public function user(): BelongsTo

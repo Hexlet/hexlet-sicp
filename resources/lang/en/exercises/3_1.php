@@ -10,5 +10,5 @@ return [
         ' that generates accumulators, each maintaining an independent sum. ' .
         'The input to ',
     'description3' =>
-        ' should specify the initial value of the sum, for example:'
+        ' should specify the initial value of the sum, for example:',
 ];

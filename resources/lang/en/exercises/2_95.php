@@ -19,6 +19,6 @@ return [
         "More precisely, if P and Q are polynomials, let O₁ be the order of P (i.e., the order of the largest term of P) and let O₂ be the order of Q. " .
         "Let c be the leading coefficient of Q. Then it can be shown that, if we multiply P by the integerizing factor c^(1 + O₁ - O₂), the resulting polynomial can be divided by Q " .
         "by using the div-terms algorithm without introducing any fractions. The operation of multiplying the dividend by this constant and then dividing is sometimes called the pseudodivision of P by Q. " .
-        "The remainder of the division is called the pseudoremainder."
-    ]
+        "The remainder of the division is called the pseudoremainder.",
+    ],
 ];

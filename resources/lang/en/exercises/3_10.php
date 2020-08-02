@@ -27,5 +27,5 @@ return [
     'description12' =>
         'Show that the two versions of ',
     'description13' =>
-        ' create objects with the same behavior. How do the environment structures differ for the two versions?'
+        ' create objects with the same behavior. How do the environment structures differ for the two versions?',
 ];

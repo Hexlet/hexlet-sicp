@@ -11,6 +11,6 @@ return [
         "To simplify the task, assume that + and * always take two arguments and that expressions are fully parenthesized.",
         '3' =>
         "b. The problem becomes substantially harder if we allow standard algebraic notation, such as (x + 3 * (x + y + 2)), which drops unnecessary parentheses and assumes that multiplication is done before addition. " .
-        "Can you design appropriate predicates, selectors, and constructors for this notation such that our derivative program still works?"
-    ]
+        "Can you design appropriate predicates, selectors, and constructors for this notation such that our derivative program still works?",
+    ],
 ];

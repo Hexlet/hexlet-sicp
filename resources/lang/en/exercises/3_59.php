@@ -15,6 +15,6 @@ return [
         '5' =>
         "b. The function x → eˣ is its own derivative. This implies that eˣ and the integral of eˣ are the same series, except for the constant term, which is e⁰ = 1. Accordingly, we can generate the series for eˣ as",
         '6' =>
-        "Show how to generate the series for sine and cosine, starting from the facts that the derivative of sine is cosine and the derivative of cosine is the negative of sine:"
-    ]
+        "Show how to generate the series for sine and cosine, starting from the facts that the derivative of sine is cosine and the derivative of cosine is the negative of sine:",
+    ],
 ];

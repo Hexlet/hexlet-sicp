@@ -9,6 +9,6 @@ return [
         '2' =>
         "What are the values of",
         '3' =>
-        "Give a property that op should satisfy to guarantee that fold-right and fold-left will produce the same values for any sequence."
-    ]
+        "Give a property that op should satisfy to guarantee that fold-right and fold-left will produce the same values for any sequence.",
+    ],
 ];

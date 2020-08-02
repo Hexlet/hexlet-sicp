@@ -12,6 +12,6 @@ return [
         '2' =>
         "a. the sum of the squares of the prime numbers in the interval a to b (assuming that you have a prime? predicate already written)",
         '3' =>
-        "b. the product of all the positive integers less than n that are relatively prime to n (i.e., all positive integers i < n such that GCD(i,n) = 1). "
-    ]
+        "b. the product of all the positive integers less than n that are relatively prime to n (i.e., all positive integers i < n such that GCD(i,n) = 1). ",
+    ],
 ];

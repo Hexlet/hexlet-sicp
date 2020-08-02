@@ -19,5 +19,5 @@ return [
     'description6' =>
         ' are evaluated from left to right but will return ',
     'description7' =>
-        ' if the arguments are evaluated from right to left.'
+        ' if the arguments are evaluated from right to left.',
 ];

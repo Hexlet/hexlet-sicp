@@ -13,6 +13,6 @@ return [
         "Write accumulate and show how sum and product can both be defined as simple calls to accumulate.",
         '3' =>
         "b. If your accumulate procedure generates a recursive process, write one that generates an iterative process. " .
-        "If it generates an iterative process, write one that generates a recursive process. "
-    ]
+        "If it generates an iterative process, write one that generates a recursive process. ",
+    ],
 ];

@@ -14,5 +14,5 @@ return [
     'description4' =>
         'Show that this procedure is not correct. ' .
         'In particular, draw box-and-pointer diagrams representing list structures made up of exactly three pairs for which Ben\'s ' .
-        'procedure would return 3; return 4; return 7; never return at all.'
+        'procedure would return 3; return 4; return 7; never return at all.',
 ];

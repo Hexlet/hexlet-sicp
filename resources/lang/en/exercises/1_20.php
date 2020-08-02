@@ -9,5 +9,5 @@ return [
         '(The normal-order-evaluation rule for if is described in exercise 1.5.) ' .
         'Using the substitution method (for normal order), illustrate the process generated in evaluating (gcd 206 40) and indicate the remainder operations that are actually performed. ' .
         'How many remainder operations are actually performed in the normal-order evaluation of (gcd 206 40)? ' .
-        'In the applicative-order evaluation?'
+        'In the applicative-order evaluation?',
 ];

@@ -21,6 +21,6 @@ return [
         "loose about his reasoning by drawing an environment diagram that shows the environment in which the " .
         "<rest of body of f> is evaluated during evaluation of the expression (f 5), with f defined as in " .
         "this exercise. Draw an environment diagram for the same evaluation, but with let in place of letrec " .
-        "in the definition of f."
-    ]
+        "in the definition of f.",
+    ],
 ];

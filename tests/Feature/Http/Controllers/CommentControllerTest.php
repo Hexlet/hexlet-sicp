@@ -21,7 +21,7 @@ class CommentControllerTest extends TestCase
         factory(Chapter::class, 2)
             ->create()
             ->each(
-                function (Chapter $chapter) {
+                function (Chapter $chapter): void {
                     $chapter->exercises()->saveMany(
                         factory(Exercise::class, mt_rand(1, 3))->make()
                     );
@@ -159,7 +159,7 @@ class CommentControllerTest extends TestCase
         $comment = factory(Comment::class)->state('with_user')->make();
         $commentable->comments()->save($comment);
 
-        $this->expectException(AuthorizationException::class);
+        $this->expectException(\Illuminate\Auth\Access\AuthorizationException::class);
         $response = $this->delete(
             route('comments.destroy', compact('comment'))
         );
@@ -182,7 +182,7 @@ class CommentControllerTest extends TestCase
     {
         $routesGroup = $model->getTable();
         return route("{$routesGroup}.{$action}", [
-            str_singular($routesGroup) => $model
+            str_singular($routesGroup) => $model,
         ]);
     }
 

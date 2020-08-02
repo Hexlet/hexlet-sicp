@@ -22,7 +22,7 @@ class ChapterController extends Controller
             'children',
             'users',
             'exercises',
-            'comments'
+            'comments',
         ]);
 
         /**

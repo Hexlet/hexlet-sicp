@@ -10,6 +10,6 @@ return [
         "All you have to do to make this work is add the following to the complex package:''",
         '2' =>
         "Describe in detail why this works. As an example, trace through all the procedures called in evaluating the expression (magnitude z) where z is the object shown in figure 2.24. In particular, how many times is apply-generic invoked? " .
-        "What procedure is dispatched to in each case?"
-    ]
+        "What procedure is dispatched to in each case?",
+    ],
 ];

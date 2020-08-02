@@ -17,6 +17,6 @@ return [
         "produce such an extension to Scheme. You will have to implement new syntax procedures to handle the new " .
         "syntax for define. You must also arrange for eval or apply to determine when arguments are to be delayed, " .
         "and to force or delay arguments accordingly, and you must arrange for forcing to memoize or not, as " .
-        "appropriate."
-    ]
+        "appropriate.",
+    ],
 ];

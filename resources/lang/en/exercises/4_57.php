@@ -8,6 +8,6 @@ return [
         '2' =>
         "a.  all people who can replace Cy D. Fect;",
         '3' =>
-        "b.  all people who can replace someone who is being paid more than they are, together with the two salaries."
-    ]
+        "b.  all people who can replace someone who is being paid more than they are, together with the two salaries.",
+    ],
 ];

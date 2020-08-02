@@ -24,6 +24,6 @@ return [
         'password' => 'Password',
         'confirm_password' => 'Confirm Password',
         'button' => 'Reset Password',
-        'button_send_link' => 'Send link'
+        'button_send_link' => 'Send link',
     ],
 ];

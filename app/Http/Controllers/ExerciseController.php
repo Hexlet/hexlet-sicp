@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Exercise;
 use App\User;
-use App\Solution;
 use Illuminate\View\View;
 
 class ExerciseController extends Controller

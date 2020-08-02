@@ -34,9 +34,9 @@ class SitemapControllerTest extends TestCase
         return [
             "files" => [
                 "sitemap.xml" => [
-                    "content" => file_get_contents($sitemapFilepath)
-                ]
-            ]
+                    "content" => file_get_contents($sitemapFilepath),
+                ],
+            ],
         ];
     }
 }

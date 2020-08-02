@@ -22,6 +22,6 @@ return [
         "In this procedure rest-of-queens is a way to place k - 1 queens in the first k - 1 columns, and new-row is a proposed row in which to place the queen for the kth column. " .
         "Complete the program by implementing the representation for sets of board positions, including the procedure adjoin-position, which adjoins a new row-column position to a set of positions, and empty-board, which represents an empty set of positions. " .
         "You must also write the procedure safe?, which determines for a set of positions, whether the queen in the kth column is safe with respect to the others. " .
-        "(Note that we need only check whether the new queen is safe -- the other queens are already guaranteed safe with respect to each other.)"
-    ]
+        "(Note that we need only check whether the new queen is safe -- the other queens are already guaranteed safe with respect to each other.)",
+    ],
 ];

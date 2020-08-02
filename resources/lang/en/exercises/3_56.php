@@ -20,6 +20,6 @@ return [
         '7' =>
         "Then the required stream may be constructed with merge, as follows:",
         '8' =>
-        "Fill in the missing expressions in the places marked <??> above."
-    ]
+        "Fill in the missing expressions in the places marked <??> above.",
+    ],
 ];

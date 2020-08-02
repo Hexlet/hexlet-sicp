@@ -8,6 +8,6 @@ return [
         '2' =>
         "To his surprise, the system responds",
         '3' =>
-        "Why is Oliver Warbucks listed four times?"
-    ]
+        "Why is Oliver Warbucks listed four times?",
+    ],
 ];

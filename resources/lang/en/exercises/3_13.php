@@ -17,5 +17,5 @@ return [
     'description7' =>
         'What happens if we try to compute ',
     'description8' =>
-        '?'
+        '?',
 ];

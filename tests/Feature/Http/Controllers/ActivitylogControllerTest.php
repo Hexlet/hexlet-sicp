@@ -46,7 +46,7 @@ class ActivitylogControllerTest extends TestCase
         $response->assertOk()->assertSee($chapters->first()->path);
 
         $this->assertDatabaseHas('activity_log', [
-            'description' => 'added'
+            'description' => 'added',
         ]);
     }
 }
