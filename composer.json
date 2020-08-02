@@ -1,10 +1,11 @@
 {
-    "name": "laravel/laravel",
+    "name": "hexlet/hexlet-sicp",
     "type": "project",
-    "description": "The Laravel Framework.",
+    "description": "SICP book tracker",
     "keywords": [
-        "framework",
-        "laravel"
+        "hexlet",
+        "sicp",
+        "project"
     ],
     "license": "MIT",
     "require": {
@@ -51,6 +52,7 @@
         "nunomaduro/larastan": "^0.6.1",
         "phpunit/phpunit": "^9.0",
         "roave/security-advisories": "dev-master",
+        "slevomat/coding-standard": "dev-master",
         "squizlabs/php_codesniffer": "*"
     },
     "config": {
