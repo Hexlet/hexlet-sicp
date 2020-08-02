@@ -80,10 +80,6 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "scripts": {
-        "phpcs": "phpcs",
-        "phpunit": "phpunit",
-        "phpcbf": "phpcbf",
-        "phpstan": "phpstan",
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump"
         ],
