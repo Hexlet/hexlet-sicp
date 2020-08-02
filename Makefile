@@ -19,13 +19,13 @@ db-prepare:
 	php artisan migrate --seed
 
 lint:
-	composer phpcs
+	composer exec phpcs
 
 lint-fix:
-	composer phpcbf
+	composer exec phpcbf
 
 analyse:
-	composer run-script phpstan analyse
+	composer exec phpstan analyse -v
 
 config-clear:
 	php artisan config:clear
