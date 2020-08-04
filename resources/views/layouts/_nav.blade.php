@@ -2,6 +2,7 @@
     $currentLocale = LaravelLocalization::getCurrentLocale();
     $locales = LaravelLocalization::getSupportedLocales();
     $otherLocales = getOtherLocales($currentLocale, $locales);
+    $user = Auth::user();
 @endphp
 <nav class="navbar navbar-expand-md navbar-light bg-white border-bottom">
         <a class="navbar-brand" href="{{ LaravelLocalization::getLocalizedURL($currentLocale, '/') }}">
@@ -70,15 +71,15 @@
                         <i class="far fa-user"></i>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item text-secondary" href="{{ route('users.show', $user) }}">
+                            {{ $user->name }}
+                        </a>
+                        <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="{{ route('settings.account.index') }}">
                             {{ __('account.settings') }}
                         </a>
-                        <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="{{ route('my') }}">
                             {{ __('layout.nav.my_progress') }}
-                        </a>
-                        <a class="dropdown-item" href="{{ route('top.index') }}">
-                            {{ __('layout.nav.rating') }}
                         </a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="{{ route('logout') }}" data-method="post" rel="nofollow">

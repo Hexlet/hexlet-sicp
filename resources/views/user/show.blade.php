@@ -2,66 +2,79 @@
 
 @php
 /**
- * @var \Illuminate\Support\Collection $chapters
  * @var \App\Chapter $chapter
- * @var \App\Exercise $exercise
- * @var \Illuminate\Support\Collection $completedExercises
+ * @var string $userRatingPosition
+ * @var int $points
  * @var \App\User $user
  */
 @endphp
 @section('content')
     <div class="row my-4">
         <div class="col-12 col-md-3">
-            <div class="sticky-top pt-4 mb-4 x-z-index-0">
-                <div class="card">
-                    <img class="card-img-top" src="{{ getProfileImageLink($user) }}" alt="Card image cap">
-                    <div class="card-body">
-                        <h3 class="card-text">{{ $user->name }}</h3>
+            <div class="sticky-top pt-4 mb-2 x-z-index-0">
+                <img class="w-100 img-fluid" src="{{ getProfileImageLink($user) }}" alt="Card image cap">
+                    <h1 class="h3 text-break my-2">{{ $user->name }}</h1>
+                    <div class="h4">
+                        <span class="fas fa-trophy"></span>
+                        <span>{{ $userRatingPosition }}</span>
+                        <a class="h6" href="{{ route('top.index') }}">
+                            {{ __('user.show.statistics.rating') }}
+                        </a>
                     </div>
-                    <ul class="list-group-flush list-group border-top">
-                        <li class="list-group-item">{{ __('user.show.statistics.rating_position') }} {{ $userRatingPosition }}</li>
-                        <li class="list-group-item">{{ __('user.show.statistics.points') }} {{ $points }}</li>
-                        <li class="list-group-item">{{ __('user.show.statistics.read_chapters') }} {{ $user->readChapters->count() }} / {{ App\Chapter::MARKABLE_COUNT }}</li>
-                        <li class="list-group-item">{{ __('user.show.statistics.completed_exercises') }} {{ $user->completedExercises()->count() }} / {{ $exercises->count() }}</li>
-                        <li class="list-group-item">{{ __('user.show.statistics.left_comments') }} {{ $user->comments->count() }}</li>
-                    </ul>
-                </div>
+                    <div class="h4">
+                        <span class="fas fa-award mx-1"></span>
+                        <span class="">{{ $points }}</span>
+                        <span class="h6 text-secondary"> {{ __('user.show.statistics.points') }}</span>
+                    </div>
+                    <div class="text-secondary">
+                        {{ __('user.show.statistics.created_at') }}
+                        @if (App::isLocale('ru'))
+                        {{ $user->created_at->isoFormat('DD MMMM YYYY') }}
+                        @else
+                        {{ $user->created_at->isoFormat('MMMM Do YYYY') }}
+                        @endif
+                    </div>
+                    <div class="small mt-4">
+                        <a class="text-muted" href="{{ route('settings.profile.index') }}">
+                            {{ __('user.show.statistics.edit_profile') }}
+                        </a>
+                    </div>
             </div>
         </div>
         <div class="col-12 col-md-9 my-4">
-            <h1 class="h3">{{ __('sicp.title') }}</h1>
-            <h2 class="h4">by {{ __('sicp.authors') }}</h2>
-            <ul class="list-group">
-                @foreach($chapters as $chapter)
-                <li class="list-group-item">
-                    @if(!$chapter->can_read)
-                        <h3 class="h4"><a href="{{ route('chapters.show', $chapter) }}">{{ $chapter->path }} {{ getChapterName($chapter->path) }}</a></h3>
-                    @else
-                        <h4 class="h6">
-                            <a class="d-flex" href="{{ route('chapters.show', $chapter) }}">
-                                {{ $chapter->path }} {{ getChapterName($chapter->path) }}
-                                @if (haveRead($user, $chapter))
-                                <div class="ml-auto"><i class="text-success fas fa-check"></i></div>
-                                @endif
-                            </a>
-                        </h4>
-                    @endif
-                    @foreach($chapter->exercises as $exercise)
-                        <a href="{{ route('exercises.show', $exercise) }}"
-                           class="text-decoration-none"
-                           data-toggle="tooltip"
-                           data-placement="bottom"
-                           title="{{ $exercise->path }}">
-                            @if($completedExercises->has($exercise->id))
-                            <i class="fa fa-check-square text-success"></i>
-                            @else
-                            <i class="far fa-square text-muted"></i>
-                            @endif
-                        </a>
-                    @endforeach
-                </li>
-                @endforeach
-            </ul>
+            <div class="shadow p-3 mb-5 bg-white rounded">
+                <div class="h2 text-center text-secondary mb-2">{{ __('user.show.statistics.statistics') }}</div>
+                <div class="row no-gutters my-2">
+                    <div class="col-12 col-md d-flex flex-column align-items-center my-2">
+                        <div class="h2 text-info">
+                            {{ $user->readChapters->count() }}
+                        </div>
+                        <div class="text-secondary">
+                            {{ __('user.show.statistics.read_chapters') }}
+                        </div>
+                    </div>
+                    <div class="col-12 col-md d-flex flex-column align-items-center my-2">
+                        <div class="h2 text-info">
+                            {{ $user->completedExercises->count() }}
+                        </div>
+                        <div class="text-secondary">
+                            {{ __('user.show.statistics.completed_exercises') }}
+                        </div>
+                    </div>
+                    <div class="col-12 col-md d-flex flex-column align-items-center my-2">
+                        <div class="h2 text-info">
+                            {{ $user->comments->count() }}
+                        </div>
+                        <div class="text-secondary">
+                            {{ __('user.show.statistics.comments') }}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    @include('components.activity_chart')
+                </div>
+            </div>
         </div>
+
     </div>
 @endsection
