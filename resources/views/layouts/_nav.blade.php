@@ -30,6 +30,11 @@
                         {{ __('layout.nav.sicp_read') }}
                     </a>
                 </li>
+                 <li class="nav-item">
+                    <a class="nav-link text-secondary" href="{{ route('top.index') }}">
+                        {{ __('layout.nav.rating') }}
+                    </a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link text-info" target="_blank" href="https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book.html">
                         {{ __('layout.nav.sicp_book') }}
@@ -96,11 +101,6 @@
                     <li class="nav-item">
                         <a class="nav-link text-secondary" href="{{ route('my') }}">
                             {{ __('layout.nav.my_progress') }}
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-secondary" href="{{ route('top.index') }}">
-                            {{ __('layout.nav.rating') }}
                         </a>
                     </li>
                     <li class="nav-item">
