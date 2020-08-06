@@ -1,6 +1,6 @@
 <p>
     {{ __('exercises/3_9.description1') }}
-    <a href="{{ getChapterOriginLink('1.2.1') }}">1.2.1</a>
+    <a href="https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-11.html#%_sec_1.2.1">1.2.1</a>
     {{ __('exercises/3_9.description2') }}
 </p>
 <pre><code>(define (factorial n)
