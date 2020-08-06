@@ -2,7 +2,7 @@
     {{ __('exercises/3_7.description1') }}
     <code>make-account</code>
     {{ __('exercises/3_7.description2') }}
-    <a title="3.3" href="{{ route('exercises.show', ($exercise->id - 4)) }}">3.3</a>
+    <a title="3.3" href="{{ route('exercises.show', getExercise('3.3')) }}">3.3</a>
     {{ __('exercises/3_7.description3') }}
     <code>make-joint</code>
     {{ __('exercises/3_7.description4') }}
@@ -27,6 +27,6 @@
     {{ __('exercises/3_7.description12') }}
     <code>rosebud</code>
     {{ __('exercises/3_7.description13') }}
-    <a title="3.3" href="{{ route('exercises.show', ($exercise->id - 4)) }}">3.3</a>
+    <a title="3.3" href="{{ route('exercises.show', getExercise('3.3')) }}">3.3</a>
     {{ __('exercises/3_7.description14') }}
 </p>
