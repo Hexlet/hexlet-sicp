@@ -5,7 +5,7 @@ use App\Chapter;
 if (!function_exists('getChapterName')) {
     function getChapterName(string $chapter): string
     {
-        return  __('sicp.chapters')[$chapter] ?? __('sicp.chapters.' . $chapter);
+        return __('sicp.chapters')[$chapter] ?? __('sicp.chapters.' . $chapter);
     }
 }
 
@@ -31,5 +31,14 @@ if (!function_exists('getChapterOriginLink')) {
         $links = require resource_path('chapter-links.php');
 
         return $links[$chapter->path] ?? null;
+    }
+}
+
+if (!function_exists('getChapterOriginLinkForStr')) {
+    function getChapterOriginLinkForStr(string $chapter): ?string
+    {
+        $links = require resource_path('chapter-links.php');
+
+        return $links[$chapter] ?? null;
     }
 }
