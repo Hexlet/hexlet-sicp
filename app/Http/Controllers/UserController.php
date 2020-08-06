@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Chapter;
-use App\Exercise;
 use App\User;
 use Illuminate\View\View;
 
@@ -15,7 +13,6 @@ class UserController extends Controller
         $userRatingPosition = $rating
             ->search(function (array $ratingPosition) use ($user) {
                 ['user' => $ratingUser] = $ratingPosition;
-
                 return $ratingUser->id === $user->id;
             });
 
@@ -25,19 +22,13 @@ class UserController extends Controller
             $points = 0;
             $userRatingPosition = 'N/A';
         }
-
         $user->load('readChapters', 'completedExercises');
-        $chapters = Chapter::with('children', 'exercises')->get();
-        $exercises = Exercise::all();
-        $completedExercises = $user->completedExercises->keyBy('exercise_id');
-
+        $chart = getChart($user->id);
         return view('user.show', compact(
             'user',
-            'chapters',
-            'exercises',
-            'completedExercises',
             'userRatingPosition',
-            'points'
+            'points',
+            'chart'
         ));
     }
 }
