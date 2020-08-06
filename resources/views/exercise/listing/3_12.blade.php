@@ -1,6 +1,6 @@
 <p>
     {{ __('exercises/3_12.description1') }}
-    <a href="https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-15.html#%_sec_2.2.1">2.2.1</a>
+    <a href="{{ getChapterOriginLink('2.2.1') }}">2.2.1</a>
     {{ __('exercises/3_12.description2') }}
 </p>
 <pre><code>(define (append x y)
