@@ -1,8 +1,8 @@
 <p>
     {{ __('exercises/3_11.description1') }}
-    <a href="{{ getChapterOriginLinkForStr('3.2.3') }}">3.2.3</a>
+    <a href="{{ getChapterOriginLinkForNumber('3.2.3') }}">3.2.3</a>
     {{ __('exercises/3_11.description2') }}
-    <a href="{{ getChapterOriginLinkForStr('3.1.1') }}">3.1.1</a>
+    <a href="{{ getChapterOriginLinkForNumber('3.1.1') }}">3.1.1</a>
     {{ __('exercises/3_11.description3') }}
 </p>
 <pre><code>(define (make-account balance)

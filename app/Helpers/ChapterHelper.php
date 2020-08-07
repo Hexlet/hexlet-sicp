@@ -34,8 +34,8 @@ if (!function_exists('getChapterOriginLink')) {
     }
 }
 
-if (!function_exists('getChapterOriginLinkForStr')) {
-    function getChapterOriginLinkForStr(string $chapter): ?string
+if (!function_exists('getChapterOriginLinkForNumber')) {
+    function getChapterOriginLinkForNumber(string $chapter): ?string
     {
         $links = require resource_path('chapter-links.php');
 

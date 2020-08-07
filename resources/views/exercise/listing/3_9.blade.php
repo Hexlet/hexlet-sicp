@@ -1,6 +1,6 @@
 <p>
     {{ __('exercises/3_9.description1') }}
-    <a href="{{ getChapterOriginLinkForStr('1.2.1') }}">1.2.1</a>
+    <a href="{{ getChapterOriginLinkForNumber('1.2.1') }}">1.2.1</a>
     {{ __('exercises/3_9.description2') }}
 </p>
 <pre><code>(define (factorial n)
