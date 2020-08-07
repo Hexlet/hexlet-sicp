@@ -44,10 +44,9 @@
     {{ __('exercises/3_5.description21') }}
     <code>random</code>
     {{ __('exercises/3_5.description22') }}
-    <a href="https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-11.html#%_sec_1.2.6">1.2.6</a>
+    <a href="{{ getChapterOriginLinkForNumber('1.2.6') }}">1.2.6</a>
     {{ __('exercises/3_5.description23') }}
 </p>
 <pre><code>(define (random-in-range low high)
     (let ((range (- high low)))
         (+ low (random range))))</code></pre>
-        
