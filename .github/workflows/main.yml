@@ -21,9 +21,6 @@ jobs:
         tools: prestissimo
         php-version: '7.4'
 
-    - name: PHP Security Checker
-      uses: StephaneBour/actions-php-security-checker@1.0
-
     - name: Setup project
       run: make setup
 
@@ -42,3 +39,6 @@ jobs:
         token: ${{ secrets.CODECOV_TOKEN }}
         file: ./build/logs/clover.xml
         fail_ci_if_error: true
+
+    - name: PHP Security Checker
+      uses: StephaneBour/actions-php-security-checker@1.0
