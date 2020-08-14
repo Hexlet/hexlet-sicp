@@ -20,3 +20,4 @@ public/css
 public/js
 public/img/*
 composer.phar
+.DS_Store

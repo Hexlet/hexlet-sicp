@@ -53,7 +53,7 @@
                     <li>Обсуждай главы и задачи</li>
                     <li>Отмечай пройденные упражнения</li>
                 </ul>
-                <button type="button" class="btn btn-primary btn-lg btn-block mb-4">Начать учиться</button>
+                <a class="btn btn-primary btn-lg btn-block mb-4" href="{{ route('register') }}">Начать учиться</a>
             </div>
         </div>
     </div>
