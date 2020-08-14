@@ -9,7 +9,7 @@
                 <p class="text-secondary font-italic mb-3 mb-lg-5">Пол Грэм</p>
                 <p class="h4 text-secondary">Хочешь прокачаться в computer science?</p>
                 <p class="h4 text-secondary">Проходи упражнения из книги на sicp.hexlet.io и отмечай свой прогресс.</p>
-                <h4 class="mt-3 mt-lg-5">sicp.hexlet.io — это:</h4>
+                <h2 class="h4 mt-3 mt-lg-5">sicp.hexlet.io — это:</h4>
                 <div class="row no-gutters my-2 ml-lg-n5 ml-md-n3">
                     <div class="col-6 col-md text-center my-2">
                         <div class="h2 text-primary">

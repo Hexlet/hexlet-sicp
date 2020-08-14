@@ -14,29 +14,28 @@ class WelcomeController extends Controller
     public function index(): View
     {
 
-        if (auth()->user()) {
-            $logItems = Activity::latest()->with('causer')->limit(10)->get();
-            $chart = getChart();
-            $comments = Comment::latest()->limit(10)->get();
+        if (!auth()->user()) {
+            $countComments = Comment::count();
+            $countExercises = Exercise::count();
+            $countChapters = Chapter::count();
+            $countUsers = User::count();
 
-            return view('welcome', compact(
-                'logItems',
-                'chart',
-                'comments'
+            return view('landing', compact(
+                'countComments',
+                'countExercises',
+                'countChapters',
+                'countUsers'
             ));
         }
 
-        $countComments = Comment::count();
-        $countExercises = Exercise::count();
-        $countChapters = Chapter::count();
-        $countUsers = User::count();
+        $logItems = Activity::latest()->with('causer')->limit(10)->get();
+        $chart = getChart();
+        $comments = Comment::latest()->limit(10)->get();
 
-
-        return view('landing', compact(
-            'countComments',
-            'countExercises',
-            'countChapters',
-            'countUsers'
+        return view('welcome', compact(
+            'logItems',
+            'chart',
+            'comments'
         ));
     }
 }
