@@ -14,7 +14,7 @@ class WelcomeController extends Controller
     public function index(): View
     {
 
-        if (!auth()->user()) {
+        if (auth()->guest()) {
             $countComments = Comment::count();
             $countExercises = Exercise::count();
             $countChapters = Chapter::count();
