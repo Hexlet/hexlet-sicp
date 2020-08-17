@@ -11,4 +11,5 @@ return [
     'action_unknown' => 'Сделал что-то неизвестное',
     'action_completed_exercise' => 'Выполнил упражнение',
     'action_destroy_exercise' => 'Убрал упражнение из выполненных',
+    'action_add_solution' => 'Добавил решение для упражнения',
 ];
