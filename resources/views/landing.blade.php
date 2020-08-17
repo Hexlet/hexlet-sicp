@@ -4,19 +4,19 @@
     <div class="container">
         <div class="row align-items-lg-center">
             <div class="col-12 col-lg-7">
-                <h1 class="">СИКП — книга об информатике (computer science)</h1>
-                <blockquote class="text-secondary mb-1">Это одна из великих классиков информатики. Я купил свой первый экземпляр 15 лет назад и до сих пор не чувствую, что выучил все, чему должна научить книга.</blockquote>
-                <p class="text-secondary font-italic mb-3 mb-lg-5">Пол Грэм</p>
-                <p class="h4 text-secondary">Хочешь прокачаться в computer science?</p>
-                <p class="h4 text-secondary">Проходи упражнения из книги на sicp.hexlet.io и отмечай свой прогресс.</p>
-                <h2 class="h4 mt-3 mt-lg-5">sicp.hexlet.io — это:</h4>
+                <h1>{{ __('landing.title') }}</h1>
+                <blockquote class="text-secondary mb-1">{{ __('landing.epigraph') }}</blockquote>
+                <p class="text-secondary font-italic mb-3 mb-lg-5">{{ __('landing.author_of_epigraph') }}</p>
+                <p class="h4 text-secondary">{{ __('landing.what_for') }}</p>
+                <p class="h4 text-secondary">{{ __('landing.what_do') }}</p>
+                <h2 class="h4 mt-3 mt-lg-5">sicp.hexlet.io — {{ __('landing.this_is') }}:</h2>
                 <div class="row no-gutters my-2 ml-lg-n5 ml-md-n3">
                     <div class="col-6 col-md text-center my-2">
                         <div class="h2 text-primary">
                             {{ $countChapters }}
                         </div>
                         <div class="text-secondary">
-                            разделов
+                            {{ __('landing.content.1') }}
                         </div>
                     </div>
                     <div class="col-6 col-md text-center my-2">
@@ -24,7 +24,7 @@
                             {{ $countExercises }}
                         </div>
                         <div class="text-secondary">
-                            упражнений
+                            {{ __('landing.content.2') }}
                         </div>
                     </div>
                     <div class="col-6 col-md text-center my-2">
@@ -32,7 +32,7 @@
                             {{ $countUsers }}
                         </div>
                         <div class="text-secondary">
-                            участников
+                            {{ __('landing.content.3') }}
                         </div>
                     </div>
                     <div class="col-6 col-md text-center my-2">
@@ -40,20 +40,20 @@
                             {{ $countComments }}
                         </div>
                         <div class="text-secondary">
-                            комментариев
+                            {{ __('landing.content.4') }}
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-12 col-lg-5 card shadow-lg p-2 p-lg-4">
-                <h2>Возможности</h4>
+                <h2>{{ __('landing.features') }}</h4>
                 <ul class="text-secondary">
-                    <li>Отмечай прочитанные главы</li>
-                    <li>Смотри рейтинг других участников</li>
-                    <li>Обсуждай главы и задачи</li>
-                    <li>Отмечай пройденные упражнения</li>
+                    <li>{{ __('landing.features_list.1') }}</li>
+                    <li>{{ __('landing.features_list.2') }}</li>
+                    <li>{{ __('landing.features_list.3') }}</li>
+                    <li>{{ __('landing.features_list.4') }}</li>
                 </ul>
-                <a class="btn btn-primary btn-lg btn-block mb-4" href="{{ route('register') }}">Начать учиться</a>
+                <a class="btn btn-primary btn-lg btn-block mb-4" href="{{ route('register') }}">{{ __('landing.start_learning') }}</a>
             </div>
         </div>
     </div>
@@ -64,25 +64,25 @@
             <div class="col-12 col-md text-center">
                 <i class="fas fa-book-reader fa-7x"></i>
                 <div class="h4 text-secondary mt-2">
-                    читай
+                    {{ __('landing.actions_list.1') }}
                 </div>
             </div>
             <div class="col-12 col-md text-center">
                 <i class="fas fa-laptop-code fa-7x"></i>
                 <div class="h4 text-secondary mt-2">
-                    решай
+                    {{ __('landing.actions_list.2') }}
                 </div>
             </div>
             <div class="col-12 col-md text-center">
                 <i class="fas fa-pen-alt fa-7x"></i>
                 <div class="h4 text-secondary mt-2">
-                    общайся
+                    {{ __('landing.actions_list.3') }}
                 </div>
             </div>
             <div class="col-12 col-md text-center">
                 <i class="fas fa-award fa-7x"></i>
                 <div class="h4 text-secondary mt-2">
-                    стань лучшим
+                    {{ __('landing.actions_list.4') }}
                 </div>
             </div>
         </div>
