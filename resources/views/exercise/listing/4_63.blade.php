@@ -9,5 +9,5 @@
 (son Ada Jabal)
 (son Ada Jubal)
 </code></pre>
-<p>{{ __('exercises/4_66.description.2') }}<a href="{{ route('exercises.show', getExercise('4.69')) }}">4.69</a>
-{{ __('exercises/4_66.description.3') }}</p>
+<p>{{ __('exercises/4_63.description.2') }}<a href="{{ route('exercises.show', getExercise('4.69')) }}">4.69</a>
+{{ __('exercises/4_63.description.3') }}</p>
