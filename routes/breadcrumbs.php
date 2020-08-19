@@ -5,7 +5,7 @@ use DaveJamesMiller\Breadcrumbs\BreadcrumbsGenerator;
 use DaveJamesMiller\Breadcrumbs\Facades\Breadcrumbs;
 
 Breadcrumbs::for('chapter', function (BreadcrumbsGenerator $trail, \App\Chapter $chapter): void {
-    $trail->push('Table Of Content', route('chapters.index'));
+    $trail->push(__('breadcrumb.contents'), route('chapters.index'));
 
     $pushChapters = function (Chapter $chapter) use ($trail, &$pushChapters): void {
 
@@ -21,5 +21,5 @@ Breadcrumbs::for('chapter', function (BreadcrumbsGenerator $trail, \App\Chapter 
 
 Breadcrumbs::for('exercise', function (BreadcrumbsGenerator $trail, \App\Exercise $exercise): void {
     $trail->parent('chapter', $exercise->chapter);
-    $trail->push('Exercise ' . $exercise->path, route('exercises.show', $exercise));
+    $trail->push(__('breadcrumb.exercise') . ' ' . $exercise->path, route('exercises.show', $exercise));
 });
