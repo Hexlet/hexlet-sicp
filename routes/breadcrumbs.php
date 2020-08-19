@@ -13,7 +13,8 @@ Breadcrumbs::for('chapter', function (BreadcrumbsGenerator $trail, \App\Chapter 
             $pushChapters($chapter->parent);
         }
 
-        $trail->push($chapter->path . ' ' . getChapterName($chapter->path), route('chapters.show', $chapter));
+        $chapterName = getChapterName($chapter->path);
+        $trail->push("{$chapter->path} {$chapterName}", route('chapters.show', $chapter));
     };
 
     $pushChapters($chapter);
@@ -21,5 +22,6 @@ Breadcrumbs::for('chapter', function (BreadcrumbsGenerator $trail, \App\Chapter 
 
 Breadcrumbs::for('exercise', function (BreadcrumbsGenerator $trail, \App\Exercise $exercise): void {
     $trail->parent('chapter', $exercise->chapter);
-    $trail->push(__('breadcrumb.exercise') . ' ' . $exercise->path, route('exercises.show', $exercise));
+    $textPart = __('breadcrumb.exercise');
+    $trail->push("{$textPart} {$exercise->path}", route('exercises.show', $exercise));
 });
