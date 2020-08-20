@@ -8,6 +8,7 @@ return [
         '2' =>
         "where x is in radians. Define a procedure (tan-cf x k) that computes an approximation to the tangent function based on Lambert's formula. " .
         "K specifies the number of terms to compute, as in exercise ",
-        '3' => ".",
+        '3' =>
+        ".",
     ],
 ];
