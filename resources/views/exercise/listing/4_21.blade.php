@@ -1,4 +1,5 @@
-<p>{{ __('exercises/4_21.description.1') }}</p>
+<p>{{ __('exercises/4_21.description.1') }}<a href="{{ route('exercises.show', getExercise('4.20')) }}">4.20</a>
+{{ __('exercises/4_21.description.2') }}</p>
 <pre><code>((lambda (n)
    ((lambda (fact)
       (fact fact n))
@@ -7,8 +8,8 @@
           1
           (* k (ft ft (- k 1)))))))
  10)</code></pre>
-<p>{{ __('exercises/4_21.description.2') }}</p>
 <p>{{ __('exercises/4_21.description.3') }}</p>
+<p>{{ __('exercises/4_21.description.4') }}</p>
 <pre><code>(define (f x)
   (define (even? n)
     (if (= n 0)
@@ -19,7 +20,7 @@
         false
         (even? (- n 1))))
   (even? x))</code></pre>
-<p>{{ __('exercises/4_21.description.4') }}</p>
+<p>{{ __('exercises/4_21.description.5') }}</p>
 <pre><code>(define (f x)
   ((lambda (even? odd?)
      (even? even? odd? x))
