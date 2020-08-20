@@ -8,4 +8,5 @@ tan x  =        x
                  -------
                  5 - ...
 </code></pre>
-<p>{{ __('exercises/1_39.description.2') }}</p>
+<p>{{ __('exercises/1_39.description.2') }}<a href="{{ route('exercises.show', getExercise('1.37')) }}">1.37</a>
+{{ __('exercises/1_39.description.3') }}</p>
