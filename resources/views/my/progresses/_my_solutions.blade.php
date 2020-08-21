@@ -9,7 +9,7 @@
                 @foreach ($savedSolutionsExercises as $solution)
                 <tr>
                     <td>
-                        {{ __('progresses.exercise') }} {{ $solution->exercise->path }} {{ getExerciseTitle($solution->exercise) }} (Chapter {{ $solution->exercise->chapter->path }})
+                        {{ __('progresses.exercise') }} {{ $solution->exercise->path }} {{ getExerciseTitle($solution->exercise) }} ({{ __('progresses.chapter') }} {{ $solution->exercise->chapter->path }})
                     </td>
                     <td>
                         <a href="{{ route('users.solutions.show', [$user, $solution]) }}">

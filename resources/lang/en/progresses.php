@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'chapter' => 'Chapter',
     'сhapters' => 'Chapters',
     'my_solutions' => 'My Solutions',
     'exercise' => 'Exercise',
