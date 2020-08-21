@@ -14,9 +14,9 @@ return [
         "permits recursion in the bindings, such as the mutual recursion of even? and odd? in the example " .
         "above, or the evaluation of 10 factorial with",
         '4' => "a. Implement letrec as a derived expression, by transforming a letrec expression into a let " .
-        "expression as shown in the text above or in exercise 4.18. That is, the letrec variables should be " .
-        "created with a let and then be assigned their values with set!.",
-        '5' => "b. Louis Reasoner is confused by all this fuss about internal definitions. The way he sees " .
+        "expression as shown in the text above or in exercise ",
+        '5' => ". That is, the letrec variables should be created with a let and then be assigned their values with set!.",
+        '6' => "b. Louis Reasoner is confused by all this fuss about internal definitions. The way he sees " .
         "it, if you don't like to use define inside a procedure, you can just use let. Illustrate what is " .
         "loose about his reasoning by drawing an environment diagram that shows the environment in which the " .
         "<rest of body of f> is evaluated during evaluation of the expression (f 5), with f defined as in " .
