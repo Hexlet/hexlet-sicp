@@ -21,5 +21,6 @@
                 1
                 (* n (fact (- n 1)))))))
   (fact 10))</code></pre>
-<p>{{ __('exercises/4_20.description.4') }}</p>
-<p>{{ __('exercises/4_20.description.5') }}</p>
+<p>{{ __('exercises/4_20.description.4') }}<a href="{{ route('exercises.show', getExercise('4.18')) }}">4.18</a>
+{{ __('exercises/4_20.description.5') }}</p>
+<p>{{ __('exercises/4_20.description.6') }}</p>
