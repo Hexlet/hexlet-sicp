@@ -8,4 +8,5 @@
     (if (= count 0)
         b
         (fib-iter (+ a b) a (- count 1)))))</code></pre>
- <p>{{ __('exercises/4_8.description.3') }}</p>
+ <p>{{ __('exercises/4_8.description.3') }}<a href="{{ route('exercises.show', getExercise('4.6')) }}">4.6</a>
+{{ __('exercises/4_8.description.4') }}</p>
