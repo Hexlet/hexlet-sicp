@@ -2,43 +2,45 @@
 
 return [
     'title' => 'Appending lists',
-    'description1' =>
+    'description' => [
+        '1' =>
         'The following procedure for appending lists was introduced in section ',
-    'description2' =>
+        '2' =>
         ':',
-    'description3' =>
+        '3' =>
         ' forms a new list by successively consing the elements of ',
-    'description4' =>
+        '4' =>
         ' onto ',
-    'description5' =>
+        '5' =>
         '. The procedure ',
-    'description6' =>
+        '6' =>
         ' is similar to ',
-    'description7' =>
+        '7' =>
         ', but it is a mutator rather than a constructor. ' .
         'It appends the lists by splicing them together, modifying the final pair of ',
-    'description8' =>
+        '8' =>
         ' so that its ',
-    'description9' =>
+        '9' =>
         ' is now ',
-    'description10' =>
+        '10' =>
         '. (It is an error to call ',
-    'description11' =>
+        '11' =>
         ' with an empty ',
-    'description12' =>
+        '12' =>
         '.)',
-    'description13' =>
+        '13' =>
         'Here ',
-    'description14' =>
+        '14' =>
         ' is a procedure that returns the last pair in its argument:',
-    'description15' =>
+        '15' =>
         'Consider the interaction',
-    'description16' =>
+        '16' =>
         'What are the missing ',
-    'description17' =>
+        '17' =>
         's? Draw box-and-pointer diagrams to explain your answer.',
-    'description18' =>
+        '18' =>
         'response',
-    'description19' =>
+        '19' =>
         'response',
+    ],
 ];

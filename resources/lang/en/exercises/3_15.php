@@ -2,12 +2,14 @@
 
 return [
     'title' => 'Box-and-pointer diagrams',
-    'description1' =>
+    'description' => [
+        '1' =>
         'Draw box-and-pointer diagrams to explain the effect of ',
-    'description2' =>
+        '2' =>
         ' on the structures ',
-    'description3' =>
+        '3' =>
         ' and ',
-    'description4' =>
+        '4' =>
         ' above.',
+    ],
 ];
