@@ -2,9 +2,11 @@
 
 return [
     'title' => 'Optimize memory usage',
-    'description1' =>
+    'description' => [
+        '1' =>
         'Redo exercise ',
-    'description2' =>
+        '2' =>
         ' using an algorithm that takes only a constant amount of space. ' .
         '(This requires a very clever idea.)',
+    ],
 ];

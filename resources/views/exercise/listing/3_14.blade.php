@@ -1,5 +1,5 @@
 <p>
-    {{ __('exercises/3_14.description1') }}
+    {{ __('exercises/3_14.description.1') }}
 </p>
 <pre><code>(define (mystery x)
   (define (loop x y)
@@ -11,33 +11,33 @@
   (loop x '()))</code></pre>
 <p>
     <code>Loop</code>
-    {{ __('exercises/3_14.description2') }}
+    {{ __('exercises/3_14.description.2') }}
     <code>temp</code>
-    {{ __('exercises/3_14.description3') }}
+    {{ __('exercises/3_14.description.3') }}
     <code>cdr</code>
-    {{ __('exercises/3_14.description4') }}
+    {{ __('exercises/3_14.description.4') }}
     <code>x</code>
-    {{ __('exercises/3_14.description5') }}
+    {{ __('exercises/3_14.description.5') }}
     <code>set-cd!</code>
-    {{ __('exercises/3_14.description6') }}
+    {{ __('exercises/3_14.description.6') }}
     <code>cdr</code>
-    {{ __('exercises/3_14.description7') }}
+    {{ __('exercises/3_14.description.7') }}
     <code>mystery</code>
-    {{ __('exercises/3_14.description8') }}
+    {{ __('exercises/3_14.description.8') }}
     <code>v</code>
-    {{ __('exercises/3_14.description9') }}
+    {{ __('exercises/3_14.description.9') }}
     <code>(define v (list 'a 'b 'c 'd))</code>
-    {{ __('exercises/3_14.description10') }}
+    {{ __('exercises/3_14.description.10') }}
     <code>v</code>
-    {{ __('exercises/3_14.description11') }}
+    {{ __('exercises/3_14.description.11') }}
     <code>(define w (mystery v))</code>
-    {{ __('exercises/3_14.description12') }}
+    {{ __('exercises/3_14.description.12') }}
     <code>v</code>
-    {{ __('exercises/3_14.description13') }}
+    {{ __('exercises/3_14.description.13') }}
     <code>w</code>
-    {{ __('exercises/3_14.description14') }}
+    {{ __('exercises/3_14.description.14') }}
     <code>v</code>
-    {{ __('exercises/3_14.description15') }}
+    {{ __('exercises/3_14.description.15') }}
     <code>w</code>
-    {{ __('exercises/3_14.description16') }}
+    ?
 </p>

@@ -1,9 +1,9 @@
 <p>
-    {{ __('exercises/3_11.description1') }}
+    {{ __('exercises/3_11.description.1') }}
     <a href="{{ getChapterOriginLinkForNumber('3.2.3') }}">3.2.3</a>
-    {{ __('exercises/3_11.description2') }}
+    {{ __('exercises/3_11.description.2') }}
     <a href="{{ getChapterOriginLinkForNumber('3.1.1') }}">3.1.1</a>
-    {{ __('exercises/3_11.description3') }}
+    :
 </p>
 <pre><code>(define (make-account balance)
   (define (withdraw amount)
@@ -21,7 +21,7 @@
                        m))))
   dispatch)</code></pre>
 <p>
-    {{ __('exercises/3_11.description4') }}
+    {{ __('exercises/3_11.description.3') }}
 </p>
 <pre><code>(define acc (make-account 50))
 
@@ -31,15 +31,15 @@
 ((acc 'withdraw) 60)
 30</code></pre>
 <p>
-    {{ __('exercises/3_11.description5') }}
+    {{ __('exercises/3_11.description.4') }}
     <code>acc</code>
-    {{ __('exercises/3_11.description6') }}
+    {{ __('exercises/3_11.description.5') }}
 </p>
 <pre><code>(define acc2 (make-account 100))</code></pre>
 <p>
-    {{ __('exercises/3_11.description7') }}
+    {{ __('exercises/3_11.description.6') }}
     <code>acc</code>
-    {{ __('exercises/3_11.description8') }}
+    {{ __('exercises/3_11.description.7') }}
     <code>acc2</code>
-    {{ __('exercises/3_11.description9') }}
+   ?
 </p>

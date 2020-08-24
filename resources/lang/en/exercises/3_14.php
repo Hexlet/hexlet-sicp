@@ -2,36 +2,36 @@
 
 return [
     'title' => 'Mystery procedure',
-    'description1' =>
+    'description' => [
+        '1' =>
         'The following procedure is quite useful, although obscure:',
-    'description2' =>
+        '2' =>
         ' uses the "temporary" variable ',
-    'description3' =>
+        '3' =>
         ' to hold the old value of the ',
-    'description4' =>
+        '4' =>
         ' of ',
-    'description5' =>
+        '5' =>
         ', since the ',
-    'description6' =>
+        '6' =>
         ' on the next line destroys the ',
-    'description7' =>
+        '7' =>
         '. Explain what ',
-    'description8' =>
+        '8' =>
         ' does in general. Suppose ',
-    'description9' =>
+        '9' =>
         ' is defined by ',
-    'description10' =>
+        '10' =>
         '. Draw the box-and-pointer diagram that represents the list to which ',
-    'description11' =>
+        '11' =>
         ' is bound. Suppose that we now evaluate ',
-    'description12' =>
+        '12' =>
         '. Draw box-and-pointer diagrams that show the structures ',
-    'description13' =>
+        '13' =>
         ' and ',
-    'description14' =>
+        '14' =>
         ' after evaluating this expression. What would be printed as the values of ',
-    'description15' =>
+        '15' =>
         ' and ',
-    'description16' =>
-        ' ?',
+    ],
 ];

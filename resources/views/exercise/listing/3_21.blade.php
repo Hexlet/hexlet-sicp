@@ -13,4 +13,8 @@
 (delete-queue! q1)
 (() b)
 </code></pre>
-<p>{{ __('exercises/3_21.description.2') }}</p>
+<p>
+    {{ __('exercises/3_21.description.2') }}
+    <code>print-queue</code>
+    {{ __('exercises/3_21.description.3') }}
+</p>

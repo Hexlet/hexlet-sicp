@@ -1,13 +1,13 @@
 <p>
-    {{ __('exercises/3_10.description1') }}
+    {{ __('exercises/3_10.description.1') }}
     <code>make-withdraw</code>
-    {{ __('exercises/3_10.description2') }}
+    {{ __('exercises/3_10.description.2') }}
     <code>balance</code>
-    {{ __('exercises/3_10.description3') }}
+    {{ __('exercises/3_10.description.3') }}
     <code> make-withdraw</code>
-    {{ __('exercises/3_10.description4') }}
+    {{ __('exercises/3_10.description.4') }}
     <code>let</code>
-    {{ __('exercises/3_10.description5') }}
+    {{ __('exercises/3_10.description.5') }}
 </p>
 <pre><code>(define (make-withdraw initial-amount)
   (let ((balance initial-amount))
@@ -17,21 +17,21 @@
                  balance)
           "Insufficient funds"))))</code></pre>
 <p>
-    {{ __('exercises/3_10.description6') }}
+    {{ __('exercises/3_10.description.6') }}
     <a href="https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-12.html#%_sec_1.3.2">1.3.2</a>
-    {{ __('exercises/3_10.description7') }}
+    {{ __('exercises/3_10.description.7') }}
     <code>let</code>
-    {{ __('exercises/3_10.description8') }}
+    {{ __('exercises/3_10.description.8') }}
 </p>
 <pre><code>(let ((&lt;var&gt; &lt;exp&gt;)) &lt;body&gt;)</code></pre>
 <p>
-     {{ __('exercises/3_10.description9') }}
+     {{ __('exercises/3_10.description.9') }}
 </p>
 <pre><code>((lambda (&lt;var&gt;) &lt;body&gt;) &lt;exp&gt;)</code></pre>
 <p>
-    {{ __('exercises/3_10.description10') }}
+    {{ __('exercises/3_10.description.10') }}
     <code>make-withdraw</code>
-    {{ __('exercises/3_10.description11') }}
+    {{ __('exercises/3_10.description.11') }}
 </p>
 <pre><code>(define W1 (make-withdraw 100))
 
@@ -39,7 +39,7 @@
 
 (define W2 (make-withdraw 100))</code></pre>
 <p>
-    {{ __('exercises/3_10.description12') }}
+    {{ __('exercises/3_10.description.12') }}
     <code>make-withdraw</code>
-    {{ __('exercises/3_10.description13') }}
+    {{ __('exercises/3_10.description.13') }}
 </p>

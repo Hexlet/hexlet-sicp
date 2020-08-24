@@ -2,33 +2,35 @@
 
 return [
     'title' => 'Joint accounts',
-    'description1' =>
+    'description' => [
+        '1' =>
         'Consider the bank account objects created by ',
-    'description2' =>
+        '2' =>
         ', with the password modification described in exercise ',
-    'description3' =>
+        '3' =>
         '. Suppose that our banking system requires the ability to make joint accounts. Define a procedure ',
-    'description4' =>
+        '4' =>
         ' that accomplishes this. ',
-    'description5' =>
+        '5' =>
         ' should take three arguments. The first is a password-protected account. ' .
         'The second argument must match the password with which the account was defined in order for the ',
-    'description6' =>
+        '6' =>
         ' operation to proceed. The third argument is a new password. ',
-    'description7' =>
+        '7' =>
         ' is to create an additional access to the original account using the new password. For example, if ',
-    'description8' =>
+        '8' =>
         ' is a bank account with password ',
-    'description9' =>
+        '9' =>
         ', then',
-    'description10' =>
+        '10' =>
         'will allow one to make transactions on ',
-    'description11' =>
+        '11' =>
         ' using the name ',
-    'description12' =>
+        '12' =>
         ' and the password ',
-    'description13' =>
+        '13' =>
         '. You may wish to modify your solution to exercise ',
-    'description14' =>
+        '14' =>
         ' to accommodate this new feature.',
+    ],
 ];

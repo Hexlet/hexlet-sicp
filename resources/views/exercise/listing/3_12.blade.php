@@ -1,7 +1,7 @@
 <p>
-    {{ __('exercises/3_12.description1') }}
+    {{ __('exercises/3_12.description.1') }}
     <a href="{{ getChapterOriginLinkForNumber('2.2.1') }}">2.2.1</a>
-    {{ __('exercises/3_12.description2') }}
+    {{ __('exercises/3_12.description.2') }}
 </p>
 <pre><code>(define (append x y)
   (if (null? x)
@@ -9,40 +9,40 @@
       (cons (car x) (append (cdr x) y))))</code></pre>
 <p>
     <code>Append</code>
-    {{ __('exercises/3_12.description3') }}
+    {{ __('exercises/3_12.description.3') }}
     <code>x</code>
-    {{ __('exercises/3_12.description4') }}
+    {{ __('exercises/3_12.description.4') }}
     <code>y</code>
-    {{ __('exercises/3_12.description5') }}
+    {{ __('exercises/3_12.description.5') }}
     <code>append!</code>
-    {{ __('exercises/3_12.description6') }}
+    {{ __('exercises/3_12.description.6') }}
     <code>append</code>
-    {{ __('exercises/3_12.description7') }}
+    {{ __('exercises/3_12.description.7') }}
     <code>x</code>
-    {{ __('exercises/3_12.description8') }}
+    {{ __('exercises/3_12.description.8') }}
     <code>cdr</code>
-    {{ __('exercises/3_12.description9') }}
+    {{ __('exercises/3_12.description.9') }}
     <code>y</code>
-    {{ __('exercises/3_12.description10') }}
+    {{ __('exercises/3_12.description.10') }}
     <code> append!</code>
-    {{ __('exercises/3_12.description11') }}
+    {{ __('exercises/3_12.description.11') }}
     <code>x</code>
-    {{ __('exercises/3_12.description12') }}
+    {{ __('exercises/3_12.description.12') }}
 </p>
 <pre><code>(define (append! x y)
   (set-cdr! (last-pair x) y)
   x)</code></pre>
 <p>
-    {{ __('exercises/3_12.description13') }}
+    {{ __('exercises/3_12.description.13') }}
     <code>last-pair</code>
-    {{ __('exercises/3_12.description14') }}
+    {{ __('exercises/3_12.description.14') }}
 </p>
 <pre><code>(define (last-pair x)
   (if (null? (cdr x))
       x
       (last-pair (cdr x))))</code></pre>
 <p>
-    {{ __('exercises/3_12.description15') }}
+    {{ __('exercises/3_12.description.15') }}
 </p>
 <pre><code>(define x (list 'a 'b))
 (define y (list 'c 'd))
@@ -50,14 +50,14 @@
 z
 (a b c d)
 (cdr x)
-&lt;{{ __('exercises/3_12.description18') }}&gt;
+&lt;{{ __('exercises/3_12.description.18') }}&gt;
 (define w (append! x y))
 w
 (a b c d)
 (cdr x)
-&lt;{{ __('exercises/3_12.description18') }}&gt;</code></pre>
+&lt;{{ __('exercises/3_12.description.18') }}&gt;</code></pre>
 <p>
-    {{ __('exercises/3_12.description16') }}
-    <code>&lt;{{ __('exercises/3_12.description19') }}&gt;</code>
-    {{ __('exercises/3_12.description17') }}
+    {{ __('exercises/3_12.description.16') }}
+    <code>&lt;{{ __('exercises/3_12.description.19') }}&gt;</code>
+    {{ __('exercises/3_12.description.17') }}
 </p>
