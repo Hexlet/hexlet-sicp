@@ -2,8 +2,22 @@
 
 return [
     'title' => 'A deque',
-    'description' =>
+    'description' => [
+        '1' =>
         "A deque (''double-ended queue'') is a sequence in which items can be inserted and deleted at either the front or the rear. " .
-        "Operations on deques are the constructor make-deque, the predicate empty-deque?, selectors front-deque and rear-deque, and mutators front-insert-deque!, rear-insert-deque!, front-delete-deque!, and rear-delete-deque!. " .
-        "Show how to represent deques using pairs, and give implementations of the operations. All operations should be accomplished in Θ(1) steps.",
+        "Operations on deques are the constructor ",
+        '2' =>
+        "the predicate",
+        '3' =>
+        "selectors",
+        '4' =>
+        "and",
+        '5' =>
+        "and mutators",
+        '6' =>
+        "and",
+        '7' =>
+        "Show how to represent deques using pairs, and give implementations of the operations. " .
+        "All operations should be accomplished in Θ(1) steps.",
+    ],
 ];
