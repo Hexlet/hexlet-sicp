@@ -11,7 +11,8 @@ return [
         "On the other hand, if we average damp twice (i.e., use the average damp of the average damp of y → x/y³) the fixed-point search does converge. " .
         "Do some experiments to determine how many average damps are required " .
         "to compute nth roots as a fixed-point search based upon repeated average damping of y → x/yⁿ⁻¹. " .
-        "Use this to implement a simple procedure for computing nth roots using fixed-point, average-damp, and the repeated procedure of exercise 1.43. " .
-        "Assume that any arithmetic operations you need are available as primitives.",
+        "Use this to implement a simple procedure for computing nth roots using fixed-point, average-damp, and the repeated procedure of exercise ",
+        '2' =>
+        ". Assume that any arithmetic operations you need are available as primitives.",
     ],
 ];
