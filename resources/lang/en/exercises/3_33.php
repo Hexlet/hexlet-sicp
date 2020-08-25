@@ -2,6 +2,18 @@
 
 return [
     'title' => 'Averager procedure',
-    'description' =>
-        "Using primitive multiplier, adder, and constant constraints, define a procedure averager that takes three connectors a, b, and c as inputs and establishes the constraint that the value of c is the average of the values of a and b.",
+    'description' => [
+        '1' =>
+        "Using primitive multiplier, adder, and constant constraints, define a procedure",
+        '2' =>
+        "that takes three connectors",
+        '3' =>
+        "and",
+        '4' =>
+        " as inputs and establishes the constraint that the value of",
+        '5' =>
+        "is the average of the values of",
+        '6' =>
+        "and",
+    ],
 ];

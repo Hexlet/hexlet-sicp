@@ -2,6 +2,10 @@
 
 return [
     'title' => 'An or-gate as a primitive function box',
-    'description' =>
-        "Define an or-gate as a primitive function box. Your or-gate constructor should be similar to and-gate.",
+    'description' => [
+        '1' =>
+        "Define an or-gate as a primitive function box. Your ",
+        '2' =>
+        "constructor should be similar to ",
+    ],
 ];
