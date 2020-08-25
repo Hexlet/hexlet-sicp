@@ -1,4 +1,5 @@
-<p>{{ __('exercises/2_27.description') }}</p>
+<p>{{ __('exercises/2_27.description.1') }}<a href="{{ route('exercises.show', getExercise('2.18')) }}">2.18</a>
+{{ __('exercises/2_27.description.2') }}</p>
 <pre><code>(define x (list (list 1 2) (list 3 4)))
 
 x
