@@ -1,4 +1,8 @@
-<p>{{ __('exercises/3_35.description') }}</p>
+<p>
+    {{ __('exercises/3_35.description.1') }}
+    <a title="3.34" href="{{ route('exercises.show', getExercise('3.34')) }}">3.34</a>
+    {{ __('exercises/3_35.description.2') }}
+</p>
 <pre><code>(define (squarer a b)
   (define (process-new-value)
     (if (has-value? b)
