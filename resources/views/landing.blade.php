@@ -32,7 +32,7 @@
                             {{ $countUsers }}
                         </div>
                         <div class="text-secondary">
-                            {{ __('landing.content.3') }}
+                            {{ trans_choice('landing.content.3', $countUsers) }}
                         </div>
                     </div>
                     <div class="col-6 col-md text-center my-2">
@@ -40,7 +40,7 @@
                             {{ $countComments }}
                         </div>
                         <div class="text-secondary">
-                            {{ __('landing.content.4') }}
+                            {{ trans_choice('landing.content.4', $countComments) }}
                         </div>
                     </div>
                 </div>
