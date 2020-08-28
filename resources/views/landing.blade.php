@@ -16,7 +16,7 @@
                             {{ $countChapters }}
                         </div>
                         <div class="text-secondary">
-                            {{ trans_choice('landing.content.1', $countChapters) }}
+                            {{ __('landing.content.1') }}
                         </div>
                     </div>
                     <div class="col-6 col-md text-center my-2">
@@ -24,7 +24,7 @@
                             {{ $countExercises }}
                         </div>
                         <div class="text-secondary">
-                            {{ trans_choice('landing.content.2', $countExercises) }}
+                            {{ __('landing.content.2') }}
                         </div>
                     </div>
                     <div class="col-6 col-md text-center my-2">
