@@ -2,8 +2,12 @@
 
 return [
     'title' => 'Monte Carlo integration in terms of streams',
-    'description' =>
-        "Redo exercise 3.5 on Monte Carlo integration in terms of streams. " .
+    'description' => [
+        '1' =>
+        "Redo exercise ",
+        '2' =>
+        " on Monte Carlo integration in terms of streams. " .
         "The stream version of estimate-integral will not have an argument telling how many trials to perform. " .
         "Instead, it will produce a stream of estimates based on successively more trials.",
+    ],
 ];
