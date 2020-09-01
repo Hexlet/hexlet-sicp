@@ -9,7 +9,8 @@
 <pre><code>(define (dot-product v w)
   (accumulate + 0 (map * v w)))
 </code></pre>
-<p>{{ __('exercises/2_37.description.8') }}</p>
+<p>{{ __('exercises/2_37.description.8') }}<a href="{{ route('exercises.show', getExercise('2.36')) }}">2.36</a>
+{{ __('exercises/2_37.description.9') }}</p>
 <pre><code>(define (matrix-*-vector m v)
   (map &lt;??&gt; m))
 (define (transpose mat)
