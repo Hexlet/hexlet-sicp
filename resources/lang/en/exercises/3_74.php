@@ -14,8 +14,10 @@ return [
         "Alyssa first writes a procedure sign-change-detector that takes two values as arguments and compares the signs of the values to produce an appropriate 0, 1, or - 1. " .
         "She then constructs her zero-crossing stream as follows:",
         '3' =>
-        "Alyssa's boss, Eva Lu Ator, walks by and suggests that this program is approximately equivalent to the following one, which uses the generalized version of stream-map from exercise 3.50:",
+        "Alyssa's boss, Eva Lu Ator, walks by and suggests that this program is approximately equivalent to the following one, which uses the generalized version of stream-map from exercise ",
         '4' =>
+        ":",
+        '5' =>
         "Complete the program by supplying the indicated <expression>.",
     ],
 ];
