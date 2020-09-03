@@ -24,7 +24,7 @@
         "davejamesmiller/laravel-breadcrumbs": "5.x",
         "doctrine/dbal": "^2.10",
         "fideloper/proxy": "~4.0",
-        "graham-campbell/github": "^8.4",
+        "graham-campbell/github": "^9.4",
         "laracasts/flash": "^3.0",
         "laravel/framework": "^7.5.0",
         "laravel/helpers": "^1.1",
