@@ -51,18 +51,19 @@
                                     @case('completed_exercise')
                                         {{ getLogItemDescription($logItem) }}
                                         <a href="{{ route('exercises.show', $logItem->getExtraProperty('exercise_id')) }}">
-                                            {{ getExerciseTitle($logItem->subject) }}
+                                            {{ $logItem->subject->path }} {{ getExerciseTitle($logItem->subject) }}
                                         </a>
                                         @break
                                     @case('destroy_exercise')
                                         {{ getLogItemDescription($logItem) }}
                                         <a href="{{ route('exercises.show', $logItem->getExtraProperty('exercise_id')) }}">
-                                            {{ getExerciseTitle($logItem->subject) }}
+                                            {{ $logItem->subject->path }} {{ getExerciseTitle($logItem->subject) }}
                                         </a>
                                         @break
                                     @case('add_solution')
+                                        {{ getLogItemDescription($logItem) }} 
                                         <a href="{{ route('exercises.show', $logItem->getExtraProperty('exercise_id')) }}">
-                                            {{ getLogItemDescription($logItem) }} {{ $logItem->getExtraProperty('exercise_path') }}
+                                            {{ $logItem->getExtraProperty('exercise_path') }} {{ getExerciseTitle(getExercise($logItem->getExtraProperty('exercise_path'))) }}
                                         </a>
                                         @break
                                     @default
