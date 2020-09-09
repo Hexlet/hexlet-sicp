@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -96,5 +97,10 @@ class User extends Authenticatable implements MustVerifyEmail
     public function solutions(): HasMany
     {
         return $this->hasMany(Solution::class);
+    }
+
+    public function githubAccount(): HasOne
+    {
+        return $this->hasOne(GithubAccount::class);
     }
 }

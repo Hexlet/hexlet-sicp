@@ -15,7 +15,11 @@ class CreateGithubAccountsTable extends Migration
     {
         Schema::create('github_accounts', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->references('id')->on('users');
+            $table->string('nickname');
+            $table->string('repository_name')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

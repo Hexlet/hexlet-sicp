@@ -24,7 +24,7 @@ return [
     |
     */
 
-    'default' => 'main',
+    'default' => 'app',
 
     /*
     |--------------------------------------------------------------------------
@@ -51,8 +51,8 @@ return [
 
         'app' => [
             'method'       => 'application',
-            'clientId'     => 'your-client-id',
-            'clientSecret' => 'your-client-secret',
+            'clientId'     => env('GITHUB_CLIENT_ID'),
+            'clientSecret' => env('GITHUB_CLIENT_SECRET'),
             // 'backoff'      => false,
             // 'cache'        => false,
             // 'version'      => 'v3',

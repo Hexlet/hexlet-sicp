@@ -17,6 +17,23 @@
                 </p>
             </div>
         </div>
+        @if(!app()->environment('production'))
+        <div class="card mb-2">
+            <div class="card-body">
+                <h3 class="card-title">Github Settings</h3>
+                @if($user->githubAccount)
+                    {!! Form::open()->route('users.github_account.update', [$user, $user->githubAccount])->patch() !!}
+                    {!! Form::select('repository_name', 'Exercises repository', $githubRepositories) !!}
+                    {!! Form::submit(__('layout.common.save'))->success() !!}
+                    {!! Form::close() !!}
+                @else
+                    <a class="nav-link" href="{{ route('users.github_account.store', $user) }}" data-method="post" rel="nofollow">
+                        Connect Github account
+                    </a>
+                @endif
+            </div>
+        </div>
+        @endif
         <div class="card mb-2">
             <div class="card-body">
                 <h3 class="card-title">{{ __('layout.login.password') }}</h3>

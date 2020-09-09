@@ -32,4 +32,5 @@ Route::group([
     Route::resource('log', 'ActivitylogController')->only('index');
     Route::resource('comments', 'CommentController')->only('store', 'update', 'show', 'destroy');
     Route::resource('users.solutions', 'SolutionController')->only('store', 'show', 'destroy');
+    Route::resource('users.github_account', 'GithubAccountController')->only('store', 'update', 'destroy');
 });
