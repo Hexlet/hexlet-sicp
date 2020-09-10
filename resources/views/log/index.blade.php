@@ -27,7 +27,7 @@
                                 <td>
                                 @switch($logItem->description)
                                     @case('added')
-                                        {{ getLogItemDescription($logItem) }}
+                                        {{ getLogItemDescription($logItem, $logItem->getExtraProperty('count')) }} {{ $logItem->getExtraProperty('count') }}
                                         <ul>
                                             @foreach($logItem->getExtraProperty('chapters') as $chapter)
                                             <li>{{ $chapter }} {{ getChapterName($chapter) }}</li>
@@ -35,7 +35,7 @@
                                         </ul>
                                         @break
                                     @case('removed')
-                                        {{ getLogItemDescription($logItem) }}
+                                        {{ getLogItemDescription($logItem, $logItem->getExtraProperty('count')) }} {{ $logItem->getExtraProperty('count') }}
                                         <ul>
                                             @foreach($logItem->getExtraProperty('chapters') as $chapter)
                                             <li>{{ $chapter }} {{ getChapterName($chapter) }}</li>

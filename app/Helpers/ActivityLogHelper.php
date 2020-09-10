@@ -4,9 +4,9 @@ use App\Activity;
 
 if (!function_exists('getLogItemDescription')) {
 
-    function getLogItemDescription(Activity $logItem): string
+    function getLogItemDescription(Activity $logItem, int $itemsCount = 1): string
     {
         $description = $logItem->description;
-        return __('activitylog.action_' . $description);
+        return trans_choice("activitylog.action_{$description}", $itemsCount);
     }
 }
