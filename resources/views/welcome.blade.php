@@ -92,8 +92,7 @@
                                href="#collapseExp{{ $logItem->id }}"
                                aria-expanded="false"
                                aria-controls="collapseExp{{ $logItem->id }}">
-                                {{ getLogItemDescription($logItem, $logItem->getExtraProperty('count')) }}
-                                {{ $logItem->getExtraProperty('count') ?? count($logItem->getExtraProperty('chapters')) }}
+                                {{ getLogItemDescription($logItem) }}
                             </a>
                             <div class="collapse" id="collapseExp{{ $logItem->id }}">
                                 @if($logItem->getExtraProperty('chapters'))
