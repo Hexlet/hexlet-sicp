@@ -18,3 +18,5 @@
 </code></pre>
 <p>{{ __('exercises/2_63.description.2') }}</p>
 <p>{{ __('exercises/2_63.description.3') }}</p>
+<img class="img-fluid" src="{{ asset('img/exercises/2_63.gif') }}" alt="2.63">
+<p>{{ __('exercises/2_56.description.4') }}</p>
