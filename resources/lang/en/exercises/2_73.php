@@ -14,10 +14,12 @@ return [
         '4' =>
         "b.  Write the procedures for derivatives of sums and products, and the auxiliary code required to install them in the table used by the program above.",
         '5' =>
-        "c.  Choose any additional differentiation rule that you like, such as the one for exponents (exercise 2.56), and install it in this data-directed system.",
+        "c.  Choose any additional differentiation rule that you like, such as the one for exponents (exercise ",
         '6' =>
-        "d.  In this simple algebraic manipulator the type of an expression is the algebraic operator that binds it together. Suppose, however, we indexed the procedures in the opposite way, so that the dispatch line in deriv looked like",
+        "), and install it in this data-directed system.",
         '7' =>
+        "d.  In this simple algebraic manipulator the type of an expression is the algebraic operator that binds it together. Suppose, however, we indexed the procedures in the opposite way, so that the dispatch line in deriv looked like",
+        '8' =>
         "What corresponding changes to the derivative system are required?",
     ],
 ];

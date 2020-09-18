@@ -25,8 +25,9 @@
 </code></pre>
 <p>{{ __('exercises/2_73.description.3') }}</p>
 <p>{{ __('exercises/2_73.description.4') }}</p>
-<p>{{ __('exercises/2_73.description.5') }}</p>
-<p>{{ __('exercises/2_73.description.6') }}</p>
+<p>{{ __('exercises/2_73.description.5') }}<a href="{{ route('exercises.show', getExercise('2.56')) }}">2.56</a>
+{{ __('exercises/2_73.description.6') }}</p>
+<p>{{ __('exercises/2_73.description.7') }}</p>
 <pre><code>((get (operator exp) 'deriv) (operands exp) var)
 </code></pre>
-<p>{{ __('exercises/2_73.description.7') }}</p>
+<p>{{ __('exercises/2_73.description.8') }}</p>
