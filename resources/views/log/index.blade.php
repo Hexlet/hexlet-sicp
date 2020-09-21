@@ -27,18 +27,15 @@
                                 <td>
                                 @switch($logItem->description)
                                     @case('added')
-                                        {{ getLogItemDescription($logItem) }}
-                                        <ul>
-                                            @foreach($logItem->getExtraProperty('chapters') as $chapter)
-                                            <li>{{ $chapter }} {{ getChapterName($chapter) }}</li>
-                                            @endforeach
-                                        </ul>
-                                        @break
                                     @case('removed')
                                         {{ getLogItemDescription($logItem) }}
                                         <ul>
                                             @foreach($logItem->getExtraProperty('chapters') as $chapter)
-                                            <li>{{ $chapter }} {{ getChapterName($chapter) }}</li>
+                                            <li>
+                                                <a href="{{ getChapterOriginLinkForNumber($chapter) }}">
+                                                    {{ $chapter }} {{ getChapterName($chapter) }}
+                                                </a>
+                                            </li>
                                             @endforeach
                                         </ul>
                                         @break

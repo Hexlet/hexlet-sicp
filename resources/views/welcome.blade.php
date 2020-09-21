@@ -98,7 +98,11 @@
                                 @if($logItem->getExtraProperty('chapters'))
                                     <ul>
                                         @foreach(($logItem->getExtraProperty('chapters')) as $chapter)
-                                            <li>{{ $chapter }} {{ getChapterName($chapter) }}</li>
+                                            <li>
+                                                <a href="{{ getChapterOriginLinkForNumber($chapter) }}">
+                                                    {{ $chapter }} {{ getChapterName($chapter) }}
+                                                </a>                                          
+                                            </li>
                                         @endforeach
                                     </ul>
                                 @endif
