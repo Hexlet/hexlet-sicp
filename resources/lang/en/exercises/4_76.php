@@ -11,5 +11,7 @@ return [
         '2' =>
         "Devise an implementation of and that uses this strategy. " .
         "You must implement a procedure that takes two frames as inputs, checks whether the bindings in the frames are compatible, and, if so, produces a frame that merges the two sets of bindings. This operation is similar to unification.",
+        '3' =>
+        "Figure 4.5:  The and combination of two queries is produced by operating on the stream of frames in series.",
     ],
 ];
