@@ -4,7 +4,7 @@ Route::get('sitemap.xml', 'SitemapController@index');
 
 Route::group([
     'prefix' => LaravelLocalization::setLocale(),
-    'middleware' => [ 'localizationRedirect' ],
+    'middleware' => [ 'localeSessionRedirect', 'localizationRedirect' ],
 ], function (): void {
 
     Route::get('/oauth/github', 'Auth\\Social\\GithubController@redirectToProvider')->name('oauth.github');
