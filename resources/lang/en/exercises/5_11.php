@@ -16,5 +16,7 @@ return [
        "saved after y and not restored. Modify the simulator to behave this way. You will have to associate a " .
        "separate stack with each register. You should make the initialize-stack operation initialize all the " .
        "register stacks.",
+       '6' =>
+       "Figure 5.12:  Controller for a machine to compute Fibonacci numbers.",
     ],
 ];
