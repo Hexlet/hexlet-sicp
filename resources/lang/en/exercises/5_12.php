@@ -15,5 +15,7 @@ return [
         "(reg n) (reg val))).",
         '6' => "Extend the message-passing interface to the machine to provide access to this new information. To " .
         "test your analyzer, define the Fibonacci machine from figure 5.12 and examine the lists you constructed.",
+        '7' => "Figure 5.11:  A recursive factorial machine.",
+        '8' => "Figure 5.12:  Controller for a machine to compute Fibonacci numbers.",
     ],
 ];
