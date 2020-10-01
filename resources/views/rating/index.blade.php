@@ -5,9 +5,9 @@
 @section('content')
     <div class="my-4">
         @include('rating.menu')
-        
+
         <section>
-            <h3>{{ __('rating.page_title') }}</h3>
+            <h1 class="h3">{{ __('rating.page_title') }}</h1>
 
             <div class="table-responsive">
                 <table class="table table-striped">
