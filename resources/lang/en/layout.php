@@ -34,6 +34,14 @@ return [
         'blog'              => 'Blog',
         'recommended_books' => 'Recommended books',
         'additionally'      => 'Additionally',
+        'os_projects' => [
+            'editor' => 'Hexlet Editor',
+            'cv' => 'Hexlet CV',
+            'friends' => 'Hexlet Friends',
+            'code_basics' => 'Code Basics',
+            'codebattle' => 'CodeBattle',
+            'guides' => 'Hexlet Guides',
+        ],
     ],
     'flash' => [
         'success' => 'Success',
