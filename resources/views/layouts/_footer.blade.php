@@ -11,15 +11,6 @@
                 </ul>
             </div>
             <div class="col-sm-6 col-md-3 col-lg-auto">
-                <h2 class="h5 mb-3">{{ __('layout.footer.other_os_projects') }}</h2>
-                <ul class="list-unstyled">
-                    <li><a target="_blank" href="https://github.com/Hexlet/hexlet-editor">NodeJS</a></li>
-                    <li><a target="_blank" href="https://github.com/Hexlet/hexlet-cv">Ruby</a></li>
-                    <li><a target="_blank" href="https://github.com/Hexlet/hexlet-correction">Java</a></li>
-                    <li><a target="_blank" href="https://github.com/Hexlet/hexlet-friends">Python</a></li>
-                </ul>
-            </div>
-            <div class="col-sm-6 col-md-3 col-lg-auto">
                 <h2 class="h5 mb-3">{{ __('layout.footer.help') }}</h2>
                 <ul class="list-unstyled">
                     <li><a target="_blank" href="https://ru.hexlet.io/knowledge">{{ __('layout.footer.knowledge') }}</a></li>
@@ -28,11 +19,19 @@
                 </ul>
             </div>
             <div class="col-sm-6 col-md-3 col-lg-auto">
+                <h2 class="h5 mb-3">{{ __('layout.footer.other_os_projects') }}</h2>
+                <ul class="list-unstyled">
+                    <li><a target="_blank" href="https://github.com/Hexlet/hexlet-editor">{{ __('layout.footer.os_projects.editor') }}</a></li>
+                    <li><a target="_blank" href="https://github.com/Hexlet/hexlet-cv">{{ __('layout.footer.os_projects.cv') }}</a></li>
+                    <li><a target="_blank" href="https://github.com/Hexlet/hexlet-friends">{{ __('layout.footer.os_projects.friends') }}</a></li>
+                </ul>
+            </div>
+            <div class="col-sm-6 col-md-3 col-lg-auto">
                 <h2 class="h5 mb-3">{{ __('layout.footer.additionally') }}</h2>
                 <ul class="list-unstyled">
-                    <li><a target="_blank" href="https://ru.code-basics.com/">Code Basics</a></li>
-                    <li><a target="_blank" href="https://codebattle.hexlet.io/">Code Battles</a></li>
-                    <li><a target="_blank" href="https://guides.hexlet.io/">Hexlet Guides</a></li>
+                    <li><a target="_blank" href="https://ru.code-basics.com/">{{ __('layout.footer.os_projects.code_basics') }}</a></li>
+                    <li><a target="_blank" href="https://codebattle.hexlet.io/">{{ __('layout.footer.os_projects.codebattle') }}</a></li>
+                    <li><a target="_blank" href="https://guides.hexlet.io/">{{ __('layout.footer.os_projects.guides') }}</a></li>
                 </ul>
             </div>
         </div>

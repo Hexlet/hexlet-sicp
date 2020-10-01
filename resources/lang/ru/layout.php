@@ -34,6 +34,14 @@ return [
         'blog'              => 'Блог',
         'recommended_books' => 'Рекомендуемые книги',
         'additionally'      => 'Дополнительно',
+        'os_projects' => [
+            'editor' => 'Хекслет-редактор',
+            'cv' => 'Хекслет-резюме',
+            'friends' => 'Друзья Хекслета',
+            'code_basics' => 'Code Basics',
+            'codebattle' => 'Кодбаттл',
+            'guides' => 'Гайды Хекслета',
+        ],
     ],
     'flash' => [
         'success' => 'Успешно',
