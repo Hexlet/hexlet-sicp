@@ -3,7 +3,7 @@
     <div class="my-4">
         @include('rating.menu')
 
-        <h3>{{ __('rating.progress') }}</h3>
+        <h1 class="h3">{{ __('rating.progress') }}</h1>
 
         <div class="table-responsive">
             <table class="table table-striped">
