@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Осилятор СИКП — сервис, в котором есть рейтинг тех, кто проходит СИКП, и каждый отмечает, что он прошел.">
+    <meta name="description" content="{{ __('layout.meta.description') }}">
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
