@@ -31,12 +31,18 @@ class ProfileControllerTest extends TestCase
     public function testUpdate(): void
     {
         $name = $this->faker->name;
+        $github_link = $this->faker->url;
         $response = $this->patch(route('settings.profile.update', $this->user), [
             'name' => $name,
+            'github_link' => $github_link,
         ]);
         $response->assertSessionHasNoErrors();
 
-        $this->assertDatabaseHas('users', ['id' => $this->user->id, 'name' => $name]);
+        $this->assertDatabaseHas('users', [
+            'id' => $this->user->id,
+            'name' => $name,
+            'github_link' => $github_link,
+        ]);
     }
 
     public function testUpdateSameName(): void
