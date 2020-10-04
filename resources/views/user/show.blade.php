@@ -35,11 +35,13 @@
                     @endif
                 </div>
                 @auth
-                <div class="small mt-4">
-                    <a class="text-muted" href="{{ route('settings.profile.index') }}">
-                        {{ __('user.show.statistics.edit_profile') }}
-                    </a>
-                </div>
+                    @if (Auth::user()->id === $user->id)
+                        <div class="small mt-4">
+                            <a class="text-muted" href="{{ route('settings.profile.index') }}">
+                                {{ __('user.show.statistics.edit_profile') }}
+                            </a>
+                        </div>
+                    @endif
                 @endauth
             </div>
         </div>
