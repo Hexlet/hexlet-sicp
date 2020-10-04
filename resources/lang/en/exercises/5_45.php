@@ -21,5 +21,7 @@ return [
         "You should find that the special-purpose machine does much better than the compiled code, since the hand-tailored controller code should be much better than what is produced by our rudimentary general-purpose compiler.",
         '7' =>
         "b. Can you suggest improvements to the compiler that would help it generate code that would come closer in performance to the hand-tailored version?",
+        '8' =>
+        "Figure 5.11: A recursive factorial machine.",
     ],
 ];
