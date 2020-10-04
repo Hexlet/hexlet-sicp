@@ -60,7 +60,7 @@
                 </div>
                 @switch($logItem->description)
                     @case('completed_exercise')
-                        {{ getLogItemDescription($logItem) }} 
+                        {{ getLogItemDescription($logItem) }}
                         <a href="{{ route('exercises.show', $logItem->getExtraProperty('exercise_id')) }}">
                             {{ $logItem->subject->path }} {{ getExerciseTitle($logItem->subject) }}
                         </a>
@@ -80,7 +80,7 @@
                         </span>
                         @break
                      @case('add_solution')
-                        {{ getLogItemDescription($logItem) }} 
+                        {{ getLogItemDescription($logItem) }}
                         <a href="{{ route('exercises.show', $logItem->getExtraProperty('exercise_id')) }}">
                             {{ $logItem->getExtraProperty('exercise_path') }} {{ getExerciseTitle(getExercise($logItem->getExtraProperty('exercise_path'))) }}
                         </a>
@@ -101,7 +101,7 @@
                                             <li>
                                                 <a href="{{ getChapterOriginLinkForNumber($chapter) }}">
                                                     {{ $chapter }} {{ getChapterName($chapter) }}
-                                                </a>                                          
+                                                </a>
                                             </li>
                                         @endforeach
                                     </ul>

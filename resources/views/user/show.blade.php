@@ -8,6 +8,7 @@
  * @var \App\User $user
  */
 @endphp
+@section('description', $user->name)
 @section('content')
     <div class="row my-4">
         <div class="col-12 col-md-3">
