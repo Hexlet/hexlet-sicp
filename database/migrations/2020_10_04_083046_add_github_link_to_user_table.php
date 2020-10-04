@@ -14,7 +14,7 @@ class AddGithubLinkToUserTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->addColumn('text', 'github_link')->nullable();
+            $table->string('github_link')->nullable();
         });
     }
 
