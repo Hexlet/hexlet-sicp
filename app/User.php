@@ -15,6 +15,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property int $id
  * @property string $name
  * @property string $email
+ * @property string $github_link
  * @property \Illuminate\Support\Carbon|null $email_verified_at
  * @property string $password
  * @property string|null $remember_token
@@ -33,7 +34,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property-read int|null $read_chapters_count
  * @property-read Collection|Solution[] $solutions
  * @property-read int|null $solutions_count
- * @property string $github_link
  */
 class User extends Authenticatable implements MustVerifyEmail
 {

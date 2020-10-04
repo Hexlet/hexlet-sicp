@@ -35,6 +35,7 @@ class ProfileController extends Controller
                 'max:255',
                 Rule::unique('users')->ignore($user),
             ],
+            'github_link' => 'url',
         ]);
         $user->name = $request->get('name');
         $user->github_link = $request->get('github_link');
