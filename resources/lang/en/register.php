@@ -10,5 +10,5 @@ return [
     'accountExists' => 'Account already exists?',
     'logIn' => 'Log in',
     'or' => 'or',
-    'githubLink' => 'GitHub link',
+    'githubLink' => 'GitHub profile link',
 ];

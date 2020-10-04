@@ -10,5 +10,5 @@ return [
     'accountExists' => 'Уже есть аккаунт?',
     'logIn' => 'Войти',
     'or' => 'или',
-    'githubLink' => 'Ссылка на GitHub',
+    'githubLink' => 'Ссылка на профиль GitHub',
 ];
