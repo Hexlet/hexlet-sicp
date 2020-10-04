@@ -33,6 +33,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property-read int|null $read_chapters_count
  * @property-read Collection|Solution[] $solutions
  * @property-read int|null $solutions_count
+ * @property string $github_link
  */
 class User extends Authenticatable implements MustVerifyEmail
 {

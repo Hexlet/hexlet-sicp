@@ -37,6 +37,7 @@ class ProfileController extends Controller
             ],
         ]);
         $user->name = $request->get('name');
+        $user->github_link = $request->get('githubLink');
 
         if ($user->save()) {
             flash()->success(__('account.name_updated'));

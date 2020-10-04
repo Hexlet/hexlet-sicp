@@ -15,6 +15,7 @@
                             <h1 class="card-title h3">{{ __('account.profile') }} {{ $user->email }}</h1>
                             {!! Form::open()->patch()->route('settings.profile.update', [$user]) !!}
                             {!! Form::text('name', __('register.namePlaceholder'))->value($user->name) !!}
+                            {!! Form::text('githubLink', __('register.githubLink'))->value($user->githubLink) !!}
                             <div class="form-group mb-0">
                                 {!! Form::submit(__('layout.common.save')) !!}
                             </div>
