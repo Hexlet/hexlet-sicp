@@ -49,7 +49,7 @@ class ProfileControllerTest extends TestCase
         $this->assertDatabaseHas('users', ['id' => $this->user->id, 'name' => $this->user->name]);
     }
 
-    public function updateInvalidValuesProvider()
+    public function updateInvalidValuesProvider(): array
     {
         return [
             ['name', '-'],
@@ -61,7 +61,7 @@ class ProfileControllerTest extends TestCase
      * @test
      * @dataProvider updateInvalidValuesProvider
      */
-    public function testInvalidUpdate($formInput, $invalidValue): void
+    public function testInvalidUpdate(string $formInput, string $invalidValue): void
     {
         $this->expectException(ValidationException::class);
 
