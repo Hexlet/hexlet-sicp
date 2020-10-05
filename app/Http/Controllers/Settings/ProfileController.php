@@ -8,6 +8,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Auth;
 use Illuminate\View\View;
+use Illuminate\Validation\Rule;
 
 class ProfileController extends Controller
 {
@@ -28,7 +29,12 @@ class ProfileController extends Controller
         /** @var User $user */
         $user = Auth::user();
         $this->validate($request, [
-            'name' => 'required|min:2||max:255|unique:users',
+            'name' => [
+                'required',
+                'min:2',
+                'max:255',
+                Rule::unique('users')->ignore($user),
+            ],
         ]);
         $user->name = $request->get('name');
 
