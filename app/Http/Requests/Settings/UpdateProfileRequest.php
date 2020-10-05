@@ -20,7 +20,7 @@ class UpdateProfileRequest extends FormRequest
                 'min:2',
                 'max:255',
                 Rule::unique('users')->ignore($this->user()),
-            ]
+            ],
         ];
     }
 }
