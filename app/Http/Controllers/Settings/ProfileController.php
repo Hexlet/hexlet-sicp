@@ -8,6 +8,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Auth;
 use Illuminate\View\View;
+use App\Http\Requests\Settings\UpdateProfileRequest;
 
 class ProfileController extends Controller
 {
@@ -23,13 +24,10 @@ class ProfileController extends Controller
         return view('settings.profile.index', compact('user'));
     }
 
-    public function update(Request $request): RedirectResponse
+    public function update(UpdateProfileRequest $request): RedirectResponse
     {
         /** @var User $user */
         $user = Auth::user();
-        $this->validate($request, [
-            'name' => 'required|min:2||max:255|unique:users',
-        ]);
         $user->name = $request->get('name');
 
         if ($user->save()) {
