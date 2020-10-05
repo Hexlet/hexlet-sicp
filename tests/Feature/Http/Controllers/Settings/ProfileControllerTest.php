@@ -60,7 +60,7 @@ class ProfileControllerTest extends TestCase
     /**
      * @dataProvider invalidNamesProvider
      */
-    public function testInvalidNameUpdate(string $invalidName): void
+    public function testUpdateInvalidName(string $invalidName): void
     {
         $this->expectException(ValidationException::class);
 
