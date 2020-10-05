@@ -49,26 +49,25 @@ class ProfileControllerTest extends TestCase
         $this->assertDatabaseHas('users', ['id' => $this->user->id, 'name' => $this->user->name]);
     }
 
-    public function updateInvalidValuesProvider(): array
+    public function invalidNamesProvider(): array
     {
         return [
-            ['name', '-'],
-            ['name', Str::random(256)],
+            ['-'],
+            [Str::random(256)],
         ];
     }
 
     /**
-     * @test
-     * @dataProvider updateInvalidValuesProvider
+     * @dataProvider invalidNamesProvider
      */
-    public function testInvalidUpdate(string $formInput, string $invalidValue): void
+    public function testInvalidNameUpdate(string $invalidName): void
     {
         $this->expectException(ValidationException::class);
 
         $this->patch(route('settings.profile.update', $this->user), [
-                $formInput => $invalidValue,
+                'name' => $invalidName,
             ])
-            ->assertStatus(302)
+            ->assertRedirect()
             ->assertSessionHasErrors($formInput);
     }
 }
