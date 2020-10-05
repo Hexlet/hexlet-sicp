@@ -68,6 +68,6 @@ class ProfileControllerTest extends TestCase
                 'name' => $invalidName,
             ])
             ->assertRedirect()
-            ->assertSessionHasErrors($formInput);
+            ->assertSessionHasErrors('name');
     }
 }
