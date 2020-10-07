@@ -68,9 +68,11 @@
   - '1.44'
   - '1.45'
   - '1.46'
-- chapter_path: '2.1.2'
+- chapter_path: '2.1.1'
   children:
   - '2.1'
+- chapter_path: '2.1.2'
+  children:
   - '2.2'
   - '2.3'
 - chapter_path: '2.1.3'
