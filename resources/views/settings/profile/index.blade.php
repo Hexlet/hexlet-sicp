@@ -15,15 +15,7 @@
                             <h1 class="card-title h3">{{ __('account.profile') }} {{ $user->email }}</h1>
                             {!! Form::open()->patch()->route('settings.profile.update', [$user]) !!}
                             {!! Form::text('name', __('register.namePlaceholder'))->value($user->name) !!}
-                            {{-- TODO: сделать поле через библиотеку --}}
-                            <label for="basic-url">{{ __('account.github_link') }}</label>
-                            <div class="input-group mb-3">
-                              <div class="input-group-prepend">
-                                <span class="input-group-text" id="basic-addon3">https://github.com/</span>
-                              </div>
-                              <input name="github_name" type="text" class="form-control" id="github_name" aria-describedby="basic-addon3" value="{{ $user->github_name }}">
-                            {{-- TODO: добавить вывод ошибки --}}
-                            </div>
+                            {!! Form::text('github_name', __('account.github_name'))->value($user->github_name) !!}
                             <div class="form-group mb-0">
                                 {!! Form::submit(__('layout.common.save')) !!}
                             </div>

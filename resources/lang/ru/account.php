@@ -12,5 +12,5 @@ return [
     'сhange_name' => 'Изменить имя',
     'current_email' => 'Текущий email',
     'go_to_gravatar' => 'Перейти на Gravatar.com',
-    'github_link' => 'Ссылка на профиль GitHub',
+    'github_name' => 'Имя на GitHub',
 ];
