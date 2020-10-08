@@ -31,7 +31,7 @@ class ProfileControllerTest extends TestCase
     public function testUpdate(): void
     {
         $name = $this->faker->name;
-        $github_name = $this->faker->username;
+        $github_name = $this->faker->word;
         $response = $this->patch(route('settings.profile.update', $this->user), [
             'name' => $name,
             'github_name' => $github_name,
