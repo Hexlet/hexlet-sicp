@@ -16,7 +16,7 @@
                             {!! Form::open()->patch()->route('settings.profile.update', [$user]) !!}
                             {!! Form::text('name', __('register.namePlaceholder'))->value($user->name) !!}
                             {{-- TODO: сделать поле через библиотеку --}}
-                            <label for="basic-url">{{ __('account.githubLink') }}</label>
+                            <label for="basic-url">{{ __('account.github_link') }}</label>
                             <div class="input-group mb-3">
                               <div class="input-group-prepend">
                                 <span class="input-group-text" id="basic-addon3">https://github.com/</span>
