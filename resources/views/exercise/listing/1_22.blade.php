@@ -1,6 +1,5 @@
 <p>{{ __('exercises/1_22.description.1') }}</p>
-<pre><code>
-(define (timed-prime-test n)
+<pre><code>(define (timed-prime-test n)
   (newline)
   (display n)
   (start-prime-test n (runtime)))
