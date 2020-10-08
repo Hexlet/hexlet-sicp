@@ -15,7 +15,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property int $id
  * @property string $name
  * @property string $email
- * @property string $github_link
+ * @property string $github_name
  * @property \Illuminate\Support\Carbon|null $email_verified_at
  * @property string $password
  * @property string|null $remember_token

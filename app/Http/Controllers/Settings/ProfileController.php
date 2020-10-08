@@ -35,10 +35,14 @@ class ProfileController extends Controller
                 'max:255',
                 Rule::unique('users')->ignore($user),
             ],
-            'github_link' => 'url',
+            'github_name' => [
+                'min:2',
+                'max:255',
+                Rule::unique('users')->ignore($user),
+            ],
         ]);
         $user->name = $request->get('name');
-        $user->github_link = $request->get('github_link');
+        $user->github_name = $request->get('github_name');
 
         if ($user->save()) {
             flash()->success(__('account.account_updated'));
