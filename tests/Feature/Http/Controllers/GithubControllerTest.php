@@ -88,4 +88,18 @@ class GithubControllerTest extends TestCase
 
         $this->assertDatabaseHas('users', [ 'email' => $email, 'name' => $nickname ]);
     }
+
+    public function testTwoFactorAuthResponseWithInvalidState(): void
+    {
+        $provider = $this->createMock(\Laravel\Socialite\Two\GithubProvider::class);
+        $provider->method('user')->willThrowException(new \Laravel\Socialite\Two\InvalidStateException());
+
+        $stub = $this->createMock(Socialite::class);
+        $stub->method('driver')->willReturn($provider);
+
+        $this->app->instance(Socialite::class, $stub);
+
+        $githubCallback = route('oauth.github-callback');
+        $this->get($githubCallback)->assertRedirect();
+    }
 }
