@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('description', "{{ __('chapter.index.description') }}")
 @section('content')
 <div class="row justify-content-center">
     <div class="col-md-8">
