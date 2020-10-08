@@ -4,9 +4,6 @@
  * @var \App\Chapter $chapter
  */
 @endphp
-@if (!$chapter->parent)
-    @section('description', "{{ __('chapter.chapter') }} {{ getChapterName($chapter->path) }} {{ __('chapter.show.description') }}")
-@endif
 <div class="list-group list-group-flush">
     @foreach ($chapters[$parent] as $chapter)
     <div class="list-group-item">
