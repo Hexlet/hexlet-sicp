@@ -77,7 +77,7 @@ class GithubController extends Controller
 
     private function sendFailedResponse($msg = null): RedirectResponse
     {
-        flash()->error($msg ?? __('auth.provider_fails'));
+        flash()->error($msg ? $msg : __('auth.provider_fails'));
 
         return redirect()->back()->withInput();
     }
