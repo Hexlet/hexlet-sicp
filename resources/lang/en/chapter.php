@@ -2,7 +2,11 @@
 
 return [
     'chapter' => 'Chapter',
+    'index' => [
+        'description' => 'Book table of contents Structure and Interpretation of Computer Programs',
+    ],
     'show' => [
+        'description' => 'of the book Structure and Interpretation of Computer Programs',
         'exercises_list' => 'Exercises',
         'no_exercises' => 'No exercises',
         'who_completed' => 'Show who completed',
