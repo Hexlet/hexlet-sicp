@@ -35,6 +35,13 @@
                     {{ $user->created_at->isoFormat('MMMM Do YYYY') }}
                     @endif
                 </div>
+                @if ($user->github_name)
+                <div class="mt-3">
+                    <a class="x-link-without-decoration mr-2 mb-2 text-dark" target="_blank" rel="noopener noreferrer" href="https://github.com/{{ $user->github_name }}">
+                        <i class="fab fa-github fa-2x"></i>
+                    </a>
+                </div>
+                @endif
                 @auth
                     @if (Auth::user()->id === $user->id)
                         <div class="small mt-4">
