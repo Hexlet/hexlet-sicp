@@ -7,6 +7,7 @@
  * @var \App\User $authUser
  */
 @endphp
+@section('description'){{ __('exercise.exercise') }} {{ $exercise->path }} {{ getExerciseTitle($exercise) }} {{ __('exercise.show.description') }}@endsection
 @section('content')
     {{ Breadcrumbs::render('exercise', $exercise) }}
     <div class="row justify-content-center">
