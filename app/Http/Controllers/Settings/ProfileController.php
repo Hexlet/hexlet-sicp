@@ -36,6 +36,7 @@ class ProfileController extends Controller
                 Rule::unique('users')->ignore($user),
             ],
             'github_name' => [
+                'nullable',
                 'min:2',
                 'max:255',
                 Rule::unique('users')->ignore($user),
