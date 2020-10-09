@@ -2,7 +2,11 @@
 
 return [
     'exercise' => 'Exercise',
+    'index' => [
+        'description' => 'List of exercises in the book Structure and Interpretation of Computer Programs',
+    ],
     'show' => [
+        'description' => 'from the Structure and Interpretation of Computer Programs',
         'exercises' => 'show exercises',
         'who_completed' => 'Show who completed',
         'empty_description' => 'No description for this exercise',

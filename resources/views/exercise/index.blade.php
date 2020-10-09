@@ -5,6 +5,7 @@
  * @var \Illuminate\Support\Collection|\App\Exercise[] $exercises
  */
 @endphp
+@section('description'){{ __('exercise.index.description') }}@endsection
 @section('content')
     <div class="row">
         <div class="col">
