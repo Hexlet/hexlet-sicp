@@ -1,7 +1,6 @@
 <p>{{ __('exercises/1_26.description.1') }}<a href="{{ route('exercises.show', getExercise('1.24')) }}">1.24</a>
 {{ __('exercises/1_26.description.2') }}</p>
-<pre><code>
-(define (expmod base exp m)
+<pre><code>(define (expmod base exp m)
   (cond ((= exp 0) 1)
         ((even? exp)
          (remainder (* (expmod base (/ exp 2) m)
