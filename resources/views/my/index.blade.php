@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('description'){{ __('my.description') }}@endsection
 @section('content')
 <div class="d-flex flex-wrap justify-content-between">
     <div class="h3">{{ __('layout.nav.my_progress') }}</h3></div>
