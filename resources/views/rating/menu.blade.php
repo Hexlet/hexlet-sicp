@@ -1,11 +1,11 @@
 <div class="text-center mb-3">
     <a class="btn btn-light" href="{{ route('top.index') }}">
-        {{ __('rating.page_title') }}
+        {{ __('rating.index.title') }}
     </a>
     <a class="btn btn-light" href="{{ route('progress_top.index') }}"/>
-        {{ __('rating.progress') }}
+        {{ __('rating.progress.title') }}
     </a>
     <a class="btn btn-light" href="{{ route('comments_top.index') }}"/>
-        {{ __('rating.page_title_comments') }}
+        {{ __('rating.comments.title') }}
     </a>
 </div>

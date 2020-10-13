@@ -1,9 +1,10 @@
 @extends('layouts.app')
+@section('description'){{ __('rating.comments.description') }}@endsection
 @section('content')
     <div class="my-4">
         @include('rating.menu')
 
-        <h1 class="h3">{{ __('rating.page_title_comments') }}</h1>
+        <h1 class="h3">{{ __('rating.comments.title') }}</h1>
 
         <div class="table-responsive">
             <table class="table table-striped">
