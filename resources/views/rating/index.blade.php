@@ -2,12 +2,13 @@
 @php
 /** @var \Illuminate\Support\Collection $rating */
 @endphp
+@section('description'){{ __('rating.index.description') }}@endsection
 @section('content')
     <div class="my-4">
         @include('rating.menu')
 
         <section>
-            <h1 class="h3">{{ __('rating.page_title') }}</h1>
+            <h1 class="h3">{{ __('rating.index.title') }}</h1>
 
             <div class="table-responsive">
                 <table class="table table-striped">
