@@ -9,8 +9,7 @@
 (new-if (= 1 1) 0 5)
 0</code></pre>
 <p>{{ __('exercises/1_6.description.3') }}</p>
-<pre><code>
-(define (sqrt-iter guess x)
+<pre><code>(define (sqrt-iter guess x)
   (new-if (good-enough? guess x)
           guess
           (sqrt-iter (improve guess x)
