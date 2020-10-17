@@ -19,8 +19,7 @@ D₁ +   N₂
           Dk
 </code></pre>
 <p>{{ __('exercises/1_37.description.3') }}</p>
-<pre><code>
-(cont-frac (lambda (i) 1.0)
+<pre><code>(cont-frac (lambda (i) 1.0)
            (lambda (i) 1.0)
            k)
 </code></pre>
