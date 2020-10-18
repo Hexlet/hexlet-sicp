@@ -3,7 +3,7 @@
 @section('content')
     <div class="row my-4">
         <div class="col-12 my-4">
-            <h3>{{ __('activitylog.title') }}</h3>
+            <h1 class="h3">{{ __('activitylog.title') }}</h1>
 
             <div class="table-responsive">
                 <table class="table table-striped">
