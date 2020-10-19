@@ -13,13 +13,13 @@
                     <div class="card mb-2">
                         <div class="card-body">
                             <h1 class="card-title h3">{{ __('account.profile') }} {{ $user->email }}</h1>
-                            {!! Form::open()->patch()->route('settings.profile.update', [$user]) !!}
-                            {!! Form::text('name', __('register.namePlaceholder'))->value($user->name) !!}
-                            {!! Form::text('github_name', __('account.github_name'))->value($user->github_name) !!}
+                            {{ BsForm::patch(route('settings.profile.update', [$user])) }}
+                            {{ BsForm::text('name', $user->name)->label(__('register.namePlaceholder')) }}
+                            {{ BsForm::text('github_name', $user->github_name)->label(__('account.github_name')) }}
                             <div class="form-group mb-0">
-                                {!! Form::submit(__('layout.common.save')) !!}
+                                {{ BsForm::submit(__('layout.common.save'))->primary() }}
                             </div>
-                            {!! Form::close() !!}
+                            {{ BsForm::close() }}
                         </div>
                     </div>
                 </div>
