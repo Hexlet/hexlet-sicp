@@ -32,6 +32,7 @@
     @endif
     @include('layouts._nav')
     <main>
+        @include('flash::message')
         @yield('content')
     </main>
     @include('layouts._footer')
