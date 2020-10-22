@@ -1,20 +1,20 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="row">
-    <div class="col-md-5 mx-auto">
-        <div class="card">
-            <h1 class="h4 text-center card-header p-3">
-                {{ __('register.title') }}
-            </h1>
-            <div class="card-body">
-                {!! Form::open()->route('register') !!}
-                    {!! Form::text('email', __('register.emailPlaceholder')) !!}
-                    {!! Form::text('name', __('register.namePlaceholder')) !!}
-                    {!! Form::text('password', __('register.passwordPlaceholder'))->type('password') !!}
-                    {!! Form::text('password_confirmation', __('register.passwordConfirmationPlaceholder'))->type('password') !!}
+    <div class="row">
+        <div class="col-md-5 mx-auto">
+            <div class="card">
+                <h1 class="h4 text-center card-header p-3">
+                    {{ __('register.title') }}
+                </h1>
+                <div class="card-body">
+                    {{ BsForm::open(route('register')) }}
+                    {{ BsForm::email('email')->label(__('register.emailPlaceholder')) }}
+                    {{ BsForm::text('name')->label(__('register.namePlaceholder')) }}
+                    {{ BsForm::password('password')->label(__('register.passwordPlaceholder')) }}
+                    {{ BsForm::password('password_confirmation')->label(__('register.passwordConfirmationPlaceholder')) }}
                     <div class="mt-4">
-                        {!! Form::submit(__('register.registerButton'))->block() !!}
+                        {{ BsForm::submit(__('register.registerButton'))->attribute('class', 'btn btn-primary btn-block') }}
                         <div class="mt-2">
                             <a href="{{ route('login') }}">
                                 {{ __('register.accountExists') }}
@@ -22,12 +22,12 @@
                             </a>
                         </div>
                     </div>
-                {!! Form::close() !!}
-            </div>
-            <div class="card-footer p-4 text-center bg-transparent">
-                @include('components.social_login')
+                    {{ BsForm::close() }}
+                </div>
+                <div class="card-footer p-4 text-center bg-transparent">
+                    @include('components.social_login')
+                </div>
             </div>
         </div>
     </div>
-</div>
 @endsection

@@ -30,7 +30,6 @@
     <div class="collapse" id="collapse{{ $chapter->id }}">
         <ul class="list-unstyled">
         @foreach($chapter->exercises as $exercise)
-            {!! Form::open()->route('users.exercises.store', [$user])->formInline() !!}
             <li>
                 @if($completedExercises->has($exercise->id))
                 <a href="{{ route('users.exercises.destroy', [$user, $exercise]) }}"

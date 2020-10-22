@@ -8,21 +8,18 @@
                 {{ __('passwords.reset_password.form_header') }}
             </h1>
             <div class="card-body mb-3">
-                {!! Form::open()->route('password.update') !!}
+                {{ BsForm::open(route('password.update')) }}
+                {{ Form::hidden('token', $token) }}
+                {{ BsForm::text('email', $email ?? old('email'))->label(__('passwords.reset_password.email')) }}
 
-                    {!!Form::hidden('token', $token)!!}
+                {{ BsForm::password('password')->label(__('passwords.reset_password.password')) }}
+                {{ BsForm::password('password_confirmation')->label(__('passwords.reset_password.confirm_password')) }}
 
-                    {!! Form::text('email', __('passwords.reset_password.email'), $email ?? old('email')) !!}
+                <div class="mt-4">
+                    {{ BsForm::submit(__('passwords.reset_password.button'))->attribute('class', 'btn btn-primary btn-block') }}
+                </div>
 
-                    {!! Form::text('password', __('passwords.reset_password.password'))->type('password') !!}
-
-                    {!! Form::text('password_confirmation', __('passwords.reset_password.confirm_password'))->type('password') !!}
-
-                    <div class="mt-4">
-                        {!! Form::submit(__('passwords.reset_password.button'))->block() !!}
-                    </div>
-
-                {!! Form::close() !!}
+                {{ BsForm::close() }}
             </div>
         </div>
     </div>
