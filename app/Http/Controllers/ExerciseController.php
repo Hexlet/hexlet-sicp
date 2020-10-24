@@ -10,7 +10,7 @@ class ExerciseController extends Controller
 {
     public function index(): View
     {
-        $exercisesGroups = Exercise::all()
+        $exercisesGroups = Exercise::orderBy('id')->get()
             ->groupBy(function (Exercise $exercise) {
                 return substr($exercise->path, 0, 1);
             });
