@@ -30,7 +30,9 @@
 @if (config('app.env') == 'production')
     @include('layouts.deps._gtm_body')
 @endif
-@include('layouts._new_nav')
+<header class="fixed-top">
+@include('layouts._nav')
+</header>
 
 @include('flash::message')
 @yield('content')
