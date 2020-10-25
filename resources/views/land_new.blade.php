@@ -8,6 +8,7 @@
                 <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
                 <li data-target="#myCarousel" data-slide-to="1"></li>
                 <li data-target="#myCarousel" data-slide-to="2"></li>
+                <li data-target="#myCarousel" data-slide-to="3"></li>
             </ol>
             <div class="carousel-inner">
                 <div class="carousel-item active">
@@ -22,11 +23,27 @@
                                 <h1>{{ __('landing.title') }}</h1>
                                 <blockquote class="mb-1">{{ __('landing.epigraph') }}</blockquote>
                                 <p class="font-italic mb-3 mb-lg-5">{{ __('landing.author_of_epigraph') }}</p>
+                              </div>
+                            <div class="col-md-6 d-none d-sm-block">
+                                <img class="img-fluid" src="{{ asset('img/Patchouli_Gives_SICP.png') }}"
+                                     alt="Начать изучать sicp">
+                            </div>
+                        </div>
+                    </div>
+                </div> <div class="carousel-item">
+                    <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"
+                         preserveAspectRatio="xMidYMid slice" focusable="false" role="img">
+                        <rect width="100%" height="100%" fill="#777"/>
+                    </svg>
+                    <div class="container">
+                        <div class="carousel-caption text-left row">
+
+                            <div class="col-md-6 d-sm-none d-md-block">
                                 <p class="h4">{{ __('landing.what_for') }}</p>
                                 <p class="h4">{{ __('landing.what_do') }}</p>
                             </div>
-                            <div class="col-md-6">
-                                <img class="" src="{{ asset('img/Patchouli_Gives_SICP.png') }}"
+                            <div class="col-md-6 d-md-none d-xs-block">
+                                <img class="img-fluid" src="{{ asset('img/Patchouli_Gives_SICP.png') }}"
                                      alt="Начать изучать sicp">
                             </div>
                         </div>
@@ -52,7 +69,7 @@
                                 <a class="btn btn-primary btn-lg mt-4"
                                    href="{{ route('register') }}">{{ __('landing.start_learning') }}</a>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-6 d-none d-sm-block">
                                 <img class="" src="{{ asset('img/advice_dog.jpg') }}" alt="Начать изучать sicp">
                             </div>
                         </div>
