@@ -20,7 +20,7 @@ class WelcomeController extends Controller
             $countChapters = Chapter::count();
             $countUsers = User::count();
 
-            return view('landing', compact(
+            return view('land_new', compact(
                 'countComments',
                 'countExercises',
                 'countChapters',
