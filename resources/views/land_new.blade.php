@@ -12,12 +12,8 @@
             </ol>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"
-                         preserveAspectRatio="xMidYMid slice" focusable="false" role="img">
-                        <rect width="100%" height="100%" fill="#777"/>
-                    </svg>
                     <div class="container">
-                        <div class="carousel-caption text-left row">
+                        <div class="carousel-caption text-left row text-secondary">
 
                             <div class="col-md-6 ">
                                 <h1>{{ __('landing.title') }}</h1>
@@ -31,12 +27,8 @@
                         </div>
                     </div>
                 </div> <div class="carousel-item">
-                    <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"
-                         preserveAspectRatio="xMidYMid slice" focusable="false" role="img">
-                        <rect width="100%" height="100%" fill="#777"/>
-                    </svg>
                     <div class="container">
-                        <div class="carousel-caption text-left row">
+                        <div class="carousel-caption text-left row text-secondary">
 
                             <div class="col-md-6 d-sm-none d-md-block">
                                 <p class="h4">{{ __('landing.what_for') }}</p>
@@ -50,13 +42,8 @@
                     </div>
                 </div>
                 <div class="carousel-item">
-
-                    <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"
-                         preserveAspectRatio="xMidYMid slice" focusable="false" role="img">
-                        <rect width="100%" height="100%" fill="#777"/>
-                    </svg>
                     <div class="container">
-                        <div class="carousel-caption text-left row">
+                        <div class="carousel-caption text-left row text-secondary">
 
                             <div class="col-md-6 ">
                                 <h2>{{ __('landing.features') }}</h2>
@@ -70,19 +57,14 @@
                                    href="{{ route('register') }}">{{ __('landing.start_learning') }}</a>
                             </div>
                             <div class="col-md-6 d-none d-sm-block">
-                                <img class="" src="{{ asset('img/advice_dog.jpg') }}" alt="Начать изучать sicp">
+
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="carousel-item">
-
-                    <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"
-                         preserveAspectRatio="xMidYMid slice" focusable="false" role="img">
-                        <rect width="100%" height="100%" fill="#777"/>
-                    </svg>
                     <div class="container">
-                        <div class="carousel-caption text-left row">
+                        <div class="carousel-caption text-left row text-secondary">
                             <div class="col-md-6">
                                 <h2>sicp.hexlet.io — {{ __('landing.this_is') }}:</h2>
                                 <div class="row no-gutters my-2 ml-lg-n5 ml-md-n3">
