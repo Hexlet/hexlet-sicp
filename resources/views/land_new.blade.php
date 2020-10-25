@@ -30,7 +30,7 @@
                         <div class="carousel-caption text-left row text-secondary">
 
                             <div class="col-md-6 d-sm-none d-md-block">
-                                <p class="h4">{{ __('landing.what_for') }}</p>
+                                <div class="h1">{{ __('landing.what_for') }}</div>
                                 <p class="h4">{{ __('landing.what_do') }}</p>
                             </div>
                             <div class="col-md-6 d-md-none d-xs-block">
