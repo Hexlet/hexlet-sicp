@@ -1,6 +1,5 @@
 <p>{{ __('exercises/1_12.description.1') }}</p>
-<pre><code>
-    1
+<pre><code>    1
    1 1
   1 2 1
  1 3 3 1
