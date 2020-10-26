@@ -26,7 +26,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 
-<body class="min-vh-100 d-flex flex-column">
+<body class="min-vh-100 d-flex flex-column pt-5">
 @if (config('app.env') == 'production')
     @include('layouts.deps._gtm_body')
 @endif

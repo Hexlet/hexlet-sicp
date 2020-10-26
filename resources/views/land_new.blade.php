@@ -3,17 +3,17 @@
 
     <main role="main">
 
-        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <div id="myCarousel" class="carousel slide mb-5" data-ride="carousel">
             <ol class="carousel-indicators">
-                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                <li data-target="#myCarousel" data-slide-to="1"></li>
+                <li data-target="#myCarousel" data-slide-to="0" class="active bg-secondary"></li>
+                <li data-target="#myCarousel" data-slide-to="1" class="bg-secondary"></li>
             </ol>
             <div class="carousel-inner">
                 <div class="carousel-item active">
                     <div class="container">
-                        <div class="carousel-caption text-left row text-secondary">
+                        <div class="carousel-caption text-left row text-secondary ">
 
-                            <div class="col-md-6 ">
+                            <div class="col-md-6 mt-5">
                                 <h1>{{ __('landing.title') }}</h1>
                                 <blockquote class="mb-1">{{ __('landing.epigraph') }}</blockquote>
                                 <p class="font-italic mb-3 mb-lg-5">{{ __('landing.author_of_epigraph') }}</p>
@@ -27,15 +27,13 @@
                 </div>
                 <div class="carousel-item">
                     <div class="container">
-                        <div class="carousel-caption text-left row text-secondary">
+                        <div class="carousel-caption text-left row text-secondary align-top">
 
-                            <div class="col-md-6 d-sm-none d-md-block">
+                            <div class="col-md-6 d-sm-none d-md-block mt-5 ">
                                 <div class="h1">{{ __('landing.what_for') }}</div>
                                 <p class="h4">{{ __('landing.what_do') }}</p>
                             </div>
-                            <div class="col-md-6 d-md-none d-xs-block">
-                                <img class="img-fluid" src="{{ asset('img/Patchouli_Gives_SICP.png') }}"
-                                     alt="Начать изучать sicp">
+                            <div class="col-md-6">
                             </div>
                         </div>
                     </div>
@@ -51,12 +49,7 @@
             </a>
         </div>
 
-
-        <!-- Marketing messaging and featurettes
-        ================================================== -->
-        <!-- Wrap the rest of the page in another container to center all the content. -->
-
-        <div class="container marketing">
+        <div class="container ">
 
             <div class="row">
                 <div class="col-md-6">
@@ -111,7 +104,7 @@
                 </div>
             </div>
 
-            <hr class="featurette-divider">
+            <hr class="mt-5 mb-5">
 
             <div class="row mb-4">
                 <div class="col-lg-3 text-center">
