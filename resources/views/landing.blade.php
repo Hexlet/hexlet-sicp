@@ -9,7 +9,7 @@
                 <li data-target="#sicpCarousel" data-slide-to="1"></li>
             </ol>
             <div class="carousel-inner">
-                <div class="sicp-carousel-item active">
+                <div class="sicp-carousel-item carousel-item active">
                     <div class="container">
                         <div class="sicp-carousel-caption text-left text-secondary">
                             <div class="row">
@@ -26,7 +26,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="sicp-carousel-item">
+                <div class="sicp-carousel-item carousel-item">
                     <div class="container">
                         <div class="sicp-carousel-caption text-left row text-secondary align-top">
 
