@@ -3,31 +3,32 @@
 
     <main role="main">
 
-        <div id="myCarousel" class="carousel slide mb-5" data-ride="carousel">
+        <div id="sicpCarousel" class="carousel slide mb-5" data-ride="carousel">
             <ol class="carousel-indicators">
-                <li data-target="#myCarousel" data-slide-to="0" class="active bg-secondary"></li>
-                <li data-target="#myCarousel" data-slide-to="1" class="bg-secondary"></li>
+                <li data-target="#sicpCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#sicpCarousel" data-slide-to="1"></li>
             </ol>
             <div class="carousel-inner">
-                <div class="carousel-item active">
+                <div class="sicp-carousel-item active">
                     <div class="container">
-                        <div class="carousel-caption text-left row text-secondary ">
-
-                            <div class="col-md-6 mt-5">
-                                <h1>{{ __('landing.title') }}</h1>
-                                <blockquote class="mb-1">{{ __('landing.epigraph') }}</blockquote>
-                                <p class="font-italic mb-3 mb-lg-5">{{ __('landing.author_of_epigraph') }}</p>
-                            </div>
-                            <div class="col-md-6 d-none d-sm-block">
-                                <img class="img-fluid" src="{{ asset('img/Patchouli_Gives_SICP.png') }}"
-                                     alt="Начать изучать sicp">
+                        <div class="sicp-carousel-caption text-left text-secondary">
+                            <div class="row">
+                                <div class="col-md-6 mt-5">
+                                    <h1>{{ __('landing.title') }}</h1>
+                                    <blockquote class="mb-1">{{ __('landing.epigraph') }}</blockquote>
+                                    <p class="font-italic mb-3 mb-lg-5">{{ __('landing.author_of_epigraph') }}</p>
+                                </div>
+                                <div class="col-md-6 d-none d-sm-block">
+                                    <img class="img-fluid" src="{{ asset('img/Patchouli_Gives_SICP.png') }}"
+                                         alt="{{ __('landing.start_learning') }}">
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="carousel-item">
+                <div class="sicp-carousel-item">
                     <div class="container">
-                        <div class="carousel-caption text-left row text-secondary align-top">
+                        <div class="sicp-carousel-caption text-left row text-secondary align-top">
 
                             <div class="col-md-6 d-sm-none d-md-block mt-5 ">
                                 <div class="h1">{{ __('landing.what_for') }}</div>
@@ -39,13 +40,13 @@
                     </div>
                 </div>
             </div>
-            <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+            <a class="carousel-control-prev" href="#sicpCarousel" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
+                <span class="sr-only">{{ __('pagination.previous') }}</span>
             </a>
-            <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+            <a class="carousel-control-next" href="#sicpCarousel" role="button" data-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
+                <span class="sr-only">{{ __('pagination.next') }}</span>
             </a>
         </div>
 
@@ -123,8 +124,8 @@
                     <i class="fas fa-award fa-7x"></i>
                     <h2>{{ __('landing.actions_list.4') }}</h2>
                 </div>
-            </div><!-- /.row -->
-        </div><!-- /.container -->
+            </div>
+        </div>
 
 
     </main>
