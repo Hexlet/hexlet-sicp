@@ -1,6 +1,5 @@
 <p>{{ __('exercises/1_37.description.1') }}</p>
-<pre><code>
-f =         N₁
+<pre><code>f =         N₁
         -------------
         D₁ +     N₂
              -----------
@@ -9,8 +8,7 @@ f =         N₁
                 D₃ + ...
 </code></pre>
 <p>{{ __('exercises/1_37.description.2') }}</p>
-<pre><code>
-      N₁
+<pre><code>      N₁
 ---------------
 D₁ +   N₂
     -----------
