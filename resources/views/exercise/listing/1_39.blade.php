@@ -1,6 +1,5 @@
 <p>{{ __('exercises/1_39.description.1') }}</p>
-<pre><code>
-tan x  =        x
+<pre><code>tan x  =        x
          ---------------
          1 -     x²
              -----------
