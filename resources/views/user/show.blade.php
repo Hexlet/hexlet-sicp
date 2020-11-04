@@ -25,7 +25,7 @@
                 <div class="h4">
                     <span class="fas fa-award mx-1"></span>
                     <span>{{ $points }}</span>
-                    <span class="h6 text-secondary"> {{ __('user.show.statistics.points') }}</span>
+                    <span class="h6 text-secondary"> {{ trans_choice('user.show.statistics.points', $points) }}</span>
                 </div>
                 <div class="text-secondary">
                     {{ __('user.show.statistics.created_at') }}
