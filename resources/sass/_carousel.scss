@@ -1,9 +1,8 @@
 .sicp-carousel-item {
-    height: 32rem;
+    height: 24rem;
 }
 
 .sicp-carousel-caption {
     @extend .carousel-caption;
-    top: 3rem;
-    z-index: 10;
+    top: 2rem;
 }
