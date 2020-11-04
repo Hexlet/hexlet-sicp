@@ -62,7 +62,7 @@
                             {{ $user->readChapters->count() }}
                         </div>
                         <div class="text-secondary">
-                            {{ __('user.show.statistics.read_chapters') }}
+                            {{ trans_choice('user.show.statistics.read_chapters', $user->readChapters->count()) }}
                         </div>
                     </div>
                     <div class="col-12 col-md text-center my-2">
@@ -70,7 +70,7 @@
                             {{ $user->completedExercises->count() }}
                         </div>
                         <div class="text-secondary">
-                            {{ __('user.show.statistics.completed_exercises') }}
+                            {{ trans_choice('user.show.statistics.completed_exercises', $user->completedExercises->count()) }}
                         </div>
                     </div>
                     <div class="col-12 col-md text-center my-2">
@@ -78,7 +78,7 @@
                             {{ $user->comments->count() }}
                         </div>
                         <div class="text-secondary">
-                            {{ __('user.show.statistics.comments') }}
+                            {{ trans_choice('user.show.statistics.comments', $user->comments->count()) }}
                         </div>
                     </div>
                 </div>
