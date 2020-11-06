@@ -23,9 +23,6 @@ class GithubController extends Controller
         $this->user = $user;
     }
 
-    /**
-     * Redirect the user to the GitHub authentication page.
-     */
     public function redirectToProvider(): RedirectResponse
     {
         try {
@@ -35,9 +32,6 @@ class GithubController extends Controller
         }
     }
 
-    /**
-     * Obtain the user information from GitHub.
-     */
     public function handleProviderCallback(): RedirectResponse
     {
         try {

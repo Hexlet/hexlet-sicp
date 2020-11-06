@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature\Http\Controllers;
+namespace Tests\Feature\Http\Controllers\User;
 
 use App\Chapter;
 use App\User;

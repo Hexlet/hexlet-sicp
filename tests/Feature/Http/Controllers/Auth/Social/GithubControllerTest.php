@@ -1,25 +1,27 @@
 <?php
 
-namespace Tests\Feature\Http\Controllers;
+namespace Tests\Feature\Http\Controllers\Auth\Social;
 
-use App\User as AppUser;
-use Tests\TestCase;
-use Laravel\Socialite\Contracts\Factory as Socialite;
-use Laravel\Socialite\Two\User;
+use App\User;
 use Illuminate\Http\RedirectResponse;
+use Laravel\Socialite\Contracts\Factory as Socialite;
+use Laravel\Socialite\Two\GithubProvider;
+use Laravel\Socialite\Two\InvalidStateException;
+use Laravel\Socialite\Two\User as SocialiteUser;
+use Tests\TestCase;
 
 class GithubControllerTest extends TestCase
 {
     public function mockSocialiteFacade(string $email, string $name, string $nickname, string $token, int $id): void
     {
-        $user = new User();
+        $user = new SocialiteUser();
         $user->token = $token;
         $user->name  = $name;
         $user->nickname = $nickname;
         $user->id    = $id;
         $user->email = $email;
 
-        $provider = $this->createMock(\Laravel\Socialite\Two\GithubProvider::class);
+        $provider = $this->createMock(GithubProvider::class);
         $provider->method('user')->willReturn($user);
 
         $stub = $this->createMock(Socialite::class);
@@ -59,13 +61,13 @@ class GithubControllerTest extends TestCase
         $githubCallback = route('oauth.github-callback');
         $this->get($githubCallback)->assertLocation(route('my'));
 
-        $user = AppUser::where('email', $email)->firstOrFail();
+        $user = User::where('email', $email)->firstOrFail();
         $this->assertDatabaseHas('users', ['email' => $email]);
 
         $response = $this->delete(route('settings.account.destroy', $user));
         $response->assertRedirect();
 
-        $user2 = AppUser::find($user->id);
+        $user2 = User::find($user->id);
         $this->assertNull($user2);
 
         $this->mockSocialiteFacade($email, $name, $nickname, $token, random_int(1, 100));
@@ -91,8 +93,8 @@ class GithubControllerTest extends TestCase
 
     public function testTwoFactorAuthResponseWithInvalidState(): void
     {
-        $provider = $this->createMock(\Laravel\Socialite\Two\GithubProvider::class);
-        $provider->method('user')->willThrowException(new \Laravel\Socialite\Two\InvalidStateException());
+        $provider = $this->createMock(GithubProvider::class);
+        $provider->method('user')->willThrowException(new InvalidStateException());
 
         $stub = $this->createMock(Socialite::class);
         $stub->method('driver')->willReturn($provider);

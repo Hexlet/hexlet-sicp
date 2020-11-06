@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Activity;
 use Illuminate\View\View;
 
-class ActivitylogController extends Controller
+class ActivityController extends Controller
 {
     public function index(): View
     {
