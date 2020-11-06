@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\User;
 
 use App\Exercise;
+use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;

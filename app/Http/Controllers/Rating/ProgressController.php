@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Rating;
 
 use App\Chapter;
 use App\Exercise;
+use App\Http\Controllers\Controller;
 use Illuminate\View\View;
 
-class RatingTopProgressController extends Controller
+class ProgressController extends Controller
 {
     public function index(): View
     {

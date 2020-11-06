@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Rating;
 
+use App\Http\Controllers\Controller;
 use Illuminate\View\View;
 
-class RatingTopCommentsController extends Controller
+class CommentController extends Controller
 {
     public function index(): View
     {

@@ -1,11 +1,11 @@
 <?php
 
-namespace Tests\Feature\Http\Controllers;
+namespace Tests\Feature\Http\Controllers\User;
 
-use Illuminate\Support\Collection;
-use Tests\TestCase;
 use App\Solution;
 use App\User;
+use Illuminate\Support\Collection;
+use Tests\TestCase;
 
 class SolutionControllerTest extends TestCase
 {
@@ -25,7 +25,7 @@ class SolutionControllerTest extends TestCase
         $factoryData = factory(Solution::class)->make([
             'user_id' => $this->user->id,
         ])->toArray();
-        $data = \Arr::only($factoryData, ['exercise_id', 'user_id', 'content']);
+        $data = array_only($factoryData, ['exercise_id', 'user_id', 'content']);
         $response = $this->post(route('users.solutions.store', $this->user), $data);
 
         $response->assertSessionHasNoErrors();

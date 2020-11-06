@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature\Http\Controllers;
+namespace Tests\Feature\Http\Controllers\User;
 
 use App\Chapter;
 use App\CompletedExercise;
@@ -8,11 +8,6 @@ use App\Exercise;
 use App\User;
 use Tests\TestCase;
 
-/**
- * Class UserExerciseControllerTest
- * @package Tests\Feature\Http\Controllers
- * @property User $user
- */
 class UserExerciseControllerTest extends TestCase
 {
     private User $user;
@@ -27,7 +22,7 @@ class UserExerciseControllerTest extends TestCase
             ->create()
             ->each(function (Chapter $chapter): void {
                 $chapter->exercises()->saveMany(
-                    factory(Exercise::class, mt_rand(1, 3))->make()
+                    factory(Exercise::class, random_int(1, 3))->make()
                 );
             });
     }

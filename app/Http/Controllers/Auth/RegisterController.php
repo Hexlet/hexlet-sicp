@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use App\Http\Controllers\Controller;
+use Illuminate\Contracts\Validation\Validator as ValidatorContract;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -12,11 +13,6 @@ class RegisterController extends Controller
 {
     use RegistersUsers;
 
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
     public function __construct()
     {
         $this->middleware('guest');
@@ -27,12 +23,7 @@ class RegisterController extends Controller
         return route('my');
     }
 
-    /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array  $data
-     */
-    protected function validator(array $data): \Illuminate\Contracts\Validation\Validator
+    protected function validator(array $data): ValidatorContract
     {
         return Validator::make($data, [
             'name' => 'required|string|max:255',
@@ -42,12 +33,7 @@ class RegisterController extends Controller
         ]);
     }
 
-    /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param  array  $data
-     */
-    protected function create(array $data): \App\User
+    protected function create(array $data): User
     {
         flash(__('auth.mail.send_link'));
         return User::create([

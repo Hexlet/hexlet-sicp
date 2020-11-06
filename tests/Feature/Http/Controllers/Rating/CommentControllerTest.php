@@ -1,10 +1,10 @@
 <?php
 
-namespace Tests\Feature\Http\Controllers;
+namespace Tests\Feature\Http\Controllers\Rating;
 
 use Tests\TestCase;
 
-class RatingTopCommentsControllerTest extends TestCase
+class CommentControllerTest extends TestCase
 {
     public function testIndex(): void
     {
