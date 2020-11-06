@@ -2,7 +2,7 @@
 
 return [
     'title'   => 'Structure and Interpretation of Computer Programs',
-    'authors' => 'Harold Abelson and Gerald Jay Sussman with Julie Sussman',
+    'authors' => 'by Harold Abelson and Gerald Jay Sussman with Julie Sussman',
     'chapters' => [
         '1'       => 'Building Abstractions with Procedures',
         '1.1'     => 'The Elements of Programming',
