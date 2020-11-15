@@ -2,20 +2,16 @@
 
 namespace Tests\Feature\Http\Controllers\Settings;
 
-use App\User;
-use Tests\TestCase;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
+use Tests\TestCaseWithUser;
 
-class ProfileControllerTest extends TestCase
+class ProfileControllerTest extends TestCaseWithUser
 {
-    private User $user;
-
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this->user = factory(User::class)->create();
         $this->actingAs($this->user);
     }
 

@@ -3,43 +3,38 @@
 namespace Tests\Feature\Http\Controllers\User;
 
 use App\Chapter;
-use App\User;
-use Tests\TestCase;
+use Tests\TestCaseWithUser;
 
-class UserChapterControllerTest extends TestCase
+class UserChapterControllerTest extends TestCaseWithUser
 {
-    private User $user;
 
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this->user = factory(User::class)->create();
         factory(Chapter::class, 3)->create();
     }
 
     public function testDestroy(): void
     {
-        /** @var User $user */
-        $user = factory(User::class)->create();
-        $this->actingAs($user);
+        $this->actingAs($this->user);
 
         $chapter = Chapter::inRandomOrder()->first();
 
-        $user->chapters()->attach($chapter);
+        $this->user->chapters()->attach($chapter);
 
-        $this->actingAs($user)->from(
+        $this->actingAs($this->user)->from(
             route('chapters.show', $chapter)
         );
 
         $completedChapterData = [
             'chapter_id' => $chapter->id,
-            'user_id' => $user->id,
+            'user_id' => $this->user->id,
         ];
         $this->assertDatabaseHas('read_chapters', $completedChapterData);
 
         $response = $this->delete(
-            route('users.chapters.destroy', [$user, $chapter])
+            route('users.chapters.destroy', [$this->user, $chapter])
         );
 
         $response->assertRedirect(route('chapters.show', $chapter));

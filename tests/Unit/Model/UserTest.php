@@ -4,22 +4,19 @@ namespace Tests\Unit\Model;
 
 use App\Chapter;
 use App\ReadChapter;
-use App\User;
-use Tests\TestCase;
+use Tests\TestCaseWithUser;
 
-class UserTest extends TestCase
+class UserTest extends TestCaseWithUser
 {
     public function testChapter(): void
     {
-        $user = factory(User::class)->create();
-
         $chapter = factory(Chapter::class)->create();
 
         factory(ReadChapter::class)->create([
-            'user_id' => $user->id,
+            'user_id' => $this->user->id,
             'chapter_id' => $chapter->id,
         ]);
 
-        $this->assertCount(1, $user->chapters);
+        $this->assertCount(1, $this->user->chapters);
     }
 }

@@ -8,16 +8,13 @@ use App\Exercise;
 use App\User;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Database\Eloquent\Model;
-use Tests\TestCase;
+use Tests\TestCaseWithUser;
 
-class CommentControllerTest extends TestCase
+class CommentControllerTest extends TestCaseWithUser
 {
-    private User $user;
-
     public function setUp(): void
     {
         parent::setUp();
-        $this->user = factory(User::class)->create();
         factory(Chapter::class, 2)
             ->create()
             ->each(
@@ -159,7 +156,7 @@ class CommentControllerTest extends TestCase
         $comment = factory(Comment::class)->state('with_user')->make();
         $commentable->comments()->save($comment);
 
-        $this->expectException(\Illuminate\Auth\Access\AuthorizationException::class);
+        $this->expectException(AuthorizationException::class);
         $response = $this->delete(
             route('comments.destroy', compact('comment'))
         );
