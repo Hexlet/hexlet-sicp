@@ -8,9 +8,9 @@ use App\Exercise;
 use App\User;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Database\Eloquent\Model;
-use Tests\TestCaseWithUser;
+use Tests\ControllerTestCase;
 
-class CommentControllerTest extends TestCaseWithUser
+class CommentControllerTest extends ControllerTestCase
 {
     public function setUp(): void
     {

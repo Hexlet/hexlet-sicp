@@ -4,9 +4,9 @@ namespace Tests\Feature\Http\Controllers;
 
 use App\User;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-use Tests\TestCaseWithUser;
+use Tests\ControllerTestCase;
 
-class UserControllerTest extends TestCaseWithUser
+class UserControllerTest extends ControllerTestCase
 {
     public function testShow(): void
     {

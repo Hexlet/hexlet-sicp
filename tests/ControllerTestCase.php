@@ -4,7 +4,7 @@ namespace Tests;
 
 use App\User;
 
-abstract class TestCaseWithUser extends TestCase
+abstract class ControllerTestCase extends TestCase
 {
     protected User $user;
 

@@ -4,9 +4,9 @@ namespace Tests\Feature\Http\Controllers;
 
 use App\Chapter;
 use Illuminate\Auth\AuthenticationException;
-use Tests\TestCaseWithUser;
+use Tests\ControllerTestCase;
 
-class MyControllerTest extends TestCaseWithUser
+class MyControllerTest extends ControllerTestCase
 {
     public function setUp(): void
     {

@@ -5,9 +5,9 @@ namespace Tests\Feature\Http\Controllers\User;
 use App\Chapter;
 use App\CompletedExercise;
 use App\Exercise;
-use Tests\TestCaseWithUser;
+use Tests\ControllerTestCase;
 
-class UserExerciseControllerTest extends TestCaseWithUser
+class UserExerciseControllerTest extends ControllerTestCase
 {
     protected function setUp(): void
     {

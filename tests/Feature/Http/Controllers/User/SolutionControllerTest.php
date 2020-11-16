@@ -4,9 +4,9 @@ namespace Tests\Feature\Http\Controllers\User;
 
 use App\Solution;
 use Illuminate\Support\Collection;
-use Tests\TestCaseWithUser;
+use Tests\ControllerTestCase;
 
-class SolutionControllerTest extends TestCaseWithUser
+class SolutionControllerTest extends ControllerTestCase
 {
     public function setUp(): void
     {

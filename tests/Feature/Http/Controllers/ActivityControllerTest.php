@@ -4,9 +4,9 @@ namespace Tests\Feature\Http\Controllers;
 
 use App\Chapter;
 use App\ReadChapter;
-use Tests\TestCaseWithUser;
+use Tests\ControllerTestCase;
 
-class ActivityControllerTest extends TestCaseWithUser
+class ActivityControllerTest extends ControllerTestCase
 {
     protected function setUp(): void
     {

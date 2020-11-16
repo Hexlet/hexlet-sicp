@@ -3,9 +3,9 @@
 namespace Tests\Feature\Http\Controllers\Settings;
 
 use App\User;
-use Tests\TestCaseWithUser;
+use Tests\ControllerTestCase;
 
-class AccountControllerTest extends TestCaseWithUser
+class AccountControllerTest extends ControllerTestCase
 {
 
     protected function setUp(): void

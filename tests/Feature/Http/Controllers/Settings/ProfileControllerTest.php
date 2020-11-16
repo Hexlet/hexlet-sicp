@@ -4,9 +4,9 @@ namespace Tests\Feature\Http\Controllers\Settings;
 
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
-use Tests\TestCaseWithUser;
+use Tests\ControllerTestCase;
 
-class ProfileControllerTest extends TestCaseWithUser
+class ProfileControllerTest extends ControllerTestCase
 {
     protected function setUp(): void
     {

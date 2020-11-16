@@ -3,9 +3,9 @@
 namespace Tests\Feature\Http\Controllers\User;
 
 use App\Chapter;
-use Tests\TestCaseWithUser;
+use Tests\ControllerTestCase;
 
-class UserChapterControllerTest extends TestCaseWithUser
+class UserChapterControllerTest extends ControllerTestCase
 {
 
     protected function setUp(): void
