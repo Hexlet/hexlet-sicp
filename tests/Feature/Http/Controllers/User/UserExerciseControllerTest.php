@@ -5,18 +5,14 @@ namespace Tests\Feature\Http\Controllers\User;
 use App\Chapter;
 use App\CompletedExercise;
 use App\Exercise;
-use App\User;
-use Tests\TestCase;
+use Tests\ControllerTestCase;
 
-class UserExerciseControllerTest extends TestCase
+class UserExerciseControllerTest extends ControllerTestCase
 {
-    private User $user;
-
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this->user = factory(User::class)->create();
         $this->actingAs($this->user);
         factory(Chapter::class, 2)
             ->create()

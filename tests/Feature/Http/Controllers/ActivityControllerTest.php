@@ -4,18 +4,13 @@ namespace Tests\Feature\Http\Controllers;
 
 use App\Chapter;
 use App\ReadChapter;
-use App\User;
-use Tests\TestCase;
+use Tests\ControllerTestCase;
 
-class ActivityControllerTest extends TestCase
+class ActivityControllerTest extends ControllerTestCase
 {
-    private User $user;
-
     protected function setUp(): void
     {
         parent::setUp();
-
-        $this->user = factory(User::class)->create();
         $this->actingAs($this->user);
     }
 

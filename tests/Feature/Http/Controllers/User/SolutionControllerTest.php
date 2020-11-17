@@ -3,18 +3,14 @@
 namespace Tests\Feature\Http\Controllers\User;
 
 use App\Solution;
-use App\User;
 use Illuminate\Support\Collection;
-use Tests\TestCase;
+use Tests\ControllerTestCase;
 
-class SolutionControllerTest extends TestCase
+class SolutionControllerTest extends ControllerTestCase
 {
-    private User $user;
-
     public function setUp(): void
     {
         parent::setUp();
-        $this->user = factory(User::class)->create();
 
         $this->actingAs($this->user)
             ->get('/');

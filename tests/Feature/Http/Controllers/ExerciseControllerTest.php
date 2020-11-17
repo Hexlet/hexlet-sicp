@@ -5,10 +5,9 @@ namespace Tests\Feature\Http\Controllers;
 use App\Chapter;
 use App\Comment;
 use App\Exercise;
-use Tests\TestCase;
-use App\User;
+use Tests\ControllerTestCase;
 
-class ExerciseControllerTest extends TestCase
+class ExerciseControllerTest extends ControllerTestCase
 {
     protected function setUp(): void
     {
@@ -24,8 +23,7 @@ class ExerciseControllerTest extends TestCase
 
     public function testIndex(): void
     {
-        $user = factory(User::class)->create();
-        $this->actingAs($user);
+        $this->actingAs($this->user);
 
         $response = $this->get(route('exercises.index'));
         $exercise = Exercise::inRandomOrder()->first();
