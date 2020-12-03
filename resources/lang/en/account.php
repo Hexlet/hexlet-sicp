@@ -13,4 +13,5 @@ return [
     'current_email' => 'Current email',
     'go_to_gravatar' => 'Перейти на Gravatar.com',
     'github_name' => 'GitHub name',
+    'hexlet_nickname' => 'Hexlet nickname',
 ];
