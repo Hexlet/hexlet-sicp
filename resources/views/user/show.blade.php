@@ -42,6 +42,11 @@
                     </a>
                 </div>
                 @endif
+                @if ($user->hexlet_nickname)
+                    <a class="x-link-without-decoration mr-2 mb-2 text-dark" target="_blank" rel="noopener noreferrer" href="https://ru.hexlet.io/u/{{ $user->hexlet_nickname }}">
+                        Hexlet
+                    </a>
+                @endif
                 @auth
                     @if (Auth::user()->id === $user->id)
                         <div class="small mt-4">
