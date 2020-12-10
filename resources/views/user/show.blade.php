@@ -43,9 +43,11 @@
                 </div>
                 @endif
                 @if ($user->hexlet_nickname)
+                <div class="mt-3">
                     <a class="x-link-without-decoration mr-2 mb-2 text-dark" target="_blank" rel="noopener noreferrer" href="https://ru.hexlet.io/u/{{ $user->hexlet_nickname }}">
-                        Hexlet Profile
+                        <img src={{ asset('img/hexlet_logo.png') }} width="25" height="35" alt="Hexlet logo">
                     </a>
+                </div>
                 @endif
                 @auth
                     @if (Auth::user()->id === $user->id)
