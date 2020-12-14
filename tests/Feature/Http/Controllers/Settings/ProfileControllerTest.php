@@ -28,9 +28,11 @@ class ProfileControllerTest extends ControllerTestCase
     {
         $name = $this->faker->name;
         $github_name = $this->faker->userName;
+        $hexletNickname = $this->faker->userName;
         $response = $this->patch(route('settings.profile.update', $this->user), [
             'name' => $name,
             'github_name' => $github_name,
+            'hexlet_nickname' => $hexletNickname,
         ]);
         $response->assertSessionHasNoErrors();
 
@@ -38,6 +40,7 @@ class ProfileControllerTest extends ControllerTestCase
             'id' => $this->user->id,
             'name' => $name,
             'github_name' => $github_name,
+            'hexlet_nickname' => $hexletNickname,
         ]);
     }
 
