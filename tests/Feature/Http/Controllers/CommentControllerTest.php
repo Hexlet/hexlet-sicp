@@ -29,6 +29,21 @@ class CommentControllerTest extends ControllerTestCase
     /**
      * @dataProvider dataCommentable
      */
+    public function testShow(string $commentableClass): void
+    {
+        $this->actingAs($this->user);
+        $commentable = $commentableClass::inRandomOrder()->first();
+        $comment = $this->createComment($this->user, $commentable);
+        $route = route('comments.show', $comment);
+
+        $response = $this->get($route);
+        $response->assertRedirect();
+        $response->assertSessionHasNoErrors();
+    }
+
+    /**
+     * @dataProvider dataCommentable
+     */
     public function testStoreChapter(string $commentableClass): void
     {
         /** @var Model $commentableClass */

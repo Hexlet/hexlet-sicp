@@ -37,6 +37,7 @@
         "php-http/guzzle6-adapter": "^2.0",
         "rollbar/rollbar-laravel": "~6.0",
         "spatie/laravel-activitylog": "^3.9",
+        "spatie/laravel-query-builder": "^3.3",
         "spatie/laravel-sitemap": "^5.5",
         "symfony/yaml": "^4.3"
     },

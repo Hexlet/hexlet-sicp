@@ -1,7 +1,7 @@
 @php
 /**
  * @var \App\Exercise $exercise
- * @var \App\Solution $solutions
+ * @var \App\Solution[]|Collection $userSolutions
  * @var \App\User $authUser
  */
 @endphp
@@ -32,7 +32,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                @foreach ($solutions as $solution)
+                @foreach ($userSolutions as $solution)
                 <p class="bg-light py-2 pl-1"><a href="{{ route('users.solutions.show', [$authUser, $solution]) }}">{{ $solution->created_at }}</a></p>
                 <pre class="ml-4 mb-2"><code>{{ $solution->content }}</code></pre>
                 @endforeach

@@ -2,7 +2,7 @@
 @php
     /**
      * @var \App\Exercise $exercise
-     * @var \App\Solution $solutions
+     * @var \App\Solution $userSolutions
      * @var bool $userCompletedExercise
      * @var \App\User $authUser
      */
@@ -77,12 +77,20 @@
                     <div class="d-flex mb-4">
                         <button type="button" class="mr-1 btn btn-primary" data-toggle="modal"
                                 data-target="#interExercise">{{ __('solution.add_solution') }}</button>
-                        @if(!$solutions->isEmpty())
-                            <button type="button" class="mr-1 btn btn-primary" data-toggle="modal"
+                        @if($exercise->solutions()->exists())
+                            <a
+                                class="btn btn-secondary mr-1"
+                                href="{{ route('solutions.index', ['filter' => ['exercise_id' => $exercise->id]]) }}"
+                                role="button">
+                                {{ __('views.exercise.show.buttons.show_solutions') }}
+                            </a>
+                        @endif
+                        @if(!$userSolutions->isEmpty())
+                            <button type="button" class="mr-1 btn btn-primary btn-light" data-toggle="modal"
                                     data-target="#showExercises">{{ __('solution.show_solution') }}</button>
                         @endif
 
-                        @solutions(['exercise' => $exercise, 'solutions' => $solutions])
+                        @solutions(['exercise' => $exercise, 'userSolutions' => $userSolutions])
 
                         {{ BsForm::open(route('users.exercises.store', [$authUser])) }}
                         {{ Form::hidden('exercise_id', $exercise->id) }}
