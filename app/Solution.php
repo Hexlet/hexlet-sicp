@@ -4,10 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Builder;
 
-/**
- * @method User|BelongsTo exercise()
- */
 class Solution extends Model
 {
     protected $fillable = [
@@ -22,5 +20,13 @@ class Solution extends Model
     public function exercise(): BelongsTo
     {
         return $this->belongsTo(Exercise::class);
+    }
+
+    public function scopeVersioned(Builder $builder): Builder
+    {
+        return $builder
+            ->groupBy('exercise_id', 'user')
+            ->distinct()
+            ->latest();
     }
 }

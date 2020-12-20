@@ -28,7 +28,7 @@ class ExerciseController extends Controller
         $previousExercise = Exercise::whereId($exercise->id - 1)->firstOrNew([]);
         $nextExercise = Exercise::whereId($exercise->id + 1)->firstOrNew([]);
 
-        $solutions = $authUser->solutions()
+        $userSolutions = $authUser->solutions()
             ->where('exercise_id', $exercise->id)
             ->orderBy('id', 'desc')
             ->get();
@@ -39,7 +39,7 @@ class ExerciseController extends Controller
             'authUser',
             'previousExercise',
             'nextExercise',
-            'solutions'
+            'userSolutions'
         ));
     }
 }

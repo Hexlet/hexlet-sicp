@@ -34,6 +34,7 @@ Route::group([
         Route::resource('comments_top', 'CommentController')->only('index');
     });
 
+    Route::resource('solutions', 'SolutionController')->only('index', 'show');
     Route::resource('chapters', 'ChapterController')->only('index', 'show');
     Route::resource('exercises', 'ExerciseController')->only('index', 'show');
     Route::resource('log', 'ActivityController')->only('index');
