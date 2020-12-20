@@ -25,8 +25,12 @@ class Solution extends Model
     public function scopeVersioned(Builder $builder): Builder
     {
         return $builder
-            ->groupBy('exercise_id', 'user')
-            ->distinct()
-            ->latest();
+            ->from(function ($q) {
+                $q->groupBy('id', 'exercise_id', 'user_id')
+                    ->distinct('exercise_id', 'user_id')
+                    ->orderBy('exercise_id')
+                    ->orderBy('user_id')
+                    ->from(self::getTable());
+            }, self::getTable());
     }
 }
