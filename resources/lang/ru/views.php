@@ -14,7 +14,7 @@ return [
     'exercise' => [
         'show' => [
             'buttons' => [
-                'show_solutions' => 'Просмотреть все решения',
+                'show_solutions' => 'Смотреть все решения',
             ],
         ],
     ],

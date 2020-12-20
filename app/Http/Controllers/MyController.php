@@ -25,7 +25,10 @@ class MyController extends Controller
         $completedExercises = $user->completedExercises->keyBy('exercise_id');
         $savedSolutionsExercises = $user->solutions()
             ->versioned()
-            ->with('exercise', 'exercise.chapter')
+            ->with([
+                'exercise',
+                'exercise.chapter',
+            ])
             ->paginate(10);
 
         return view('my.index', compact(

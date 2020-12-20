@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Solution;
+use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
 use Illuminate\View\View;
 
@@ -12,9 +13,11 @@ class SolutionController extends Controller
     {
         $solutions = QueryBuilder::for(Solution::class)
             ->versioned()
-            ->allowedFilters('exercise_id')
+            ->latest()
+            ->allowedFilters([
+                AllowedFilter::exact('exercise_id'),
+            ])
             ->get();
-
         return view('solution.index', ['solutions' => $solutions]);
     }
 
