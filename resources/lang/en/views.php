@@ -8,7 +8,7 @@ return [
                 'exercise' => 'Exercise',
                 'date' => 'Date',
             ],
-            'show_action' => 'Show'
+            'show_action' => 'Show',
         ],
     ],
     'exercise' => [

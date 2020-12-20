@@ -16,7 +16,7 @@ class SolutionControllerTest extends ControllerTestCase
         $this->actingAs($this->user);
     }
 
-    public function testIndex()
+    public function testIndex(): void
     {
         $route = route('solutions.index');
 
@@ -26,7 +26,7 @@ class SolutionControllerTest extends ControllerTestCase
         $response->assertOk();
     }
 
-    public function testShow()
+    public function testShow(): void
     {
         $solution = Solution::inRandomOrder()->first();
         $route = route('solutions.show', $solution);
