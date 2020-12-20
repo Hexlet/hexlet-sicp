@@ -13,11 +13,12 @@ class SolutionController extends Controller
     {
         $solutions = QueryBuilder::for(Solution::class)
             ->versioned()
+            ->whereHas('user')
             ->latest()
             ->allowedFilters([
                 AllowedFilter::exact('exercise_id'),
             ])
-            ->get();
+            ->paginate(50);
         return view('solution.index', ['solutions' => $solutions]);
     }
 
