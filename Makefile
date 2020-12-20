@@ -10,7 +10,7 @@ setup: env-prepare sqlite-prepare install key db-prepare
 
 install:
 	composer install
-	npm install
+	npm ci
 
 start:
 	heroku local -f Procfile.dev
