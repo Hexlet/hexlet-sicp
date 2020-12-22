@@ -20,7 +20,12 @@
                     <tbody>
                     @foreach($solutions as $solution)
                         <tr>
-                            <td>{{ $solution->user->name }}</td>
+                            <td>
+                                <a class="text-decoration-none" href="{{ route('users.show', $solution->user) }}">
+                                <img class="rounded-circle mr-1" width="30" height="30" src="{{ getProfileImageLink($solution->user) }}" alt="Profile image">
+                                    {{ $solution->user->name }}
+                                </a>
+                            </td>
                             <td>
                                 <a href="{{ route('exercises.show', $solution->exercise) }}">
                                     {{ $solution->exercise->path }} {{ getExerciseTitle($solution->exercise) }}
