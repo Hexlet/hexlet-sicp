@@ -1,7 +1,7 @@
 @extends('layouts.landing')
 @section('content')
 
-    <main role="main">
+    <main>
 
         <div id="sicpCarousel" class="carousel slide mb-3" data-ride="carousel" data-speed="7000">
             <div class="carousel-inner">
