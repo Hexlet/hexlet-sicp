@@ -7,6 +7,7 @@
 @section('content')
     <div class="my-4">
         <section>
+            <h2 hidden>Solutions</h2>
             <div class="table-responsive">
                 <table class="table table-striped">
                     <thead>
