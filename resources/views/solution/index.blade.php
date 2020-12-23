@@ -42,6 +42,7 @@
                     </tbody>
                 </table>
             </div>
+            {{ $solutions->links() }}
         </section>
     </div>
 @endsection
