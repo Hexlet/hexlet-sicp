@@ -3,6 +3,9 @@
 return [
     'solution' => [
         'index' => [
+            'header' => [
+                'h1' => 'Solutions'
+            ],
             'table_header' => [
                 'author' => 'Author',
                 'exercise' => 'Exercise',
