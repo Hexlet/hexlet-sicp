@@ -4,7 +4,7 @@ return [
     'solution' => [
         'index' => [
             'header' => [
-                'h1' => 'Solutions'
+                'h1' => 'Solutions',
             ],
             'table_header' => [
                 'author' => 'Author',
