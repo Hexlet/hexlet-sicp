@@ -2,10 +2,10 @@
     <a class="btn btn-light" href="{{ route('top.index') }}">
         {{ __('rating.index.title') }}
     </a>
-    <a class="btn btn-light" href="{{ route('progress_top.index') }}"/>
+    <a class="btn btn-light" href="{{ route('progress_top.index') }}">
         {{ __('rating.progress.title') }}
     </a>
-    <a class="btn btn-light" href="{{ route('comments_top.index') }}"/>
+    <a class="btn btn-light" href="{{ route('comments_top.index') }}">
         {{ __('rating.comments.title') }}
     </a>
 </div>
