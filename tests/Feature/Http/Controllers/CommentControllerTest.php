@@ -44,7 +44,7 @@ class CommentControllerTest extends ControllerTestCase
     /**
      * @dataProvider dataCommentable
      */
-    public function testStoreChapter(string $commentableClass): void
+    public function testStore(string $commentableClass): void
     {
         /** @var Model $commentableClass */
         $commentable = $commentableClass::inRandomOrder()->first();
@@ -62,8 +62,12 @@ class CommentControllerTest extends ControllerTestCase
         ];
         $response = $this->post(route('comments.store'), $commentData);
 
-        $response->assertRedirect(sprintf("%s#comment-1", $visitedPage));
         $this->assertDatabaseHas('comments', $commentData);
+
+        // https://github.com/laravel/framework/issues/30467
+        $comment = Comment::where($commentData)->first();
+        $response->assertRedirect(sprintf("%s#comment-%s", $visitedPage, $comment->id));
+
         $this->get($visitedPage)->assertSee($commentData['content']);
     }
 
