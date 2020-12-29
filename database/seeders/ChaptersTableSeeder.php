@@ -1,5 +1,7 @@
 <?php
 
+namespace Database\Seeders;
+
 use App\Chapter;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -10,8 +12,9 @@ class ChaptersTableSeeder extends Seeder
     /**
      * Run the database seeds.
      *
+     * @return void
      */
-    public function run(): void
+    public function run()
     {
         $chapters = Yaml::parseFile(database_path('chapters.yml'));
         DB::beginTransaction();

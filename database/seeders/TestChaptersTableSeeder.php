@@ -1,5 +1,7 @@
 <?php
 
+namespace Database\Seeders;
+
 use App\Chapter;
 use Illuminate\Database\Seeder;
 
@@ -8,8 +10,9 @@ class TestChaptersTableSeeder extends Seeder
     /**
      * Run the database seeds.
      *
+     * @return void
      */
-    public function run(): void
+    public function run()
     {
         $parents = [null];
         factory(Chapter::class, 10)->create()->each(function (Chapter $chapter) use (&$parents): void {
