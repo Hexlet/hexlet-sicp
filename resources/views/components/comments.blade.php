@@ -1,7 +1,7 @@
 @php
 /**
  * @var \Illuminate\Database\Eloquent\Model $model
- * @var \App\Comment $comment
+ * @var \App\Models\Comment $comment
  */
 @endphp
 <div class="mt-2">

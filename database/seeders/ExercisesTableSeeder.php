@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
-use App\Chapter;
-use App\Exercise;
+use App\Models\Chapter;
+use App\Models\Exercise;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Symfony\Component\Yaml\Yaml;

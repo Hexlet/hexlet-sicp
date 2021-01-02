@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
@@ -23,8 +23,8 @@ use Illuminate\Support\Carbon;
  * @property Carbon|null $updated_at
  * @property Carbon|null $deleted_at
  * @property-read \Illuminate\Database\Eloquent\Model|\Eloquent $commentable
- * @property-read \App\Comment|null $parent
- * @property-read Collection|\App\Comment[] $replies
+ * @property-read \App\Models\Comment|null $parent
+ * @property-read Collection|\App\Models\Comment[] $replies
  * @property-read int|null $replies_count
  * @property-read User $user
  */
@@ -47,12 +47,12 @@ class Comment extends Model
 
     public function replies(): HasMany
     {
-        return $this->hasMany('App\Comment', 'parent_id');
+        return $this->hasMany('App\Models\Comment', 'parent_id');
     }
 
     public function parent(): BelongsTo
     {
-        return $this->belongsTo('App\Comment', 'parent_id');
+        return $this->belongsTo('App\Models\Comment', 'parent_id');
     }
 
     public function isReply(): bool

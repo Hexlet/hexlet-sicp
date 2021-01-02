@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Exercise;
-use App\User;
+use App\Models\Exercise;
+use App\Models\User;
 use Illuminate\View\View;
 
 class ExerciseController extends Controller

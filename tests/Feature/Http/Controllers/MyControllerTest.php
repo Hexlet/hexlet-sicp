@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\Http\Controllers;
 
-use App\Chapter;
+use App\Models\Chapter;
 use Illuminate\Auth\AuthenticationException;
 use Tests\ControllerTestCase;
 

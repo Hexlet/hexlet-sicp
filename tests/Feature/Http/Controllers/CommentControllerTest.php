@@ -2,10 +2,10 @@
 
 namespace Tests\Feature\Http\Controllers;
 
-use App\Chapter;
-use App\Comment;
-use App\Exercise;
-use App\User;
+use App\Models\Chapter;
+use App\Models\Comment;
+use App\Models\Exercise;
+use App\Models\User;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Database\Eloquent\Model;
 use Tests\ControllerTestCase;

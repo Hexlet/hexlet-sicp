@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Solution;
+use App\Models\Solution;
 use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
 use Illuminate\View\View;

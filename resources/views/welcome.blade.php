@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @php
-/** @var \Illuminate\Support\Collection|\App\Activity[] $logItems */
-/** @var \Illuminate\Support\Collection|\App\Comment[] $comments */
+/** @var \Illuminate\Support\Collection|\App\Models\Activity[] $logItems */
+/** @var \Illuminate\Support\Collection|\App\Models\Comment[] $comments */
 @endphp
 @section('content')
 <h1 class="my-4">{{ __('welcome.title') }}</h1>

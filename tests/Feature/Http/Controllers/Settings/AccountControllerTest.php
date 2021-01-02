@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\Http\Controllers\Settings;
 
-use App\User;
+use App\Models\User;
 use Tests\ControllerTestCase;
 
 class AccountControllerTest extends ControllerTestCase

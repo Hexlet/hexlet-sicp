@@ -2,7 +2,7 @@
 @php
 /**
  * @var \Illuminate\Support\Collection|\Illuminate\Support\Collection[] $exercisesGroups
- * @var \Illuminate\Support\Collection|\App\Exercise[] $exercises
+ * @var \Illuminate\Support\Collection|\App\Models\Exercise[] $exercises
  */
 @endphp
 @section('description'){{ __('exercise.index.description') }}@endsection

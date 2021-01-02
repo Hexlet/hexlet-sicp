@@ -1,8 +1,8 @@
 @php
 /**
- * @var \App\Exercise $exercise
- * @var \App\Solution[]|Collection $userSolutions
- * @var \App\User $authUser
+ * @var \App\Models\Exercise $exercise
+ * @var \App\Models\Solution[]|Collection $userSolutions
+ * @var \App\Models\User $authUser
  */
 @endphp
 

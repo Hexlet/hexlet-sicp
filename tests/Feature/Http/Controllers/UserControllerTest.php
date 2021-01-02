@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\Http\Controllers;
 
-use App\User;
+use App\Models\User;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Tests\ControllerTestCase;
 

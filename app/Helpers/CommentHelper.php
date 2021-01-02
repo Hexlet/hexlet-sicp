@@ -1,6 +1,6 @@
 <?php
 
-use App\Comment;
+use App\Models\Comment;
 
 if (!function_exists('getCommentLink')) {
     function getCommentLink(Comment $comment): string

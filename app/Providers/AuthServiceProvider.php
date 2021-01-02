@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use App\Comment;
+use App\Models\Comment;
 use App\Policies\CommentPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 

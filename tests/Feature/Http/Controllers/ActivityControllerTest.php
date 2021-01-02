@@ -2,8 +2,8 @@
 
 namespace Tests\Feature\Http\Controllers;
 
-use App\Chapter;
-use App\ReadChapter;
+use App\Models\Chapter;
+use App\Models\ReadChapter;
 use Tests\ControllerTestCase;
 
 class ActivityControllerTest extends ControllerTestCase

@@ -1,8 +1,8 @@
 <?php
 
-use App\Solution;
-use App\Exercise;
-use App\User;
+use App\Models\Solution;
+use App\Models\Exercise;
+use App\Models\User;
 use Faker\Generator as Faker;
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */

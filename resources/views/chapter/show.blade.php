@@ -1,11 +1,11 @@
 @extends('layouts.app')
 @php
     /**
-     * @var \App\Chapter $chapter
-     * @var \App\Chapter $previousChapter
-     * @var \App\Chapter $nextChapter
-     * @var \App\Exercise $exercise
-     * @var \App\User $authUser
+     * @var \App\Models\Chapter $chapter
+     * @var \App\Models\Chapter $previousChapter
+     * @var \App\Models\Chapter $nextChapter
+     * @var \App\Models\Exercise $exercise
+     * @var \App\Models\User $authUser
      * @var bool $isCompletedChapter
      */
 @endphp

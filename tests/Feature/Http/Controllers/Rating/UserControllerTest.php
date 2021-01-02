@@ -2,8 +2,8 @@
 
 namespace Tests\Feature\Http\Controllers\Rating;
 
-use App\ReadChapter;
-use App\User;
+use App\Models\ReadChapter;
+use App\Models\User;
 use Tests\TestCase;
 
 class UserControllerTest extends TestCase

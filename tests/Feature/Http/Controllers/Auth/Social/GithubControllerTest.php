@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\Http\Controllers\Auth\Social;
 
-use App\User;
+use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Laravel\Socialite\Contracts\Factory as Socialite;
 use Laravel\Socialite\Two\GithubProvider;

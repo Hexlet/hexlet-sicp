@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Solution;
+use App\Models\Solution;
 use Illuminate\Database\Seeder;
 
 class SolutionsTableSeeder extends Seeder

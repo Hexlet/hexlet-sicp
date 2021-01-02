@@ -2,9 +2,9 @@
 
 namespace Tests\Feature\Http\Controllers\User;
 
-use App\Chapter;
-use App\CompletedExercise;
-use App\Exercise;
+use App\Models\Chapter;
+use App\Models\CompletedExercise;
+use App\Models\Exercise;
 use Tests\ControllerTestCase;
 
 class UserExerciseControllerTest extends ControllerTestCase

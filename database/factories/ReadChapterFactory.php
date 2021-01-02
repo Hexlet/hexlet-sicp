@@ -1,8 +1,8 @@
 <?php
 
-use App\Chapter;
-use App\ReadChapter;
-use App\User;
+use App\Models\Chapter;
+use App\Models\ReadChapter;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factory;
 
 /** @var Factory $factory */

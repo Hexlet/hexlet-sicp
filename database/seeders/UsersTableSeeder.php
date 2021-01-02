@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
-use App\Chapter;
-use App\User;
+use App\Models\Chapter;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class UsersTableSeeder extends Seeder

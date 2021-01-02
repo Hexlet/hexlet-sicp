@@ -1,7 +1,7 @@
 @php
 /**
- * @var \Illuminate\Support\Collection|\App\Chapter[] $chapters
- * @var \App\Chapter $chapter
+ * @var \Illuminate\Support\Collection|\App\Models\Chapter[] $chapters
+ * @var \App\Models\Chapter $chapter
  */
 @endphp
 <div class="list-group list-group-flush">

@@ -1,6 +1,6 @@
 @php
 /**
- * @var \App\Comment $comment
+ * @var \App\Models\Comment $comment
  */
 @endphp
 

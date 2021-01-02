@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Activity;
-use App\Chapter;
-use App\Comment;
-use App\Exercise;
-use App\User;
+use App\Models\Activity;
+use App\Models\Chapter;
+use App\Models\Comment;
+use App\Models\Exercise;
+use App\Models\User;
 use Illuminate\View\View;
 
 class WelcomeController extends Controller
