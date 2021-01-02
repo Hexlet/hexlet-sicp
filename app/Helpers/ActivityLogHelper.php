@@ -1,10 +1,17 @@
 <?php
 
+namespace App\Helpers;
+
 use App\Models\Activity;
 
-if (!function_exists('getLogItemDescription')) {
-
-    function getLogItemDescription(Activity $logItem): string
+class ActivityLogHelper
+{
+    /**
+     * @param Activity $logItem
+     *
+     * @return string
+     */
+    public static function getLogItemDescription($logItem)
     {
         $itemsCount = $logItem->getExtraProperty('count');
         $description = $logItem->description;

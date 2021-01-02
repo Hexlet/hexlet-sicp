@@ -60,27 +60,27 @@
                 </div>
                 @switch($logItem->description)
                     @case('completed_exercise')
-                        {{ getLogItemDescription($logItem) }}
+                        {{ ActivityLog::getLogItemDescription($logItem) }}
                         <a href="{{ route('exercises.show', $logItem->getExtraProperty('exercise_id')) }}">
                             {{ $logItem->subject->path }} {{ getExerciseTitle($logItem->subject) }}
                         </a>
                         @break
                     @case('destroy_exercise')
-                        {{ getLogItemDescription($logItem) }}
+                        {{ ActivityLog::getLogItemDescription($logItem) }}
                         <a href="{{ route('exercises.show', $logItem->getExtraProperty('exercise_id')) }}">
                             {{ $logItem->subject->path }} {{ getExerciseTitle($logItem->subject) }}
                         </a>
                         @break
                     @case('commented')
                         <a href="{{ $logItem->getExtraProperty('url') }}">
-                            {{ getLogItemDescription($logItem) }}
+                            {{ ActivityLog::getLogItemDescription($logItem) }}
                         </a>
                         <span>
                         {{ $logItem->getExtraProperty('comment.content') }}
                         </span>
                         @break
                      @case('add_solution')
-                        {{ getLogItemDescription($logItem) }}
+                        {{ ActivityLog::getLogItemDescription($logItem) }}
                         <a href="{{ route('exercises.show', $logItem->getExtraProperty('exercise_id')) }}">
                             {{ $logItem->getExtraProperty('exercise_path') }} {{ getExerciseTitle(getExercise($logItem->getExtraProperty('exercise_path'))) }}
                         </a>
@@ -92,7 +92,7 @@
                                href="#collapseExp{{ $logItem->id }}"
                                aria-expanded="false"
                                aria-controls="collapseExp{{ $logItem->id }}">
-                                {{ getLogItemDescription($logItem) }}
+                                {{ ActivityLog::getLogItemDescription($logItem) }}
                             </a>
                             <div class="collapse" id="collapseExp{{ $logItem->id }}">
                                 @if($logItem->getExtraProperty('chapters'))
