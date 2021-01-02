@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Rating;
 
-use App\Chapter;
-use App\Exercise;
+use App\Models\Chapter;
+use App\Models\Exercise;
 use App\Http\Controllers\Controller;
 use Illuminate\View\View;
 

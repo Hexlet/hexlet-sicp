@@ -1,6 +1,6 @@
 <?php
 
-use App\Chapter;
+use App\Models\Chapter;
 
 if (!function_exists('getChapterName')) {
     function getChapterName(string $chapter): string
@@ -10,14 +10,14 @@ if (!function_exists('getChapterName')) {
 }
 
 if (!function_exists('haveRead')) {
-    function haveRead(App\User $user, App\Chapter $chapter): bool
+    function haveRead(App\Models\User $user, App\Models\Chapter $chapter): bool
     {
         return $user->chapters->contains($chapter);
     }
 }
 
 if (!function_exists('getChapterHeaderTag')) {
-    function getChapterHeaderTag(App\Chapter $chapter): string
+    function getChapterHeaderTag(App\Models\Chapter $chapter): string
     {
         return $chapter->can_read
         ? ''

@@ -2,9 +2,9 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\CompletedExercise;
-use App\Exercise;
-use App\User;
+use App\Models\CompletedExercise;
+use App\Models\Exercise;
+use App\Models\User;
 
 $factory->define(CompletedExercise::class, function () {
     return [

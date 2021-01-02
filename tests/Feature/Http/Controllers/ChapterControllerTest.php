@@ -2,8 +2,8 @@
 
 namespace Tests\Feature\Http\Controllers;
 
-use App\Chapter;
-use App\Comment;
+use App\Models\Chapter;
+use App\Models\Comment;
 use Tests\TestCase;
 
 class ChapterControllerTest extends TestCase

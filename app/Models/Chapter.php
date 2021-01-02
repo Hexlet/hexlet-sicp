@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -19,7 +19,7 @@ class Chapter extends Model
 
     public function comments(): MorphMany
     {
-        return $this->morphMany('\App\Comment', 'commentable');
+        return $this->morphMany('\App\Models\Comment', 'commentable');
     }
 
     public function parent(): BelongsTo

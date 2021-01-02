@@ -1,6 +1,6 @@
 <?php
 
-use App\User;
+use App\Models\User;
 use Illuminate\Support\Collection;
 
 if (!function_exists('getCalculatedRating')) {

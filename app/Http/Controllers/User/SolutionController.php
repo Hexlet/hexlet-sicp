@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\User;
 
-use App\Exercise;
+use App\Models\Exercise;
 use App\Http\Controllers\Controller;
-use App\Solution;
-use App\User;
+use App\Models\Solution;
+use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;

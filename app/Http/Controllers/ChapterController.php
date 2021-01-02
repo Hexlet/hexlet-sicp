@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Chapter;
-use App\User;
+use App\Models\Chapter;
+use App\Models\User;
 use Illuminate\View\View;
 
 class ChapterController extends Controller

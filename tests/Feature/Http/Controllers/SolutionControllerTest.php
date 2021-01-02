@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\Http\Controllers;
 
-use App\Solution;
+use App\Models\Solution;
 use Tests\ControllerTestCase;
 
 class SolutionControllerTest extends ControllerTestCase

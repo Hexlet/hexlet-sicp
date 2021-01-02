@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\Http\Controllers\User;
 
-use App\Solution;
+use App\Models\Solution;
 use Illuminate\Support\Collection;
 use Tests\ControllerTestCase;
 

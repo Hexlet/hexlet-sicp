@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Chapter;
+use App\Models\Chapter;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Symfony\Component\Yaml\Yaml;

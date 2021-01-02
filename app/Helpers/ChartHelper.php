@@ -1,6 +1,6 @@
 <?php
 
-use App\Activity;
+use App\Models\Activity;
 use Carbon\Carbon;
 use Carbon\CarbonPeriod;
 use Illuminate\Support\Collection;

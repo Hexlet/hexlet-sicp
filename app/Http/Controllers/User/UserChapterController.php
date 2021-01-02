@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\User;
 
-use App\Chapter;
+use App\Models\Chapter;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\User\SaveChapterRequest;
-use App\User;
+use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 
 class UserChapterController extends Controller

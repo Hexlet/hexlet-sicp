@@ -1,10 +1,10 @@
 @extends('layouts.app')
 @php
     /**
-     * @var \App\Exercise $exercise
-     * @var \App\Solution $userSolutions
+     * @var \App\Models\Exercise $exercise
+     * @var \App\Models\Solution $userSolutions
      * @var bool $userCompletedExercise
-     * @var \App\User $authUser
+     * @var \App\Models\User $authUser
      */
 @endphp
 @section('description'){{ __('exercise.exercise') }} {{ $exercise->path }} {{ getExerciseTitle($exercise) }} {{ __('exercise.show.description') }}@endsection

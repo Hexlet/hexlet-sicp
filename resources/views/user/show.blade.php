@@ -2,10 +2,10 @@
 
 @php
 /**
- * @var \App\Chapter $chapter
+ * @var \App\Models\Chapter $chapter
  * @var string $userRatingPosition
  * @var int $points
- * @var \App\User $user
+ * @var \App\Models\User $user
  */
 @endphp
 @section('description', $user->name)

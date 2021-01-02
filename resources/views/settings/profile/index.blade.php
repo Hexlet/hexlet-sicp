@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @php
 /**
- * @var \App\User $user
+ * @var \App\Models\User $user
  */
 @endphp
 @section('content')

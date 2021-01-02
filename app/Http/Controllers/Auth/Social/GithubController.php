@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Auth\Social;
 
 use App\Http\Controllers\Controller;
-use App\User;
+use App\Models\User;
 use Exception;
 use Illuminate\Contracts\Validation\Validator as ValidatorContract;
 use Illuminate\Http\RedirectResponse;

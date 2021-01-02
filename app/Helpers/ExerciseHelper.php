@@ -1,6 +1,6 @@
 <?php
 
-use App\Exercise;
+use App\Models\Exercise;
 
 if (!function_exists('getExerciseListingViewFilepath')) {
     function getExerciseListingViewFilepath(string $exercisePath): string

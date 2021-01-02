@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @php
 /**
- * @var \App\Solution[]|\Illuminate\Support\Collection $solutions
+ * @var \App\Models\Solution[]|\Illuminate\Support\Collection $solutions
  */
 @endphp
 @section('content')
