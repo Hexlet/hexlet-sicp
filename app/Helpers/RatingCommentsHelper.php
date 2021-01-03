@@ -1,10 +1,16 @@
 <?php
 
+namespace App\Helpers;
+
 use App\Models\User;
 use Illuminate\Support\Collection;
 
-if (!function_exists('getCommentsRating')) {
-    function getCommentsRating(): Collection
+class RatingCommentsHelper
+{
+    /**
+     * @return Collection
+     */
+    public static function getCommentsRating()
     {
         $commentsRating = User::query()
             ->withCount('comments')

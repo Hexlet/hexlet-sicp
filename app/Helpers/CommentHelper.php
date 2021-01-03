@@ -1,9 +1,17 @@
 <?php
 
+namespace App\Helpers;
+
 use App\Models\Comment;
 
-if (!function_exists('getCommentLink')) {
-    function getCommentLink(Comment $comment): string
+class CommentHelper
+{
+    /**
+     * @param Comment $comment
+     *
+     * @return string
+     */
+    public static function getCommentLink($comment)
     {
         $commentableResourceName = str_plural(strtolower(class_basename($comment->commentable_type)));
         $commentableUrl = route("{$commentableResourceName}.show", $comment->commentable);

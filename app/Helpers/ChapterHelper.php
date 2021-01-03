@@ -1,41 +1,63 @@
 <?php
 
-use App\Models\Chapter;
+namespace App\Helpers;
 
-if (!function_exists('getChapterName')) {
-    function getChapterName(string $chapter): string
+use App\Models\Chapter;
+use App\Models\User;
+
+class ChapterHelper
+{
+    /**
+     * @param string $chapter
+     *
+     * @return string
+     */
+    public static function getChapterName($chapter)
     {
         return __('sicp.chapters')[$chapter] ?? __('sicp.chapters.' . $chapter);
     }
-}
 
-if (!function_exists('haveRead')) {
-    function haveRead(App\Models\User $user, App\Models\Chapter $chapter): bool
+    /**
+     * @param User $user
+     * @param Chapter $chapter
+     *
+     * @return bool
+     */
+    public static function haveRead($user, $chapter)
     {
         return $user->chapters->contains($chapter);
     }
-}
 
-if (!function_exists('getChapterHeaderTag')) {
-    function getChapterHeaderTag(App\Models\Chapter $chapter): string
+    /**
+     * @param Chapter $chapter
+     *
+     * @return string
+     */
+    public static function getChapterHeaderTag($chapter)
     {
         return $chapter->can_read
         ? ''
         : sprintf('h%s', $chapter->getChapterLevel() + 3);
     }
-}
 
-if (!function_exists('getChapterOriginLink')) {
-    function getChapterOriginLink(Chapter $chapter): ?string
+    /**
+     * @param Chapter $chapter
+     *
+     * @return ?string
+     */
+    public static function getChapterOriginLink($chapter)
     {
         $links = require resource_path('chapter-links.php');
 
         return $links[$chapter->path] ?? null;
     }
-}
 
-if (!function_exists('getChapterOriginLinkForNumber')) {
-    function getChapterOriginLinkForNumber(string $chapter): ?string
+    /**
+     * @param string $chapter
+     *
+     * @return ?string
+     */
+    public static function getChapterOriginLinkForNumber($chapter)
     {
         $links = require resource_path('chapter-links.php');
 

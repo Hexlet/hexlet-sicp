@@ -1,30 +1,48 @@
 <?php
 
-if (!function_exists('getLocalizedHttpsURL')) {
-    function getLocalizedHttpsURL(string $localeCode): string
+namespace App\Helpers;
+
+class LocalizationHelper
+{
+    /**
+     * @param string $localeCode
+     *
+     * @return string
+     */
+    public static function getLocalizedHttpsURL($localeCode)
     {
-        $url = LaravelLocalization::getLocalizedURL($localeCode, null, [], true);
+        $url = \LaravelLocalization::getLocalizedURL($localeCode, null, [], true);
         $environment = app()->environment();
         return $environment === 'production' ? preg_replace("/^http:/i", "https:", $url) : $url;
     }
-}
 
-if (!function_exists('getPathToLocaleFlag')) {
-    function getPathToLocaleFlag(string $currentLocale): string
+    /**
+     * @param string $currentLocale
+     *
+     * @return string
+     */
+    public static function getPathToLocaleFlag($currentLocale)
     {
         return asset("icons/flags/{$currentLocale}.svg");
     }
-}
 
-if (!function_exists('getLocalizedURL')) {
-    function getLocalizedURL(string $currentLocale): string
+    /**
+     * @param string $currentLocale
+     *
+     * @return string
+     */
+    public static function getLocalizedURL($currentLocale)
     {
-        return LaravelLocalization::getLocalizedURL($currentLocale);
+        return \LaravelLocalization::getLocalizedURL($currentLocale);
     }
-}
 
-if (!function_exists('getOtherLocales')) {
-    function getOtherLocales(string $currentLocale, array $locales): array
+    /**
+     * @param string $currentLocale
+     * @param array $locales
+     *
+     * @return array
+     */
+    public static function getOtherLocales($currentLocale, $locales)
     {
         return array_filter(
             $locales,
@@ -34,18 +52,25 @@ if (!function_exists('getOtherLocales')) {
             ARRAY_FILTER_USE_KEY
         );
     }
-}
 
-if (!function_exists('getNativeLanguageName')) {
-    function getNativeLanguageName(string $currentLocale): string
+    /**
+     * @param string $currentLocale
+     *
+     * @return string
+     */
+    public static function getNativeLanguageName($currentLocale)
     {
-        $locales = LaravelLocalization::getSupportedLocales();
+        $locales = \LaravelLocalization::getSupportedLocales();
         return normalizeNativeLanguageName($locales[$currentLocale]['native']);
     }
-}
 
-if (!function_exists('normalizeNativeLanguageName')) {
-    function normalizeNativeLanguageName(string $language, string $encoding = 'utf-8'): string
+    /**
+     * @param string $language
+     * @param string $encoding
+     *
+     * @return string
+     */
+    public static function normalizeNativeLanguageName($language, $encoding = 'utf-8')
     {
         // multi-bytes strtolower()
         $lower = mb_strtolower($language, $encoding);

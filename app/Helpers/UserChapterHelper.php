@@ -1,9 +1,18 @@
 <?php
 
+namespace App\Helpers;
+
 use Illuminate\Support\Collection;
 
-if (!function_exists('getDiffChapters')) {
-    function getDiffChapters(Collection $chaptersOld, Collection $chaptersNew): array
+class UserChapterHelper
+{
+    /**
+     * @param Collection $chaptersOld
+     * @param Collection $chaptersNew
+     *
+     * @return array
+     */
+    public static function getDiffChapters($chaptersOld, $chaptersNew)
     {
         $chapters = $chaptersNew->diff($chaptersOld);
         if (count($chapters)) {
