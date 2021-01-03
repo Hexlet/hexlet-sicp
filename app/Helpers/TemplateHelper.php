@@ -1,9 +1,12 @@
 <?php
 
+namespace App\Helpers;
+
 use Illuminate\Support\Facades\Request;
 
-if (!function_exists('isActiveRoute')) {
-    function isActiveRoute(string $routeAlias): bool
+class TemplateHelper
+{
+    public static function isActiveRoute(string $routeAlias): bool
     {
         return Request::route()->getName() === $routeAlias;
     }

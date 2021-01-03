@@ -1,17 +1,15 @@
 <?php
 
+namespace App\Helpers;
+
 use App\Models\Activity;
 use Carbon\Carbon;
 use Carbon\CarbonPeriod;
 use Illuminate\Support\Collection;
 
-if (!function_exists('getChart')) {
-
-    /**
-     * @param int $userId
-     */
-
-    function getChart($userId = null): Generator
+class ChartHelper
+{
+    public static function getChart(?int $userId = null): \Generator
     {
         $countActivitiesByDays = Activity::where('causer_id', $userId)
             ->orWhere(function ($query) use ($userId) {

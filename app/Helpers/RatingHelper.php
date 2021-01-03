@@ -1,10 +1,13 @@
 <?php
 
+namespace App\Helpers;
+
 use App\Models\User;
 use Illuminate\Support\Collection;
 
-if (!function_exists('getCalculatedRating')) {
-    function getCalculatedRating(): Collection
+class RatingHelper
+{
+    public static function getCalculatedRating(): Collection
     {
         $calculatedRating = User::query()
             ->whereHas('readChapters')

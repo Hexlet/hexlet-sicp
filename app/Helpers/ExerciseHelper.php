@@ -1,41 +1,38 @@
 <?php
 
+namespace App\Helpers;
+
 use App\Models\Exercise;
 
-if (!function_exists('getExerciseListingViewFilepath')) {
-    function getExerciseListingViewFilepath(string $exercisePath): string
+class ExerciseHelper
+{
+    public static function getExerciseListingViewFilepath(string $exercisePath): string
     {
         $viewName = str_replace('.', '_', $exercisePath);
         return sprintf('exercise.listing.%s', $viewName);
     }
-}
 
-if (!function_exists('getExerciseTitle')) {
-    function getExerciseTitle(Exercise $exercise): ?string
+    public static function getExerciseTitle(Exercise $exercise): ?string
     {
         $underscoredPath = str_replace('.', '_', $exercise->path);
 
         $titleTranslatePath = "exercises/{$underscoredPath}.title";
 
-        if (Lang::has($titleTranslatePath)) {
+        if (\Lang::has($titleTranslatePath)) {
             return __($titleTranslatePath);
         }
 
         return null;
     }
-}
 
-if (!function_exists('getExerciseOriginLink')) {
-    function getExerciseOriginLink(Exercise $exercise): ?string
+    public static function getExerciseOriginLink(Exercise $exercise): ?string
     {
         $links = require resource_path('exercise-links.php');
 
         return $links[$exercise->path] ?? null;
     }
-}
 
-if (!function_exists('getExercise')) {
-    function getExercise(string $path): Exercise
+    public static function getExercise(string $path): Exercise
     {
         $exercise = Exercise::query()
             ->where('path', $path)
