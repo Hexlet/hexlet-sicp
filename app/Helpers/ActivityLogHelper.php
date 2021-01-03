@@ -6,12 +6,7 @@ use App\Models\Activity;
 
 class ActivityLogHelper
 {
-    /**
-     * @param Activity $logItem
-     *
-     * @return string
-     */
-    public static function getLogItemDescription($logItem)
+    public static function getLogItemDescription(Activity $logItem): string
     {
         $itemsCount = $logItem->getExtraProperty('count');
         $description = $logItem->description;

@@ -6,13 +6,7 @@ use Illuminate\Support\Collection;
 
 class UserChapterHelper
 {
-    /**
-     * @param Collection $chaptersOld
-     * @param Collection $chaptersNew
-     *
-     * @return array
-     */
-    public static function getDiffChapters($chaptersOld, $chaptersNew)
+    public static function getDiffChapters(Collection $chaptersOld, Collection $chaptersNew): array
     {
         $chapters = $chaptersNew->diff($chaptersOld);
         if (count($chapters)) {

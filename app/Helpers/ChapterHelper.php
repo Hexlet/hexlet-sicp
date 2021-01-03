@@ -7,57 +7,31 @@ use App\Models\User;
 
 class ChapterHelper
 {
-    /**
-     * @param string $chapter
-     *
-     * @return string
-     */
-    public static function getChapterName($chapter)
+    public static function getChapterName(string $chapter): string
     {
         return __('sicp.chapters')[$chapter] ?? __('sicp.chapters.' . $chapter);
     }
 
-    /**
-     * @param User $user
-     * @param Chapter $chapter
-     *
-     * @return bool
-     */
-    public static function haveRead($user, $chapter)
+    public static function haveRead(User $user, Chapter $chapter): bool
     {
         return $user->chapters->contains($chapter);
     }
 
-    /**
-     * @param Chapter $chapter
-     *
-     * @return string
-     */
-    public static function getChapterHeaderTag($chapter)
+    public static function getChapterHeaderTag(Chapter $chapter): string
     {
         return $chapter->can_read
         ? ''
         : sprintf('h%s', $chapter->getChapterLevel() + 3);
     }
 
-    /**
-     * @param Chapter $chapter
-     *
-     * @return ?string
-     */
-    public static function getChapterOriginLink($chapter)
+    public static function getChapterOriginLink(Chapter $chapter): ?string
     {
         $links = require resource_path('chapter-links.php');
 
         return $links[$chapter->path] ?? null;
     }
 
-    /**
-     * @param string $chapter
-     *
-     * @return ?string
-     */
-    public static function getChapterOriginLinkForNumber($chapter)
+    public static function getChapterOriginLinkForNumber(string $chapter): ?string
     {
         $links = require resource_path('chapter-links.php');
 

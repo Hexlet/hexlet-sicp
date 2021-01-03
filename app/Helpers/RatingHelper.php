@@ -7,10 +7,7 @@ use Illuminate\Support\Collection;
 
 class RatingHelper
 {
-    /**
-     * @return Collection
-     */
-    public static function getCalculatedRating()
+    public static function getCalculatedRating(): Collection
     {
         $calculatedRating = User::query()
             ->whereHas('readChapters')

@@ -9,12 +9,7 @@ use Illuminate\Support\Collection;
 
 class ChartHelper
 {
-    /**
-     * @param int $userId
-     *
-     * @return \Generator
-     */
-    public static function getChart($userId = null)
+    public static function getChart(?int $userId = null): \Generator
     {
         $countActivitiesByDays = Activity::where('causer_id', $userId)
             ->orWhere(function ($query) use ($userId) {

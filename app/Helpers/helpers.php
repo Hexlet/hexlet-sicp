@@ -11,102 +11,71 @@ use App\Helpers\RatingHelper;
 use App\Helpers\TemplateHelper;
 use App\Helpers\UserChapterHelper;
 use App\Helpers\UserHelper;
+use App\Models\Activity;
+use App\Models\User;
+use App\Models\Chapter;
+use App\Models\Comment;
+use App\Models\Exercise;
+use Illuminate\Support\Collection;
 
 if (!function_exists('getLogItemDescription')) {
-    /**
-     * @param App\Models\Activity $logItem
-     * @return string
-     */
-    function getLogItemDescription($logItem)
+    function getLogItemDescription(Activity $logItem): string
     {
         return ActivityLogHelper::getLogItemDescription($logItem);
     }
 }
 
 if (!function_exists('getChapterName')) {
-    /**
-     * @param string $chapter
-     * @return string
-     */
-    function getChapterName($chapter)
+    function getChapterName(string $chapter): string
     {
         return ChapterHelper::getChapterName($chapter);
     }
 }
 
 if (!function_exists('haveRead')) {
-    /**
-     * @param App\Models\User $user
-     * @param App\Models\Chapter $chapter
-     * @return bool
-     */
-    function haveRead($user, $chapter)
+    function haveRead(User $user, Chapter $chapter): bool
     {
         return ChapterHelper::haveRead($user, $chapter);
     }
 }
 
 if (!function_exists('getChapterHeaderTag')) {
-    /**
-     * @param App\Models\Chapter $chapter
-     * @return string
-     */
-    function getChapterHeaderTag($chapter)
+    function getChapterHeaderTag(Chapter $chapter): string
     {
         return ChapterHelper::getChapterHeaderTag($chapter);
     }
 }
 
 if (!function_exists('getChapterOriginLink')) {
-    /**
-     * @param App\Models\Chapter $chapter
-     * @return ?string
-     */
-    function getChapterOriginLink($chapter)
+    function getChapterOriginLink(Chapter $chapter): ?string
     {
         return ChapterHelper::getChapterOriginLink($chapter);
     }
 }
 
 if (!function_exists('getChapterOriginLinkForNumber')) {
-    /**
-     * @param string $chapter
-     * @return ?string
-     */
-    function getChapterOriginLinkForNumber($chapter)
+    function getChapterOriginLinkForNumber(string $chapter): ?string
     {
         return ChapterHelper::getChapterOriginLinkForNumber($chapter);
     }
 }
 
 if (!function_exists('getChart')) {
-    /**
-     * @param int $userId
-     * @return Generator
-     */
-    function getChart($userId = null)
+    function getChart(?int $userId = null): \Generator
     {
         return ChartHelper::getChart($userId);
     }
 }
 
 if (!function_exists('getCommentLink')) {
-    /**
-     * @param App\Models\Comment $comment
-     * @return string
-     */
-    function getCommentLink($comment)
+    function getCommentLink(Comment $comment): string
     {
         return CommentHelper::getCommentLink($comment);
     }
 }
 
 if (!function_exists('getExerciseListingViewFilepath')) {
-    /**
-     * @param string $exercisePath
-     * @return string
-     */
-    function getExerciseListingViewFilepath($exercisePath)
+    function getExerciseListingViewFilepath(string $exercisePath): string
     {
         return ExerciseHelper::getExerciseListingViewFilepath($exercisePath);
     }
@@ -114,155 +83,98 @@ if (!function_exists('getExerciseListingViewFilepath')) {
 }
 
 if (!function_exists('getExerciseTitle')) {
-    /**
-     * @param App\Models\Exercise $exercise
-     * @return ?string
-     */
-    function getExerciseTitle($exercise)
+    function getExerciseTitle(Exercise $exercise): ?string
     {
         return ExerciseHelper::getExerciseTitle($exercise);
     }
 }
 
 if (!function_exists('getExerciseOriginLink')) {
-    /**
-     * @param App\Models\Exercise $exercise
-     * @return ?string
-     */
-    function getExerciseOriginLink($exercise)
+    function getExerciseOriginLink(Exercise $exercise): ?string
     {
         return ExerciseHelper::getExerciseOriginLink($exercise);
     }
 }
 
 if (!function_exists('getExercise')) {
-    /**
-     * @param string $path
-     * @return App\Models\Exercise
-     */
-    function getExercise($path)
+    function getExercise(string $path): Exercise
     {
         return ExerciseHelper::getExercise($path);
     }
 }
 
 if (!function_exists('getLocalizedHttpsURL')) {
-    /**
-     * @param string $localeCode
-     * @return string
-     */
-    function getLocalizedHttpsURL($localeCode)
+    function getLocalizedHttpsURL(string $localeCode): string
     {
         return LocalizationHelper::getLocalizedHttpsURL($localeCode);
     }
 }
 
 if (!function_exists('getPathToLocaleFlag')) {
-    /**
-     * @param string $currentLocale
-     * @return string
-     */
-    function getPathToLocaleFlag($currentLocale)
+    function getPathToLocaleFlag(string $currentLocale): string
     {
         return LocalizationHelper::getPathToLocaleFlag($currentLocale);
     }
 }
 
 if (!function_exists('getLocalizedURL')) {
-    /**
-     * @param string $currentLocale
-     * @return string
-     */
-    function getLocalizedURL($currentLocale)
+    function getLocalizedURL(string $currentLocale): string
     {
         return LocalizationHelper::getLocalizedURL($currentLocale);
     }
 }
 
 if (!function_exists('getOtherLocales')) {
-    /**
-     * @param string $currentLocale
-     * @param array $locales
-     * @return array
-     */
-    function getOtherLocales($currentLocale, $locales)
+    function getOtherLocales(string $currentLocale, array $locales): array
     {
         return LocalizationHelper::getOtherLocales($currentLocale, $locales);
     }
 }
 
 if (!function_exists('getNativeLanguageName')) {
-    /**
-     * @param string $currentLocale
-     * @return string
-     */
-    function getNativeLanguageName($currentLocale)
+    function getNativeLanguageName(string $currentLocale): string
     {
         return LocalizationHelper::getNativeLanguageName($currentLocale);
     }
 }
 
 if (!function_exists('normalizeNativeLanguageName')) {
-    /**
-     * @param string $language
-     * @param string $encoding
-     * @return string
-     */
-    function normalizeNativeLanguageName($language, $encoding = 'utf-8')
+    function normalizeNativeLanguageName(string $language, string $encoding = 'utf-8'): string
     {
         return LocalizationHelper::normalizeNativeLanguageName($language, $encoding);
     }
 }
 
 if (!function_exists('getCommentsRating')) {
-    /**
-     * @return Illuminate\Support\Collection
-     */
-    function getCommentsRating()
+    function getCommentsRating(): Collection
     {
         return RatingCommentsHelper::getCommentsRating();
     }
 }
 
 if (!function_exists('getCalculatedRating')) {
-    /**
-     * @return Illuminate\Support\Collection
-     */
-    function getCalculatedRating()
+    function getCalculatedRating(): Collection
     {
         return RatingHelper::getCalculatedRating();
     }
 }
 
 if (!function_exists('isActiveRoute')) {
-    /**
-     * @param string $routeAlias
-     * @return bool
-     */
-    function isActiveRoute($routeAlias)
+    function isActiveRoute(string $routeAlias): bool
     {
         return TemplateHelper::isActiveRoute($routeAlias);
     }
 }
 
 if (!function_exists('getDiffChapters')) {
-    /**
-     * @param Illuminate\Support\Collection $chaptersOld
-     * @param Illuminate\Support\Collection $chaptersNew
-     * @return array
-     */
-    function getDiffChapters($chaptersOld, $chaptersNew)
+    function getDiffChapters(Collection $chaptersOld, Collection $chaptersNew): array
     {
         return UserChapterHelper::getDiffChapters($chaptersOld, $chaptersNew);
     }
 }
 
 if (!function_exists('getProfileImageLink')) {
-    /**
-     * @param App\Models\User $user
-     * @return string
-     */
-    function getProfileImageLink($user)
+    function getProfileImageLink(User $user): string
     {
         return UserHelper::getProfileImageLink($user);
     }

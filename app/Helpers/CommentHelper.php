@@ -6,12 +6,7 @@ use App\Models\Comment;
 
 class CommentHelper
 {
-    /**
-     * @param Comment $comment
-     *
-     * @return string
-     */
-    public static function getCommentLink($comment)
+    public static function getCommentLink(Comment $comment): string
     {
         $commentableResourceName = str_plural(strtolower(class_basename($comment->commentable_type)));
         $commentableUrl = route("{$commentableResourceName}.show", $comment->commentable);

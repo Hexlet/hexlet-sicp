@@ -6,23 +6,13 @@ use App\Models\Exercise;
 
 class ExerciseHelper
 {
-    /**
-     * @param string $exercisePath
-     *
-     * @return string
-     */
-    public static function getExerciseListingViewFilepath($exercisePath)
+    public static function getExerciseListingViewFilepath(string $exercisePath): string
     {
         $viewName = str_replace('.', '_', $exercisePath);
         return sprintf('exercise.listing.%s', $viewName);
     }
 
-    /**
-     * @param Exercise $exercise
-     *
-     * @return ?string
-     */
-    public static function getExerciseTitle($exercise)
+    public static function getExerciseTitle(Exercise $exercise): ?string
     {
         $underscoredPath = str_replace('.', '_', $exercise->path);
 
@@ -35,24 +25,14 @@ class ExerciseHelper
         return null;
     }
 
-    /**
-     * @param Exercise $exercise
-     *
-     * @return ?string
-     */
-    public static function getExerciseOriginLink($exercise)
+    public static function getExerciseOriginLink(Exercise $exercise): ?string
     {
         $links = require resource_path('exercise-links.php');
 
         return $links[$exercise->path] ?? null;
     }
 
-    /**
-     * @param string $path
-     *
-     * @return Exercise
-     */
-    public static function getExercise($path)
+    public static function getExercise(string $path): Exercise
     {
         $exercise = Exercise::query()
             ->where('path', $path)

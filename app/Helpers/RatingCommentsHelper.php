@@ -7,10 +7,7 @@ use Illuminate\Support\Collection;
 
 class RatingCommentsHelper
 {
-    /**
-     * @return Collection
-     */
-    public static function getCommentsRating()
+    public static function getCommentsRating(): Collection
     {
         $commentsRating = User::query()
             ->withCount('comments')
