@@ -11,7 +11,7 @@
     "heroku-postbuild": "npm run production"
   },
   "dependencies": {
-    "axios": "^0.18",
+    "axios": "^0.21",
     "bootstrap": "^4.4.1",
     "cross-env": "^5.1",
     "highlight.js": "^10.4.1",
