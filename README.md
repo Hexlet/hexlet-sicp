@@ -167,7 +167,7 @@ $ git config core.hooksPath .githooks
 ```
 
 #### Видео созвонов
-* 07.09.2019 https://youtu.be/82QPDHVUIc0
+* [Плейлист созвонов](https://www.youtube.com/playlist?list=PL37_xn2SVZdCJ-xgB-phFaWrp25Kc3cLk)
 
 ##
 [![Hexlet Ltd. logo](https://raw.githubusercontent.com/Hexlet/hexletguides.github.io/master/images/hexlet_logo128.png)](https://ru.hexlet.io/pages/about?utm_source=github&utm_medium=link&utm_campaign=exercises-javascript)
