@@ -24,23 +24,23 @@
         </h5>
         @if ($comment->isReply())
             <div class="border my-2">
-                <div class="small text-muted ml-2">{{ $comment->parent->content }}</div>
+                <div class="small text-muted ms-2">{{ $comment->parent->content }}</div>
             </div>
         @endif
         <div class="my-2">{{ $comment->content }}</div>
         <div>
             @can('reply', $comment)
                 <button
-                    data-toggle="modal"
-                    data-target="#reply-modal-{{ $comment->id }}"
-                    class="btn btn-sm btn-link text-uppercase p-0 mr-2">
+                    data-bs-toggle="modal"
+                    data-bs-target="#reply-modal-{{ $comment->id }}"
+                    class="btn btn-sm btn-link text-uppercase p-0 me-2">
                     {{ __('comment.reply') }}
                 </button>
             @endcan
             @can('update', $comment)
-                <button data-toggle="modal"
-                        data-target="#comment-modal-{{ $comment->id }}"
-                        class="btn btn-sm btn-link text-uppercase p-0 mr-2">
+                <button data-bs-toggle="modal"
+                        data-bs-target="#comment-modal-{{ $comment->id }}"
+                        class="btn btn-sm btn-link text-uppercase p-0 me-2">
                     {{ __('comment.edit') }}
                 </button>
             @endcan

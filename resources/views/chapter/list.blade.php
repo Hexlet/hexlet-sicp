@@ -13,7 +13,7 @@
         </a>
         <br>
         @if($chapter->exercises->isNotEmpty())
-        <a data-toggle="collapse"
+        <a data-bs-toggle="collapse"
            href="#collapse{{ $chapter->id }}"
            aria-expanded="false"
            aria-controls="collapse{{ $chapter->id }}">

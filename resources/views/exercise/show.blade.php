@@ -13,7 +13,7 @@
     <div class="row justify-content-center">
         <div class="sticky-top col-md-12 d-flex justify-content-between">
             @if($previousExercise->exists)
-                <a class="mr-auto text-decoration-none" href="{{ route('exercises.show', $previousExercise) }}">
+                <a class="me-auto text-decoration-none" href="{{ route('exercises.show', $previousExercise) }}">
                     <svg class="bi bi-arrow-left" width="2em" height="2em" viewBox="0 0 16 16" fill="currentColor"
                          xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd"
@@ -24,7 +24,7 @@
                 </a>
             @endif
             @if($nextExercise->exists)
-                <a class="ml-auto text-decoration-none" href="{{ route('exercises.show', $nextExercise) }}">
+                <a class="ms-auto text-decoration-none" href="{{ route('exercises.show', $nextExercise) }}">
                     @lang('exercise.show.next')
                     <svg class="bi bi-arrow-right" width="2em" height="2em" viewBox="0 0 16 16" fill="currentColor"
                          xmlns="http://www.w3.org/2000/svg">
@@ -50,8 +50,8 @@
                     <a class="text-muted"
                        target="_blank"
                        href="{{ getExerciseOriginLink($exercise) }}"
-                       data-toggle="tooltip"
-                       data-placement="right"
+                       data-bs-toggle="tooltip"
+                       data-bs-placement="right"
                        title="{{ __('layout.common.origin') }}">
                         <i class="fas fa-external-link-alt"></i>
                     </a>
@@ -75,19 +75,19 @@
             <div>
                 @auth
                     <div class="d-flex mb-4">
-                        <button type="button" class="mr-1 btn btn-primary" data-toggle="modal"
-                                data-target="#interExercise">{{ __('solution.add_solution') }}</button>
+                        <button type="button" class="me-1 btn btn-primary" data-bs-toggle="modal"
+                                data-bs-target="#interExercise">{{ __('solution.add_solution') }}</button>
                         @if($exercise->solutions()->exists())
                             <a
-                                class="btn btn-secondary mr-1"
+                                class="btn btn-secondary me-1"
                                 href="{{ route('solutions.index', ['filter' => ['exercise_id' => $exercise->id]]) }}"
                                 role="button">
                                 {{ __('views.exercise.show.buttons.show_solutions') }}
                             </a>
                         @endif
                         @if(!$userSolutions->isEmpty())
-                            <button type="button" class="mr-1 btn btn-primary btn-light" data-toggle="modal"
-                                    data-target="#showExercises">{{ __('solution.show_solution') }}</button>
+                            <button type="button" class="me-1 btn btn-primary btn-light" data-bs-toggle="modal"
+                                    data-bs-target="#showExercises">{{ __('solution.show_solution') }}</button>
                         @endif
 
                         @solutions(['exercise' => $exercise, 'userSolutions' => $userSolutions])
@@ -104,12 +104,12 @@
                         @if ($userCompletedExercise)
                             <a href="{{ route('users.exercises.destroy', [$authUser, $exercise]) }}"
                                class="text-decoration-none"
-                               data-toggle="tooltip"
+                               data-bs-toggle="tooltip"
                                data-placement="bottom"
                                title="{{ __('exercise.remove_completed_exercise', ['exercise_path' => $exercise->path]) }}"
                                data-confirm="{{ __('exercise.remove_completed_exercise', ['exercise_path' => $exercise->path]) }}?"
                                data-method="delete">
-                                <span class="pl-2">{{ __('layout.common.cancel') }}</span>
+                                <span class="ps-2">{{ __('layout.common.cancel') }}</span>
                             </a>
                         @endif
                         {{ BsForm::close() }}
@@ -118,7 +118,7 @@
                 @if($exercise->users->isEmpty())
                     <p>{{ __('exercise.show.nobody_completed') }}</p>
                 @else
-                    <button type="button" class="btn btn-primary" data-toggle="modal"
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                             data-target="#modalCart">{{ __('exercise.show.who_completed') }}</button>
                     <div class="modal fade" id="modalCart" tabindex="-1" role="dialog"
                          aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -127,8 +127,7 @@
                                 <div class="modal-header">
                                     <h4 class="modal-title"
                                         id="myModalLabel">{{ __('exercise.show.completed_by') }}</h4>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">×</span>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                                     </button>
                                 </div>
                                 <div class="modal-body">
@@ -140,7 +139,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-outline-primary"
-                                            data-dismiss="modal">{{ __('layout.common.close') }}</button>
+                                            data-bs-dismiss="modal">{{ __('layout.common.close') }}</button>
                                 </div>
                             </div>
                         </div>

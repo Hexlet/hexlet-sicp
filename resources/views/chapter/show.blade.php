@@ -15,11 +15,11 @@
     <div class="row justify-content-center">
         <div class="sticky-top col-md-12 d-flex justify-content-between">
             @if($previousChapter->exists)
-                <a class="mr-auto"
+                <a class="me-auto"
                    href="{{ route('chapters.show', $previousChapter) }}">@lang('chapter.show.previous_chapter')</a>
             @endif
             @if($nextChapter->exists)
-                <a class="ml-auto"
+                <a class="ms-auto"
                    href="{{ route('chapters.show', $nextChapter) }}">@lang('chapter.show.next_chapter')</a>
             @endif
         </div>
@@ -37,7 +37,7 @@
                     <a class="text-muted"
                        target="_blank"
                        href="{{ getChapterOriginLink($chapter) }}"
-                       data-toggle="tooltip"
+                       data-bs-toggle="tooltip"
                        data-placement="right"
                        title="{{ __('layout.common.origin') }}">
                         <i class="fas fa-external-link-alt"></i>
@@ -80,27 +80,26 @@
                     @if ($isCompletedChapter)
                         <a href="{{ route('users.chapters.destroy', [$authUser, $chapter]) }}"
                            class="text-decoration-none"
-                           data-toggle="tooltip"
+                           data-bs-toggle="tooltip"
                            data-placement="bottom"
                            data-confirm="{{ __('chapter.remove_completed_chapter', ['chapter_path' => $chapter->path]) }}"
                            data-method="delete">
-                            <span class="pl-2">{{ __('layout.common.cancel') }}</span>
+                            <span class="ps-2">{{ __('layout.common.cancel') }}</span>
                         </a>
                     @endif
                     {{ BsForm::close() }}
                 @endauth
                 @if ($chapter->users->isNotEmpty())
                     <br/>
-                    <button type="button" class="btn btn-primary" data-toggle="modal"
-                            data-target="#modalCart">{{ __('chapter.show.who_completed') }}</button>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                            data-bs-target="#modalCart">{{ __('chapter.show.who_completed') }}</button>
                     <div class="modal fade" id="modalCart" tabindex="-1" role="dialog"
                          aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h4 class="modal-title" id="myModalLabel">{{ __('chapter.show.completed_by') }}</h4>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">×</span>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                                     </button>
                                 </div>
                                 <div class="modal-body">
@@ -112,7 +111,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-outline-primary"
-                                            data-dismiss="modal">{{ __('layout.common.close') }}</button>
+                                            data-bs-dismiss="modal">{{ __('layout.common.close') }}</button>
                                 </div>
                             </div>
                         </div>

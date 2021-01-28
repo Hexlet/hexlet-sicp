@@ -3,12 +3,12 @@
 
     <main>
 
-        <div id="sicpCarousel" class="carousel slide mb-3" data-ride="carousel" data-speed="7000">
+        <div id="sicpCarousel" class="carousel slide mb-3" data-bs-ride="carousel" data-bs-speed="7000">
             <div class="carousel-inner">
                 <div class="sicp-carousel-item carousel-item active">
                     <div class="container">
-                        <div class="sicp-carousel-caption text-left text-secondary">
-                            <div class="float-lg-right w-25 d-none d-sm-block">
+                        <div class="sicp-carousel-caption text-start text-secondary">
+                            <div class="float-lg-end w-25 d-none d-sm-block">
                                 <img class="img-fluid"
                                      src="{{ asset('img/Patchouli_Gives_SICP.png') }}"
                                      alt="{{ __('landing.start_learning') }}">
@@ -23,7 +23,7 @@
                 </div>
                 <div class="sicp-carousel-item carousel-item">
                     <div class="container">
-                        <div class="sicp-carousel-caption text-left text-secondary">
+                        <div class="sicp-carousel-caption text-start text-secondary">
                             <div class="w-75">
                                 <blockquote class="mb-1">{{ __('landing.epigraph.1') }}</blockquote>
                                 <p class="font-italic mb-3 mb-lg-5">{{ __('landing.author_of_epigraph.1') }}</p>
@@ -34,24 +34,24 @@
                     </div>
                 </div>
             </div>
-            <a class="carousel-control-prev" href="#sicpCarousel" role="button" data-slide="prev">
+            <a class="carousel-control-prev" href="#sicpCarousel" role="button" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="sr-only">{{ __('pagination.previous') }}</span>
             </a>
-            <a class="carousel-control-next" href="#sicpCarousel" role="button" data-slide="next">
+            <a class="carousel-control-next" href="#sicpCarousel" role="button" data-bs-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="sr-only">{{ __('pagination.next') }}</span>
             </a>
         </div>
 
-        <div class="container ">
+        <div class="container">
 
             <div class="row">
                 <div class="col-md-7">
                     <div class="h4 text-secondary">{{ __('landing.what_for') }}</div>
                     <p class="h4 text-secondary">{{ __('landing.what_do') }}</p>
                     <h2 class="h4 mt-3 mt-lg-5">sicp.hexlet.io — {{ __('landing.this_is') }}:</h2>
-                    <div class="row no-gutters my-2 ml-lg-n5 ml-md-n3">
+                    <div class="row no-gutters my-2 ms-lg-n5 ms-md-n3">
                         <div class="col-6 col-md text-center my-2">
                             <div class="h2 text-primary">
                                 {{ $countChapters }}

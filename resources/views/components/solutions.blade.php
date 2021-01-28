@@ -11,8 +11,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title">{{ __('solution.title_add_solution') }}</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                 </button>
             </div>
             <div class="modal-body">
@@ -27,18 +26,17 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title">{{ __('solution.title_output_solution') }}</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                 </button>
             </div>
             <div class="modal-body">
                 @foreach ($userSolutions as $solution)
-                <p class="bg-light py-2 pl-1"><a href="{{ route('users.solutions.show', [$authUser, $solution]) }}">{{ $solution->created_at }}</a></p>
-                <pre class="ml-4 mb-2"><code>{{ $solution->content }}</code></pre>
+                <p class="bg-light py-2 ps-1"><a href="{{ route('users.solutions.show', [$authUser, $solution]) }}">{{ $solution->created_at }}</a></p>
+                <pre class="ms-4 mb-2"><code>{{ $solution->content }}</code></pre>
                 @endforeach
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-dismiss="modal">{{ __('layout.common.close') }}</button>
+                <button type="button" class="btn btn-primary" data-db-dismiss="modal">{{ __('layout.common.close') }}</button>
             </div>
         </div>
     </div>

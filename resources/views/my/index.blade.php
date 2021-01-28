@@ -9,8 +9,8 @@
 </div>
 <nav>
     <div class="nav nav-tabs" id="nav-tab" role="tablist">
-        <a class="nav-item nav-link active" id="nav-chapters-tab" data-toggle="tab" href="#nav-chapters" role="tab" aria-controls="nav-home" aria-selected="true">{{ __('progresses.сhapters') }}</a>
-        <a class="nav-item nav-link" id="nav-solutions-tab" data-toggle="tab" href="#nav-solutions" role="tab" aria-controls="nav-profile" aria-selected="false">{{ __('progresses.my_solutions') }}</a>
+        <a class="nav-item nav-link active" id="nav-chapters-tab" data-bs-toggle="tab" href="#nav-chapters" role="tab" aria-controls="nav-home" aria-selected="true">{{ __('progresses.сhapters') }}</a>
+        <a class="nav-item nav-link" id="nav-solutions-tab" data-bs-toggle="tab" href="#nav-solutions" role="tab" aria-controls="nav-profile" aria-selected="false">{{ __('progresses.my_solutions') }}</a>
     </div>
 </nav>
 <div class="tab-content bg-white" id="nav-tabContent">

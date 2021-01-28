@@ -20,7 +20,7 @@
     </label>
     @if ($chapter->exercises->isNotEmpty())
     <div>
-        <a data-toggle="collapse"
+        <a data-bs-toggle="collapse"
            href="#collapse{{ $chapter->id }}"
            aria-expanded="false"
            aria-controls="collapse{{ $chapter->id }}">
@@ -34,7 +34,7 @@
                 @if($completedExercises->has($exercise->id))
                 <a href="{{ route('users.exercises.destroy', [$user, $exercise]) }}"
                    class="text-decoration-none"
-                   data-toggle="tooltip"
+                   data-bs-toggle="tooltip"
                    data-placement="bottom"
                    title="{{ __('exercise.remove_completed_exercise', ['exercise_path' => $exercise->path]) }}"
                    data-confirm="{{ __('exercise.remove_completed_exercise', ['exercise_path' => $exercise->path]) }}?"
@@ -44,7 +44,7 @@
                 @else
                 <a href="{{ route('users.exercises.update', [$user, $exercise]) }}"
                    class="text-decoration-none"
-                   data-toggle="tooltip"
+                   data-bs-toggle="tooltip"
                    data-placement="bottom"
                    title="{{ __('exercise.mark_exercise', ['exercise_path' => $exercise->path]) }}"
                    data-method="patch">

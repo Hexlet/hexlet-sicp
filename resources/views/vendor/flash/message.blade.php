@@ -6,16 +6,16 @@
             'body'       => $message['message']
         ])
     @else
-        <div class="alert
+        <div class="alert alert-dismissible
                     alert-{{ $message['level'] }}
                     {{ $message['important'] ? 'alert-important' : '' }}"
                     role="alert"
         >
                 <button type="button"
-                        class="close"
-                        data-dismiss="alert"
+                        class="btn-close"
+                        data-bs-dismiss="alert"
                         aria-hidden="true"
-                >&times;</button>
+                ></button>
 
             {!! $message['message'] !!}
         </div>

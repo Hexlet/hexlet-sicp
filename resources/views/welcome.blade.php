@@ -88,7 +88,7 @@
                     @case('removed')
                     @case('added')
                         <div class="d-block">
-                            <a data-toggle="collapse"
+                            <a data-bs-toggle="collapse"
                                href="#collapseExp{{ $logItem->id }}"
                                aria-expanded="false"
                                aria-controls="collapseExp{{ $logItem->id }}">

@@ -7,7 +7,7 @@
 @endphp
 <div>
     {{ BsForm::open(route('users.solutions.store', [$authUser])) }}
-    {{ BsForm::textarea('content')->placeholder(__('solution.placeholder'))->required()->attribute('rows', 10) }}
+    {{ BsForm::textarea('content')->placeholder(__('solution.placeholder'))->required()->attribute(['rows' => 10, "class" => "form-control mb-3"]) }}
     {{ Form::hidden('exercise_id', $exercise->id) }}
     <div class="d-flex justify-content-end">
         {{ BsForm::submit(__('solution.save'))->primary() }}

@@ -21,11 +21,11 @@
             @foreach ($solutionsListForCurrentExercise as $currentSolution)
                 @if ($loop->first)
                 <li class="nav-item" role="presentation">
-                    <a class="nav-link active" id="pills-{{ $currentSolution->id }}-tab" data-toggle="pill" href="#pills-{{ $currentSolution->id }}" role="tab" aria-controls="pills-{{ $currentSolution->id }}" aria-selected="true">v.{{ $loop->iteration }}</a>
+                    <a class="nav-link active" id="pills-{{ $currentSolution->id }}-tab" data-bs-toggle="pill" href="#pills-{{ $currentSolution->id }}" role="tab" aria-controls="pills-{{ $currentSolution->id }}" aria-selected="true">v.{{ $loop->iteration }}</a>
                 </li>
                 @else
                 <li class="nav-item" role="presentation">
-                    <a class="nav-link" id="pills-{{ $currentSolution->id }}-tab" data-toggle="pill" href="#pills-{{ $currentSolution->id }}" role="tab" aria-controls="pills-{{ $currentSolution->id }}" aria-selected="true">v.{{ $loop->iteration }}</a>
+                    <a class="nav-link" id="pills-{{ $currentSolution->id }}-tab" data-bs-toggle="pill" href="#pills-{{ $currentSolution->id }}" role="tab" aria-controls="pills-{{ $currentSolution->id }}" aria-selected="true">v.{{ $loop->iteration }}</a>
                 </li>
                 @endif
             @endforeach
@@ -46,17 +46,17 @@
     </div>
 
     @if (count($solutionsListForCurrentExercise) > 1)
-    <div class="d-none d-md-block border-left"></div>
+    <div class="d-none d-md-block border-start"></div>
     <div class="col p-2 p-lg-4">
         <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
             @foreach ($solutionsListForCurrentExercise as $currentSolution)
                 @if ($loop->first)
                 <li class="nav-item" role="presentation">
-                    <a class="nav-link active" id="pills-{{ $currentSolution->id }}double-tab" data-toggle="pill" href="#pills-{{ $currentSolution->id }}double" role="tab" aria-controls="pills-{{ $currentSolution->id }}double" aria-selected="true">v.{{ $loop->iteration }}</a>
+                    <a class="nav-link active" id="pills-{{ $currentSolution->id }}double-tab" data-bs-toggle="pill" href="#pills-{{ $currentSolution->id }}double" role="tab" aria-controls="pills-{{ $currentSolution->id }}double" aria-selected="true">v.{{ $loop->iteration }}</a>
                 </li>
                 @else
                 <li class="nav-item" role="presentation">
-                    <a class="nav-link" id="pills-{{ $currentSolution->id }}double-tab" data-toggle="pill" href="#pills-{{ $currentSolution->id }}double" role="tab" aria-controls="pills-{{ $currentSolution->id }}double" aria-selected="true">v.{{ $loop->iteration }}</a>
+                    <a class="nav-link" id="pills-{{ $currentSolution->id }}double-tab" data-bs-toggle="pill" href="#pills-{{ $currentSolution->id }}double" role="tab" aria-controls="pills-{{ $currentSolution->id }}double" aria-selected="true">v.{{ $loop->iteration }}</a>
                 </li>
                 @endif
             @endforeach
