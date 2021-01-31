@@ -3,18 +3,19 @@
 namespace App\Helpers;
 
 use App\Models\Exercise;
+use File;
 
 class ExerciseHelper
 {
     public static function getExerciseListingViewFilepath(string $exercisePath): string
     {
-        $viewName = str_replace('.', '_', $exercisePath);
+        $viewName = self::underscoreExercisePath($exercisePath);
         return sprintf('exercise.listing.%s', $viewName);
     }
 
     public static function getExerciseTitle(Exercise $exercise): ?string
     {
-        $underscoredPath = str_replace('.', '_', $exercise->path);
+        $underscoredPath = self::underscoreExercisePath($exercise->path);
 
         $titleTranslatePath = "exercises/{$underscoredPath}.title";
 
@@ -39,5 +40,44 @@ class ExerciseHelper
             ->first();
 
         return $exercise;
+    }
+
+    public static function getExerciseTests(Exercise $exercise): string
+    {
+        $underscoredExercisePath = self::underscoreExercisePath($exercise->path);
+
+        $path = implode(DIRECTORY_SEPARATOR, [
+            resource_path(),
+            'views',
+            'exercise',
+            'solution_stub',
+            sprintf('%s.blade.php', $underscoredExercisePath),
+        ]);
+
+        $fileContent = File::get($path);
+
+        [, $testsLines] = explode(';;; END', $fileContent);
+
+        return trim($testsLines);
+    }
+
+    public static function exerciseHasTests(Exercise $exercise): bool
+    {
+        $underscoredExercisePath = self::underscoreExercisePath($exercise->path);
+
+        $path = implode(DIRECTORY_SEPARATOR, [
+            resource_path(),
+            'views',
+            'exercise',
+            'solution_stub',
+            sprintf('%s.blade.php', $underscoredExercisePath),
+        ]);
+
+        return File::exists($path);
+    }
+
+    public static function underscoreExercisePath(string $path): string
+    {
+        return str_replace('.', '_', $path);
     }
 }

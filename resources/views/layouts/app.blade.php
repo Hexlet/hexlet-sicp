@@ -14,6 +14,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    @livewireStyles
     @if (config('app.env') == 'production')
     @include('layouts.deps._gtm_head')
     @endif
@@ -40,7 +41,7 @@
         </main>
     </div>
     @include('layouts._footer')
-
+    @livewireScripts
 </body>
 
 </html>

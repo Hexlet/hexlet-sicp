@@ -45,7 +45,7 @@ class CommentControllerTest extends ControllerTestCase
      */
     public function testStore(string $commentableClass): void
     {
-        /** @var Model $commentableClass */
+        /** @var Exercise|Chapter $commentableClass */
         $commentable = $commentableClass::inRandomOrder()->first();
         $visitedPage = $this->getCommentableActionRoute('show', $commentable);
         $user = $this->user;
@@ -75,7 +75,7 @@ class CommentControllerTest extends ControllerTestCase
      */
     public function testUpdate(string $commentableClass): void
     {
-        /** @var Model $commentableClass */
+        /** @var Exercise|Chapter $commentableClass */
         $commentable = $commentableClass::inRandomOrder()->first();
         $visitedPage = $this->getCommentableActionRoute('show', $commentable);
         $user = $this->user;

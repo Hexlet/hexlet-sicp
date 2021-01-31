@@ -103,4 +103,9 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasMany(Solution::class);
     }
+
+    public function hasCompletedExercise(Exercise $exercise): bool
+    {
+        return $this->completedExercises()->whereExerciseId($exercise->id)->exists();
+    }
 }
