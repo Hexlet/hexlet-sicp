@@ -1,0 +1,13 @@
+setup:
+  addons:
+    - plan: heroku-postgresql
+      as: DATABASE
+build:
+  docker:
+    web: Dockerfile
+release:
+  image: web
+  command:
+  - php artisan migrate --force
+run:
+  web: php artisan serve --host=0.0.0.0 --port=$PORT
