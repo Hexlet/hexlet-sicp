@@ -13,7 +13,8 @@
       }
   ],
   "env": {
-    "DB_CONNECTION":"pgsql"
+    "DB_CONNECTION":"pgsql",
+    "LOG_CHANNEL": "errorlog"
   },
   "stack": "heroku-20",
   "buildpacks": [
