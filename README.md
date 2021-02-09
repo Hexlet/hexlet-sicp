@@ -3,6 +3,7 @@
 [![codecov](https://codecov.io/gh/Hexlet/hexlet-sicp/branch/master/graph/badge.svg)](https://codecov.io/gh/Hexlet/hexlet-sicp)
 [![build status](https://travis-ci.org/Hexlet/hexlet-sicp.svg?branch=master)](https://travis-ci.com/Hexlet/hexlet-sicp)
 [![github action status](https://github.com/Hexlet/hexlet-sicp/workflows/Main%20workflow/badge.svg)](https://github.com/Hexlet/hexlet-sicp/actions)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
 # hexlet-sicp
 
