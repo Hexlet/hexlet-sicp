@@ -1,0 +1,25 @@
+{
+  "name": "hexlet/hexlet-sicp",
+  "description": "SICP book tracker",
+  "repository": "https://github.com/tolyod/hexlet-sicp",
+  "logo": "https://sicp.hexlet.io/img/Patchouli_Gives_SICP.png",
+  "keywords": ["hexlet", "sicp", "lisp", "racket", "project"],
+  "addons": [
+      {
+          "plan": "heroku-postgresql",
+          "options": {
+              "version": "9.5"
+          }
+      }
+  ],
+  "env": {
+    "DB_CONNECTION":"pgsql"
+  },
+  "stack": "heroku-20",
+  "buildpacks": [
+      {
+          "url": "https://github.com/tolyod/hexlet-sicp"
+      }
+  ]
+
+}
