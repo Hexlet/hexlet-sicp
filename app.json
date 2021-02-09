@@ -14,7 +14,11 @@
   ],
   "env": {
     "DB_CONNECTION":"pgsql",
-    "LOG_CHANNEL": "errorlog"
+    "LOG_CHANNEL": "errorlog",
+    "APP_KEY": {
+      "description": "A secret key for verifying the integrity of signed cookies.",
+      "generator": "secret"
+    }
   },
   "stack": "heroku-20",
   "buildpacks": [
