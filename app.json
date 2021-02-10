@@ -25,11 +25,12 @@
     "stack": "heroku-20",
     "buildpacks": [
         {
-            "url": "https://github.com/tolyod/heroku-buildpack-racket"
-        },
-        {
             "url": "heroku/nodejs"
         },
+        {
+            "url": "https://github.com/tolyod/heroku-buildpack-racket"
+        },
+
         {
             "url": "heroku/php"
         }
