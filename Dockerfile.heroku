@@ -14,8 +14,6 @@ RUN apt-get update && apt-get install -y \
       && curl -fsSL "https://download.docker.com/linux/static/${DOCKER_CHANNEL}/x86_64/docker-${DOCKER_VERSION}.tgz" \
      | tar -xzC /usr/local/bin --strip=1 docker/docker
 RUN git clone https://github.com/tolyod/hexlet-sicp /app
-RUN ls -la && ls -la /app
-# RUN dockerd
-# RUN docker build --tag checker /app/checker
 
 WORKDIR /app
+RUN make install

@@ -8,8 +8,6 @@ build:
 release:
   image: web
   command:
-  - npm ci
-  - npm run production
-  - php artisan migrate --seed --force
+  - make key db-prepare
 run:
   web: php artisan serve --host=0.0.0.0 --port=$PORT
