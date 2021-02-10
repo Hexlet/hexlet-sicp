@@ -21,8 +21,5 @@
     },
     "NPM_CONFIG_PRODUCTION":"false"
   },
-  "stack": "container",
-  "scripts": {
-      "postdeploy": "npm run production"
-  }
+  "stack": "container"
 }
