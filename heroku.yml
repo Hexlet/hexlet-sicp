@@ -4,10 +4,11 @@ setup:
       as: DATABASE
 build:
   docker:
-    web: Dockerfile
+    web: Dockerfile.heroku
 release:
   image: web
   command:
+  - cd checker && docker build -t checker .
   - php artisan migrate --force
 run:
   web: php artisan serve --host=0.0.0.0 --port=$PORT

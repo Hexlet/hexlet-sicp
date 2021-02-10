@@ -21,7 +21,7 @@
     },
     "NPM_CONFIG_PRODUCTION":"false"
   },
-  "stack": "heroku-20",
+  "stack": "container",
   "buildpacks": [
       {
           "url": "heroku/nodejs"
