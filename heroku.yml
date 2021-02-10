@@ -1,9 +1,0 @@
-setup:
-  addons:
-    - plan: heroku-postgresql
-      as: DATABASE
-build:
-  docker:
-    web: Dockerfile.heroku
-run:
-  web: php artisan serve --host=0.0.0.0 --port=$PORT
