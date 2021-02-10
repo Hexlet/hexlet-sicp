@@ -28,10 +28,10 @@
             "url": "heroku/nodejs"
         },
         {
-            "url": "heroku/php"
+            "url": "https://github.com/tolyod/heroku-buildpack-racket"
         },
         {
-            "url": "https://github.com/tolyod/heroku-buildpack-racket"
+            "url": "heroku/php"
         }
     ],
     "scripts": {
