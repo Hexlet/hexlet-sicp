@@ -21,5 +21,8 @@
     },
     "NPM_CONFIG_PRODUCTION":"false"
   },
-  "stack": "container"
+  "stack": "container",
+  "scripts": {
+      "postdeploy": "php artisan migrate --seed --force"
+  }
 }
