@@ -22,14 +22,6 @@
     "NPM_CONFIG_PRODUCTION":"false"
   },
   "stack": "container",
-  "buildpacks": [
-      {
-          "url": "heroku/nodejs"
-      },
-      {
-          "url": "heroku/php"
-      }
-  ],
   "scripts": {
       "postdeploy": "npm run production"
   }
