@@ -5,9 +5,5 @@ setup:
 build:
   docker:
     web: Dockerfile.heroku
-release:
-  image: web
-  command:
-  - make key db-prepare
 run:
   web: php artisan serve --host=0.0.0.0 --port=$PORT
