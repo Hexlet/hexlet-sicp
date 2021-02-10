@@ -33,8 +33,5 @@
         {
             "url": "heroku/php"
         }
-    ],
-    "scripts": {
-        "postdeploy": "php artisan migrate --seed --force"
-    }
+    ]
 }
