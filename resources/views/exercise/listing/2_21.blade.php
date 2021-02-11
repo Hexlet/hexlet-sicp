@@ -8,6 +8,6 @@
       nil
       (cons &lt;??&gt; &lt;??&gt;)))
 
-(define (square-list items)
+(define (square-list2 items)
   (map &lt;??&gt; &lt;??&gt;))
 </code></pre>
