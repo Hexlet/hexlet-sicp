@@ -2,7 +2,7 @@
     <div class='container-xl'>
         <div class="row justify-content-lg-around">
             <div class="col-sm-6 col-md-3 col-lg-auto">
-                <a class="navbar-brand text-dark px-0 py-0" href="https://ru.hexlet.io">
+                <a class="text-decoration-none text-dark px-0 py-0" href="https://ru.hexlet.io">
                     <h2 class="h3">&copy; Hexlet</h2></a>
                 <ul class="list-unstyled">
                     <li><a target="_blank" href="/">{{ __('layout.footer.about') }}</a></li>
