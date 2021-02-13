@@ -4,6 +4,8 @@
 [![build status](https://travis-ci.org/Hexlet/hexlet-sicp.svg?branch=master)](https://travis-ci.com/Hexlet/hexlet-sicp)
 [![github action status](https://github.com/Hexlet/hexlet-sicp/workflows/Main%20workflow/badge.svg)](https://github.com/Hexlet/hexlet-sicp/actions)
 
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+
 # hexlet-sicp
 
 Осилятор СИКП &mdash; сервис, в котором есть рейтинг тех, кто проходит СИКП, и каждый отмечает, что он прошёл.
