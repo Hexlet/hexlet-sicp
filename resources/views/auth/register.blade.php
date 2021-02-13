@@ -14,7 +14,7 @@
                     {{ BsForm::password('password')->label(__('register.passwordPlaceholder')) }}
                     {{ BsForm::password('password_confirmation')->label(__('register.passwordConfirmationPlaceholder')) }}
                     <div class="mt-4">
-                        {{ BsForm::submit(__('register.registerButton'))->attribute('class', 'btn btn-primary w-100') }}
+                        {{ BsForm::submit(__('register.registerButton'))->attribute('class', 'btn btn-primary btn-block') }}
                         <div class="mt-2">
                             <a href="{{ route('login') }}">
                                 {{ __('register.accountExists') }}
