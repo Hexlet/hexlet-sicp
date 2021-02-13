@@ -1,7 +1,7 @@
 {
     "name": "hexlet/hexlet-sicp",
     "description": "SICP book tracker",
-    "repository": "https://github.com/tolyod/hexlet-sicp",
+    "repository": "https://github.com/hexlet/hexlet-sicp",
     "logo": "https://sicp.hexlet.io/img/Patchouli_Gives_SICP.png",
     "keywords": ["hexlet", "sicp", "lisp", "racket", "project"],
     "addons": [
