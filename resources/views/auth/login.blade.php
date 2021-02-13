@@ -11,7 +11,7 @@
                     {{ BsForm::email('email')->label(__('layout.login.email')) }}
                     {{ BsForm::password('password')->label(__('layout.login.password')) }}
                     {{ BsForm::checkbox('remember')->label(__('layout.login.remember_me')) }}
-                    {{ BsForm::submit(__('layout.login.button'))->attribute('class', 'btn btn-primary btn-block') }}
+                    {{ BsForm::submit(__('layout.login.button'))->attribute('class', 'btn btn-primary w-100') }}
                     <div class="mt-2">
                         @if (Route::has('password.request'))
                             <a href="{{ route('password.request') }}">
