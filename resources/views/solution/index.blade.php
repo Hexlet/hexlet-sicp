@@ -7,7 +7,11 @@
 @section('content')
     <div class="my-4">
         <section>
-            <h1 class="h2">{{ __('views.solution.index.header.h1') }}</h1>
+
+            @include('exercise.navigation')
+
+            <h1 class="h3">{{ __('views.solution.index.header.h1') }}</h1>
+
             <div class="table-responsive">
                 <table class="table table-striped">
                     <thead>
