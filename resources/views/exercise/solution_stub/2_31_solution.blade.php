@@ -1,0 +1,5 @@
+(define (tree-map func tree)
+  (cond ((null? tree) '())
+        ((not (pair? tree)) (func tree))
+        (else (cons (tree-map func (car tree))
+                    (tree-map func (cdr tree))))))
