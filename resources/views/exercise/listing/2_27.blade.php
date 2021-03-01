@@ -3,11 +3,11 @@
 <pre><code>(define x (list (list 1 2) (list 3 4)))
 
 x
-((1 2) (3 4))
+<i>((1 2) (3 4))</i>
 
 (reverse x)
-((3 4) (1 2))
+<i>((3 4) (1 2))</i>
 
 (deep-reverse x)
-((4 3) (2 1))
+<i>((4 3) (2 1))</i>
 </code></pre>
