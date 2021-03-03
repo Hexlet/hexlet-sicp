@@ -1,6 +1,6 @@
 <p>{{ __('exercises/2_21.description.1') }}</p>
 <pre><code>(square-list (list 1 2 3 4))
-(1 4 9 16)
+<i>(1 4 9 16)</i>
 </code></pre>
 <p>{{ __('exercises/2_21.description.2') }}</p>
 <pre><code>(define (square-list items)
