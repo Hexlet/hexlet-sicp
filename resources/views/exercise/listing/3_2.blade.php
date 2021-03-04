@@ -23,6 +23,6 @@
 </p>
 <pre><code>(define s (make-monitored sqrt))
 (s 100)
-10
+<i>10</i>
 (s 'how-many-calls?)
-1</code></pre>
+<i>1</i></code></pre>

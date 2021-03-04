@@ -7,6 +7,6 @@
 </p>
 <pre><code>(define A (make-accumulator 5))
 (A 10)
-15
+<i>15</i>
 (A 10)
-25</code></pre>
+<i>25</i></code></pre>

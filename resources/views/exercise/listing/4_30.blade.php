@@ -14,11 +14,11 @@
 <pre><code>;;; L-Eval input:
 (for-each (lambda (x) (newline) (display x))
           (list 57 321 88))
-57
-321
-88
+<i>57</i>
+<i>321</i>
+<i>88</i>
 ;;; L-Eval value:
-done</code></pre>
+<i>done</i></code></pre>
 <p>{{ __('exercises/4_30.description.5') }}</p>
 <p>{{ __('exercises/4_30.description.6') }}</p>
 <pre><code>(define (p1 x)

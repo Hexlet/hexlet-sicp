@@ -6,7 +6,7 @@
          'all-odd)
 ;;; Starting a new problem
 ;;; Amb-Eval value:
-all-odd
+<i>all-odd</i>
 ;;; Amb-Eval input:
 (if-fail (let ((x (an-element-of '(1 3 5 8))))
            (require (even? x))
@@ -14,5 +14,5 @@ all-odd
          'all-odd)
 ;;; Starting a new problem
 ;;; Amb-Eval value:
-8
+<i>8</i>
 </code></pre>
