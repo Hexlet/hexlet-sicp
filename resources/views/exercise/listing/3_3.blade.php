@@ -10,6 +10,6 @@
     {{ __('exercises/3_3.description.4') }}
 </p>
 <pre><code>((acc 'secret-password 'withdraw) 40)
-60
+<i>60</i>
 ((acc 'some-other-password 'deposit) 50)
-"Incorrect password"</code></pre>
+<i>"Incorrect password"</i></code></pre>

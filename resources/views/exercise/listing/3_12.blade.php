@@ -48,12 +48,12 @@
 (define y (list 'c 'd))
 (define z (append x y))
 z
-(a b c d)
+<i>(a b c d)</i>
 (cdr x)
 &lt;{{ __('exercises/3_12.description.18') }}&gt;
 (define w (append! x y))
 w
-(a b c d)
+<i>(a b c d)</i>
 (cdr x)
 &lt;{{ __('exercises/3_12.description.18') }}&gt;</code></pre>
 <p>
