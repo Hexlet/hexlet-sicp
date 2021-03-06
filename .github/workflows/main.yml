@@ -6,7 +6,7 @@ on:
       - 'master'
   push:
     branches:
-      - 'master'
+      - '**'
 
 jobs:
   build:
@@ -30,12 +30,13 @@ jobs:
     - name: Install PHP
       uses: shivammathur/setup-php@v2
       with:
-        extensions: mbstring, curl, dom, xml, zip, sqlite
-        tools: prestissimo
+        extensions: mbstring, curl, dom, xml, zip, sqlite, xdebug
         php-version: '7.4'
 
     - name: Setup project
-      run: make setup
+      run: |
+        php -v
+        make setup
 
     - name: Check lint
       run: make lint
@@ -44,10 +45,11 @@ jobs:
       run: make analyse
 
     - name: Execute tests (Unit and Feature tests) via PHPUnit
-      run: make test-coverage
+      run: |
+        make test-coverage
 
     - name: Execute tests with PostgreSQL
-      run: make test
+      run: make test-coverage
       env:
         DB_CONNECTION: pgsql
         DB_HOST: localhost
@@ -58,8 +60,7 @@ jobs:
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v1
       with:
-        token: ${{ secrets.CODECOV_TOKEN }}
-        file: ./build/logs/clover.xml
+        file: build/logs/clover.xml
         fail_ci_if_error: true
 
     - name: PHP Security Checker
