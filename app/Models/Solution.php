@@ -2,12 +2,19 @@
 
 namespace App\Models;
 
+use Database\Factories\SolutionFactory;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Builder;
 
+/**
+ * @method static SolutionFactory factory(...$parameters)
+ */
 class Solution extends Model
 {
+    use HasFactory;
+
     protected $fillable = [
         'content',
     ];
@@ -31,6 +38,6 @@ class Solution extends Model
                     ->orderBy('exercise_id')
                     ->orderBy('user_id')
                     ->from(self::getTable());
-            }, self::getTable());
+            }, $this->getTable());
     }
 }

@@ -3,6 +3,8 @@
 namespace Tests\Feature\Http\Controllers;
 
 use App\Models\Solution;
+use Database\Seeders\ChaptersTableSeeder;
+use Database\Seeders\ExercisesTableSeeder;
 use Tests\ControllerTestCase;
 
 class SolutionControllerTest extends ControllerTestCase
@@ -10,7 +12,11 @@ class SolutionControllerTest extends ControllerTestCase
     public function setUp(): void
     {
         parent::setUp();
-        $solutions = factory(Solution::class, 5)->make();
+        $this->seed([
+            ChaptersTableSeeder::class,
+            ExercisesTableSeeder::class,
+        ]);
+        $solutions = Solution::factory()->count(5)->create();
         $this->user->solutions()->saveMany($solutions);
 
         $this->actingAs($this->user);

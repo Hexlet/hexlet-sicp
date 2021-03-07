@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Comment;
 use App\Http\Requests\CommentRequest;
+use App\Models\User;
+use App\Services\ActivityService;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\RedirectResponse;
 
@@ -11,9 +13,15 @@ use function getCommentLink;
 
 class CommentController extends Controller
 {
-    public function __construct()
+    /**
+     * @var ActivityService
+     */
+    private ActivityService $activityService;
+
+    public function __construct(ActivityService $activityService)
     {
         $this->authorizeResource(Comment::class, 'comment');
+        $this->activityService = $activityService;
     }
 
     public function store(CommentRequest $request): RedirectResponse
@@ -23,17 +31,15 @@ class CommentController extends Controller
         /** @var Model $commentable */
         $commentable = $commentableModel::findOrFail($commentableId);
 
+        /** @var User $user */
         $user = auth()->user();
 
+        /** @var Comment $comment */
         $comment = $user->comments()->save(
             Comment::make($request->validated())
         );
 
-        activity()
-            ->performedOn($commentable)
-            ->causedBy($user)
-            ->withProperties(['comment' => $comment, 'url' => getCommentLink($comment)])
-            ->log('commented');
+        $this->activityService->logCreatedComment($user, $comment, $commentable);
 
         return redirect(getCommentLink($comment));
     }
