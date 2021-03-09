@@ -10,6 +10,6 @@ return [
         '2' =>
         "This algorithm takes a number of steps that is linear in b. " .
         "Now suppose we include, together with addition, operations double, which doubles an integer, and halve, which divides an (even) integer by 2. " .
-        "Using these, design a multiplication procedure analogous to fast-expt that uses a logarithmic number of steps.",
+        "Using these, design a multiplication procedure fast-mul analogous to fast-expt that uses a logarithmic number of steps.",
     ],
 ];
