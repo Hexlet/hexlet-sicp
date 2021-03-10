@@ -33,6 +33,8 @@ class SolutionController extends Controller
         $solution = $solution->user()->associate($user);
         $solution = $solution->exercise()->associate($exercise);
         $solution->save();
+
+        flash()->success(__('layout.flash.success'));
         $this->activityService->logAddedSolution($user, $solution);
 
         return back();
