@@ -6,16 +6,19 @@ use App\Models\Exercise;
 use App\Http\Controllers\Controller;
 use App\Models\Solution;
 use App\Models\User;
+use App\Services\ActivityService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class SolutionController extends Controller
 {
+    private ActivityService $activityService;
 
-    public function __construct()
+    public function __construct(ActivityService $activityService)
     {
         $this->authorizeResource(Solution::class, 'solution');
+        $this->activityService = $activityService;
     }
 
     public function store(Request $request, User $user): RedirectResponse
@@ -25,24 +28,12 @@ class SolutionController extends Controller
         ]);
 
         $exercise = Exercise::findOrFail($request->get('exercise_id'));
-
         $solution = new Solution($validatedData);
-        /** @var Solution $solution */
+
         $solution = $solution->user()->associate($user);
         $solution = $solution->exercise()->associate($exercise);
-
-        if ($solution->save()) {
-            activity()
-            ->performedOn($solution)
-            ->causedBy($user)
-            ->withProperties([
-                'exercise_id' => $exercise->id,
-                'exercise_path' => $exercise->path,
-            ])
-            ->log('add_solution');
-        } else {
-            flash()->error(__('layout.flash.error'));
-        }
+        $solution->save();
+        $this->activityService->logAddedSolution($user, $solution);
 
         return back();
     }

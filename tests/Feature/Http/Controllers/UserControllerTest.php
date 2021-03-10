@@ -20,7 +20,7 @@ class UserControllerTest extends ControllerTestCase
 
     public function testVisitByOtherUser(): void
     {
-        $visitor = factory(User::class)->create();
+        $visitor = User::factory()->create();
         $this->actingAs($visitor);
 
         $response = $this->get(route('users.show', $this->user));

@@ -14,6 +14,6 @@ class SolutionsTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(Solution::class, 200)->create();
+        Solution::factory()->count(30)->create();
     }
 }

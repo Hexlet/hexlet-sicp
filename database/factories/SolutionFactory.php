@@ -1,15 +1,43 @@
 <?php
 
-use App\Models\Solution;
-use App\Models\Exercise;
-use App\Models\User;
-use Faker\Generator as Faker;
+namespace Database\Factories;
 
-/** @var \Illuminate\Database\Eloquent\Factory $factory */
-$factory->define(Solution::class, function (Faker $faker) {
-    return [
-        'exercise_id' => factory(Exercise::class)->create()->id,
-        'user_id' => factory(User::class)->create()->id,
-        'content' => $faker->text,
-    ];
-});
+use App\Models\Exercise;
+use App\Models\Solution;
+use App\Models\User;
+use App\Services\ActivityService;
+use Illuminate\Database\Eloquent\Factories\Factory;
+
+class SolutionFactory extends Factory
+{
+
+    /**
+     * The name of the factory's corresponding model.
+     *
+     * @var string
+     */
+    protected $model = Solution::class;
+
+    /**
+     * Define the model's default state.
+     *
+     * @return array
+     */
+    public function definition()
+    {
+        return [
+            'exercise_id' => Exercise::inRandomOrder()->first()->id,
+            'user_id' => User::inRandomOrder()->first()->id,
+            'content' => $this->faker->text,
+        ];
+    }
+
+    public function configure(): self
+    {
+        return $this->afterCreating(function (Solution $solution) {
+            /** @var ActivityService $activitySerivce */
+            $activitySerivce = app()->make(ActivityService::class);
+            $activitySerivce->logAddedSolution($solution->user, $solution);
+        });
+    }
+}
