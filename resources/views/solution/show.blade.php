@@ -34,11 +34,11 @@
             @foreach ($solutionsListForCurrentExercise as $currentSolution)
                 @if ($loop->first)
                 <div class="tab-pane fade show active" id="pills-{{ $currentSolution->id }}" role="tabpanel" aria-labelledby="pills-{{ $currentSolution->id }}-tab">
-                    <pre><code>{{ $currentSolution->content }}</code></pre>
+                    @solution(['solution' => $currentSolution])
                 </div>
                 @else
                 <div class="tab-pane fade show" id="pills-{{ $currentSolution->id }}" role="tabpanel" aria-labelledby="pills-{{ $currentSolution->id }}-tab">
-                    <pre><code>{{ $currentSolution->content }}</code></pre>
+                    @solution(['solution' => $currentSolution])
                 </div>
                 @endif
             @endforeach
@@ -65,11 +65,11 @@
             @foreach ($solutionsListForCurrentExercise as $currentSolution)
                 @if ($loop->first)
                 <div class="tab-pane fade show active" id="pills-{{ $currentSolution->id }}double" role="tabpanel" aria-labelledby="pills-{{ $currentSolution->id }}double-tab">
-                    <pre><code>{{ $currentSolution->content }}</code></pre>
+                    @solution(['solution' => $currentSolution])
                 </div>
                 @else
                 <div class="tab-pane fade show" id="pills-{{ $currentSolution->id }}double" role="tabpanel" aria-labelledby="pills-{{ $currentSolution->id }}double-tab">
-                    <pre><code>{{ $currentSolution->content }}</code></pre>
+                    @solution(['solution' => $currentSolution])
                 </div>
                 @endif
             @endforeach
