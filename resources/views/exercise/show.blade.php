@@ -41,7 +41,7 @@
                     <div class="tab-pane fade show active" id="exercise-description" role="tabpanel" aria-labelledby="exercise-description-tab">
                         <h1 class="mb-2 h3">
                             {{ getExerciseTitle($exercise) }}
-                            <small>
+                            <sup class="h6">
                                 <a class="text-muted"
                                    target="_blank"
                                    href="{{ getExerciseOriginLink($exercise) }}"
@@ -50,7 +50,7 @@
                                    title="{{ __('layout.common.origin') }}">
                                     <i class="fas fa-external-link-alt"></i>
                                 </a>
-                            </small>
+                            </sup>
                         </h1>
                         @include(getExerciseListingViewFilepath($exercise->path))
                         <hr>
