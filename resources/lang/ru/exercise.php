@@ -17,6 +17,17 @@ return [
         'completed_by' => 'Завершено пользователями:',
         'previous' => 'Предыдущее',
         'next' => 'Следующее',
+        'editor-tab' => 'Редактор',
+        'discussion-tab' => 'Обсуждение',
+        'description-tab' => 'Описание',
+        'output-tab' => 'Вывод',
+        'tests-tab' => 'Тесты',
+        'editor' => [
+            'auth' => [
+                'required' => 'Требуется авторизация',
+                'must_log_in' => 'Вам необходимо войти, чтобы пользоваться редактором',
+            ],
+        ],
     ],
     'mark_exercise' => 'Отметить упражнение :exercise_path выполненным',
     'remove_completed_exercise' => 'Удалить упражнение :exercise_path из выполненных',
