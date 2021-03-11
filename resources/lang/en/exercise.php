@@ -17,6 +17,17 @@ return [
         'completed_by' => 'Completed by:',
         'previous' => 'Previous',
         'next' => 'Next',
+        'editor-tab' => 'Editor',
+        'discussion-tab' => 'Discussion',
+        'description-tab' => 'Exercise',
+        'output-tab' => 'Output',
+        'tests-tab' => 'Tests',
+        'editor' => [
+            'auth' => [
+                'required' => 'Authentication required',
+                'must_log_in' => 'You must log in to use editor.',
+            ],
+        ],
     ],
     'mark_exercise' => 'Mark :exercise_path completed',
     'remove_completed_exercise' => 'Remove :exercise_path from completed',
