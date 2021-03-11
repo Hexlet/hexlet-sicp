@@ -1,3 +1,3 @@
-<pre class="text-wrap">
+<pre>
     <code>{{ $solution->content }}</code>
 </pre>
