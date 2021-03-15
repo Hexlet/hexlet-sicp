@@ -27,11 +27,19 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Install PHP
+    - name: Setup PHP
       uses: shivammathur/setup-php@v2
       with:
         extensions: mbstring, curl, dom, xml, zip, sqlite, xdebug
         php-version: '7.4'
+
+    - name: Setup Racket
+      uses: Bogdanp/setup-racket@v1.1
+      with:
+        architecture: 'x64'
+        distribution: 'full'
+        variant: 'CS'
+        version: 'stable'
 
     - name: Setup project
       run: |

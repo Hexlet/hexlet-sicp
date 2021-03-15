@@ -6,6 +6,7 @@ use App\Models\Comment;
 use App\Models\Exercise;
 use Database\Seeders\ChaptersTableSeeder;
 use Database\Seeders\ExercisesTableSeeder;
+use Illuminate\Testing\TestResponse;
 use Tests\ControllerTestCase;
 
 class ExerciseControllerTest extends ControllerTestCase
@@ -45,5 +46,6 @@ class ExerciseControllerTest extends ControllerTestCase
 
         $response->assertOk();
         $response->assertSee($exercise->path);
+        $response->assertSeeLivewire('exercise-editor');
     }
 }

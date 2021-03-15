@@ -14,7 +14,7 @@ parameters:
     # The level 8 is the highest level
     level: 6
 
-    excludes_analyse:
+    excludePaths:
         - app/Http/Controllers/Auth/*
 
     checkMissingIterableValueType: false

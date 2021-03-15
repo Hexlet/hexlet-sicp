@@ -27,6 +27,12 @@ return [
                 'required' => 'Authentication required',
                 'must_log_in' => 'You must log in to use editor.',
             ],
+            'message' => [
+                'failed' => 'Failed to verify the solution. See the "Output" tab.',
+                'success' => 'Good for you! Don\'t forget to save the solution.',
+                'has_not_tests' => 'There are no tests for this exercise. Any solution will be considered a successful answer.',
+            ],
+            'run' => 'Run',
         ],
     ],
     'mark_exercise' => 'Mark :exercise_path completed',
