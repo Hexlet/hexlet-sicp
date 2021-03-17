@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
+use Database\Factories\CommentFactory;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -27,10 +29,12 @@ use Illuminate\Support\Carbon;
  * @property-read Collection|\App\Models\Comment[] $replies
  * @property-read int|null $replies_count
  * @property-read User $user
+ * @method static CommentFactory factory(...$parameters)
  */
 class Comment extends Model
 {
     use SoftDeletes;
+    use HasFactory;
 
     protected $with = ['user'];
     protected $fillable = ['content', 'commentable_type', 'commentable_id', 'parent_id'];

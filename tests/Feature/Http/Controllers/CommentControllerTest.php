@@ -6,6 +6,9 @@ use App\Models\Chapter;
 use App\Models\Comment;
 use App\Models\Exercise;
 use App\Models\User;
+use Database\Seeders\ChaptersTableSeeder;
+use Database\Seeders\ExercisesTableSeeder;
+use Database\Seeders\UsersTableSeeder;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Database\Eloquent\Model;
 use Tests\ControllerTestCase;
@@ -15,15 +18,11 @@ class CommentControllerTest extends ControllerTestCase
     public function setUp(): void
     {
         parent::setUp();
-        factory(Chapter::class, 2)
-            ->create()
-            ->each(
-                function (Chapter $chapter): void {
-                    $chapter->exercises()->saveMany(
-                        factory(Exercise::class, mt_rand(1, 3))->make()
-                    );
-                }
-            );
+        $this->seed([
+            ChaptersTableSeeder::class,
+            ExercisesTableSeeder::class,
+            UsersTableSeeder::class,
+        ]);
     }
 
     /**
@@ -46,7 +45,7 @@ class CommentControllerTest extends ControllerTestCase
      */
     public function testStore(string $commentableClass): void
     {
-        /** @var Model $commentableClass */
+        /** @var Exercise|Chapter $commentableClass */
         $commentable = $commentableClass::inRandomOrder()->first();
         $visitedPage = $this->getCommentableActionRoute('show', $commentable);
         $user = $this->user;
@@ -76,7 +75,7 @@ class CommentControllerTest extends ControllerTestCase
      */
     public function testUpdate(string $commentableClass): void
     {
-        /** @var Model $commentableClass */
+        /** @var Exercise|Chapter $commentableClass */
         $commentable = $commentableClass::inRandomOrder()->first();
         $visitedPage = $this->getCommentableActionRoute('show', $commentable);
         $user = $this->user;
@@ -140,14 +139,18 @@ class CommentControllerTest extends ControllerTestCase
         /** @var Model $commentableClass */
         $commentable = $commentableClass::inRandomOrder()->first();
         $visitedPage = $this->getCommentableActionRoute('show', $commentable);
-        $user = $this->user;
+
+        $comment = Comment::factory()
+            ->user($this->user)
+            ->commentable($commentable)
+            ->create();
+
+        $commentData = $comment->only('id', 'user_id', 'content', 'deleted_at');
+
+        $user = User::factory()->create();
         $this
             ->from($visitedPage)
             ->actingAs($user);
-
-        $comment = factory(Comment::class)->state('with_user')->make();
-        $commentable->comments()->save($comment);
-        $commentData = $comment->only('id', 'user_id', 'content', 'deleted_at');
 
         $this->expectException(AuthorizationException::class);
         $response = $this->put(
@@ -167,13 +170,15 @@ class CommentControllerTest extends ControllerTestCase
         /** @var Model $commentableClass */
         $commentable = $commentableClass::inRandomOrder()->first();
         $visitedPage = $this->getCommentableActionRoute('show', $commentable);
-        $user = $this->user;
+        $comment = Comment::factory()
+            ->user($this->user)
+            ->commentable($commentable)
+            ->create();
+
+        $user = User::factory()->create();
         $this
             ->from($visitedPage)
             ->actingAs($user);
-
-        $comment = factory(Comment::class)->state('with_user')->make();
-        $commentable->comments()->save($comment);
 
         $this->expectException(AuthorizationException::class);
         $response = $this->delete(
@@ -204,7 +209,7 @@ class CommentControllerTest extends ControllerTestCase
 
     private function createComment(User $user, Model $commentable): Comment
     {
-        $comment = factory(Comment::class)->make();
+        $comment = Comment::factory()->make();
         $comment = $comment->user()->associate($user);
         /** @var Comment $comment */
         $comment = $comment->commentable()->associate($commentable);

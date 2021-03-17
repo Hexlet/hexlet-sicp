@@ -5,14 +5,18 @@ namespace App\Http\Controllers\User;
 use App\Models\Exercise;
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Services\ActivityService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 class UserExerciseController extends Controller
 {
-    public function __construct()
+    private ActivityService $activityService;
+
+    public function __construct(ActivityService $activityService)
     {
         $this->middleware('auth');
+        $this->activityService = $activityService;
     }
 
     public function store(Request $request, User $user): RedirectResponse
@@ -35,14 +39,7 @@ class UserExerciseController extends Controller
     public function destroy(User $user, Exercise $exercise): RedirectResponse
     {
         $user->exercises()->detach($exercise);
-
-        activity()
-            ->performedOn($exercise)
-            ->causedBy($user)
-            ->withProperties(
-                ['exercise_id' => $exercise->id]
-            )
-            ->log('destroy_exercise');
+        $this->activityService->logRemovedExercise($user, $exercise);
 
         flash()->success(__('layout.flash.success'));
 
@@ -52,15 +49,7 @@ class UserExerciseController extends Controller
     private function completeExercise(User $user, Exercise $exercise): void
     {
         $user->exercises()->syncWithoutDetaching($exercise);
-
-        activity()
-            ->performedOn($exercise)
-            ->causedBy($user)
-            ->withProperties(
-                ['exercise_id' => $exercise->id]
-            )
-            ->log('completed_exercise');
-
+        $this->activityService->logCompletedExercise($user, $exercise);
         flash()->success(__('layout.flash.success'));
     }
 }

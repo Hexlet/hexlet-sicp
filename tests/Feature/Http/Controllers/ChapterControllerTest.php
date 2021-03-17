@@ -4,20 +4,20 @@ namespace Tests\Feature\Http\Controllers;
 
 use App\Models\Chapter;
 use App\Models\Comment;
+use Database\Seeders\ChaptersTableSeeder;
+use Database\Seeders\UsersTableSeeder;
+use Tests\ControllerTestCase;
 use Tests\TestCase;
 
-class ChapterControllerTest extends TestCase
+class ChapterControllerTest extends ControllerTestCase
 {
     protected function setUp(): void
     {
         parent::setUp();
-        factory(Chapter::class, 2)
-            ->create()
-            ->each(function (Chapter $chapter): void {
-                $chapter->children()->saveMany(
-                    factory(Chapter::class, mt_rand(0, 3))->make()
-                );
-            });
+        $this->seed([
+            ChaptersTableSeeder::class,
+            UsersTableSeeder::class,
+        ]);
     }
 
     public function testIndex(): void
@@ -31,7 +31,11 @@ class ChapterControllerTest extends TestCase
     {
         $chapter = Chapter::inRandomOrder()->first();
         $chapter->comments()->saveMany(
-            factory(Comment::class, 5)->state('with_user')->make()
+            Comment::factory()
+                ->count(5)
+                ->user($this->user)
+                ->commentable($chapter)
+                ->make()
         );
         $response = $this->get(route('chapters.show', $chapter));
 

@@ -7,11 +7,11 @@
 @endphp
 @section('description'){{ __('exercise.index.description') }}@endsection
 @section('content')
-    <div class="row">
-        <div class="col">
-            <h1 class="h3">{{ __('layout.nav.exercises') }}</h1>
-        </div>
-    </div>
+
+    @include('exercise.navigation')
+
+    <h1 class="h4">{{ __('layout.nav.exercises') }}</h1>
+
     <div class="row mt-2">
         <div class="col-12 col-md-4 mb-2">
             <ul class="nav nav-pills flex-column sticky-top x-z-index-0" role="tablist">

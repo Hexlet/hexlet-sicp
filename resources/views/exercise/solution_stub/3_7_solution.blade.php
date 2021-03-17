@@ -1,0 +1,5 @@
+(define (make-joint acc acc-pass new-pass)
+    (define (dispatch key m)
+      (cond ((eq? key new-pass) (acc acc-pass m))
+            (else (error "Wrong password"))))
+    dispatch)

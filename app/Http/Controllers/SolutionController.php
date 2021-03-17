@@ -14,6 +14,7 @@ class SolutionController extends Controller
         $solutions = QueryBuilder::for(Solution::versioned())
             ->allowedFilters([
                 AllowedFilter::exact('exercise_id'),
+                AllowedFilter::exact('user_id'),
             ])
             ->whereHas('user')
             ->latest()

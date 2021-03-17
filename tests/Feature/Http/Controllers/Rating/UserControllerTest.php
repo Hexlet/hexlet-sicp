@@ -2,22 +2,26 @@
 
 namespace Tests\Feature\Http\Controllers\Rating;
 
-use App\Models\ReadChapter;
+use App\Models\Chapter;
 use App\Models\User;
 use Tests\TestCase;
 
 class UserControllerTest extends TestCase
 {
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $users = User::factory()->count(10)->create();
+        $users->each(function (User $user): void {
+            $count = random_int(1, 10);
+            $chapters = Chapter::inRandomOrder()->limit($count)->get();
+            $user->chapters()->saveMany($chapters);
+        });
+    }
+
     public function testIndex(): void
     {
-        factory(User::class, 10)
-            ->create()
-            ->each(function ($user): void {
-                factory(ReadChapter::class, random_int(0, 10))->create([
-                    'user_id' => $user->id,
-                ]);
-            });
-
         $this->get(route('top.index'))
             ->assertOk();
     }

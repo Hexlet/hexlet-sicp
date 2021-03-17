@@ -8,6 +8,6 @@ return [
         '2' =>
         " and ",
         '3' =>
-        ", devise a procedure that generates an iterative process for multiplying two integers in terms of adding, doubling, and halving and uses a logarithmic number of steps.",
+        ", devise a procedure mul-iter that generates an iterative process for multiplying two integers in terms of adding, doubling, and halving and uses a logarithmic number of steps.",
     ],
 ];

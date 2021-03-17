@@ -2,9 +2,11 @@
 
 namespace Tests\Feature\Http\Controllers;
 
-use App\Models\Chapter;
 use App\Models\Comment;
 use App\Models\Exercise;
+use Database\Seeders\ChaptersTableSeeder;
+use Database\Seeders\ExercisesTableSeeder;
+use Illuminate\Testing\TestResponse;
 use Tests\ControllerTestCase;
 
 class ExerciseControllerTest extends ControllerTestCase
@@ -12,13 +14,10 @@ class ExerciseControllerTest extends ControllerTestCase
     protected function setUp(): void
     {
         parent::setUp();
-        factory(Chapter::class, 2)
-            ->create()
-            ->each(function (Chapter $chapter): void {
-                $chapter->exercises()->saveMany(
-                    factory(Exercise::class, mt_rand(1, 3))->make()
-                );
-            });
+        $this->seed([
+            ChaptersTableSeeder::class,
+            ExercisesTableSeeder::class,
+        ]);
     }
 
     public function testIndex(): void
@@ -36,12 +35,17 @@ class ExerciseControllerTest extends ControllerTestCase
     {
         $exercise = Exercise::inRandomOrder()->first();
         $exercise->comments()->saveMany(
-            factory(Comment::class, 5)->state('with_user')->make()
+            Comment::factory()
+                ->count(5)
+                ->user($this->user)
+                ->commentable($exercise)
+                ->make()
         );
 
         $response = $this->get(route('exercises.show', $exercise));
 
         $response->assertOk();
         $response->assertSee($exercise->path);
+        $response->assertSeeLivewire('exercise-editor');
     }
 }

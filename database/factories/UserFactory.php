@@ -1,20 +1,31 @@
 <?php
 
-/** @var \Illuminate\Database\Eloquent\Factory $factory */
-use App\Models\User;
-use Illuminate\Support\Str;
-use Faker\Generator as Faker;
+namespace Database\Factories;
 
-/** @var \Illuminate\Database\Eloquent\Factory $factory */
-$factory->define(User::class, function (Faker $faker) {
-    return [
-        'name' => $faker->firstName . ' ' . $faker->lastName,
-        'email' => $faker->unique()->safeEmail,
-        'email_verified_at' => now(),
-        'github_name' => $faker->userName,
-        'hexlet_nickname' => $faker->userName,
-        // password
-        'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',
-        'remember_token' => Str::random(10),
-    ];
-});
+use App\Models\User;
+use Illuminate\Database\Eloquent\Factories\Factory;
+
+class UserFactory extends Factory
+{
+    /**
+     * @var string
+     */
+    protected $model = User::class;
+
+    /**
+     * @return array
+     */
+    public function definition(): array
+    {
+        return [
+            'name' => implode(' ', [$this->faker->firstName, $this->faker->lastName]),
+            'email' => $this->faker->unique()->safeEmail,
+            'email_verified_at' => now(),
+            'github_name' => $this->faker->userName,
+            'hexlet_nickname' => $this->faker->userName,
+            // password
+            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',
+            'remember_token' => str_random(10),
+        ];
+    }
+}

@@ -1,14 +1,51 @@
 <?php
 
-/** @var \Illuminate\Database\Eloquent\Factory $factory */
+namespace Database\Factories;
 
 use App\Models\CompletedExercise;
 use App\Models\Exercise;
 use App\Models\User;
+use App\Services\ActivityService;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
-$factory->define(CompletedExercise::class, function () {
-    return [
-        'exercise_id' => factory(Exercise::class)->create()->id,
-        'user_id'     => factory(User::class)->create()->id,
-    ];
-});
+class CompletedExerciseFactory extends Factory
+{
+    /**
+     * @var string
+     */
+    protected $model = CompletedExercise::class;
+
+    public function definition(): array
+    {
+        return [
+            'user_id' => null,
+            'exercise_id' => null,
+        ];
+    }
+
+    public function user(User $user): self
+    {
+        return $this->state(fn() => [
+            'user_id' => $user->id,
+        ]);
+    }
+
+    public function exercise(Exercise $exercise): self
+    {
+        return $this->state(fn() => [
+            'exercise_id' => $exercise->id,
+        ]);
+    }
+
+    public function configure(): self
+    {
+        return $this->afterCreating(function (CompletedExercise $completedExercise) {
+            /** @var ActivityService $service */
+            $service = app()->make(ActivityService::class);
+            $service->logCompletedExercise(
+                $completedExercise->user,
+                $completedExercise->exercise
+            );
+        });
+    }
+}

@@ -6,7 +6,7 @@
 </code></pre>
 <p>{{ __('exercises/2_19.description.3') }}</p>
 <pre><code>(cc 100 us-coins)
-292
+<i>292</i>
 </code></pre>
 <p>{{ __('exercises/2_19.description.4') }}</p>
 <pre><code>(define (cc amount coin-values)

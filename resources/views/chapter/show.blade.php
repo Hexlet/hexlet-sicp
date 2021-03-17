@@ -94,12 +94,12 @@
                     <button type="button" class="btn btn-primary" data-toggle="modal"
                             data-target="#modalCart">{{ __('chapter.show.who_completed') }}</button>
                     <div class="modal fade" id="modalCart" tabindex="-1" role="dialog"
-                         aria-labelledby="exampleModalLabel" aria-hidden="true">
+                         aria-labelledby="completed-by-modal-title" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h4 class="modal-title" id="myModalLabel">{{ __('chapter.show.completed_by') }}</h4>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <h4 class="modal-title" id="completed-by-modal-title">{{ __('chapter.show.completed_by') }}</h4>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="{{ __('layout.common.close') }}">
                                         <span aria-hidden="true">×</span>
                                     </button>
                                 </div>

@@ -26,10 +26,10 @@
 <pre><code>(define acc (make-account 50))
 
 ((acc 'deposit) 40)
-90
+<i>90</i>
 
 ((acc 'withdraw) 60)
-30</code></pre>
+<i>30</i></code></pre>
 <p>
     {{ __('exercises/3_11.description.4') }}
     <code>acc</code>

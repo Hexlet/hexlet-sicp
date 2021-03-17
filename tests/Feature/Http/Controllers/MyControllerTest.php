@@ -3,6 +3,8 @@
 namespace Tests\Feature\Http\Controllers;
 
 use App\Models\Chapter;
+use Database\Seeders\ChaptersTableSeeder;
+use Database\Seeders\ExercisesTableSeeder;
 use Illuminate\Auth\AuthenticationException;
 use Tests\ControllerTestCase;
 
@@ -11,9 +13,10 @@ class MyControllerTest extends ControllerTestCase
     public function setUp(): void
     {
         parent::setUp();
-        $this->user->chapters()->saveMany(
-            factory(Chapter::class, 2)->make()
-        );
+        $this->seed([
+            ChaptersTableSeeder::class,
+            ExercisesTableSeeder::class,
+        ]);
     }
 
     public function testShow(): void

@@ -2,9 +2,10 @@
 
 namespace Tests\Feature\Http\Controllers\User;
 
-use App\Models\Chapter;
 use App\Models\CompletedExercise;
 use App\Models\Exercise;
+use Database\Seeders\ChaptersTableSeeder;
+use Database\Seeders\ExercisesTableSeeder;
 use Tests\ControllerTestCase;
 
 class UserExerciseControllerTest extends ControllerTestCase
@@ -14,13 +15,10 @@ class UserExerciseControllerTest extends ControllerTestCase
         parent::setUp();
 
         $this->actingAs($this->user);
-        factory(Chapter::class, 2)
-            ->create()
-            ->each(function (Chapter $chapter): void {
-                $chapter->exercises()->saveMany(
-                    factory(Exercise::class, random_int(1, 3))->make()
-                );
-            });
+        $this->seed([
+            ChaptersTableSeeder::class,
+            ExercisesTableSeeder::class,
+        ]);
     }
 
     public function testStore(): void
@@ -46,8 +44,12 @@ class UserExerciseControllerTest extends ControllerTestCase
 
     public function testDestroy(): void
     {
+        $this->user->exercises()->save(
+            Exercise::inRandomOrder()->first(),
+        );
+
         /** @var CompletedExercise $completedExercise */
-        $completedExercise = factory(CompletedExercise::class)->create();
+        $completedExercise = $this->user->completedExercises()->first();
 
         $exercisePage = route('exercises.show', $completedExercise->exercise_id);
 

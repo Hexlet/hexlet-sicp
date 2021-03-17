@@ -3,6 +3,7 @@
 namespace Tests\Feature\Http\Controllers\User;
 
 use App\Models\Chapter;
+use Database\Seeders\ChaptersTableSeeder;
 use Tests\ControllerTestCase;
 
 class UserChapterControllerTest extends ControllerTestCase
@@ -12,7 +13,9 @@ class UserChapterControllerTest extends ControllerTestCase
     {
         parent::setUp();
 
-        factory(Chapter::class, 3)->create();
+        $this->seed([
+            ChaptersTableSeeder::class,
+        ]);
     }
 
     public function testDestroy(): void

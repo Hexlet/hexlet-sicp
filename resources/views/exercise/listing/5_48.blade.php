@@ -7,11 +7,11 @@
         (* (factorial (- n 1)) n))))
 
 ;;; EC-Eval value:
-ok
+<i>ok</i>
 
 ;;; EC-Eval input:
 (factorial 5)
 
 ;;; EC-Eval value:
-120
+<i>120</i>
 </code></pre>

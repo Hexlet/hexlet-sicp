@@ -34,12 +34,15 @@
         "laravel/tinker": "^2.0",
         "laravel/ui": "^3.0",
         "laravelcollective/html": "^6.0",
+        "livewire/livewire": "^2.4",
         "mcamara/laravel-localization": "^1.4",
+        "mikehaertl/php-shellcommand": "^1.6",
         "php-http/guzzle6-adapter": "^2.0",
         "rollbar/rollbar-laravel": "~7.0",
         "spatie/laravel-activitylog": "^3.9",
         "spatie/laravel-query-builder": "^3.3",
         "spatie/laravel-sitemap": "^5.5",
+        "symfony/process": "^5.2",
         "symfony/yaml": "^4.3"
     },
     "require-dev": {
