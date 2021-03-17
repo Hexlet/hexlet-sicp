@@ -88,6 +88,13 @@ if (!function_exists('getExerciseTitle')) {
     }
 }
 
+if (!function_exists('getFullExerciseTitle')) {
+    function getFullExerciseTitle(Exercise $exercise): ?string
+    {
+        return ExerciseHelper::getFullExerciseTitle($exercise);
+    }
+}
+
 if (!function_exists('getExerciseOriginLink')) {
     function getExerciseOriginLink(Exercise $exercise): ?string
     {

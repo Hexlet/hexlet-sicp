@@ -12,6 +12,10 @@ return [
                 'date' => 'Дата',
             ],
             'show_action' => 'Смотреть',
+            'filter' => [
+                'apply_button' => 'Применить',
+                'reset_button' => 'Сбросить',
+            ],
         ],
     ],
     'exercise' => [
