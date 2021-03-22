@@ -1,4 +1,5 @@
 window._ = require('lodash');
+window.hljs = require('highlight.js/lib/core');
 
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
@@ -12,6 +13,18 @@ try {
 
     require('bootstrap');
 } catch (e) {
+}
+
+try {
+    document.addEventListener("DOMContentLoaded", () => {
+        Livewire.hook('message.processed', () => {
+            document.querySelectorAll('div > pre > code').forEach((block) => {
+                hljs.highlightElement(block);
+            });
+        })
+    });
+} catch (e) {
+    console.log(e);
 }
 
 /**
