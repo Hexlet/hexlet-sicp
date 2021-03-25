@@ -61,10 +61,10 @@
                 {{ BsForm::close() }}
             </div>
             <div class="tab-pane fade" id="editor-tests" role="tabpanel" aria-labelledby="editor-tests">
-                <pre><code class="lang-scheme">{{ $tests }}</code></pre>
+                <pre><code class="lang-scheme sicp-higlight-code">{{ $tests }}</code></pre>
             </div>
             <div class="tab-pane fade" id="editor-output" role="tabpanel" aria-labelledby="editor-output">
-                <pre><code class="lang-vbnet wraped-code">{{ $checkResult['output'] }}</code></pre>
+                <pre><code class="lang-vbnet sicp-higlight-code x-text-pre-wrap">{{ $checkResult['output'] }}</code></pre>
             </div>
         </div>
 </div>
