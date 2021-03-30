@@ -80,4 +80,12 @@ class ExerciseHelper
     {
         return str_replace('.', '_', $path);
     }
+
+    public static function getFullExerciseTitle(Exercise $exercise): ?string
+    {
+        $path = $exercise->path;
+        $exerciseTitle = self::getExerciseTitle($exercise);
+
+        return "$path $exerciseTitle";
+    }
 }

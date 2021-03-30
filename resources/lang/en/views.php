@@ -12,6 +12,10 @@ return [
                 'date' => 'Date',
             ],
             'show_action' => 'Show',
+            'filter' => [
+                'apply_button' => 'Apply',
+                'reset_button' => 'Reset',
+            ],
         ],
     ],
     'exercise' => [
