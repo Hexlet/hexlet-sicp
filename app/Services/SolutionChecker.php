@@ -27,7 +27,7 @@ class SolutionChecker
         Storage::put($userSolutionPath, $contents);
         $solutionPath = Storage::path($userSolutionPath);
 
-        $command = new Command("raco test -e {$solutionPath}");
+        $command = new Command("raco test --check-stderr --quiet {$solutionPath}");
 
         $command->execute();
 

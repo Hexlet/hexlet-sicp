@@ -26,7 +26,8 @@
                 {{ BsForm::open(null, ['wire:submit.prevent' => 'check']) }}
                 @include('flash::message')
                 {{ BsForm::textarea('content')->placeholder(__('solution.placeholder'))->required()->cols(200)
-                       ->attribute('wire:model', 'solutionCode')
+                       ->attribute('wire:model.defer', 'solutionCode')
+                       ->attribute('id', 'x-editor-textarea')
                        ->attribute('wire:loading.attr', "disabled")
                        ->attribute('wire:target', "check") }}
                 {{ Form::hidden('exercise_id', $exercise->id) }}
@@ -61,10 +62,10 @@
                 {{ BsForm::close() }}
             </div>
             <div class="tab-pane fade" id="editor-tests" role="tabpanel" aria-labelledby="editor-tests">
-                <pre><code>{{ $tests }}</code></pre>
+                <pre><code class="lang-scheme hljs">{{ $tests }}</code></pre>
             </div>
             <div class="tab-pane fade" id="editor-output" role="tabpanel" aria-labelledby="editor-output">
-                <pre><code>{{ $checkResult['output'] }}</code></pre>
+                <pre><code class="lang-vbnet hljs x-text-pre-wrap">{{ $checkResult['output'] }}</code></pre>
             </div>
         </div>
 </div>
