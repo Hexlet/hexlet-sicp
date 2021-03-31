@@ -27,6 +27,7 @@
                 @include('flash::message')
                 {{ BsForm::textarea('content')->placeholder(__('solution.placeholder'))->required()->cols(200)
                        ->attribute('wire:model.defer', 'solutionCode')
+                       ->attribute('id', 'x-editor-textarea')
                        ->attribute('wire:loading.attr', "disabled")
                        ->attribute('wire:target', "check") }}
                 {{ Form::hidden('exercise_id', $exercise->id) }}
@@ -61,10 +62,10 @@
                 {{ BsForm::close() }}
             </div>
             <div class="tab-pane fade" id="editor-tests" role="tabpanel" aria-labelledby="editor-tests">
-                <pre><code class="lang-scheme sicp-higlight-code">{{ $tests }}</code></pre>
+                <pre><code class="lang-scheme hljs">{{ $tests }}</code></pre>
             </div>
             <div class="tab-pane fade" id="editor-output" role="tabpanel" aria-labelledby="editor-output">
-                <pre><code class="lang-vbnet sicp-higlight-code x-text-pre-wrap">{{ $checkResult['output'] }}</code></pre>
+                <pre><code class="lang-vbnet hljs x-text-pre-wrap">{{ $checkResult['output'] }}</code></pre>
             </div>
         </div>
 </div>

@@ -4,10 +4,7 @@ import '@fortawesome/fontawesome-free/js/regular'
 import '@fortawesome/fontawesome-free/js/brands'
 
 require('./bootstrap');
-require('./hljs');
 require('jquery-ujs');
-
-
 import addHashActiveTab from './custom'
 
 $('#flash-overlay-modal').modal();

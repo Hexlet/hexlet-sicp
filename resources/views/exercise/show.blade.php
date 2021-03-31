@@ -95,4 +95,5 @@
         <div class="col-md-6 mt-2">
             @livewire('exercise-editor', ['exercise' => $exercise, 'user' => $authUser])
         </div>
+        <script src="{{ asset('js/hljs.js')}}"></script>
 @endsection
