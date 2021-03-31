@@ -42,6 +42,7 @@
     </div>
     @include('layouts._footer')
     @livewireScripts
+    <script src="{{ asset('js/hljs.js')}}"></script>
 </body>
 
 </html>
