@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fa67b31468a42a3743e38140f62600dd",
+    "content-hash": "3b1245b2dd2fce070e9ff4b5e142cfe3",
     "packages": [
         {
             "name": "brick/math",
@@ -1513,6 +1513,66 @@
                 "source": "https://github.com/guzzle/psr7/tree/1.7.0"
             },
             "time": "2020-09-30T07:37:11+00:00"
+        },
+        {
+            "name": "hemp/presenter",
+            "version": "v2.3.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/davidhemphill/presenter.git",
+                "reference": "5e24cb244564dadb279f4ba2e67bfd0fa1cef6be"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/davidhemphill/presenter/zipball/5e24cb244564dadb279f4ba2e67bfd0fa1cef6be",
+                "reference": "5e24cb244564dadb279f4ba2e67bfd0fa1cef6be",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "^5.7|^6.0|^7.0|^8.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.0",
+                "orchestra/database": "3.8.*",
+                "orchestra/testbench": "3.8.*",
+                "phpunit/phpunit": "^7.5"
+            },
+            "type": "project",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Hemp\\Presenter\\PresenterServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Hemp\\Presenter\\": "src"
+                },
+                "files": [
+                    "src/helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "David Hemphill",
+                    "email": "davidlee.hemphill@gmail.com"
+                }
+            ],
+            "description": "Easy Model Presenters in Laravel",
+            "keywords": [
+                "framework",
+                "laravel"
+            ],
+            "support": {
+                "issues": "https://github.com/davidhemphill/presenter/issues",
+                "source": "https://github.com/davidhemphill/presenter/tree/v2.3.1"
+            },
+            "time": "2021-03-04T16:30:20+00:00"
         },
         {
             "name": "intervention/image",

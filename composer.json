@@ -25,6 +25,7 @@
         "doctrine/dbal": "^2.10",
         "fideloper/proxy": "~4.0",
         "graham-campbell/github": "^9.4",
+        "hemp/presenter": "^2.3",
         "laracasts/flash": "^3.0",
         "laraeast/laravel-bootstrap-forms": "^5.2",
         "laravel/framework": "^8.0",
