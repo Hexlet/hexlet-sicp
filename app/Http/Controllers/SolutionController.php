@@ -4,12 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\Exercise;
 use App\Models\Solution;
-use App\Models\User;
+use App\Presenters\ExercisePresenter;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
-use Illuminate\View\View;
+use Illuminate\Contracts\View\View;
 
 class SolutionController extends Controller
 {
@@ -26,8 +26,9 @@ class SolutionController extends Controller
             ->latest()
             ->paginate(50);
 
-        $exerciseTitles = Exercise::orderBy('id')->get()
-            ->mapWithKeys(fn(Exercise $exercise) => [$exercise->id => getFullExerciseTitle($exercise)]);
+        $exercises = Exercise::orderBy('id')->get();
+        $exerciseTitles = ExercisePresenter::collection($exercises)
+            ->pluck('fullTitle', 'id');
 
         $solutionAuthors = [];
         if (Auth::user()) {

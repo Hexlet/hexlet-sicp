@@ -13,17 +13,9 @@ class ExerciseHelper
         return sprintf('exercise.listing.%s', $viewName);
     }
 
-    public static function getExerciseTitle(Exercise $exercise): ?string
+    public static function getExerciseTitle(Exercise $exercise): string
     {
-        $underscoredPath = self::underscoreExercisePath($exercise->path);
-
-        $titleTranslatePath = "exercises/{$underscoredPath}.title";
-
-        if (\Lang::has($titleTranslatePath)) {
-            return __($titleTranslatePath);
-        }
-
-        return null;
+        return $exercise->present()->title;
     }
 
     public static function getExerciseOriginLink(Exercise $exercise): ?string
@@ -81,11 +73,8 @@ class ExerciseHelper
         return str_replace('.', '_', $path);
     }
 
-    public static function getFullExerciseTitle(Exercise $exercise): ?string
+    public static function getFullExerciseTitle(Exercise $exercise): string
     {
-        $path = $exercise->path;
-        $exerciseTitle = self::getExerciseTitle($exercise);
-
-        return "$path $exerciseTitle";
+        return $exercise->present()->fullTitle;
     }
 }
