@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Http\Controllers;
 
+use App\Models\Exercise;
 use App\Models\Solution;
 use Database\Seeders\ChaptersTableSeeder;
 use Database\Seeders\ExercisesTableSeeder;
@@ -27,6 +28,16 @@ class SolutionControllerTest extends ControllerTestCase
         $route = route('solutions.index');
 
         $response = $this->get($route);
+
+        $response->assertSessionDoesntHaveErrors();
+        $response->assertOk();
+    }
+
+    public function testIndexWithFilter(): void
+    {
+        $route = route('solutions.index');
+
+        $response = $this->get($route, ['exercise_id' => Exercise::inRandomOrder()->first()]);
 
         $response->assertSessionDoesntHaveErrors();
         $response->assertOk();

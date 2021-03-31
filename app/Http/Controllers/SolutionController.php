@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Exercise;
 use App\Models\Solution;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -14,7 +15,7 @@ class SolutionController extends Controller
 {
     public function index(Request $request): View
     {
-        $filter = $request->input('filter', ['user_id' => 0, 'exercise_id' => 0]);
+        $filter = array_merge(['user_id' => null, 'exercise_id' => null], $request->input('filter', []));
 
         $solutions = QueryBuilder::for(Solution::versioned())
             ->allowedFilters([
@@ -25,8 +26,8 @@ class SolutionController extends Controller
             ->latest()
             ->paginate(50);
 
-        $exerciseTitles = $solutions
-            ->mapWithKeys(fn($solution) => [$solution->exercise->id => getFullExerciseTitle($solution->exercise)]);
+        $exerciseTitles = Exercise::orderBy('id')->get()
+            ->mapWithKeys(fn(Exercise $exercise) => [$exercise->id => getFullExerciseTitle($exercise)]);
 
         $solutionAuthors = [];
         if (Auth::user()) {
