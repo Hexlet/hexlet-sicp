@@ -5,7 +5,7 @@
 <div class="d-flex flex-wrap justify-content-between mb-2 mb-lg-4">
     <div class="h5">
         <a href="{{ route('exercises.show', $currentExercise) }}">
-        {{ __('solution.exercise') }} {{ $currentExercise->path }}: {{ getExerciseTitle($currentExercise) }}
+        {{ __('solution.exercise') }} {{ getFullExerciseTitle($currentExercise) }}
     </div>
     <div class="h5">
         <a href="{{ route('users.show', $user) }}">{{ $user->name }}</a>

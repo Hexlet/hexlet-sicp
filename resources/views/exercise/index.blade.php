@@ -40,7 +40,7 @@
                             <li>
                                 <a title="{{ __('exercise.exercise') }} {{ $exercise->path }}"
                                     href="{{ route('exercises.show', $exercise) }}">
-                                    {{ $exercise->path }} {{ getExerciseTitle($exercise) }}
+                                    {{ getFullExerciseTitle($exercise) }}
                                 </a>
                             </li>
                         @endforeach

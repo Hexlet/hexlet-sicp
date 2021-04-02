@@ -74,9 +74,9 @@ if (!function_exists('getCommentLink')) {
 }
 
 if (!function_exists('getExerciseListingViewFilepath')) {
-    function getExerciseListingViewFilepath(string $exercisePath): string
+    function getExerciseListingViewFilepath(Exercise $exercise): string
     {
-        return ExerciseHelper::getExerciseListingViewFilepath($exercisePath);
+        return ExerciseHelper::getExerciseListingViewFilepath($exercise);
     }
 
 }

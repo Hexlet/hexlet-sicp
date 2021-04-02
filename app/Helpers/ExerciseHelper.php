@@ -7,9 +7,9 @@ use File;
 
 class ExerciseHelper
 {
-    public static function getExerciseListingViewFilepath(string $exercisePath): string
+    public static function getExerciseListingViewFilepath(Exercise $exercise): string
     {
-        $viewName = self::underscoreExercisePath($exercisePath);
+        $viewName = $exercise->present()->underscorePath;
         return sprintf('exercise.listing.%s', $viewName);
     }
 
@@ -22,7 +22,9 @@ class ExerciseHelper
     {
         $links = require resource_path('exercise-links.php');
 
-        return $links[$exercise->path] ?? null;
+        $link = $links[$exercise->path];
+
+        return $link;
     }
 
     public static function getExercise(string $path): Exercise
@@ -36,7 +38,7 @@ class ExerciseHelper
 
     public static function getExerciseTests(Exercise $exercise): string
     {
-        $underscoredExercisePath = self::underscoreExercisePath($exercise->path);
+        $underscoredExercisePath = $exercise->present()->underscorePath;
 
         $path = implode(DIRECTORY_SEPARATOR, [
             resource_path(),
@@ -47,7 +49,6 @@ class ExerciseHelper
         ]);
 
         $fileContent = File::get($path);
-
         [, $testsLines] = explode(';;; END', $fileContent);
 
         return trim($testsLines);

@@ -24,7 +24,7 @@
             <li class="list-group-item p-1">
                 <i class="fas fa-dumbbell"></i>
                 <a href="{{ route('exercises.show', [$exercise]) }}">
-                    {{ $exercise->path }} {{ getExerciseTitle($exercise) }}
+                    {{ getFullExerciseTitle($exercise) }}
                 </a>
             </li>
             @endforeach
