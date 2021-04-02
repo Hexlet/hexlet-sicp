@@ -52,7 +52,7 @@
                                 </a>
                             </sup>
                         </h1>
-                        @include(getExerciseListingViewFilepath($exercise->path))
+                        @include(getExerciseListingViewFilepath($exercise))
                         <hr>
                         <div>
                             @auth

@@ -62,13 +62,13 @@
                     @case('completed_exercise')
                         {{ getLogItemDescription($logItem) }}
                         <a href="{{ route('exercises.show', $logItem->getExtraProperty('exercise_id')) }}">
-                            {{ $logItem->subject->path }} {{ getExerciseTitle($logItem->subject) }}
+                            {{ getFullExerciseTitle($logItem->subject) }}
                         </a>
                         @break
                     @case('destroy_exercise')
                         {{ getLogItemDescription($logItem) }}
                         <a href="{{ route('exercises.show', $logItem->getExtraProperty('exercise_id')) }}">
-                            {{ $logItem->subject->path }} {{ getExerciseTitle($logItem->subject) }}
+                            {{ getFullExerciseTitle($logItem->subject) }}
                         </a>
                         @break
                     @case('commented')

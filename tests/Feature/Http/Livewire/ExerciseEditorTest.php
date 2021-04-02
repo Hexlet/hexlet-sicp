@@ -51,7 +51,7 @@ class ExerciseEditorTest extends TestCase
     public function testCheckSuccess(): void
     {
         $exercise = Exercise::wherePath('1.3')->firstOrFail();
-        $underscoredPath = ExerciseHelper::underscoreExercisePath($exercise->path);
+        $underscoredPath = $exercise->present()->underscorePath;
         $solutionCode = view("exercise.solution_stub.{$underscoredPath}_solution")->render();
         Livewire::test(ExerciseEditor::class, ['exercise' => $exercise, 'user' => $this->user])
             ->assertDontSeeHtml('alert')
