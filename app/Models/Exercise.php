@@ -2,14 +2,23 @@
 
 namespace App\Models;
 
+use App\Presenters\ExercisePresenter;
+use Hemp\Presenter\Presentable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 
+/**
+ * @method ExercisePresenter present()
+ */
 class Exercise extends Model
 {
+    use Presentable;
+
+    public string $defaultPresenter = ExercisePresenter::class;
+
     public function chapter(): BelongsTo
     {
         return $this->belongsTo(Chapter::class);

@@ -82,14 +82,14 @@ if (!function_exists('getExerciseListingViewFilepath')) {
 }
 
 if (!function_exists('getExerciseTitle')) {
-    function getExerciseTitle(Exercise $exercise): ?string
+    function getExerciseTitle(Exercise $exercise): string
     {
         return ExerciseHelper::getExerciseTitle($exercise);
     }
 }
 
 if (!function_exists('getFullExerciseTitle')) {
-    function getFullExerciseTitle(Exercise $exercise): ?string
+    function getFullExerciseTitle(Exercise $exercise): string
     {
         return ExerciseHelper::getFullExerciseTitle($exercise);
     }
