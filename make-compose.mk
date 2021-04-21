@@ -11,7 +11,15 @@ compose-bash:
 	docker-compose run app bash
 
 compose-up:
-	docker-compose up
+	docker-compose up --abort-on-container-exit --remove-orphans
+
+compose-install: compose-app-install compose-frontend-install
+
+compose-app-install:
+	docker-compose run --rm application composer install
+
+compose-frontend-install:
+	docker-compose run --rm frontend npm ci
 
 compose-stop:
 	docker-compose stop
