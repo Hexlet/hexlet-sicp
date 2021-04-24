@@ -1,25 +1,31 @@
 version: '3.7'
 
 services:
-  app:
+  application:
     build: .
     volumes:
-      - .:/app:cached
+      - .:/app:delegated
     ports:
       - "8000:8000"
     depends_on:
-      - db
-    command: make compose
-    stdin_open: true
-    tty: true
-    env_file:
-      - ./.env
+      - database
+    command: php artisan serve --host=0.0.0.0
 
-  db:
-    image: postgres
+  frontend:
+    image: node:15.14.0
+    working_dir: /app
+    volumes:
+    - .:/app:delegated
+    command: npm run watch
+
+  database:
+    image: postgres:13.2-alpine
     environment:
-      POSTGRES_PASSWORD: ${DB_PASSWORD}
-      POSTGRES_DB: ${DB_DATABASE}
-      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_HOST_AUTH_METHOD: trust
     ports:
       - 54320:5432
+    volumes:
+    - hexlet-sicp-pgdata:/var/lib/postgresql/data
+
+volumes:
+  hexlet-sicp-pgdata:
