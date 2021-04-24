@@ -1,5 +1,5 @@
 <p>{{ __('exercises/2_37.description.1') }}</p>
-<img class="img-fluid" src="{{ asset('img/exercises/2_37.gif') }}" alt="2.37">
+<img class="img-fluid" src="{{ mix('img/exercises/2_37.gif') }}" alt="2.37">
 <p>{{ __('exercises/2_37.description.2') }}</p>
 <p>{{ __('exercises/2_37.description.3') }}</p>
 <p>{{ __('exercises/2_37.description.4') }}</p>

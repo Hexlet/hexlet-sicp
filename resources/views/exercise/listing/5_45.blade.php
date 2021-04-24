@@ -5,7 +5,7 @@
 <p>{{ __('exercises/5_45.description.5') }}</p>
 <p>{{ __('exercises/5_45.description.6') }}</p>
 <p>{{ __('exercises/5_45.description.7') }}</p>
-<img class="img-fluid" src="{{ asset('img/exercises/5_12.gif') }}" alt="5.12">
+<img class="img-fluid" src="{{ mix('img/exercises/5_12.gif') }}" alt="5.12">
 <pre><code>(controller
    (assign continue (label fact-done))     ; set up final return address
  fact-loop

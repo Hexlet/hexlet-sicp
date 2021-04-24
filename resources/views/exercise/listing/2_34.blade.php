@@ -1,7 +1,7 @@
 <p>{{ __('exercises/2_34.description.1') }}</p>
-<img class="img-fluid" src="{{ asset('img/exercises/2_34_1.gif') }}" alt="2.34.1">
+<img class="img-fluid" src="{{ mix('img/exercises/2_34_1.gif') }}" alt="2.34.1">
 <p>{{ __('exercises/2_34.description.2') }}</p>
-<img class="img-fluid" src="{{ asset('img/exercises/2_34_2.gif') }}" alt="2.34.2">
+<img class="img-fluid" src="{{ mix('img/exercises/2_34_2.gif') }}" alt="2.34.2">
 <p>{{ __('exercises/2_34.description.3') }}</p>
 <pre><code>(define (horner-eval x coefficient-sequence)
   (accumulate (lambda (this-coeff higher-terms) &lt;??&gt;)
