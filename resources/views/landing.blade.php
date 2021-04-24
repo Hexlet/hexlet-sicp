@@ -10,7 +10,7 @@
                         <div class="sicp-carousel-caption text-left text-secondary">
                             <div class="float-lg-right w-25 d-none d-sm-block">
                                 <img class="img-fluid"
-                                     src="{{ asset('img/Patchouli_Gives_SICP.png') }}"
+                                     src="{{ mix('img/Patchouli_Gives_SICP.png') }}"
                                      alt="{{ __('landing.start_learning') }}">
                             </div>
                             <div>

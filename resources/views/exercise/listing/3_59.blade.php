@@ -1,8 +1,8 @@
 <p>{{ __('exercises/3_59.description.1') }}</p>
-<img class="img-fluid" src="{{ asset('img/exercises/3_59_1.gif') }}" alt="3.59_1">
+<img class="img-fluid" src="{{ mix('img/exercises/3_59_1.gif') }}" alt="3.59_1">
 <p>{{ __('exercises/3_59.description.2') }}</p>
 <p>{{ __('exercises/3_59.description.3') }}</p>
-<img class="img-fluid" src="{{ asset('img/exercises/3_59_2.gif') }}" alt="3.59_2">
+<img class="img-fluid" src="{{ mix('img/exercises/3_59_2.gif') }}" alt="3.59_2">
 <p>{{ __('exercises/3_59.description.4') }}</p>
 <p>{{ __('exercises/3_59.description.5') }}</p>
 <pre><code>(define exp-series

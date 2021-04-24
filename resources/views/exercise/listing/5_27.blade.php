@@ -6,5 +6,5 @@
       (* (factorial (- n 1)) n)))
 </code></pre>
 <p>{{ __('exercises/5_27.description.3') }}</p>
-<img class="img-fluid" src="{{ asset('img/exercises/5_27.gif') }}" alt="5.27">
+<img class="img-fluid" src="{{ mix('img/exercises/5_27.gif') }}" alt="5.27">
 <p>{{ __('exercises/5_27.description.4') }}</p>

@@ -13,7 +13,7 @@
     <title>{{ __('layout.nav.name') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ mix('js/app.js') }}" defer></script>
     @if (config('app.env') == 'production')
     @include('layouts.deps._gtm_head')
     @endif
@@ -23,7 +23,7 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ mix('css/app.css') }}" rel="stylesheet">
 </head>
 
 <body class="min-vh-100 d-flex flex-column">

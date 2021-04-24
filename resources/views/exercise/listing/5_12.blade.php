@@ -6,7 +6,7 @@
     <li>{{ __('exercises/5_12.description.5') }}</li>
 </ul>
 <p>{{ __('exercises/5_12.description.6') }}</p>
-<img class="img-fluid" src="{{ asset('img/exercises/5_12.gif') }}" alt="5.12">
+<img class="img-fluid" src="{{ mix('img/exercises/5_12.gif') }}" alt="5.12">
 <pre><code>(controller
    (assign continue (label fact-done))     ; set up final return address
  fact-loop
@@ -56,7 +56,7 @@
    (restore val)                      ; val now contains Fib(n - 1)
    (restore continue)
    (assign val                        ;  Fib(n - 1) +  Fib(n - 2)
-           (op +) (reg val) (reg n)) 
+           (op +) (reg val) (reg n))
    (goto (reg continue))              ; return to caller, answer is in val
  immediate-answer
    (assign val (reg n))               ; base case:  Fib(n) = n
