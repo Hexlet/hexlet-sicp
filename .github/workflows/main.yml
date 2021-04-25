@@ -23,53 +23,52 @@ jobs:
           --health-retries 5
         ports:
           - 5432:5432
-
     steps:
-    - uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
-    - name: Setup PHP
-      uses: shivammathur/setup-php@v2
-      with:
-        extensions: mbstring, curl, dom, xml, zip, sqlite, xdebug
-        php-version: '7.4'
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          extensions: mbstring, curl, dom, xml, zip, sqlite, xdebug
+          php-version: '7.4'
 
-    - name: Setup Racket
-      uses: Bogdanp/setup-racket@v1.1
-      with:
-        architecture: 'x64'
-        distribution: 'full'
-        variant: 'CS'
-        version: 'stable'
+      - name: Setup Racket
+        uses: Bogdanp/setup-racket@v1.1
+        with:
+          architecture: 'x64'
+          distribution: 'full'
+          variant: 'CS'
+          version: 'stable'
 
-    - name: Setup project
-      run: |
-        php -v
-        make setup
+      - name: Setup project
+        run: |
+          php -v
+          make setup
 
-    - name: Check lint
-      run: make lint
+      - name: PHP Security Checker
+        uses: symfonycorp/security-checker-action@v2
 
-    - name: Static analysis
-      run: make analyse
+      - name: Static analysis
+        run: make analyse
 
-    - name: Execute tests (Unit and Feature tests) via PHPUnit
-      run: |
-        make test-coverage
+      - name: Check lint
+        run: make lint
 
-    - name: Execute tests with PostgreSQL
-      run: make test-coverage
-      env:
-        DB_CONNECTION: pgsql
-        DB_HOST: localhost
-        DB_DATABASE: postgres
-        DB_USERNAME: postgres
-        DB_PASSWORD: postgres
+      - name: Execute tests (Unit and Feature tests) via PHPUnit
+        run: |
+          make test-coverage
 
-    - name: Upload coverage to Codecov
-      uses: codecov/codecov-action@v1
-      with:
-        file: build/logs/clover.xml
-        fail_ci_if_error: true
+      - name: Execute tests with PostgreSQL
+        run: make test-coverage
+        env:
+          DB_CONNECTION: pgsql
+          DB_HOST: localhost
+          DB_DATABASE: postgres
+          DB_USERNAME: postgres
+          DB_PASSWORD: postgres
 
-    - name: PHP Security Checker
-      uses: symfonycorp/security-checker-action@v2
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v1
+        with:
+          file: build/logs/clover.xml
+          fail_ci_if_error: true
