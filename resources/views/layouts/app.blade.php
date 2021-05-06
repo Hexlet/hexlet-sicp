@@ -15,9 +15,7 @@
     <!-- Scripts -->
     <script src="{{ mix('js/app.js') }}" defer></script>
     @livewireStyles
-    @if (config('app.env') == 'production')
-    @include('layouts.deps._gtm_head')
-    @endif
+    @includeWhen(app()->environment('production'), 'layouts.deps._gtm_head')
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -28,9 +26,7 @@
 </head>
 
 <body class="min-vh-100 d-flex flex-column">
-    @if (config('app.env') == 'production')
-    @include('layouts.deps._gtm_body')
-    @endif
+    @includeWhen(app()->environment('production'), 'layouts.deps._gtm_body')
     @include('layouts._nav')
     <div class="flex-grow-1">
         <main class="my-4">
@@ -43,6 +39,6 @@
     @include('layouts._footer')
     @livewireScripts
     <script src="{{ mix('js/hljs.js')}}"></script>
+    @includeWhen(app()->environment('production'), 'layouts.deps._metrika')
 </body>
-
 </html>
