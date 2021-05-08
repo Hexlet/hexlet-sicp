@@ -16,7 +16,7 @@
 
 ### Requirements
 Проверить зависимости PHP можно командой `composer check-platform-reqs`
-* PHP ^7.4
+* PHP ^8.0
 * Extensions:
     - bcmath
     - curl
@@ -39,9 +39,11 @@
     - xmlwriter
     - zip
 * Composer
-* Node.js (v13.11+) & NPM (6.13+)
+* Node.js (v14+) & NPM (6+)
 * SQLite for local, PostgreSQL for production
 * [heroku cli](https://devcenter.heroku.com/articles/heroku-cli#download-and-install) [Как развернуть приложение на Heroku](https://ru.hexlet.io/blog/posts/kak-razvernut-prilozhenie-laravel-na-heroku)
+
+FIXME: проверить и актулизировать ридми.
 
 ### Setup или [Setup in docker](#setup-in-docker)
 
