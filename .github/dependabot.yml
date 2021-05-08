@@ -5,7 +5,16 @@ updates:
     schedule:
       interval: daily
     open-pull-requests-limit: 10
-    target-branch: update-version-dependencies
+    target-branch: master
+    allow:
+      - dependency-type: direct
+      - dependency-type: indirect
+  - package-ecosystem: npm
+    directory: "/"
+    schedule:
+      interval: daily
+    open-pull-requests-limit: 10
+    target-branch: master
     allow:
       - dependency-type: direct
       - dependency-type: indirect

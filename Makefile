@@ -17,6 +17,12 @@ install: app-install frontend-install
 start:
 	heroku local -f Procfile.dev
 
+app-start:
+	php artisan serve --host 0.0.0.0 --port 8000
+
+frontend-start:
+	npm run watch
+
 db-prepare:
 	php artisan migrate:fresh --seed
 

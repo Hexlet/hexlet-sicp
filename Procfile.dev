@@ -1,2 +1,2 @@
-web: php artisan serve --host 0.0.0.0 --port 8000 || php artisan serve --host 0.0.0.0 --port 8088
-frontend: npm run watch
+web: make start-app
+frontend: make start-frontend

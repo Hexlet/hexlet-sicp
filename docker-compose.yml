@@ -9,14 +9,13 @@ services:
       - "8000:8000"
     depends_on:
       - database
-    command: php artisan serve --host=0.0.0.0
+    command: ["make", "app-start"]
 
   frontend:
-    image: node:15.14.0
-    working_dir: /app
+    build: .
     volumes:
-    - .:/app:delegated
-    command: npm run watch
+      - .:/app:delegated
+    command: ["make", "frontend-start"]
 
   database:
     image: postgres:13.2-alpine
