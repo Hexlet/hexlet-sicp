@@ -51,7 +51,7 @@ class CommentFactory extends Factory
     {
         return $this->state(fn() => [
             'commentable_id' => optional($commentable)->id,
-            'commentable_type' => get_class($commentable),
+            'commentable_type' => $commentable::class,
         ]);
     }
 }
