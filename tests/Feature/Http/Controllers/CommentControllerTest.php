@@ -57,7 +57,7 @@ class CommentControllerTest extends ControllerTestCase
             'content' => $this->faker->text,
             'user_id' => $user->id,
             'commentable_id' => $commentable->id,
-            'commentable_type' => get_class($commentable),
+            'commentable_type' => $commentable::class,
         ];
         $response = $this->post(route('comments.store'), $commentData);
 
@@ -89,7 +89,7 @@ class CommentControllerTest extends ControllerTestCase
             'content' => $this->faker->text,
             'user_id' => $user->id,
             'commentable_id' => $commentable->id,
-            'commentable_type' => get_class($commentable),
+            'commentable_type' => $commentable::class,
         ];
         $response = $this->put(
             route('comments.update', compact('comment')),

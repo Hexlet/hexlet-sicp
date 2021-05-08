@@ -17,6 +17,12 @@ install: app-install frontend-install
 start:
 	heroku local -f Procfile.dev
 
+app-start:
+	php artisan serve --host 0.0.0.0 --port 8000
+
+frontend-start:
+	npm run watch
+
 db-prepare:
 	php artisan migrate:fresh --seed
 
@@ -33,7 +39,7 @@ test-coverage:
 	XDEBUG_MODE=coverage php artisan test --coverage-clover build/logs/clover.xml
 
 analyse:
-	composer exec phpstan analyse -v
+	composer exec phpstan analyse -v -- --memory-limit=-1
 
 check: lint analyse test
 
