@@ -45,7 +45,7 @@
         "spatie/laravel-query-builder": "^3.3",
         "spatie/laravel-sitemap": "^6.0",
         "symfony/process": "^5.2",
-        "symfony/yaml": "^4.3"
+        "symfony/yaml": "^5.2"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.2",
