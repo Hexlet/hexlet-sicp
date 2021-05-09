@@ -22,7 +22,7 @@
         "ext-zip": "*",
         "browner12/helpers": "^3.0",
         "diglactic/laravel-breadcrumbs": "^6.0",
-        "doctrine/dbal": "^2.10",
+        "doctrine/dbal": "^3.1",
         "fakerphp/faker": "^1.14",
         "fideloper/proxy": "~4.0",
         "graham-campbell/github": "^10.2",
