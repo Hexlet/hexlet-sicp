@@ -31,7 +31,7 @@
   },
   "devDependencies": {
     "@fortawesome/fontawesome-free": "^5.15.3",
-    "postcss": "^8.2.8"
+    "postcss": "^8.2.15"
   },
   "engines": {
     "node": "14.x"
