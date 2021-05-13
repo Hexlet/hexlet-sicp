@@ -41,7 +41,7 @@
         "mcamara/laravel-localization": "^1.4",
         "mikehaertl/php-shellcommand": "^1.6",
         "rollbar/rollbar-laravel": "~7.0",
-        "spatie/laravel-activitylog": "^3.9",
+        "spatie/laravel-activitylog": "^4.0",
         "spatie/laravel-query-builder": "^3.3",
         "spatie/laravel-sitemap": "^6.0",
         "symfony/process": "^5.2",
