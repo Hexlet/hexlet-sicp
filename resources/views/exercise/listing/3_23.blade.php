@@ -8,7 +8,7 @@
     {{ __('exercises/3_23.description.4') }}
     <code>rear-deque</code>,
     {{ __('exercises/3_23.description.5') }}
-    <code>frontinsertdeque!</code>,
+    <code>front-insert-deque!</code>,
     <code>rear-insert-deque!</code>,
     <code>front-delete-deque!</code>
     {{ __('exercises/3_23.description.6') }}
