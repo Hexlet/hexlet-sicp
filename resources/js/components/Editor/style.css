@@ -1,0 +1,16 @@
+.CodeMirror {
+  height: inherit;
+  /* background-color: rgb(164, 216, 143); */
+}
+
+.nav-link.active {
+  background-color: #f5f7fb!important;
+};
+
+#codemirrorContainer {
+  /* height: inherit; */
+}
+
+#editorWrapper {
+  /* height: inherit; */
+}
