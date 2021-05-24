@@ -5,5 +5,5 @@ import './Editor/style.css';
 
 
 if (document.getElementById('codemirrorContainer')) {
-	ReactDOM.render(<EditorApp />, document.getElementById('codemirrorContainer'));
+  ReactDOM.render(<EditorApp />, document.getElementById('codemirrorContainer'));
 }
