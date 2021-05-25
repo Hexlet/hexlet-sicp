@@ -1,20 +1,18 @@
 import React from 'react';
 import { UnControlled as CodeMirrorEditor } from 'react-codemirror2';
 
-// import 'codemirror/mode/scheme/scheme.js';
-import 'codemirror/mode/commonlisp/commonlisp.js';
+import 'codemirror/mode/scheme/scheme.js';
+// import 'codemirror/mode/commonlisp/commonlisp.js';
 import 'codemirror/lib/codemirror.css';
 import 'codemirror/keymap/sublime.js';
 
 const Editor = () => {
-  const initialValue = `(cond ((= a 4) 6)
-    ((= b 4) (+ 6 7 a))
-    (else 25))
-  (+ 2 (if (> b a) b a))
-  (* (cond ((> a b) a)
-      ((< a b) b)
-      (else -1))
-  (+ a 1))
+  const initialValue = `#lang racket
+
+#| BEGIN (write your solution here) |#
+(displayln "Hello, World!")
+  
+#| END |#
 `;
 
   return (
@@ -29,7 +27,12 @@ const Editor = () => {
         autofocus: true,
       }}
       onChange={(editor, data, value) => {
-        // console.log(value);
+        console.log('editor :');
+        console.log(editor);
+        console.log('Data :');
+        console.log(data);
+        console.log('value');
+        console.log(value);
       }}
       className="h-100 w-100"
     />
