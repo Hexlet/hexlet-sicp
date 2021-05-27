@@ -19,9 +19,8 @@ const Editor = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    // console.log(editor);
     editor?.focus();
-  }, []);
+  }, [focusesCount]);
 
   const onMount = (self) => {
     setEditor(self);
