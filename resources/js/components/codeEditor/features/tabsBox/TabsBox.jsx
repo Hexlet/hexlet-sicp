@@ -1,5 +1,5 @@
 import React from 'react';
-import Editor from './Editor.jsx';
+import Editor from '../editor/Editor.jsx';
 import { Nav, Tab } from 'react-bootstrap';
 
 const TabsBox = () => {
