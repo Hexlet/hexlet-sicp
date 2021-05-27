@@ -1,5 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
-import editorSlice from '../features/editor/editorSlice.js';
+import editorReducer from '../features/editor/editorSlice.js';
+import tabsBoxReducer from '../features/tabsBox/tabsBoxSlice.js'
 
 // Так как codeEditor это по сути подпрограмма,
 // то врядли у него будет сложный по форме стейт
@@ -9,7 +10,8 @@ import editorSlice from '../features/editor/editorSlice.js';
 export default () => {
   const store = configureStore({
     reducer: {
-      editor: editorSlice,
+      editor: editorReducer,
+      tabsBox: tabsBoxReducer,
     }
   });
 
