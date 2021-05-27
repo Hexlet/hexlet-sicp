@@ -31,6 +31,7 @@ return [
                 'failed' => 'Failed to verify the solution. See the "Output" tab.',
                 'success' => 'Good for you! Don\'t forget to save the solution.',
                 'has_not_tests' => 'There are no tests for this exercise. Any solution will be considered a successful answer.',
+                'empty_solution' => 'Unable to save. The solution is empty.',
             ],
             'run' => 'Run',
         ],

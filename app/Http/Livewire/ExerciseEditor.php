@@ -40,6 +40,12 @@ class ExerciseEditor extends Component
 
     public function save(ActivityService $activityService): void
     {
+        if (empty($this->solutionCode)) {
+            $this->failEmptySolution();
+
+            return;
+        }
+
         $solution = new Solution(['content' => $this->solutionCode]);
 
         $solution = $solution->user()->associate($this->user);
@@ -98,5 +104,10 @@ class ExerciseEditor extends Component
     private function failExerciseCheck(): void
     {
         flash()->warning(__('exercise.show.editor.message.failed'));
+    }
+
+    private function failEmptySolution(): void
+    {
+        flash()->warning(__('exercise.show.editor.message.empty_solution'));
     }
 }
