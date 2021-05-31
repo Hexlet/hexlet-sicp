@@ -13,7 +13,7 @@
   "dependencies": {
     "axios": "^0.21",
     "bootstrap": "^4.6.0",
-    "highlight.js": "^10.7",
+    "highlight.js": "^11.0",
     "jquery": "^3.6.0",
     "jquery-ujs": "^1.2.2",
     "lodash": "^4.17.21",
