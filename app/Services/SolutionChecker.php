@@ -10,9 +10,6 @@ use mikehaertl\shellcommand\Command;
 
 class SolutionChecker
 {
-    public const SUCCESS_EXIT_CODE = 0;
-    private const FAILED_TESTS_EXIT_CODE = 1;
-
     public function check(User $user, Exercise $exercise, string $solutionCode): CheckResult
     {
         $tests = ExerciseHelper::getExerciseTests($exercise);
