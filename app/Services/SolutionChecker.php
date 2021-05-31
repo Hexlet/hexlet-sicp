@@ -11,14 +11,16 @@ use mikehaertl\shellcommand\Command;
 class SolutionChecker
 {
     public const SUCCESS_EXIT_CODE = 0;
+    private const FAILED_TESTS_EXIT_CODE = 1;
 
-    public function check(User $user, Exercise $exercise, string $solutionCode): array
+    public function check(User $user, Exercise $exercise, string $solutionCode): CheckResult
     {
         $tests = ExerciseHelper::getExerciseTests($exercise);
-        $contents = view('exercise.solution_sandbox_wrapper', [
-            'solution' => $this->prettifyCode($solutionCode),
-            'tests' => $this->prettifyCode($tests),
-        ])->render();
+        $contents = view('exercise.solution_sandbox_wrapper',
+            [
+                'solution' => $this->prettifyCode($solutionCode),
+                'tests' => $this->prettifyCode($tests),
+            ])->render();
 
 
         $hashedUserExerciseSolutionId = hash('sha256', implode('', [$user->id, $exercise->id]));
@@ -36,10 +38,7 @@ class SolutionChecker
             ? $command->getOutput()
             : $command->getError();
 
-        return [
-            'exit_code' => $exitCode,
-            'output' => $output,
-        ];
+        return new CheckResult($exitCode, $output);
     }
 
     private function prettifyCode(string $code): string

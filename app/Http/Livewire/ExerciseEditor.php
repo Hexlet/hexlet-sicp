@@ -7,6 +7,7 @@ use App\Models\Exercise;
 use App\Models\Solution;
 use App\Models\User;
 use App\Services\ActivityService;
+use App\Services\CheckResult;
 use App\Services\SolutionChecker;
 use Illuminate\Contracts\View\View;
 use Livewire\Component;
@@ -17,10 +18,7 @@ class ExerciseEditor extends Component
     public User $user;
     public string $solutionCode = '';
     public string $tests;
-    public array $checkResult = [
-        'exit_code' => null,
-        'output' => null,
-    ];
+    public string $checkOutput = '';
 
     public function check(SolutionChecker $checker, ActivityService $activityService): void
     {
@@ -29,9 +27,10 @@ class ExerciseEditor extends Component
             return;
         }
 
-        $this->checkResult = $checker->check($this->user, $this->exercise, $this->solutionCode);
+        $checkResult = $checker->check($this->user, $this->exercise, $this->solutionCode);
+        $this->checkOutput = $checkResult->getOutput();
 
-        if ($this->checkResult['exit_code'] === SolutionChecker::SUCCESS_EXIT_CODE) {
+        if ($checkResult->isSuccess()) {
             $this->completeExercise($activityService);
         } else {
             $this->failExerciseCheck();
