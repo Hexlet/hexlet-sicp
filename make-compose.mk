@@ -28,10 +28,10 @@ compose-build:
 compose-install: compose-app-install compose-frontend-install
 
 compose-app-install:
-	docker-compose run --rm application composer install
+	docker-compose run --rm application make install-app
 
 compose-frontend-install:
-	docker-compose run --rm frontend npm ci
+	docker-compose run --rm frontend make install-frontend
 
 compose-database-start:
 	docker-compose up --build -d database
@@ -56,3 +56,9 @@ compose-test-coverage:
 
 compose-check:
 	docker-compose run --rm application make check
+
+ci:
+	docker-compose -f docker-compose.ci.yml -p hexlet-sicp-ci build
+	docker-compose -f docker-compose.ci.yml -p hexlet-sicp-ci run application make setup
+	docker-compose -f docker-compose.ci.yml -p hexlet-sicp-ci up --abort-on-container-exit
+	docker-compose -f docker-compose.ci.yml -p hexlet-sicp-ci down -v --remove-orphans
