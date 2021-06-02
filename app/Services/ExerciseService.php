@@ -7,6 +7,7 @@ namespace App\Services;
 use App\Helpers\ExerciseHelper;
 use App\Models\User;
 use App\Models\Exercise;
+use App\Models\Solution;
 use App\Services\SolutionChecker;
 use Illuminate\Database\Eloquent\Model;
 
@@ -19,7 +20,7 @@ class ExerciseService
     public function check(User $user, Exercise $exercise, string $solutionCode): CheckResult
     {
         if (!ExerciseHelper::exerciseHasTests($exercise)) {
-            $this->completeExercise($activityService);
+            $this->completeExercise($user, $exercise);
             return new CheckResult(0, '');
         }
 
@@ -49,12 +50,8 @@ class ExerciseService
         $this->activityService->logRemovedExercise($user, $exercise);
     }
 
-    public function createSolution(User $user, Exercise $exercise, string $solutionCode): void
+    public function createSolution(User $user, Exercise $exercise, string $solutionCode): Solution
     {
-        if (empty($solutionCode)) {
-            return;
-        }
-
         $solution = new Solution(['content' => $solutionCode]);
 
         $solution = $solution->user()->associate($user);
@@ -62,5 +59,7 @@ class ExerciseService
         $solution->save();
 
         $this->activityService->logAddedSolution($user, $solution);
+
+        return $solution;
     }
 }

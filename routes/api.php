@@ -15,5 +15,3 @@ use Illuminate\Http\Request;
 Route::namespace('Api')->name('api.')->group(function (): void {
     Route::resource('exercises.check', 'Exercise\CheckController')->only(['store']);
 });
-
-

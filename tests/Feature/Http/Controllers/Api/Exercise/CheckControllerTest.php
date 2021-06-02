@@ -36,7 +36,7 @@ class CheckControllerTest extends ControllerTestCase
 
         $data = [
             'user_id' => $this->user->id,
-            'solution_code' => $solutionCode
+            'solution_code' => $solutionCode,
         ];
         $response = $this->postJson($path, $data);
 
@@ -49,7 +49,7 @@ class CheckControllerTest extends ControllerTestCase
         $this->assertDatabaseHas('activity_log', [
             'causer_id' => $this->user->id,
             'subject_id' => $exercise->id,
-            'subject_type' => $exercise::class
+            'subject_type' => $exercise::class,
         ]);
         $this->assertDatabaseHas('completed_exercises', [
             'user_id' => $this->user->id,

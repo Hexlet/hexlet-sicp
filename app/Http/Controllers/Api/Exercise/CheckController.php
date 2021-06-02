@@ -14,7 +14,7 @@ class CheckController extends Controller
     {
         $data = $request->validate([
             'user_id' => 'required|exists:users,id',
-            'solution_code' => 'required'
+            'solution_code' => 'required',
         ]);
 
         $user = User::findOrFail($data['user_id']);

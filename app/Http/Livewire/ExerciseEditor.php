@@ -44,7 +44,7 @@ class ExerciseEditor extends Component
             return;
         }
 
-        $exerciseService->createSolution($this->user, $this->exercise, $this->solutionCode);
+        $solution = $exerciseService->createSolution($this->user, $this->exercise, $this->solutionCode);
 
         $message = collect([
             __('layout.flash.success'),
@@ -73,6 +73,16 @@ class ExerciseEditor extends Component
 
     private function completeExercise(): void
     {
+        if (auth()->guest()) {
+            $message = collect([
+                __('exercise.show.editor.message.success'),
+                __('exercise.show.editor.auth.required'),
+            ])->implode(' ');
+            flash()->success($message);
 
+            return;
+        }
+
+        flash()->success(__('exercise.show.editor.message.success'));
     }
 }

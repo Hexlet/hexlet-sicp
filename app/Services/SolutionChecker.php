@@ -13,11 +13,13 @@ class SolutionChecker
     public function check(User $user, Exercise $exercise, string $solutionCode): CheckResult
     {
         $tests = ExerciseHelper::getExerciseTests($exercise);
-        $contents = view('exercise.solution_sandbox_wrapper',
+        $contents = view(
+            'exercise.solution_sandbox_wrapper',
             [
                 'solution' => $this->prettifyCode($solutionCode),
                 'tests' => $this->prettifyCode($tests),
-            ])->render();
+            ]
+        )->render();
 
 
         $hashedUserExerciseSolutionId = hash('sha256', implode('', [$user->id, $exercise->id]));

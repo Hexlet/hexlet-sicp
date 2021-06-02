@@ -13,8 +13,9 @@ class CheckResult
     private const TESTS_FAILED_STATUS = 'tests_failed';
     private const CHECK_ERROR_STATUS = 'check_error';
 
-    public function __construct( private int $exitCode, private string $output)
-    {}
+    public function __construct(private int $exitCode, private string $output)
+    {
+    }
 
     public function getOutput(): string
     {
@@ -23,7 +24,7 @@ class CheckResult
 
     public function getResultStatus(): string
     {
-        return match($this->exitCode) {
+        return match ($this->exitCode) {
             self::SUCCESS_EXIT_CODE => self::SUCCESS_STATUS,
             self::FAILED_TESTS_EXIT_CODE => self::TESTS_FAILED_STATUS,
             default => self::CHECK_ERROR_STATUS,
