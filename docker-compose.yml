@@ -9,13 +9,13 @@ services:
       - "8000:8000"
     depends_on:
       - database
-    command: ["make", "app-start"]
+    command: ["make", "start-app"]
 
   frontend:
     build: .
     volumes:
       - .:/app:delegated
-    command: ["make", "frontend-start"]
+    command: ["make", "start-frontend"]
 
   database:
     image: postgres:13.2-alpine
