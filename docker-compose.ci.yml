@@ -1,0 +1,20 @@
+version: '3.7'
+
+services:
+  application:
+    build: .
+    volumes:
+      - .:/app
+    depends_on:
+      - database
+    environment:
+      DB_CONNECTION: pgsql
+      DB_HOST: database
+      DB_DATABASE: postgres
+      DB_USERNAME: postgres
+    command: ["make", "analyse", "lint", "test-coverage"]
+
+  database:
+    image: postgres:13.2-alpine
+    environment:
+      POSTGRES_HOST_AUTH_METHOD: trust
