@@ -85,4 +85,9 @@ class ExerciseEditor extends Component
 
         flash()->success(__('exercise.show.editor.message.success'));
     }
+
+    private function failEmptySolution(): void
+    {
+        flash()->warning(__('exercise.show.editor.message.empty_solution'));
+    }
 }
