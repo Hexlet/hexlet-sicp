@@ -6,13 +6,13 @@ deploy:
 setup: env-prepare sqlite-prepare install key db-prepare ide-helper
 	npm run dev
 
-app-install:
+install-app:
 	composer install
 
-frontend-install:
+install-frontend:
 	npm ci
 
-install: app-install frontend-install
+install: install-app install-frontend
 
 start:
 	heroku local -f Procfile.dev

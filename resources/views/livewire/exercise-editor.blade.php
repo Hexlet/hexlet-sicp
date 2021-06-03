@@ -1,7 +1,7 @@
 @php
 /** @var \App\Models\User $user */
 /** @var \App\Models\Exercise $exercise */
-/** @var array $checkResult */
+/** @var string $checkOutput */
 @endphp
 <div class="card">
         <ul class="justify-content-center flex-shrink-0 nav nav-tabs" id="editor-tab" role="tablist">
@@ -65,7 +65,7 @@
                 <pre><code class="lang-scheme hljs">{{ $tests }}</code></pre>
             </div>
             <div class="tab-pane fade" id="editor-output" role="tabpanel" aria-labelledby="editor-output">
-                <pre><code class="lang-vbnet hljs x-text-pre-wrap">{{ $checkResult['output'] }}</code></pre>
+                <pre><code class="lang-vbnet hljs x-text-pre-wrap">{{ $checkOutput }}</code></pre>
             </div>
         </div>
 </div>
