@@ -93,6 +93,6 @@
             </div>
         </div>
         <div class="col-md-6 mt-2">
-            <div id="codemirrorContainer" class="vh-100"></div>
+            <div id="codemirrorContainer"></div>
         </div>
 @endsection
