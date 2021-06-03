@@ -93,6 +93,7 @@
             </div>
         </div>
         <div class="col-md-6 mt-2">
-            <div id="codemirrorContainer"></div>
+{{--            <div id="codemirrorContainer"></div>--}}
+            @livewire('exercise-editor', ['exercise' => $exercise, 'user' => $authUser])
         </div>
 @endsection

@@ -6,7 +6,7 @@
     <arg name="colors"/>
     <arg name="parallel" value="100"/>
     <arg value="np"/>
-
+    <arg name="extensions" value="php"/>
     <file>app</file>
     <file>config</file>
     <file>resources</file>
