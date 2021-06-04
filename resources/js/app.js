@@ -24,8 +24,4 @@ addHashActiveTab();
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-require('./components/codeEditor/index');
-
-
-// require('./components/editor/index');
-// require('./components/somethingElse'); // если появится что-то новое
+require('./components/index');

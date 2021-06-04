@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
-import editorReducer from '../features/editor/editorSlice.js';
-import tabsBoxReducer from '../features/tabsBox/tabsBoxSlice.js'
+import editorReducer from '../slices/editorSlice.js';
+import tabsBoxReducer from '../slices/tabsBoxSlice.js'
 
 // Так как codeEditor это по сути подпрограмма,
 // то врядли у него будет сложный по форме стейт
