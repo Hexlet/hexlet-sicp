@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import tabNames from './tabNamesMap.js';
+import tabNames from '../common/tabNamesMap.js';
 
 const slice = createSlice({
   name: 'tabsBox',

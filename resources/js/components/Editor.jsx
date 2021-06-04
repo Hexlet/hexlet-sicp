@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { UnControlled as CodeMirrorEditor } from 'react-codemirror2';
 import { useDispatch, useSelector } from 'react-redux';
-import { changeContent } from './editorSlice.js';
+import { changeContent } from '../slices/editorSlice.js';
 
 import 'codemirror/lib/codemirror.css';
 import 'codemirror/addon/scroll/simplescrollbars.css';

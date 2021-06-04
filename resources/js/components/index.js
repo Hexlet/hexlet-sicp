@@ -1,8 +1,8 @@
 import ReactDOM from 'react-dom';
-import initEditor from './app/init.jsx';
+import initEditor from './init.jsx';
 // В дальнейшем надо решить в каком виде останеться кастомный css
 // и останеться ли вообще. И где его правилно подключать
-import './features/editor/style.css';
+import './style.css';
 
 const runEditor = async () => {
   // some initial setups

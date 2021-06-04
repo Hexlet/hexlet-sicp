@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { changeTab } from '../tabsBox/tabsBoxSlice.js';
+import { changeTab } from './tabsBoxSlice.js';
 
 const initialContent = `#lang racket
 

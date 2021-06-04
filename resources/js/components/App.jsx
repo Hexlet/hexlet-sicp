@@ -1,6 +1,6 @@
 
-import TabsBox from '../features/tabsBox/TabsBox.jsx';
-import ControlBox from '../features/ControlBox.jsx';
+import TabsBox from './TabsBox.jsx';
+import ControlBox from './ControlBox.jsx';
 
 const App = () => {
   return (

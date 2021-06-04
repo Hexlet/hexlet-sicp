@@ -16,6 +16,7 @@ mix
     .js('resources/js/app.js', 'public/js')
     .js('resources/js/hljs.js', 'public/js/hljs.js')
     .react()
+    .sourceMaps()
     .sass('resources/sass/app.scss', 'public/css')
     .copyDirectory('resources/assets/img', 'public/img')
     .copyDirectory('resources/assets/img/exercises', 'public/img/exercises')

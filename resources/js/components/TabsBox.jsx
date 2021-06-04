@@ -1,9 +1,9 @@
 import React from 'react';
-import Editor from '../editor/Editor.jsx';
+import Editor from './Editor.jsx';
 import { Nav, Tab } from 'react-bootstrap';
-import tabNames from './tabNamesMap.js';
+import tabNames from '../common/tabNamesMap.js';
 import { useDispatch, useSelector } from 'react-redux';
-import { changeTab } from './tabsBoxSlice.js';
+import { changeTab } from '../slices/tabsBoxSlice.js';
 
 const TabsBox = () => {
   const { currentTab } = useSelector((state) => state.tabsBox);
