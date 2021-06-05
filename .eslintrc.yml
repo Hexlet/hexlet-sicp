@@ -1,0 +1,35 @@
+env:
+  browser: true
+  es2021: true
+  node: true
+
+extends:
+  - 'plugin:react/recommended'
+  - 'plugin:react-hooks/recommended'
+  - airbnb
+
+parser: '@babel/eslint-parser'
+
+parserOptions:
+  ecmaFeatures:
+    jsx: true
+  ecmaVersion: 12
+  sourceType: module
+
+plugins:
+  - react
+
+rules:
+  import/extensions: 0
+  react/prop-types: 0
+  no-console: 0
+  react/jsx-filename-extension:
+    - 1
+    - extensions:
+      - ".js"
+      - ".jsx"
+  no-param-reassign:
+    - error
+    - props: true
+      ignorePropertyModificationsFor:
+        - state

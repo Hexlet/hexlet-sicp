@@ -1,7 +1,7 @@
 import React from 'react';
+import { Provider } from 'react-redux';
 import App from './App.jsx';
 import createStore from './store.js';
-import { Provider } from 'react-redux';
 
 export default async () => {
   const store = createStore();

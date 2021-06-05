@@ -6,14 +6,14 @@ const ControlBox = () => {
   const editor = useSelector((state) => state.editor);
 
   const handleRunCheck = () => {
+    // eslint-disable-next-line no-alert
     alert(editor.content);
     // TODO: надо думать что делать дальше
   };
 
   return (
-    <div className='d-flex py-2 w-100 justify-content-end card-footer py-3'>
+    <div className="d-flex py-2 w-100 justify-content-end card-footer py-3">
       <Button
-        onClick={handleRunCheck}
         variant="primary"
         onClick={handleRunCheck}
       >
