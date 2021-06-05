@@ -93,7 +93,10 @@
             </div>
         </div>
         <div class="col-md-6 mt-2">
-{{--            <div id="codemirrorContainer"></div>--}}
-            @livewire('exercise-editor', ['exercise' => $exercise, 'user' => $authUser])
+            @if (config('feature.enable_react_editor'))
+                <div id="codemirrorContainer"></div>
+            @else
+                @livewire('exercise-editor', ['exercise' => $exercise, 'user' => $authUser])
+            @endif
         </div>
 @endsection
