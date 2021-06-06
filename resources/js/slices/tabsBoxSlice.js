@@ -10,7 +10,7 @@ const slice = createSlice({
     changeTab(state, { payload: { newActiveTab } }) {
       state.currentTab = newActiveTab;
     },
-  }
+  },
 });
 
 export const { changeTab } = slice.actions;

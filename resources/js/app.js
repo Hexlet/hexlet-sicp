@@ -1,7 +1,9 @@
-import '@fortawesome/fontawesome-free/js/fontawesome'
-import '@fortawesome/fontawesome-free/js/solid'
-import '@fortawesome/fontawesome-free/js/regular'
-import '@fortawesome/fontawesome-free/js/brands'
+import '@fortawesome/fontawesome-free/js/fontawesome';
+import '@fortawesome/fontawesome-free/js/solid';
+import '@fortawesome/fontawesome-free/js/regular';
+import '@fortawesome/fontawesome-free/js/brands';
+import $ from 'jquery';
+import addHashActiveTab from './custom';
 
 /**
  * First we will load all of this project's JavaScript dependencies which
@@ -11,7 +13,6 @@ import '@fortawesome/fontawesome-free/js/brands'
 require('./bootstrap');
 
 require('jquery-ujs');
-import addHashActiveTab from './custom'
 
 $('#flash-overlay-modal').modal();
 

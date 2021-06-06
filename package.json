@@ -8,9 +8,12 @@
     "hot": "mix watch --hot",
     "prod": "npm run production",
     "production": "mix --production",
-    "heroku-postbuild": "npm run production"
+    "heroku-postbuild": "npm run production",
+    "lint-js": "npx eslint --ext .jsx,.js ./resources/js",
+    "lint-js-fix": "npx eslint --fix --ext .jsx,.js ./resources/js"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.3",
     "@reduxjs/toolkit": "^1.5.1",
     "axios": "^0.21",
     "bootstrap": "^4.6.0",
@@ -27,8 +30,15 @@
     "react-redux": "^7.2.4"
   },
   "devDependencies": {
+    "@babel/core": "^7.14.3",
+    "@babel/eslint-parser": "^7.14.4",
     "@babel/preset-react": "^7.13.13",
-    "@fortawesome/fontawesome-free": "^5.15.3",
+    "eslint": "^7.28.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.24.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
     "laravel-mix": "^6.0.19",
     "laravel-mix-make-file-hash": "^2.2.0",
     "resolve-url-loader": "^4.0.0",

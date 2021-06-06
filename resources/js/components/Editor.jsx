@@ -12,7 +12,6 @@ import 'codemirror/addon/edit/matchbrackets.js';
 import 'codemirror/mode/scheme/scheme.js';
 import 'codemirror/keymap/sublime.js';
 
-
 const Editor = () => {
   const { content, focusesCount } = useSelector((state) => state.editor);
   const [editor, setEditor] = useState(null);
@@ -20,7 +19,7 @@ const Editor = () => {
 
   useEffect(() => {
     editor?.focus();
-  }, [focusesCount]);
+  }, [focusesCount, editor]);
 
   const onMount = (self) => {
     setEditor(self);
@@ -54,6 +53,5 @@ const Editor = () => {
     />
   );
 };
-
 
 export default Editor;

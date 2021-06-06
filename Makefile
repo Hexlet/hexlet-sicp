@@ -61,4 +61,10 @@ ide-helper:
 	php artisan ide-helper:meta
 	php artisan ide-helper:mod -n
 
+lint-js:
+	npm run lint-js
+
+lint-js-fix:
+	npm run lint-js-fix
+
 .PHONY: test

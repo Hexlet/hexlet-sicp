@@ -1,8 +1,8 @@
 import React from 'react';
-import Editor from './Editor.jsx';
 import { Nav, Tab } from 'react-bootstrap';
-import tabNames from '../common/tabNamesMap.js';
 import { useDispatch, useSelector } from 'react-redux';
+import Editor from './Editor.jsx';
+import tabNames from '../common/tabNamesMap.js';
 import { changeTab } from '../slices/tabsBoxSlice.js';
 
 const TabsBox = () => {
@@ -18,8 +18,8 @@ const TabsBox = () => {
   };
 
   return (
-    <Tab.Container activeKey={currentTab} onSelect={changeActiveTab} className='card-body'>
-      <Nav variant='tabs' className='justify-content-center'>
+    <Tab.Container activeKey={currentTab} onSelect={changeActiveTab} className="card-body">
+      <Nav variant="tabs" className="justify-content-center">
         {Object.values(tabNames).map((tabName) => (
           <Nav.Item key={tabName}>
             <Nav.Link
@@ -31,7 +31,7 @@ const TabsBox = () => {
           </Nav.Item>
         ))}
       </Nav>
-      <Tab.Content className='h-100 overflow-auto'>
+      <Tab.Content className="h-100 overflow-auto">
         <Tab.Pane eventKey={editor} bsPrefix="tab-pane h-100 w-100">
           <Editor />
         </Tab.Pane>
@@ -47,7 +47,6 @@ const TabsBox = () => {
 };
 
 export default TabsBox;
-
 
 // const TabsBox = () => {
 
