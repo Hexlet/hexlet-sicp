@@ -1,21 +1,53 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import { Button } from 'react-bootstrap';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import axios from 'axios';
+import UserIdContext from '../context/UserIdContext';
+import ExerciseIdContext from '../context/ExerciseIdContext.js';
+import routes from '../common/routes.js';
+import { handleNewCheckResult } from '../slices/checkResultSlice';
 
 const ControlBox = () => {
   const editor = useSelector((state) => state.editor);
+  const userId = useContext(UserIdContext);
+  const exerciseId = useContext(ExerciseIdContext);
+  const [isSending, setIsSending] = useState(false);
+  const dispatch = useDispatch();
 
-  const handleRunCheck = () => {
-    // eslint-disable-next-line no-alert
-    alert(editor.content);
-    // TODO: надо думать что делать дальше
+  const runCheck = async () => {
+    setIsSending(true);
+    const url = routes.runCheckPath(exerciseId);
+    const data = {
+      user_id: userId,
+      solution_code: editor.content,
+    };
+    try {
+      const response = await axios.post(url, data);
+      const {
+        exit_code: exitCode,
+        output,
+        result_status: resultStatus,
+      } = response.data.check_result;
+
+      const newCheckResult = {
+        exitCode,
+        resultStatus,
+        output,
+      };
+      dispatch(handleNewCheckResult(newCheckResult));
+      setIsSending(false);
+    } catch (error) {
+      console.log(error.message);
+      setIsSending(false);
+    }
   };
 
   return (
     <div className="d-flex py-2 w-100 justify-content-end card-footer py-3">
       <Button
         variant="primary"
-        onClick={handleRunCheck}
+        onClick={runCheck}
+        disabled={isSending}
       >
         Запустить
       </Button>
