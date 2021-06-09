@@ -7,11 +7,8 @@ import { changeTab } from '../slices/tabsBoxSlice.js';
 
 const TabsBox = () => {
   const { currentTab } = useSelector((state) => state.tabsBox);
+  const { checkResult } = useSelector((state) => state);
   const dispatch = useDispatch();
-
-  const {
-    editor, output, testForExercise,
-  } = tabNames;
 
   const changeActiveTab = (newActiveTab) => {
     dispatch(changeTab({ newActiveTab }));
@@ -32,14 +29,14 @@ const TabsBox = () => {
         ))}
       </Nav>
       <Tab.Content className="h-100 overflow-auto">
-        <Tab.Pane eventKey={editor} bsPrefix="tab-pane h-100 w-100">
+        <Tab.Pane eventKey={tabNames.editor} bsPrefix="tab-pane h-100 w-100">
           <Editor />
         </Tab.Pane>
-        <Tab.Pane eventKey={testForExercise} bsPrefix="tab-pane h-100 p-3 w-100">
-          Результат тестов
+        <Tab.Pane eventKey={tabNames.outputTab} bsPrefix="tab-pane h-100 p-3 w-100">
+          {checkResult.output}
         </Tab.Pane>
-        <Tab.Pane eventKey={output} bsPrefix="tab-pane h-100 p-3 w-100">
-          Вывод
+        <Tab.Pane eventKey={tabNames.testForExercise} bsPrefix="tab-pane h-100 p-3 w-100">
+          Результат тестов
         </Tab.Pane>
       </Tab.Content>
     </Tab.Container>
@@ -47,33 +44,3 @@ const TabsBox = () => {
 };
 
 export default TabsBox;
-
-// const TabsBox = () => {
-
-//   return (
-//     <Tab.Container defaultActiveKey="editor" className='card-body'>
-//       <Nav variant='tabs' className='justify-content-center'>
-//         <Nav.Item>
-//           <Nav.Link eventKey="editor">Редактор</Nav.Link>
-//         </Nav.Item>
-//         <Nav.Item>
-//           <Nav.Link eventKey="tests">Тесты</Nav.Link>
-//         </Nav.Item>
-//         <Nav.Item>
-//           <Nav.Link eventKey="output">Вывод</Nav.Link>
-//         </Nav.Item>
-//       </Nav>
-//       <Tab.Content className='h-100 overflow-auto'>
-//         <Tab.Pane eventKey="editor" className='h-100'>
-//           <Editor />
-//         </Tab.Pane>
-//         <Tab.Pane eventKey="tests">
-//           Результат тестов
-//         </Tab.Pane>
-//         <Tab.Pane eventKey="output">
-//           Вывод
-//         </Tab.Pane>
-//       </Tab.Content>
-//     </Tab.Container>
-//   );
-// };

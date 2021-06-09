@@ -33,7 +33,13 @@ const Editor = () => {
   };
 
   const options = {
-    autoCloseBrackets: true,
+    autoCloseBrackets: {
+      /* Хотя в доке и написано что: By default, it'll auto-close ()[]{}''""
+      по факту single quotes по дефлоту у меня не заработали
+      поэтому переопределил пары в ручную */
+      pairs: '\'\'""()',
+      override: true,
+    },
     autofocus: true,
     keyMap: 'sublime',
     matchBrackets: true,

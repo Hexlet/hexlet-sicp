@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import tabNames from '../common/tabNamesMap.js';
+import { handleNewCheckResult } from './checkResultSlice.js';
 
 const slice = createSlice({
   name: 'tabsBox',
@@ -10,6 +11,12 @@ const slice = createSlice({
     changeTab(state, { payload: { newActiveTab } }) {
       state.currentTab = newActiveTab;
     },
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(handleNewCheckResult, (state) => {
+        state.currentTab = tabNames.output;
+      });
   },
 });
 
