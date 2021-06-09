@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "12e938d644bcd1619eaba5fbeebafddf",
+    "content-hash": "55519409f48349a8cf549c100dde4f58",
     "packages": [
         {
             "name": "brick/math",
@@ -10034,16 +10034,16 @@
         },
         {
             "name": "heroku/heroku-buildpack-php",
-            "version": "v192",
+            "version": "v193",
             "source": {
                 "type": "git",
                 "url": "https://github.com/heroku/heroku-buildpack-php.git",
-                "reference": "360fa3ee3caad234760048da8bc8fefd35609ea9"
+                "reference": "3ed73cef52173add127fdce06ec7dd936dcb9b23"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/heroku/heroku-buildpack-php/zipball/360fa3ee3caad234760048da8bc8fefd35609ea9",
-                "reference": "360fa3ee3caad234760048da8bc8fefd35609ea9",
+                "url": "https://api.github.com/repos/heroku/heroku-buildpack-php/zipball/3ed73cef52173add127fdce06ec7dd936dcb9b23",
+                "reference": "3ed73cef52173add127fdce06ec7dd936dcb9b23",
                 "shasum": ""
             },
             "bin": [
@@ -10073,9 +10073,9 @@
             ],
             "support": {
                 "issues": "https://github.com/heroku/heroku-buildpack-php/issues",
-                "source": "https://github.com/heroku/heroku-buildpack-php/tree/v192"
+                "source": "https://github.com/heroku/heroku-buildpack-php/tree/v193"
             },
-            "time": "2021-05-06T16:53:55+00:00"
+            "time": "2021-06-07T20:53:28+00:00"
         },
         {
             "name": "justinrainbow/json-schema",
@@ -13138,5 +13138,5 @@
         "ext-zip": "*"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.0.0"
+    "plugin-api-version": "2.1.0"
 }
