@@ -1,10 +1,11 @@
 <?php
 
 use App\Models\Chapter;
-use DaveJamesMiller\Breadcrumbs\BreadcrumbsGenerator;
-use DaveJamesMiller\Breadcrumbs\Facades\Breadcrumbs;
+use App\Models\Exercise;
+use Diglactic\Breadcrumbs\Breadcrumbs;
+use Diglactic\Breadcrumbs\Generator as BreadcrumbTrail;
 
-Breadcrumbs::for('chapter', function (BreadcrumbsGenerator $trail, \App\Models\Chapter $chapter): void {
+Breadcrumbs::for('chapter', function (BreadcrumbTrail $trail, Chapter $chapter): void {
     $trail->push(__('breadcrumb.contents'), route('chapters.index'));
 
     $pushChapters = function (Chapter $chapter) use ($trail, &$pushChapters): void {
@@ -20,7 +21,7 @@ Breadcrumbs::for('chapter', function (BreadcrumbsGenerator $trail, \App\Models\C
     $pushChapters($chapter);
 });
 
-Breadcrumbs::for('exercise', function (BreadcrumbsGenerator $trail, \App\Models\Exercise $exercise): void {
+Breadcrumbs::for('exercise', function (BreadcrumbTrail $trail, Exercise $exercise): void {
     $trail->parent('chapter', $exercise->chapter);
     $textPart = __('breadcrumb.exercise');
     $trail->push("{$textPart} {$exercise->path}", route('exercises.show', $exercise));
