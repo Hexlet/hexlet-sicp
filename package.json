@@ -19,6 +19,7 @@
     "bootstrap": "^4.6.0",
     "codemirror": "^5.61.1",
     "highlight.js": "^11.x",
+    "i18next": "^20.3.1",
     "jquery": "^3.6.0",
     "jquery-ujs": "^1.2.2",
     "lodash": "^4.17.21",
@@ -27,6 +28,7 @@
     "react-bootstrap": "^1.6.0",
     "react-codemirror2": "^7.2.1",
     "react-dom": "^17.0.2",
+    "react-i18next": "^11.10.0",
     "react-redux": "^7.2.4"
   },
   "devDependencies": {

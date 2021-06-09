@@ -1,11 +1,13 @@
 import React from 'react';
 import { Nav, Tab } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 import Editor from './Editor.jsx';
 import tabNames from '../common/tabNamesMap.js';
 import { changeTab } from '../slices/tabsBoxSlice.js';
 
 const TabsBox = () => {
+  const { t } = useTranslation();
   const { currentTab } = useSelector((state) => state.tabsBox);
   const { checkResult } = useSelector((state) => state);
   const dispatch = useDispatch();
@@ -23,7 +25,7 @@ const TabsBox = () => {
               className="border-top-0 text-muted rounded-0"
               eventKey={tabName}
             >
-              {tabName}
+              {t(tabName)}
             </Nav.Link>
           </Nav.Item>
         ))}
@@ -32,10 +34,10 @@ const TabsBox = () => {
         <Tab.Pane eventKey={tabNames.editor} bsPrefix="tab-pane h-100 w-100">
           <Editor />
         </Tab.Pane>
-        <Tab.Pane eventKey={tabNames.outputTab} bsPrefix="tab-pane h-100 p-3 w-100">
+        <Tab.Pane eventKey={tabNames.output} bsPrefix="tab-pane h-100 p-3 w-100">
           {checkResult.output}
         </Tab.Pane>
-        <Tab.Pane eventKey={tabNames.testForExercise} bsPrefix="tab-pane h-100 p-3 w-100">
+        <Tab.Pane eventKey={tabNames.tests} bsPrefix="tab-pane h-100 p-3 w-100">
           Результат тестов
         </Tab.Pane>
       </Tab.Content>
