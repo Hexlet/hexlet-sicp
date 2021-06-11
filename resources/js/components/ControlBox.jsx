@@ -2,12 +2,14 @@ import React, { useContext, useState } from 'react';
 import { Button } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
+import { useTranslation } from 'react-i18next';
 import UserIdContext from '../context/UserIdContext';
 import ExerciseIdContext from '../context/ExerciseIdContext.js';
 import routes from '../common/routes.js';
 import { handleNewCheckResult } from '../slices/checkResultSlice';
 
 const ControlBox = () => {
+  const { t } = useTranslation();
   const editor = useSelector((state) => state.editor);
   const userId = useContext(UserIdContext);
   const exerciseId = useContext(ExerciseIdContext);
@@ -49,7 +51,7 @@ const ControlBox = () => {
         onClick={runCheck}
         disabled={isSending}
       >
-        Запустить
+        {t('run')}
       </Button>
     </div>
   );
