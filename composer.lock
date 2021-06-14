@@ -5269,23 +5269,23 @@
         },
         {
             "name": "spatie/browsershot",
-            "version": "3.46.0",
+            "version": "3.47.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/browsershot.git",
-                "reference": "6794b7cc871ef9c845a005fef64b3617ec235e0e"
+                "reference": "4975143f1e5bd0bcb023f00c05d8c6b24e788f2d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/browsershot/zipball/6794b7cc871ef9c845a005fef64b3617ec235e0e",
-                "reference": "6794b7cc871ef9c845a005fef64b3617ec235e0e",
+                "url": "https://api.github.com/repos/spatie/browsershot/zipball/4975143f1e5bd0bcb023f00c05d8c6b24e788f2d",
+                "reference": "4975143f1e5bd0bcb023f00c05d8c6b24e788f2d",
                 "shasum": ""
             },
             "require": {
                 "php": "^7.4|^8.0",
                 "spatie/image": "^1.5.3",
                 "spatie/temporary-directory": "^1.1|^2.0",
-                "symfony/process": "^5.0"
+                "symfony/process": "^4.2|^5.0"
             },
             "require-dev": {
                 "phpunit/phpunit": "^9.0",
@@ -5323,7 +5323,7 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/browsershot/issues",
-                "source": "https://github.com/spatie/browsershot/tree/3.46.0"
+                "source": "https://github.com/spatie/browsershot/tree/3.47.0"
             },
             "funding": [
                 {
@@ -5331,7 +5331,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-05-24T07:22:23+00:00"
+            "time": "2021-06-10T22:10:51+00:00"
         },
         {
             "name": "spatie/crawler",
@@ -13135,5 +13135,5 @@
         "ext-zip": "*"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.0.0"
+    "plugin-api-version": "2.1.0"
 }
