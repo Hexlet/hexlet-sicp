@@ -1,2 +1,5 @@
 User-agent: *
-Disallow:
+Disallow: */register
+Disallow: */login
+Disallow: */oauth/
+Disallow: */users/
