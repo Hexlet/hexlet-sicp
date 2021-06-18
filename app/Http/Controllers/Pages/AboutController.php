@@ -8,7 +8,7 @@ use Illuminate\View\View;
 class AboutController extends Controller
 {
 
-    public function index(): View
+    public function show(): View
     {
         return view('pages.about', compact([]));
     }
