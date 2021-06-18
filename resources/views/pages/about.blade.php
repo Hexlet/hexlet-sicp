@@ -5,6 +5,5 @@
 
 <p>{{ __('pages.about.description') }}</p>
 
-
 <!-- /.row -->
 @endsection
