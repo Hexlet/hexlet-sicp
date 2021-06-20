@@ -23,7 +23,9 @@ Q: Ошибка `Illuminate\Session\TokenMismatchException: CSRF token mismatch.
 A: Сбросить кеш конфига `php artisan config:clear`
 
 ## Requirements
+
 Проверить зависимости PHP можно командой `composer check-platform-reqs`
+
 * PHP ^8.0
 * Composer
 * Node.js (v14+) & NPM (6+)
@@ -47,6 +49,7 @@ make test # run tests
 ### Запуск с БД PostgreSQL (разворачивается в docker-контейнере)
 
 1. Установить зависимости и подготовить конфигурационный файл
+
 ```sh
 make setup
 ```
@@ -63,12 +66,14 @@ DB_PASSWORD=secret
 ```
 
 3. Запустить контейнер с БД и сгенерировать записи
-```sh
-make compose-start-database
-make db-prepare
-```
+
+    ```sh
+    make compose-start-database
+    make db-prepare
+    ```
 
 4. Запустить локальный веб-сервер
+
 ```sh
 make start
 ```
@@ -76,12 +81,14 @@ make start
 ### Setup in docker
 
 1. Подготовить `.env` файл
+
 ```sh
-$ make env-prepare
+make env-prepare
 ```
 
 2. Указать параметры подключения к БД в файле `.env`
-```
+
+```dotenv
 DB_CONNECTION=pgsql
 DB_HOST=database
 DB_PORT=5432
@@ -92,12 +99,12 @@ DB_PASSWORD=secret
 
 3. Собрать и запустить приложение
 ```sh
-$ make compose-setup # build project
-$ make compose-start # start server http://127.0.0.1:8000/
+make compose-setup # build project
+make compose-start # start server http://127.0.0.1:8000/
 ```
 ```sh
-$ make compose-bash  # start bash session inside docker container
-$ make test          # run tests inside docker container
+make compose-bash  # start bash session inside docker container
+make test          # run tests inside docker container
 ```
 
 ## Стандарты кодирования и прочие правила
@@ -118,6 +125,7 @@ $ make test          # run tests inside docker container
 ## Гайд по настройке авторизации через GitHub
 
 Зарегистрируйте приложение на GitHub (подробнее https://developer.github.com/apps/about-apps/). Для этого:
+
 * В меню учетной записи GitHub выберите пункт “Settings”
 * В открывшемся окне в панели навигации, справа, выберите “GitHub Apps”, затем нажмите кнопку “New GitHub App”
 * В открывшейся форме в поле "GitHub App name" введите название приложения (например, Hexlet-SICP)
@@ -130,6 +138,7 @@ $ make test          # run tests inside docker container
 * Cгенерируйте закрытый ключ (кнопка Generate a private key)
 
 В случае деплоя на Heroku, задайте переменные окружения для развернутого приложения. Для этого:
+
 * Перейдите на вкладку "Settings"
 * В настройке "Config Vars" добавьте переменные GITHUB_CLIENT_ID, GITHUB_CLIENT_SECRET и GITHUB_URL_REDIRECT указав для них соответвенно значения Client ID, Client secret и User authorization callback URL
 * После чего выпольните сброс кеша конфигурации: ```heroku run php artisan config:cache```
@@ -151,7 +160,7 @@ createdb hexlet_sicp_test
 ### Добавить пре-комит хук
 
 ```shell
-$ git config core.hooksPath .githooks
+git config core.hooksPath .githooks
 ```
 
 ##
