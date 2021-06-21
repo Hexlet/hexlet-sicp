@@ -3,20 +3,20 @@
 return [
     'meta' => [
         'description' =>
-            'SICP conqueror, in which there is a rating of those who pass the SICP, and everyone notes that he passed.',
+            'Hexlet SICP is a service for those studying the book Structure and Interpretation of Computer Programs. Track your progress and match yourself against others on the global leaderboard.',
     ],
     'nav' => [
         'name' => 'Hexlet SICP',
         'pages' => 'Pages',
-        'rating'   => 'Rating',
+        'rating'   => 'Leaderboard',
         'logout'   => 'Logout',
         'login'    => 'Login',
-        'register' => 'Register',
+        'register' => 'Sign up',
         'my_progress'  => 'Progress',
-        'sicp_read' => 'How to read',
+        'sicp_read' => 'How to read SICP?',
         'chapters' => 'Contents',
         'exercises' => 'Exercises',
-        'sicp_book' => 'Book',
+        'sicp_book' => 'The book',
     ],
     'login' => [
         'form_header' => 'Login',
@@ -37,7 +37,7 @@ return [
         'knowledge'         => 'Knowledge',
         'blog'              => 'Blog',
         'recommended_books' => 'Recommended books',
-        'additionally'      => 'Additionally',
+        'additionally'      => 'Extras',
         'os_projects' => [
             'editor' => 'Hexlet Editor',
             'cv' => 'Hexlet CV',
@@ -49,7 +49,7 @@ return [
     ],
     'flash' => [
         'success' => 'Success',
-        'error' => 'Aw, Snap! Something went wrong',
+        'error' => 'Aw, snap! Something went wrong',
     ],
     'common' => [
         'cancel' => 'Сancel',

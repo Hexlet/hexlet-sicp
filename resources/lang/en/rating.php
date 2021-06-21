@@ -2,21 +2,21 @@
 
 return [
     'index' => [
-        'title' => 'Users rating',
-        'description' => 'Rating of members of the sicp.hexlet.ru platform',
+        'title' => 'Leaderboard',
+        'description' => 'The sicp.hexlet.ru global leaderboard',
     ],
     'comments' => [
-        'title' => 'Community сontribution',
-        'description' => 'Rating of members of the sicp.hexlet.ru platform by contribution to the community',
+        'title' => 'Top commenters',
+        'description' => 'The sicp.hexlet.ru top commenters ranking',
     ],
     'progress' => [
-        'title' => 'Progress',
-        'description' => 'Rating of members of the sicp.hexlet.ru platform in accordance with the progress in studying SICP',
+        'title' => 'Top students',
+        'description' => 'The sicp.hexlet.ru top students ranking',
     ],
-    'positions' => 'Positions',
-    'user' => 'User',
-    'number_of_points' => 'Number of points',
-    'number_of_comments' => 'Number of comments',
-    'read_chapters_from' => 'Read chapters from',
-    'completed_exercises_from' => 'Completed exercises from',
+    'positions' => 'Rank',
+    'user' => 'Username',
+    'number_of_points' => 'Points',
+    'number_of_comments' => 'Comments',
+    'read_chapters_from' => 'Chapters read, out of',
+    'completed_exercises_from' => 'Exercises completed, out of',
 ];
