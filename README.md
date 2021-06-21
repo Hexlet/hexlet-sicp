@@ -7,6 +7,8 @@
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
+Читать на другом языке: [English](README.en.md)
+
 Hexlet SICP &mdash; сервис, в котором есть рейтинг тех, кто проходит СИКП, и каждый отмечает, что он прошёл.
 
 [Как изучать Структуру и Интерпретацию Компьютерных Программ (SICP)](https://guides.hexlet.io/how-to-learn-sicp/)
