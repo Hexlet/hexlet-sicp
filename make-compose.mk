@@ -3,6 +3,9 @@ compose: compose-clear compose-build compose-setup compose-start
 compose-start:
 	docker-compose up --abort-on-container-exit
 
+compose-start-database:
+	docker-compose up -d database
+
 compose-stop:
 	docker-compose stop || true
 
@@ -40,7 +43,7 @@ compose-database-stop:
 	docker-compose stop database
 
 compose-db-prepare:
-	docker-compose run --rm application db-prepare
+	docker-compose run --rm application make db-prepare
 
 compose-lint:
 	docker-compose run --rm application make lint
