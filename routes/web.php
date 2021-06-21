@@ -39,4 +39,6 @@ Route::group([
     Route::resource('exercises', 'ExerciseController')->only('index', 'show');
     Route::resource('log', 'ActivityController')->only('index');
     Route::resource('comments', 'CommentController')->only('store', 'update', 'show', 'destroy');
+
+    Route::resource('pages', 'PagesController')->only('show');
 });
