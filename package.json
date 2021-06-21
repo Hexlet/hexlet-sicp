@@ -21,7 +21,7 @@
     "highlight.js": "^11.x",
     "i18next": "^20.3.1",
     "jquery": "^3.6.0",
-    "jquery-ujs": "^1.2.2",
+    "jquery-ujs": "^1.2.3",
     "lodash": "^4.17.21",
     "popper.js": "^1.16.1",
     "react": "^17.0.2",
