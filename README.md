@@ -1,3 +1,5 @@
+# Hexlet SICP
+
 [![github action status](https://github.com/Hexlet/hexlet-sicp/actions/workflows/master.yml/badge.svg)](https://github.com/Hexlet/hexlet-sicp/actions)
 [![Maintainability](https://api.codeclimate.com/v1/badges/117a4957bde29b93eb7b/maintainability)](https://codeclimate.com/github/Hexlet/hexlet-sicp/maintainability)
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/3cf6169da8c64d048b1a807487c9cadc)](https://www.codacy.com/manual/fey/hexlet-sicp?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=fey/hexlet-sicp&amp;utm_campaign=Badge_Grade)
@@ -5,125 +7,115 @@
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
-Read this in: [English](README.en.md)
+Читать на другом языке: [English](README.en.md)
 
-# hexlet-sicp
+Hexlet SICP &mdash; сервис, в котором есть рейтинг тех, кто проходит СИКП, и каждый отмечает, что он прошёл.
 
-Осилятор СИКП &mdash; сервис, в котором есть рейтинг тех, кто проходит СИКП, и каждый отмечает, что он прошёл.
+[Как изучать Структуру и Интерпретацию Компьютерных Программ (SICP)](https://guides.hexlet.io/how-to-learn-sicp/)
 
-### Участие
+## Участие
 
 * Обсуждение в канале #hexlet-volunteers слака http://slack-ru.hexlet.io
 
-### Requirements
+### Видео созвонов
+* [Плейлист созвонов](https://www.youtube.com/playlist?list=PL37_xn2SVZdCJ-xgB-phFaWrp25Kc3cLk)
+
+## FAQ
+Q: Ошибка `Illuminate\Session\TokenMismatchException: CSRF token mismatch.`
+A: Сбросить кеш конфига `php artisan config:clear`
+
+## Requirements
+
 Проверить зависимости PHP можно командой `composer check-platform-reqs`
+
 * PHP ^8.0
-* Extensions:
-    - bcmath
-    - curl
-    - dom
-    - exif
-    - fileinfo
-    - filter
-    - json
-    - libxml
-    - mbstring
-    - openssl
-    - pcre
-    - PDO
-    - pgsql
-    - Phar
-    - SimpleXML
-    - sqlite3
-    - tokenizer
-    - xml
-    - xmlwriter
-    - zip
 * Composer
 * Node.js (v14+) & NPM (6+)
 * SQLite for local, PostgreSQL for production
 * [heroku cli](https://devcenter.heroku.com/articles/heroku-cli#download-and-install) [Как развернуть приложение на Heroku](https://ru.hexlet.io/blog/posts/kak-razvernut-prilozhenie-laravel-na-heroku)
 
-FIXME: проверить и актулизировать ридми.
+[Что такое "Менеджер версий"](https://guides.hexlet.io/version_managers/)
 
-### Setup или [Setup in docker](#setup-in-docker)
+## Setup
+
+### Подготовка и запуск локально
+
+Запуск с локальным интерпретатором и sqlite базой.
 
 ```sh
-$ make setup
-$ make start # start server http://127.0.0.1:8000/
-$ make test # run tests
+make setup # Настройка проекта
+make start # start server http://127.0.0.1:8000/
+make test # run tests
 ```
 
 ### Запуск с БД PostgreSQL (разворачивается в docker-контейнере)
 
 1. Установить зависимости и подготовить конфигурационный файл
+
 ```sh
-$ make env-prepare
-$ make install
-$ make key
+make setup
 ```
 
-2. Указать параметры подключения к БД в файле .env
+2. Указать параметры подключения к БД в файле *.env*
 
-```
+```dotenv
 DB_CONNECTION=pgsql
 DB_HOST=localhost
 DB_PORT=54320
-DB_DATABASE=homestead
-DB_USERNAME=homestead
+DB_DATABASE=postgres
+DB_USERNAME=postgres
 DB_PASSWORD=secret
 ```
 
 3. Запустить контейнер с БД и сгенерировать записи
-```sh
-$ make compose-postgres-start
-$ make config-clear
-$ make db-prepare
-```
+
+    ```sh
+    make compose-start-database
+    make db-prepare
+    ```
 
 4. Запустить локальный веб-сервер
+
 ```sh
-$ make start
+make start
 ```
 
 ### Setup in docker
 
 1. Подготовить `.env` файл
+
 ```sh
-$ make env-prepare
+make env-prepare
 ```
 
 2. Указать параметры подключения к БД в файле `.env`
-```
+
+```dotenv
 DB_CONNECTION=pgsql
-DB_HOST=db
+DB_HOST=database
 DB_PORT=5432
-DB_DATABASE=hexlet_sicp_development
+DB_DATABASE=postgres
 DB_USERNAME=postgres
 DB_PASSWORD=secret
-DB_SCHEMA=public
 ```
 
 3. Собрать и запустить приложение
 ```sh
-$ make compose-setup # build project
-$ make compose-start # start server http://127.0.0.1:8000/
+make compose-setup # build project
+make compose-start # start server http://127.0.0.1:8000/
 ```
 ```sh
-$ make compose-bash  # start bash session inside docker container
-$ make test          # run tests inside docker container
+make compose-bash  # start bash session inside docker container
+make test          # run tests inside docker container
 ```
 
-### Стандарты
+## Стандарты кодирования и прочие правила
 
 * Пулреквесты должны быть настолько маленькими, насколько это возможно с точки зрения здравого смысла
-* Весь код должен соответствовать стандартам кодирования PSR и Laravel
-* Пулреквест должен проходить все проверки
-
-#### Прикладные вещи
-
-* Все экшены контроллеров должны быть покрыты тестами
-* Формы делаются с помощью [netojose/laravel-bootstrap-4-forms](https://github.com/netojose/laravel-bootstrap-4-forms)
+* Весь код должен соответствовать стандартам кодирования PSR12 и Laravel (используем немного кастома, чтобы усложнить жизнь разработчика)
+* Пулреквест должен проходить все проверки CI
+* Все экшены контроллеров должны быть покрыты тестами ([Начинаем писать тесты (правильно)](https://ru.hexlet.io/blog/posts/how-to-test-code))
+* Формы делаются с помощью [laraeast/laravel-bootstrap-forms](https://github.com/laraeast/laravel-bootstrap-forms)
 * В подавляющем большинстве используется ресурсный роутинг. Что под него не подходит, сначала обсуждается (такое бывает крайне редко)
 * Тексты только через локали
 * Чтобы включить логирование Rollbar, необходимо установить переменную `LOG_CHANNEL=rollbar` и `ROLLBAR_TOKEN=` ([docs](https://docs.rollbar.com/docs/laravel))
@@ -132,9 +124,10 @@ $ make test          # run tests inside docker container
 * Изучите список доступных команд `php artisan`!
 
 
-#### Настройка авторизации через GitHub
+## Гайд по настройке авторизации через GitHub
 
 Зарегистрируйте приложение на GitHub (подробнее https://developer.github.com/apps/about-apps/). Для этого:
+
 * В меню учетной записи GitHub выберите пункт “Settings”
 * В открывшемся окне в панели навигации, справа, выберите “GitHub Apps”, затем нажмите кнопку “New GitHub App”
 * В открывшейся форме в поле "GitHub App name" введите название приложения (например, Hexlet-SICP)
@@ -147,11 +140,12 @@ $ make test          # run tests inside docker container
 * Cгенерируйте закрытый ключ (кнопка Generate a private key)
 
 В случае деплоя на Heroku, задайте переменные окружения для развернутого приложения. Для этого:
+
 * Перейдите на вкладку "Settings"
 * В настройке "Config Vars" добавьте переменные GITHUB_CLIENT_ID, GITHUB_CLIENT_SECRET и GITHUB_URL_REDIRECT указав для них соответвенно значения Client ID, Client secret и User authorization callback URL
 * После чего выпольните сброс кеша конфигурации: ```heroku run php artisan config:cache```
 
-#### Альтернативный профиль БД для тестирования
+### Альтернативный профиль БД для тестирования
 
 1. Создать отдельную тестовую базу postgres.  
 Настройки параметров подключения можно посмотреть в секции `pgsql_test` конфигурации `config/database.php`
@@ -165,20 +159,14 @@ createdb hexlet_sicp_test
 ```
 2. Запустить тесты с альтернативным профилем `DB_CONNECTION=pgsql_test make test`
 
-#### Добавить пре-комит хук
+### Добавить пре-комит хук
 
 ```shell
-$ git config core.hooksPath .githooks
+git config core.hooksPath .githooks
 ```
 
-#### Видео созвонов
-* [Плейлист созвонов](https://www.youtube.com/playlist?list=PL37_xn2SVZdCJ-xgB-phFaWrp25Kc3cLk)
-
 ##
+
 [![Hexlet Ltd. logo](https://raw.githubusercontent.com/Hexlet/assets/master/images/hexlet_logo128.png)](https://ru.hexlet.io/pages/about?utm_source=github&utm_medium=link&utm_campaign=exercises-javascript)
 
 This repository is created and maintained by the team and the community of Hexlet, an educational project. [Read more about Hexlet (in Russian)](https://ru.hexlet.io/pages/about?utm_source=github&utm_medium=link&utm_campaign=exercises-javascript).
-
-## FAQ
-Q: Ошибка `Illuminate\Session\TokenMismatchException: CSRF token mismatch.`
-A: Сбросить кеш конфига `php artisan config:clear`
