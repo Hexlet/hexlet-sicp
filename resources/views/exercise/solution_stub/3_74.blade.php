@@ -10,6 +10,10 @@
 
 (define (stream-cdr stream) (force (cdr stream)))
 
+(define (stream-ref s n)
+  (if (= n 0)
+      (stream-car s)
+      (stream-ref (stream-cdr s) (- n 1))))
 
 (define (stream-map proc . list-of-stream)
     (if (null? (car list-of-stream))
@@ -36,14 +40,11 @@
    (cons-stream -0.5  (cons-stream 0.2  (cons-stream 3 4)))))))))))))
 
 
-(define scar stream-car)
-(define scdr stream-cdr)
 
-(check-equal? (scar zero-crossings) 0)
-(check-equal? (scar (scdr zero-crossings)) 0)
-(check-equal? (scar (scdr (scdr zero-crossings))) 0)
-(check-equal? (scar (scdr (scdr (scdr zero-crossings)))) 0)
-(check-equal? (scar (scdr (scdr (scdr (scdr zero-crossings))))) -1)
-(check-equal? (scar (scdr (scdr (scdr (scdr (scdr zero-crossings)))))) 0)
-(check-equal? (scar (scdr (scdr (scdr (scdr
-              (scdr (scdr (scdr (scdr (scdr zero-crossings)))))))))) 1)
+(check-equal? (stream-ref zero-crossings 0) 0)
+(check-equal? (stream-ref zero-crossings 1) 0)
+(check-equal? (stream-ref zero-crossings 2) 0)
+(check-equal? (stream-ref zero-crossings 3) 0)
+(check-equal? (stream-ref zero-crossings 4) -1)
+(check-equal? (stream-ref zero-crossings 5) 0)
+(check-equal? (stream-ref zero-crossings 9) 1)
