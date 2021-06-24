@@ -10,6 +10,11 @@
 
 (define (stream-cdr stream) (force (cdr stream)))
 
+(define (stream-ref s n)
+  (if (= n 0)
+      (stream-car s)
+      (stream-ref (stream-cdr s) (- n 1))))
+
 (define (stream-map proc . list-of-stream)
     (if (null? (car list-of-stream))
         '()
@@ -31,26 +36,22 @@
 
 (define integers (cons-stream 1 (add-streams ones integers)))
 
-
-(define scar stream-car)
-(define scdr stream-cdr)
-
 (define nat-stream-1 (weighted-pairs integers integers +))
 
-(check-equal? (scar nat-stream-1) '(1 . 1))
-(check-equal? (scar (scdr nat-stream-1)) '(1 . 2))
-(check-equal? (scar (scdr (scdr nat-stream-1))) '(1 . 3))
-(check-equal? (scar (scdr (scdr (scdr nat-stream-1)))) '(2 . 2))
-(check-equal? (scar (scdr (scdr (scdr (scdr nat-stream-1))))) '(1 . 4))
-(check-equal? (scar (scdr (scdr (scdr (scdr (scdr nat-stream-1)))))) '(2 . 3))
+(check-equal? (stream-ref nat-stream-1 0) '(1 . 1))
+(check-equal? (stream-ref nat-stream-1 1) '(1 . 2))
+(check-equal? (stream-ref nat-stream-1 2) '(1 . 3))
+(check-equal? (stream-ref nat-stream-1 3) '(2 . 2))
+(check-equal? (stream-ref nat-stream-1 4) '(1 . 4))
+(check-equal? (stream-ref nat-stream-1 5) '(2 . 3))
 
 (define nat-stream-2
   (weighted-pairs integers integers
                   (lambda (i j) (+ (* 2 i) (* 3 j) (* 5 i j)))))
 
-(check-equal? (scar nat-stream-2) '(1 . 1))
-(check-equal? (scar (scdr nat-stream-2)) '(1 . 2))
-(check-equal? (scar (scdr (scdr nat-stream-2))) '(1 . 3))
-(check-equal? (scar (scdr (scdr (scdr nat-stream-2)))) '(2 . 2))
-(check-equal? (scar (scdr (scdr (scdr (scdr nat-stream-2))))) '(1 . 4))
-(check-equal? (scar (scdr (scdr (scdr (scdr (scdr nat-stream-2)))))) '(1 . 5))
+(check-equal? (stream-ref nat-stream-2 0) '(1 . 1))
+(check-equal? (stream-ref nat-stream-2 1) '(1 . 2))
+(check-equal? (stream-ref nat-stream-2 2) '(1 . 3))
+(check-equal? (stream-ref nat-stream-2 3) '(2 . 2))
+(check-equal? (stream-ref nat-stream-2 4) '(1 . 4))
+(check-equal? (stream-ref nat-stream-2 5) '(1 . 5))

@@ -10,6 +10,11 @@
 
 (define (stream-cdr stream) (force (cdr stream)))
 
+(define (stream-ref s n)
+  (if (= n 0)
+      (stream-car s)
+      (stream-ref (stream-cdr s) (- n 1))))
+
 (define (stream-map proc . list-of-stream)
     (if (null? (car list-of-stream))
         '()
@@ -42,17 +47,13 @@
                                       (stream-cdr s2)))))))))
 
 
-(define scar stream-car)
-(define scdr stream-cdr)
-
-
-(check-equal? (scar s) 1)
-(check-equal? (scar (scdr s)) 2)
-(check-equal? (scar (scdr (scdr s))) 3)
-(check-equal? (scar (scdr (scdr (scdr s)))) 4)
-(check-equal? (scar (scdr (scdr (scdr (scdr s))))) 5)
-(check-equal? (scar (scdr (scdr (scdr (scdr (scdr s)))))) 6)
-(check-equal? (scar (scdr (scdr (scdr (scdr (scdr (scdr s))))))) 8)
-(check-equal? (scar (scdr (scdr (scdr (scdr (scdr (scdr (scdr s)))))))) 9)
-(check-equal? (scar (scdr (scdr (scdr (scdr (scdr (scdr (scdr (scdr s))))))))) 10)
-(check-equal? (scar (scdr (scdr (scdr (scdr (scdr (scdr (scdr (scdr (scdr s)))))))))) 12)
+(check-equal? (stream-ref s 0) 1)
+(check-equal? (stream-ref s 1) 2)
+(check-equal? (stream-ref s 2) 3)
+(check-equal? (stream-ref s 3) 4)
+(check-equal? (stream-ref s 4) 5)
+(check-equal? (stream-ref s 5) 6)
+(check-equal? (stream-ref s 6) 8)
+(check-equal? (stream-ref s 7) 9)
+(check-equal? (stream-ref s 8) 10)
+(check-equal? (stream-ref s 9) 12)
