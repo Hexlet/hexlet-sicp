@@ -10,6 +10,11 @@
 
 (define (stream-cdr stream) (force (cdr stream)))
 
+(define (stream-ref s n)
+  (if (= n 0)
+      (stream-car s)
+      (stream-ref (stream-cdr s) (- n 1))))
+
 (define (stream-map proc . list-of-stream)
     (if (null? (car list-of-stream))
         '()
@@ -42,19 +47,16 @@
 
 (define double (cons-stream 1 (scale-stream double 2)))
 
-(define scar stream-car)
-(define scdr stream-cdr)
-
 (define s (integrate-series double))
 
-(check-equal? (scar s) 1)
-(check-equal? (scar (scdr s)) 1)
-(check-equal? (scar (scdr (scdr (scdr s)))) 2)
-(check-equal? (scar (scdr (scdr (scdr (scdr (scdr (scdr (scdr s)))))))) 16)
+(check-equal? (stream-ref s 0) 1)
+(check-equal? (stream-ref s 1) 1)
+(check-equal? (stream-ref s 3) 2)
+(check-equal? (stream-ref s 7) 16)
 
-(check-equal? (stream-car sine-series) 0)
-(check-equal? (stream-car (stream-cdr sine-series)) 1)
-(check-equal? (stream-car (stream-cdr (stream-cdr sine-series))) 0)
-(check-equal? (stream-car cosine-series) 1)
-(check-equal? (stream-car (stream-cdr cosine-series)) 0)
-(check-equal? (stream-car (stream-cdr (stream-cdr cosine-series))) -1/2)
+(check-equal? (stream-ref sine-series 0) 0)
+(check-equal? (stream-ref sine-series 1) 1)
+(check-equal? (stream-ref sine-series 2) 0)
+(check-equal? (stream-ref cosine-series 0) 1)
+(check-equal? (stream-ref cosine-series 1) 0)
+(check-equal? (stream-ref cosine-series 2) -1/2)
