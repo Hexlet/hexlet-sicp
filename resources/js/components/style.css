@@ -3,13 +3,13 @@
   /* background-color: rgb(164, 216, 143); */
 }
 
-#codemirrorContainer .nav-link.active {
-  background-color: #f5f7fb;
-};
-
 #codemirrorContainer {
   /* height: inherit; */
 }
+
+#codemirrorContainer .nav-link.active {
+  background-color: #f5f7fb;
+};
 
 #editorWrapper {
   /* height: inherit; */
