@@ -63,44 +63,43 @@
                 </li>
             @else
                 <li class="nav-item dropdown d-none d-md-block">
-                    <a class="nav-link dropdown-toggle" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">
+                    <a class="nav-link dropdown-toggle px-2 link-secondary"
+                       id="dropdownMenuButton"
+                       data-bs-toggle="dropdown"
+                       aria-haspopup="true"
+                       aria-expanded="false"
+                       href="#"
+                    >
                         <i class="far fa-user"></i>
                     </a>
-                    <div class="dropdown-menu x-z-index-dropdown dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item text-secondary" href="{{ route('users.show', $user) }}">
-                            {{ $user->name }}
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="{{ route('settings.account.index') }}">
-                            {{ __('account.settings') }}
-                        </a>
-                        <a class="dropdown-item" href="{{ route('my') }}">
-                            {{ __('layout.nav.my_progress') }}
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="{{ route('logout') }}" data-method="post" rel="nofollow">
-                            {{ __('layout.nav.logout') }}
-                        </a>
-                    </div>
+                    <ul
+                        class="dropdown-menu x-z-index-dropdown dropdown-menu-right"
+                        aria-labelledby="dropdownMenuButton"
+                    >
+                        <li>
+                            <a href="{{ route('users.show', $user) }}" class="dropdown-item link-secondary">{{ $user->name }}</a>
+                        </li>
+                        <li>
+                            <div class="dropdown-divider"></div>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="{{ route('settings.account.index') }}">{{ __('account.settings') }}</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="{{ route('my') }}">
+                                {{ __('layout.nav.my_progress') }}
+                            </a>
+                        </li>
+                        <li>
+                            <div class="dropdown-divider"></div>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="{{ route('logout') }}" data-method="post" rel="nofollow">
+                                {{ __('layout.nav.logout') }}
+                            </a>
+                        </li>
+                    </ul>
                 </li>
-
-                <div class="d-md-none">
-                    <li class="nav-item">
-                        <a class="nav-link text-secondary" href="{{ route('settings.account.index') }}">
-                            {{ __('account.settings') }}
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-secondary" href="{{ route('my') }}">
-                            {{ __('layout.nav.my_progress') }}
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-secondary" href="{{ route('logout') }}" data-method="post" rel="nofollow">
-                            {{ __('layout.nav.logout') }}
-                        </a>
-                    </li>
-                </div>
             @endguest
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle px-2 link-secondary"
@@ -116,14 +115,15 @@
                         >
                         <span class="d-md-none">{{ getNativeLanguageName($currentLocale) }}</span>
                     </a>
-                    <div
+                    <ul
                         class="dropdown-menu dropdown-menu-right x-min-w-0"
                         aria-labelledby="dropdownFlagButton"
                     >
-                        @foreach($otherLocales as $localeCode => ['native' => $language])
+                    @foreach($otherLocales as $localeCode => ['native' => $language])
+                        <li>
                             <a
                                 href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}"
-                                rel="alternate" class="dropdown-item pl-2 py-0"
+                                rel="alternate" class="dropdown-item"
                                 hreflang="{{ $localeCode }}"
                             >
                                 <img
@@ -133,8 +133,9 @@
                                 >
                                 <span class="d-md-none">{{ normalizeNativeLanguageName($language) }}</span>
                             </a>
-                        @endforeach
-                    </div>
+                        </li>
+                    @endforeach
+                    </ul>
                 </li>
         </ul>
     </div>
