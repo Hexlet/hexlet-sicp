@@ -1,3 +1,4 @@
+{{-- after migration put to resources/views/vendor/flash/message.blade.php --}}
 @foreach (session('flash_notification', collect())->toArray() as $message)
     @if ($message['overlay'])
         @include('flash::modal', [
@@ -6,16 +7,11 @@
             'body'       => $message['message']
         ])
     @else
-        <div class="alert
-                    alert-{{ $message['level'] }}
-                    {{ $message['important'] ? 'alert-important fade show' : '' }}"
-                    role="alert"
-        >
+        <div class="alert alert-{{ $message['level'] }} {{ $message['important'] ? 'alert-dismissible' : '' }}"
+             role="alert">
             {!! $message['message'] !!}
             @if($message['important'])
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             @endif
         </div>
     @endif

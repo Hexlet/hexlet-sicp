@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.bootstrap5.app')
 
 @php
 /**
@@ -9,20 +9,23 @@
  */
 @endphp
 @section('description', $user->name)
+@push('styles')
+<link href="{{ mix('css/_activity_chart.css') }}" rel="stylesheet">
+@endpush
 @section('content')
     <div class="row my-4">
         <div class="col-12 col-md-3">
             <div class="sticky-top pt-4 mb-2 x-z-index-0">
-                <img class="w-100 img-fluid" src="{{ getProfileImageLink($user) }}" alt="Card image cap">
-                <h1 class="h3 text-break my-2">{{ $user->name }}</h1>
-                <div class="h4">
+                <img class="w-100 img-fluid" src="{{ getProfileImageLink($user) }}" alt="User avatar">
+                <h1 class="h4 text-break my-2">{{ $user->name }}</h1>
+                <div class="h5">
                     <span class="fas fa-trophy"></span>
                     <span>{{ $userRatingPosition }}</span>
                     <a class="h6" href="{{ route('top.index') }}">
                         {{ __('user.show.statistics.rating') }}
                     </a>
                 </div>
-                <div class="h4">
+                <div class="h5">
                     <span class="fas fa-award mx-1"></span>
                     <span>{{ $points }}</span>
                     <span class="h6 text-secondary"> {{ trans_choice('user.show.statistics.points', $points) }}</span>
@@ -63,10 +66,12 @@
             </div>
         </div>
         <div class="col-12 col-md-9 my-4">
-            <div class="shadow p-3 mb-5 bg-white rounded">
-                <div class="h2 text-center text-secondary mb-2">{{ __('user.show.statistics.statistics') }}</div>
+            <div class="shadow bg-white rounded p-3 mb-5">
+                <div class="h2 text-center text-secondary mb-2">
+                    {{ __('user.show.statistics.statistics') }}
+                </div>
                 <div class="row no-gutters my-2">
-                    <div class="col-12 col-md text-center my-2">
+                    <div class="col-4 col-md text-center my-2">
                         <div class="h2 text-info">
                             {{ $user->readChapters->count() }}
                         </div>
@@ -74,7 +79,7 @@
                             {{ trans_choice('user.show.statistics.read_chapters', $user->readChapters->count()) }}
                         </div>
                     </div>
-                    <div class="col-12 col-md text-center my-2">
+                    <div class="col-4 col-md text-center my-2">
                         <div class="h2 text-info">
                             {{ $user->completedExercises->count() }}
                         </div>
@@ -82,7 +87,7 @@
                             {{ trans_choice('user.show.statistics.completed_exercises', $user->completedExercises->count()) }}
                         </div>
                     </div>
-                    <div class="col-12 col-md text-center my-2">
+                    <div class="col-4 col-md text-center my-2">
                         <div class="h2 text-info">
                             {{ $user->comments->count() }}
                         </div>
@@ -96,6 +101,6 @@
                 </div>
             </div>
         </div>
-
     </div>
 @endsection
+

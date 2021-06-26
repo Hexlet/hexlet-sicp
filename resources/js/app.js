@@ -1,7 +1,5 @@
-import '@fortawesome/fontawesome-free/js/fontawesome';
-import '@fortawesome/fontawesome-free/js/solid';
-import '@fortawesome/fontawesome-free/js/regular';
-import '@fortawesome/fontawesome-free/js/brands';
+// todo remove me after migration to bs5
+import './font-awesome';
 import $ from 'jquery';
 import addHashActiveTab from './custom';
 

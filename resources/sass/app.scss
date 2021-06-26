@@ -13,23 +13,11 @@
 
 @import "carousel";
 
-.x-z-index-0 {
-    z-index: 0 !important;
-}
-
-.x-min-w-0 {
-    min-width: 0px !important;
-}
-
-.x-z-index-dropdown {
-    z-index: 2000 !important;
-}
+@import "custom";
 
 // NOTE: move if it will be necessary. It should be do for the site.
+// TODO grep and replace by .bd-gray-200
+// https://getbootstrap.com/docs/5.0/customize/color/
 .x-bg-gray-200 {
     background: $gray-200;
-}
-
-.x-text-pre-wrap {
-    white-space: pre-wrap;
 }
