@@ -18,7 +18,7 @@
     {{ __('exercises/3_14.description.4') }}
     <code>x</code>
     {{ __('exercises/3_14.description.5') }}
-    <code>set-cd!</code>
+    <code>set-cdr!</code>
     {{ __('exercises/3_14.description.6') }}
     <code>cdr</code>
     {{ __('exercises/3_14.description.7') }}
