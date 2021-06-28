@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0debc15c192557e3785ca30aa519d5be",
+    "content-hash": "2b2080e65faaab155619bacc197868cd",
     "packages": [
         {
             "name": "brick/math",
@@ -10035,16 +10035,16 @@
         },
         {
             "name": "heroku/heroku-buildpack-php",
-            "version": "v193",
+            "version": "v194",
             "source": {
                 "type": "git",
                 "url": "https://github.com/heroku/heroku-buildpack-php.git",
-                "reference": "3ed73cef52173add127fdce06ec7dd936dcb9b23"
+                "reference": "6232512eecda4ffe4bbbdffa5dbe36ddf0c55d8d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/heroku/heroku-buildpack-php/zipball/3ed73cef52173add127fdce06ec7dd936dcb9b23",
-                "reference": "3ed73cef52173add127fdce06ec7dd936dcb9b23",
+                "url": "https://api.github.com/repos/heroku/heroku-buildpack-php/zipball/6232512eecda4ffe4bbbdffa5dbe36ddf0c55d8d",
+                "reference": "6232512eecda4ffe4bbbdffa5dbe36ddf0c55d8d",
                 "shasum": ""
             },
             "bin": [
@@ -10074,9 +10074,9 @@
             ],
             "support": {
                 "issues": "https://github.com/heroku/heroku-buildpack-php/issues",
-                "source": "https://github.com/heroku/heroku-buildpack-php/tree/v193"
+                "source": "https://github.com/heroku/heroku-buildpack-php/tree/v194"
             },
-            "time": "2021-06-07T20:53:28+00:00"
+            "time": "2021-06-25T16:30:14+00:00"
         },
         {
             "name": "justinrainbow/json-schema",
@@ -13139,6 +13139,7 @@
         "ext-openssl": "*",
         "ext-sqlite3": "*",
         "ext-pdo_pgsql": "*",
+        "ext-pdo_sqlite": "*",
         "ext-xml": "*",
         "ext-zip": "*"
     },
