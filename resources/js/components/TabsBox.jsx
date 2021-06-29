@@ -3,13 +3,13 @@ import { Nav, Tab } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import Editor from './Editor.jsx';
+import Output from './Output.jsx';
 import tabNames from '../common/tabNamesMap.js';
 import { changeTab } from '../slices/tabsBoxSlice.js';
 
 const TabsBox = () => {
   const { t } = useTranslation();
   const { currentTab } = useSelector((state) => state.tabsBox);
-  const { checkResult } = useSelector((state) => state);
   const dispatch = useDispatch();
 
   const changeActiveTab = (newActiveTab) => {
@@ -35,7 +35,7 @@ const TabsBox = () => {
           <Editor />
         </Tab.Pane>
         <Tab.Pane eventKey={tabNames.output} bsPrefix="tab-pane h-100 p-3 w-100">
-          {checkResult.output}
+          <Output />
         </Tab.Pane>
         <Tab.Pane eventKey={tabNames.tests} bsPrefix="tab-pane h-100 p-3 w-100">
           Результат тестов
