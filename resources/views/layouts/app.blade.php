@@ -39,6 +39,7 @@
     @include('layouts._footer')
     @livewireScripts
     <script src="{{ mix('js/hljs.js')}}"></script>
+    <script>window.locale = "{{ LaravelLocalization::getCurrentLocale() }}"</script>
     @includeWhen(app()->environment('production'), 'layouts.deps._metrika')
 </body>
 </html>

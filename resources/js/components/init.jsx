@@ -9,12 +9,13 @@ import { UserIdProvider } from '../context/UserIdContext.js';
 import { ExerciseIdProvider } from '../context/ExerciseIdContext.js';
 
 export default async (userId, exerciseId) => {
+  const { locale: lng } = window;
   const store = createStore();
   const i18nInstance = i18n.createInstance();
   await i18nInstance
     .use(initReactI18next)
     .init({
-      lng: 'ru', // В будущем это должно меняться по клику выбор языка
+      lng,
       resources,
       keySeparator: false,
       interpolation: {
