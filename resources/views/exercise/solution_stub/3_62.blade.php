@@ -10,6 +10,11 @@
 
 (define (stream-cdr stream) (force (cdr stream)))
 
+(define (stream-ref s n)
+  (if (= n 0)
+      (stream-car s)
+      (stream-ref (stream-cdr s) (- n 1))))
+
 (define (stream-map proc . list-of-stream)
     (if (null? (car list-of-stream))
         '()
@@ -43,7 +48,7 @@
 
 (define tan-series (div-series sine-series cosine-series))
 
-(check-equal? (stream-car tan-series) 0)
-(check-equal? (stream-car (stream-cdr tan-series)) 1)
-(check-equal? (stream-car (stream-cdr (stream-cdr tan-series))) 0)
-(check-equal? (stream-car (stream-cdr (stream-cdr (stream-cdr tan-series)))) 1/3)
+(check-equal? (stream-ref tan-series 0) 0)
+(check-equal? (stream-ref tan-series 1) 1)
+(check-equal? (stream-ref tan-series 2) 0)
+(check-equal? (stream-ref tan-series 3) 1/3)

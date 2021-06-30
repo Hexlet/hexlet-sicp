@@ -10,6 +10,11 @@
 
 (define (stream-cdr stream) (force (cdr stream)))
 
+(define (stream-ref s n)
+  (if (= n 0)
+      (stream-car s)
+      (stream-ref (stream-cdr s) (- n 1))))
+
 (define ones (cons-stream 1 ones))
 
 (define (stream-map proc . list-of-stream)
@@ -31,9 +36,9 @@
 (define integers (cons-stream 1 (add-streams ones integers)))
 
 
-(check-equal? (stream-car (mul-streams integers integers)) 1)
-(check-equal? (stream-car (stream-cdr (mul-streams integers integers))) 4)
+(check-equal? (stream-ref (mul-streams integers integers) 0) 1)
+(check-equal? (stream-ref (mul-streams integers integers) 1) 4)
 
-(check-equal? (stream-car factorials) 1)
-(check-equal? (stream-car (stream-cdr (stream-cdr factorials))) 6)
-(check-equal? (stream-car (stream-cdr (stream-cdr (stream-cdr factorials)))) 24)
+(check-equal? (stream-ref factorials 0) 1)
+(check-equal? (stream-ref factorials 2) 6)
+(check-equal? (stream-ref factorials 3) 24)

@@ -10,6 +10,11 @@
 
 (define (stream-cdr stream) (force (cdr stream)))
 
+(define (stream-ref s n)
+  (if (= n 0)
+      (stream-car s)
+      (stream-ref (stream-cdr s) (- n 1))))
+
 (define ones (cons-stream 1 ones))
 
 (define (stream-map proc . list-of-stream)
@@ -32,11 +37,11 @@
 (define integers (cons-stream 1 (add-streams ones integers)))
 
 
-(check-equal? (stream-car (partial-sums integers)) 1)
-(check-equal? (stream-car (stream-cdr (partial-sums integers))) 3)
-(check-equal? (stream-car (stream-cdr (stream-cdr (partial-sums integers)))) 6)
-(check-equal? (stream-car (stream-cdr (stream-cdr (stream-cdr (partial-sums integers))))) 10)
+(check-equal? (stream-ref (partial-sums integers) 0) 1)
+(check-equal? (stream-ref (partial-sums integers) 1) 3)
+(check-equal? (stream-ref (partial-sums integers) 2) 6)
+(check-equal? (stream-ref (partial-sums integers) 3) 10)
 
-(check-equal? (stream-car (partial-sums ones)) 1)
-(check-equal? (stream-car (stream-cdr (partial-sums ones))) 2)
-(check-equal? (stream-car (stream-cdr (stream-cdr (partial-sums ones)))) 3)
+(check-equal? (stream-ref (partial-sums ones) 0) 1)
+(check-equal? (stream-ref (partial-sums ones) 1) 2)
+(check-equal? (stream-ref (partial-sums ones) 2) 3)

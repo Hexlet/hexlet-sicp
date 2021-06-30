@@ -52,14 +52,16 @@
 
 
 (define test-sequence (ln2-sequence 1))
-(check-equal? (stream-car test-sequence) 1.0)
-(check-equal? (stream-car (stream-cdr test-sequence)) -0.5)
-(check-equal? (floor (* 100 (stream-car (stream-cdr (stream-cdr test-sequence))))) 33.0)
+(check-equal? (stream-ref test-sequence 0) 1.0)
+(check-equal? (stream-ref test-sequence 1) -0.5)
+(check-equal? (floor (* 100 (stream-ref test-sequence 2))) 33.0)
 
 (define euler-test-sequence (euler-transform test-sequence))
-(check-equal? (floor (* 1000 (stream-car euler-test-sequence))) 35.0)
-(check-equal? (round (* 10000 (stream-car (stream-cdr euler-test-sequence)))) -98.0)
+(check-equal? (floor (* 1000 (stream-ref euler-test-sequence 0))) 35.0)
+(check-equal? (round (* 10000 (stream-ref euler-test-sequence 1))) -98.0)
 
-(define accelerated-test-sequence (accelerated-sequence euler-transform test-sequence))
-(check-equal? (stream-car accelerated-test-sequence) 1.0)
-(check-equal? (floor (* 1000 (stream-car (stream-cdr accelerated-test-sequence)))) 35.0)
+(define accelerated-test-sequence
+  (accelerated-sequence euler-transform test-sequence))
+(check-equal? (stream-ref accelerated-test-sequence 0) 1.0)
+(check-equal?
+ (floor (* 1000 (stream-ref accelerated-test-sequence 1))) 35.0)

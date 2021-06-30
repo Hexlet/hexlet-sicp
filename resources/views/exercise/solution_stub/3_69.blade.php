@@ -10,6 +10,11 @@
 
 (define (stream-cdr stream) (force (cdr stream)))
 
+(define (stream-ref s n)
+  (if (= n 0)
+      (stream-car s)
+      (stream-ref (stream-cdr s) (- n 1))))
+
 (define (interleave s1 s2)
   (if (stream-null? s1)
       s2
@@ -55,10 +60,10 @@
 
 (define s (triples integers integers integers))
 
-(check-equal? (stream-car s) '(1 1 1))
-(check-equal? (stream-car (stream-cdr s)) '(1 1 2))
-(check-equal? (stream-car (stream-cdr (stream-cdr s))) '(2 2 2))
-(check-equal? (stream-car (stream-cdr (stream-cdr (stream-cdr s)))) '(1 1 3))
+(check-equal? (stream-ref s 0) '(1 1 1))
+(check-equal? (stream-ref s 1) '(1 1 2))
+(check-equal? (stream-ref s 2) '(2 2 2))
+(check-equal? (stream-ref s 3) '(1 1 3))
 
-(check-equal? (stream-car pythagorian-triples) '(3 4 5))
-(check-equal? (stream-car (stream-cdr pythagorian-triples)) '(6 8 10))
+(check-equal? (stream-ref pythagorian-triples 0) '(3 4 5))
+(check-equal? (stream-ref pythagorian-triples 1) '(6 8 10))
