@@ -17,7 +17,6 @@ export default async (userId, exerciseId) => {
     .init({
       lng,
       resources,
-      keySeparator: false,
       interpolation: {
         escapeValue: false,
       },
