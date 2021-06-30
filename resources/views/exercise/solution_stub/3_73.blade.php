@@ -10,6 +10,11 @@
 
 (define (stream-cdr stream) (force (cdr stream)))
 
+(define (stream-ref s n)
+  (if (= n 0)
+      (stream-car s)
+      (stream-ref (stream-cdr s) (- n 1))))
+
 (define (stream-map proc . list-of-stream)
     (if (null? (car list-of-stream))
         '()
@@ -46,6 +51,6 @@
 (define voltage-stream (RC1 integers 1))
 
 
-(check-equal? (stream-car voltage-stream) 6)
-(check-equal? (stream-car (stream-cdr voltage-stream)) 11.5)
-(check-equal? (stream-car (stream-cdr (stream-cdr voltage-stream))) 17.5)
+(check-equal? (stream-ref voltage-stream 0) 6)
+(check-equal? (stream-ref voltage-stream 1) 11.5)
+(check-equal? (stream-ref voltage-stream 2) 17.5)
