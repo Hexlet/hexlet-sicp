@@ -99,4 +99,11 @@
                 @livewire('exercise-editor', ['exercise' => $exercise, 'user' => $authUser])
             @endif
         </div>
+    </div>
+    <script>
+      const userId = "{{ $authUser->id }}";
+      const exerciseId = "{{ $exercise->id }}";
+      const locale = "{{ LaravelLocalization::getCurrentLocale() }}";
+      window.sicpEditorData = { userId, exerciseId, locale }; 
+    </script>
 @endsection

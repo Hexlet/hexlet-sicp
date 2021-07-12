@@ -9,7 +9,7 @@ import { UserIdProvider } from '../context/UserIdContext.js';
 import { ExerciseIdProvider } from '../context/ExerciseIdContext.js';
 
 export default async (userId, exerciseId) => {
-  const { locale: lng } = window;
+  const { locale: lng } = window.sicpEditorData;
   const store = createStore();
   const i18nInstance = i18n.createInstance();
   await i18nInstance
