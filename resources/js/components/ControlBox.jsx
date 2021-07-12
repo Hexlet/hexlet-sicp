@@ -37,9 +37,9 @@ const ControlBox = () => {
         output,
       };
       dispatch(handleNewCheckResult(newCheckResult));
-      setIsSending(false);
     } catch (error) {
       console.log(error.message);
+    } finally {
       setIsSending(false);
     }
   };
