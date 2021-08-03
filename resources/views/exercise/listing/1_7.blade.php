@@ -1,9 +1,9 @@
-<p>{{ __('exercises/1_7.description.1') }}</p>
+<p>{{ __('exercises/1_7.description.1') }}
 <code>good-enough?</code>
-<p>{{ __('exercises/1_7.description.2') }}</p>
+{{ __('exercises/1_7.description.2') }}
 <code>good-enough?</code>
-<p>{{ __('exercises/1_7.description.3') }}</p>
+{{ __('exercises/1_7.description.3') }}
 <code>guess</code>
-<p>{{ __('exercises/1_7.description.4') }}</p>
+{{ __('exercises/1_7.description.4') }}
 <code>square-root</code>
-<p>{{ __('exercises/1_7.description.5') }}</p>
+{{ __('exercises/1_7.description.5') }}</p>
