@@ -13,7 +13,10 @@
 
 (A 3 3)
 </code></pre>
-<p>{{ __('exercises/1_10.description.3') }}</p>
+<p>{{ __('exercises/1_10.description.3') }}
+<code>A</code>
+{{ __('exercises/1_10.description.4') }}
+</p>
 <pre><code>(define (f n) (A 0 n))
 
 (define (g n) (A 1 n))
@@ -22,4 +25,15 @@
 
 (define (k n) (* 5 n n))
 </code></pre>
-<p>{{ __('exercises/1_10.description.4') }}</p>
+<p>{{ __('exercises/1_10.description.5') }}
+<code>f, g</code>
+{{ __('exercises/1_10.description.6') }}
+<code>h</code>
+{{ __('exercises/1_10.description.7') }}
+<code>n</code>
+{{ __('exercises/1_10.description.8') }}
+<code>(k n)</code>
+{{ __('exercises/1_10.description.9') }}
+<code>5 * n * n</code>
+{{ __('exercises/1_10.description.10') }}
+</p>
