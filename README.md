@@ -18,9 +18,11 @@ Hexlet SICP &mdash; сервис, в котором есть рейтинг те
 * Обсуждение в канале #hexlet-volunteers слака http://slack-ru.hexlet.io
 
 ### Видео созвонов
+
 * [Плейлист созвонов](https://www.youtube.com/playlist?list=PL37_xn2SVZdCJ-xgB-phFaWrp25Kc3cLk)
 
 ## FAQ
+
 Q: Ошибка `Illuminate\Session\TokenMismatchException: CSRF token mismatch.`
 A: Сбросить кеш конфига `php artisan config:clear`
 
@@ -32,7 +34,7 @@ A: Сбросить кеш конфига `php artisan config:clear`
 * Composer
 * Node.js (v14+) & NPM (6+)
 * SQLite for local, PostgreSQL for production
-* [heroku cli](https://devcenter.heroku.com/articles/heroku-cli#download-and-install) [Как развернуть приложение на Heroku](https://ru.hexlet.io/blog/posts/kak-razvernut-prilozhenie-laravel-na-heroku)
+* [heroku cli](https://devcenter.heroku.com/articles/heroku-cli#download-and-install), [Как развернуть приложение на Heroku](https://ru.hexlet.io/blog/posts/kak-razvernut-prilozhenie-laravel-na-heroku)
 
 [Что такое "Менеджер версий"](https://guides.hexlet.io/version_managers/)
 
@@ -52,20 +54,20 @@ make test # run tests
 
 1. Установить зависимости и подготовить конфигурационный файл
 
-```sh
-make setup
-```
+    ```sh
+    make setup
+    ```
 
 2. Указать параметры подключения к БД в файле *.env*
 
-```dotenv
-DB_CONNECTION=pgsql
-DB_HOST=localhost
-DB_PORT=54320
-DB_DATABASE=postgres
-DB_USERNAME=postgres
-DB_PASSWORD=secret
-```
+    ```dotenv
+    DB_CONNECTION=pgsql
+    DB_HOST=localhost
+    DB_PORT=54320
+    DB_DATABASE=postgres
+    DB_USERNAME=postgres
+    DB_PASSWORD=secret
+    ```
 
 3. Запустить контейнер с БД и сгенерировать записи
 
@@ -76,38 +78,40 @@ DB_PASSWORD=secret
 
 4. Запустить локальный веб-сервер
 
-```sh
-make start
-```
+    ```sh
+    make start
+    ```
 
 ### Setup in docker
 
 1. Подготовить `.env` файл
 
-```sh
-make env-prepare
-```
+    ```sh
+    make env-prepare
+    ```
 
 2. Указать параметры подключения к БД в файле `.env`
 
-```dotenv
-DB_CONNECTION=pgsql
-DB_HOST=database
-DB_PORT=5432
-DB_DATABASE=postgres
-DB_USERNAME=postgres
-DB_PASSWORD=secret
-```
+    ```dotenv
+    DB_CONNECTION=pgsql
+    DB_HOST=database
+    DB_PORT=5432
+    DB_DATABASE=postgres
+    DB_USERNAME=postgres
+    DB_PASSWORD=secret
+    ```
 
 3. Собрать и запустить приложение
-```sh
-make compose-setup # build project
-make compose-start # start server http://127.0.0.1:8000/
-```
-```sh
-make compose-bash  # start bash session inside docker container
-make test          # run tests inside docker container
-```
+
+    ```sh
+    make compose-setup # build project
+    make compose-start # start server http://127.0.0.1:8000/
+    ```
+
+    ```sh
+    make compose-bash  # start bash session inside docker container
+    make test          # run tests inside docker container
+    ```
 
 ## Стандарты кодирования и прочие правила
 
@@ -122,8 +126,7 @@ make test          # run tests inside docker container
 * Чтобы добавить упражнение, необходимо добавить его содержимое (код или картинка) по пути `resources/views/exercise/listing/#_#.blade.php`, а текстовое описание в `resources/lang/{locale}/sicp.php` под ключем `exercises.#.#` на соответствующем языке.
 * Для генераций файлов-помощников (для автодополнения) используйте `make ide-helper`
 * Изучите список доступных команд `php artisan`!
-
-
+*
 ## Гайд по настройке авторизации через GitHub
 
 Зарегистрируйте приложение на GitHub (подробнее https://developer.github.com/apps/about-apps/). Для этого:
@@ -148,15 +151,17 @@ make test          # run tests inside docker container
 ### Альтернативный профиль БД для тестирования
 
 1. Создать отдельную тестовую базу postgres.  
-Настройки параметров подключения можно посмотреть в секции `pgsql_test` конфигурации `config/database.php`
+Настройки параметров подключения можно посмотреть в секции `pgsql_test` конфигурации `config/database.php`.
 Пример создания тестовой базы "с нуля":
-```shell
-sudo apt install postgresql
-sudo -u postgres createuser --createdb $(whoami)
-sudo -u postgres createuser hexlet_sicp_test_user
-sudo -u postgres psql -c "ALTER USER hexlet_sicp_test_user WITH ENCRYPTED PASSWORD 'secret'"
-createdb hexlet_sicp_test
-```
+
+    ```shell
+    sudo apt install postgresql
+    sudo -u postgres createuser --createdb $(whoami)
+    sudo -u postgres createuser hexlet_sicp_test_user
+    sudo -u postgres psql -c "ALTER USER hexlet_sicp_test_user WITH ENCRYPTED PASSWORD 'secret'"
+    createdb hexlet_sicp_test
+    ```
+
 2. Запустить тесты с альтернативным профилем `DB_CONNECTION=pgsql_test make test`
 
 ### Добавить пре-комит хук
@@ -167,6 +172,6 @@ git config core.hooksPath .githooks
 
 ##
 
-[![Hexlet Ltd. logo](https://raw.githubusercontent.com/Hexlet/assets/master/images/hexlet_logo128.png)](https://ru.hexlet.io/pages/about?utm_source=github&utm_medium=link&utm_campaign=exercises-javascript)
+[![Hexlet Ltd. logo](https://raw.githubusercontent.com/Hexlet/assets/master/images/hexlet_logo128.png)](https://ru.hexlet.io/pages/about?utm_source=github&utm_medium=link&utm_campaign=exercises-sicp)
 
-This repository is created and maintained by the team and the community of Hexlet, an educational project. [Read more about Hexlet (in Russian)](https://ru.hexlet.io/pages/about?utm_source=github&utm_medium=link&utm_campaign=exercises-javascript).
+This repository is created and maintained by the team and the community of Hexlet, an educational project. [Read more about Hexlet (in Russian)](https://ru.hexlet.io/pages/about?utm_source=github&utm_medium=link&utm_campaign=exercises-sicp).
