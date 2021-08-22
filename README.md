@@ -13,7 +13,7 @@ Hexlet SICP - это сервис для тех, кто изучает книг�
 
 Предварительно рекомендуем прочесть статью [Как изучать Структуру и Интерпретацию Компьютерных Программ (SICP)](https://guides.hexlet.io/how-to-learn-sicp/)
 
-## Участие в разарботке
+## Участие в разработке
 
 * Обсуждение идёт в [Slack Hexlet](http://slack-ru.hexlet.io) в канале #hexlet-volunteers
 * [Плейлист записей созвонов участников](https://www.youtube.com/playlist?list=PL37_xn2SVZdCJ-xgB-phFaWrp25Kc3cLk)
@@ -24,7 +24,7 @@ Q: Ошибка `Illuminate\Session\TokenMismatchException: CSRF token mismatch.
 
 A: Сбросить кеш конфига `php artisan config:clear`
 
-## Предварительные требовани
+## Предварительные требования
 
 Проверить зависимости PHP можно командой `composer check-platform-reqs`
 
@@ -50,61 +50,61 @@ make test # запуск тестов
 
 1. Установить зависимости и подготовить конфигурационный файл
 
-```sh
-make setup
-```
+    ```sh
+    make setup
+    ```
 
-2. Указать параметры подключения к БД в файле `.env`
+2. Указать параметры подключения к БД в файле *.env*
 
-```dotenv
-DB_CONNECTION=pgsql
-DB_HOST=localhost
-DB_PORT=54320
-DB_DATABASE=postgres
-DB_USERNAME=postgres
-DB_PASSWORD=secret
-```
+    ```dotenv
+    DB_CONNECTION=pgsql
+    DB_HOST=localhost
+    DB_PORT=54320
+    DB_DATABASE=postgres
+    DB_USERNAME=postgres
+    DB_PASSWORD=secret
+    ```
 
 3. Запустить контейнер с БД и сгенерировать записи
 
-```sh
-make compose-start-database
-make db-prepare
-```
+    ```sh
+    make compose-start-database
+    make db-prepare
+    ```
 
 4. Запустить локальный веб-сервер
 
-```sh
-make start
-```
+    ```sh
+    make start
+    ```
 
 ### Установка в Docker
 
-1. Подготовить файл `.env`
+1. Подготовить файл *.env*
 
-```sh
-make env-prepare
-```
+    ```sh
+    make env-prepare
+    ```
 
-2. Указать параметры подключения к БД в файле `.env`
+2. Указать параметры подключения к БД в файле *.env*
 
-```dotenv
-DB_CONNECTION=pgsql
-DB_HOST=database
-DB_PORT=5432
-DB_DATABASE=postgres
-DB_USERNAME=postgres
-DB_PASSWORD=secret
-```
+    ```dotenv
+    DB_CONNECTION=pgsql
+    DB_HOST=database
+    DB_PORT=5432
+    DB_DATABASE=postgres
+    DB_USERNAME=postgres
+    DB_PASSWORD=secret
+    ```
 
 3. Собрать и запустить приложение
 
-```sh
-make compose-setup # собрать проект
-make compose-start # запустить сервер http://127.0.0.1:8000/
-make compose-bash  # запустить сессию bash в docker-контейнере
-make test          # запустить тесты в docker-контейнере
-```
+    ```sh
+    make compose-setup # собрать проект
+    make compose-start # запустить сервер http://127.0.0.1:8000/
+    make compose-bash  # запустить сессию bash в docker-контейнере
+    make test          # запустить тесты в docker-контейнере
+    ```
 
 ## Стандарты кодирования и прочие правила
 
@@ -122,16 +122,16 @@ make test          # запустить тесты в docker-контейнер�
 
 ## Руководство по настройке авторизации через GitHub
 
-Зарегистрируйте приложение на GitHub (подробнее https://developer.github.com/apps/about-apps/).
+Зарегистрируйте приложение на GitHub (подробнее <https://developer.github.com/apps/about-apps/>).
 
 Для этого:
 
 * В меню учетной записи GitHub выберите пункт “Settings”
 * В открывшемся окне в панели навигации, справа, выберите “GitHub Apps”, затем нажмите кнопку “New GitHub App”
 * В открывшейся форме в поле "GitHub App name" введите название приложения (например, Hexlet-SICP)
-* В поле Homepage URL - адрес ресурса (например, https://hexlet-sicp.herokuapp.com)
-* В поле "User authorization callback URL" введите полный URL-адрес для перенаправления после того, как пользователь авторизует приложение на GitHub. (например, https://hexlet-sicp.herokuapp.com/oauth/github/callback)
-* В поле "Webhook URL" укажите URL-адрес, по которому будут отправляться события (например, https://hexlet-sicp.herokuapp.com/oauth/github/callback)
+* В поле Homepage URL - адрес ресурса (например, <https://hexlet-sicp.herokuapp.com>)
+* В поле "User authorization callback URL" введите полный URL-адрес для перенаправления после того, как пользователь авторизует приложение на GitHub. (например, <https://hexlet-sicp.herokuapp.com/oauth/github/callback>)
+* В поле "Webhook URL" укажите URL-адрес, по которому будут отправляться события (например, <https://hexlet-sicp.herokuapp.com/oauth/github/callback>)
 * Откройте права на получение информации о e-mail пользователя (User permissions->Email addresses->Read only)
 * Сохраните данные регистрации приложения (кнопка "Create GitHub App")
 * На открывшейся странице приложения скопируйте Client ID и Client secret
@@ -149,15 +149,15 @@ make test          # запустить тесты в docker-контейнер�
 
 1. Создать отдельную тестовую базу postgres. Настройки параметров подключения можно посмотреть в секции `pgsql_test` конфигурации `config/database.php`
 
-Пример создания тестовой базы "с нуля":
+    Пример создания тестовой базы "с нуля":
 
-```shell
-sudo apt install postgresql
-sudo -u postgres createuser --createdb $(whoami)
-sudo -u postgres createuser hexlet_sicp_test_user
-sudo -u postgres psql -c "ALTER USER hexlet_sicp_test_user WITH ENCRYPTED PASSWORD 'secret'"
-createdb hexlet_sicp_test
-```
+    ```shell
+    sudo apt install postgresql
+    sudo -u postgres createuser --createdb $(whoami)
+    sudo -u postgres createuser hexlet_sicp_test_user
+    sudo -u postgres psql -c "ALTER USER hexlet_sicp_test_user WITH ENCRYPTED PASSWORD 'secret'"
+    createdb hexlet_sicp_test
+    ```
 
 2. Запустить тесты с альтернативным профилем `DB_CONNECTION=pgsql_test make test`
 
