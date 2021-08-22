@@ -9,7 +9,7 @@
 
 Читать на другом языке: [English](README.en.md)
 
-Hexlet SICP - это сервис для тех, кто изучает книгу "Структура и интерпретация компьютерных программ". Отслеживайте свой прогресс и сравнивайте себя с другими в глобальной таблице лидеров.
+Hexlet SICP &mdash; это сервис для тех, кто изучает книгу "Структура и интерпретация компьютерных программ". Отслеживайте свой прогресс и сравнивайте себя с другими в глобальной таблице лидеров.
 
 Предварительно рекомендуем прочесть статью [Как изучать Структуру и Интерпретацию Компьютерных Программ (SICP)](https://guides.hexlet.io/how-to-learn-sicp/)
 
@@ -129,7 +129,7 @@ make test # запуск тестов
 * В меню учетной записи GitHub выберите пункт “Settings”
 * В открывшемся окне в панели навигации, справа, выберите “GitHub Apps”, затем нажмите кнопку “New GitHub App”
 * В открывшейся форме в поле "GitHub App name" введите название приложения (например, Hexlet-SICP)
-* В поле Homepage URL - адрес ресурса (например, <https://hexlet-sicp.herokuapp.com>)
+* В поле Homepage URL &mdash; адрес ресурса (например, <https://hexlet-sicp.herokuapp.com>)
 * В поле "User authorization callback URL" введите полный URL-адрес для перенаправления после того, как пользователь авторизует приложение на GitHub. (например, <https://hexlet-sicp.herokuapp.com/oauth/github/callback>)
 * В поле "Webhook URL" укажите URL-адрес, по которому будут отправляться события (например, <https://hexlet-sicp.herokuapp.com/oauth/github/callback>)
 * Откройте права на получение информации о e-mail пользователя (User permissions->Email addresses->Read only)
@@ -142,8 +142,8 @@ make test # запуск тестов
 Для этого:
 
 * Перейдите на вкладку "Settings"
-* В настройке "Config Vars" добавьте переменные GITHUB_CLIENT_ID, GITHUB_CLIENT_SECRET и GITHUB_URL_REDIRECT указав для них соответвенно значения Client ID, Client secret и User authorization callback URL
-* После чего выпольните сброс кеша конфигурации: ```heroku run php artisan config:cache```
+* В настройке "Config Vars" добавьте переменные `GITHUB_CLIENT_ID`, `GITHUB_CLIENT_SECRET` и `GITHUB_URL_REDIRECT` указав для них соответвенно значения Client ID, Client secret и User authorization callback URL
+* После чего выпольните сброс кеша конфигурации: `heroku run php artisan config:cache`
 
 ### Альтернативный профиль БД для тестирования
 
