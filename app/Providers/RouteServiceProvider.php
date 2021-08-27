@@ -48,7 +48,6 @@ class RouteServiceProvider extends ServiceProvider
      * Remove index.php from url.
      *
      */
-
     protected function removeIndexPhpFromUrl()
     {
         if (Str::contains(request()->getRequestUri(), '/index.php/')) {
@@ -60,7 +59,6 @@ class RouteServiceProvider extends ServiceProvider
             }
         }
     }
-
 
     /**
      * Define the "web" routes for the application.
