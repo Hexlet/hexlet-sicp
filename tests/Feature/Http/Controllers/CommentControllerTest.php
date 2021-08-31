@@ -145,8 +145,9 @@ class CommentControllerTest extends ControllerTestCase
             ->commentable($commentable)
             ->create();
 
+        // @phpstan-ignore-next-line
         $commentData = $comment->only('id', 'user_id', 'content', 'deleted_at');
-
+        /** @var User $user */
         $user = User::factory()->create();
         $this
             ->from($visitedPage)
@@ -209,10 +210,11 @@ class CommentControllerTest extends ControllerTestCase
 
     private function createComment(User $user, Model $commentable): Comment
     {
-        $comment = Comment::factory()->make();
-        $comment = $comment->user()->associate($user);
         /** @var Comment $comment */
-        $comment = $comment->commentable()->associate($commentable);
+        $comment = Comment::factory()->make();
+
+        $comment->user()->associate($user);
+        $comment->commentable()->associate($commentable);
         $comment->save();
 
         return $comment;

@@ -52,6 +52,7 @@ class SolutionControllerTest extends ControllerTestCase
 
     public function testDestroy(): void
     {
+        /** @var Solution $solution */
         $solution = Solution::factory()->create([
             'user_id' => $this->user->id,
         ]);

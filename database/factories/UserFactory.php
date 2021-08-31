@@ -19,7 +19,7 @@ class UserFactory extends Factory
     {
         return [
             'name' => implode(' ', [$this->faker->firstName, $this->faker->lastName]),
-            'email' => $this->faker->unique()->safeEmail,
+            'email' => $this->faker->safeEmail,
             'email_verified_at' => now(),
             'github_name' => $this->faker->userName,
             'hexlet_nickname' => $this->faker->userName,

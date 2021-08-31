@@ -2,7 +2,6 @@
 
 namespace Tests\Feature\Http\Livewire;
 
-use App\Helpers\ExerciseHelper;
 use App\Http\Livewire\ExerciseEditor;
 use App\Models\Exercise;
 use App\Models\User;
@@ -23,8 +22,9 @@ class ExerciseEditorTest extends TestCase
             ChaptersTableSeeder::class,
             ExercisesTableSeeder::class,
         ]);
-
-        $this->user = User::factory()->create();
+        /** @var User $user */
+        $user = User::factory()->create();
+        $this->user = $user;
         $this->actingAs($this->user);
     }
 
