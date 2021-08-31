@@ -15,7 +15,7 @@ class SolutionController extends Controller
 {
     public function index(Request $request): View
     {
-        $filter = array_merge(['user_id' => null, 'exercise_id' => null], $request->input('filter', []));
+        $filter = array_merge(['user_id' => null, 'exercise_id' => null], (array)$request->input('filter', []));
 
         $solutions = QueryBuilder::for(Solution::versioned())
             ->allowedFilters([
