@@ -18,9 +18,11 @@ Hexlet SICP is a service for those studying the book Structure and Interpretatio
 * Discuss the project in #hexlet-volunteers on Slack: http://slack-ru.hexlet.io (in Russian)
 
 ### Recorded meetings
+
 * [Recorded meetings playlist](https://www.youtube.com/playlist?list=PL37_xn2SVZdCJ-xgB-phFaWrp25Kc3cLk)
 
 ## FAQ
+
 Q: I get this error `Illuminate\Session\TokenMismatchException: CSRF token mismatch.`
 A: Reset your config cache `php artisan config:clear`
 
@@ -52,62 +54,64 @@ make test # run tests
 
 1. Install deps and prepare the config file
 
-```sh
-make setup
-```
+    ```sh
+    make setup
+    ```
 
 2. Put your database credentials in the *.env* file
 
-```dotenv
-DB_CONNECTION=pgsql
-DB_HOST=localhost
-DB_PORT=54320
-DB_DATABASE=postgres
-DB_USERNAME=postgres
-DB_PASSWORD=secret
-```
+    ```dotenv
+    DB_CONNECTION=pgsql
+    DB_HOST=localhost
+    DB_PORT=54320
+    DB_DATABASE=postgres
+    DB_USERNAME=postgres
+    DB_PASSWORD=secret
+    ```
 
 3. Start the database container and seed
 
-   ```sh
-   make compose-start-database
-   make db-prepare
-   ```
+    ```sh
+    make compose-start-database
+    make db-prepare
+    ```
 
 4. Run the local server
 
-```sh
-make start
-```
+    ```sh
+    make start
+    ```
 
 ### Setup in Docker
 
 1. Prepare the `.env` file
 
-```sh
-make env-prepare
-```
+    ```sh
+    make env-prepare
+    ```
 
 2. Put your database credentials in the `.env` file
 
-```dotenv
-DB_CONNECTION=pgsql
-DB_HOST=localhost
-DB_PORT=5432
-DB_DATABASE=postgres
-DB_USERNAME=postgres
-DB_PASSWORD=secret
-```
+    ```dotenv
+    DB_CONNECTION=pgsql
+    DB_HOST=localhost
+    DB_PORT=5432
+    DB_DATABASE=postgres
+    DB_USERNAME=postgres
+    DB_PASSWORD=secret
+    ```
 
 3. Build and start the app
-```sh
-make compose-setup # build project
-make compose-start # start server at http://127.0.0.1:8000/
-```
-```sh
-make compose-bash  # start bash session inside docker container
-make test          # run tests inside docker container
-```
+
+    ```sh
+    make compose-setup # build project
+    make compose-start # start server at http://127.0.0.1:8000/
+    ```
+
+    ```sh
+    make compose-bash  # start bash session inside docker container
+    make test          # run tests inside docker container
+    ```
 
 ## Coding stardards and other rules
 
@@ -122,7 +126,6 @@ make test          # run tests inside docker container
 * To add an exercise, put its contents (a listing or pic) at `resources/views/exercise/listing/#_#.blade.php` and its text description, at `resources/lang/{locale}/sicp.php` under the key `exercises.#.#` (mind the locale).
 * To generate helper files (for autocompletion), use `make ide-helper`
 * Run `php artisan` and check out all available commands!
-
 
 ## GitHub Auth Setup Guide
 
@@ -150,13 +153,15 @@ If deployed on Heroku, set the environment variables for your deploy. To set env
 1. Create a separate Postgres database.  
    Connection settings are available in the `pgsql_test` section of `config/database.php`.
    How to set up a test database from scratch:
-```shell
-sudo apt install postgresql
-sudo -u postgres createuser --createdb $(whoami)
-sudo -u postgres createuser hexlet_sicp_test_user
-sudo -u postgres psql -c "ALTER USER hexlet_sicp_test_user WITH ENCRYPTED PASSWORD 'secret'"
-createdb hexlet_sicp_test
-```
+
+    ```shell
+    sudo apt install postgresql
+    sudo -u postgres createuser --createdb $(whoami)
+    sudo -u postgres createuser hexlet_sicp_test_user
+    sudo -u postgres psql -c "ALTER USER hexlet_sicp_test_user WITH ENCRYPTED PASSWORD 'secret'"
+    createdb hexlet_sicp_test
+    ```
+
 2. Run tests on your testing database: `DB_CONNECTION=pgsql_test make test`
 
 ### Adding a pre-commit hook
@@ -167,6 +172,6 @@ git config core.hooksPath .githooks
 
 ##
 
-[![Hexlet Ltd. logo](https://raw.githubusercontent.com/Hexlet/assets/master/images/hexlet_logo128.png)](https://ru.hexlet.io/pages/about?utm_source=github&utm_medium=link&utm_campaign=exercises-javascript)
+[![Hexlet Ltd. logo](https://raw.githubusercontent.com/Hexlet/assets/master/images/hexlet_logo128.png)](https://ru.hexlet.io/pages/about?utm_source=github&utm_medium=link&utm_campaign=exercises-sicp)
 
-This repository is created and maintained by the team and the community of Hexlet, an educational project. [Read more about Hexlet (in Russian)](https://ru.hexlet.io/pages/about?utm_source=github&utm_medium=link&utm_campaign=exercises-javascript).
+This repository is created and maintained by the team and the community of Hexlet, an educational project. [Read more about Hexlet (in Russian)](https://ru.hexlet.io/pages/about?utm_source=github&utm_medium=link&utm_campaign=exercises-sicp).
