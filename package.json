@@ -16,7 +16,7 @@
     "@fortawesome/fontawesome-free": "^5.15.4",
     "@reduxjs/toolkit": "^1.6.1",
     "axios": "^0.21",
-    "bootstrap": "^4.6.0",
+    "bootstrap": "^5.1.0",
     "codemirror": "^5.62.3",
     "highlight.js": "^11.x",
     "i18next": "^20.5.0",
