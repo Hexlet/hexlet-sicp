@@ -1,5 +1,8 @@
 include make-compose.mk
 
+console:
+	php artisan tinker
+
 deploy:
 	git push heroku master
 

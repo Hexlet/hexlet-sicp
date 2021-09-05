@@ -6,6 +6,7 @@ use App\Models\Exercise;
 use App\Models\Solution;
 use Database\Seeders\ChaptersTableSeeder;
 use Database\Seeders\ExercisesTableSeeder;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Tests\ControllerTestCase;
 
 class SolutionControllerTest extends ControllerTestCase
@@ -51,5 +52,18 @@ class SolutionControllerTest extends ControllerTestCase
         $response = $this->get($route);
         $response->assertSessionDoesntHaveErrors();
         $response->assertOk();
+    }
+
+    public function testShowSolutionOfTrashedUser(): void
+    {
+        $this->expectException(NotFoundHttpException::class);
+        $solution = Solution::first();
+        $solution->user->delete();
+
+        $route = route('solutions.show', $solution);
+
+        $response = $this->get($route);
+
+        $response->assertNotFound();
     }
 }
