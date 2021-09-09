@@ -6,6 +6,10 @@ return [
         '1' =>
         "Abstract your answer to exercise ",
         '2' =>
-        ", to produce a procedure tree-map with the property that square-tree could be defined as",
+        ", to produce a procedure ",
+        '3' =>
+        " with the property that ",
+        '4' =>
+        " could be defined as",
     ],
 ];
