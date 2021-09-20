@@ -32,7 +32,7 @@
     "react-redux": "^7.2.4"
   },
   "devDependencies": {
-    "@babel/core": "^7.15.0",
+    "@babel/core": "^7.15.5",
     "@babel/eslint-parser": "^7.15.0",
     "@babel/preset-react": "^7.14.5",
     "eslint": "^7.32.0",
@@ -44,7 +44,7 @@
     "laravel-mix": "^6.0.29",
     "laravel-mix-make-file-hash": "^2.2.0",
     "resolve-url-loader": "^4.0.0",
-    "sass": "^1.38.2",
+    "sass": "^1.41.1",
     "sass-loader": "^12.x"
   },
   "engines": {
