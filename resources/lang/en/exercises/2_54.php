@@ -4,11 +4,34 @@ return [
     'title' => "Equal? as a procedure",
     'description' => [
         '1' =>
-        "Two lists are said to be equal? if they contain equal elements arranged in the same order. For example,",
+        "Two lists are said to be ",
         '2' =>
-        "is true, but",
+        " if they contain equal elements arranged in the same order. For example,",
         '3' =>
-        "is false. To be more precise, we can define equal? recursively in terms of the basic eq? equality of symbols by saying that a and b are equal? if they are both symbols and the symbols are eq?, or if they are both lists such that (car a) is equal? to (car b) and (cdr a) is equal? to (cdr b). " .
-        "Using this idea, implement equal? as a procedure equal-proc?",
+        "is true, but",
+        '4' =>
+        "is false. To be more precise, we can define ",
+        '5' =>
+        " recursively in terms of the basic ",
+        '6' =>
+        " equality of symbols by saying that ",
+        '7' =>
+        " and ",
+        '8' =>
+        " are equal if they are both symbols and the symbols are ",
+        '9' =>
+        ", or if they are both lists such that ",
+        '10' =>
+        " is ",
+        '11' =>
+        " and ",
+        '12' =>
+        " is ",
+        '13' =>
+        ". Using this idea, implement ",
+        '14' =>
+        " as a procedure ",
+        '15' =>
+        ".",
     ],
 ];
