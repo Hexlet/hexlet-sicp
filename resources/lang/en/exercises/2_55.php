@@ -6,6 +6,8 @@ return [
         '1' =>
         "Eva Lu Ator types to the interpreter the expression",
         '2' =>
-        "To her surprise, the interpreter prints back quote. Explain.",
+        "To her surprise, the interpreter prints back ",
+        '3' =>
+        ". Explain.",
     ],
 ];
