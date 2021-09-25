@@ -8,8 +8,12 @@ return [
         '2' =>
         "a. Do the two procedures produce the same result for every tree? If not, how do the results differ? What lists do the two procedures produce for the trees in figure 2.16?",
         '3' =>
-        "b. Do the two procedures have the same order of growth in the number of steps required to convert a balanced tree with n elements to a list? If not, which one grows more slowly?",
+        "b. Do the two procedures have the same order of growth in the number of steps required to convert a balanced tree with ",
         '4' =>
-        "Figure 2.16:  Various binary trees that represent the set { 1,3,5,7,9,11 }.",
+        " elements to a list? If not, which one grows more slowly?",
+        '5' =>
+        "Figure 2.16:  Various binary trees that represent the set ",
+        '6' =>
+        ".",
     ],
 ];
