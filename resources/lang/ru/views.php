@@ -15,6 +15,8 @@ return [
             'filter' => [
                 'apply_button' => 'Применить',
                 'reset_button' => 'Сбросить',
+                'user' => 'Пользователь',
+                'exercise' => 'Упражнение',
             ],
         ],
     ],
