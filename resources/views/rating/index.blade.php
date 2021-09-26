@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.bootstrap5.app')
 @php
 /** @var \Illuminate\Support\Collection $rating */
 @endphp
