@@ -15,6 +15,8 @@ return [
             'filter' => [
                 'apply_button' => 'Apply',
                 'reset_button' => 'Reset',
+                'user' => 'User',
+                'exercise' => 'Exercise',
             ],
         ],
     ],
