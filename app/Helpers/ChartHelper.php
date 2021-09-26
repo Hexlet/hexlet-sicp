@@ -25,7 +25,7 @@ class ChartHelper
                 return $group->count();
             });
 
-        $chart = CarbonPeriod::create(now()->subMonths(12), '1 day', now())
+        $chart = CarbonPeriod::create(now()->subMonths(24), '1 day', now())
             ->map(function (Carbon $dayDate) use ($countActivitiesByDays): int {
                 $day = $dayDate->format('Y-m-d');
                 $dayActivitiesCount = $countActivitiesByDays->get($day, 0);
