@@ -1,8 +1,11 @@
-@extends('layouts.app')
+@extends('layouts.bootstrap5.app')
 @php
 /** @var \Illuminate\Support\Collection|\App\Models\Activity[] $logItems */
 /** @var \Illuminate\Support\Collection|\App\Models\Comment[] $comments */
 @endphp
+@push('styles')
+<link href="{{ mix('css/_activity_chart.css') }}" rel="stylesheet">
+@endpush
 @section('content')
 <h1 class="my-4">{{ __('welcome.title') }}</h1>
 <p>{{ __('welcome.description') }}</p>

@@ -28,9 +28,9 @@ class WelcomeController extends Controller
             ));
         }
 
-        $logItems = Activity::latest()->with('causer')->limit(10)->get();
+        $logItems = Activity::latest()->has('causer')->with('causer')->limit(10)->get();
         $chart = getChart();
-        $comments = Comment::latest()->limit(10)->get();
+        $comments = Comment::latest()->has('user')->with('user')->with('commentable')->limit(10)->get();
 
         return view('welcome', compact(
             'logItems',
