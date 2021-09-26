@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.bootstrap5.app')
 @php
 /**
  * @var \App\Models\User $user
@@ -17,7 +17,7 @@
                             {{ BsForm::text('name', $user->name)->label(__('register.namePlaceholder')) }}
                             {{ BsForm::text('github_name', $user->github_name)->label(__('account.github_name')) }}
                             {{ BsForm::text('hexlet_nickname', $user->hexlet_nickname)->label(__('account.hexlet_nickname')) }}
-                            <div class="form-group mb-0">
+                            <div class="form-group mt-2">
                                 {{ BsForm::submit(__('layout.common.save'))->primary() }}
                             </div>
                             {{ BsForm::close() }}
