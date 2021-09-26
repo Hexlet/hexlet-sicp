@@ -8,6 +8,12 @@ return [
         '2' =>
         " and ",
         '3' =>
-        " to give Θ(n) implementations of union-set and intersection-set for sets implemented as (balanced) binary trees.",
+        " to give ",
+        '4' =>
+        " implementations of ",
+        '5' =>
+        " and ",
+        '6' =>
+        " for sets implemented as (balanced) binary trees.",
     ],
 ];

@@ -2,6 +2,10 @@
 
 return [
     'title' => 'Lookup procedure',
-    'description' =>
-        "Implement the lookup procedure for the case where the set of records is structured as a binary tree, ordered by the numerical values of the keys.",
+    'description' => [
+        '1' =>
+        "Implement the ",
+        '2' =>
+        " procedure for the case where the set of records is structured as a binary tree, ordered by the numerical values of the keys.",
+    ],
 ];
