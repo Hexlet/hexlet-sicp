@@ -3221,16 +3221,16 @@
         },
         {
             "name": "league/mime-type-detection",
-            "version": "1.7.0",
+            "version": "1.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/mime-type-detection.git",
-                "reference": "3b9dff8aaf7323590c1d2e443db701eb1f9aa0d3"
+                "reference": "b38b25d7b372e9fddb00335400467b223349fd7e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/mime-type-detection/zipball/3b9dff8aaf7323590c1d2e443db701eb1f9aa0d3",
-                "reference": "3b9dff8aaf7323590c1d2e443db701eb1f9aa0d3",
+                "url": "https://api.github.com/repos/thephpleague/mime-type-detection/zipball/b38b25d7b372e9fddb00335400467b223349fd7e",
+                "reference": "b38b25d7b372e9fddb00335400467b223349fd7e",
                 "shasum": ""
             },
             "require": {
@@ -3261,7 +3261,7 @@
             "description": "Mime-type detection for Flysystem",
             "support": {
                 "issues": "https://github.com/thephpleague/mime-type-detection/issues",
-                "source": "https://github.com/thephpleague/mime-type-detection/tree/1.7.0"
+                "source": "https://github.com/thephpleague/mime-type-detection/tree/1.8.0"
             },
             "funding": [
                 {
@@ -3273,7 +3273,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-01-18T20:58:21+00:00"
+            "time": "2021-09-25T08:23:19+00:00"
         },
         {
             "name": "league/oauth1-client",
@@ -5545,16 +5545,16 @@
         },
         {
             "name": "spatie/browsershot",
-            "version": "3.50.1",
+            "version": "3.50.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/browsershot.git",
-                "reference": "ae3394a495e44486896cbbe17ad1d98569018508"
+                "reference": "27c5d6c27662ddef93a4b17b309cbc3e9904892a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/browsershot/zipball/ae3394a495e44486896cbbe17ad1d98569018508",
-                "reference": "ae3394a495e44486896cbbe17ad1d98569018508",
+                "url": "https://api.github.com/repos/spatie/browsershot/zipball/27c5d6c27662ddef93a4b17b309cbc3e9904892a",
+                "reference": "27c5d6c27662ddef93a4b17b309cbc3e9904892a",
                 "shasum": ""
             },
             "require": {
@@ -5598,7 +5598,7 @@
                 "webpage"
             ],
             "support": {
-                "source": "https://github.com/spatie/browsershot/tree/3.50.1"
+                "source": "https://github.com/spatie/browsershot/tree/3.50.2"
             },
             "funding": [
                 {
@@ -5606,7 +5606,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-08-27T08:45:53+00:00"
+            "time": "2021-09-21T22:25:15+00:00"
         },
         {
             "name": "spatie/crawler",
