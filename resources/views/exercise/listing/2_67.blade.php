@@ -8,4 +8,7 @@
 
 (define sample-message '(0 1 1 0 0 1 0 1 0 1 1 1 0))
 </code></pre>
-<p>{{ __('exercises/2_67.description.2') }}</p>
+<p>{{ __('exercises/2_67.description.2') }}
+<code>decode</code>
+{{ __('exercises/2_67.description.3') }}
+</p>
