@@ -2,6 +2,12 @@
 
 return [
     'title' => 'Make-from-mag-ang constructor in message-passing style',
-    'description' =>
-        "Implement the constructor make-from-mag-ang in message-passing style. This procedure should be analogous to the make-from-real-imag procedure given above.",
+    'description' => [
+        '1' =>
+        "Implement the constructor ",
+        '2' =>
+        " in message-passing style. This procedure should be analogous to the ",
+        '3' =>
+        " procedure given above.",
+    ],
 ];
