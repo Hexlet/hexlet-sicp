@@ -15,7 +15,7 @@
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.15.4",
     "@reduxjs/toolkit": "^1.6.1",
-    "axios": "^0.21",
+    "axios": "^0.22",
     "bootstrap": "^4.6.0",
     "codemirror": "^5.63.0",
     "highlight.js": "^11.x",
