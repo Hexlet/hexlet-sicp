@@ -19,7 +19,7 @@
     "bootstrap": "^4.6.0",
     "codemirror": "^5.63.0",
     "highlight.js": "^11.x",
-    "i18next": "^21.0.0",
+    "i18next": "^21.2.6",
     "jquery": "^3.6.0",
     "jquery-ujs": "^1.2.3",
     "lodash": "^4.17.21",
