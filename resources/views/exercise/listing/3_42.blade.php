@@ -1,4 +1,15 @@
-<p>{{ __('exercises/3_42.description.1') }}</p>
+<p>{{ __('exercises/3_42.description.1') }}
+<code>withdraw</code>
+{{ __('exercises/3_42.description.2') }}
+<code>deposit</code>
+{{ __('exercises/3_42.description.3') }}
+<code>make-account</code>
+{{ __('exercises/3_42.description.4') }}
+<code>protected</code>
+{{ __('exercises/3_42.description.5') }}
+<code>dispatch</code>
+{{ __('exercises/3_42.description.6') }}
+</p>
 <pre><code>(define (make-account balance)
   (define (withdraw amount)
     (if (>= balance amount)
@@ -19,4 +30,7 @@
                            m))))
       dispatch)))
 </code></pre>
-<p>{{ __('exercises/3_42.description.2') }}</p>
+<p>{{ __('exercises/3_42.description.7') }}
+<code>make-account</code>
+{{ __('exercises/3_42.description.8') }}
+</p>
