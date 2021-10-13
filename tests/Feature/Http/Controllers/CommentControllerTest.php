@@ -22,6 +22,8 @@ class CommentControllerTest extends ControllerTestCase
             ExercisesTableSeeder::class,
             UsersTableSeeder::class,
         ]);
+
+        $this->actingAs($this->user);
     }
 
     /**
@@ -29,14 +31,13 @@ class CommentControllerTest extends ControllerTestCase
      */
     public function testShow(string $commentableClass): void
     {
-        $this->actingAs($this->user);
-        $commentable = $commentableClass::inRandomOrder()->first();
-        $comment = $this->createComment($this->user, $commentable);
-        $route = route('comments.show', $comment);
+        /** @var Exercise|Chapter $commentableClass */
+        $commentable = $commentableClass::first();
+
+        $route = $this->getModelActionRoute('show', $commentable);
 
         $response = $this->get($route);
-        $response->assertRedirect();
-        $response->assertSessionHasNoErrors();
+        $response->assertOk();
     }
 
     /**
@@ -46,11 +47,7 @@ class CommentControllerTest extends ControllerTestCase
     {
         /** @var Exercise|Chapter $commentableClass */
         $commentable = $commentableClass::first();
-        $commentablePath = $this->getModelActionRoute('show', $commentable);
         $user = $this->user;
-        $this
-            ->from($commentablePath)
-            ->actingAs($user);
 
         $commentData = [
             'content' => $this->faker->text,
@@ -59,12 +56,9 @@ class CommentControllerTest extends ControllerTestCase
             'commentable_type' => $commentable::class,
         ];
         $response = $this->post(route('comments.store'), $commentData);
+
         $response->assertSessionDoesntHaveErrors();
-
-        // https://github.com/laravel/framework/issues/30467
-        $comment = Comment::where($commentData)->first();
-
-        $response->assertRedirect($this->buildCommentRoutePath($commentablePath, $comment));
+        $response->assertRedirect();
 
         $this->assertDatabaseHas('comments', $commentData);
     }
@@ -76,17 +70,12 @@ class CommentControllerTest extends ControllerTestCase
     {
         /** @var Exercise|Chapter $commentableClass */
         $commentable = $commentableClass::first();
-        $commentablePath = $this->getModelActionRoute('show', $commentable);
-        $user = $this->user;
-        $this
-            ->from($commentablePath)
-            ->actingAs($user);
 
-        $comment = $this->createComment($user, $commentable);
+        $comment = $this->createComment($this->user, $commentable);
 
         $commentData = [
             'content' => $this->faker->text,
-            'user_id' => $user->id,
+            'user_id' => $this->user->id,
             'commentable_id' => $commentable->id,
             'commentable_type' => $commentable::class,
         ];
@@ -96,7 +85,7 @@ class CommentControllerTest extends ControllerTestCase
         );
 
         $response->assertSessionDoesntHaveErrors();
-        $response->assertRedirect($this->buildCommentRoutePath($commentablePath, $comment));
+        $response->assertRedirect();
 
         $this->assertDatabaseHas('comments', array_merge($commentData, ['id' => $comment->id]));
     }
@@ -106,26 +95,18 @@ class CommentControllerTest extends ControllerTestCase
      */
     public function testDestroy(string $commentableClass): void
     {
-        /** @var Model $commentableClass */
-        $commentable = $commentableClass::inRandomOrder()->first();
-        $commentablePath = $this->getModelActionRoute('show', $commentable);
-        $user = $this->user;
-        $this
-            ->from($commentablePath)
-            ->actingAs($user);
+        /** @var Exercise|Chapter $commentableClass */
+        $commentable = $commentableClass::first();
 
-        /** @var Comment $comment */
-        $comment = $this->createComment($user, $commentable);
-
+        $comment = $this->createComment($this->user, $commentable);
         $commentData = $comment->only('id', 'user_id', 'content', 'deleted_at');
 
-        $this->assertDatabaseHas('comments', $commentData);
         $response = $this->delete(
             route('comments.destroy', compact('comment'))
         );
 
-        $response->assertRedirect($commentablePath);
         $response->assertSessionDoesntHaveErrors();
+        $response->assertRedirect();
 
         $this->assertDatabaseMissing('comments', $commentData);
     }
@@ -156,10 +137,5 @@ class CommentControllerTest extends ControllerTestCase
         $comment->save();
 
         return $comment;
-    }
-
-    private function buildCommentRoutePath(string $path, Comment $comment): string
-    {
-        return "{$path}#comment-{$comment->id}";
     }
 }

@@ -52,7 +52,7 @@ class UserChapterControllerTest extends ControllerTestCase
         );
 
         $response->assertSessionDoesntHaveErrors();
-        $response->assertRedirect(route('my'));
+        $response->assertRedirect();
 
         $this->assertDatabaseMissing('read_chapters', [
             'chapter_id' => $chapter->id,
