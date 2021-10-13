@@ -7,7 +7,7 @@
 <nav class="py-2 bg-light border-bottom">
     <div class="container d-flex flex-wrap">
         <!-- Left Side Of Navbar -->
-        <a href="{{ LaravelLocalization::getLocalizedURL($currentLocale, '/') }}"
+        <a href="{{ LaravelLocalization::getLocalizedURL($currentLocale, route('home')) }}"
            class="navbar-brand mb-0 h1 link-secondary"
         >
             {{ __('layout.nav.name') }}
