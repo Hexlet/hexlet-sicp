@@ -9,7 +9,6 @@ use App\Models\User;
 use Database\Seeders\ChaptersTableSeeder;
 use Database\Seeders\ExercisesTableSeeder;
 use Database\Seeders\UsersTableSeeder;
-use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Database\Eloquent\Model;
 use Tests\ControllerTestCase;
 
@@ -46,11 +45,11 @@ class CommentControllerTest extends ControllerTestCase
     public function testStore(string $commentableClass): void
     {
         /** @var Exercise|Chapter $commentableClass */
-        $commentable = $commentableClass::inRandomOrder()->first();
-        $visitedPage = $this->getCommentableActionRoute('show', $commentable);
+        $commentable = $commentableClass::first();
+        $commentablePath = $this->getModelActionRoute('show', $commentable);
         $user = $this->user;
         $this
-            ->from($visitedPage)
+            ->from($commentablePath)
             ->actingAs($user);
 
         $commentData = [
@@ -60,14 +59,14 @@ class CommentControllerTest extends ControllerTestCase
             'commentable_type' => $commentable::class,
         ];
         $response = $this->post(route('comments.store'), $commentData);
-
-        $this->assertDatabaseHas('comments', $commentData);
+        $response->assertSessionDoesntHaveErrors();
 
         // https://github.com/laravel/framework/issues/30467
         $comment = Comment::where($commentData)->first();
-        $response->assertRedirect(sprintf("%s#comment-%s", $visitedPage, $comment->id));
 
-        $this->get($visitedPage)->assertSee($commentData['content']);
+        $response->assertRedirect($this->buildCommentRoutePath($commentablePath, $comment));
+
+        $this->assertDatabaseHas('comments', $commentData);
     }
 
     /**
@@ -76,11 +75,11 @@ class CommentControllerTest extends ControllerTestCase
     public function testUpdate(string $commentableClass): void
     {
         /** @var Exercise|Chapter $commentableClass */
-        $commentable = $commentableClass::inRandomOrder()->first();
-        $visitedPage = $this->getCommentableActionRoute('show', $commentable);
+        $commentable = $commentableClass::first();
+        $commentablePath = $this->getModelActionRoute('show', $commentable);
         $user = $this->user;
         $this
-            ->from($visitedPage)
+            ->from($commentablePath)
             ->actingAs($user);
 
         $comment = $this->createComment($user, $commentable);
@@ -92,12 +91,12 @@ class CommentControllerTest extends ControllerTestCase
             'commentable_type' => $commentable::class,
         ];
         $response = $this->put(
-            route('comments.update', compact('comment')),
+            route('comments.update', ['comment' => $comment]),
             $commentData
         );
+
         $response->assertSessionDoesntHaveErrors();
-        $response->assertRedirect(sprintf("%s#comment-%s", $visitedPage, $comment->id));
-        $this->get($visitedPage)->assertSee($commentData['content']);
+        $response->assertRedirect($this->buildCommentRoutePath($commentablePath, $comment));
 
         $this->assertDatabaseHas('comments', array_merge($commentData, ['id' => $comment->id]));
     }
@@ -109,10 +108,10 @@ class CommentControllerTest extends ControllerTestCase
     {
         /** @var Model $commentableClass */
         $commentable = $commentableClass::inRandomOrder()->first();
-        $visitedPage = $this->getCommentableActionRoute('show', $commentable);
+        $commentablePath = $this->getModelActionRoute('show', $commentable);
         $user = $this->user;
         $this
-            ->from($visitedPage)
+            ->from($commentablePath)
             ->actingAs($user);
 
         /** @var Comment $comment */
@@ -125,82 +124,21 @@ class CommentControllerTest extends ControllerTestCase
             route('comments.destroy', compact('comment'))
         );
 
-        $response->assertRedirect($visitedPage);
+        $response->assertRedirect($commentablePath);
         $response->assertSessionDoesntHaveErrors();
+
         $this->assertDatabaseMissing('comments', $commentData);
-        $this->get($visitedPage)->assertDontSee($commentData['content']);
-    }
-
-    /**
-     * @dataProvider dataCommentable
-     */
-    public function testUpdateByOtherUser(string $commentableClass): void
-    {
-        /** @var Model $commentableClass */
-        $commentable = $commentableClass::inRandomOrder()->first();
-        $visitedPage = $this->getCommentableActionRoute('show', $commentable);
-
-        $comment = Comment::factory()
-            ->user($this->user)
-            ->commentable($commentable)
-            ->create();
-
-        // @phpstan-ignore-next-line
-        $commentData = $comment->only('id', 'user_id', 'content', 'deleted_at');
-        /** @var User $user */
-        $user = User::factory()->create();
-        $this
-            ->from($visitedPage)
-            ->actingAs($user);
-
-        $this->expectException(AuthorizationException::class);
-        $response = $this->put(
-            route('comments.update', compact('comment'))
-        );
-        $response->assertForbidden();
-
-        $this->assertDatabaseHas('comments', $commentData);
-        $this->get($visitedPage)->assertSee($commentData['content']);
-    }
-
-    /**
-     * @dataProvider dataCommentable
-     */
-    public function testDestroyByOtherUser(string $commentableClass): void
-    {
-        /** @var Model $commentableClass */
-        $commentable = $commentableClass::inRandomOrder()->first();
-        $visitedPage = $this->getCommentableActionRoute('show', $commentable);
-        $comment = Comment::factory()
-            ->user($this->user)
-            ->commentable($commentable)
-            ->create();
-
-        $user = User::factory()->create();
-        $this
-            ->from($visitedPage)
-            ->actingAs($user);
-
-        $this->expectException(AuthorizationException::class);
-        $response = $this->delete(
-            route('comments.destroy', compact('comment'))
-        );
-        $commentData = $comment->only('id', 'user_id', 'content', 'deleted_at');
-
-        $response->assertForbidden();
-        $this->assertDatabaseHas('comments', $commentData);
-        $this->get($visitedPage)->assertSee($commentData['content']);
     }
 
     public function dataCommentable(): array
     {
         return [
-            'test with chapter'  => [Chapter::class, 'chapters', 'chapter'],
-            'test with exercise' => [Exercise::class, 'exercises', 'exercise'],
+            'test with chapter'  => [Chapter::class],
+            'test with exercise' => [Exercise::class],
         ];
     }
 
-    private function getCommentableActionRoute(string $action, Model $model): string
+    private function getModelActionRoute(string $action, Model $model): string
     {
         $routesGroup = $model->getTable();
         return route("{$routesGroup}.{$action}", [
@@ -218,5 +156,10 @@ class CommentControllerTest extends ControllerTestCase
         $comment->save();
 
         return $comment;
+    }
+
+    private function buildCommentRoutePath(string $path, Comment $comment): string
+    {
+        return "{$path}#comment-{$comment->id}";
     }
 }

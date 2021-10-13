@@ -60,8 +60,15 @@
         "phpunit/phpunit": "^9.0",
         "roave/security-advisories": "dev-master",
         "slevomat/coding-standard": "dev-master",
-        "squizlabs/php_codesniffer": "*"
+        "squizlabs/php_codesniffer": "*",
+        "ngyuki/phpower": "dev-bump-var-dumper"
     },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url":  "git@github.com:fey/phpower.git"
+        }
+    ],
     "config": {
         "optimize-autoloader": true,
         "preferred-install": "dist",

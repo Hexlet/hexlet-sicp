@@ -36,6 +36,6 @@ class AccountController extends Controller
 
         Auth::logout();
 
-        return redirect()->route('index');
+        return redirect()->route('home');
     }
 }
