@@ -20,4 +20,4 @@ parameters:
     checkMissingIterableValueType: false
 
     ignoreErrors:
-        - '#only\(\) invoked with 4 parameters, 1 required.#'
+        - '#only\(\) invoked with [0-9]+ parameters, 1 required.#'
