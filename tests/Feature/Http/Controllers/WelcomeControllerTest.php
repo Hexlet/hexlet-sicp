@@ -8,14 +8,14 @@ class WelcomeControllerTest extends TestCase
 {
     public function testIndex(): void
     {
-        $response = $this->get('/');
+        $response = $this->get(route('home'));
 
         $response->assertOk();
     }
 
     public function testNotSeeDevLogin(): void
     {
-        $response = $this->get('/');
+        $response = $this->get(route('home'));
 
         $response->assertDontSee(
             route('auth.dev-login')

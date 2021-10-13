@@ -11,6 +11,9 @@ use Tests\ControllerTestCase;
 
 class SolutionControllerTest extends ControllerTestCase
 {
+    private Exercise $exercise;
+    private Solution $solution;
+
     public function setUp(): void
     {
         parent::setUp();
@@ -20,6 +23,9 @@ class SolutionControllerTest extends ControllerTestCase
         ]);
         $solutions = Solution::factory()->count(5)->create();
         $this->user->solutions()->saveMany($solutions);
+
+        $this->exercise = Exercise::first();
+        $this->solution = Solution::first();
 
         $this->actingAs($this->user);
     }
@@ -38,7 +44,7 @@ class SolutionControllerTest extends ControllerTestCase
     {
         $route = route('solutions.index');
 
-        $response = $this->get($route, ['exercise_id' => Exercise::inRandomOrder()->first()]);
+        $response = $this->get($route, ['exercise_id' => $this->exercise->id]);
 
         $response->assertSessionDoesntHaveErrors();
         $response->assertOk();
@@ -46,8 +52,7 @@ class SolutionControllerTest extends ControllerTestCase
 
     public function testShow(): void
     {
-        $solution = Solution::inRandomOrder()->first();
-        $route = route('solutions.show', $solution);
+        $route = route('solutions.show', $this->solution);
 
         $response = $this->get($route);
         $response->assertSessionDoesntHaveErrors();
@@ -57,10 +62,9 @@ class SolutionControllerTest extends ControllerTestCase
     public function testShowSolutionOfTrashedUser(): void
     {
         $this->expectException(NotFoundHttpException::class);
-        $solution = Solution::first();
-        $solution->user->delete();
+        $this->solution->user->delete();
 
-        $route = route('solutions.show', $solution);
+        $route = route('solutions.show', $this->solution);
 
         $response = $this->get($route);
 

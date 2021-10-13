@@ -23,8 +23,6 @@ class AccountControllerTest extends ControllerTestCase
 
     public function testDestroy(): void
     {
-        $this->actingAs($this->user);
-        $this->assertAuthenticatedAs($this->user);
         $response = $this->delete(route('settings.account.destroy', $this->user));
         $response->assertRedirect();
         $this->assertGuest();

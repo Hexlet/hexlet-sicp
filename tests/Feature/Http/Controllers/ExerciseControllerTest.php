@@ -6,11 +6,12 @@ use App\Models\Comment;
 use App\Models\Exercise;
 use Database\Seeders\ChaptersTableSeeder;
 use Database\Seeders\ExercisesTableSeeder;
-use Illuminate\Testing\TestResponse;
 use Tests\ControllerTestCase;
 
 class ExerciseControllerTest extends ControllerTestCase
 {
+    private Exercise $exercise;
+
     protected function setUp(): void
     {
         parent::setUp();
@@ -18,34 +19,30 @@ class ExerciseControllerTest extends ControllerTestCase
             ChaptersTableSeeder::class,
             ExercisesTableSeeder::class,
         ]);
-    }
 
-    public function testIndex(): void
-    {
-        $this->actingAs($this->user);
-
-        $response = $this->get(route('exercises.index'));
-        $exercise = Exercise::inRandomOrder()->first();
-
-        $response->assertOk();
-        $response->assertSee($exercise->path);
-    }
-
-    public function testShow(): void
-    {
-        $exercise = Exercise::inRandomOrder()->first();
+        $exercise = Exercise::first();
         $exercise->comments()->saveMany(
             Comment::factory()
                 ->count(5)
                 ->user($this->user)
-                ->commentable($exercise)
+                ->commentable($this->exercise)
                 ->make()
         );
 
-        $response = $this->get(route('exercises.show', $exercise));
+        $this->exercise = $exercise;
 
+        $this->actingAs($this->user);
+    }
+
+    public function testIndex(): void
+    {
+        $response = $this->get(route('exercises.index'));
         $response->assertOk();
-        $response->assertSee($exercise->path);
-        $response->assertSeeLivewire('exercise-editor');
+    }
+
+    public function testShow(): void
+    {
+        $response = $this->get(route('exercises.show', $this->exercise));
+        $response->assertOk();
     }
 }
