@@ -36,7 +36,6 @@ class SolutionControllerTest extends ControllerTestCase
 
         $response = $this->get($route);
 
-        $response->assertSessionDoesntHaveErrors();
         $response->assertOk();
     }
 
@@ -46,7 +45,6 @@ class SolutionControllerTest extends ControllerTestCase
 
         $response = $this->get($route, ['exercise_id' => $this->exercise->id]);
 
-        $response->assertSessionDoesntHaveErrors();
         $response->assertOk();
     }
 
@@ -55,7 +53,6 @@ class SolutionControllerTest extends ControllerTestCase
         $route = route('solutions.show', $this->solution);
 
         $response = $this->get($route);
-        $response->assertSessionDoesntHaveErrors();
         $response->assertOk();
     }
 

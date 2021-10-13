@@ -33,6 +33,7 @@ class CommentControllerTest extends ControllerTestCase
     {
         /** @var Exercise|Chapter $commentableClass */
         $commentable = $commentableClass::first();
+        $this->createComment($this->user, $commentable);
 
         $route = $this->getModelActionRoute('show', $commentable);
 

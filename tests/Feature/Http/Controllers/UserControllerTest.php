@@ -10,7 +10,6 @@ class UserControllerTest extends ControllerTestCase
     {
         $response = $this->get(route('users.show', $this->user));
 
-        $response->assertOk()
-            ->assertSee($this->user->name);
+        $response->assertOk();
     }
 }
