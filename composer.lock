@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "89c768cc8d3d10827cb74f0c5089c542",
+    "content-hash": "b84166d08e1df28895134ca5a31583e7",
     "packages": [
         {
             "name": "brick/math",
@@ -10674,16 +10674,16 @@
         },
         {
             "name": "ngyuki/phpower",
-            "version": "dev-bump-var-dumper",
+            "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/fey/phpower.git",
-                "reference": "5040b78c12636a9e229e6da96cb3b6ec34a6a587"
+                "url": "https://github.com/ngyuki/phpower.git",
+                "reference": "fd4504ffbc960475a2d71a8bfe4803dd632cd56b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fey/phpower/zipball/5040b78c12636a9e229e6da96cb3b6ec34a6a587",
-                "reference": "5040b78c12636a9e229e6da96cb3b6ec34a6a587",
+                "url": "https://api.github.com/repos/ngyuki/phpower/zipball/fd4504ffbc960475a2d71a8bfe4803dd632cd56b",
+                "reference": "fd4504ffbc960475a2d71a8bfe4803dd632cd56b",
                 "shasum": ""
             },
             "require": {
@@ -10693,6 +10693,7 @@
                 "phpunit/phpunit": "^8.5|^9.5",
                 "symfony/var-dumper": "^5.0"
             },
+            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -10702,28 +10703,7 @@
                     "src/autoload.php"
                 ]
             },
-            "scripts": {
-                "test": [
-                    "@php vendor/bin/phpunit --colors=always"
-                ],
-                "coverage": [
-                    "@php vendor/bin/phpunit --colors=always --coverage-html coverage"
-                ],
-                "cs": [
-                    "php-cs-fixer fix --dry-run --diff --ansi -v"
-                ],
-                "fix": [
-                    "php-cs-fixer fix --diff --ansi -v"
-                ],
-                "phan": [
-                    "phan -p --color"
-                ],
-                "qa": [
-                    "@composer cs",
-                    "@composer phan",
-                    "@composer test"
-                ]
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -10740,9 +10720,10 @@
                 "testing"
             ],
             "support": {
-                "source": "https://github.com/fey/phpower/tree/bump-var-dumper"
+                "issues": "https://github.com/ngyuki/phpower/issues",
+                "source": "https://github.com/ngyuki/phpower/tree/master"
             },
-            "time": "2021-10-13T16:12:38+00:00"
+            "time": "2021-10-17T11:38:54+00:00"
         },
         {
             "name": "nunomaduro/collision",

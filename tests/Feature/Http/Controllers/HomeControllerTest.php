@@ -4,7 +4,7 @@ namespace Tests\Feature\Http\Controllers;
 
 use Tests\TestCase;
 
-class WelcomeControllerTest extends TestCase
+class HomeControllerTest extends TestCase
 {
     public function testIndex(): void
     {

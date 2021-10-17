@@ -9,7 +9,7 @@ use App\Models\Exercise;
 use App\Models\User;
 use Illuminate\View\View;
 
-class WelcomeController extends Controller
+class HomeController extends Controller
 {
     public function index(): View
     {
@@ -20,7 +20,7 @@ class WelcomeController extends Controller
             $countChapters = Chapter::count();
             $countUsers = User::count();
 
-            return view('landing', compact(
+            return view('home.landing', compact(
                 'countComments',
                 'countExercises',
                 'countChapters',
@@ -32,7 +32,7 @@ class WelcomeController extends Controller
         $chart = getChart();
         $comments = Comment::latest()->has('user')->with('user')->with('commentable')->limit(10)->get();
 
-        return view('welcome', compact(
+        return view('home.index', compact(
             'logItems',
             'chart',
             'comments'

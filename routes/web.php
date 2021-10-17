@@ -6,7 +6,7 @@ Route::group([
     'prefix' => LaravelLocalization::setLocale(),
     'middleware' => [ 'localeSessionRedirect', 'localizationRedirect' ],
 ], function (): void {
-    Route::get('/', 'WelcomeController@index')->name('home');
+    Route::get('/', 'HomeController@index')->name('home');
 
     Route::get('/oauth/github', 'Auth\\Social\\GithubController@redirectToProvider')->name('oauth.github');
     Route::get('/oauth/github/callback', 'Auth\\Social\\GithubController@handleProviderCallback')->name('oauth.github-callback');
