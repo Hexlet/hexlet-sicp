@@ -2,7 +2,18 @@
 
 return [
     'title' => 'Partial-sums procedure',
-    'description' =>
-        "Define a procedure partial-sums that takes as argument a stream S and returns the stream whose elements are S₀, S₀ + S₁, S₀ + S₁ + S₂, .... " .
-        "For example, (partial-sums integers) should be the stream 1, 3, 6, 10, 15, ....",
+    'description' => [
+        '1' =>
+        "Define a procedure ",
+        '2' =>
+        " that takes as argument a stream ",
+        '3' =>
+        " and returns the stream whose elements are ",
+        '4' =>
+        ". For example, ",
+        '5' =>
+        " should be the stream ",
+        '6' =>
+        ".",
+    ],
 ];
