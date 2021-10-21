@@ -6,14 +6,13 @@ Route::group([
     'prefix' => LaravelLocalization::setLocale(),
     'middleware' => [ 'localeSessionRedirect', 'localizationRedirect' ],
 ], function (): void {
+    Route::get('/', 'HomeController@index')->name('home');
 
     Route::get('/oauth/github', 'Auth\\Social\\GithubController@redirectToProvider')->name('oauth.github');
     Route::get('/oauth/github/callback', 'Auth\\Social\\GithubController@handleProviderCallback')->name('oauth.github-callback');
 
     Auth::routes(['verify' => true]);
     Route::post('/dev-login', 'Auth\LoginController@devLogin')->name('auth.dev-login');
-
-    Route::resource('/', 'WelcomeController')->only('index');
 
     Route::get('/my', 'MyController')->name('my');
     Route::namespace('Settings')->prefix('settings')->name('settings.')->group(function (): void {

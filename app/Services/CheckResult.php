@@ -6,8 +6,8 @@ namespace App\Services;
 
 class CheckResult
 {
-    private const SUCCESS_EXIT_CODE = 0;
-    private const FAILED_TESTS_EXIT_CODE = 1;
+    public const SUCCESS_EXIT_CODE = 0;
+    public const FAILED_TESTS_EXIT_CODE = 1;
 
     private const SUCCESS_STATUS = 'success';
     private const TESTS_FAILED_STATUS = 'tests_failed';

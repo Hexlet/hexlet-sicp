@@ -60,7 +60,8 @@
         "phpunit/phpunit": "^9.0",
         "roave/security-advisories": "dev-master",
         "slevomat/coding-standard": "dev-master",
-        "squizlabs/php_codesniffer": "*"
+        "squizlabs/php_codesniffer": "*",
+        "ngyuki/phpower": "dev-master"
     },
     "config": {
         "optimize-autoloader": true,
