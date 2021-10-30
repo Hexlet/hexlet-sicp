@@ -4,23 +4,76 @@ return [
     'title' => "A series RLC circuit",
     'description' => [
         '1' =>
-        "A series RLC circuit consists of a resistor, a capacitor, and an inductor connected in series, as shown in figure 3.36. " .
-        "If R, L, and C are the resistance, inductance, and capacitance, then the relations between voltage (v) and current (i) for the three components are described by the equations",
+        "A series ",
         '2' =>
-        "and the circuit connections dictate the relations",
+        " circuit consists of a resistor, a capacitor, and an inductor connected in series, as shown in figure 3.36. If ",
         '3' =>
-        "Combining these equations shows that the state of the circuit (summarized by vC, the voltage across the capacitor, and iL, the current in the inductor) is described by the pair of differential equations",
+        ", ",
         '4' =>
-        "The signal-flow diagram representing this system of differential equations is shown in figure 3.37.",
+        ", and ",
         '5' =>
-        "Figure 3.36:  A series RLC circuit.",
+        " are the resistance, inductance, and capacitance, then the relations between voltage (",
         '6' =>
-        "Figure 3.37:  A signal-flow diagram for the solution to a series RLC circuit.",
+        ") and current (",
         '7' =>
-        "Write a procedure RLC that takes as arguments the parameters R, L, and C of the circuit and the time increment dt. " .
-        "In a manner similar to that of the RC procedure of exercise ",
+        ") for the three components are described by the equations",
         '8' =>
-        ", RLC should produce a procedure that takes the initial values of the state variables, vC₀ and iL₀, and produces a pair (using cons) of the streams of states vC and iL. " .
-        "Using RLC, generate the pair of streams that models the behavior of a series RLC circuit with R = 1 ohm, C = 0.2 farad, L = 1 henry, dt = 0.1 second, and initial values iL₀ = 0 amps and vC₀ = 10 volts.",
+        "and the circuit connections dictate the relations",
+        '9' =>
+        "Combining these equations shows that the state of the circuit (summarized by ",
+        '10' =>
+        ", the voltage across the capacitor, and ",
+        '11' =>
+        ", the current in the inductor) is described by the pair of differential equations",
+        '12' =>
+        "The signal-flow diagram representing this system of differential equations is shown in figure 3.37.",
+        '13' =>
+        "Figure 3.36:  A series RLC circuit.",
+        '14' =>
+        "Figure 3.37:  A signal-flow diagram for the solution to a series RLC circuit.",
+        '15' =>
+        "Write a procedure ",
+        '16' =>
+        " that takes as arguments the parameters ",
+        '17' =>
+        ", ",
+        '18' =>
+        ", and ",
+        '19' =>
+        " of the circuit and the time increment ",
+        '20' =>
+        ". In a manner similar to that of the ",
+        '21' =>
+        " procedure of exercise ",
+        '22' =>
+        ", ",
+        '23' =>
+        " should produce a procedure that takes the initial values of the state variables, ",
+        '24' =>
+        " and ",
+        '25' =>
+        ", and produces a pair (using ",
+        '26' =>
+        ") of the streams of states ",
+        '27' =>
+        " and ",
+        '28' =>
+        ". Using ",
+        '29' =>
+        ", generate the pair of streams that models the behavior of a series ",
+        '30' =>
+        " circuit with ",
+        '31' =>
+        " ohm, ",
+        '32' =>
+        " farad, ",
+        '33' =>
+        " henry, ",
+        '34' =>
+        " second, and initial values ",
+        '35' =>
+        " amps and ",
+        '36' =>
+        " volts.",
     ],
 ];
