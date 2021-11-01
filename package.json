@@ -44,7 +44,7 @@
     "laravel-mix": "^6.0.31",
     "laravel-mix-make-file-hash": "^2.2.0",
     "resolve-url-loader": "^4.0.0",
-    "sass": "^1.41.1",
+    "sass": "^1.43.4",
     "sass-loader": "^12.x"
   },
   "engines": {
