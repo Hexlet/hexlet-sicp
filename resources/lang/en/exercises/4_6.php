@@ -6,7 +6,7 @@ return [
         '1' =>
         "",
         '2' =>
-        " expressions are derived expressions, because"
+        " expressions are derived expressions, because",
         '3' =>
         "is equivalent to",
         '4' =>
