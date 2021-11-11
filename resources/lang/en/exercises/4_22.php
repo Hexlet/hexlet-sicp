@@ -7,4 +7,5 @@ return [
         "Extend the evaluator in this section to support the special form ",
         '2' =>
         ". See exercise ",
+    ],
 ];
