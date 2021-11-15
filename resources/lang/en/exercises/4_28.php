@@ -4,7 +4,7 @@ return [
     'title' => 'Evaluate the operator using actual-value',
     'description' => [
         '1' =>
-        "Eval uses ",
+        " uses ",
         '2' =>
         " rather than ",
         '3' =>
