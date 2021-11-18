@@ -2,7 +2,17 @@
 
 return [
     'title' => 'Write a procedure an-integer-between',
-    'description' => "Write a procedure an-integer-between that returns an integer between two given bounds. This " .
-    "can be used to implement a procedure that finds Pythagorean triples, i.e., triples of integers (i, j, k) " .
-    "between the given bounds such that i ≤ j and i² + j² = k², as follows:",
+    'description' => [
+        '1' =>
+        "Write a procedure ",
+        '2' =>
+        " that returns an integer between two given bounds. This " .
+        "can be used to implement a procedure that finds Pythagorean triples, i.e., triples of integers ",
+        '3' =>
+        " between the given bounds such that ",
+        '4' =>
+        " and ",
+        '5' =>
+        ", as follows:",
+    ],
 ];
