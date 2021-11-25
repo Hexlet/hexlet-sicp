@@ -12,4 +12,7 @@
 <pre><code>(rule (meeting-time ?person ?day-and-time)
       &lt;rule-body&gt;)
 </code></pre>
-<p>{{ __('exercises/4_59.description.5') }}</p>
+<p>{{ __('exercises/4_59.description.5') }}
+<code>meeting-time</code>
+{{ __('exercises/4_59.description.6') }}
+</p>
