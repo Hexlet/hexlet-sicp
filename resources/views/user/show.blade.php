@@ -46,7 +46,7 @@
                         </a>
                     </span>
                     @endif
-                    @if ($user->hexlet_nickname)
+                    @if($user->hexlet_nickname)
                     <span>
                         <a class="x-link-without-decoration mr-2 text-dark" target="_blank" rel="noopener noreferrer" href="https://ru.hexlet.io/u/{{ $user->hexlet_nickname }}">
                             <img class="mb-3" src={{ mix('img/hexlet_logo.png') }} width="20" height="30" alt="Hexlet logo"  >
@@ -54,15 +54,13 @@
                     </span>
                     @endif
                 </div>
-                @auth
-                    @if (Auth::user()->id === $user->id)
-                        <div class="small mt-4">
-                            <a class="text-muted" href="{{ route('settings.profile.index') }}">
-                                {{ __('user.show.statistics.edit_profile') }}
-                            </a>
-                        </div>
-                    @endif
-                @endauth
+                @can('update', $user)
+                <div class="small mt-4">
+                    <a class="text-muted" href="{{ route('settings.profile.index') }}">
+                        {{ __('user.show.statistics.edit_profile') }}
+                    </a>
+                </div>
+                @endcan
             </div>
         </div>
         <div class="col-12 col-md-9 my-4">
@@ -103,4 +101,3 @@
         </div>
     </div>
 @endsection
-

@@ -39,7 +39,7 @@ class Chapter extends Model
 
     public function getCanReadAttribute(): bool
     {
-        return $this->children->count() === 0;
+        return $this->children->isEmpty();
     }
 
     public function getChapterLevel(): int

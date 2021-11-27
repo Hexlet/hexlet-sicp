@@ -27,12 +27,12 @@ class CommentPolicy
 
     public function update(User $user, Comment $comment): bool
     {
-        return $user->id === $comment->user->id;
+        return $comment->user->is($user);
     }
 
     public function delete(User $user, Comment $comment): bool
     {
-        return $user->id === $comment->user->id;
+        return $comment->user->is($user);
     }
 
     public function restore(): bool
