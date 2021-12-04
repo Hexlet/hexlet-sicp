@@ -10,7 +10,6 @@ use Illuminate\Support\Facades\Auth;
 use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
 use Illuminate\Contracts\View\View;
-use Illuminate\Support\Facades\Http;
 
 class SolutionController extends Controller
 {
@@ -49,7 +48,9 @@ class SolutionController extends Controller
 
     public function show(Solution $solution): View
     {
-        abort_unless($solution->user, 404);
+        if (!$solution->user()->exists()) {
+            abort(404);
+        }
 
         $exercise = $solution->exercise;
         $user = $solution->user;

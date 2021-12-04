@@ -7,11 +7,9 @@ use App\Services\CheckResult;
 use Database\Seeders\ChaptersTableSeeder;
 use Database\Seeders\ExercisesTableSeeder;
 use Tests\ControllerTestCase;
-use Tests\TestCase;
 
 class CheckControllerTest extends ControllerTestCase
 {
-    private Exercise $exercise;
 
     public function setUp(): void
     {
@@ -24,7 +22,7 @@ class CheckControllerTest extends ControllerTestCase
         $this->actingAs($this->user);
     }
 
-    public function testCheck()
+    public function testCheck(): void
     {
         $exercise = Exercise::wherePath('1.3')->first();
         $path = route('api.exercises.check.store', [$exercise]);

@@ -9,7 +9,7 @@ class UserPolicy
 {
     use HandlesAuthorization;
 
-    public function update(?User $user, User $resourceUser)
+    public function update(?User $user, User $resourceUser): bool
     {
         return $resourceUser->is($user);
     }

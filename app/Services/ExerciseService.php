@@ -9,7 +9,6 @@ use App\Models\User;
 use App\Models\Exercise;
 use App\Models\Solution;
 use App\Services\SolutionChecker;
-use Illuminate\Database\Eloquent\Model;
 
 class ExerciseService
 {
@@ -44,7 +43,7 @@ class ExerciseService
     }
 
     // TODO: remove me
-    public function removeCompletedExercise($user, $exercise)
+    public function removeCompletedExercise(User $user, Exercise $exercise): void
     {
         $user->exercises()->detach($exercise);
         $this->activityService->logRemovedExercise($user, $exercise);

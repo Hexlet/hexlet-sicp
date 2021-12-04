@@ -36,7 +36,7 @@ class CheckResult
         return $this->getResultStatus() === self::SUCCESS_STATUS;
     }
 
-    public function toArray()
+    public function toArray(): array
     {
         return [
             'exit_code' => $this->exitCode,

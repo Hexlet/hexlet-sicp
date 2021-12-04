@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b84166d08e1df28895134ca5a31583e7",
+    "content-hash": "cc6150665e3d2dd75899f39a2cf4054f",
     "packages": [
         {
             "name": "brick/math",
@@ -10899,7 +10899,7 @@
         },
         {
             "name": "nunomaduro/larastan",
-            "version": "dev-master",
+            "version": "1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nunomaduro/larastan.git",
@@ -10934,7 +10934,6 @@
             "suggest": {
                 "orchestra/testbench": "Using Larastan for analysing a package needs Testbench"
             },
-            "default-branch": true,
             "type": "phpstan-extension",
             "extra": {
                 "branch-alias": {
@@ -13722,7 +13721,6 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "nunomaduro/larastan": 20,
         "roave/security-advisories": 20,
         "slevomat/coding-standard": 20,
         "ngyuki/phpower": 20

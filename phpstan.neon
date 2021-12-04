@@ -12,12 +12,9 @@ parameters:
         - tests
 
     # The level 8 is the highest level
-    level: 4
+    level: 6
 
     excludePaths:
         - app/Http/Controllers/Auth/*
 
     checkMissingIterableValueType: false
-
-    ignoreErrors:
-        - '#only\(\) invoked with [0-9]+ parameters, 1 required.#'
