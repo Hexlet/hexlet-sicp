@@ -3,7 +3,7 @@ name: CI status
 on:
   push:
     branches:
-      - 'master'
+      - 'main'
 
 jobs:
   build:
