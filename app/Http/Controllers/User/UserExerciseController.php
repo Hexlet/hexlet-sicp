@@ -5,20 +5,17 @@ namespace App\Http\Controllers\User;
 use App\Models\Exercise;
 use App\Http\Controllers\Controller;
 use App\Models\User;
-use App\Services\ActivityService;
 use App\Services\ExerciseService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 class UserExerciseController extends Controller
 {
-    private ActivityService $activityService;
     private ExerciseService $exerciseService;
 
-    public function __construct(ActivityService $activityService, ExerciseService $exerciseService)
+    public function __construct(ExerciseService $exerciseService)
     {
         $this->middleware('auth');
-        $this->activityService = $activityService;
         $this->exerciseService = $exerciseService;
     }
 

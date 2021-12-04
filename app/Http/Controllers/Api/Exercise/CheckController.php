@@ -4,13 +4,14 @@ namespace App\Http\Controllers\Api\Exercise;
 
 use App\Http\Controllers\Controller;
 use App\Models\Exercise;
+use App\Models\User;
 use App\Services\ExerciseService;
 use Illuminate\Http\Request;
-use App\Models\User;
+use Illuminate\Http\Response;
 
 class CheckController extends Controller
 {
-    public function store(Exercise $exercise, Request $request, ExerciseService $exerciseService)
+    public function store(Exercise $exercise, Request $request, ExerciseService $exerciseService): Response
     {
         $data = $request->validate([
             'user_id' => 'required|exists:users,id',

@@ -8,11 +8,9 @@ use App\Models\User;
 use App\Services\ActivityService;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
+/** @extends Factory<ReadChapter> */
 class ReadChapterFactory extends Factory
 {
-    /**
-     * @var string
-     */
     protected $model = ReadChapter::class;
 
     /**

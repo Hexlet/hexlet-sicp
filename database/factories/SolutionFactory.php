@@ -8,14 +8,9 @@ use App\Models\User;
 use App\Services\ActivityService;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
+/** @extends Factory<Solution> */
 class SolutionFactory extends Factory
 {
-
-    /**
-     * The name of the factory's corresponding model.
-     *
-     * @var string
-     */
     protected $model = Solution::class;
 
     /**
