@@ -1,11 +1,31 @@
 <p>{{ __('exercises/5_12.description.1') }}</p>
 <ul>
-    <li>{{ __('exercises/5_12.description.2') }}</li>
-    <li>{{ __('exercises/5_12.description.3') }}</li>
-    <li>{{ __('exercises/5_12.description.4') }}</li>
-    <li>{{ __('exercises/5_12.description.5') }}</li>
+    <li>{{ __('exercises/5_12.description.2') }}
+    <code>assign</code>
+    {{ __('exercises/5_12.description.3') }}
+    <code>goto</code>
+    {{ __('exercises/5_12.description.4') }}
+    </li>
+    <li>{{ __('exercises/5_12.description.5') }}
+    <code>goto</code>
+    {{ __('exercises/5_12.description.6') }}
+    </li>
+    <li>{{ __('exercises/5_12.description.7') }}
+    <code>save</code>
+    {{ __('exercises/5_12.description.8') }}
+    <code>restore</code>
+    {{ __('exercises/5_12.description.9') }}
+    </li>
+    <li>{{ __('exercises/5_12.description.10') }}
+    <code>val</code>
+    {{ __('exercises/5_12.description.11') }}
+    <code>(const 1)</code>
+    {{ __('exercises/5_12.description.12') }}
+    <code>((op *) (reg n) (reg val))</code>
+    {{ __('exercises/5_12.description.13') }}
+    </li>
 </ul>
-<p>{{ __('exercises/5_12.description.6') }}</p>
+<p>{{ __('exercises/5_12.description.14') }}</p>
 <img class="img-fluid" src="{{ mix('img/exercises/5_12.gif') }}" alt="5.12">
 <pre><code>(controller
    (assign continue (label fact-done))     ; set up final return address
@@ -30,7 +50,7 @@
    (goto (reg continue))                   ; return to caller
  fact-done)
 </code></pre>
-<p>{{ __('exercises/5_12.description.7') }}</p>
+<p>{{ __('exercises/5_12.description.15') }}</p>
 <pre><code>(controller
    (assign continue (label fib-done))
  fib-loop
@@ -63,4 +83,4 @@
    (goto (reg continue))
  fib-done)
 </code></pre>
-<p>{{ __('exercises/5_12.description.8') }}</p>
+<p>{{ __('exercises/5_12.description.16') }}</p>
