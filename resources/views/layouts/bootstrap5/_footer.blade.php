@@ -3,7 +3,7 @@
         <div class="row justify-content-lg-around">
             <div class="col-sm-6 col-md-3 col-lg-auto">
                 <a class="navbar-brand text-dark px-0 py-0" href="https://ru.hexlet.io">
-                    <h2 class="h3">&copy; Hexlet</h2></a>
+                    <p class="h3">&copy; Hexlet</p></a>
                 <ul class="list-unstyled">
                     <li><a target="_blank" href="/">{{ __('layout.footer.about') }}</a></li>
                     <li><a target="_blank" href="https://github.com/Hexlet/hexlet-sicp">{{ __('layout.footer.source_code') }}</a></li>
@@ -11,7 +11,7 @@
                 </ul>
             </div>
             <div class="col-sm-6 col-md-3 col-lg-auto">
-                <h2 class="h5 mb-3">{{ __('layout.footer.help') }}</h2>
+                <p class="h5 mb-3">{{ __('layout.footer.help') }}</p>
                 <ul class="list-unstyled">
                     <li><a target="_blank" href="https://ru.hexlet.io/knowledge">{{ __('layout.footer.knowledge') }}</a></li>
                     <li><a target="_blank" href="https://ru.hexlet.io/blog">{{ __('layout.footer.blog') }}</a></li>
@@ -19,7 +19,7 @@
                 </ul>
             </div>
             <div class="col-sm-6 col-md-3 col-lg-auto">
-                <h2 class="h5 mb-3">{{ __('layout.footer.other_os_projects') }}</h2>
+                <p class="h5 mb-3">{{ __('layout.footer.other_os_projects') }}</p>
                 <ul class="list-unstyled">
                     <li><a target="_blank" href="https://github.com/Hexlet/hexlet-editor">{{ __('layout.footer.os_projects.editor') }}</a></li>
                     <li><a target="_blank" href="https://github.com/Hexlet/hexlet-cv">{{ __('layout.footer.os_projects.cv') }}</a></li>
@@ -27,7 +27,7 @@
                 </ul>
             </div>
             <div class="col-sm-6 col-md-3 col-lg-auto">
-                <h2 class="h5 mb-3">{{ __('layout.footer.additionally') }}</h2>
+                <p class="h5 mb-3">{{ __('layout.footer.additionally') }}</p>
                 <ul class="list-unstyled">
                     <li><a target="_blank" href="https://ru.code-basics.com/">{{ __('layout.footer.os_projects.code_basics') }}</a></li>
                     <li><a target="_blank" href="https://codebattle.hexlet.io/">{{ __('layout.footer.os_projects.codebattle') }}</a></li>
