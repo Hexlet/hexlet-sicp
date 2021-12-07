@@ -70,4 +70,9 @@ lint-js:
 lint-js-fix:
 	npm run lint-js-fix
 
+setup-git-hooks:
+	npx simple-git-hooks
+
 .PHONY: test
+
+pre-push-hook: lint

@@ -1,5 +1,8 @@
 {
   "private": true,
+  "simple-git-hooks": {
+    "pre-push": "make pre-push-hook"
+  },
   "scripts": {
     "dev": "npm run development",
     "development": "mix",
@@ -45,7 +48,8 @@
     "laravel-mix-make-file-hash": "^2.2.0",
     "resolve-url-loader": "^4.0.0",
     "sass": "^1.44.0",
-    "sass-loader": "^12.x"
+    "sass-loader": "^12.x",
+    "simple-git-hooks": "^2.7.0"
   },
   "engines": {
     "node": "16.x"
