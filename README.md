@@ -164,7 +164,7 @@ make test # запуск тестов
 ### Добавить пре-комит хук
 
 ```shell
-git config core.hooksPath .githooks
+make setup-git-hooks
 ```
 
 [![Hexlet Ltd. logo](https://raw.githubusercontent.com/Hexlet/assets/master/images/hexlet_logo128.png)](https://ru.hexlet.io/pages/about?utm_source=github&utm_medium=link&utm_campaign=exercises-javascript)
