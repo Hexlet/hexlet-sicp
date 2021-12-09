@@ -5,7 +5,10 @@
         (else (+ (count-leaves (car tree))
                  (count-leaves (cdr tree))))))
 </code></pre>
-<p>{{ __('exercises/5_21.description.2') }}</p>
+<p>{{ __('exercises/5_21.description.2') }}
+<code>count-leaves</code>
+{{ __('exercises/5_21.description.3') }}
+</p>
 <pre><code>(define (count-leaves tree)
   (define (count-iter tree n)
     (cond ((null? tree) n)
@@ -14,4 +17,7 @@
                             (count-iter (car tree) n)))))
   (count-iter tree 0))
 </code></pre>
-<p>{{ __('exercises/5_21.description.3') }}</p>
+<p>{{ __('exercises/5_21.description.4') }}
+<code>count-leaves</code>
+{{ __('exercises/5_21.description.5') }}
+</p>
