@@ -9,6 +9,7 @@ use App\Models\User;
 use App\Models\Exercise;
 use App\Models\Solution;
 use App\Services\SolutionChecker;
+use Illuminate\Support\Facades\Log;
 
 class ExerciseService
 {
@@ -27,6 +28,12 @@ class ExerciseService
 
         if ($checkResult->isSuccess()) {
             $this->completeExercise($user, $exercise);
+        }
+
+        if ($checkResult->isCheckExecutionError()) {
+            Log::error(
+                "Failed to execute check. Output: {$checkResult->getOutput()}"
+            );
         }
 
         return $checkResult;
