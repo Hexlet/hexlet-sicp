@@ -5,6 +5,15 @@
       1
       (* (factorial (- n 1)) n)))
 </code></pre>
-<p>{{ __('exercises/5_27.description.3') }}</p>
+<p>{{ __('exercises/5_27.description.3') }}
+<code>n</code>
+{{ __('exercises/5_27.description.4') }}
+<code>n!</code>
+{{ __('exercises/5_27.description.5') }}
+<code>n ≥ 1</code>
+{{ __('exercises/5_27.description.6') }}
+<code>n</code>
+{{ __('exercises/5_27.description.7') }}
+</p>
 <img class="img-fluid" src="{{ mix('img/exercises/5_27.gif') }}" alt="5.27">
-<p>{{ __('exercises/5_27.description.4') }}</p>
+<p>{{ __('exercises/5_27.description.8') }}</p>
