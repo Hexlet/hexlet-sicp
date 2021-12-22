@@ -6,7 +6,12 @@
       (+ (fib (- n 1)) (fib (- n 2)))))
 </code></pre>
 <p>{{ __('exercises/5_46.description.3') }}<a href="{{ route('exercises.show', getExercise('5.29')) }}">5.29</a>
-{{ __('exercises/5_46.description.4') }}</p>
+{{ __('exercises/5_46.description.4') }}
+<code>n</code>
+{{ __('exercises/5_46.description.5') }}
+<code>n</code>
+{{ __('exercises/5_46.description.6') }}
+</p>
 <pre><code>(controller
    (assign continue (label fib-done))
  fib-loop
@@ -39,4 +44,4 @@
    (goto (reg continue))
  fib-done)
 </code></pre>
-{{ __('exercises/5_46.description.5') }}</p>
+{{ __('exercises/5_46.description.7') }}</p>

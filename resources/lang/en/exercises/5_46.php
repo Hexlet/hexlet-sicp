@@ -10,8 +10,12 @@ return [
         '3' =>
         "compared to the effectiveness of using the special-purpose Fibonacci machine of figure 5.12. (For measurement of the interpreted performance, see exercise ",
         '4' =>
-        ".) For Fibonacci, the time resource used is not linear in n; hence the ratios of stack operations will not approach a limiting value that is independent of n.",
+        ".) For Fibonacci, the time resource used is not linear in ",
         '5' =>
+        "; hence the ratios of stack operations will not approach a limiting value that is independent of ",
+        '6' =>
+        ".",
+        '7' =>
         "Figure 5.12:  Controller for a machine to compute Fibonacci numbers.",
     ],
 ];
