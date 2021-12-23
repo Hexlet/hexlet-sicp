@@ -1,4 +1,9 @@
-<p>{{ __('exercises/5_48.description') }}</p>
+<p>{{ __('exercises/5_48.description.1') }}
+<code>compile-and-go</code>
+{{ __('exercises/5_48.description.2') }}
+<code>compile-and-run</code>
+{{ __('exercises/5_48.description.3') }}
+</p>
 <pre><code>;;; EC-Eval input:
 (compile-and-run
   '(define (factorial n)
