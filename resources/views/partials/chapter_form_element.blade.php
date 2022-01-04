@@ -20,7 +20,7 @@
     </label>
     @if ($chapter->exercises->isNotEmpty())
     <div>
-        <a data-toggle="collapse"
+        <a data-bs-toggle="collapse"
            href="#collapse{{ $chapter->id }}"
            aria-expanded="false"
            aria-controls="collapse{{ $chapter->id }}">
@@ -34,8 +34,8 @@
                 @if($completedExercises->has($exercise->id))
                 <a href="{{ route('users.exercises.destroy', [$user, $exercise]) }}"
                    class="text-decoration-none"
-                   data-toggle="tooltip"
-                   data-placement="bottom"
+                   data-bs-toggle="tooltip"
+                   data-bs-placement="bottom"
                    title="{{ __('exercise.remove_completed_exercise', ['exercise_path' => $exercise->path]) }}"
                    data-confirm="{{ __('exercise.remove_completed_exercise', ['exercise_path' => $exercise->path]) }}?"
                    data-method="delete">
@@ -44,15 +44,15 @@
                 @else
                 <a href="{{ route('users.exercises.update', [$user, $exercise]) }}"
                    class="text-decoration-none"
-                   data-toggle="tooltip"
-                   data-placement="bottom"
+                   data-bs-toggle="tooltip"
+                   data-bs-placement="bottom"
                    title="{{ __('exercise.mark_exercise', ['exercise_path' => $exercise->path]) }}"
                    data-method="patch">
                     <i class="far fa-square text-secondary"></i>
                 </a>
                 @endif
                 <a href="{{ route('exercises.show', [$exercise]) }}"
-                   class="text-dark">
+                   class="link-dark">
                     {{ getFullExerciseTitle($exercise) }}
                 </a>
             </li>
