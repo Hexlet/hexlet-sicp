@@ -33,12 +33,12 @@
 </head>
 <body>
     @include('layouts.bootstrap5._nav')
-    <div class="container-xl mt-n2 mb-3">
+    <div class="container-xl mt-n2 mb-4">
         @include('layouts.bootstrap5._flash')
         {{-- @include('flash::message')--}}
         @yield('content')
-        @include('layouts.bootstrap5._footer')
     </div>
+    @include('layouts.bootstrap5._footer')
     @livewireScripts
     {{--<script src="{{ mix('js/app.js') }}" defer></script>--}}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
