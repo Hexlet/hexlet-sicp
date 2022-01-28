@@ -172,3 +172,5 @@ make setup-git-hooks
 [![Hexlet Ltd. logo](https://raw.githubusercontent.com/Hexlet/assets/master/images/hexlet_logo128.png)](https://ru.hexlet.io/pages/about?utm_source=github&utm_medium=link&utm_campaign=exercises-javascript)
 
 Этот репозиторий создан и поддерживается командой и сообществом образовательного проекта Hexlet. [Подробнее о Hexlet](https://ru.hexlet.io/pages/about?utm_source=github&utm_medium=link&utm_campaign=exercises-javascript)
+
+See most active contributers on [hexlet-friends](https://friends.hexlet.io/).
