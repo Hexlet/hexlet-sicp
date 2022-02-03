@@ -9,7 +9,9 @@ class PagesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @return \Illuminate\Http\Response
+     * @param int|string $id
+     *
+     * @return Illuminate\View\View
      */
     public function show($id)
     {
