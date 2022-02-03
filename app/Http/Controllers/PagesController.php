@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class PagesController extends Controller
 {
@@ -13,7 +13,7 @@ class PagesController extends Controller
      *
      * @return Illuminate\View\View
      */
-    public function show($id)
+    public function show($id): View
     {
         return view("pages.{$id}");
     }
