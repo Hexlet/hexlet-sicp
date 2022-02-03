@@ -11,7 +11,7 @@ class PagesController extends Controller
      *
      * @param int|string $id
      *
-     * @return Illuminate\View\View
+     * @return \Illuminate\View\View
      */
     public function show($id): View
     {
