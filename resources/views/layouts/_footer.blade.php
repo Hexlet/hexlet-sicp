@@ -5,7 +5,7 @@
                 <a class="navbar-brand text-dark px-0 py-0" href="https://ru.hexlet.io">
                     <p class="h3">&copy; Hexlet</p></a>
                 <ul class="list-unstyled">
-                    <li><a target="_blank" href="/">{{ __('layout.footer.about') }}</a></li>
+                    <li><a target="_blank" href="{{ route('pages.show', ['page' => 'about']) }}">{{ __('layout.footer.about') }}</a></li>
                     <li><a target="_blank" href="https://github.com/Hexlet/hexlet-sicp">{{ __('layout.footer.source_code') }}</a></li>
                     <li><a target="_blank" href="https://slack-ru.hexlet.io/">Slack #hexlet-volunteers</a></li>
                 </ul>
