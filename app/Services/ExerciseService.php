@@ -41,7 +41,7 @@ class ExerciseService
 
     public function completeExercise(User $user, Exercise $exercise): void
     {
-        if ($user->hasCompletedExercise($exercise)) {
+        if ($user->hasCompletedExercise($exercise) || auth()->guest()) {
             return;
         }
 
