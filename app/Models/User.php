@@ -111,6 +111,6 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function isGuest(): bool
     {
-        return auth()->guest();
+        return $this->exists();
     }
 }
