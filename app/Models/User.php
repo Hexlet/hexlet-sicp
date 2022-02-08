@@ -108,4 +108,9 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->completedExercises()->whereExerciseId($exercise->id)->exists();
     }
+
+    public function isGuest(): bool
+    {
+        return auth()->guest();
+    }
 }
