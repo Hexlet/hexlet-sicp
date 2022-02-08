@@ -12,6 +12,8 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+use function PHPUnit\Framework\isFalse;
+
 /**
  * App\Models\User
  * @property int $id
@@ -111,6 +113,6 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function isGuest(): bool
     {
-        return $this->exists();
+        return $this->exists === false;
     }
 }
