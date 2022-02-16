@@ -10,7 +10,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="csrf-param" content="_token" />
 
-    <title>{{ __('layout.title.name') }}</title>
+    <title>@yield('title', __('layout.title.name'))</title>
 
     @livewireStyles
     @includeWhen(app()->environment('production'), 'layouts.deps._gtm_head')
