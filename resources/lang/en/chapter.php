@@ -16,6 +16,7 @@ return [
         'completed_by' => 'Completed by:',
         'previous_chapter' => 'Previous chapter',
         'next_chapter' => 'Next chapter',
+        'Hexlet SICP' => 'Hexlet SICP',
     ],
     'remove_completed_chapter' => 'Remove chapter :chapter_path from completed',
 ];
