@@ -16,7 +16,6 @@ return [
         'completed_by' => 'Завершено пользователями:',
         'next_chapter' => 'Следующая глава',
         'previous_chapter' => 'Предыдущая глава',
-        'Hexlet SICP' => 'Hexlet SICP',
     ],
     'remove_completed_chapter' => 'Удалить главу :chapter_path из выполненных',
 ];

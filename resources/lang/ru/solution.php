@@ -10,5 +10,4 @@ return [
     'exercise' => 'Упражнение',
     'code_review' => 'Код Ревью',
     'sub_title' => 'Сравни свои решения',
-    'Hexlet SICP' => 'Hexlet SICP',
 ];

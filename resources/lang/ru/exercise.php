@@ -7,7 +7,6 @@ return [
     ],
     'show' => [
         'description' => 'из книги Структура и интерпретация компьютерных программ',
-        'Hexlet SICP' => 'Hexlet SICP',
         'exercises' => 'показать упражнения',
         'who_completed' => 'Показать кто завершил',
         'empty_description' => 'Для этого упражнения еще нет описания',

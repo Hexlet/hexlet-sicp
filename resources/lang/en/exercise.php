@@ -22,7 +22,6 @@ return [
         'description-tab' => 'Description',
         'output-tab' => 'Output',
         'tests-tab' => 'Tests',
-        'Hexlet SICP' => 'Hexlet SICP',
         'editor' => [
             'auth' => [
                 'required' => 'Authentication required',
