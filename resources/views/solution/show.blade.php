@@ -1,6 +1,6 @@
 @extends('layouts.bootstrap5.app')
 
-@section('title'){{ __('solution.exercise') }} {{ getFullExerciseTitle($currentExercise) }} - {{ __('solution.Hexlet SICP') }}@endsection
+@section('title'){{ __('solution.exercise') }} {{ getFullExerciseTitle($currentExercise) }} - {{ __('layout.title.name_SICP') }}@endsection
 @section('description'){{ $user->id }} - {{ __('solution.code_review') }} - {{ $user->name }} - {{ __('solution.exercise') }} {{ getFullExerciseTitle($currentExercise) }}@endsection
 @section('content')
 
