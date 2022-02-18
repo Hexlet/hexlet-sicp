@@ -9,7 +9,7 @@
      * @var bool $isCompletedChapter
      */
 @endphp
-@section('title'){{ $chapter->path }}. {{ getChapterName($chapter->path) }} - {{ __('layout.title.name_SICP') }}@endsection
+@section('title'){{ $chapter->path }}. {{ getTitle(getChapterName($chapter->path)) }}@endsection
 @section('description')@foreach (Breadcrumbs::generate('chapter', $chapter) as $breadcrumb){{$breadcrumb->title}} / @endforeach @endsection
 @section('content')
     {{ Breadcrumbs::render('chapter', $chapter) }}
