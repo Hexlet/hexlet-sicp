@@ -7,7 +7,7 @@
      * @var \App\Models\User $authUser
      */
 @endphp
-@section('title'){{ getTitle(getExerciseTitle($exercise)) }}@endsection
+@section('title'){{ getTitleContent(getExerciseTitle($exercise)) }}@endsection
 @section('description'){{ __('exercise.exercise') }} {{ $exercise->path }} {{ getExerciseTitle($exercise) }} {{ __('exercise.show.description') }}@endsection
 @section('content')
     {{ Breadcrumbs::render('exercise', $exercise) }}
