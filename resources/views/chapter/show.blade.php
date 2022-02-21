@@ -9,7 +9,8 @@
      * @var bool $isCompletedChapter
      */
 @endphp
-@section('description'){{ __('chapter.chapter') }} {{ getChapterName($chapter->path) }} {{ __('chapter.show.description') }}@endsection
+@section('title'){{ $chapter->path }}. {{ getTitleContent(getChapterName($chapter->path)) }}@endsection
+@section('description')@foreach (Breadcrumbs::generate('chapter', $chapter) as $breadcrumb){{$breadcrumb->title}} / @endforeach @endsection
 @section('content')
     {{ Breadcrumbs::render('chapter', $chapter) }}
     <div class="row justify-content-center">

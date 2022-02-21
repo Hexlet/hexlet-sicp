@@ -30,7 +30,12 @@ if (!function_exists('getChapterName')) {
         return ChapterHelper::getChapterName($chapter);
     }
 }
-
+if (!function_exists('getTitleContent')) {
+    function getTitleContent(string $titleName): string
+    {
+        return TemplateHelper::getTitleContent($titleName);
+    }
+}
 if (!function_exists('haveRead')) {
     function haveRead(User $user, Chapter $chapter): bool
     {

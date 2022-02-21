@@ -7,6 +7,7 @@
      * @var \App\Models\User $authUser
      */
 @endphp
+@section('title'){{ getTitleContent(getExerciseTitle($exercise)) }}@endsection
 @section('description'){{ __('exercise.exercise') }} {{ $exercise->path }} {{ getExerciseTitle($exercise) }} {{ __('exercise.show.description') }}@endsection
 @section('content')
     {{ Breadcrumbs::render('exercise', $exercise) }}
@@ -104,6 +105,6 @@
       const userId = "{{ $authUser->id }}";
       const exerciseId = "{{ $exercise->id }}";
       const locale = "{{ LaravelLocalization::getCurrentLocale() }}";
-      window.sicpEditorData = { userId, exerciseId, locale }; 
+      window.sicpEditorData = { userId, exerciseId, locale };
     </script>
 @endsection

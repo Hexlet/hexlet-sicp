@@ -1,5 +1,7 @@
 @extends('layouts.bootstrap5.app')
 
+@section('title'){{ __('solution.exercise') }} {{ getTitleContent(getFullExerciseTitle($currentExercise)) }}@endsection
+@section('description'){{ $user->id }} - {{ __('solution.code_review') }} - {{ $user->name }} - {{ __('solution.exercise') }} {{ getFullExerciseTitle($currentExercise) }}@endsection
 @section('content')
 
 <div class="d-flex flex-wrap justify-content-between mb-2 mb-lg-4">

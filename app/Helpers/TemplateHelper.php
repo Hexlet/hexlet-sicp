@@ -13,4 +13,10 @@ class TemplateHelper
 
         return $currentRoute->getName() === $routeAlias;
     }
+
+    public static function getTitleContent(string $header): string
+    {
+        $name = __('layout.title.name_SICP');
+        return "{$header} - {$name}";
+    }
 }

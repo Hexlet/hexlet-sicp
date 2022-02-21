@@ -7,6 +7,7 @@ return [
     ],
     'title' => [
         'name' => 'Cтруктура и Интерпретация Компьютерных Программ (СИКП) - Hexlet SICP',
+        'name_SICP' => 'Hexlet SICP',
     ],
     'nav' => [
         'name' => 'Хекслет СИКП',

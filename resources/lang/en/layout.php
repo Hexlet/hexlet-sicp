@@ -7,6 +7,7 @@ return [
     ],
     'title' => [
         'name' => 'Structure and Interpretation of Computer Programs (SICP) - Hexlet SICP',
+        'name_SICP' => 'Hexlet SICP',
     ],
     'nav' => [
         'name' => 'Hexlet SICP',
