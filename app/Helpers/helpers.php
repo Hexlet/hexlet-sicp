@@ -30,10 +30,10 @@ if (!function_exists('getChapterName')) {
         return ChapterHelper::getChapterName($chapter);
     }
 }
-if (!function_exists('getTitle')) {
-    function getTitle(string $titleName): string
+if (!function_exists('getTitleContent')) {
+    function getTitleContent(string $titleName): string
     {
-        return TemplateHelper::getTitle($titleName);
+        return TemplateHelper::getTitleContent($titleName);
     }
 }
 if (!function_exists('haveRead')) {
