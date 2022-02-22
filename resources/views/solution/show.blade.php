@@ -1,5 +1,6 @@
 @extends('layouts.bootstrap5.app')
 
+@section('meta-robots', 'nofollow, noindex')
 @section('title'){{ __('solution.exercise') }} {{ getTitleContent(getFullExerciseTitle($currentExercise)) }}@endsection
 @section('description'){{ $user->id }} - {{ __('solution.code_review') }} - {{ $user->name }} - {{ __('solution.exercise') }} {{ getFullExerciseTitle($currentExercise) }}@endsection
 
