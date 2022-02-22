@@ -5,8 +5,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="@yield('description', __('layout.meta.description'))">
-    @if (isActiveRoute('solutions.show'))
-    <meta name="robots" content="nofollow, noindex">
+    @hasSection ('meta-robots')
+    <meta name="robots" content="@yield('meta-robots')">
     @endif
 
     <!-- CSRF Token -->
