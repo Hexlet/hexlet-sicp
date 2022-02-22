@@ -10,5 +10,4 @@ return [
     'exercise' => 'Exercise',
     'code_review' => 'Code Review',
     'sub_title' => 'Compare your solutions',
-    'robots' => 'noindex, nofollow',
 ];
