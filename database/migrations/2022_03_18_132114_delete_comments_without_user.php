@@ -2,8 +2,6 @@
 
 use App\Models\Comment;
 use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\Schema;
 
 class DeleteCommentsWithoutUser extends Migration
 {
@@ -24,6 +22,9 @@ class DeleteCommentsWithoutUser extends Migration
      */
     public function down()
     {
-        Comment::whereDoesntHave('user')->restore();
+        /** @var \App\Models\Comment|\App\Models\Comment[] $comments */
+        $comments = Comment::whereDoesntHave('user');
+
+        $comments->restore();
     }
 }
