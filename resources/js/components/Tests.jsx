@@ -1,14 +1,7 @@
-<<<<<<< HEAD
-import React from 'react';
-import { useSelector } from 'react-redux';
-
-const Tests = function () {
-=======
 import React from "react";
 import { useSelector } from "react-redux";
 
 const Tests = () => {
->>>>>>> added Tests component
   const { hasTests, testCode } = useSelector((state) => state.exerciseInfo);
 
   return hasTests ? (

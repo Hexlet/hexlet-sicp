@@ -17,15 +17,9 @@ const TabsBox = function () {
   useEffect(() => {
     const location = window.location.hash;
     if (locationMap[location]) {
-<<<<<<< HEAD
-      dispatch(changeTab({ newActiveTab: `${locationMap[location]}` }));
-    }
-  }, [dispatch]);
-=======
       dispatch(changeTab({ newActiveTab: `${locationMap[location]}` }))
     }
-  }, []);
->>>>>>> added Tests component
+  }, [dispatch]);
 
   const changeActiveTab = (newActiveTab) => {
     dispatch(changeTab({ newActiveTab }));
