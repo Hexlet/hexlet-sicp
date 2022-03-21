@@ -9,7 +9,7 @@ import tabNames from '../common/tabNamesMap.js';
 import { changeTab } from '../slices/tabsBoxSlice.js';
 import locationMap from '../common/hashLocationMap.js';
 
-const TabsBox = () => {
+const TabsBox = function () {
   const { t } = useTranslation();
   const { currentTab } = useSelector((state) => state.tabsBox);
   const dispatch = useDispatch();
@@ -17,9 +17,9 @@ const TabsBox = () => {
   useEffect(() => {
     const location = window.location.hash;
     if (locationMap[location]) {
-      dispatch(changeTab({ newActiveTab: `${locationMap[location]}` }))
+      dispatch(changeTab({ newActiveTab: `${locationMap[location]}` }));
     }
-  }, []);
+  }, [dispatch]);
 
   const changeActiveTab = (newActiveTab) => {
     dispatch(changeTab({ newActiveTab }));

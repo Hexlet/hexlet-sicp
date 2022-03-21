@@ -8,7 +8,7 @@ import ExerciseIdContext from '../context/ExerciseIdContext.js';
 import routes from '../common/routes.js';
 import { handleNewCheckResult } from '../slices/checkResultSlice';
 
-const ControlBox = () => {
+const ControlBox = function () {
   const { t } = useTranslation();
   const editor = useSelector((state) => state.editor);
   const userId = useContext(UserIdContext);

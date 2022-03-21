@@ -7,7 +7,7 @@ const statusToTypeMap = {
   failure: 'danger',
 };
 
-const Output = () => {
+const Output = function () {
   const { t } = useTranslation();
   const checkResult = useSelector((state) => state.checkResult);
 
