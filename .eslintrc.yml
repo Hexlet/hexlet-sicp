@@ -28,6 +28,9 @@ rules:
     - extensions:
       - ".js"
       - ".jsx"
+  react/function-component-definition:
+    - 2
+    - namedComponents: arrow-function
   no-param-reassign:
     - error
     - props: true

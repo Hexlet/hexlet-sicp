@@ -12,7 +12,7 @@ import 'codemirror/addon/edit/matchbrackets.js';
 import 'codemirror/mode/scheme/scheme.js';
 import 'codemirror/keymap/sublime.js';
 
-const Editor = function () {
+const Editor = () => {
   const { content, focusesCount } = useSelector((state) => state.editor);
   const [editor, setEditor] = useState(null);
   const dispatch = useDispatch();

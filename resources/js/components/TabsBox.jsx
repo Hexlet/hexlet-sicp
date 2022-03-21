@@ -9,7 +9,7 @@ import tabNames from '../common/tabNamesMap.js';
 import { changeTab } from '../slices/tabsBoxSlice.js';
 import locationMap from '../common/hashLocationMap.js';
 
-const TabsBox = function () {
+const TabsBox = () => {
   const { t } = useTranslation();
   const { currentTab } = useSelector((state) => state.tabsBox);
   const dispatch = useDispatch();
