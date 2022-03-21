@@ -7,10 +7,12 @@ import App from './App.jsx';
 import createStore from './store.js';
 import { UserIdProvider } from '../context/UserIdContext.js';
 import { ExerciseIdProvider } from '../context/ExerciseIdContext.js';
+import { actions } from '../slices/exerciseInfoSlice.js';
 
 export default async (userId, exerciseId) => {
   const { locale: lng } = window.sicpEditorData;
   const store = createStore();
+  store.dispatch(actions.loadExerciseInfo({ exerciseId }));
   const i18nInstance = i18n.createInstance();
   await i18nInstance
     .use(initReactI18next)
