@@ -31,7 +31,7 @@ db-prepare:
 
 lint:
 	composer exec phpcs -v
-	lint-js
+	make lint-js
 
 lint-fix:
 	composer exec phpcbf -v
