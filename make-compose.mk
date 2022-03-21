@@ -48,9 +48,6 @@ compose-db-prepare:
 compose-lint:
 	docker-compose run --rm application make lint
 
-compose-frontend-lint:
-	docker-compose run --rm frontend make lint-js
-
 compose-lint-fix:
 	docker-compose run --rm application make lint-fix
 
