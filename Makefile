@@ -15,6 +15,9 @@ install-app:
 install-frontend:
 	npm ci
 
+lint-js:
+	npm lint
+
 install: install-app install-frontend
 
 start:

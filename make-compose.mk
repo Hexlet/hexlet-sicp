@@ -48,6 +48,9 @@ compose-db-prepare:
 compose-lint:
 	docker-compose run --rm application make lint
 
+compose-frontend-lint:
+	docker-compose run --rm frontend make lint-js
+
 compose-lint-fix:
 	docker-compose run --rm application make lint-fix
 
@@ -63,5 +66,6 @@ compose-check:
 ci:
 	docker-compose -f docker-compose.ci.yml -p hexlet-sicp-ci build
 	docker-compose -f docker-compose.ci.yml -p hexlet-sicp-ci run application make setup
+	docker-compose -f docker-compose.ci.yml -p hexlet-sicp-ci run application make lint-js
 	docker-compose -f docker-compose.ci.yml -p hexlet-sicp-ci up --abort-on-container-exit
 	docker-compose -f docker-compose.ci.yml -p hexlet-sicp-ci down -v --remove-orphans
