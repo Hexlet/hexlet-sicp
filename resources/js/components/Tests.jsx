@@ -1,7 +1,7 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React from 'react';
+import { useSelector } from 'react-redux';
 
-const Tests = () => {
+const Tests = function () {
   const { hasTests, testCode } = useSelector((state) => state.exerciseInfo);
 
   return hasTests ? (
