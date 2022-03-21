@@ -36,11 +36,13 @@
 </head>
 <body>
     @include('layouts.bootstrap5._nav')
-    <div class="container-xl mt-n2 mb-4">
-        @include('layouts.bootstrap5._flash')
-        {{-- @include('flash::message')--}}
-        @yield('content')
-    </div>
+    <main class='my-4'>
+        <div class="container-xl mt-n2 mb-4">
+            @include('layouts.bootstrap5._flash')
+            {{-- @include('flash::message')--}}
+            @yield('content')
+        </div>
+    </main>
     @include('layouts.bootstrap5._footer')
     @livewireScripts
     {{--<script src="{{ mix('js/app.js') }}" defer></script>--}}
