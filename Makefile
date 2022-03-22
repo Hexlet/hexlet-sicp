@@ -29,8 +29,7 @@ start-frontend:
 db-prepare:
 	php artisan migrate:fresh --seed
 
-lint:
-	composer exec phpcs -v
+lint: lint-js lint-php
 
 lint-fix:
 	composer exec phpcbf -v
@@ -66,6 +65,9 @@ ide-helper:
 
 lint-js:
 	npm run lint-js
+
+lint-php:
+	composer exec phpcs -v
 
 lint-js-fix:
 	npm run lint-js-fix

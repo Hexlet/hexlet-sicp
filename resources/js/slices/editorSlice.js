@@ -1,3 +1,6 @@
+// @ts-check
+/* eslint-disable no-param-reassign */
+
 import { createSlice } from '@reduxjs/toolkit';
 import { changeTab } from './tabsBoxSlice.js';
 

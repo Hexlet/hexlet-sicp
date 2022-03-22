@@ -1,3 +1,6 @@
+// @ts-check
+/* eslint-disable react/no-danger */
+
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
