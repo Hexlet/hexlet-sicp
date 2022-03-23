@@ -52,4 +52,27 @@ class CheckControllerTest extends ControllerTestCase
             'exercise_id' => $exercise->id,
         ]);
     }
+
+    public function testCheckByGuest(): void {
+        $exercise = Exercise::wherePath('1.3')->first();
+        $path = route('api.exercises.check.store', [$exercise]);
+
+        $underscoredPath = $exercise->present()->underscorePath;
+        $solutionCode = view("exercise.solution_stub.{$underscoredPath}_solution")->render();
+
+        $data = [
+            'user_id' => null,
+            'solution_code' => $solutionCode,
+        ];
+        $response = $this->postJson($path, $data);
+
+        $response->assertCreated();
+        $responseBody = $response->decodeResponseJson();
+        var_dump($responseBody);
+
+        assert(array_get($responseBody, 'check_result.exit_code') === CheckResult::SUCCESS_EXIT_CODE);
+
+        $this->assertDatabaseCount('activity_log', 0);
+        $this->assertDatabaseCount('completed_exercises', 0);
+    }
 }
