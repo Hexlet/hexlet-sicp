@@ -53,7 +53,8 @@ class CheckControllerTest extends ControllerTestCase
         ]);
     }
 
-    public function testCheckByGuest(): void {
+    public function testCheckByGuest(): void
+    {
         $exercise = Exercise::wherePath('1.3')->first();
         $path = route('api.exercises.check.store', [$exercise]);
 
