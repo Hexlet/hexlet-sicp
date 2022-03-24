@@ -14,7 +14,7 @@ const slice = createSlice({
   reducers: {
     handleNewCheckResult(state, { payload: { exitCode, resultStatus, output } }) {
       state.exitCode = exitCode;
-      state.resultStatus = resultStatus;
+      state.resultStatus = checkStatusMap[resultStatus];
       state.output = output;
     },
   },
