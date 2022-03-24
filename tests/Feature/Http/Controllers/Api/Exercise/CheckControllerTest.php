@@ -69,7 +69,6 @@ class CheckControllerTest extends ControllerTestCase
 
         $response->assertCreated();
         $responseBody = $response->decodeResponseJson();
-        var_dump($responseBody);
 
         assert(array_get($responseBody, 'check_result.exit_code') === CheckResult::SUCCESS_EXIT_CODE);
 
