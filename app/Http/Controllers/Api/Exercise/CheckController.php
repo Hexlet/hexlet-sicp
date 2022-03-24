@@ -14,11 +14,12 @@ class CheckController extends Controller
     public function store(Exercise $exercise, Request $request, ExerciseService $exerciseService): Response
     {
         $data = $request->validate([
-            'user_id' => 'required|exists:users,id',
+            'user_id' => 'nullable',
             'solution_code' => 'required',
         ]);
 
-        $user = User::findOrFail($data['user_id']);
+        $user = $data['user_id'] !== null ? User::findOrFail($data['user_id']) : new User();
+
         $solutionCode = $data['solution_code'];
 
         $checkResult = $exerciseService->check($user, $exercise, $solutionCode);
