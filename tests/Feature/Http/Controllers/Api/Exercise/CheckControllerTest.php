@@ -71,8 +71,5 @@ class CheckControllerTest extends ControllerTestCase
         $responseBody = $response->decodeResponseJson();
 
         assert(array_get($responseBody, 'check_result.exit_code') === CheckResult::SUCCESS_EXIT_CODE);
-
-        $this->assertDatabaseCount('activity_log', 0);
-        $this->assertDatabaseCount('completed_exercises', 0);
     }
 }
