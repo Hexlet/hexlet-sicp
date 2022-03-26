@@ -4,7 +4,7 @@ console:
 	php artisan tinker
 
 deploy:
-	git push heroku master
+	git push heroku main
 
 setup: env-prepare sqlite-prepare install key db-prepare ide-helper
 	npm run dev
@@ -41,7 +41,7 @@ test-coverage:
 	XDEBUG_MODE=coverage php artisan test --coverage-clover build/logs/clover.xml
 
 analyse:
-	composer exec phpstan analyse -v -- --memory-limit=-1
+	composer exec phpstan analyse -v -- --memory-limit=1G
 
 check: lint analyse test
 
