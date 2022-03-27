@@ -5,9 +5,14 @@ export default {
     editor: 'Editor',
     output: 'Output',
     tests: 'Tests',
+    loading: 'Loading...',
+    editorContent: {
+      withTemplate: 'Write your solution here',
+      withoutTemplate: 'This exercise has no tests.\nAny solution is a right answer.',
+    },
     message: {
       success: 'Great job! Don\'t forget to save your solution.',
-      failure: 'Failed to verify the solution. See the "Output" tab.',
+      failure: 'Failed to verify the solution.',
     },
   },
 };

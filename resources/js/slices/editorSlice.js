@@ -1,13 +1,10 @@
+// @ts-check
+/* eslint-disable no-param-reassign */
+
 import { createSlice } from '@reduxjs/toolkit';
 import { changeTab } from './tabsBoxSlice.js';
 
-const initialContent = `#lang racket
-
-#| BEGIN (write your solution here) |#
-(displayln "Hello, World!")
-  
-#| END |#
-`;
+const initialContent = '';
 
 const slice = createSlice({
   name: 'editor',
