@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.bootstrap5.app')
 
 @section('content')
 <div class="row">
