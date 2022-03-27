@@ -37,15 +37,15 @@
 </head>
 <body  class="min-vh-100 d-flex flex-column">
     @include('layouts.bootstrap5._nav')
-    <div class='flex-grow-1'>
-        <main class='my-4'>
+  
+        <main class='flex-grow-1 my-4'>
             <div class="container mb-3">
                 @include('layouts.bootstrap5._flash')
                 {{-- @include('flash::message')--}}
                 @yield('content')
             </div>
         </main>
-    </div>
+ 
   
     @include('layouts.bootstrap5._footer')
     @livewireScripts
