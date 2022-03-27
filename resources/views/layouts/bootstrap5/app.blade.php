@@ -30,17 +30,23 @@
     >
     @stack('styles')
     <link href="{{ mix('css/_custom.css') }}" rel="stylesheet">
-    {{--<link href="{{ mix('css/app.css') }}" rel="stylesheet">--}}
+    <!-- {{--<link href="{{ mix('css/app.css') }}" rel="stylesheet">--}} -->
+    <link href="{{ mix('css/app.css') }}" rel="stylesheet">
     @includeWhen(app()->environment('production'), 'layouts.deps._gtm_body')
     @includeWhen(app()->environment('production'), 'layouts.deps._metrika')
 </head>
-<body>
+<body  class="min-vh-100 d-flex flex-column">
     @include('layouts.bootstrap5._nav')
-    <div class="container-xl mt-n2 mb-4">
-        @include('layouts.bootstrap5._flash')
-        {{-- @include('flash::message')--}}
-        @yield('content')
-    </div>
+  
+        <main class='flex-grow-1 my-4'>
+            <div class="container mb-3">
+                @include('layouts.bootstrap5._flash')
+                {{-- @include('flash::message')--}}
+                @yield('content')
+            </div>
+        </main>
+ 
+  
     @include('layouts.bootstrap5._footer')
     @livewireScripts
     {{--<script src="{{ mix('js/app.js') }}" defer></script>--}}
