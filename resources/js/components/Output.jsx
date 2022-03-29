@@ -1,10 +1,8 @@
-// @ts-check
-/* eslint-disable react/no-danger */
-
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { Alert } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
+import Highlight from './Highlight';
 
 const statusToTypeMap = {
   success: 'success',
@@ -27,11 +25,9 @@ const Output = () => {
       <Alert variant={alertClassName}>
         {message}
       </Alert>
-      <pre>
-        <code>
-          {output}
-        </code>
-      </pre>
+      <Highlight>
+        {output}
+      </Highlight>
     </div>
   );
 };
