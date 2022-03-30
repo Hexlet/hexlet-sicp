@@ -2,7 +2,8 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { Alert } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
-import Highlight from './Highlight';
+import Highlight from 'react-syntax-highlighter';
+import { vs } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 
 const statusToTypeMap = {
   success: 'success',
@@ -25,7 +26,7 @@ const Output = () => {
       <Alert variant={alertClassName}>
         {message}
       </Alert>
-      <Highlight>
+      <Highlight language="vbnet" style={vs} showLineNumbers>
         {output}
       </Highlight>
     </div>
