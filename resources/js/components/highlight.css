@@ -1,0 +1,10 @@
+.hljs-ln {
+  color: #ccc;
+  border-right: 1px solid #999;
+  padding-right: 5px;
+  user-select: none;
+}
+
+.hljs-line {
+  padding-left: 10px;
+}
