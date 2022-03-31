@@ -7,8 +7,8 @@ const Tests = () => {
   const { hasTests, testCode } = useSelector((state) => state.exerciseInfo);
 
   return hasTests ? (
-    <div className="d-flex flex-column h-100">
-      <Highlight language="scheme" style={vs} showLineNumbers>
+    <div className="d-flex h-100">
+      <Highlight className="h-100" language="scheme" style={vs} showLineNumbers>
         {testCode}
       </Highlight>
     </div>

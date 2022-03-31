@@ -22,11 +22,11 @@ const Output = () => {
 
   const alertClassName = `${statusToTypeMap[resultStatus]}`;
   return (
-    <div className="h-100">
-      <Alert variant={alertClassName}>
+    <div className="d-flex flex-column h-100">
+      <Alert className="m-3" variant={alertClassName}>
         {message}
       </Alert>
-      <Highlight language="vbnet" style={vs} showLineNumbers>
+      <Highlight className="flex-grow-1 m-0" language="vbnet" style={vs} showLineNumbers>
         {output}
       </Highlight>
     </div>
