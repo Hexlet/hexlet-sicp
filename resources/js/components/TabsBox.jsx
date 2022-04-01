@@ -26,7 +26,7 @@ const TabsBox = () => {
   };
 
   return (
-    <Tab.Container activeKey={currentTab} onSelect={changeActiveTab} className="card-body">
+    <Tab.Container activeKey={currentTab} onSelect={changeActiveTab}>
       <Nav variant="tabs" className="justify-content-center">
         {Object.values(tabNames).map((tabName) => (
           <Nav.Item key={tabName}>

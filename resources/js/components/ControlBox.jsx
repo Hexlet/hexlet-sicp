@@ -45,9 +45,19 @@ const ControlBox = () => {
   };
 
   const isEditorEmpty = (editorInstance) => !editorInstance.content.trim();
+  const saveContent = async () => {
+    console.log('saved');
+  };
 
   return (
-    <div className="d-flex py-2 w-100 justify-content-end card-footer py-3">
+    <div className="d-flex justify-content-between">
+      <Button
+        variant="success"
+        onClick={saveContent}
+        disabled={isSending}
+      >
+        {t('save')}
+      </Button>
       <Button
         variant="primary"
         onClick={runCheck}
