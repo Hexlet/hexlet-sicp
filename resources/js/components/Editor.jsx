@@ -11,7 +11,6 @@ import 'codemirror/addon/scroll/simplescrollbars.css';
 import 'codemirror/addon/scroll/simplescrollbars.js';
 import 'codemirror/addon/edit/closebrackets.js';
 import 'codemirror/addon/edit/matchbrackets.js';
-
 import 'codemirror/mode/scheme/scheme.js';
 import 'codemirror/keymap/sublime.js';
 
@@ -36,6 +35,7 @@ const Editor = () => {
   }, [focusesCount, editor]);
 
   const onMount = (self) => {
+    self.setSize('100%', '100%');
     setEditor(self);
   };
 

@@ -44,12 +44,14 @@ const ControlBox = () => {
     }
   };
 
+  const isEditorEmpty = (editorInstance) => !editorInstance.content.trim();
+
   return (
     <div className="d-flex py-2 w-100 justify-content-end card-footer py-3">
       <Button
         variant="primary"
         onClick={runCheck}
-        disabled={isSending}
+        disabled={isSending || isEditorEmpty(editor)}
       >
         {t('run')}
       </Button>
