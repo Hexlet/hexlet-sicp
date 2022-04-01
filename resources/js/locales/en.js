@@ -10,6 +10,10 @@ export default {
       withTemplate: 'Write your solution here',
       withoutTemplate: 'This exercise has no tests.\nAny solution is a right answer.',
     },
+    tooltip: {
+      loginRequired: 'Authentication required.',
+      impossible: 'Impossible to save now.',
+    },
     message: {
       success: 'Great job! Don\'t forget to save your solution.',
       failure: 'Failed to verify the solution.',

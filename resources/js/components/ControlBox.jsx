@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Button } from 'react-bootstrap';
+import { Button, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 import { useTranslation } from 'react-i18next';
@@ -44,20 +44,57 @@ const ControlBox = () => {
     }
   };
 
+  const saveSolution = async () => {
+    // TODO add response handling
+    // setIsSending(true);
+    // const url = routes.saveSolutionPath(exerciseId);
+    // const data = {
+    //   user_id: userId,
+    //   solution_code: editor.content,
+    // };
+    // try {
+    //   const response = await axios.post(url, data);
+
+    // } catch (error) {
+    //   console.log(error.message);
+    // } finally {
+    //   setIsSending(false);
+    // }
+    console.log('Coming soon...');
+  };
+
   const isEditorEmpty = (editorInstance) => !editorInstance.content.trim();
-  const saveContent = async () => {
-    console.log('saved');
+
+  const renderSaveButton = () => {
+    const isDisabled = () => isSending || isEditorEmpty(editor) || !userId;
+    const tooltip = !userId ? t('tooltip.loginRequired') : t('tooltip.impossible');
+    return isDisabled()
+      ? (
+        <OverlayTrigger overlay={<Tooltip id="tooltip-disabled">{tooltip}</Tooltip>}>
+          <span className="d-inline-block">
+            <Button
+              variant="success"
+              style={{ pointerEvents: 'none' }}
+              disabled
+            >
+              {t('save')}
+            </Button>
+          </span>
+        </OverlayTrigger>
+      )
+      : (
+        <Button
+          variant="success"
+          onClick={saveSolution}
+        >
+          {t('save')}
+        </Button>
+      );
   };
 
   return (
     <div className="d-flex justify-content-between">
-      <Button
-        variant="success"
-        onClick={saveContent}
-        disabled={isSending}
-      >
-        {t('save')}
-      </Button>
+      {renderSaveButton()}
       <Button
         variant="primary"
         onClick={runCheck}
