@@ -13,4 +13,5 @@
 Route::namespace('Api')->name('api.')->group(function (): void {
     Route::resource('exercises', 'ExerciseController')->only(['show']);
     Route::resource('exercises.check', 'Exercise\CheckController')->only(['store']);
+    Route::resource('exercises.solutions', 'Exercise\SaveSolutionController')->only(['store']);
 });
