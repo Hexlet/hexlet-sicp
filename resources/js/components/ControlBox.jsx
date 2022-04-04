@@ -7,6 +7,7 @@ import UserIdContext from '../context/UserIdContext';
 import ExerciseIdContext from '../context/ExerciseIdContext.js';
 import routes from '../common/routes.js';
 import { handleNewCheckResult } from '../slices/checkResultSlice';
+import { showNotification } from '../slices/notificationSlice';
 
 const ControlBox = () => {
   const { t } = useTranslation();
@@ -45,22 +46,23 @@ const ControlBox = () => {
   };
 
   const saveSolution = async () => {
-    // TODO add response handling
-    // setIsSending(true);
-    // const url = routes.saveSolutionPath(exerciseId);
-    // const data = {
-    //   user_id: userId,
-    //   solution_code: editor.content,
-    // };
-    // try {
-    //   const response = await axios.post(url, data);
-
-    // } catch (error) {
-    //   console.log(error.message);
-    // } finally {
-    //   setIsSending(false);
-    // }
-    console.log('Coming soon...');
+    setIsSending(true);
+    const url = routes.saveSolutionPath(exerciseId);
+    const data = {
+      user_id: userId,
+      solution_code: editor.content,
+    };
+    try {
+      const response = await axios.post(url, data);
+      const { protocol, host } = document.location;
+      const message = `${t('solution.saved')}: ${protocol}//${host}/solutions/${response.data.save_result.id}`;
+      dispatch(showNotification({ style: 'success', content: message }));
+    } catch (error) {
+      const message = t('solution.saveFailed');
+      dispatch(showNotification({ style: 'danger', content: message }));
+    } finally {
+      setIsSending(false);
+    }
   };
 
   const isEditorEmpty = (editorInstance) => !editorInstance.content.trim();
