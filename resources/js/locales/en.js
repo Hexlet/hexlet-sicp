@@ -14,6 +14,10 @@ export default {
       loginRequired: 'Authentication required.',
       impossible: 'Impossible to save now.',
     },
+    solution: {
+      saved: 'Solution saved',
+      saveFailed: 'Failed to save solution.',
+    },
     message: {
       success: 'Great job! Don\'t forget to save your solution.',
       failure: 'Failed to verify the solution.',

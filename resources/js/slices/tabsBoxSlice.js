@@ -4,6 +4,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import tabNames from '../common/tabNamesMap.js';
 import { handleNewCheckResult } from './checkResultSlice.js';
+import { showNotification } from './notificationSlice.js';
 
 const slice = createSlice({
   name: 'tabsBox',
@@ -18,6 +19,9 @@ const slice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(handleNewCheckResult, (state) => {
+        state.currentTab = tabNames.output;
+      })
+      .addCase(showNotification, (state) => {
         state.currentTab = tabNames.output;
       });
   },

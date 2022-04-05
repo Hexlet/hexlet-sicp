@@ -13,22 +13,41 @@ const statusToTypeMap = {
 const Output = () => {
   const { t } = useTranslation();
   const { resultStatus, output } = useSelector((state) => state.checkResult);
-
-  if (resultStatus === 'idle') {
-    return null;
-  }
+  const { show, style, content } = useSelector((state) => state.notification);
 
   const message = t(`message.${resultStatus}`);
 
   const alertClassName = `${statusToTypeMap[resultStatus]}`;
+
+  const renderNotification = () => (
+    show
+      ? (
+        <Alert className="mt-3 mx-3 mb-0" variant={style}>
+          {content}
+        </Alert>
+      )
+      : null
+  );
+
+  const renderOutput = () => (
+    resultStatus === 'idle'
+      ? null
+      : (
+        <>
+          <Alert className="m-3" variant={alertClassName}>
+            {message}
+          </Alert>
+          <Highlight className="flex-grow-1 m-0" language="vbnet" style={vs} showLineNumbers>
+            {output}
+          </Highlight>
+        </>
+      )
+  );
+
   return (
     <div className="d-flex flex-column h-100">
-      <Alert className="m-3" variant={alertClassName}>
-        {message}
-      </Alert>
-      <Highlight className="flex-grow-1 m-0" language="vbnet" style={vs} showLineNumbers>
-        {output}
-      </Highlight>
+      {renderNotification()}
+      {renderOutput()}
     </div>
   );
 };
