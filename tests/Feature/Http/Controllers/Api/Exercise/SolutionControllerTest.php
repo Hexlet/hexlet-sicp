@@ -10,7 +10,7 @@ use Database\Seeders\ExercisesTableSeeder;
 use Database\Seeders\SolutionsTableSeeder;
 use Tests\ControllerTestCase;
 
-class SaveSolutionControllerTest extends ControllerTestCase
+class SolutionControllerTest extends ControllerTestCase
 {
 
     public function setUp(): void
@@ -25,7 +25,7 @@ class SaveSolutionControllerTest extends ControllerTestCase
         $this->actingAs($this->user);
     }
 
-    public function testSave(): void
+    public function testStore(): void
     {
         $exercise = Exercise::wherePath('1.3')->first();
         $path = route('api.exercises.solutions.store', [$exercise]);

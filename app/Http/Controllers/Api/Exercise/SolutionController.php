@@ -10,7 +10,7 @@ use App\Services\ExerciseService;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
-class SaveSolutionController extends Controller
+class SolutionController extends Controller
 {
     public function store(Exercise $exercise, Request $request, ExerciseService $exerciseService): Response
     {
