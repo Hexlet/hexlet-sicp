@@ -16,7 +16,7 @@
         <div class="col-12 col-md-4 mb-2">
             <ul class="nav nav-pills flex-column sticky-top x-z-index-0" role="tablist">
                 @foreach($exercisesGroups->keys() as $rootChapterPath)
-                    <li class="nav-item ">
+                    <li class="nav-item">
                         <a class="nav-link {{ $rootChapterPath === 1 ? 'active' : '' }}"
                             id="subChapters{{ $rootChapterPath }}-tab"
                             href="#subChapters{{ $rootChapterPath }}" data-toggle="tab" role="tab"
