@@ -6,17 +6,17 @@
 <div class="card">
         <ul class="justify-content-center flex-shrink-0 nav nav-tabs" id="editor-tab" role="tablist">
             <li class="nav-item" role="presentation">
-                <a class="nav-link rounded-0 active" id="editor-home-tab" data-toggle="tab" href="#editor" role="tab" aria-controls="editor" aria-selected="true">
+                <a class="nav-link rounded-0 active" id="editor-home-tab" data-bs-toggle="tab" href="#editor" role="tab" aria-controls="editor" aria-selected="true">
                     {{ __('exercise.show.editor-tab') }}
                 </a>
             </li>
             <li class="nav-item" role="presentation">
-                <a class="nav-link rounded-0" id="editor-tests-tab" data-toggle="tab" href="#editor-tests" role="tab" aria-controls="editor-tests" aria-selected="false">
+                <a class="nav-link rounded-0" id="editor-tests-tab" data-bs-toggle="tab" href="#editor-tests" role="tab" aria-controls="editor-tests" aria-selected="false">
                     {{ __('exercise.show.tests-tab') }}
                 </a>
             </li>
             <li class="nav-item" role="presentation">
-                <a class="nav-link rounded-0" id="editor-contact-tab" data-toggle="tab" href="#editor-output" role="tab" aria-controls="editor-output" aria-selected="false">
+                <a class="nav-link rounded-0" id="editor-contact-tab" data-bs-toggle="tab" href="#editor-output" role="tab" aria-controls="editor-output" aria-selected="false">
                     {{ __('exercise.show.output-tab') }}
                 </a>
             </li>
