@@ -7,7 +7,6 @@ use Tests\ControllerTestCase;
 
 class AccountControllerTest extends ControllerTestCase
 {
-
     protected function setUp(): void
     {
         parent::setUp();

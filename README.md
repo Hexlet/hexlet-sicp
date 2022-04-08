@@ -28,9 +28,9 @@ A: Сбросить кеш конфига `php artisan config:clear`
 
 Проверить зависимости PHP можно командой `composer check-platform-reqs`
 
-* PHP ^8.0
+* PHP ^8.1
 * Composer
-* Node.js (v14+) & NPM (6+)
+* Node.js (v16+) & NPM (6+)
 * SQLite for local, PostgreSQL for production
 * Heroku cli ([_Как развернуть приложение Laravel на Heroku_](https://ru.hexlet.io/blog/posts/kak-razvernut-prilozhenie-laravel-na-heroku))
 

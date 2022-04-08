@@ -4,7 +4,6 @@ namespace Tests\Feature\Http\Controllers\Api\Exercise;
 
 use App\Models\Exercise;
 use App\Models\Solution;
-use App\Services\ExerciseService;
 use Database\Seeders\ChaptersTableSeeder;
 use Database\Seeders\ExercisesTableSeeder;
 use Database\Seeders\SolutionsTableSeeder;
@@ -12,7 +11,6 @@ use Tests\ControllerTestCase;
 
 class SolutionControllerTest extends ControllerTestCase
 {
-
     public function setUp(): void
     {
         parent::setUp();

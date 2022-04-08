@@ -1,6 +1,6 @@
 @foreach (session('flash_notification', collect())->toArray() as $message)
     @if ($message['overlay'])
-        @include('flash::modal', [
+        @include('vendor.flash.modal', [
             'modalClass' => 'flash-modal',
             'title'      => $message['title'],
             'body'       => $message['message']
