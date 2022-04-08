@@ -1,5 +1,7 @@
 import React, { useContext, useState } from 'react';
-import { Button, OverlayTrigger, Tooltip } from 'react-bootstrap';
+import {
+  Button, OverlayTrigger, Tooltip, Spinner,
+} from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 import { useTranslation } from 'react-i18next';
@@ -15,6 +17,7 @@ const ControlBox = () => {
   const userId = useContext(UserIdContext);
   const exerciseId = useContext(ExerciseIdContext);
   const [isSending, setIsSending] = useState(false);
+  const [isSaving, setIsSaving] = useState(false);
   const dispatch = useDispatch();
 
   const runCheck = async () => {
@@ -46,7 +49,7 @@ const ControlBox = () => {
   };
 
   const saveSolution = async () => {
-    setIsSending(true);
+    setIsSaving(true);
     const url = routes.saveSolutionPath(exerciseId);
     const data = {
       user_id: userId,
@@ -61,14 +64,14 @@ const ControlBox = () => {
       const message = t('solution.saveFailed');
       dispatch(showNotification({ style: 'danger', content: message }));
     } finally {
-      setIsSending(false);
+      setIsSaving(false);
     }
   };
 
   const isEditorEmpty = (editorInstance) => !editorInstance.content.trim();
 
   const renderSaveButton = () => {
-    const isDisabled = () => isSending || isEditorEmpty(editor) || !userId;
+    const isDisabled = () => isSaving || isEditorEmpty(editor) || !userId;
     const tooltip = !userId ? t('tooltip.loginRequired') : t('tooltip.impossible');
     return isDisabled()
       ? (
@@ -79,7 +82,7 @@ const ControlBox = () => {
               style={{ pointerEvents: 'none' }}
               disabled
             >
-              {t('save')}
+              {isSaving ? <Spinner animation="border" role="status" variant="light" size="sm" /> : t('save')}
             </Button>
           </span>
         </OverlayTrigger>
@@ -102,7 +105,7 @@ const ControlBox = () => {
         onClick={runCheck}
         disabled={isSending || isEditorEmpty(editor)}
       >
-        {t('run')}
+        {isSending ? <Spinner animation="border" role="status" variant="light" size="sm" /> : t('run')}
       </Button>
     </div>
   );
