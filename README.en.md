@@ -30,9 +30,9 @@ A: Reset your config cache `php artisan config:clear`
 
 Run `composer check-platform-reqs` to check PHP deps:
 
-* PHP ^8.0
+* PHP ^8.1
 * Composer
-* Node.js (v14+) & NPM (6+)
+* Node.js (v16+) & NPM (6+)
 * SQLite for local, PostgreSQL for production
 * [heroku cli](https://devcenter.heroku.com/articles/heroku-cli#download-and-install); [How to deploy Laravel on Heroku](https://ru.hexlet.io/blog/posts/kak-razvernut-prilozhenie-laravel-na-heroku) (in Russian)
 
@@ -150,7 +150,7 @@ If deployed on Heroku, set the environment variables for your deploy. To set env
 
 ### Setting up a testing database
 
-1. Create a separate Postgres database.  
+1. Create a separate Postgres database.
    Connection settings are available in the `pgsql_test` section of `config/database.php`.
    How to set up a test database from scratch:
 
