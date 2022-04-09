@@ -15,6 +15,8 @@
 
     <title>@yield('title', __('layout.title.name'))</title>
 
+    <!-- Scripts -->
+    <script src="{{ mix('js/app.js') }}" defer></script>
     @livewireStyles
     @includeWhen(app()->environment('production'), 'layouts.deps._gtm_head')
 
@@ -23,39 +25,30 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 
     <!-- Styles -->
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-          rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-          crossorigin="anonymous"
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+        crossorigin="anonymous"
     >
     @stack('styles')
-    <link href="{{ mix('css/_custom.css') }}" rel="stylesheet">
-    <!-- {{--<link href="{{ mix('css/app.css') }}" rel="stylesheet">--}} -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+    <link href="{{ mix('css/_custom.css') }}" rel="stylesheet">
     @includeWhen(app()->environment('production'), 'layouts.deps._gtm_body')
     @includeWhen(app()->environment('production'), 'layouts.deps._metrika')
 </head>
 <body  class="min-vh-100 d-flex flex-column">
     @include('layouts.bootstrap5._nav')
-
-        <main class='flex-grow-1 my-4'>
-            <div class="container mb-3">
-                @include('layouts.bootstrap5._flash')
-                {{-- @include('flash::message')--}}
-                @yield('content')
-            </div>
-        </main>
-
-
+    <main class='flex-grow-1 my-4'>
+        <div class="container mb-3">
+            @include('flash::message')
+            @yield('content')
+        </div>
+    </main>
     @include('layouts.bootstrap5._footer')
     @livewireScripts
-    {{--<script src="{{ mix('js/app.js') }}" defer></script>--}}
+    <script src="{{ mix('js/app.js') }}" defer></script>
     <script src="{{ mix('js/editor.js') }}" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-            crossorigin="anonymous">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/rails-ujs@5.2.6/lib/assets/compiled/rails-ujs.min.js"></script>
     <script src="{{ mix('js/hljs.js')}}"></script>
     <script src="{{ mix('js/font-awesome.js') }}" defer></script>
     @stack('scripts')
