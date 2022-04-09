@@ -13,15 +13,17 @@
         </a>
         <br>
         @if($chapter->exercises->isNotEmpty())
-        <a data-toggle="collapse"
-           href="#collapse{{ $chapter->id }}"
-           aria-expanded="false"
-           aria-controls="collapse{{ $chapter->id }}">
+        <a
+            data-bs-toggle="collapse"
+            href="#collapse{{ $chapter->id }}"
+            aria-expanded="false"
+            aria-controls="collapse{{ $chapter->id }}"
+        >
             <small>{{ __('exercise.show.exercises') }}</small>
         </a>
-        <ul class="collapse list-group" id="collapse{{ $chapter->id }}">
+        <ul class="collapse list-unstyled" id="collapse{{ $chapter->id }}">
             @foreach($chapter->exercises as $exercise)
-            <li class="list-group-item p-1">
+            <li>
                 <i class="fas fa-dumbbell"></i>
                 <a href="{{ route('exercises.show', [$exercise]) }}">
                     {{ getFullExerciseTitle($exercise) }}
