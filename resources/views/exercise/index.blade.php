@@ -1,4 +1,4 @@
-@extends('layouts.bootstrap5.app')
+@extends('layouts..app')
 @php
 /**
  * @var \Illuminate\Support\Collection|\Illuminate\Support\Collection[] $exercisesGroups

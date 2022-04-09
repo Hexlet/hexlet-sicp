@@ -1,4 +1,4 @@
-@extends('layouts.bootstrap5.app')
+@extends('layouts..app')
 @section('description'){{ __('about.description') }}@endsection
 @section('content')
 <h1 class="my-4">{{ __('about.title') }}</h1>

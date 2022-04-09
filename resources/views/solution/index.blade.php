@@ -1,4 +1,4 @@
-@extends('layouts.bootstrap5.app')
+@extends('layouts..app')
 @php
 /**
  * @var \App\Models\Solution[]|\Illuminate\Support\Collection $solutions

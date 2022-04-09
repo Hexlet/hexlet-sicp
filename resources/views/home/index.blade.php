@@ -1,4 +1,4 @@
-@extends('layouts.bootstrap5.app')
+@extends('layouts..app')
 @php
 /** @var \Illuminate\Support\Collection|\App\Models\Activity[] $logItems */
 /** @var \Illuminate\Support\Collection|\App\Models\Comment[] $comments */
@@ -91,7 +91,7 @@
                     @case('removed')
                     @case('added')
                         <div class="d-block">
-                            <a data-toggle="collapse"
+                            <a data-bs-toggle="collapse"
                                href="#collapseExp{{ $logItem->id }}"
                                aria-expanded="false"
                                aria-controls="collapseExp{{ $logItem->id }}">

@@ -1,4 +1,4 @@
-@extends('layouts.bootstrap5.app')
+@extends('layouts..app')
 @php
     /**
      * @var \App\Models\Exercise $exercise
@@ -46,8 +46,8 @@
                                 <a class="text-muted"
                                    target="_blank"
                                    href="{{ getExerciseOriginLink($exercise) }}"
-                                   data-toggle="tooltip"
-                                   data-placement="right"
+                                   data-bs-toggle="tooltip"
+                                   data-bs-placement="right"
                                    title="{{ __('layout.common.origin') }}">
                                     <i class="fas fa-external-link-alt"></i>
                                 </a>
@@ -76,8 +76,8 @@
                                         @include('exercise._modal.completed_by')
                                         <button type="button"
                                                 class="btn btn-primary"
-                                                data-toggle="modal"
-                                                data-target="#modal-completed-by">
+                                                data-bs-toggle="modal"
+                                                data-bs-target="#modal-completed-by">
                                             {{ __('exercise.show.who_completed') }}
                                         </button>
                                     @endif
@@ -107,4 +107,8 @@
       const locale = "{{ LaravelLocalization::getCurrentLocale() }}";
       window.sicpEditorData = { userId, exerciseId, locale };
     </script>
+
+    @push('scripts')
+    <script src="{{ mix('js/editor.js') }}" defer></script>
+    @endpush
 @endsection

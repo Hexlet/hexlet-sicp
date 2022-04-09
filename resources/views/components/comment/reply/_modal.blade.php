@@ -4,7 +4,7 @@
             {{ BsForm::open(route('comments.store')) }}
             <div class="modal-header">
                 <h5 class="modal-title">{{ __('comment.reply_to_comment') }}</h5>
-                <button type="button" class="close" data-dismiss="modal">
+                <button type="button" class="close" data-bs-dismiss="modal">
                     <span>&times;</span>
                 </button>
             </div>
@@ -16,7 +16,7 @@
             </div>
             <div class="modal-footer text-left">
                 {{ BsForm::submit(__('comment.reply'))->attribute('class', 'btn btn-success btn-sm text-uppercase') }}
-                {{ Form::button(__('comment.cancel'), ['class' => 'btn btn-secondary btn-sm text-uppercase  mr-auto', 'data-dismiss' => 'modal']) }}
+                {{ Form::button(__('comment.cancel'), ['class' => 'btn btn-secondary btn-sm text-uppercase  mr-auto', 'data-bs-dismiss' => 'modal']) }}
             </div>
             {{ BsForm::close() }}
         </div>
