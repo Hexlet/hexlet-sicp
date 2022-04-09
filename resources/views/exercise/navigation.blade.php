@@ -1,6 +1,6 @@
 <ul class="nav nav-tabs nav-fill rounded border-bottom-0 x-bg-gray-200 p-2 mb-4">
     <li class="nav-item mb-0">
-        <a class="nav-link rounded border-0 {{ isActiveRoute('exercises.index') ? 'active' : '' }}" href="{{ route('exercises.index') }}">
+        <a href="{{ route('exercises.index') }}" @class(['nav-link', 'rounded', 'border-0', 'active' => isActiveRoute('exercises.index')]) >
             {{ __('layout.nav.exercises') }}
         </a>
     </li>
