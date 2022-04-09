@@ -13,7 +13,7 @@
         >
             {!! $message['message'] !!}
             @if($message['important'])
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             @endif

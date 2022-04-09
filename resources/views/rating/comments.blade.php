@@ -1,4 +1,4 @@
-@extends('layouts.bootstrap5.app')
+@extends('layouts..app')
 @section('description'){{ __('rating.comments.description') }}@endsection
 @section('content')
     <div class="my-4">
