@@ -1,5 +1,4 @@
 import { Modal } from 'bootstrap';
-import axios from 'axios';
 
 const ctrlEnterHandler = (event) => {
   if (event.keyCode === 13 && event.ctrlKey) {
@@ -20,18 +19,7 @@ const ctrlEnterHandler = (event) => {
     btn.addEventListener('click', async () => {
       const textarea = document.getElementById('correctionModalTextarea');
 
-      console.log(textarea.value);
-
-      try {
-        await axios.post('https://hexlet-correction.herokuapp.com/api/workspaces/Title/typos', {}, {
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: 'Token e0b71e21-0bf8-49f3-a990-7d08bbe65170',
-          },
-        });
-      } catch (err) {
-        console.log(err.message);
-      }
+      console.log('selection: ', textarea.value);
 
       modal.hide();
     });
