@@ -4,7 +4,6 @@ const ctrlEnterHandler = (event) => {
   if (event.keyCode === 13 && event.ctrlKey) {
     const selection = document.getSelection();
     const location = window.location.href;
-
     const modal = new Modal(document.getElementById('correctionModal'));
 
     const incorrectTextField = document.querySelector('.incorrectText');
