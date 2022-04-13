@@ -23,14 +23,7 @@ const ctrlEnterHandler = (event) => {
       console.log(textarea.value);
 
       try {
-        await axios.post('https://hexlet-correction.herokuapp.com/api/workspaces/Title/typos', {
-          // "pageUrl": "https://site.com/",
-          // "reporterName": "reporterName",
-          // "reporterComment": "reporterComment",
-          // "textBeforeTypo": "textBeforeTypo",
-          // "textTypo": "textTypo",
-          // "textAfterTypo": "textAfterTypo"
-        }, {
+        await axios.post('https://hexlet-correction.herokuapp.com/api/workspaces/Title/typos', {}, {
           headers: {
             'Content-Type': 'application/json',
             Authorization: 'Token e0b71e21-0bf8-49f3-a990-7d08bbe65170',
