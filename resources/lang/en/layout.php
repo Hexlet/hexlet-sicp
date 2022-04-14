@@ -61,4 +61,11 @@ return [
         'origin' => 'Go to origin',
         'save' => 'Save',
     ],
+    'modal' => [
+        'title' => 'Report a mistake on the page',
+        'body' => 'There is a mistake in the following text:',
+        'question' => 'Do you want to send a notice to a webmaster?',
+        'button_cancel' => 'Cancel',
+        'button_send' => 'Send',
+    ],
 ];

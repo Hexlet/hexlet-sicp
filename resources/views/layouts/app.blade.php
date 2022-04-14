@@ -38,20 +38,20 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h3 class="modal-title" id="correctionModal">Сообщите об ошибке на странице</h3>
+            <h3 class="modal-title" id="correctionModal">{{ __('layout.modal.title') }}</h3>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <b>Ошибка содержится в следующем тексте:</b>
+            <b>{{ __('layout.modal.body') }}</b>
             <p class="incorrectText p-4 my-3 bg-light"></p>
             <div class="my-3">
               <textarea class="form-control" id="correctionModalTextarea" rows="3"></textarea>
             </div>
-            <b>Отправить сообщение об ошибке редактору сайта?</b>
+            <b>{{ __('layout.modal.question') }}</b>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
-            <button type="button" class="btn btn-primary" id="correctionModalSendButton">Отправить</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ __('layout.modal.button_cancel') }}</button>
+            <button type="button" class="btn btn-primary" id="correctionModalSendButton">{{ __('layout.modal.button_send') }}</button>
           </div>
         </div>
       </div>
