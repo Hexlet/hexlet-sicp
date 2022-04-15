@@ -30,4 +30,4 @@ const correctionListener = () => {
   document.addEventListener('keydown', ctrlEnterHandler);
 };
 
-correctionListener();
+export default correctionListener;
