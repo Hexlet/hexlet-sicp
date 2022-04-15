@@ -34,6 +34,29 @@
     @includeWhen(app()->environment('production'), 'layouts.deps._metrika')
 </head>
 <body  class="min-vh-100 d-flex flex-column">
+    <div class="modal fade" id="correctionModal" tabindex="-1" aria-labelledby="correctionModal" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3 class="modal-title" id="correctionModal">{{ __('layout.modal.title') }}</h3>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <b>{{ __('layout.modal.body') }}</b>
+            <p class="incorrectText p-4 my-3 bg-light"></p>
+            <div class="my-3">
+              <textarea class="form-control" id="correctionModalTextarea" rows="3"></textarea>
+            </div>
+            <b>{{ __('layout.modal.question') }}</b>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ __('layout.modal.button_cancel') }}</button>
+            <button type="button" class="btn btn-primary" id="correctionModalSendButton">{{ __('layout.modal.button_send') }}</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     @include('layouts._nav')
     <main class='flex-grow-1 my-4'>
         <div class="container mb-3">
