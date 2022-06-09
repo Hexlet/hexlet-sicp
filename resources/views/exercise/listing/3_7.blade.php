@@ -27,6 +27,6 @@
     {{ __('exercises/3_7.description.12') }}
     <code>rosebud</code>
     {{ __('exercises/3_7.description.13') }}
-    <a title="3.3" href="{{ route('exercises.show', ($exercise->id - 4)) }}">3.3</a>
+    <a title="3.3" href="{{ route('exercises.show', getExercise('3.3')) }}">3.3</a>
     {{ __('exercises/3_7.description.14') }}
 </p>
