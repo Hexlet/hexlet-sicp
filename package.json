@@ -54,6 +54,6 @@
     "simple-git-hooks": "^2.7.0"
   },
   "engines": {
-    "node": "16.x"
+    "node": "18.x"
   }
 }

@@ -1,3 +1,5 @@
+BUILD_ARGS:= --build-arg UID=$(shell id -u) --build-arg GID=$(shell id -u)
+
 compose: compose-clear compose-build compose-setup compose-start
 
 compose-start:
@@ -18,15 +20,14 @@ compose-clear:
 compose-logs:
 	docker-compose logs -f
 
-compose-setup:
-	docker-compose build
+compose-setup: compose-build
 	docker-compose run --rm application make setup
 
 compose-bash:
 	docker-compose run --rm application bash
 
 compose-build:
-	docker-compose build
+	docker-compose build ${BUILD_ARGS}
 
 compose-install: compose-app-install compose-frontend-install
 
@@ -61,7 +62,7 @@ compose-check:
 	docker-compose run --rm application make check
 
 ci:
-	docker-compose -f docker-compose.ci.yml -p hexlet-sicp-ci build
+	docker-compose -f docker-compose.ci.yml -p hexlet-sicp-ci build ${BUILD_ARGS}
 	docker-compose -f docker-compose.ci.yml -p hexlet-sicp-ci run application make setup
 	docker-compose -f docker-compose.ci.yml -p hexlet-sicp-ci up --abort-on-container-exit
 	docker-compose -f docker-compose.ci.yml -p hexlet-sicp-ci down -v --remove-orphans
