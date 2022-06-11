@@ -49,7 +49,6 @@ config-clear:
 	php artisan config:clear
 
 env-prepare:
-	ls -la
 	cp -n .env.example .env || true
 
 sqlite-prepare:
