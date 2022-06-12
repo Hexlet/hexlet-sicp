@@ -19,15 +19,18 @@ class RedirectIfProduction
     public function handle($request, Closure $next, $guard = null)
     {
         $productionUrl = config('app.production_url');
+        $productionHost = parse_url($productionUrl, PHP_URL_HOST);
+
         if (!app()->environment('production')) {
             return $next($request);
         }
 
-        if ($request->getSchemeAndHttpHost() === $productionUrl) {
+        if ($request->getHost() === $productionHost) {
             return $next($request);
         }
 
         $uri = $request->getRequestUri();
+
         return redirect()->to("{$productionUrl}{$uri}", 301);
     }
 }
