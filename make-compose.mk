@@ -29,6 +29,9 @@ compose-bash:
 compose-build:
 	docker-compose build ${BUILD_ARGS}
 
+compose-console:
+	docker-compose run --rm application make console
+
 compose-install: compose-app-install compose-frontend-install
 
 compose-app-install:

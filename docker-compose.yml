@@ -5,6 +5,7 @@ services:
     build: .
     volumes:
       - .:/app:delegated
+      - ~/.bash_history:/home/sicp/.bash_history:delegated
     ports:
       - "8000:8000"
     depends_on:
