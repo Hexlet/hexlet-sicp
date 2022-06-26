@@ -67,5 +67,7 @@ return [
         'question' => 'Do you want to send a notice to a webmaster?',
         'button_cancel' => 'Cancel',
         'button_send' => 'Send',
+        'guest' => 'Guest',
+        'network_error' => 'Network error',
     ],
 ];

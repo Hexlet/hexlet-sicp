@@ -42,10 +42,16 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
+          <p class="text-danger d-none" id="correctionModalFeedback">{{ __('layout.modal.network_error') }}</p>
             <b>{{ __('layout.modal.body') }}</b>
-            <p class="incorrectText p-4 my-3 bg-light"></p>
+            <p class="p-4 my-3 bg-light">
+                <span id="typoTextBefore"></span>
+                <mark id="typoText"></mark>
+                <span id="typoTextAfter"></span>
+            </p>
             <div class="my-3">
-              <textarea class="form-control" id="correctionModalTextarea" rows="3"></textarea>
+              <textarea class="form-control" id="correctionModalReporterComment" rows="3"></textarea>
+              <input type="hidden" id="correctionModalReporterName" value="{{ data_get(auth()->user(), 'name', __('layout.modal.guest')) }}">
             </div>
             <b>{{ __('layout.modal.question') }}</b>
           </div>
