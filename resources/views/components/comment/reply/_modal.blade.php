@@ -4,9 +4,7 @@
             {{ BsForm::open(route('comments.store')) }}
             <div class="modal-header">
                 <h5 class="modal-title">{{ __('comment.reply_to_comment') }}</h5>
-                <button type="button" class="close" data-bs-dismiss="modal">
-                    <span>&times;</span>
-                </button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body">
                 {{ Form::hidden('commentable_type', $comment->commentable_type) }}

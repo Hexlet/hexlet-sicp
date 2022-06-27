@@ -13,9 +13,7 @@
             {{ BsForm::open(route('comments.update', ['comment' => $comment]), ['method' => $method]) }}
             <div class="modal-header">
                 <h5 class="modal-title">{{ __($modalTitle) }}</h5>
-                <button type="button" class="close" data-bs-dismiss="modal">
-                    <span>&times;</span>
-                </button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body">
                 {{ Form::hidden('commentable_type', $comment->commentable_type) }}
