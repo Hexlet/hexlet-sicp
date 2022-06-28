@@ -20,7 +20,8 @@ class TypoController extends Controller
             'textAfterTypo' => 'nullable|string',
         ]);
 
-        $url = config('correction.url') . '/api/workspaces/hexlet-sicp/typos';
+        $baseUrl = config('correction.url');
+        $url = "{$baseUrl}/api/workspaces/hexlet-sicp/typos";
         $token = config('correction.token');
         $response = Http::withToken($token, 'Token')->post($url, $data);
 
