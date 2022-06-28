@@ -5,9 +5,7 @@
             <div class="modal-header">
                 <h4 class="modal-title"
                     id="completed-by-title">{{ __('exercise.show.completed_by') }}</h4>
-                <button type="button" class="close" data-bs-dismiss="modal" aria-label="{{ __('layout.common.close') }}">
-                    <span aria-hidden="true">×</span>
-                </button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="{{ __('layout.common.close') }}"></button>
             </div>
             <div class="modal-body">
                 <ul>
