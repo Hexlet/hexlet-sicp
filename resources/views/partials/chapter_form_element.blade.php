@@ -39,7 +39,7 @@
                    title="{{ __('exercise.remove_completed_exercise', ['exercise_path' => $exercise->path]) }}"
                    data-confirm="{{ __('exercise.remove_completed_exercise', ['exercise_path' => $exercise->path]) }}?"
                    data-method="delete">
-                    <i class="fa fa-check-square text-success"></i>
+                    <i class="bi bi-check"></i>
                 </a>
                 @else
                 <a href="{{ route('users.exercises.update', [$user, $exercise]) }}"
@@ -48,7 +48,7 @@
                    data-bs-placement="bottom"
                    title="{{ __('exercise.mark_exercise', ['exercise_path' => $exercise->path]) }}"
                    data-method="patch">
-                    <i class="far fa-square text-secondary"></i>
+                    <i class="bi bi-square"></i>
                 </a>
                 @endif
                 <a href="{{ route('exercises.show', [$exercise]) }}"

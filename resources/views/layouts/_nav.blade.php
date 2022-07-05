@@ -67,7 +67,7 @@
                         aria-expanded="false"
                         href="#"
                     >
-                        <i class="far fa-user"></i>
+                        <i class="bi bi-person fa-lg"></i>
                     </a>
                     <ul
                         class="dropdown-menu x-z-index-dropdown dropdown-menu-right"

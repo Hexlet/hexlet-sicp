@@ -15,14 +15,14 @@
         <div class="sticky-top col-md-12 d-flex justify-content-between">
             @if($previousExercise->exists)
             <a class="mr-auto text-decoration-none" href="{{ route('exercises.show', $previousExercise) }}">
-                <i class="fas fa-long-arrow-alt-left"></i>
+                <i class="bi bi-arrow-left"></i>
                 @lang('exercise.show.previous')
             </a>
             @endif
             @if($nextExercise->exists)
             <a class="ml-auto text-decoration-none" href="{{ route('exercises.show', $nextExercise) }}">
                 @lang('exercise.show.next')
-                <i class="fas fa-long-arrow-alt-right"></i>
+                <i class="bi bi-arrow-right"></i>
             </a>
             @endif
         </div>
@@ -49,7 +49,7 @@
                                    data-bs-toggle="tooltip"
                                    data-bs-placement="right"
                                    title="{{ __('layout.common.origin') }}">
-                                    <i class="fas fa-external-link-alt"></i>
+                                    <i class="bi bi-box-arrow-up-right"></i>
                                 </a>
                             </sup>
                         </h1>
