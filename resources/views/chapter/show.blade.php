@@ -41,7 +41,7 @@
                        data-bs-toggle="tooltip"
                        data-bs-placement="right"
                        title="{{ __('layout.common.origin') }}">
-                        <i class="fas fa-external-link-alt"></i>
+                        <i class="bi bi-box-arrow-up-right"></i>
                     </a>
                 </small>
             </h1>
@@ -74,7 +74,7 @@
                     @endforeach
                     {{ Form::hidden('chapters_id[]', $chapter->id) }}
                     <div class="form-group">
-                        {{ Form::button(($isCompletedChapter ? '<i class="fas fa-check"></i> ' : '')
+                        {{ Form::button(($isCompletedChapter ? '<i class="bi bi-check"></i> ' : '')
                             . __(sprintf('chapter.show.%s', $isCompletedChapter ? 'already_completed' : 'mark_read')),
                              ['type' => 'submit', 'class' => 'btn btn-success', 'disabled' => $isCompletedChapter]) }}
                     </div>
