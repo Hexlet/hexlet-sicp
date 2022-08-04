@@ -33,7 +33,7 @@ class UserChapterController extends Controller
 
         flash()->success(__('layout.flash.success'));
 
-        return redirect()->back();
+        return redirect()->route('my');
     }
 
     public function destroy(User $user, Chapter $chapter): RedirectResponse
@@ -43,6 +43,6 @@ class UserChapterController extends Controller
 
         flash()->success(__('layout.flash.success'));
 
-        return redirect()->back();
+        return redirect()->route('my');
     }
 }

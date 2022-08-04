@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts..app')
 @php
     /**
      * @var \App\Models\Chapter $chapter
@@ -9,7 +9,8 @@
      * @var bool $isCompletedChapter
      */
 @endphp
-@section('description'){{ __('chapter.chapter') }} {{ getChapterName($chapter->path) }} {{ __('chapter.show.description') }}@endsection
+@section('title'){{ $chapter->path }}. {{ getTitleContent(getChapterName($chapter->path)) }}@endsection
+@section('description')@foreach (Breadcrumbs::generate('chapter', $chapter) as $breadcrumb){{$breadcrumb->title}} / @endforeach @endsection
 @section('content')
     {{ Breadcrumbs::render('chapter', $chapter) }}
     <div class="row justify-content-center">
@@ -37,10 +38,10 @@
                     <a class="text-muted"
                        target="_blank"
                        href="{{ getChapterOriginLink($chapter) }}"
-                       data-toggle="tooltip"
-                       data-placement="right"
+                       data-bs-toggle="tooltip"
+                       data-bs-placement="right"
                        title="{{ __('layout.common.origin') }}">
-                        <i class="fas fa-external-link-alt"></i>
+                        <i class="bi bi-box-arrow-up-right"></i>
                     </a>
                 </small>
             </h1>
@@ -73,15 +74,15 @@
                     @endforeach
                     {{ Form::hidden('chapters_id[]', $chapter->id) }}
                     <div class="form-group">
-                        {{ Form::button(($isCompletedChapter ? '<i class="fas fa-check"></i> ' : '')
+                        {{ Form::button(($isCompletedChapter ? '<i class="bi bi-check"></i> ' : '')
                             . __(sprintf('chapter.show.%s', $isCompletedChapter ? 'already_completed' : 'mark_read')),
                              ['type' => 'submit', 'class' => 'btn btn-success', 'disabled' => $isCompletedChapter]) }}
                     </div>
                     @if ($isCompletedChapter)
                         <a href="{{ route('users.chapters.destroy', [$authUser, $chapter]) }}"
                            class="text-decoration-none"
-                           data-toggle="tooltip"
-                           data-placement="bottom"
+                           data-bs-toggle="tooltip"
+                           data-bs-placement="bottom"
                            data-confirm="{{ __('chapter.remove_completed_chapter', ['chapter_path' => $chapter->path]) }}"
                            data-method="delete">
                             <span class="pl-2">{{ __('layout.common.cancel') }}</span>
@@ -91,17 +92,15 @@
                 @endauth
                 @if ($chapter->users->isNotEmpty())
                     <br/>
-                    <button type="button" class="btn btn-primary" data-toggle="modal"
-                            data-target="#modalCart">{{ __('chapter.show.who_completed') }}</button>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                            data-bs-target="#modalCart">{{ __('chapter.show.who_completed') }}</button>
                     <div class="modal fade" id="modalCart" tabindex="-1" role="dialog"
                          aria-labelledby="completed-by-modal-title" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h4 class="modal-title" id="completed-by-modal-title">{{ __('chapter.show.completed_by') }}</h4>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="{{ __('layout.common.close') }}">
-                                        <span aria-hidden="true">×</span>
-                                    </button>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="{{ __('layout.common.close') }}"></button>
                                 </div>
                                 <div class="modal-body">
                                     <ul>
@@ -112,7 +111,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-outline-primary"
-                                            data-dismiss="modal">{{ __('layout.common.close') }}</button>
+                                            data-bs-dismiss="modal">{{ __('layout.common.close') }}</button>
                                 </div>
                             </div>
                         </div>

@@ -11,11 +11,11 @@ Read this in another language: [Русский](README.md)
 
 Hexlet SICP is a service for those studying the book Structure and Interpretation of Computer Programs. Track your progress and match yourself against others on the global leaderboard.
 
-[How to study _Structure and Interpretation of Computer Programs_ (SICP)](https://guides.hexlet.io/how-to-learn-sicp/) (in Russian)
+[How to study _Structure and Interpretation of Computer Programs_ (SICP)](https://guides.hexlet.io/how-to-learn-sicp/)
 
 ## For contributors
 
-* Discuss the project in #hexlet-volunteers on Slack: http://slack-ru.hexlet.io (in Russian)
+* Discuss the project in #hexlet-volunteers on Slack: http://slack.hexlet.io
 
 ### Recorded meetings
 
@@ -30,13 +30,13 @@ A: Reset your config cache `php artisan config:clear`
 
 Run `composer check-platform-reqs` to check PHP deps:
 
-* PHP ^8.0
+* PHP ^8.1
 * Composer
-* Node.js (v14+) & NPM (6+)
+* Node.js (v16+) & NPM (6+)
 * SQLite for local, PostgreSQL for production
 * [heroku cli](https://devcenter.heroku.com/articles/heroku-cli#download-and-install); [How to deploy Laravel on Heroku](https://ru.hexlet.io/blog/posts/kak-razvernut-prilozhenie-laravel-na-heroku) (in Russian)
 
-[What is a Version Manager?](https://guides.hexlet.io/version_managers/) (in Russian)
+[What is a Version Manager?](https://guides.hexlet.io/version-managers/)
 
 ## Setup
 
@@ -150,7 +150,7 @@ If deployed on Heroku, set the environment variables for your deploy. To set env
 
 ### Setting up a testing database
 
-1. Create a separate Postgres database.  
+1. Create a separate Postgres database.
    Connection settings are available in the `pgsql_test` section of `config/database.php`.
    How to set up a test database from scratch:
 
@@ -172,6 +172,6 @@ git config core.hooksPath .githooks
 
 ##
 
-[![Hexlet Ltd. logo](https://raw.githubusercontent.com/Hexlet/assets/master/images/hexlet_logo128.png)](https://ru.hexlet.io/pages/about?utm_source=github&utm_medium=link&utm_campaign=exercises-sicp)
+[![Hexlet Ltd. logo](https://raw.githubusercontent.com/Hexlet/assets/master/images/hexlet_logo128.png)](https://hexlet.io/?utm_source=github&utm_medium=link&utm_campaign=exercises-sicp)
 
-This repository is created and maintained by the team and the community of Hexlet, an educational project. [Read more about Hexlet (in Russian)](https://ru.hexlet.io/pages/about?utm_source=github&utm_medium=link&utm_campaign=exercises-sicp).
+This repository is created and maintained by the team and the community of Hexlet, an educational project. [Read more about Hexlet](https://hexlet.io/?utm_source=github&utm_medium=link&utm_campaign=exercises-sicp).

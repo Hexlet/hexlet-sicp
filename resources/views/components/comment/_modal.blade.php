@@ -13,9 +13,7 @@
             {{ BsForm::open(route('comments.update', ['comment' => $comment]), ['method' => $method]) }}
             <div class="modal-header">
                 <h5 class="modal-title">{{ __($modalTitle) }}</h5>
-                <button type="button" class="close" data-dismiss="modal">
-                    <span>&times;</span>
-                </button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body">
                 {{ Form::hidden('commentable_type', $comment->commentable_type) }}
@@ -24,7 +22,7 @@
             </div>
             <div class="modal-footer text-left">
                 {{ BsForm::submit(__($submitLabel))->attribute('class', 'btn btn-success btn-sm text-uppercase') }}
-                {{ Form::button(__('comment.cancel'), ['class' => 'btn btn-secondary btn-sm text-uppercase  mr-auto', 'data-dismiss' => 'modal']) }}
+                {{ Form::button(__('comment.cancel'), ['class' => 'btn btn-secondary btn-sm text-uppercase  mr-auto', 'data-bs-dismiss' => 'modal']) }}
             </div>
             {{ BsForm::close() }}
         </div>

@@ -3,18 +3,13 @@
 namespace Tests\Feature\Http\Controllers\Api\Exercise;
 
 use App\Models\Exercise;
-use App\Models\User;
+use App\Services\CheckResult;
 use Database\Seeders\ChaptersTableSeeder;
 use Database\Seeders\ExercisesTableSeeder;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\ControllerTestCase;
-use Tests\TestCase;
 
 class CheckControllerTest extends ControllerTestCase
 {
-    private Exercise $exercise;
-
     public function setUp(): void
     {
         parent::setUp();
@@ -26,7 +21,7 @@ class CheckControllerTest extends ControllerTestCase
         $this->actingAs($this->user);
     }
 
-    public function testCheck()
+    public function testCheck(): void
     {
         $exercise = Exercise::wherePath('1.3')->first();
         $path = route('api.exercises.check.store', [$exercise]);
@@ -40,11 +35,11 @@ class CheckControllerTest extends ControllerTestCase
         ];
         $response = $this->postJson($path, $data);
 
-        $response->assertStatus(201);
+        $response->assertCreated();
 
         $responseBody = $response->decodeResponseJson();
 
-        $this->assertEquals(0, array_get($responseBody, 'check_result.exit_code'));
+        assert(array_get($responseBody, 'check_result.exit_code') === CheckResult::SUCCESS_EXIT_CODE);
 
         $this->assertDatabaseHas('activity_log', [
             'causer_id' => $this->user->id,
@@ -55,5 +50,25 @@ class CheckControllerTest extends ControllerTestCase
             'user_id' => $this->user->id,
             'exercise_id' => $exercise->id,
         ]);
+    }
+
+    public function testCheckByGuest(): void
+    {
+        $exercise = Exercise::wherePath('1.3')->first();
+        $path = route('api.exercises.check.store', [$exercise]);
+
+        $underscoredPath = $exercise->present()->underscorePath;
+        $solutionCode = view("exercise.solution_stub.{$underscoredPath}_solution")->render();
+
+        $data = [
+            'user_id' => null,
+            'solution_code' => $solutionCode,
+        ];
+        $response = $this->postJson($path, $data);
+
+        $response->assertCreated();
+        $responseBody = $response->decodeResponseJson();
+
+        assert(array_get($responseBody, 'check_result.exit_code') === CheckResult::SUCCESS_EXIT_CODE);
     }
 }

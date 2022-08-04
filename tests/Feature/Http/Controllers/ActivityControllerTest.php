@@ -21,52 +21,36 @@ class ActivityControllerTest extends ControllerTestCase
 
     public function testStoreAddChapters(): void
     {
-        $myPage = route('my');
-        $this->from($myPage);
         $chapters = Chapter::limit(3)->get();
 
-        $this->post(route('users.chapters.store', [$this->user->id]), [
+        $response = $this->post(route('users.chapters.store', [$this->user]), [
                 'chapters_id' => $chapters->pluck('id')->toArray(),
-            ])
-            ->assertRedirect($myPage)
-            ->assertSessionDoesntHaveErrors();
+        ]);
 
-        $this->user->refresh();
-
-        $response = $this->get(route('log.index'));
-        $response->assertOk()->assertSee($chapters->first()->path);
-
-        $response = $this->get(route('index'));
-        $response->assertOk()->assertSee($chapters->first()->path);
+        $response->assertSessionDoesntHaveErrors();
+        $response->assertRedirect();
 
         $this->assertDatabaseHas('activity_log', [
             'description' => ActivityService::ACTIVITY_CHAPTER_ADDED,
+            'causer_id' => $this->user->id,
         ]);
     }
 
     public function testStoreRemovedChapters(): void
     {
-        $myPage = route('my');
-        $this->from($myPage);
         $chapters = Chapter::limit(3)->get();
         $this->user->chapters()->saveMany($chapters);
 
-        $this->post(route('users.chapters.store', [$this->user->id]), [
+        $response = $this->post(route('users.chapters.store', [$this->user->id]), [
             'chapters_id' => [],
-        ])
-            ->assertRedirect($myPage)
-            ->assertSessionDoesntHaveErrors();
+        ]);
 
-        $this->user->refresh();
-
-        $response = $this->get(route('log.index'));
-        $response->assertOk()->assertSee($chapters->first()->path);
-
-        $response = $this->get(route('index'));
-        $response->assertOk()->assertSee($chapters->first()->path);
+        $response->assertSessionDoesntHaveErrors();
+        $response->assertRedirect();
 
         $this->assertDatabaseHas('activity_log', [
             'description' => ActivityService::ACTIVITY_CHAPTER_REMOVED,
+            'causer_id' => $this->user->id,
         ]);
     }
 }

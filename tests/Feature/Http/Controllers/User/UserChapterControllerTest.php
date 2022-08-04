@@ -8,7 +8,6 @@ use Tests\ControllerTestCase;
 
 class UserChapterControllerTest extends ControllerTestCase
 {
-
     protected function setUp(): void
     {
         parent::setUp();
@@ -16,60 +15,48 @@ class UserChapterControllerTest extends ControllerTestCase
         $this->seed([
             ChaptersTableSeeder::class,
         ]);
-    }
 
-    public function testDestroy(): void
-    {
         $this->actingAs($this->user);
-
-        $chapter = Chapter::inRandomOrder()->first();
-
-        $this->user->chapters()->attach($chapter);
-
-        $this->actingAs($this->user)->from(
-            route('chapters.show', $chapter)
-        );
-
-        $completedChapterData = [
-            'chapter_id' => $chapter->id,
-            'user_id' => $this->user->id,
-        ];
-        $this->assertDatabaseHas('read_chapters', $completedChapterData);
-
-        $response = $this->delete(
-            route('users.chapters.destroy', [$this->user, $chapter])
-        );
-
-        $response->assertRedirect(route('chapters.show', $chapter));
-        $response->assertSessionDoesntHaveErrors();
-
-        $this->assertDatabaseMissing('read_chapters', $completedChapterData);
     }
 
     public function testStore(): void
     {
         $myPage = route('my');
-        $chapters = Chapter::inRandomOrder()->limit(2)->get();
+        $chapters = Chapter::where(['path' => '1.1.1'])->orWhere(['path' => '1.1.2'])->get();
 
-        $postData = [
-            'chapters_id' => $chapters->pluck('id')->toArray(),
+        $requestParams = [
+            'chapters_id' => $chapters->pluck('id'),
         ];
 
-        $this
-            ->actingAs($this->user)
-            ->from($myPage)
-            ->post(route('users.chapters.store', [$this->user]), $postData)
-            ->assertRedirect($myPage)
-            ->assertSessionDoesntHaveErrors();
+        $response = $this->post(route('users.chapters.store', [$this->user]), $requestParams);
 
-        $this->assertEquals(
-            $chapters->count(),
-            $this->user->readChapters->count()
+        $response->assertSessionDoesntHaveErrors();
+        $response->assertRedirect($myPage);
+
+        $expectedReadChaptersData = $chapters
+            ->map(fn(Chapter $chapter) => $chapter->only('chapter_id', 'user_id'))
+            ->toArray();
+
+        $this->assertDatabaseHas('read_chapters', $expectedReadChaptersData);
+    }
+
+    public function testDestroy(): void
+    {
+        $this->user->chapters()->sync(
+            Chapter::where(['path' => '2.1.1'])->firstOrFail()
+        );
+        $chapter = $this->user->chapters()->firstOrFail();
+
+        $response = $this->delete(
+            route('users.chapters.destroy', [$this->user, $chapter])
         );
 
-        $this->assertDatabaseHas('read_chapters', [
-                'chapter_id' => $chapters->first()->id,
-                'user_id' => $this->user->id,
+        $response->assertSessionDoesntHaveErrors();
+        $response->assertRedirect();
+
+        $this->assertDatabaseMissing('read_chapters', [
+            'chapter_id' => $chapter->id,
+            'user_id' => $this->user->id,
         ]);
     }
 }

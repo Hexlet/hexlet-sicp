@@ -4,12 +4,46 @@ return [
     'title' => "Invert-unit-series procedure",
     'description' => [
         '1' =>
-        "Let S be a power series (exercise ",
+        "Let ",
         '2' =>
-        ") whose constant term is 1. Suppose we want to find the power series 1/S, that is, the series X such that S · X = 1. " .
-        "Write S = 1 + SR where SR is the part of S after the constant term. Then we can solve for X as follows:",
+        " be a power series (exercise ",
         '3' =>
-        "In other words, X is the power series whose constant term is 1 and whose higher-order terms are given by the negative of SR times X. " .
-        "Use this idea to write a procedure invert-unit-series that computes 1/S for a power series S with constant term 1. You will need to use mul-series from exercise ",
+        ") whose constant term is ",
+        '4' =>
+        ". Suppose we want to find the power series ",
+        '5' =>
+        ", that is, the series ",
+        '6' =>
+        " such that ",
+        '7' =>
+        ". Write ",
+        '8' =>
+        " where ",
+        '9' =>
+        " is the part of ",
+        '10' =>
+        " after the constant term. Then we can solve for ",
+        '11' =>
+        " as follows:",
+        '12' =>
+        "In other words, ",
+        '13' =>
+        " is the power series whose constant term is ",
+        '14' =>
+        " and whose higher-order terms are given by the negative of ",
+        '15' =>
+        " times ",
+        '16' =>
+        ". Use this idea to write a procedure ",
+        '17' =>
+        " that computes ",
+        '18' =>
+        " for a power series ",
+        '19' =>
+        " with constant term ",
+        '20' =>
+        ". You will need to use ",
+        '21' =>
+        " from exercise ",
     ],
 ];

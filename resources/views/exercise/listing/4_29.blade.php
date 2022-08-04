@@ -1,13 +1,21 @@
-<p>{{ __('exercises/4_29.description.1') }}<a href="{{ route('exercises.show', getExercise('4.27')) }}">4.27</a>
-{{ __('exercises/4_29.description.2') }}</p>
+<p>{{ __('exercises/4_29.description.1') }}
+<code>id</code>
+{{ __('exercises/4_29.description.2') }}
+<a href="{{ route('exercises.show', getExercise('4.27')) }}">4.27</a>
+{{ __('exercises/4_29.description.3') }}
+<code>count</code>
+{{ __('exercises/4_29.description.4') }}
+<code>0</code>
+{{ __('exercises/4_29.description.5') }}
+</p>
 <pre><code>(define (square x)
   (* x x))
 ;;; L-Eval input:
 (square (id 10))
 ;;; L-Eval value:
-response
+&lt;response&gt;
 ;;; L-Eval input:
 count
 ;;; L-Eval value:
-response</code></pre>
-<p>{{ __('exercises/4_29.description.3') }}</p>
+&lt;response&gt;</code></pre>
+<p>{{ __('exercises/4_29.description.6') }}</p>

@@ -36,7 +36,7 @@ class CommentController extends Controller
 
         /** @var Comment $comment */
         $comment = $user->comments()->save(
-            Comment::make($request->validated())
+            new Comment($request->validated())
         );
 
         $this->activityService->logCreatedComment($user, $comment, $commentable);

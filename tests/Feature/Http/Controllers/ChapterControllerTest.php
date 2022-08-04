@@ -7,10 +7,11 @@ use App\Models\Comment;
 use Database\Seeders\ChaptersTableSeeder;
 use Database\Seeders\UsersTableSeeder;
 use Tests\ControllerTestCase;
-use Tests\TestCase;
 
 class ChapterControllerTest extends ControllerTestCase
 {
+    private Chapter $chapter;
+
     protected function setUp(): void
     {
         parent::setUp();
@@ -18,6 +19,17 @@ class ChapterControllerTest extends ControllerTestCase
             ChaptersTableSeeder::class,
             UsersTableSeeder::class,
         ]);
+
+        $chapter = Chapter::first();
+        $chapter->comments()->saveMany(
+            Comment::factory()
+                ->count(5)
+                ->user($this->user)
+                ->commentable($chapter)
+                ->make()
+        );
+
+        $this->chapter = $chapter;
     }
 
     public function testIndex(): void
@@ -29,15 +41,7 @@ class ChapterControllerTest extends ControllerTestCase
 
     public function testShow(): void
     {
-        $chapter = Chapter::inRandomOrder()->first();
-        $chapter->comments()->saveMany(
-            Comment::factory()
-                ->count(5)
-                ->user($this->user)
-                ->commentable($chapter)
-                ->make()
-        );
-        $response = $this->get(route('chapters.show', $chapter));
+        $response = $this->get(route('chapters.show', $this->chapter));
 
         $response->assertOk();
     }

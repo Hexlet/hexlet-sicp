@@ -8,11 +8,9 @@ use App\Models\User;
 use App\Services\ActivityService;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
+/** @extends Factory<CompletedExercise> */
 class CompletedExerciseFactory extends Factory
 {
-    /**
-     * @var string
-     */
     protected $model = CompletedExercise::class;
 
     public function definition(): array

@@ -27,6 +27,7 @@ class AccountController extends Controller
     {
         /** @var User $user */
         $user = Auth::user();
+        // $user->comments()->delete();
 
         if ($user->delete()) {
             flash()->success(__('account.your_account_deleted'));
@@ -36,6 +37,6 @@ class AccountController extends Controller
 
         Auth::logout();
 
-        return redirect()->route('index');
+        return redirect()->route('home');
     }
 }

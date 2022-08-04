@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts..app')
 @php
     /**
      * @var \App\Models\Exercise $exercise
@@ -7,6 +7,7 @@
      * @var \App\Models\User $authUser
      */
 @endphp
+@section('title'){{ getTitleContent(getExerciseTitle($exercise)) }}@endsection
 @section('description'){{ __('exercise.exercise') }} {{ $exercise->path }} {{ getExerciseTitle($exercise) }} {{ __('exercise.show.description') }}@endsection
 @section('content')
     {{ Breadcrumbs::render('exercise', $exercise) }}
@@ -14,14 +15,14 @@
         <div class="sticky-top col-md-12 d-flex justify-content-between">
             @if($previousExercise->exists)
             <a class="mr-auto text-decoration-none" href="{{ route('exercises.show', $previousExercise) }}">
-                <i class="fas fa-long-arrow-alt-left"></i>
+                <i class="bi bi-arrow-left"></i>
                 @lang('exercise.show.previous')
             </a>
             @endif
             @if($nextExercise->exists)
             <a class="ml-auto text-decoration-none" href="{{ route('exercises.show', $nextExercise) }}">
                 @lang('exercise.show.next')
-                <i class="fas fa-long-arrow-alt-right"></i>
+                <i class="bi bi-arrow-right"></i>
             </a>
             @endif
         </div>
@@ -31,10 +32,10 @@
             <div class="card">
                 <ul class="justify-content-center flex-shrink-0 nav nav-tabs" id="pills-tab" role="tablist">
                     <li class="nav-item" role="presentation">
-                        <a class="nav-link active" id="exercise-description-tab" data-toggle="pill" href="#exercise-description" role="tab" aria-controls="exercise-description" aria-selected="true">{{ __('exercise.show.description-tab') }}</a>
+                        <a class="nav-link active" id="exercise-description-tab" data-bs-toggle="pill" href="#exercise-description" role="tab" aria-controls="exercise-description" aria-selected="true">{{ __('exercise.show.description-tab') }}</a>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <a class="nav-link" id="exercise-discussion-tab" data-toggle="pill" href="#exercise-discussion" role="tab" aria-controls="exercise-discussion" aria-selected="false">{{ __('exercise.show.discussion-tab') }}</a>
+                        <a class="nav-link" id="exercise-discussion-tab" data-bs-toggle="pill" href="#exercise-discussion" role="tab" aria-controls="exercise-discussion" aria-selected="false">{{ __('exercise.show.discussion-tab') }}</a>
                     </li>
                 </ul>
                 <div class="tab-content card-body" id="pills-tabContent">
@@ -45,10 +46,10 @@
                                 <a class="text-muted"
                                    target="_blank"
                                    href="{{ getExerciseOriginLink($exercise) }}"
-                                   data-toggle="tooltip"
-                                   data-placement="right"
+                                   data-bs-toggle="tooltip"
+                                   data-bs-placement="right"
                                    title="{{ __('layout.common.origin') }}">
-                                    <i class="fas fa-external-link-alt"></i>
+                                    <i class="bi bi-box-arrow-up-right"></i>
                                 </a>
                             </sup>
                         </h1>
@@ -75,8 +76,8 @@
                                         @include('exercise._modal.completed_by')
                                         <button type="button"
                                                 class="btn btn-primary"
-                                                data-toggle="modal"
-                                                data-target="#modal-completed-by">
+                                                data-bs-toggle="modal"
+                                                data-bs-target="#modal-completed-by">
                                             {{ __('exercise.show.who_completed') }}
                                         </button>
                                     @endif
@@ -104,6 +105,10 @@
       const userId = "{{ $authUser->id }}";
       const exerciseId = "{{ $exercise->id }}";
       const locale = "{{ LaravelLocalization::getCurrentLocale() }}";
-      window.sicpEditorData = { userId, exerciseId, locale }; 
+      window.sicpEditorData = { userId, exerciseId, locale };
     </script>
+
+    @push('scripts')
+    <script src="{{ mix('js/editor.js') }}" defer></script>
+    @endpush
 @endsection

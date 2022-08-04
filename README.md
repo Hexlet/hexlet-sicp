@@ -28,9 +28,9 @@ A: Сбросить кеш конфига `php artisan config:clear`
 
 Проверить зависимости PHP можно командой `composer check-platform-reqs`
 
-* PHP ^8.0
+* PHP ^8.1
 * Composer
-* Node.js (v14+) & NPM (6+)
+* Node.js (v16+) & NPM (6+)
 * SQLite for local, PostgreSQL for production
 * Heroku cli ([_Как развернуть приложение Laravel на Heroku_](https://ru.hexlet.io/blog/posts/kak-razvernut-prilozhenie-laravel-na-heroku))
 
@@ -163,10 +163,14 @@ make test # запуск тестов
 
 ### Добавить пре-комит хук
 
+Для хуков требуется локальный NodeJS
+
 ```shell
-git config core.hooksPath .githooks
+make setup-git-hooks
 ```
 
-[![Hexlet Ltd. logo](https://raw.githubusercontent.com/Hexlet/assets/master/images/hexlet_logo128.png)](https://ru.hexlet.io/pages/about?utm_source=github&utm_medium=link&utm_campaign=exercises-javascript)
+[![Hexlet Ltd. logo](https://raw.githubusercontent.com/Hexlet/assets/master/images/hexlet_logo128.png)](https://hexlet.io/?utm_source=github&utm_medium=link&utm_campaign=exercises-sicp)
 
-Этот репозиторий создан и поддерживается командой и сообществом образовательного проекта Hexlet. [Подробнее о Hexlet](https://ru.hexlet.io/pages/about?utm_source=github&utm_medium=link&utm_campaign=exercises-javascript)
+This repository is created and maintained by the team and the community of Hexlet, an educational project. [Read more about Hexlet](https://hexlet.io/?utm_source=github&utm_medium=link&utm_campaign=exercises-sicp)
+
+See most active contributors on [hexlet-friends](https://friends.hexlet.io/).

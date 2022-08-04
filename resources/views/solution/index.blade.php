@@ -1,4 +1,4 @@
-@extends('layouts.bootstrap5.app')
+@extends('layouts..app')
 @php
 /**
  * @var \App\Models\Solution[]|\Illuminate\Support\Collection $solutions
@@ -16,7 +16,7 @@
                 {{ Form::open(['url' => route('solutions.index'), 'method' => 'GET' , 'class' => 'form-inline']) }}
                 <div class="input-group mb-3">
                     <span class="input-group-text">{{ __('views.solution.index.filter.user') }}</span>
-                    {{ Form::select('filter[user_id]', $solutionAuthors, array_get($filter, 'user_id', null), ['placeholder' => __('views.solution.index.filter.exercise'), 'class' => 'form-control']) }}
+                    {{ Form::select('filter[user_id]', $solutionAuthors, array_get($filter, 'user_id', null), ['placeholder' => __('views.solution.index.filter.user'), 'class' => 'form-control']) }}
                     <span class="input-group-text">{{ __('views.solution.index.filter.exercise') }}</span>
                     {{ Form::select('filter[exercise_id]', $exerciseTitles, array_get($filter, 'exercise_id', null), ['placeholder' => __('views.solution.index.filter.exercise'), 'class' => 'form-control']) }}
                     {{ Form::submit(__('views.solution.index.filter.apply_button'), ['class' => 'btn btn-outline-primary']) }}
@@ -63,7 +63,7 @@
                     </tbody>
                 </table>
             </div>
-            {{ $solutions->links() }}
+            {{ $solutions->withQueryString()->links() }}
         </section>
     </div>
 @endsection

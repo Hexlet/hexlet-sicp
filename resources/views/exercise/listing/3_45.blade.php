@@ -1,4 +1,11 @@
-<p>{{ __('exercises/3_45.description.1') }}</p>
+<p>{{ __('exercises/3_45.description.1') }}
+<code>make-account-and-serializer</code>
+{{ __('exercises/3_45.description.2') }}
+<code>serialized-exchange</code>
+{{ __('exercises/3_45.description.3') }}
+<code>make-account</code>
+{{ __('exercises/3_45.description.4') }}
+</p>
 <pre><code>(define (make-account-and-serializer balance)
   (define (withdraw amount)
     (if (>= balance amount)
@@ -18,8 +25,14 @@
                          m))))
     dispatch))
 </code></pre>
-<p>{{ __('exercises/3_45.description.2') }}</p>
+<p>{{ __('exercises/3_45.description.5') }}
+<code>make-account</code>
+{{ __('exercises/3_45.description.6') }}
+</p>
 <pre><code>(define (deposit account amount)
  ((account 'deposit) amount))
 </code></pre>
-<p>{{ __('exercises/3_45.description.3') }}</p>
+<p>{{ __('exercises/3_45.description.7') }}
+<code>serialized-exchange</code>
+{{ __('exercises/3_45.description.8') }}
+</p>

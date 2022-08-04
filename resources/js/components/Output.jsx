@@ -1,6 +1,9 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { Alert } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
+import Highlight from 'react-syntax-highlighter';
+import { vs } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 
 const statusToTypeMap = {
   success: 'success',
@@ -9,23 +12,42 @@ const statusToTypeMap = {
 
 const Output = () => {
   const { t } = useTranslation();
-  const checkResult = useSelector((state) => state.checkResult);
+  const { resultStatus, output } = useSelector((state) => state.checkResult);
+  const { show, style, content } = useSelector((state) => state.notification);
 
-  if (checkResult.resultStatus === 'idle') {
-    return null;
-  }
+  const message = t(`message.${resultStatus}`);
 
-  const message = t(`message.${checkResult.resultStatus}`);
+  const alertClassName = `${statusToTypeMap[resultStatus]}`;
 
-  const alertClassName = `mt-auto alert alert-${statusToTypeMap[checkResult.resultStatus]}`;
+  const renderNotification = () => (
+    show
+      ? (
+        <Alert className="mt-3 mx-3 mb-0" variant={style}>
+          {content}
+        </Alert>
+      )
+      : null
+  );
+
+  const renderOutput = () => (
+    resultStatus === 'idle'
+      ? null
+      : (
+        <>
+          <Alert className="m-3" variant={alertClassName}>
+            {message}
+          </Alert>
+          <Highlight className="flex-grow-1 m-0" language="vbnet" style={vs} showLineNumbers>
+            {output}
+          </Highlight>
+        </>
+      )
+  );
+
   return (
     <div className="d-flex flex-column h-100">
-      <pre>
-        <code className="nohighlight" dangerouslySetInnerHTML={{ __html: checkResult.output }} />
-      </pre>
-      <div className={alertClassName}>
-        {message}
-      </div>
+      {renderNotification()}
+      {renderOutput()}
     </div>
   );
 };

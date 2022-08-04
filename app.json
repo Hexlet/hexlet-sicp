@@ -28,7 +28,7 @@
             "url": "heroku/nodejs"
         },
         {
-            "url": "https://github.com/tolyod/heroku-buildpack-racket"
+            "url": "https://github.com/fey/heroku-buildpack-racket.git"
         },
         {
             "url": "heroku/php"

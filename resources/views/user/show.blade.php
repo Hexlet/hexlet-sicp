@@ -1,4 +1,4 @@
-@extends('layouts.bootstrap5.app')
+@extends('layouts..app')
 
 @php
 /**
@@ -19,14 +19,14 @@
                 <img class="w-100 img-fluid" src="{{ getProfileImageLink($user) }}" alt="User avatar">
                 <h1 class="h4 text-break my-2">{{ $user->name }}</h1>
                 <div class="h5">
-                    <span class="fas fa-trophy"></span>
+                    <span class="bi bi-trophy-fill"></span>
                     <span>{{ $userRatingPosition }}</span>
                     <a class="h6" href="{{ route('top.index') }}">
                         {{ __('user.show.statistics.rating') }}
                     </a>
                 </div>
                 <div class="h5">
-                    <span class="fas fa-award mx-1"></span>
+                    <span class="bi bi-award"></span>
                     <span>{{ $points }}</span>
                     <span class="h6 text-secondary"> {{ trans_choice('user.show.statistics.points', $points) }}</span>
                 </div>
@@ -42,11 +42,11 @@
                     @if ($user->github_name)
                     <span>
                         <a class="x-link-without-decoration mr-3 mb-2 text-dark" target="_blank" rel="noopener noreferrer" href="https://github.com/{{ $user->github_name }}">
-                            <i class="fab fa-github fa-2x"></i>
+                            <i class="bi bi-github fa-2x"></i>
                         </a>
                     </span>
                     @endif
-                    @if ($user->hexlet_nickname)
+                    @if($user->hexlet_nickname)
                     <span>
                         <a class="x-link-without-decoration mr-2 text-dark" target="_blank" rel="noopener noreferrer" href="https://ru.hexlet.io/u/{{ $user->hexlet_nickname }}">
                             <img class="mb-3" src={{ mix('img/hexlet_logo.png') }} width="20" height="30" alt="Hexlet logo"  >
@@ -54,15 +54,13 @@
                     </span>
                     @endif
                 </div>
-                @auth
-                    @if (Auth::user()->id === $user->id)
-                        <div class="small mt-4">
-                            <a class="text-muted" href="{{ route('settings.profile.index') }}">
-                                {{ __('user.show.statistics.edit_profile') }}
-                            </a>
-                        </div>
-                    @endif
-                @endauth
+                @can('update', $user)
+                <div class="small mt-4">
+                    <a class="text-muted" href="{{ route('settings.profile.index') }}">
+                        {{ __('user.show.statistics.edit_profile') }}
+                    </a>
+                </div>
+                @endcan
             </div>
         </div>
         <div class="col-12 col-md-9 my-4">
@@ -103,4 +101,3 @@
         </div>
     </div>
 @endsection
-

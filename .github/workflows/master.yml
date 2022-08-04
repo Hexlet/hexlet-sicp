@@ -3,7 +3,7 @@ name: CI status
 on:
   push:
     branches:
-      - 'master'
+      - 'main'
 
 jobs:
   build:
@@ -11,12 +11,14 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - uses: satackey/action-docker-layer-caching@v0.0.11
+
       - name: Run CI
-        run: make ci
+        run: |
+          make ci
 
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v1
         with:
-          token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
           file: build/logs/clover.xml
           fail_ci_if_error: true

@@ -7,4 +7,7 @@
               (+ counter 1))))
   (iter 1 1))
 </code></pre>
-<p>{{ __('exercises/5_34.description.2') }}</p>
+<p>{{ __('exercises/5_34.description.2') }}
+<code>factorial</code>
+{{ __('exercises/5_34.description.3') }}
+</p>
