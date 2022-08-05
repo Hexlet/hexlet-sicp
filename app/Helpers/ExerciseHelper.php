@@ -79,7 +79,7 @@ class ExerciseHelper
         return $exercise->present()->fullTitle;
     }
 
-    public static function exerciseHasSolution(Exercise $exercise): bool
+    public static function exerciseHasTeacherSolution(Exercise $exercise): bool
     {
         $underscoredExercisePath = self::underscoreExercisePath($exercise->path);
 
@@ -94,7 +94,7 @@ class ExerciseHelper
         return File::exists($path);
     }
 
-    public static function getExerciseSolution(Exercise $exercise): string
+    public static function getExerciseTeacherSolution(Exercise $exercise): string
     {
         $underscoredExercisePath = $exercise->present()->underscorePath;
 

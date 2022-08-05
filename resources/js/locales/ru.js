@@ -5,8 +5,8 @@ export default {
     editor: 'Редактор',
     output: 'Вывод',
     tests: 'Тесты',
-    solution: 'Решение',
     loading: 'Загрузка...',
+    teacherSolution: 'Решение',
     editorContent: {
       withTemplate: 'Введите свое решение',
       withoutTemplate: 'Для этого упражнения нет проверок.\nЛюбое решение будет считаться успешным ответом.',

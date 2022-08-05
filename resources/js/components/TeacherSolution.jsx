@@ -4,12 +4,12 @@ import Highlight from 'react-syntax-highlighter';
 import { vs } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 
 const TeacherSolution = () => {
-  const { hasTeacherSolution, teacherSolution } = useSelector((state) => state.exerciseInfo);
+  const { hasTeacherSolution, teacherSolutionCode } = useSelector((state) => state.exerciseInfo);
 
   return hasTeacherSolution ? (
     <div className="d-flex h-100">
       <Highlight className="h-100" language="scheme" style={vs} showLineNumbers>
-        {teacherSolution}
+        {teacherSolutionCode}
       </Highlight>
     </div>
   ) : null;
