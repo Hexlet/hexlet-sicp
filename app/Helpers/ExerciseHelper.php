@@ -107,8 +107,7 @@ class ExerciseHelper
         ]);
 
         $fileContent = File::get($path);
-        [, $solutionLines] = explode(';;; END', $fileContent);
 
-        return trim($solutionLines);
+        return trim($fileContent);
     }
 }
