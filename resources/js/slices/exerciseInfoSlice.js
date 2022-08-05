@@ -11,11 +11,13 @@ const loadExerciseInfo = createAsyncThunk(
     const url = routes.exerciseInfoPath(exerciseId);
     const response = await axios.get(url);
     /* eslint-disable camelcase */
-    const { prepared_code, test_code, has_tests } = response.data.exercise;
+    const { prepared_code, test_code, has_tests, solution_code, has_solution } = response.data.exercise;
     return {
       preparedCode: prepared_code,
       hasTests: has_tests,
       testCode: test_code,
+      hasSolution: has_solution,
+      solutionCode: solution_code,
     };
     /* eslint-enable camelcase */
   },
@@ -28,6 +30,8 @@ const slice = createSlice({
     preparedCode: '',
     hasTests: false,
     testCode: null,
+    hasSolution: false,
+    solutionCode: null,
   },
   reducers: {},
   extraReducers: (builder) => {

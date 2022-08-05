@@ -18,6 +18,10 @@ class ExerciseController extends Controller
         $originalCode = $hasTests
             ? view(ExerciseHelper::getExerciseListingViewFilepath($exercise))->render()
             : '';
+        $hasSolution = ExerciseHelper::exerciseHasSolution($exercise);
+        $solutionCode = $hasSolution
+            ? ExerciseHelper::getExerciseSolution($exercise)
+            : '';
 
         return response([
             'exercise' => [
@@ -26,6 +30,8 @@ class ExerciseController extends Controller
                 'original_code' => $originalCode,
                 'test_code' => $testCode,
                 'has_tests' => $hasTests,
+                'has_solution' => $hasSolution,
+                'solution_code' => $solutionCode,
             ],
         ]);
     }

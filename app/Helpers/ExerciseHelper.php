@@ -78,4 +78,37 @@ class ExerciseHelper
     {
         return $exercise->present()->fullTitle;
     }
+
+    public static function exerciseHasSolution(Exercise $exercise): bool
+    {
+        $underscoredExercisePath = self::underscoreExercisePath($exercise->path);
+
+        $path = implode(DIRECTORY_SEPARATOR, [
+            resource_path(),
+            'views',
+            'exercise',
+            'solution_stub',
+            sprintf('%s_solution.blade.php', $underscoredExercisePath),
+        ]);
+
+        return File::exists($path);
+    }
+
+    public static function getExerciseSolution(Exercise $exercise): string
+    {
+        $underscoredExercisePath = $exercise->present()->underscorePath;
+
+        $path = implode(DIRECTORY_SEPARATOR, [
+            resource_path(),
+            'views',
+            'exercise',
+            'solution_stub',
+            sprintf('%s_solution.blade.php', $underscoredExercisePath),
+        ]);
+
+        $fileContent = File::get($path);
+        [, $solutionLines] = explode(';;; END', $fileContent);
+
+        return trim($solutionLines);
+    }
 }

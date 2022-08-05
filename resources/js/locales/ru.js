@@ -5,6 +5,7 @@ export default {
     editor: 'Редактор',
     output: 'Вывод',
     tests: 'Тесты',
+    solution: 'Решение',
     loading: 'Загрузка...',
     editorContent: {
       withTemplate: 'Введите свое решение',
