@@ -5,7 +5,7 @@ import ControlBox from './ControlBox.jsx';
 
 const App = () => (
   <div className="vh-100">
-    <Card className="h-75">
+    <Card className="h-75 overflow-auto">
       <Card.Body className="p-0">
         <TabsBox />
       </Card.Body>
