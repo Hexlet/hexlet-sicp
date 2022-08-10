@@ -36,37 +36,29 @@ class ExerciseHelper
         return $exercise;
     }
 
+    public static function exerciseHasTests(Exercise $exercise): bool
+    {
+        return self::isPathExist($exercise, '.blade.php');
+    }
+
     public static function getExerciseTests(Exercise $exercise): string
     {
-        $underscoredExercisePath = $exercise->present()->underscorePath;
-
-        $path = implode(DIRECTORY_SEPARATOR, [
-            resource_path(),
-            'views',
-            'exercise',
-            'solution_stub',
-            sprintf('%s.blade.php', $underscoredExercisePath),
-        ]);
-
-        $fileContent = File::get($path);
+        $fileContent = self::getFileContent($exercise, '.blade.php');
         [, $testsLines] = explode(';;; END', $fileContent);
 
         return trim($testsLines);
     }
 
-    public static function exerciseHasTests(Exercise $exercise): bool
+    public static function exerciseHasTeacherSolution(Exercise $exercise): bool
     {
-        $underscoredExercisePath = self::underscoreExercisePath($exercise->path);
+        return self::isPathExist($exercise, '_solution.blade.php');
+    }
 
-        $path = implode(DIRECTORY_SEPARATOR, [
-            resource_path(),
-            'views',
-            'exercise',
-            'solution_stub',
-            sprintf('%s.blade.php', $underscoredExercisePath),
-        ]);
+    public static function getExerciseTeacherSolution(Exercise $exercise): string
+    {
+        $fileContent = self::getFileContent($exercise, '_solution.blade.php');
 
-        return File::exists($path);
+        return trim($fileContent);
     }
 
     public static function underscoreExercisePath(string $path): string
@@ -79,35 +71,32 @@ class ExerciseHelper
         return $exercise->present()->fullTitle;
     }
 
-    public static function exerciseHasTeacherSolution(Exercise $exercise): bool
+    private static function getPathExercise(string $underscoredExercisePath, string $file_name): string
     {
-        $underscoredExercisePath = self::underscoreExercisePath($exercise->path);
-
         $path = implode(DIRECTORY_SEPARATOR, [
             resource_path(),
             'views',
             'exercise',
             'solution_stub',
-            sprintf('%s_solution.blade.php', $underscoredExercisePath),
+            sprintf('%s%s', $underscoredExercisePath, $file_name),
         ]);
+        return $path;
+    }
+
+    private static function isPathExist(Exercise $exercise, string $file_name): bool
+    {
+        $underscoredExercisePath = self::underscoreExercisePath($exercise->path);
+        $path = self::getPathExercise($underscoredExercisePath, $file_name);
 
         return File::exists($path);
     }
 
-    public static function getExerciseTeacherSolution(Exercise $exercise): string
+    private static function getFileContent(Exercise $exercise, string $file_name): string
     {
         $underscoredExercisePath = $exercise->present()->underscorePath;
-
-        $path = implode(DIRECTORY_SEPARATOR, [
-            resource_path(),
-            'views',
-            'exercise',
-            'solution_stub',
-            sprintf('%s_solution.blade.php', $underscoredExercisePath),
-        ]);
-
+        $path = self::getPathExercise($underscoredExercisePath, $file_name);
         $fileContent = File::get($path);
 
-        return trim($fileContent);
+        return $fileContent;
     }
 }
