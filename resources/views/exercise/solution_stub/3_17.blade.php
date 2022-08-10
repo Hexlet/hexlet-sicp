@@ -5,6 +5,7 @@
 {!! $solution !!}
 ;;; END
 
+(define nil '())
 (define p1 (cons 'a nil))
 (define p2 (cons p1 nil))
 (define p3 (cons p1 p2))
