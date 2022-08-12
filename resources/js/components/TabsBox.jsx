@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import Editor from './Editor.jsx';
 import Output from './Output.jsx';
 import Tests from './Tests.jsx';
+import TeacherSolution from './TeacherSolution.jsx';
 import tabNames from '../common/tabNamesMap.js';
 import { changeTab } from '../slices/tabsBoxSlice.js';
 import locationMap from '../common/hashLocationMap.js';
@@ -50,6 +51,9 @@ const TabsBox = () => {
           </Tab.Pane>
           <Tab.Pane eventKey={tabNames.tests} bsPrefix="tab-pane h-100 w-100">
             <Tests />
+          </Tab.Pane>
+          <Tab.Pane eventKey={tabNames.teacherSolution} bsPrefix="tab-pane h-100 w-100">
+            <TeacherSolution />
           </Tab.Pane>
         </Tab.Content>
       </div>

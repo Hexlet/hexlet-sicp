@@ -6,6 +6,7 @@ export default {
     output: 'Output',
     tests: 'Tests',
     loading: 'Loading...',
+    teacherSolution: 'Solution',
     editorContent: {
       withTemplate: 'Write your solution here',
       withoutTemplate: 'This exercise has no tests.\nAny solution is a right answer.',
