@@ -1,0 +1,5 @@
+(define (width interval)
+  (/ (abs (- (lower-bound interval)
+             (upper-bound interval)
+             ))
+     2))
