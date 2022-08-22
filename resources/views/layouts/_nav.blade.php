@@ -34,7 +34,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link px-2 link-info" target="_blank" href="https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book.html">
+                <a class="nav-link px-2 link-info" target="_blank" href="https://web.mit.edu/6.001/6.037/sicp.pdf">
                     {{ __('layout.nav.sicp_book') }}
                 </a>
             </li>
