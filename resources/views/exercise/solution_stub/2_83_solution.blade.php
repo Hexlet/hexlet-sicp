@@ -26,7 +26,3 @@
 (define (update-rational-package)
   (put 'raise '(rational) raise-rational-to-complex))
 
-
-
-(update-scheme-number-package)
-(update-rational-package)

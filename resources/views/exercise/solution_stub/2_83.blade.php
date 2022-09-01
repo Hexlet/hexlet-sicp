@@ -201,5 +201,9 @@
 (install-rectangular-package)
 (install-complex-package)
 
+; put raise into packages. This procedures must be defined.
+(update-scheme-number-package) 
+(update-rational-package)
+
 (check-equal? (raise (make-scheme-number 10)) '(rational 10 . 1))
 (check-equal? (raise (make-rational 10 1)) '(complex rectangular 10 . 0))
