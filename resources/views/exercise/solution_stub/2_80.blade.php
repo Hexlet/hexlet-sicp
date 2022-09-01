@@ -246,6 +246,10 @@
 (install-rational-package)
 (install-complex-package)
 
+; put =zero? into packages. This procedures must be defined.
+(update-scheme-number-package)
+(update-rational-package)
+(update-complex-package)
 
 (check-true (=zero? (make-complex-from-real-imag 0 0)))
 (check-true (=zero? (make-rational 0 1)))

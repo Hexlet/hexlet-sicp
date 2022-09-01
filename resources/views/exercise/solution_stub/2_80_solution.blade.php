@@ -10,7 +10,3 @@
 (define (update-complex-package)
   (put '=zero? '(complex)
        (lambda (c1) (and (= 0 (real-part c1)) (= 0 (imag-part c1))))))
-
-(update-scheme-number-package)
-(update-rational-package)
-(update-complex-package)
