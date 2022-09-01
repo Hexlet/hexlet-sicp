@@ -159,9 +159,9 @@ if (!function_exists('getCommentsRating')) {
 }
 
 if (!function_exists('getCalculatedRating')) {
-    function getCalculatedRating(): Collection
+    function getCalculatedRating(?string $sortChapters = null, ?string $sortExercises = null): Collection
     {
-        return RatingHelper::getCalculatedRating();
+        return RatingHelper::getCalculatedRating($sortChapters, $sortExercises);
     }
 }
 
@@ -176,5 +176,12 @@ if (!function_exists('getProfileImageLink')) {
     function getProfileImageLink(User $user): string
     {
         return UserHelper::getProfileImageLink($user);
+    }
+}
+
+if (!function_exists('getStateSort')) {
+    function getStateSort(string $state, string $column): array
+    {
+        return RatingHelper::getStateSort($state, $column);
     }
 }

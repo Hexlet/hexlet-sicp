@@ -1,5 +1,7 @@
 @extends('layouts.app')
 @section('description'){{ __('rating.progress.description') }}@endsection
+@php($sortParametersExercises = \App\Helpers\RatingHelper::getStateSort($sortExercises ?? 'default', 'exercises'))
+@php($sortParametersChapters = \App\Helpers\RatingHelper::getStateSort($sortChapters ?? 'default', 'chapters'))
 @section('content')
     <div class="my-4">
         @include('rating.menu')
@@ -10,8 +12,33 @@
                     <tr>
                         <th>{{ __('rating.positions') }}</th>
                         <th>{{ __('rating.user') }}</th>
-                        <th>{{ __('rating.read_chapters_from') }} {{ App\Models\Chapter::MARKABLE_COUNT }}</th>
-                        <th>{{ __('rating.completed_exercises_from') }} {{ $exercises->count() }}</th>
+                        <th>
+                            <a class="text-decoration-none" href="{{ route('progress_top.index', $sortParametersChapters) }}">
+                                {{ __('rating.read_chapters_from') }} {{ App\Models\Chapter::MARKABLE_COUNT }}
+                                @switch($sortChapters)
+                                    @case('desc')
+                                        <i class="fa fa-angle-up" aria-hidden="true"></i>
+                                        @break
+                                    @case('asc')
+                                        <i class="fa fa-angle-down" aria-hidden="true"></i>
+                                        @break
+                                    @default
+                                @endswitch
+                            </a>
+                        <th>
+                            <a class="text-decoration-none" href="{{ route('progress_top.index', $sortParametersExercises) }}">
+                                {{ __('rating.completed_exercises_from') }} {{ $amountExercises }}
+                                @switch($sortExercises)
+                                    @case('desc')
+                                        <i class="fa fa-angle-up" aria-hidden="true"></i>
+                                        @break
+                                    @case('asc')
+                                        <i class="fa fa-angle-down" aria-hidden="true"></i>
+                                        @break
+                                    @default
+                                @endswitch
+                            </a>
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
