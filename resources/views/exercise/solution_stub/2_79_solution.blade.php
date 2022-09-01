@@ -13,7 +13,3 @@
   (put 'equ? '(complex complex)
        (lambda (c1 c2) (and (equal? (real-part c1) (real-part c2))
                             (equal? (imag-part c1) (imag-part c2))))))
-
-(update-scheme-number-package)
-(update-rational-package)
-(update-complex-package)
