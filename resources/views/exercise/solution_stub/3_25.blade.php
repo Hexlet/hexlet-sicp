@@ -1,5 +1,6 @@
 #lang racket/base
 (require rackunit)
+(require sicp)
 
 
 ;;; BEGIN
@@ -8,11 +9,11 @@
 
 (define t (make-table))
 
-(insert! '(a) 5 t)
-(insert! '(a b) 10 t)
-(insert! '(a b c) 42 t)
+(insert! t '(a) 5)
+(insert! t '(a b) 10)
+(insert! t '(a b c) 42)
 
-(check-equal? (lookup '(a) t) 5)
-(check-equal? (lookup '(a b) t) 10)
-(check-false (lookup '(b) t))
-(check-equal? (lookup '(a b c) t) 42)
+(check-equal? (lookup t '(a)) 5)
+(check-equal? (lookup t '(a b)) 10)
+(check-false (lookup t '(b)))
+(check-equal? (lookup t '(a b c)) 42)
