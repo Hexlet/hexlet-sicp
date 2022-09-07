@@ -1,5 +1,6 @@
-#lang sicp
-(#%require rackunit)
+#lang racket/base
+(require rackunit)
+(require sicp)
 
 
 ;;; BEGIN
@@ -236,8 +237,3 @@
 (propagate)
 (check-equal? (get-signal C) 1)
 (check-equal? (get-signal S) 0)
-
-(ripple-carry-adder (list A) (list B) (list S) C) 
-(propagate)
-(check-equal? (get-signal C) 1)
-(check-equal? (get-signal S) 1)
