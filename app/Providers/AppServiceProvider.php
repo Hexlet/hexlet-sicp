@@ -37,11 +37,6 @@ class AppServiceProvider extends ServiceProvider
             URL::forceScheme('https');
         }
 
-//        \DB::listen(function ($query) {
-//            var_dump([$query->sql, $query->time / 1000 . ' ms']);
-//            var_dump([$query->bindings]);
-//        });
-
         Blade::include('components.comments', 'comments');
         Blade::include('components.solutions', 'solutions');
         Blade::include("components.solution", 'solution');

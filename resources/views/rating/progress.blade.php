@@ -1,7 +1,5 @@
 @extends('layouts.app')
 @section('description'){{ __('rating.progress.description') }}@endsection
-@php($sortParametersExercises = \App\Helpers\RatingHelper::getStateSort($sortExercises ?? 'default', 'exercises'))
-@php($sortParametersChapters = \App\Helpers\RatingHelper::getStateSort($sortChapters ?? 'default', 'chapters'))
 @section('content')
     <div class="my-4">
         @include('rating.menu')
@@ -13,9 +11,9 @@
                         <th>{{ __('rating.positions') }}</th>
                         <th>{{ __('rating.user') }}</th>
                         <th>
-                            <a class="text-decoration-none" href="{{ route('progress_top.index', $sortParametersChapters) }}">
+                            <a class="text-decoration-none" href="{{ route('progress_top.index', $nextChaptersParameterFromSort) }}">
                                 {{ __('rating.read_chapters_from') }} {{ App\Models\Chapter::MARKABLE_COUNT }}
-                                @switch($sortChapters)
+                                @switch($nextChaptersParameterFromSort)
                                     @case('desc')
                                         <i class="fa fa-angle-up" aria-hidden="true"></i>
                                         @break
@@ -26,9 +24,9 @@
                                 @endswitch
                             </a>
                         <th>
-                            <a class="text-decoration-none" href="{{ route('progress_top.index', $sortParametersExercises) }}">
+                            <a class="text-decoration-none" href="{{ route('progress_top.index', $nextExercisesParameterFromSort) }}">
                                 {{ __('rating.completed_exercises_from') }} {{ $amountExercises }}
-                                @switch($sortExercises)
+                                @switch($nextChaptersParameterFromSort)
                                     @case('desc')
                                         <i class="fa fa-angle-up" aria-hidden="true"></i>
                                         @break

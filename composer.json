@@ -16,9 +16,9 @@
         "ext-json": "*",
         "ext-mbstring": "*",
         "ext-openssl": "*",
-        "ext-sqlite3": "*",
         "ext-pdo_pgsql": "*",
         "ext-pdo_sqlite": "*",
+        "ext-sqlite3": "*",
         "ext-xml": "*",
         "ext-zip": "*",
         "browner12/helpers": "^3.0",
@@ -43,7 +43,7 @@
         "mikehaertl/php-shellcommand": "^1.6",
         "rollbar/rollbar-laravel": "~7.0",
         "spatie/laravel-activitylog": "^4.0.0",
-        "spatie/laravel-query-builder": "^3.3",
+        "spatie/laravel-query-builder": "3.6",
         "spatie/laravel-sitemap": "^6.0",
         "symfony/process": "^5.2",
         "symfony/yaml": "^5.2"
@@ -65,7 +65,10 @@
     "config": {
         "optimize-autoloader": true,
         "preferred-install": "dist",
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
     },
     "extra": {
         "laravel": {

@@ -159,9 +159,9 @@ if (!function_exists('getCommentsRating')) {
 }
 
 if (!function_exists('getCalculatedRating')) {
-    function getCalculatedRating(?string $sortChapters = null, ?string $sortExercises = null): Collection
+    function getCalculatedRating(): Collection
     {
-        return RatingHelper::getCalculatedRating($sortChapters, $sortExercises);
+        return RatingHelper::getCalculatedRating();
     }
 }
 

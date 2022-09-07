@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7919a36f903b830feb89f4d7f477b9e4",
+    "content-hash": "16d6523e8eabbacef46509ca18345966",
     "packages": [
         {
             "name": "brick/math",
@@ -5677,16 +5677,16 @@
         },
         {
             "name": "spatie/laravel-query-builder",
-            "version": "3.4.1",
+            "version": "3.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-query-builder.git",
-                "reference": "6c09f1f9d6c988bf2e1220be072c7bd1ac958cc9"
+                "reference": "03d8e1307dcb58b16fcc9c4947633fc60ae74802"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-query-builder/zipball/6c09f1f9d6c988bf2e1220be072c7bd1ac958cc9",
-                "reference": "6c09f1f9d6c988bf2e1220be072c7bd1ac958cc9",
+                "url": "https://api.github.com/repos/spatie/laravel-query-builder/zipball/03d8e1307dcb58b16fcc9c4947633fc60ae74802",
+                "reference": "03d8e1307dcb58b16fcc9c4947633fc60ae74802",
                 "shasum": ""
             },
             "require": {
@@ -5743,7 +5743,7 @@
                     "type": "custom"
                 }
             ],
-            "time": "2021-05-24T10:13:32+00:00"
+            "time": "2021-09-06T08:03:10+00:00"
         },
         {
             "name": "spatie/laravel-sitemap",
@@ -13138,12 +13138,12 @@
         "ext-json": "*",
         "ext-mbstring": "*",
         "ext-openssl": "*",
-        "ext-sqlite3": "*",
         "ext-pdo_pgsql": "*",
         "ext-pdo_sqlite": "*",
+        "ext-sqlite3": "*",
         "ext-xml": "*",
         "ext-zip": "*"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.1.0"
+    "plugin-api-version": "2.3.0"
 }
