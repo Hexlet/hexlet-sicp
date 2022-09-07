@@ -31,8 +31,7 @@
         crossorigin="anonymous"
     >
     @stack('styles')
-    <link href="{{ mix('css/_custom.css') }}" rel="stylesheet">
-    <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+    @vite(['resources/js/app.js'])
     @includeWhen(app()->environment('production'), 'layouts.deps._gtm_body')
     @includeWhen(app()->environment('production'), 'layouts.deps._metrika')
 </head>
