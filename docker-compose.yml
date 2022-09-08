@@ -16,6 +16,8 @@ services:
     build: .
     volumes:
       - .:/app:delegated
+    ports:
+      - "3000:3000"
     command: ["make", "start-frontend"]
 
   database:

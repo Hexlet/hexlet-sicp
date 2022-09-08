@@ -61,7 +61,8 @@
         "roave/security-advisories": "dev-master",
         "slevomat/coding-standard": "dev-master",
         "squizlabs/php_codesniffer": "*",
-        "ngyuki/phpower": "dev-update-deps-php81-vardumper6"
+        "ngyuki/phpower": "dev-update-deps-php81-vardumper6",
+        "laravel/breeze": "^1.10"
     },
     "repositories": [
         {
