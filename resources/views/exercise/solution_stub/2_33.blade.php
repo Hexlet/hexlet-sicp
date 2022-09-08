@@ -5,6 +5,7 @@
 {!! $solution !!}
 ;;; END
 
+(define nil '())
 (define (square x) (* x x))
 
 (define x '(1 2 3))

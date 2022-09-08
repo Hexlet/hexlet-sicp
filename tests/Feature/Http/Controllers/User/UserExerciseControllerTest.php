@@ -14,27 +14,28 @@ class UserExerciseControllerTest extends ControllerTestCase
     {
         parent::setUp();
 
-        $this->actingAs($this->user);
         $this->seed([
             ChaptersTableSeeder::class,
             ExercisesTableSeeder::class,
         ]);
+
+        $this->user->exercises()->save(
+            Exercise::where(['path' => '1.1'])->firstOrFail(),
+        );
+
+        $this->actingAs($this->user);
     }
 
     public function testStore(): void
     {
-        $exercise = Exercise::inRandomOrder()->first();
-        $exercisePage = route('exercises.show', $exercise);
-
-        $this->from($exercisePage)
-            ->actingAs($this->user);
+        $exercise = Exercise::where(['path' => '2.1'])->firstOrFail();
 
         $response = $this->post(route('users.exercises.store', $this->user), [
             'exercise_id' => $exercise->id,
         ]);
 
-        $response->assertRedirect($exercisePage);
         $response->assertSessionDoesntHaveErrors();
+        $response->assertRedirect();
 
         $this->assertDatabaseHas('completed_exercises', [
             'user_id'     => $this->user->id,
@@ -44,29 +45,16 @@ class UserExerciseControllerTest extends ControllerTestCase
 
     public function testDestroy(): void
     {
-        $this->user->exercises()->save(
-            Exercise::inRandomOrder()->first(),
-        );
-
         /** @var CompletedExercise $completedExercise */
-        $completedExercise = $this->user->completedExercises()->first();
-
-        $exercisePage = route('exercises.show', $completedExercise->exercise_id);
-
-        $this->actingAs($this->user)->from($exercisePage);
-
-        $this->assertDatabaseHas('completed_exercises', [
-            'user_id'     => $completedExercise->user_id,
-            'exercise_id' => $completedExercise->exercise_id,
-        ]);
+        $completedExercise = $this->user->completedExercises()->firstOrFail();
 
         $response = $this->delete(route('users.exercises.destroy', [
             $completedExercise->user_id,
             $completedExercise->exercise_id,
         ]));
 
-        $response->assertRedirect($exercisePage);
         $response->assertSessionDoesntHaveErrors();
+        $response->assertRedirect();
 
         $this->assertDatabaseMissing('completed_exercises', [
             'user_id'     => $completedExercise->user_id,

@@ -3,10 +3,10 @@ name: CI
 on:
   pull_request:
     branches:
-      - 'master'
+      - 'main'
   push:
     branches-ignore:
-      - 'master'
+      - 'main'
 
 jobs:
   build:
@@ -14,5 +14,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - uses: satackey/action-docker-layer-caching@v0.0.11
+
       - name: Run CI
-        run: make ci
+        run: |
+          make ci

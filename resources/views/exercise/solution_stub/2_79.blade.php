@@ -246,6 +246,10 @@
 (install-rational-package)
 (install-complex-package)
 
+; put equ? into packages. This procedures must be defined.
+(update-scheme-number-package)
+(update-rational-package)
+(update-complex-package)
 
 (check-true (equ? (make-complex-from-real-imag 1 2) (make-complex-from-real-imag 1 2)))
 (check-true (equ? (make-rational 1 2) (make-rational 2 4)))

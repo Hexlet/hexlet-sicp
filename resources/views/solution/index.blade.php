@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts..app')
 @php
 /**
  * @var \App\Models\Solution[]|\Illuminate\Support\Collection $solutions
@@ -14,12 +14,17 @@
 
             <div class="mb-3 mt-3">
                 {{ Form::open(['url' => route('solutions.index'), 'method' => 'GET' , 'class' => 'form-inline']) }}
-                {{ Form::select('filter[user_id]', $solutionAuthors, $filter['user_id'], ['placeholder' => __('views.solution.index.table_header.author'), 'class' => 'form-control mr-2']) }}
-                {{ Form::select('filter[exercise_id]', $exerciseTitles, $filter['exercise_id'], ['placeholder' => __('views.solution.index.table_header.exercise'), 'class' => 'form-control mr-2']) }}
-                {{ Form::submit(__('views.solution.index.filter.apply_button'), ['class' => 'btn btn-outline-primary']) }}
-                <a href="{{ route('solutions.index') }}" class="btn btn-outline-secondary ml-3">
-                    {{ __('views.solution.index.filter.reset_button') }}
-                </a>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">{{ __('views.solution.index.filter.user') }}</span>
+                    {{ Form::select('filter[user_id]', $solutionAuthors, array_get($filter, 'user_id', null), ['placeholder' => __('views.solution.index.filter.user'), 'class' => 'form-control']) }}
+                    <span class="input-group-text">{{ __('views.solution.index.filter.exercise') }}</span>
+                    {{ Form::select('filter[exercise_id]', $exerciseTitles, array_get($filter, 'exercise_id', null), ['placeholder' => __('views.solution.index.filter.exercise'), 'class' => 'form-control']) }}
+                    {{ Form::submit(__('views.solution.index.filter.apply_button'), ['class' => 'btn btn-outline-primary']) }}
+                    <a href="{{ route('solutions.index') }}" class="btn btn-outline-secondary ml-3">
+                        {{ __('views.solution.index.filter.reset_button') }}
+                    </a>
+                </div>
+
                 {{ Form::close() }}
             </div>
 
@@ -58,7 +63,7 @@
                     </tbody>
                 </table>
             </div>
-            {{ $solutions->links() }}
+            {{ $solutions->withQueryString()->links() }}
         </section>
     </div>
 @endsection

@@ -5,6 +5,7 @@
 {!! $solution !!}
 ;;; END
 
+(define nil '())
 (define example (list 1 2 3))
 
 (check-equal? (fold-right / 1 example) 3/2)

@@ -1,7 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
-
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -13,5 +11,8 @@ use Illuminate\Http\Request;
 |
 */
 Route::namespace('Api')->name('api.')->group(function (): void {
+    Route::resource('exercises', 'ExerciseController')->only(['show']);
     Route::resource('exercises.check', 'Exercise\CheckController')->only(['store']);
+    Route::resource('exercises.solutions', 'Exercise\SolutionController')->only(['store']);
+    Route::resource('typos', 'TypoController')->only(['store']);
 });

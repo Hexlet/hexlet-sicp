@@ -5,6 +5,10 @@ return [
         'description' =>
             'Hexlet SICP is a service for those studying the book Structure and Interpretation of Computer Programs. Track your progress and match yourself against others on the global leaderboard.',
     ],
+    'title' => [
+        'name' => 'Structure and Interpretation of Computer Programs (SICP) - Hexlet SICP',
+        'name_SICP' => 'Hexlet SICP',
+    ],
     'nav' => [
         'name' => 'Hexlet SICP',
         'pages' => 'Pages',
@@ -56,5 +60,14 @@ return [
         'close' => 'Close',
         'origin' => 'Go to origin',
         'save' => 'Save',
+    ],
+    'modal' => [
+        'title' => 'Report a mistake on the page',
+        'body' => 'There is a mistake in the following text:',
+        'question' => 'Do you want to send a notice to a webmaster?',
+        'button_cancel' => 'Cancel',
+        'button_send' => 'Send',
+        'guest' => 'Guest',
+        'network_error' => 'Network error',
     ],
 ];

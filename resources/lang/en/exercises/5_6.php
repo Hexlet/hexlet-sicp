@@ -2,6 +2,12 @@
 
 return [
     'title' => "Extra save and extra restore",
-    'description' => "Ben Bitdiddle observes that the Fibonacci machine's controller sequence has an extra save " .
-    "and an extra restore, which can be removed to make a faster machine. Where are these instructions?",
+    'description' => [
+        '1' =>
+        "Ben Bitdiddle observes that the Fibonacci machine's controller sequence has an extra ",
+        '2' =>
+        " and an extra ",
+        '3' =>
+        ", which can be removed to make a faster machine. Where are these instructions?",
+    ],
 ];

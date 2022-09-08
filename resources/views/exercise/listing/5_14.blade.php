@@ -1,4 +1,25 @@
-<p>{{ __('exercises/5_14.description.1') }}</p>
+<p>{{ __('exercises/5_14.description.1') }}
+<code>n!</code>
+{{ __('exercises/5_14.description.2') }}
+<code>n</code>
+{{ __('exercises/5_14.description.3') }}
+<code>n</code>
+{{ __('exercises/5_14.description.4') }}
+<code>n!</code>
+{{ __('exercises/5_14.description.5') }}
+<code>n > 1</code>
+{{ __('exercises/5_14.description.6') }}
+<code>n</code>
+{{ __('exercises/5_14.description.7') }}
+<code>n</code>
+{{ __('exercises/5_14.description.8') }}
+<code>get-register-contents</code>
+{{ __('exercises/5_14.description.9') }}
+<code>set-register-contents!</code>
+{{ __('exercises/5_14.description.10') }}
+<code>start</code>
+{{ __('exercises/5_14.description.11') }}
+</p>
 <img class="img-fluid" src="{{ mix('img/exercises/5_14.gif') }}" alt="5.14">
 <pre><code>(controller
   gcd-loop
@@ -15,7 +36,7 @@
     (perform (op print) (reg a))
     (goto (label gcd-loop)))
 </code></pre>
-<p>{{ __('exercises/5_14.description.2') }}</p>
+<p>{{ __('exercises/5_14.description.12') }}</p>
 <img class="img-fluid" src="{{ mix('img/exercises/5_12.gif') }}" alt="5.12">
 <pre><code>(controller
    (assign continue (label fact-done))     ; set up final return address
@@ -40,4 +61,4 @@
    (goto (reg continue))                   ; return to caller
  fact-done)
 </code></pre>
-<p>{{ __('exercises/5_14.description.3') }}</p>
+<p>{{ __('exercises/5_14.description.13') }}</p>

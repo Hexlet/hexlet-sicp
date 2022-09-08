@@ -2,6 +2,10 @@
 
 return [
     'title' => 'Union-set for sets represented as unordered lists',
-    'description' =>
-        "Implement the union-set operation for the unordered-list representation of sets.",
+    'description' => [
+        '1' =>
+        "Implement the ",
+        '2' =>
+        " operation for the unordered-list representation of sets.",
+    ],
 ];

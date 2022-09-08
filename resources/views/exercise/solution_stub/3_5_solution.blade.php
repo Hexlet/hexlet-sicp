@@ -1,0 +1,10 @@
+(define (make-test p x1 x2 y1 y2)
+  (lambda ()
+    (let ((x (if (> x1 x2) (random-in-range x2 x1) (random-in-range x1 x2)))
+          (y (if (> y1 y2) (random-in-range y2 y1) (random-in-range y1 y2))))
+      (p x y))))
+
+(define (estimate-integral p x1 x2 y1 y2 trials)
+  (let ((width (abs (- x1 x2)))
+        (height (abs (- y1 y2))))
+    (* width height (monte-carlo trials (make-test p x1 x2 y1 y2)))))

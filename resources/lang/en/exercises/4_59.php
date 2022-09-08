@@ -12,6 +12,8 @@ return [
         '4' =>
         "b. Alyssa P. Hacker is unimpressed. She thinks it would be much more useful to be able to ask for her meetings by specifying her name. So she designs a rule that says that a person's meetings include all whole-company meetings plus all meetings of that person's division. Fill in the body of Alyssa's rule.",
         '5' =>
-        "c. Alyssa arrives at work on Wednesday morning and wonders what meetings she has to attend that day. Having defined the above rule, what query should she make to find this out?",
+        "c. Alyssa arrives at work on Wednesday morning and wonders what meetings she has to attend that day. Having defined the ",
+        '6' =>
+        " rule, what query should she make to find this out?",
     ],
 ];

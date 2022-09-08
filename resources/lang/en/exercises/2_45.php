@@ -4,8 +4,16 @@ return [
     'title' => "Split procedure",
     'description' => [
         '1' =>
-        "Right-split and up-split can be expressed as instances of a general splitting operation. Define a procedure split with the property that evaluating",
+        " and ",
         '2' =>
-        "produces procedures right-split and up-split with the same behaviors as the ones already defined.",
+        " can be expressed as instances of a general splitting operation. Define a procedure ",
+        '3' =>
+        " with the property that evaluating",
+        '4' =>
+        "produces procedures ",
+        '5' =>
+        " and ",
+        '6' =>
+        " with the same behaviors as the ones already defined.",
     ],
 ];

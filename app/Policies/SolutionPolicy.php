@@ -18,11 +18,11 @@ class SolutionPolicy
 
     public function view(User $user, Solution $solution): bool
     {
-        return (int)$user->id === (int)$solution->user_id;
+        return $solution->user->is($user);
     }
 
     public function delete(User $user, Solution $solution): bool
     {
-        return (int)$user->id === (int)$solution->user_id;
+        return $solution->user->is($user);
     }
 }

@@ -6,4 +6,7 @@
                  (make-zero-crossings (stream-cdr input-stream)
                                       avpt))))
 </code></pre>
-<p>{{ __('exercises/3_75.description.3') }}</p>
+<p>{{ __('exercises/3_75.description.3') }}
+<code>make-zero-crossings</code>
+{{ __('exercises/3_75.description.4') }}
+</p>

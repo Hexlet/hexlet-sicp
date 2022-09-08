@@ -4,7 +4,14 @@ return [
     'title' => 'Golden ratio',
     'description' => [
         '1' =>
-        "Show that the golden ratio φ (section 1.2.2) is a fixed point of the transformation x → 1 + 1/x, " .
-        "and use this fact to compute φ by means of the fixed-point procedure. ",
+        "Show that the golden ratio ",
+        '2' =>
+        " (section 1.2.2) is a fixed point of the transformation ",
+        '3' =>
+        ", and use this fact to compute ",
+        '4' =>
+        " by means of the ",
+        '5' =>
+        " procedure.",
     ],
 ];

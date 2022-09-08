@@ -1,10 +1,13 @@
 include make-compose.mk
 
+console:
+	php artisan tinker
+
 deploy:
-	git push heroku master
+	git push heroku main
 
 setup: env-prepare sqlite-prepare install key db-prepare ide-helper
-	npm run dev
+	npm run development
 
 install-app:
 	composer install
@@ -26,8 +29,7 @@ start-frontend:
 db-prepare:
 	php artisan migrate:fresh --seed
 
-lint:
-	composer exec phpcs -v
+lint: lint-js lint-php
 
 lint-fix:
 	composer exec phpcbf -v
@@ -39,7 +41,7 @@ test-coverage:
 	XDEBUG_MODE=coverage php artisan test --coverage-clover build/logs/clover.xml
 
 analyse:
-	composer exec phpstan analyse -v -- --memory-limit=-1
+	composer exec phpstan analyse -v -- --memory-limit=1G
 
 check: lint analyse test
 
@@ -64,7 +66,15 @@ ide-helper:
 lint-js:
 	npm run lint-js
 
+lint-php:
+	composer exec phpcs -v
+
 lint-js-fix:
 	npm run lint-js-fix
 
+setup-git-hooks:
+	npx simple-git-hooks
+
 .PHONY: test
+
+pre-push-hook: lint

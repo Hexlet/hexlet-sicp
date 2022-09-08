@@ -1,5 +1,6 @@
 #lang racket/base
 (require rackunit)
+(require sicp)
 
 
 ;;; BEGIN

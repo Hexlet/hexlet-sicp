@@ -6,6 +6,8 @@ return [
         '1' =>
         "Define an encoding tree and a sample message:",
         '2' =>
-        "Use the decode procedure to decode the message, and give the result.",
+        "Use the ",
+        '3' =>
+        " procedure to decode the message, and give the result.",
     ],
 ];

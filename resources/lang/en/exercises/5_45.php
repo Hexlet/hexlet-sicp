@@ -9,19 +9,31 @@ return [
         '2' =>
         "a. Exercise ",
         '3' =>
-        " asked you to determine, as a function of n, the number of pushes and the maximum stack depth needed by the evaluator to compute n! using the recursive factorial procedure given above. Exercise ",
+        " asked you to determine, as a function of n",
         '4' =>
-        " asked you to do the same measurements for the special-purpose factorial machine shown in figure 5.11. Now perform the same analysis using the compiled factorial procedure.",
+        ", the number of pushes and the maximum stack depth needed by the evaluator to compute n!",
         '5' =>
-        "Take the ratio of the number of pushes in the compiled version to the number of pushes in the interpreted version, and do the same for the maximum stack depth. " .
-        "Since the number of operations and the stack depth used to compute n! are linear in n, these ratios should approach constants as n becomes large. " .
-        "What are these constants? Similarly, find the ratios of the stack usage in the special-purpose machine to the usage in the interpreted version.",
+        " using the recursive factorial procedure given above. Exercise ",
         '6' =>
+        " asked you to do the same measurements for the special-purpose factorial machine shown in figure 5.11. Now perform the same analysis using the compiled factorial",
+        '7' =>
+        " procedure.",
+        '8' =>
+        "Take the ratio of the number of pushes in the compiled version to the number of pushes in the interpreted version, and do the same for the maximum stack depth. " .
+        "Since the number of operations and the stack depth used to compute n!",
+        '9' =>
+        " are linear in n",
+        '10' =>
+        ", these ratios should approach constants as n",
+        '11' =>
+        " becomes large. " .
+        "What are these constants? Similarly, find the ratios of the stack usage in the special-purpose machine to the usage in the interpreted version.",
+        '12' =>
         "Compare the ratios for special-purpose versus interpreted code to the ratios for compiled versus interpreted code. " .
         "You should find that the special-purpose machine does much better than the compiled code, since the hand-tailored controller code should be much better than what is produced by our rudimentary general-purpose compiler.",
-        '7' =>
+        '13' =>
         "b. Can you suggest improvements to the compiler that would help it generate code that would come closer in performance to the hand-tailored version?",
-        '8' =>
+        '14' =>
         "Figure 5.11: A recursive factorial machine.",
     ],
 ];

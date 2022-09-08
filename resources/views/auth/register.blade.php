@@ -1,10 +1,10 @@
-@extends('layouts.app')
+@extends('layouts..app')
 
 @section('content')
     <div class="row">
         <div class="col-md-5 mx-auto">
             <div class="card">
-                <h1 class="h4 text-center card-header p-3">
+                <h1 class="h43text-center card-header p-3">
                     {{ __('register.title') }}
                 </h1>
                 <div class="card-body">
@@ -24,7 +24,7 @@
                     </div>
                     {{ BsForm::close() }}
                 </div>
-                <div class="card-footer p-4 text-center bg-transparent">
+                <div class="card-footer p-2 text-center bg-transparent">
                     @include('components.social_login')
                 </div>
             </div>

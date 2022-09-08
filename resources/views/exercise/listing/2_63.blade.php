@@ -17,6 +17,12 @@
   (copy-to-list tree '()))
 </code></pre>
 <p>{{ __('exercises/2_63.description.2') }}</p>
-<p>{{ __('exercises/2_63.description.3') }}</p>
+<p>{{ __('exercises/2_63.description.3') }}
+<code>n</code>
+{{ __('exercises/2_63.description.4') }}
+</p>
 <img class="img-fluid" src="{{ mix('img/exercises/2_63.gif') }}" alt="2.63">
-<p>{{ __('exercises/2_63.description.4') }}</p>
+<p>{{ __('exercises/2_63.description.5') }}
+<code>{1, 3, 5, 7, 9, 11}</code>
+{{ __('exercises/2_63.description.6') }}
+</p>

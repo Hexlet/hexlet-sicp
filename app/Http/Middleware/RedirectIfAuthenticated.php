@@ -18,8 +18,14 @@ class RedirectIfAuthenticated
      */
     public function handle($request, Closure $next, $guard = null)
     {
+        $currentRoute = (object) $request->route();
+        $currentRouteName = $currentRoute->getName();
+        if (str_starts_with($currentRouteName, 'password')) {
+            return $next($request);
+        }
+
         if (Auth::guard($guard)->check()) {
-            return redirect()->route('index');
+            return redirect()->route('home');
         }
 
         return $next($request);

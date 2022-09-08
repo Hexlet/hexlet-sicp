@@ -2,7 +2,14 @@
 
 return [
     'title' => 'Modification of pairs',
-    'description' =>
-        "Modify the pairs procedure so that (pairs integers integers) will produce the stream of all pairs of integers (i,j) (without the condition i ≤ j). " .
-        "Hint: You will need to mix in an additional stream.",
+    'description' => [
+        '1' =>
+        "Modify the pairs procedure so that ",
+        '2' =>
+        " will produce the stream of all pairs of integers ",
+        '3' =>
+        " (without the condition ",
+        '4' =>
+        "). Hint: You will need to mix in an additional stream.",
+    ],
 ];

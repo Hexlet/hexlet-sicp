@@ -28,7 +28,7 @@ class ChapterController extends Controller
         /**
          * @var User $authUser
          */
-        $authUser = auth()->user() ?? User::make([]);
+        $authUser = auth()->user() ?? new User();
         $previousChapter = Chapter::whereId($chapter->id - 1)->firstOrNew([]);
         $nextChapter = Chapter::whereId($chapter->id + 1)->firstOrNew([]);
         $isCompletedChapter = $authUser->readChapters()->where('chapter_id', $chapter->id)->exists();

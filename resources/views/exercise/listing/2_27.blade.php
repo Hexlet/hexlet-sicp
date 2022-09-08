@@ -1,5 +1,11 @@
-<p>{{ __('exercises/2_27.description.1') }}<a href="{{ route('exercises.show', getExercise('2.18')) }}">2.18</a>
-{{ __('exercises/2_27.description.2') }}</p>
+<p>{{ __('exercises/2_27.description.1') }}
+<code>reverse</code>
+{{ __('exercises/2_27.description.2') }}
+<a href="{{ route('exercises.show', getExercise('2.18')) }}">2.18</a>
+{{ __('exercises/2_27.description.3') }}
+<code>deep-reverse</code>
+{{ __('exercises/2_27.description.4') }}
+</p>
 <pre><code>(define x (list (list 1 2) (list 3 4)))
 
 x

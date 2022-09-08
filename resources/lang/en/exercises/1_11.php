@@ -2,8 +2,26 @@
 
 return [
     'title' => 'Iterative and recursive processes',
-    'description' =>
-        'A function f is defined by the rule that f(n) = n if n < 3 and f(n) = f(n - 1) + 2f(n - 2) + 3f(n - 3) if n ≥ 3. ' .
-        'Write a procedure f that computes f by means of a recursive process. ' .
-        'Write a procedure f-iter that computes f by means of an iterative process.',
+    'description' => [
+        '1' =>
+        'A function ',
+        '2' =>
+        ' is defined by the rule that ',
+        '3' =>
+        ' if ',
+        '4' =>
+        ' and ',
+        '5' =>
+        ' if ',
+        '6' =>
+        '. Write a procedure ',
+        '7' =>
+        ' that computes ',
+        '8' =>
+        ' by means of a recursive process. Write a procedure ',
+        '9' =>
+        ' that computes ',
+        '10' =>
+        ' by means of an iterative process.',
+    ],
 ];

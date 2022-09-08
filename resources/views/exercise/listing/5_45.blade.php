@@ -1,10 +1,25 @@
 <p>{{ __('exercises/5_45.description.1') }}</p>
 <p>{{ __('exercises/5_45.description.2') }}<a href="{{ route('exercises.show', getExercise('5.27')) }}">5.27</a>
-{{ __('exercises/5_45.description.3') }}<a href="{{ route('exercises.show', getExercise('5.14')) }}">5.14</a>
-{{ __('exercises/5_45.description.4') }}</p>
-<p>{{ __('exercises/5_45.description.5') }}</p>
-<p>{{ __('exercises/5_45.description.6') }}</p>
-<p>{{ __('exercises/5_45.description.7') }}</p>
+{{ __('exercises/5_45.description.3') }}
+<code>n</code>
+{{ __('exercises/5_45.description.4') }}
+<code>n!</code>
+{{ __('exercises/5_45.description.5') }}
+<a href="{{ route('exercises.show', getExercise('5.14')) }}">5.14</a>
+{{ __('exercises/5_45.description.6') }}
+<code>factorial</code>
+{{ __('exercises/5_45.description.7') }}
+</p>
+<p>{{ __('exercises/5_45.description.8') }}
+<code>n!</code>
+{{ __('exercises/5_45.description.9') }}
+<code>n</code>
+{{ __('exercises/5_45.description.10') }}
+<code>n</code>
+{{ __('exercises/5_45.description.11') }}
+</p>
+<p>{{ __('exercises/5_45.description.12') }}</p>
+<p>{{ __('exercises/5_45.description.13') }}</p>
 <img class="img-fluid" src="{{ mix('img/exercises/5_12.gif') }}" alt="5.12">
 <pre><code>(controller
    (assign continue (label fact-done))     ; set up final return address
@@ -29,4 +44,4 @@
    (goto (reg continue))                   ; return to caller
  fact-done)
 </code></pre>
-<p>{{ __('exercises/5_45.description.8') }}</p>
+<p>{{ __('exercises/5_45.description.14') }}</p>

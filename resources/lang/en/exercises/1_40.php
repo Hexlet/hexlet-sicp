@@ -4,8 +4,14 @@ return [
     'title' => 'Approximate zeros',
     'description' => [
         '1' =>
-        "Define a procedure cubic that can be used together with the newtons-method procedure in expressions of the form",
+        "Define a procedure ",
         '2' =>
-        "to approximate zeros of the cubic x³ + ax² + bx + c.",
+        " that can be used together with the ",
+        '3' =>
+        " procedure in expressions of the form",
+        '4' =>
+        "to approximate zeros of the cubic ",
+        '5' =>
+        ".",
     ],
 ];

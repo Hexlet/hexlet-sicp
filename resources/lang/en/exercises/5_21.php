@@ -6,8 +6,12 @@ return [
         '1' =>
         "Implement register machines for the following procedures. Assume that the list-structure memory operations are available as machine primitives.",
         '2' =>
-        "a. Recursive count-leaves:",
+        "a. Recursive ",
         '3' =>
-        "b. Recursive count-leaves with explicit counter:",
+        ":",
+        '4' =>
+        "b. Recursive ",
+        '5' =>
+        " with explicit counter:",
     ],
 ];

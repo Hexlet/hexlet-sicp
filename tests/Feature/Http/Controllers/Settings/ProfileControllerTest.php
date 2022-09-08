@@ -17,31 +17,21 @@ class ProfileControllerTest extends ControllerTestCase
 
     public function testIndex(): void
     {
-        $this->actingAs($this->user);
-
         $response = $this->get(route('settings.profile.index', $this->user));
-
         $response->assertOk();
     }
 
     public function testUpdate(): void
     {
-        $name = $this->faker->name;
-        $github_name = $this->faker->userName;
-        $hexletNickname = $this->faker->userName;
-        $response = $this->patch(route('settings.profile.update', $this->user), [
-            'name' => $name,
-            'github_name' => $github_name,
-            'hexlet_nickname' => $hexletNickname,
-        ]);
+        $userParams = [
+            'name' => $this->faker->name,
+            'github_name' => $this->faker->userName,
+            'hexlet_nickname' => $this->faker->userName,
+        ];
+        $response = $this->patch(route('settings.profile.update', $this->user), $userParams);
         $response->assertSessionHasNoErrors();
 
-        $this->assertDatabaseHas('users', [
-            'id' => $this->user->id,
-            'name' => $name,
-            'github_name' => $github_name,
-            'hexlet_nickname' => $hexletNickname,
-        ]);
+        $this->assertDatabaseHas('users', array_merge($userParams, ['id' => $this->user->id]));
     }
 
     public function testUpdateSameName(): void
@@ -54,16 +44,8 @@ class ProfileControllerTest extends ControllerTestCase
         $this->assertDatabaseHas('users', ['id' => $this->user->id, 'name' => $this->user->name]);
     }
 
-    public function invalidNamesProvider(): array
-    {
-        return [
-            ['-'],
-            [Str::random(256)],
-        ];
-    }
-
     /**
-     * @dataProvider invalidNamesProvider
+     * @dataProvider dataInvalidNamesProvider
      */
     public function testUpdateInvalidName(string $invalidName): void
     {
@@ -74,5 +56,13 @@ class ProfileControllerTest extends ControllerTestCase
             ])
             ->assertRedirect()
             ->assertSessionHasErrors('name');
+    }
+
+    public function dataInvalidNamesProvider(): array
+    {
+        return [
+            ['-'],
+            [Str::random(256)],
+        ];
     }
 }

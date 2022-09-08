@@ -9,7 +9,7 @@ use App\Models\User;
 use App\Models\Exercise;
 use App\Models\Solution;
 use App\Services\SolutionChecker;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Log;
 
 class ExerciseService
 {
@@ -30,12 +30,18 @@ class ExerciseService
             $this->completeExercise($user, $exercise);
         }
 
+        if ($checkResult->isCheckExecutionError()) {
+            Log::error(
+                "Failed to execute check. Output: {$checkResult->getOutput()}"
+            );
+        }
+
         return $checkResult;
     }
 
     public function completeExercise(User $user, Exercise $exercise): void
     {
-        if ($user->hasCompletedExercise($exercise)) {
+        if ($user->hasCompletedExercise($exercise) || $user->isGuest()) {
             return;
         }
 
@@ -44,7 +50,7 @@ class ExerciseService
     }
 
     // TODO: remove me
-    public function removeCompletedExercise($user, $exercise)
+    public function removeCompletedExercise(User $user, Exercise $exercise): void
     {
         $user->exercises()->detach($exercise);
         $this->activityService->logRemovedExercise($user, $exercise);

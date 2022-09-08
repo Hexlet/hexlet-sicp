@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts..app')
 @php
 /**
  * @var \App\Models\User $user

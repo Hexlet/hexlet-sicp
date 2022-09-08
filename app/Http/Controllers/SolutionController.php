@@ -15,7 +15,7 @@ class SolutionController extends Controller
 {
     public function index(Request $request): View
     {
-        $filter = array_merge(['user_id' => null, 'exercise_id' => null], $request->input('filter', []));
+        $filter = array_merge(['user_id' => null, 'exercise_id' => null], (array)$request->input('filter', []));
 
         $solutions = QueryBuilder::for(Solution::versioned())
             ->allowedFilters([
@@ -48,6 +48,10 @@ class SolutionController extends Controller
 
     public function show(Solution $solution): View
     {
+        if (!$solution->user()->exists()) {
+            abort(404);
+        }
+
         $exercise = $solution->exercise;
         $user = $solution->user;
         $solutionsListForCurrentExercise = $solution->exercise

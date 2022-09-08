@@ -31,15 +31,15 @@
         <div>
             @can('reply', $comment)
                 <button
-                    data-toggle="modal"
-                    data-target="#reply-modal-{{ $comment->id }}"
+                    data-bs-toggle="modal"
+                    data-bs-target="#reply-modal-{{ $comment->id }}"
                     class="btn btn-sm btn-link text-uppercase p-0 mr-2">
                     {{ __('comment.reply') }}
                 </button>
             @endcan
             @can('update', $comment)
-                <button data-toggle="modal"
-                        data-target="#comment-modal-{{ $comment->id }}"
+                <button data-bs-toggle="modal"
+                        data-bs-target="#comment-modal-{{ $comment->id }}"
                         class="btn btn-sm btn-link text-uppercase p-0 mr-2">
                     {{ __('comment.edit') }}
                 </button>
@@ -68,4 +68,3 @@
         @endcan
     </div>
 </div>
-

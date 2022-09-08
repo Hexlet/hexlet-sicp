@@ -6,9 +6,12 @@ return [
         '1' =>
         "With power series represented as streams of coefficients as in exercise ",
         '2' =>
-        ", adding series is implemented by add-streams. " .
-        "Complete the definition of the following procedure for multiplying series:",
+        ", adding series is implemented by ",
         '3' =>
-        "You can test your procedure by verifying that sin²x + cos²x = 1, using the series from exercise ",
+        ". Complete the definition of the following procedure for multiplying series:",
+        '4' =>
+        "You can test your procedure by verifying that ",
+        '5' =>
+        ", using the series from exercise ",
     ],
 ];

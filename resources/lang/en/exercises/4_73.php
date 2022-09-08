@@ -2,6 +2,12 @@
 
 return [
     'title' => "Explicit delay in flatten-stream",
-    'description' =>
-        "Why does flatten-stream use delay explicitly? What would be wrong with defining it as follows:",
+    'description' => [
+        '1' =>
+        "Why does ",
+        '2' =>
+        " use ",
+        '3' =>
+        " explicitly? What would be wrong with defining it as follows:",
+    ],
 ];

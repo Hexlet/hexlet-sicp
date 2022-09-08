@@ -1,4 +1,15 @@
-<p>{{ __('exercises/3_50.description') }}</p>
+<p>{{ __('exercises/3_50.description.1') }}
+<code>stream-map</code>
+{{ __('exercises/3_50.description.2') }}
+<code>map</code>
+{{ __('exercises/3_50.description.3') }}
+<code>map</code>
+{{ __('exercises/3_50.description.4') }}
+<code>n</code>
+{{ __('exercises/3_50.description.5') }}
+<code>n</code>
+{{ __('exercises/3_50.description.6') }}
+</p>
 <pre><code>(map + (list 1 2 3) (list 40 50 60) (list 700 800 900))
 <i>(741 852 963)</i>
 

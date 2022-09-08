@@ -8,9 +8,20 @@ return [
         '2' =>
         "What are the values of the following expressions?",
         '3' =>
-        "Consider the following procedures, where A is the procedure defined above:",
+        "Consider the following procedures, where ",
         '4' =>
-        "Give concise mathematical definitions for the functions computed by the procedures f, g, and h for positive integer values of n. " .
-        "For example, (k n) computes 5 * n * n.",
+        " is the procedure defined above:",
+        '5' =>
+        "Give concise mathematical definitions for the functions computed by the procedures ",
+        '6' =>
+        " and ",
+        '7' =>
+        " for positive integer values of ",
+        '8' =>
+        ". For example, ",
+        '9' =>
+        " computes ",
+        '10' =>
+        " .",
     ],
 ];

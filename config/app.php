@@ -53,7 +53,7 @@ return [
     */
 
     'url' => env('APP_URL', 'http://localhost'),
-
+    'production_url' => env('PRODUCTION_URL', 'https://sicp.hexlet.io'),
     'asset_url' => env('ASSET_URL', null),
 
     /*
@@ -227,7 +227,6 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Yaml' => Symfony\Component\Yaml\Yaml::class,
-
     ],
 
 ];
