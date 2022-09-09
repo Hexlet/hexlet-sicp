@@ -7,7 +7,7 @@
 
 (require racket/exn)
 
-(define incorrect-message "Incorrect password\n")
+(define incorrect-message "Incorrect password")
 
 (define insufficient-message "Insufficient funds")
 
@@ -25,5 +25,6 @@
 
 (check-equal? ((acc 'secret-password 'withdraw) 40) 60)
 (check-equal? ((acc 'secret-password 'deposit) 40) 100)
-(check-equal? (wrong-password-attempt) incorrect-message)
+; substring used because checking system has extra output
+(check-equal? (substring (wrong-password-attempt) 0 18) incorrect-message)
 (check-equal? (insufficient-funds-attempt) insufficient-message)
