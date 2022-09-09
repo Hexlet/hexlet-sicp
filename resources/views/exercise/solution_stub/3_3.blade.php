@@ -1,10 +1,11 @@
 #lang racket/base
 (require rackunit)
-(require racket/exn)
 
 ;;; BEGIN
 {!! $solution !!}
 ;;; END
+
+(require racket/exn)
 
 (define incorrect-message "Incorrect password\n")
 

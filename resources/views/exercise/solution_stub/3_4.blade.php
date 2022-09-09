@@ -1,10 +1,11 @@
 #lang racket/base
 (require rackunit)
-(require racket/exn)
 
 ;;; BEGIN
 {!! $solution !!}
 ;;; END
+
+(require racket/exn)
 
 (define acc (make-account 100 'secret-password))
 
