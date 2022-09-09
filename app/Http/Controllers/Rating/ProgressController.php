@@ -20,6 +20,7 @@ class ProgressController extends Controller
         return view('rating.progress', compact(
             'rating',
             'amountExercises',
+            'sortParams',
             'nextChaptersParameterFromSort',
             'nextExercisesParameterFromSort',
         ));

@@ -13,11 +13,11 @@
                         <th>
                             <a class="text-decoration-none" href="{{ route('progress_top.index', $nextChaptersParameterFromSort) }}">
                                 {{ __('rating.read_chapters_from') }} {{ App\Models\Chapter::MARKABLE_COUNT }}
-                                @switch($nextChaptersParameterFromSort)
-                                    @case('desc')
+                                @switch($sortParams)
+                                    @case('-read_chapters_count')
                                         <i class="fa fa-angle-up" aria-hidden="true"></i>
                                         @break
-                                    @case('asc')
+                                    @case('read_chapters_count')
                                         <i class="fa fa-angle-down" aria-hidden="true"></i>
                                         @break
                                     @default
@@ -26,11 +26,11 @@
                         <th>
                             <a class="text-decoration-none" href="{{ route('progress_top.index', $nextExercisesParameterFromSort) }}">
                                 {{ __('rating.completed_exercises_from') }} {{ $amountExercises }}
-                                @switch($nextChaptersParameterFromSort)
-                                    @case('desc')
+                                @switch($sortParams)
+                                    @case('-completed_exercises_count')
                                         <i class="fa fa-angle-up" aria-hidden="true"></i>
                                         @break
-                                    @case('asc')
+                                    @case('completed_exercises_count')
                                         <i class="fa fa-angle-down" aria-hidden="true"></i>
                                         @break
                                     @default

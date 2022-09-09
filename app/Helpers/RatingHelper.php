@@ -22,7 +22,7 @@ class RatingHelper
             ->get()
             ->map(fn($user) => [
                 'user' => $user,
-                'points' => $user->read_chapters_count + $user->completed_exercises_count * 3,
+                'points' => $user['read_chapters_count'] + $user['completed_exercises_count'] * 3,
             ])
             ->when(empty($sort), function ($collection) {
                 return $collection->sortByDesc('points');
