@@ -1,11 +1,11 @@
 #lang racket/base
 (require rackunit)
-(require compatibility/mlist)
 
 ;;; BEGIN
 {!! $solution !!}
 ;;; END
 
+(require compatibility/mlist)
 
 (define (square x) (* x x))
 
