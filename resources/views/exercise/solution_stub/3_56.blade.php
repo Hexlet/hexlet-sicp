@@ -1,5 +1,6 @@
-#lang sicp
-(#%require rackunit)
+#lang racket/base
+(require rackunit)
+(require sicp)
 
 
 ;;; BEGIN
@@ -47,13 +48,13 @@
                                       (stream-cdr s2)))))))))
 
 
-(check-equal? (stream-ref s 0) 1)
-(check-equal? (stream-ref s 1) 2)
-(check-equal? (stream-ref s 2) 3)
-(check-equal? (stream-ref s 3) 4)
-(check-equal? (stream-ref s 4) 5)
-(check-equal? (stream-ref s 5) 6)
-(check-equal? (stream-ref s 6) 8)
-(check-equal? (stream-ref s 7) 9)
-(check-equal? (stream-ref s 8) 10)
-(check-equal? (stream-ref s 9) 12)
+(check-equal? (stream-ref S 0) 1)
+(check-equal? (stream-ref S 1) 2)
+(check-equal? (stream-ref S 2) 3)
+(check-equal? (stream-ref S 3) 4)
+(check-equal? (stream-ref S 4) 5)
+(check-equal? (stream-ref S 5) 6)
+(check-equal? (stream-ref S 6) 8)
+(check-equal? (stream-ref S 7) 9)
+(check-equal? (stream-ref S 8) 10)
+(check-equal? (stream-ref S 9) 12)
