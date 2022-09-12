@@ -1,5 +1,6 @@
-#lang sicp
-(#%require rackunit)
+#lang racket/base
+(require rackunit)
+(require sicp)
 
 
 ;;; BEGIN
@@ -10,7 +11,7 @@
 
 (define (stream-cdr stream) (force (cdr stream)))
 
-define (stream-ref s n)
+(define (stream-ref s n)
   (if (= n 0)
       (stream-car s)
       (stream-ref (stream-cdr s) (- n 1))))
@@ -44,7 +45,8 @@ define (stream-ref s n)
 
 (define integers (cons-stream 1 (add-streams ones integers)))
 
-
+(define (integrate-series s)
+              (stream-map /  s integers))
 
 (define exp-series
   (cons-stream 1 (integrate-series exp-series)))
