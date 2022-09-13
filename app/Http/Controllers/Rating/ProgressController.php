@@ -16,10 +16,10 @@ class ProgressController extends Controller
         $nextChaptersParameterFromSort = RatingHelper::getParameterFromSorting('read_chapters_count', $sortParams ?? 'default');
         $nextExercisesParameterFromSort = RatingHelper::getParameterFromSorting('completed_exercises_count', $sortParams ?? 'default');
         $rating = getCalculatedRating();
-        $amountExercises = Exercise::count();
+        $exercisesCount= Exercise::count();
         return view('rating.progress', compact(
             'rating',
-            'amountExercises',
+            'exercisesCount',
             'sortParams',
             'nextChaptersParameterFromSort',
             'nextExercisesParameterFromSort',

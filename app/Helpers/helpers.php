@@ -183,10 +183,3 @@ if (!function_exists('getProfileImageLink')) {
         return UserHelper::getProfileImageLink($user);
     }
 }
-
-if (!function_exists('getStateSort')) {
-    function getStateSort(string $state, string $column): array
-    {
-        return RatingHelper::getStateSort($state, $column);
-    }
-}

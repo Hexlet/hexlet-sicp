@@ -25,7 +25,7 @@
                             </a>
                         <th>
                             <a class="text-decoration-none" href="{{ route('progress_top.index', $nextExercisesParameterFromSort) }}">
-                                {{ __('rating.completed_exercises_from') }} {{ $amountExercises }}
+                                {{ __('rating.completed_exercises_from') }} {{ $exercisesCount }}
                                 @switch($sortParams)
                                     @case('-completed_exercises_count')
                                         <i class="fa fa-angle-up" aria-hidden="true"></i>
