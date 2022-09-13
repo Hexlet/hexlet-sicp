@@ -13,8 +13,8 @@ class ProgressController extends Controller
     public function index(Request $request): View
     {
         $sortParams = $request->get('sort');
-        $nextChaptersParameterFromSort = RatingHelper::getStateSort('read_chapters_count', $sortParams ?? 'default');
-        $nextExercisesParameterFromSort = RatingHelper::getStateSort('completed_exercises_count', $sortParams ?? 'default');
+        $nextChaptersParameterFromSort = RatingHelper::getParameterFromSorting('read_chapters_count', $sortParams ?? 'default');
+        $nextExercisesParameterFromSort = RatingHelper::getParameterFromSorting('completed_exercises_count', $sortParams ?? 'default');
         $rating = getCalculatedRating();
         $amountExercises = Exercise::count();
         return view('rating.progress', compact(
