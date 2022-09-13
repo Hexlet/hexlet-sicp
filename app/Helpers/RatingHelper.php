@@ -33,10 +33,10 @@ class RatingHelper
         return $calculatedRating;
     }
 
-    public static function getParameterFromSorting(string $column, string $state): array
+    public static function getParameterFromSorting(string $column, ?string $state): array
     {
         return match ($state) {
-            'default' => ['sort' => $column],
+            null => ['sort' => $column],
             $column => ['sort' => "-{$column}"],
             default => [],
         };
