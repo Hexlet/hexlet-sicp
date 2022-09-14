@@ -1,6 +1,6 @@
-#lang sicp
-(#%require rackunit)
-
+#lang racket
+(require rackunit)
+(require sicp)
 
 ;;; BEGIN
 {!! $solution !!}
