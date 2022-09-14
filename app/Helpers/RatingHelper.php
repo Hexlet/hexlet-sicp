@@ -11,7 +11,7 @@ class RatingHelper
     public static function getCalculatedRating(): Collection
     {
         $sort = request()->get('sort');
-        $calculatedRating = QueryBuilder::for(User::class)
+        $users = QueryBuilder::for(User::class)
             ->defaultSort('name')
             ->allowedSorts($sort ?? 'name')
             ->whereHas('readChapters')
@@ -19,8 +19,9 @@ class RatingHelper
             ->withCount('readChapters')
             ->withCount('completedExercises')
             ->limit(100)
-            ->get()
-            ->map(fn(User $user) => [
+            ->get();
+            /** @var \Illuminate\Support\Collection|\App\Models\User[] $users */
+            $calculatedRating = $users->map(fn(User $user) => [
                 'user' => $user,
                 'points' => $user->read_chapters_count + $user->completed_exercises_count * 3,
             ])
