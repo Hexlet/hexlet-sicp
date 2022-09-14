@@ -4,11 +4,6 @@
 
 (define (stream-cdr stream) (force (cdr stream)))
 
-(define (stream-ref s n)
-  (if (= n 0)
-      (stream-car s)
-      (stream-ref (stream-cdr s) (- n 1))))
-
 (define (interleave s1 s2)
   (if (stream-null? s1)
       s2
@@ -59,11 +54,9 @@
         (pairs t (stream-cdr u)))
       (triples (stream-cdr s) (stream-cdr t) (stream-cdr u)))))
 
-(define s (triples integers integers integers))
-
 (define pythagorean-triples
   (stream-filter
     (lambda (triple) (= (+ (square (car triple))
                            (square (cadr triple)))
                         (square (caddr triple))))
-    s))
+    (triples integers integers integers)))
