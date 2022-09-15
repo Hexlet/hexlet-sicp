@@ -3,7 +3,7 @@
 
 (define base-module-eval
   (make-module-evaluator '(module m racket/base
-                            (require rackunit sicp)
+                            (require rackunit)
                             ;;; BEGIN
 {!! $solution !!}
                             ;;; END
