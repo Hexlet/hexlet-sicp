@@ -5918,6 +5918,7 @@
         },
         {
             "name": "spatie/laravel-query-builder",
+
             "version": "5.0.1",
             "source": {
                 "type": "git",

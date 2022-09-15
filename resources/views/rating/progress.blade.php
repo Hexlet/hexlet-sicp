@@ -10,8 +10,21 @@
                     <tr>
                         <th>{{ __('rating.positions') }}</th>
                         <th>{{ __('rating.user') }}</th>
-                        <th>{{ __('rating.read_chapters_from') }} {{ App\Models\Chapter::MARKABLE_COUNT }}</th>
-                        <th>{{ __('rating.completed_exercises_from') }} {{ $exercises->count() }}</th>
+                        <th>
+                            @include('components.sorting_widget',[
+                                'sortParams' => $sortParams,
+                                'nameParams' => 'read_chapters_count',
+                                'name' => __('rating.read_chapters_from', ['count' => App\Models\Chapter::MARKABLE_COUNT]),
+                                'route' => route('progress_top.index', $nextChaptersParameterFromSort),
+                            ])
+                        <th>
+                            @include('components.sorting_widget',[
+                               'sortParams' => $sortParams,
+                               'nameParams' => 'completed_exercises_count',
+                               'name' => __('rating.completed_exercises_from', ['count' => $exercisesCount]),
+                               'route' => route('progress_top.index', $nextExercisesParameterFromSort),
+                           ])
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
