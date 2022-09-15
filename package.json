@@ -12,8 +12,8 @@
     "production": "mix --production",
     "prod": "npm run production",
     "heroku-postbuild": "npm run production",
-    "lint-js": "npx eslint --ext .jsx,.js ./resources/js",
-    "lint-js-fix": "npx eslint --fix --ext .jsx,.js ./resources/js"
+    "lint-js": "node_modules/.bin/eslint --ext .jsx,.js ./resources/js",
+    "lint-js-fix": "node_modules/.bin/eslint --fix --ext .jsx,.js ./resources/js"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.15.4",
