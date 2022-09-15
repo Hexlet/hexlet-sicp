@@ -27,7 +27,7 @@ compose-bash:
 	docker-compose run --rm application bash
 
 compose-build:
-	docker-compose build ${BUILD_ARGS}
+	docker-compose build
 
 compose-console:
 	docker-compose run --rm application make console

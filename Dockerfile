@@ -1,8 +1,14 @@
-FROM php:8.1-cli
+FROM ubuntu:22.04
+
+ENV DEBIAN_FRONTEND=noninteractive
+ENV TZ=Europe/Moscow
+ENV PATH=node_modules/.bin:$PATH
 
 WORKDIR /app
 
 RUN apt-get update && apt-get install -y \
+    make \
+    curl \
     git \
     libpq-dev \
     libzip-dev \
@@ -10,32 +16,32 @@ RUN apt-get update && apt-get install -y \
     sqlite3 \
     unzip \
     zip \
-    --no-install-recommends \
+    php \
+    php-bcmath \
+    php-exif \
+    php-pdo \
+    php-pgsql \
+    php-pgsql \
+    php-zip \
+    php-xdebug \
+    php-dom \
+    php-xml \
+    php-mbstring \
+    php-sqlite3 \
+    php-curl
+
+RUN apt-get update && apt-get install -y \
+    software-properties-common \
     && rm -rf /var/lib/apt/lists/*
 
-RUN docker-php-ext-install \
-    bcmath \
-    exif \
-    pdo \
-    pdo_pgsql \
-    pgsql \
-    zip
-
-RUN pecl install xdebug && docker-php-ext-enable xdebug
+RUN add-apt-repository -y ppa:plt/racket
+RUN apt update && apt-get install -y racket
+RUN raco pkg install sicp
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-
 COPY ./xdebug.ini /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
 
 RUN curl -sL https://deb.nodesource.com/setup_18.x | bash -
+RUN apt-get update && apt-get install -y nodejs
 
-RUN apt-get install -y nodejs
-RUN npm install --location=global npm@latest
-
-# NOTE:fix for EACCES: permission denied
-# https://stackoverflow.com/questions/60047304/npm-err-code-elifecycle-npm-err-errno-243
-ARG UID=1000
-ARG GID=1000
-RUN groupadd -g $GID -o sicp
-RUN useradd -m -u $UID -g $GID -o -s /bin/bash sicp
-USER sicp
+ENV PATH=node_modules/.bin:$PATH
