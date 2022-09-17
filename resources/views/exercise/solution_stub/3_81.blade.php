@@ -1,5 +1,6 @@
-#lang sicp
-(#%require rackunit)
+#lang racket/base
+(require rackunit)
+(require sicp)
 
 
 ;;; BEGIN
@@ -28,12 +29,9 @@
       (stream-car s)
       (stream-ref (stream-cdr s) (- n 1))))
 
-
 (define test-stream (cons-stream 'generate
                     (cons-stream 'generate
                     (cons-stream 'generate '()))))
-
-
                                                         
 (define s0 (random-numbers test-stream))
 
