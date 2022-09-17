@@ -1,5 +1,6 @@
-#lang sicp
-(#%require rackunit)
+#lang racket/base
+(require rackunit)
+(require sicp)
 
 
 ;;; BEGIN
@@ -14,6 +15,19 @@
   (if (= n 0)
       (stream-car s)
       (stream-ref (stream-cdr s) (- n 1))))
+
+(define (stream-map proc . list-of-stream)
+    (if (null? (car list-of-stream))
+        '()
+        (cons-stream
+            (apply proc 
+                   (map (lambda (s)
+                            (stream-car s))
+                        list-of-stream))
+            (apply stream-map 
+                   (cons proc (map (lambda (s)
+                                       (stream-cdr s))
+                                   list-of-stream))))))
 
 (define sense-data (cons-stream 1
    (cons-stream 2 (cons-stream 1.5  (cons-stream 1  (cons-stream 0.5
