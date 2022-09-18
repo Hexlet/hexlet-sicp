@@ -1,34 +1,35 @@
 #lang racket/base
 (require rackunit)
-(require sicp)
 
 ;;; BEGIN
 {!! $solution !!}
 ;;; END
 
+(require compatibility/mlist)
+
 (define (make-table)
-  (let ((local-table (list '*table*)))
+  (let ((local-table (mlist '*table*)))
     (define (lookup key-1 key-2)
-      (let ((subtable (assoc key-1 (cdr local-table))))
+      (let ((subtable (massoc key-1 (mcdr local-table))))
         (if subtable
-            (let ((record (assoc key-2 (cdr subtable))))
+            (let ((record (massoc key-2 (mcdr subtable))))
               (if record
-                  (cdr record)
+                  (mcdr record)
                   #f))
             #f)))
     (define (insert! key-1 key-2 value)
-      (let ((subtable (assoc key-1 (cdr local-table))))
+      (let ((subtable (massoc key-1 (mcdr local-table))))
         (if subtable
-            (let ((record (assoc key-2 (cdr subtable))))
+            (let ((record (massoc key-2 (mcdr subtable))))
               (if record
-                  (set-cdr! record value)
-                  (set-cdr! subtable
-                            (cons (cons key-2 value)
-                                  (cdr subtable)))))
-            (set-cdr! local-table
-                      (cons (list key-1
-                                  (cons key-2 value))
-                            (cdr local-table)))))
+                  (set-mcdr! record value)
+                  (set-mcdr! subtable
+                            (mcons (mcons key-2 value)
+                                  (mcdr subtable)))))
+            (set-mcdr! local-table
+                      (mcons (mlist key-1
+                                  (mcons key-2 value))
+                            (mcdr local-table)))))
       'ok)    
     (define (dispatch m)
       (cond ((eq? m 'lookup-proc) lookup)
