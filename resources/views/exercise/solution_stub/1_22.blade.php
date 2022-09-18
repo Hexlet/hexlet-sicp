@@ -1,15 +1,14 @@
 #lang racket/base
-
 (require rackunit)
-(require sicp)
+
 
 ;;; BEGIN
 {!! $solution !!}
 ;;; END
 
-;#lang racket/base
-;(require rackunit)
-;(require sicp)
+(require racket/string)
+
+(define (runtime) (current-milliseconds))
 
 (define (square x) (* x x))
 
@@ -33,7 +32,7 @@
   (start-prime-test n (runtime) out))
 
 (define (start-prime-test n start-time out)
-  (if (prime? n)
+  (when (prime? n)
       (report-prime (- (runtime) start-time) out)))
 
 (define (report-prime elapsed-time out)
@@ -45,5 +44,5 @@
 (define op1 (open-output-string))
 (search-for-primes 1 6 op1)
 (define display-result (get-output-string op1))
-(check-equal? display-result "1 *** 0\n3 *** 0\n5 *** 0\n")
+(check-equal? (string-replace display-result (regexp " \\*\\*\\* [0-9]+\n") "") "135")
 (close-output-port op1)
