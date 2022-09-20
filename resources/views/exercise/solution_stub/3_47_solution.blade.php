@@ -1,0 +1,23 @@
+(define (make-semaphore n)
+  (let ((count n)
+        (mutex (make-mutex)))
+    (define (the-semaphore m)
+      (cond ((eq? m 'acquire)
+             (mutex 'acquire)
+             (if (= count 0)
+               (begin
+                 (mutex 'release)
+                 (the-semaphore 'acquire))
+               (begin
+                 (set! count (- count 1))
+                 (mutex 'release))))
+            ((eq? m 'release)
+             (mutex 'acquire)
+             (if (= count n)
+               (mutex 'release)
+               (begin
+                 (set! count (+ count 1))
+             (mutex 'release))))
+            ((eq? m 'count) count)
+            ))
+    the-semaphore))
