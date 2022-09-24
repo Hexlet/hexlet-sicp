@@ -1,11 +1,13 @@
 #lang racket/base
 (require rackunit)
-(require sicp)
 
 
 ;;; BEGIN
 {!! $solution !!}
 ;;; END
+
+; Use mcar, mcdr, mcons, set-mcdr! ... in solution
+; instead of car, cdr, cons, set-cdr! ...
 
 (define q (make-queue))
 
