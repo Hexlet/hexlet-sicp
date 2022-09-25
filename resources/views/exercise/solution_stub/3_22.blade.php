@@ -6,8 +6,14 @@
 {!! $solution !!}
 ;;; END
 
-; Use mcar, mcdr, mcons, set-mcdr! ... in solution
-; instead of car, cdr, cons, set-cdr! ...
+(define (cons x pair) (mcons x pair))
+
+(define (car x) (mcar x))
+
+(define (cdr x) (mcdr x))
+
+(define (set-cdr! rear pair) (set-mcdr! rear pair))
+
 
 (define q (make-queue))
 

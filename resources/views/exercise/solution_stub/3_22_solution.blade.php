@@ -7,15 +7,15 @@
      (define (front-queue)
        (if (empty-queue?)
            (error "FRONT called with an empty queue")
-           (mcar front-ptr)))
+           (car front-ptr)))
 
      (define (insert-queue! item)
-       (let ((new-pair (mcons item '())))
+       (let ((new-pair (cons item '())))
          (cond ((empty-queue?)
                 (set-front-ptr! new-pair)
                 (set-rear-ptr! new-pair))
                (else
-                (set-mcdr! rear-ptr new-pair)
+                (set-cdr! rear-ptr new-pair)
                 (set-rear-ptr! new-pair)))
          front-ptr))
 
@@ -23,7 +23,7 @@
        (cond ((empty-queue?)
               (error "DELETE! called with an empty queue"))
              (else
-              (set-front-ptr! (mcdr front-ptr))))
+              (set-front-ptr! (cdr front-ptr))))
        front-ptr)
 
      (define (dispatch m)
@@ -31,5 +31,5 @@
              ((eq? m 'front-queue) (front-queue))
              ((eq? m 'insert-queue!) insert-queue!)
              ((eq? m 'delete-queue!) (delete-queue!))
-             (else (error "Undefined oepration"))))
+             (else (error "Undefined operation"))))
      dispatch))
