@@ -1,11 +1,21 @@
 #lang racket/base
 (require rackunit)
-(require sicp)
 
 
 ;;; BEGIN
 {!! $solution !!}
 ;;; END
+
+(define (cons x pair) (mcons x pair))
+
+(define (car x) (mcar x))
+
+(define (cdr x) (mcdr x))
+
+(define (set-car! head pair) (set-mcar! head pair))
+
+(define (set-cdr! tail pair) (set-mcdr! tail pair))
+
 
 (define dq (make-deque))
 
