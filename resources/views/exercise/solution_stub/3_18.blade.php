@@ -1,22 +1,28 @@
 #lang racket/base
 (require rackunit)
-(require sicp)
 
 ;;; BEGIN
 {!! $solution !!}
 ;;; END
 
+(require compatibility/mlist)
+
+(define (cdr x) (mcdr x))
+
+(define (set-cdr! rest pair) (set-mcdr! rest pair)) 
+
+
 (define (last-pair x)
-  (if (null? (mcdr x))
+  (if (null? (cdr x))
       x
-      (last-pair (mcdr x))))
+      (last-pair (cdr x))))
 
 (define (make-cycle x)
-  (set-mcdr! (last-pair x) x)
+  (set-cdr! (last-pair x) x)
   x)
 
-(define z (make-cycle (list 'a 'b 'c)))
+(define z (make-cycle (mlist 'a 'b 'c)))
 
 
 (check-equal? (cycle? z) #t)
-(check-equal? (cycle? (list 1 2 3)) #f)
+(check-equal? (cycle? (mlist 1 2 3)) #f)
