@@ -8,7 +8,7 @@
              (set-value! a
                          (sqrt (get-value b))
                          me))
-         (if (has-value? a)
+         (when (has-value? a)
              (set-value! b
                          (square (get-value a))
                          me))))

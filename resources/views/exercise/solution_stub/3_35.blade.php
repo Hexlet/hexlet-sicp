@@ -1,6 +1,5 @@
 #lang racket/base
 (require rackunit)
-(require sicp)
 
 
 ;;; BEGIN
@@ -35,7 +34,7 @@
 
 
 (define (make-connector)
-  (let ((value false) (informant false) (constraints '()))
+  (let ((value #f) (informant #f) (constraints '()))
     (define (set-my-value newval setter)
       (cond ((not (has-value? me))
              (set! value newval)
@@ -48,21 +47,21 @@
             (else 'ignored)))
     (define (forget-my-value retractor)
       (if (eq? retractor informant)
-          (begin (set! informant false)
+          (begin (set! informant #f)
                  (for-each-except retractor
                                   inform-about-no-value
                                   constraints))
           'ignored))
     (define (connect new-constraint)
-      (if (not (memq new-constraint constraints))
+      (when (not (memq new-constraint constraints))
           (set! constraints 
                 (cons new-constraint constraints)))
-      (if (has-value? me)
+      (when (has-value? me)
           (inform-about-value new-constraint))
       'done)
     (define (me request)
       (cond ((eq? request 'has-value?)
-             (if informant true false))
+             (if informant #t #f))
             ((eq? request 'value) value)
             ((eq? request 'set-value!) set-my-value)
             ((eq? request 'forget) forget-my-value)
