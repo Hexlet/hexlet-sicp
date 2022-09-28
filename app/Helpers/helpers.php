@@ -183,10 +183,3 @@ if (!function_exists('getProfileImageLink')) {
         return UserHelper::getProfileImageLink($user);
     }
 }
-
-if (!function_exists('getBookLink')) {
-    function getBookLink(string $locale): string
-    {
-        return TemplateHelper::getBookLink($locale);
-    }
-}
