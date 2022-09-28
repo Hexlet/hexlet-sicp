@@ -1,4 +1,5 @@
 @php
+    use \App\Helpers\TemplateHelper;
     $currentLocale = LaravelLocalization::getCurrentLocale();
     $locales = LaravelLocalization::getSupportedLocales();
     $otherLocales = getOtherLocales($currentLocale, $locales);
@@ -34,7 +35,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link px-2 link-info" target="_blank" href="https://web.mit.edu/6.001/6.037/sicp.pdf">
+                <a class="nav-link px-2 link-info" target="_blank" href="{{ TemplateHelper::getBookLink($currentLocale) }}">
                     {{ __('layout.nav.sicp_book') }}
                 </a>
             </li>
