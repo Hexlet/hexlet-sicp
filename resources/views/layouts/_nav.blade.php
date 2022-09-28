@@ -34,10 +34,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link px-2 link-info" target="_blank" href="{{ $currentLocale === 'en'
-                        ? 'https://web.mit.edu/6.001/6.037/sicp.pdf'
-                        : 'https://mirror.yandex.ru/mirrors/ftp.linux.kiev.ua/docs/developer/general/sicp-ru/sicp-ru-screen.pdf'
-                    }}">
+                <a class="nav-link px-2 link-info" target="_blank" href="{{ getBookLink($currentLocale) }}">
                     {{ __('layout.nav.sicp_book') }}
                 </a>
             </li>
