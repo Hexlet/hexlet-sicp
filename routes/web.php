@@ -39,4 +39,8 @@ Route::group([
     Route::resource('log', 'ActivityController')->only('index');
     Route::resource('comments', 'CommentController')->only('store', 'update', 'show', 'destroy');
     Route::resource('pages', 'PagesController')->only('show');
+
+    Route::fallback(function () {
+        return response()->view('errors.404', [], 404);
+    });
 });
