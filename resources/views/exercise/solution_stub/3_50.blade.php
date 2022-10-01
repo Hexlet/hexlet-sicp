@@ -1,6 +1,5 @@
 #lang racket/base
 (require rackunit)
-(require sicp)
 
 
 ;;; BEGIN
@@ -8,9 +7,17 @@
 ;;; END
 
 
-(define (stream-car stream) (car stream))
+(require racket/stream)
 
-(define (stream-cdr stream) (force (cdr stream)))
+(define (stream-null? s) (stream-empty? s))
+
+(define the-empty-stream empty-stream)
+
+(define (cons-stream first rest) (stream-cons first rest))
+
+(define (stream-car stream) (stream-first stream))
+
+(define (stream-cdr stream) (stream-rest stream))
 
 (define (stream-enumerate-interval low high)
   (if (> low high)
