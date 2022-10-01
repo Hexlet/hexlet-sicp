@@ -24,9 +24,9 @@ Q: Ошибка `Illuminate\Session\TokenMismatchException: CSRF token mismatch.
 
 A: Сбросить кеш конфига `php artisan config:clear`
 
-## Предварительные требования
+## Установка
 
-Проверить зависимости PHP можно командой `composer check-platform-reqs`
+### Предварительные требования
 
 * PHP ^8.1
 * Composer
@@ -34,7 +34,9 @@ A: Сбросить кеш конфига `php artisan config:clear`
 * SQLite for local, PostgreSQL for production
 * Heroku cli ([_Как развернуть приложение Laravel на Heroku_](https://ru.hexlet.io/blog/posts/kak-razvernut-prilozhenie-laravel-na-heroku))
 
-## Установка
+Проверить зависимости PHP можно командой `composer check-platform-reqs`
+
+Если нет каких-то зависимостей, то их можно установить командой (Ubuntu) `sudo apt install php-EXTENSION`
 
 ### Локальная установка
 
