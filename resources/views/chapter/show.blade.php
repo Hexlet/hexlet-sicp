@@ -14,7 +14,14 @@
 @section('content')
     {{ Breadcrumbs::render('chapter', $chapter) }}
     <div class="row justify-content-center">
-        <div class="sticky-top col-md-12 d-flex justify-content-between">
+
+        <!-- Simple toggler of class depending on "Is there a previousChapter or not?" -->
+        @if($previousChapter->exists)
+            <div class="sticky-top col-md-12 d-flex justify-content-between">
+        @else
+            <div class="sticky-top col-md-12 d-flex justify-content-end">
+        @endif
+        
             @if($previousChapter->exists)
                 <a class="mr-auto"
                    href="{{ route('chapters.show', $previousChapter) }}">@lang('chapter.show.previous_chapter')</a>
