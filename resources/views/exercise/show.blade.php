@@ -12,14 +12,7 @@
 @section('content')
     {{ Breadcrumbs::render('exercise', $exercise) }}
     <div class="row justify-content-center">
-        
-        <!-- Simple toggler of class depending on "Is there a previousExercise or not?" -->
-        @if($previousExercise->exists)
-            <div class="sticky-top col-md-12 d-flex justify-content-between">
-        @else
-            <div class="sticky-top col-md-12 d-flex justify-content-end">
-        @endif
-        
+        <div class="sticky-top col-md-12 d-flex {{ $previousExercise->exists ? 'justify-content-between' : 'justify-content-end' }}">
             @if($previousExercise->exists)
             <a class="mr-auto text-decoration-none" href="{{ route('exercises.show', $previousExercise) }}">
                 <i class="bi bi-arrow-left"></i>
