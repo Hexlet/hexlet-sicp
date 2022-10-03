@@ -16,6 +16,7 @@ parameters:
     level: 6
 
     excludePaths:
+        - vendor/*
         - app/Http/Controllers/Auth/*
     ignoreErrors:
         - '/Parameter #1 \$value of function collect expects/'

@@ -1,6 +1,6 @@
 import React, { useEffect, useLayoutEffect, useState } from 'react';
 import { Spinner } from 'react-bootstrap';
-import { Controlled as CodeMirrorEditor } from 'react-codemirror2';
+import { Controlled as CodeMirrorEditor } from 'react-codemirror2-react-17';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { changeContent } from '../slices/editorSlice.js';
