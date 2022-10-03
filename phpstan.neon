@@ -16,6 +16,7 @@ parameters:
     level: 6
 
     excludePaths:
+        - vendor/*
         - app/Http/Controllers/Auth/*
     ignoreErrors:
         - '/Parameter #1 \$value of function collect expects/'
@@ -23,3 +24,4 @@ parameters:
         - '/PHPDoc type array of property App\\Models\\User::\$casts is not covariant with PHPDoc type/'
         - '/Unable to resolve the template type TKey in call to function collect/'
         - '/Unable to resolve the template type TValue in call to function collect/'
+        - '/is not covariant with PHPDoc type/'
