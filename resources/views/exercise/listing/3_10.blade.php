@@ -18,7 +18,7 @@
           "Insufficient funds"))))</code></pre>
 <p>
     {{ __('exercises/3_10.description.6') }}
-    <a href="https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-12.html#%_sec_1.3.2">1.3.2</a>
+    <a href="https://xuanji.appspot.com/isicp/1-3-hop.html#%_sec_1.3.2">1.3.2</a>
     {{ __('exercises/3_10.description.7') }}
     <code>let</code>
     {{ __('exercises/3_10.description.8') }}
