@@ -15,6 +15,10 @@ class PagesController extends Controller
      */
     public function show($id): View
     {
-        return view("pages.{$id}");
+        $view = "pages.{$id}";
+
+        abort_if(!view()->exists($view), 404);
+
+        return view($view);
     }
 }
