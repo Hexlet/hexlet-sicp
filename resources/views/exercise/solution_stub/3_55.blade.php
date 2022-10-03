@@ -1,15 +1,19 @@
 #lang racket/base
 (require rackunit)
-(require sicp)
 
 
 ;;; BEGIN
 {!! $solution !!}
 ;;; END
 
+(require lazy)
+(require lazy/force)
+
+(define (cons-stream x s) (cons x s))
+
 (define (stream-car stream) (car stream))
 
-(define (stream-cdr stream) (force (cdr stream)))
+(define (stream-cdr stream) (! (cdr stream)))
 
 (define (stream-ref s n)
   (if (= n 0)
@@ -38,11 +42,11 @@
 (define integers (cons-stream 1 (add-streams ones integers)))
 
 
-(check-equal? (stream-ref (partial-sums integers) 0) 1)
-(check-equal? (stream-ref (partial-sums integers) 1) 3)
-(check-equal? (stream-ref (partial-sums integers) 2) 6)
-(check-equal? (stream-ref (partial-sums integers) 3) 10)
+(check-equal? (! (stream-ref (partial-sums integers) 0)) 1)
+(check-equal? (! (stream-ref (partial-sums integers) 1)) 3)
+(check-equal? (! (stream-ref (partial-sums integers) 2)) 6)
+(check-equal? (! (stream-ref (partial-sums integers) 3)) 10)
 
-(check-equal? (stream-ref (partial-sums ones) 0) 1)
-(check-equal? (stream-ref (partial-sums ones) 1) 2)
-(check-equal? (stream-ref (partial-sums ones) 2) 3)
+(check-equal? (! (stream-ref (partial-sums ones) 0)) 1)
+(check-equal? (! (stream-ref (partial-sums ones) 1)) 2)
+(check-equal? (! (stream-ref (partial-sums ones) 2)) 3)
