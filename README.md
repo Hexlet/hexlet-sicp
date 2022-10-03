@@ -7,56 +7,58 @@
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
-Читать на другом языке: [English](README.en.md)
+Read this in another language: [Русский](README.md)
 
-Hexlet SICP &mdash; это сервис для тех, кто изучает книгу "Структура и интерпретация компьютерных программ". Отслеживайте свой прогресс и сравнивайте себя с другими в глобальной таблице лидеров.
+Hexlet SICP is a service for those studying the book Structure and Interpretation of Computer Programs. Track your progress and match yourself against others on the global leaderboard.
 
-Предварительно рекомендуем прочесть статью [Как изучать Структуру и Интерпретацию Компьютерных Программ (SICP)](https://guides.hexlet.io/how-to-learn-sicp/)
+[How to study _Structure and Interpretation of Computer Programs_ (SICP)](https://guides.hexlet.io/how-to-learn-sicp/)
 
-## Участие в разработке
+## For contributors
 
-* Обсуждение идёт в [Slack Hexlet](http://slack-ru.hexlet.io) в канале #hexlet-volunteers
-* [Плейлист записей созвонов участников](https://www.youtube.com/playlist?list=PL37_xn2SVZdCJ-xgB-phFaWrp25Kc3cLk)
+* Discuss the project in #hexlet-volunteers on Slack: http://slack.hexlet.io
 
-## Известные ошибки
+### Recorded meetings
 
-Q: Ошибка `Illuminate\Session\TokenMismatchException: CSRF token mismatch.`
+* [Recorded meetings playlist](https://www.youtube.com/playlist?list=PL37_xn2SVZdCJ-xgB-phFaWrp25Kc3cLk)
 
-A: Сбросить кеш конфига `php artisan config:clear`
+## FAQ
 
-## Установка
+Q: I get this error `Illuminate\Session\TokenMismatchException: CSRF token mismatch.`
+A: Reset your config cache `php artisan config:clear`
 
-### Предварительные требования
+## Requirements
+
+Run `composer check-platform-reqs` to check PHP deps:
 
 * PHP ^8.1
 * Composer
 * Node.js (v16+) & NPM (6+)
 * SQLite for local, PostgreSQL for production
-* Heroku cli ([_Как развернуть приложение Laravel на Heroku_](https://ru.hexlet.io/blog/posts/kak-razvernut-prilozhenie-laravel-na-heroku))
+* [heroku cli](https://devcenter.heroku.com/articles/heroku-cli#download-and-install); [How to deploy Laravel on Heroku](https://ru.hexlet.io/blog/posts/kak-razvernut-prilozhenie-laravel-na-heroku) (in Russian)
 
-Проверить зависимости PHP можно командой `composer check-platform-reqs`
+[What is a Version Manager?](https://guides.hexlet.io/version-managers/)
 
-Если нет каких-то зависимостей, то их можно установить командой (Ubuntu) `sudo apt install php-EXTENSION`
+## Setup
 
-### Локальная установка
+### Local setup
 
-Для запуска на локальном интерпретаторе и SQLite:
+To run on the local interpreter and SQLite:
 
 ```sh
-make setup # первоначальная установка
-make start # запуск сервера http://127.0.0.1:8000/
-make test # запуск тестов
+make setup # set up the project
+make start # start server at http://127.0.0.1:8000/
+make test # run tests
 ```
 
-### Запуск с БД PostgreSQL (разворачивается в Docker-контейнере)
+### Running on PostgreSQL (deployed in a Docker container)
 
-1. Установить зависимости и подготовить конфигурационный файл
+1. Install deps and prepare the config file
 
     ```sh
     make setup
     ```
 
-2. Указать параметры подключения к БД в файле *.env*
+2. Put your database credentials in the *.env* file
 
     ```dotenv
     DB_CONNECTION=pgsql
@@ -67,91 +69,90 @@ make test # запуск тестов
     DB_PASSWORD=secret
     ```
 
-3. Запустить контейнер с БД и сгенерировать записи
+3. Start the database container and seed
 
     ```sh
     make compose-start-database
     make db-prepare
     ```
 
-4. Запустить локальный веб-сервер
+4. Run the local server
 
     ```sh
     make start
     ```
 
-### Установка в Docker
+### Setup in Docker
 
-1. Подготовить файл *.env*
+1. Prepare the `.env` file
 
     ```sh
     make env-prepare
     ```
 
-2. Указать параметры подключения к БД в файле *.env*
+2. Put your database credentials in the `.env` file
 
     ```dotenv
     DB_CONNECTION=pgsql
-    DB_HOST=database
+    DB_HOST=localhost
     DB_PORT=5432
     DB_DATABASE=postgres
     DB_USERNAME=postgres
     DB_PASSWORD=secret
     ```
 
-3. Собрать и запустить приложение
+3. Build and start the app
 
     ```sh
-    make compose-setup # собрать проект
-    make compose-start # запустить сервер http://127.0.0.1:8000/
-    make compose-bash  # запустить сессию bash в docker-контейнере
-    make test          # запустить тесты в docker-контейнере
+    make compose-setup # build project
+    make compose-start # start server at http://127.0.0.1:8000/
     ```
 
-## Стандарты кодирования и прочие правила
+    ```sh
+    make compose-bash  # start bash session inside docker container
+    make test          # run tests inside docker container
+    ```
 
-* Пулреквесты должны быть настолько маленькими, насколько это возможно с точки зрения здравого смысла
-* Весь код должен соответствовать стандартам кодирования PSR12 и Laravel (мы так же используем некоторые собственные правила, чтобы усложнить жизнь разработчика)
-* Пулреквест должен проходить все проверки CI
-* Все экшены контроллеров должны быть покрыты тестами ([_Начинаем писать тесты (правильно)_](https://ru.hexlet.io/blog/posts/how-to-test-code))
-* Формы делаются с помощью [laraeast/laravel-bootstrap-forms](https://github.com/laraeast/laravel-bootstrap-forms)
-* В подавляющем большинстве используется ресурсный роутинг. Что под него не подходит, сначала обсуждается (такое бывает крайне редко)
-* Тексты только через локали
-* Чтобы включить логирование Rollbar, необходимо установить переменную `LOG_CHANNEL=rollbar` и `ROLLBAR_TOKEN=` ([_документация_](https://docs.rollbar.com/docs/laravel))
-* Чтобы добавить упражнение, необходимо добавить его содержимое (код или картинка) по пути `resources/views/exercise/listing/#_#.blade.php`, а текстовое описание в `resources/lang/{locale}/sicp.php` под ключем `exercises.#.#` на соответствующем языке.
-* Для генерации хелперов (для автодополнения) используйте `make ide-helper`
-* Изучите список доступных команд `php artisan`!
+## Coding stardards and other rules
 
-## Руководство по настройке авторизации через GitHub
+* Pull requests should be as small as reasonably possible
+* All code must comply with the PSR12 and Laravel standards (we also use some custom rules for added challenge)
+* Every pull request must pass all tests
+* All controller actions must have test coverage ([Start writing (appropriate) tests](https://ru.hexlet.io/blog/posts/how-to-test-code) (in Russian))
+* The forms are made using [laraeast/laravel-bootstrap-forms](https://github.com/laraeast/laravel-bootstrap-forms)
+* RoR's resource routing convention is used for the most part. In a very rare case when a route doesn't seem to fit the convention, it should be discussed first
+* All strings must be stored in locale files
+* To enable Rollbar logging, set the variable `LOG_CHANNEL=rollbar` and `ROLLBAR_TOKEN=` ([docs](https://docs.rollbar.com/docs/laravel))
+* To add an exercise, put its contents (a listing or pic) at `resources/views/exercise/listing/#_#.blade.php` and its text description, at `resources/lang/{locale}/sicp.php` under the key `exercises.#.#` (mind the locale).
+* To generate helper files (for autocompletion), use `make ide-helper`
+* Run `php artisan` and check out all available commands!
 
-Зарегистрируйте приложение на GitHub (подробнее <https://developer.github.com/apps/about-apps/>).
+## GitHub Auth Setup Guide
 
-Для этого:
+Integrate the app with your GitHub account (read more at https://developer.github.com/apps/about-apps/). To integrate the app:
 
-* В меню учетной записи GitHub выберите пункт “Settings”
-* В открывшемся окне в панели навигации, справа, выберите “GitHub Apps”, затем нажмите кнопку “New GitHub App”
-* В открывшейся форме в поле "GitHub App name" введите название приложения (например, Hexlet-SICP)
-* В поле Homepage URL &mdash; адрес ресурса (например, <https://hexlet-sicp.herokuapp.com>)
-* В поле "User authorization callback URL" введите полный URL-адрес для перенаправления после того, как пользователь авторизует приложение на GitHub. (например, <https://hexlet-sicp.herokuapp.com/oauth/github/callback>)
-* В поле "Webhook URL" укажите URL-адрес, по которому будут отправляться события (например, <https://hexlet-sicp.herokuapp.com/oauth/github/callback>)
-* Откройте права на получение информации о e-mail пользователя (User permissions->Email addresses->Read only)
-* Сохраните данные регистрации приложения (кнопка "Create GitHub App")
-* На открывшейся странице приложения скопируйте Client ID и Client secret
-* Cгенерируйте закрытый ключ (кнопка Generate a private key)
+* Enter your GitHub account and go to _Settings_
+* On the right, choose _GitHub Apps_, then push _New GitHub App_
+* A form will pop up. In the _GitHub App name_ field, type the app name (for example, _Hexlet-SICP_)
+* In _Homepage URL_, put the web address hosting your deploy (for example, _https://hexlet-sicp.herokuapp.com_)
+* In _User authorization callback URL_, put the URL to redirect to, once a user authorizes via GitHub. (for example, _https://hexlet-sicp.herokuapp.com/oauth/github/callback_)
+* In _Webhook URL_, put the URL to dispatch events to (for example, _https://hexlet-sicp.herokuapp.com/oauth/github/callback_)
+* Set the permission to access email (_User permissions->Email addresses->Read only_)
+* Save the app settings (push _Create GitHub App_)
+* The app page will open. Copy the Client ID and Client secret
+* Generate a private key (push _Generate a private key_)
 
-В случае деплоя на Heroku, задайте переменные окружения для развернутого приложения.
+If deployed on Heroku, set the environment variables for your deploy. To set environment variables:
 
-Для этого:
+* Open _Settings_
+* In the _Config Vars_ setting, add the following variables: GITHUB_CLIENT_ID, GITHUB_CLIENT_SECRET and GITHUB_URL_REDIRECT and set them to the respective Client ID, Client secret and User authorization callback URL
+* Then, reset the configuration cache: ```heroku run php artisan config:cache```
 
-* Перейдите на вкладку "Settings"
-* В настройке "Config Vars" добавьте переменные `GITHUB_CLIENT_ID`, `GITHUB_CLIENT_SECRET` и `GITHUB_URL_REDIRECT` указав для них соответвенно значения Client ID, Client secret и User authorization callback URL
-* После чего выпольните сброс кеша конфигурации: `heroku run php artisan config:cache`
+### Setting up a testing database
 
-### Альтернативный профиль БД для тестирования
-
-1. Создать отдельную тестовую базу postgres. Настройки параметров подключения можно посмотреть в секции `pgsql_test` конфигурации `config/database.php`
-
-    Пример создания тестовой базы "с нуля":
+1. Create a separate Postgres database.
+   Connection settings are available in the `pgsql_test` section of `config/database.php`.
+   How to set up a test database from scratch:
 
     ```shell
     sudo apt install postgresql
@@ -161,18 +162,16 @@ make test # запуск тестов
     createdb hexlet_sicp_test
     ```
 
-2. Запустить тесты с альтернативным профилем `DB_CONNECTION=pgsql_test make test`
+2. Run tests on your testing database: `DB_CONNECTION=pgsql_test make test`
 
-### Добавить пре-комит хук
-
-Для хуков требуется локальный NodeJS
+### Adding a pre-commit hook
 
 ```shell
-make setup-git-hooks
+git config core.hooksPath .githooks
 ```
+
+##
 
 [![Hexlet Ltd. logo](https://raw.githubusercontent.com/Hexlet/assets/master/images/hexlet_logo128.png)](https://hexlet.io/?utm_source=github&utm_medium=link&utm_campaign=exercises-sicp)
 
-This repository is created and maintained by the team and the community of Hexlet, an educational project. [Read more about Hexlet](https://hexlet.io/?utm_source=github&utm_medium=link&utm_campaign=exercises-sicp)
-
-See most active contributors on [hexlet-friends](https://friends.hexlet.io/).
+This repository is created and maintained by the team and the community of Hexlet, an educational project. [Read more about Hexlet](https://hexlet.io/?utm_source=github&utm_medium=link&utm_campaign=exercises-sicp).
