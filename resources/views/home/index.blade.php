@@ -11,7 +11,7 @@
 <p>{{ __('welcome.description') }}</p>
 <div class="row">
     <div class="col-md-8">
-        <a href="https://mitpress.mit.edu/sites/default/files/sicp/index.html">
+        <a href="https://xuanji.appspot.com/isicp/index.html">
             @if(rand(0, 10) === 0)
                 <img class="img-fluid" src="{{ mix('img/advice_dog.jpg') }}" alt="Начать изучать sicp">
             @else
