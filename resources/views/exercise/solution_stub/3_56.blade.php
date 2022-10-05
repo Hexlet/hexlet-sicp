@@ -1,15 +1,21 @@
 #lang racket/base
 (require rackunit)
-(require sicp)
 
 
 ;;; BEGIN
 {!! $solution !!}
 ;;; END
 
+(require lazy)
+(require lazy/force)
+
+(define (cons-stream x s) (cons x s))
+
+(define (stream-null? x) (null? x))
+
 (define (stream-car stream) (car stream))
 
-(define (stream-cdr stream) (force (cdr stream)))
+(define (stream-cdr stream) (! (cdr stream)))
 
 (define (stream-ref s n)
   (if (= n 0)
@@ -48,13 +54,13 @@
                                       (stream-cdr s2)))))))))
 
 
-(check-equal? (stream-ref S 0) 1)
-(check-equal? (stream-ref S 1) 2)
-(check-equal? (stream-ref S 2) 3)
-(check-equal? (stream-ref S 3) 4)
-(check-equal? (stream-ref S 4) 5)
-(check-equal? (stream-ref S 5) 6)
-(check-equal? (stream-ref S 6) 8)
-(check-equal? (stream-ref S 7) 9)
-(check-equal? (stream-ref S 8) 10)
-(check-equal? (stream-ref S 9) 12)
+(check-equal? (! (stream-ref S 0)) 1)
+(check-equal? (! (stream-ref S 1)) 2)
+(check-equal? (! (stream-ref S 2)) 3)
+(check-equal? (! (stream-ref S 3)) 4)
+(check-equal? (! (stream-ref S 4)) 5)
+(check-equal? (! (stream-ref S 5)) 6)
+(check-equal? (! (stream-ref S 6)) 8)
+(check-equal? (! (stream-ref S 7)) 9)
+(check-equal? (! (stream-ref S 8)) 10)
+(check-equal? (! (stream-ref S 9)) 12)
