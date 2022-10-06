@@ -1,15 +1,20 @@
 #lang racket/base
 (require rackunit)
-(require sicp)
 
 
 ;;; BEGIN
 {!! $solution !!}
 ;;; END
 
+(require lazy)
+(require lazy/force)
+
+
+(define (cons-stream x s) (cons x s))
+
 (define (stream-car stream) (car stream))
 
-(define (stream-cdr stream) (force (cdr stream)))
+(define (stream-cdr stream) (! (cdr stream)))
 
 (define (stream-map proc . list-of-stream)
     (if (null? (car list-of-stream))
@@ -44,4 +49,4 @@
 (define s (add-streams (mul-series sine-series sine-series)
                        (mul-series cosine-series cosine-series)))
 
-(check-equal? (stream-car s) 1)
+(check-equal? (! (stream-car s)) 1)
