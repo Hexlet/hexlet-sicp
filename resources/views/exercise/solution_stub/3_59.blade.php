@@ -1,15 +1,20 @@
 #lang racket/base
 (require rackunit)
-(require sicp)
 
 
 ;;; BEGIN
 {!! $solution !!}
 ;;; END
 
+(require lazy)
+(require lazy/force)
+
+
+(define (cons-stream x s) (cons x s))
+
 (define (stream-car stream) (car stream))
 
-(define (stream-cdr stream) (force (cdr stream)))
+(define (stream-cdr stream) (! (cdr stream)))
 
 (define (stream-ref s n)
   (if (= n 0)
@@ -50,14 +55,14 @@
 
 (define s (integrate-series double))
 
-(check-equal? (stream-ref s 0) 1)
-(check-equal? (stream-ref s 1) 1)
-(check-equal? (stream-ref s 3) 2)
-(check-equal? (stream-ref s 7) 16)
+(check-equal? (! (stream-ref s 0)) 1)
+(check-equal? (! (stream-ref s 1)) 1)
+(check-equal? (! (stream-ref s 3)) 2)
+(check-equal? (! (stream-ref s 7)) 16)
 
-(check-equal? (stream-ref sine-series 0) 0)
-(check-equal? (stream-ref sine-series 1) 1)
-(check-equal? (stream-ref sine-series 2) 0)
-(check-equal? (stream-ref cosine-series 0) 1)
-(check-equal? (stream-ref cosine-series 1) 0)
-(check-equal? (stream-ref cosine-series 2) -1/2)
+(check-equal? (! (stream-ref sine-series 0)) 0)
+(check-equal? (! (stream-ref sine-series 1)) 1)
+(check-equal? (! (stream-ref sine-series 2)) 0)
+(check-equal? (! (stream-ref cosine-series 0)) 1)
+(check-equal? (! (stream-ref cosine-series 1)) 0)
+(check-equal? (! (stream-ref cosine-series 2)) -1/2)
