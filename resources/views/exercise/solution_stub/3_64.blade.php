@@ -1,15 +1,19 @@
 #lang racket/base
 (require rackunit)
-(require sicp)
 
 
 ;;; BEGIN
 {!! $solution !!}
 ;;; END
 
+(require lazy)
+(require lazy/force)
+
+(define (cons-stream x s) (cons x s))
+
 (define (stream-car stream) (car stream))
 
-(define (stream-cdr stream) (force (cdr stream)))
+(define (stream-cdr stream) (! (cdr stream)))
 
 (define (stream-map proc . list-of-stream)
     (if (null? (car list-of-stream))
@@ -46,6 +50,6 @@
   (stream-limit (sqrt-stream x) tolerance))
 
 
-(check-equal? (floor (* 1000 (sqrt 4 0.001))) 2000.0)
-(check-equal? (floor (* 1000 (sqrt 100 0.0001))) 10000.0)
-(check-equal? (floor (* 1000 (sqrt 0.09 0.0001))) 300.0)
+(check-equal? (! (floor (* 1000 (sqrt 4 0.001)))) 2000.0)
+(check-equal? (! (floor (* 1000 (sqrt 100 0.0001)))) 10000.0)
+(check-equal? (! (floor (* 1000 (sqrt 0.09 0.0001)))) 300.0)
