@@ -21,6 +21,7 @@ Route::group([
     });
 
     Route::resource('users', 'UserController')->only('show');
+    Route::resource('users.comments', 'UserCommentController')->only('index');
     Route::namespace('User')->group(function (): void {
         Route::resource('users.chapters', 'UserChapterController')->only('store', 'destroy');
         Route::resource('users.exercises', 'UserExerciseController')->only('store', 'update', 'destroy');

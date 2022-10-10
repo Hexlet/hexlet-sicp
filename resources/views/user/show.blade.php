@@ -86,12 +86,14 @@
                         </div>
                     </div>
                     <div class="col-4 col-md text-center my-2">
-                        <div class="h2 text-info">
-                            {{ $user->comments->count() }}
-                        </div>
-                        <div class="text-secondary">
-                            {{ trans_choice('user.show.statistics.comments', $user->comments->count()) }}
-                        </div>
+                        <a class="text-decoration-none" href="{{ route('users.comments.index', [$user]) }}">
+                            <div class="h2 text-info">
+                                {{ $user->comments->count() }}
+                            </div>
+                            <div class="text-secondary">
+                                    {{ trans_choice('user.show.statistics.comments', $user->comments->count()) }}
+                            </div>
+                        </a>
                     </div>
                 </div>
                 <div class="col-md-12">
