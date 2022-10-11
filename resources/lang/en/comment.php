@@ -18,7 +18,8 @@ return [
     'sure' => 'Are you sure you want to delete the comment?',
     'user' => [
         'title' => 'My comment',
-        'id' => '№',
+        'date' => 'Date',
+        'whom' => 'Whom',
         'text' => 'Text',
     ],
 ];
