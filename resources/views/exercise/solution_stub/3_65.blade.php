@@ -1,16 +1,21 @@
 #lang racket
 (require rackunit)
-(require sicp)
 
 ;;; BEGIN
 {!! $solution !!}
 ;;; END
 
+(require lazy)
+(require lazy/force)
+
+
 (define (square x) (* x x))
+
+(define (cons-stream x s) (cons x s))
 
 (define (stream-car stream) (car stream))
 
-(define (stream-cdr stream) (force (cdr stream)))
+(define (stream-cdr stream) (! (cdr stream)))
 
 (define (stream-map proc . list-of-stream)
     (if (null? (car list-of-stream))
@@ -52,16 +57,16 @@
 
 
 (define test-sequence (ln2-sequence 1))
-(check-equal? (stream-ref test-sequence 0) 1.0)
-(check-equal? (stream-ref test-sequence 1) -0.5)
-(check-equal? (floor (* 100 (stream-ref test-sequence 2))) 33.0)
+(check-equal? (! (stream-ref test-sequence 0)) 1.0)
+(check-equal? (! (stream-ref test-sequence 1)) -0.5)
+(check-equal? (!(floor (* 100 (stream-ref test-sequence 2)))) 33.0)
 
 (define euler-test-sequence (euler-transform test-sequence))
-(check-equal? (floor (* 1000 (stream-ref euler-test-sequence 0))) 35.0)
-(check-equal? (round (* 10000 (stream-ref euler-test-sequence 1))) -98.0)
+(check-equal? (! (floor (* 1000 (stream-ref euler-test-sequence 0)))) 35.0)
+(check-equal? (! (round (* 10000 (stream-ref euler-test-sequence 1)))) -98.0)
 
 (define accelerated-test-sequence
   (accelerated-sequence euler-transform test-sequence))
-(check-equal? (stream-ref accelerated-test-sequence 0) 1.0)
+(check-equal? (! (stream-ref accelerated-test-sequence 0)) 1.0)
 (check-equal?
- (floor (* 1000 (stream-ref accelerated-test-sequence 1))) 35.0)
+ (! (floor (* 1000 (stream-ref accelerated-test-sequence 1)))) 35.0)
