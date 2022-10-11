@@ -1,15 +1,21 @@
 #lang racket/base
 (require rackunit)
-(require sicp)
 
 
 ;;; BEGIN
 {!! $solution !!}
 ;;; END
 
+(require lazy)
+(require lazy/force)
+
+(define (cons-stream x s) (cons x s))
+
+(define (stream-null? x) (null? x))
+
 (define (stream-car stream) (car stream))
 
-(define (stream-cdr stream) (force (cdr stream)))
+(define (stream-cdr stream) (! (cdr stream)))
 
 (define (stream-ref s n)
   (if (= n 0)
@@ -39,20 +45,20 @@
 
 (define nat-stream-1 (weighted-pairs integers integers +))
 
-(check-equal? (stream-ref nat-stream-1 0) '(1 . 1))
-(check-equal? (stream-ref nat-stream-1 1) '(1 . 2))
-(check-equal? (stream-ref nat-stream-1 2) '(1 . 3))
-(check-equal? (stream-ref nat-stream-1 3) '(2 . 2))
-(check-equal? (stream-ref nat-stream-1 4) '(1 . 4))
-(check-equal? (stream-ref nat-stream-1 5) '(2 . 3))
+(check-equal? (!! (stream-ref nat-stream-1 0)) '(1 . 1))
+(check-equal? (!! (stream-ref nat-stream-1 1)) '(1 . 2))
+(check-equal? (!! (stream-ref nat-stream-1 2)) '(1 . 3))
+(check-equal? (!! (stream-ref nat-stream-1 3)) '(2 . 2))
+(check-equal? (!! (stream-ref nat-stream-1 4)) '(1 . 4))
+(check-equal? (!! (stream-ref nat-stream-1 5)) '(2 . 3))
 
 (define nat-stream-2
   (weighted-pairs integers integers
                   (lambda (i j) (+ (* 2 i) (* 3 j) (* 5 i j)))))
 
-(check-equal? (stream-ref nat-stream-2 0) '(1 . 1))
-(check-equal? (stream-ref nat-stream-2 1) '(1 . 2))
-(check-equal? (stream-ref nat-stream-2 2) '(1 . 3))
-(check-equal? (stream-ref nat-stream-2 3) '(2 . 2))
-(check-equal? (stream-ref nat-stream-2 4) '(1 . 4))
-(check-equal? (stream-ref nat-stream-2 5) '(1 . 5))
+(check-equal? (!! (stream-ref nat-stream-2 0)) '(1 . 1))
+(check-equal? (!! (stream-ref nat-stream-2 1)) '(1 . 2))
+(check-equal? (!! (stream-ref nat-stream-2 2)) '(1 . 3))
+(check-equal? (!! (stream-ref nat-stream-2 3)) '(2 . 2))
+(check-equal? (!! (stream-ref nat-stream-2 4)) '(1 . 4))
+(check-equal? (!! (stream-ref nat-stream-2 5)) '(1 . 5))
