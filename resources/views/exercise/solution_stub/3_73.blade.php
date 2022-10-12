@@ -1,15 +1,19 @@
 #lang racket/base
 (require rackunit)
-(require sicp)
 
 
 ;;; BEGIN
 {!! $solution !!}
 ;;; END
 
+(require lazy)
+(require lazy/force)
+
+(define (cons-stream x s) (cons x s))
+
 (define (stream-car stream) (car stream))
 
-(define (stream-cdr stream) (force (cdr stream)))
+(define (stream-cdr stream) (! (cdr stream)))
 
 (define (stream-ref s n)
   (if (= n 0)
@@ -52,6 +56,6 @@
 (define voltage-stream (RC1 integers 1))
 
 
-(check-equal? (stream-ref voltage-stream 0) 6)
-(check-equal? (stream-ref voltage-stream 1) 11.5)
-(check-equal? (stream-ref voltage-stream 2) 17.5)
+(check-equal? (! (stream-ref voltage-stream 0)) 6)
+(check-equal? (! (stream-ref voltage-stream 1)) 11.5)
+(check-equal? (! (stream-ref voltage-stream 2)) 17.5)
