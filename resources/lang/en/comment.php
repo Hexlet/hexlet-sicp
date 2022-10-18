@@ -17,9 +17,9 @@ return [
     'replied_to' => 'Replied to',
     'sure' => 'Are you sure you want to delete the comment?',
     'user' => [
-        'title' => 'My comment',
+        'title' => 'Comment user',
         'date' => 'Date',
-        'whom' => 'Whom',
+        'location' => 'Comment location',
         'text' => 'Text',
     ],
 ];

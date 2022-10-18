@@ -35,7 +35,7 @@
                         <a class="nav-link active" id="exercise-description-tab" data-bs-toggle="pill" href="#exercise-description" role="tab" aria-controls="exercise-description" aria-selected="true">{{ __('exercise.show.description-tab') }}</a>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <a class="nav-link" id="exercise-discussion-tab" data-bs-toggle="pill" href="#exercise-discussion" role="tab" aria-controls="exercise-discussion" aria-selected="false">{{ __('exercise.show.discussion-tab') }}</a>
+                        <a class="nav-link" id="exercise-discussion-tab" data-bs-toggle="pill" href="#exercise-discussion" role="tab" aria-controls="exercise-discussion" aria-selected="false" >{{ __('exercise.show.discussion-tab') }}</a>
                     </li>
                 </ul>
                 <div class="tab-content card-body" id="pills-tabContent">
