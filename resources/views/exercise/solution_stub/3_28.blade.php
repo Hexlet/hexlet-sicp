@@ -1,41 +1,40 @@
 #lang racket/base
 (require rackunit)
-(require sicp)
 
 ;;; BEGIN
 {!! $solution !!}
 ;;; END
 
-(define (make-queue) (cons '() '()))
+(define (make-queue) (mcons '() '()))
 
-(define (front-ptr queue) (car queue))
-(define (rear-ptr queue) (cdr queue))
-(define (set-front-ptr! queue item) (set-car! queue item))
-(define (set-rear-ptr! queue item) (set-cdr! queue item))
+(define (front-ptr queue) (mcar queue))
+(define (rear-ptr queue) (mcdr queue))
+(define (set-front-ptr! queue item) (set-mcar! queue item))
+(define (set-rear-ptr! queue item) (set-mcdr! queue item))
 
 (define (empty-queue? queue) (null? (front-ptr queue)))
 
 (define (front-queue queue)
   (if (empty-queue? queue)
       (error "FRONT called with an empty queue" queue)
-      (car (front-ptr queue))))
+      (mcar (front-ptr queue))))
 
 
 (define (delete-queue! queue)
   (cond ((empty-queue? queue)
          (error "DELETE! called with an empty queue" queue))
         (else
-         (set-front-ptr! queue (cdr (front-ptr queue)))
+         (set-front-ptr! queue (mcdr (front-ptr queue)))
          queue)))
 
 (define (insert-queue! queue item)
-  (let ((new-pair (cons item '())))
+  (let ((new-pair (mcons item '())))
     (cond ((empty-queue? queue)
            (set-front-ptr! queue new-pair)
            (set-rear-ptr! queue new-pair)
            queue)
           (else
-           (set-cdr! (rear-ptr queue) new-pair)
+           (set-mcdr! (rear-ptr queue) new-pair)
            (set-rear-ptr! queue new-pair)
            queue)))) 
 
@@ -78,15 +77,15 @@
 (define (segment-queue s) (cdr s))
 
 
-(define (make-agenda) (list 0))
-(define (current-time agenda) (car agenda))
+(define (make-agenda) (mcons 0 '()))
+(define (current-time agenda) (mcar agenda))
 (define (set-current-time! agenda time)
-  (set-car! agenda time))
-(define (segments agenda) (cdr agenda))
+  (set-mcar! agenda time))
+(define (segments agenda) (mcdr agenda))
 (define (set-segments! agenda segments)
-  (set-cdr! agenda segments))
-(define (first-segment agenda) (car (segments agenda)))
-(define (rest-segments agenda) (cdr (segments agenda)))
+  (set-mcdr! agenda segments))
+(define (first-segment agenda) (mcar (segments agenda)))
+(define (rest-segments agenda) (mcdr (segments agenda)))
 (define (empty-agenda? agenda)
   (null? (segments agenda)))
 
@@ -97,7 +96,7 @@
 (define (remove-first-agenda-item! agenda)
   (let ((q (segment-queue (first-segment agenda))))
     (delete-queue! q)
-    (if (empty-queue? q)
+    (when (empty-queue? q)
         (set-segments! agenda (rest-segments agenda)))))
 
 (define (first-agenda-item agenda)
@@ -117,18 +116,18 @@
 (define (add-to-agenda! time action agenda)
   (define (belongs-before? segments)
     (or (null? segments)
-        (< time (segment-time (car segments)))))
+        (< time (segment-time (mcar segments)))))
   (define (make-new-time-segment time action)
     (let ((q (make-queue)))
       (insert-queue! q action)
       (make-time-segment time q)))
   (define (add-to-segments! segments)
-    (if (= (segment-time (car segments)) time)
-        (insert-queue! (segment-queue (car segments))
+    (if (= (segment-time (mcar segments)) time)
+        (insert-queue! (segment-queue (mcar segments))
                        action)
         (let ((rest (cdr segments)))
           (if (belongs-before? rest)
-              (set-cdr!
+              (set-mcdr!
                segments
                (cons (make-new-time-segment time action)
                      (cdr segments)))
@@ -137,7 +136,7 @@
     (if (belongs-before? segments)
         (set-segments!
          agenda
-         (cons (make-new-time-segment time action)
+         (mcons (make-new-time-segment time action)
                segments))
         (add-to-segments! segments))))
 
@@ -165,6 +164,18 @@
 (check-equal? (get-signal c) 0)
 (set-signal! a 1)
 (check-equal? (get-signal a) 1)
+(check-equal? (get-signal b) 0)
 (check-equal? (get-signal c) 0)
 (propagate)
 (check-equal? (get-signal c) 1)
+(set-signal! b 1)
+(propagate)
+(check-equal? (get-signal a) 1)
+(check-equal? (get-signal b) 1)
+(check-equal? (get-signal c) 1)
+(set-signal! a 0)
+(set-signal! b 0)
+(propagate)
+(check-equal? (get-signal a) 0)
+(check-equal? (get-signal b) 0)
+(check-equal? (get-signal c) 0)
