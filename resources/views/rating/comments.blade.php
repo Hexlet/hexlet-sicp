@@ -25,7 +25,11 @@
                                     {{ $user->name }}
                                 </a>
                             </td>
-                            <td>{{ $commentsCount }}</td>
+                            <td>
+                                <a class="text-decoration-none" href="{{ route('users.comments.index', [$user]) }}">
+                                    {{ $commentsCount }}
+                                </a>
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>

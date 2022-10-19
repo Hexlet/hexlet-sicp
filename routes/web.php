@@ -25,6 +25,7 @@ Route::group([
         Route::resource('users.chapters', 'UserChapterController')->only('store', 'destroy');
         Route::resource('users.exercises', 'UserExerciseController')->only('store', 'update', 'destroy');
         Route::resource('users.solutions', 'SolutionController')->only('store', 'show', 'destroy');
+        Route::resource('users.comments', 'UserCommentController')->only('index');
     });
 
     Route::namespace('Rating')->prefix('ratings')->group(function (): void {

@@ -16,4 +16,10 @@ return [
     'reply_to_comment' => 'Reply to Comment',
     'replied_to' => 'Replied to',
     'sure' => 'Are you sure you want to delete the comment?',
+    'user' => [
+        'title' => 'Comment user',
+        'date' => 'Date',
+        'location' => 'Comment location',
+        'text' => 'Text',
+    ],
 ];
