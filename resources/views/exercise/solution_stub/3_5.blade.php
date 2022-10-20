@@ -1,12 +1,15 @@
 #lang racket/base
-
 (require rackunit)
-(require sicp)
 
 
 ;;; BEGIN
 {!! $solution !!}
 ;;; END
+
+(define (sicp-random n)
+  (if (and (exact? n) (integer? n))
+      (random n)
+      (* n (random))))
 
 (define (monte-carlo trials experiment)
   (define (iter trials-remaining trials-passed)
@@ -21,7 +24,7 @@
 
 (define (random-in-range low high)
     (let ((range (- high low)))
-        (+ low (random range))))
+        (+ low (sicp-random range))))
 
 
 (define (square x) (* x x))
@@ -36,5 +39,8 @@
   (estimate-integral square-predicate? -1.0 1.0 -1.0 1.0 trials)))
 
 
-(check-equal? (floor (* 10 (test-pi 1000))) 31.0)
-(check-equal? (floor (* 10 (test-pi 10000))) 31.0)
+(define attempt (floor (* 10 (test-pi 10000))))
+
+(check-true (or
+             (>= attempt 30.0)
+             (<= attempt 32.0)))
