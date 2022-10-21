@@ -1,15 +1,19 @@
 #lang racket/base
 (require rackunit)
-(require sicp)
 
 
 ;;; BEGIN
 {!! $solution !!}
 ;;; END
 
+(require lazy)
+(require lazy/force)
+
+(define (cons-stream x s) (cons x s))
+
 (define (stream-car stream) (car stream))
 
-(define (stream-cdr stream) (force (cdr stream)))
+(define (stream-cdr stream) (! (cdr stream)))
 
 (define (stream-ref s n)
   (if (= n 0)
@@ -28,6 +32,15 @@
                    (cons proc (map (lambda (s)
                                        (stream-cdr s))
                                    list-of-stream))))))
+
+(define (sicp-random n)
+  (if (and (exact? n) (integer? n))
+      (random n)
+      (* n (random))))
+
+(define (random-in-range low high)
+   (let ((range (- high low)))
+     (+ low (sicp-random range))))
 
 (define (monte-carlo experiment-stream passed failed)
   (define (next passed failed)
@@ -49,4 +62,4 @@
    (stream-map (lambda (area) (/ area (* 0.5 0.5))) 
                (estimate-integral in-unit-circle? 0.0 1.0 0.0 1.0)))
 
-(check-equal? (floor (* 10 (exact->inexact (stream-ref pi-stream 10000)))) 31.0)
+(check-equal? (! (floor (* 10 (exact->inexact (stream-ref pi-stream 10000))))) 31.0)
