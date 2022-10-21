@@ -9,9 +9,9 @@
                 <table class="table table-striped">
                     <thead>
                     <tr>
-                        <th style="width: 15%">{{ __('comment.user.location') }}</th>
-                        <th style="width: 70%">{{ __('comment.user.text') }}</th>
-                        <th style="width: 15%">{{ __('comment.user.date') }}</th>
+                        <th class="w-15">{{ __('comment.user.location') }}</th>
+                        <th class="w-70">{{ __('comment.user.text') }}</th>
+                        <th class="w-15">{{ __('comment.user.date') }}</th>
                     </tr>
                     </thead>
                     <tbody>

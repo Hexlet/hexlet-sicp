@@ -1,0 +1,17 @@
+$utilities: map-merge(
+  $utilities,
+  (
+    "width": map-merge(
+      map-get($utilities, "width"),
+      (
+        values: map-merge(
+          map-get(map-get($utilities, "width"), "values"),
+          (
+            15: 15%,
+            70: 70%
+          ),
+        ),
+      ),
+    ),
+  )
+);
