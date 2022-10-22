@@ -1,11 +1,12 @@
 #lang racket/base
 (require rackunit)
-(require sicp)
 
 
 ;;; BEGIN
 {!! $solution !!}
 ;;; END
+
+(define (set-cdr! tail pair) (set-mcdr! tail pair))
 
 (define table-equal (make-table equal?))
 (define get-equal (table-equal 'lookup-proc))
