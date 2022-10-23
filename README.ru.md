@@ -7,7 +7,7 @@
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
-Читать на другом языке: [English](README.en.md)
+Читать на другом языке: [English](README.md)
 
 Hexlet SICP &mdash; это сервис для тех, кто изучает книгу "Структура и интерпретация компьютерных программ". Отслеживайте свой прогресс и сравнивайте себя с другими в глобальной таблице лидеров.
 
