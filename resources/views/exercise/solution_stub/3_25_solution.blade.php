@@ -1,4 +1,4 @@
- (define (table-body table)
+(define (table-body table)
    (cdr table))
 
  (define (append-table! table key value)
@@ -32,5 +32,5 @@
 
 (define (make-table . table-name)
     (if (null? table-name)
-        (list '*table*)
+        (mlist '*table*)
         table-name))
