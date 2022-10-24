@@ -42,7 +42,7 @@
                     @if ($user->github_name)
                     <span>
                         <a class="x-link-without-decoration mr-3 mb-2 text-dark" target="_blank" rel="noopener noreferrer" href="https://github.com/{{ $user->github_name }}">
-                            <i class="bi bi-github fa-2x"></i>
+                            <i class="bi bi-github icon-2x"></i>
                         </a>
                     </span>
                     @endif

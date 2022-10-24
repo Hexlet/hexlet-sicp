@@ -24,7 +24,7 @@
         <ul class="collapse list-unstyled" id="collapse{{ $chapter->id }}">
             @foreach($chapter->exercises as $exercise)
             <li>
-                <i class="bi bi-keyboard-fill fa-lg"></i>
+                <i class="bi bi-keyboard-fill icon-lg"></i>
                 <a href="{{ route('exercises.show', [$exercise]) }}">
                     {{ getFullExerciseTitle($exercise) }}
                 </a>
