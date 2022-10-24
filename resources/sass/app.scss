@@ -1,8 +1,16 @@
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
 
+@import "bootstrap/scss/functions";
+
 // Variables
 @import 'variables';
+
+@import "bootstrap/scss/variables";
+
+@import "bootstrap/scss/utilities";
+
+@import 'utilities';
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
