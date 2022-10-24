@@ -1,64 +1,58 @@
-(define (cube x)
-  (* x x x))
+(define (cube x) (* x x x))
 
-(define (stream-car stream) (car stream))
+(define (pair-weight-ramanujan pair)
+  (+ (cube (car pair)) (cube (cadr pair))))
 
-(define (stream-cdr stream) (force (cdr stream)))
+(define (stream-map proc . argstreams)
+  (if (stream-empty? (car argstreams))
+      empty-stream
+      (stream-cons
+       (apply proc (map stream-first argstreams))
+       (apply stream-map (cons proc (map stream-rest argstreams))))))
 
-(define (stream-map proc . list-of-stream)
-    (if (null? (car list-of-stream))
-        '()
-        (cons-stream
-            (apply proc 
-                   (map (lambda (s)
-                            (stream-car s))
-                        list-of-stream))
-            (apply stream-map 
-                   (cons proc (map (lambda (s)
-                                       (stream-cdr s))
-                                   list-of-stream))))))
+(define (generate-numbers stream-of-pairs weight-proc)
+  (let ((p1 (stream-first stream-of-pairs)) (p2 (stream-first (stream-rest stream-of-pairs))))
+    (if (= (weight-proc p1) (weight-proc p2))
+        (stream-cons
+         (weight-proc p1)
+         (generate-numbers (stream-rest stream-of-pairs) weight-proc))
+        (generate-numbers (stream-rest stream-of-pairs) weight-proc))))
+
+(define (merge-weighted s1 s2 weight)
+  (cond
+    ((stream-empty? s1) s2)
+    ((stream-empty? s2) s1)
+    (else
+     (let ((s1car (stream-first s1)) (s2car (stream-first s2)))
+       (cond
+         ((< (weight s1car) (weight s2car))
+          (stream-cons s1car (merge-weighted (stream-rest s1) s2 weight))
+          )
+         ((> (weight s1car) (weight s2car))
+          (stream-cons s2car (merge-weighted s1 (stream-rest s2) weight))
+          )
+         (else
+          (stream-cons
+           s1car
+           (stream-cons
+            s2car
+            (merge-weighted (stream-rest s1) (stream-rest s2) weight)))))))))
+
+
+(define (weighted-pairs s t weight)
+  (stream-cons
+   (list (stream-first s) (stream-first t))
+   (merge-weighted
+    (stream-map (lambda (x) (list (stream-first s) x)) (stream-rest t))
+    (weighted-pairs (stream-rest s) (stream-rest t) weight)
+    weight)))
 
 (define (add-streams s1 s2)
   (stream-map + s1 s2))
 
-(define ones (cons-stream 1 ones))
+(define ones (stream-cons 1 ones))
 
-(define integers (cons-stream 1 (add-streams ones integers)))
+(define integers (stream-cons 1 (add-streams ones integers)))
 
-(define (merge-weighted s t weight)
-  (cond
-    ((stream-null? s) t)
-    ((stream-null? t) s)
-    (else 
-      (if (> (weight (car (stream-car s)) (cdr (stream-car s)))
-             (weight (car (stream-car t)) (cdr (stream-car t))))
-        (cons-stream (stream-car t) (merge-weighted s (stream-cdr t) weight))
-        (cons-stream (stream-car s) (merge-weighted (stream-cdr s) t weight))))))
-
-
-(define (weighted-pairs s t weight)
-  (cons-stream 
-    (cons (stream-car s) (stream-car t))
-    (merge-weighted
-      (stream-map (lambda (x) (cons (stream-car s) x))
-                  (stream-cdr t))
-      (weighted-pairs (stream-cdr s) (stream-cdr t) weight)
-      weight)))
-
-(define (weight i j)
-  (+ (cube i) (cube j)))
-
-(define p (weighted-pairs integers integers weight))
-
-(define (pair-weigth p)
-  (weight (car p) (cdr p)))
-
-(define (generate-ramanujan-number pairs)
-  (let ((first (stream-car pairs))
-        (second (stream-car (stream-cdr pairs))))
-    (if (= (pair-weigth first) (pair-weigth second))
-      (cons-stream (pair-weigth first)
-        (generate-ramanujan-number (stream-cdr pairs)))
-      (generate-ramanujan-number (stream-cdr pairs)))))
-
-(define ramanujan-numbers (generate-ramanujan-number p))
+(define P (weighted-pairs integers integers pair-weight-ramanujan))
+(define ramanujan-numbers (generate-numbers P pair-weight-ramanujan))
