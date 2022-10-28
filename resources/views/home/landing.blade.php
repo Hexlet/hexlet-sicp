@@ -35,11 +35,11 @@
         </div>
         <a class="carousel-control-prev" href="#sicpCarousel" role="button" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">{{ __('pagination.previous') }}</span>
+            <span class="visually-hidden">{{ __('pagination.previous') }}</span>
         </a>
         <a class="carousel-control-next" href="#sicpCarousel" role="button" data-bs-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">{{ __('pagination.next') }}</span>
+            <span class="visually-hidden">{{ __('pagination.next') }}</span>
         </a>
     </div>
     <div class="row">
@@ -99,19 +99,19 @@
     <hr class="mt-5 mb-5">
     <div class="row mb-4">
         <div class="col-lg-3 text-center">
-            <i class="bi bi-book-fill fa-4x"></i>
+            <i class="bi bi-book-fill icon-4x"></i>
             <h2>{{ __('landing.actions_list.1') }}</h2>
         </div>
         <div class="col-lg-3 text-center">
-            <i class="bi bi-code-square fa-4x"></i>
+            <i class="bi bi-code-square icon-4x"></i>
             <h2>{{ __('landing.actions_list.2') }}</h2>
         </div>
         <div class="col-lg-3 text-center">
-            <i class="bi bi-pen-fill fa-4x"></i>
+            <i class="bi bi-pen-fill icon-4x"></i>
             <h2>{{ __('landing.actions_list.3') }}</h2>
         </div>
         <div class="col-lg-3 text-center">
-            <i class="bi bi-award fa-4x"></i>
+            <i class="bi bi-award icon-4x"></i>
             <h2>{{ __('landing.actions_list.4') }}</h2>
         </div>
     </div>

@@ -61,7 +61,7 @@ const Editor = () => {
     ? (
       <div className="d-flex h-100 justify-content-center align-items-center">
         <Spinner animation="border" role="status" variant="primary">
-          <span className="sr-only">{t('loading')}</span>
+          <span className="visually-hidden">{t('loading')}</span>
         </Spinner>
       </div>
     )

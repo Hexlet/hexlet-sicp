@@ -18,7 +18,6 @@
     "lint-js-fix": "node_modules/.bin/eslint --fix --ext .jsx,.js ./resources/js"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-free": "^5.15.4",
     "@popperjs/core": "^2.11.5",
     "@reduxjs/toolkit": "^1.6.2",
     "axios": "^0.25",

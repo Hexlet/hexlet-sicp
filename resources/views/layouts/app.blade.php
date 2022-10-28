@@ -116,7 +116,6 @@
     @livewireScripts
     <script src="{{ mix('js/app.js') }}" defer></script>
     <script src="{{ mix('js/hljs.js')}}"></script>
-    <script src="{{ mix('js/font-awesome.js') }}" defer></script>
     @stack('scripts')
 </body>
 </html>
