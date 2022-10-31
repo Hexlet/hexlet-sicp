@@ -9,7 +9,7 @@
     <div class="container d-flex flex-wrap">
         <!-- Left Side Of Navbar -->
         <a href="{{ LaravelLocalization::getLocalizedURL($currentLocale, route('home')) }}"
-           class="navbar-brand mb-0 h1 link-secondary"
+           class="navbar-brand mb-0 link-secondary"
         >
             {{ __('layout.nav.name') }}
         </a>
@@ -61,14 +61,14 @@
             @else
                 <li class="nav-item dropdown d-none d-md-block">
                     <a
-                        class="nav-link dropdown-toggle px-2 link-secondary"
+                        class="nav-link dropdown-toggle py-1 px-2 link-secondary"
                         id="dropdownMenuButton"
                         data-bs-toggle="dropdown"
                         aria-haspopup="true"
                         aria-expanded="false"
                         href="#"
                     >
-                        <i class="bi bi-person icon-lg"></i>
+                        <i class="bi bi-person align-middle fs-4"></i>
                     </a>
                     <ul
                         class="dropdown-menu x-z-index-dropdown dropdown-menu-right"
@@ -111,7 +111,7 @@
                         <img
                             src="{{ getPathToLocaleFlag($currentLocale) }}"
                             alt="{{ getNativeLanguageName($currentLocale) }}"
-                            class="mr-1" width="24"
+                            class="me-1" width="24"
                         >
                         <span class="d-md-none">{{ getNativeLanguageName($currentLocale) }}</span>
                     </a>
