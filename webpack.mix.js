@@ -14,6 +14,7 @@ const mix = require('laravel-mix');
 mix
   .version()
   .js('resources/js/app.js', 'public/js')
+  .js('resources/js/custom.js', 'public/js')
   .js('resources/js/hljs.js', 'public/js/hljs.js')
   .js('resources/js/editor.js', 'public/js')
   .react()

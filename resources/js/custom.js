@@ -1,19 +1,23 @@
 /* eslint-disable */
+import { Tab } from 'bootstrap'
+import $ from 'jquery'
 
-import $ from 'jquery';
-
-const addHashActiveTab = () => $(document).ready(() => {
-  const url = window.location.href;
-  if (url.indexOf('#') > 0) {
-    const activeTab = url.substring(url.indexOf('#') + 1);
-    $(`.nav[role="tablist"] a[href="#${activeTab}"]`).tab('show');
+const escapeFragments = ['output', 'teacherSolution', 'editor', 'tests'];
+const url = window.location.href;
+if (url.indexOf('#') > 0) {
+  const activeTabUrl = url.substring(url.indexOf('#') + 1);
+  if (!escapeFragments.includes(activeTabUrl)) {
+    const selector = activeTabUrl.startsWith('comment')
+      ? '.nav[role="tablist"] a[href="#exercise-discussion"]'
+      : `.nav[role="tablist"] a[href="#${activeTabUrl}"]`;
+    const activeTab = document.querySelector(selector);
+    const tab = new Tab(activeTab);
+    tab.show();
   }
+}
 
-  $('a[role="tab"]').on('click', function () {
-    const hash = $(this).attr('href');
-    const newUrl = url.split('#')[0] + hash;
-    history.replaceState(null, null, newUrl);
-  });
+$('a[role="tab"]').on('click', function () {
+  const hash = $(this).attr('href');
+  const newUrl = url.split('#')[0] + hash;
+  history.replaceState(null, null, newUrl);
 });
-
-export default addHashActiveTab;
