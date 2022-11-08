@@ -10,7 +10,7 @@ return [
         '3' =>
         ", ",
         '4' =>
-        " is said to ``halt'' on ",
+        " is said to ''halt'' on ",
         '5' =>
         " if evaluating the expression ",
         '6' =>
