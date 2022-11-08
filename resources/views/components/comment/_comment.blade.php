@@ -27,7 +27,7 @@
                 <div class="small text-muted ml-2">{{ $comment->parent->content }}</div>
             </div>
         @endif
-        <div class="my-2">{{ $comment->content }}</div>
+        <div class="my-2"><x-markdown>{{ $comment->content }}</x-markdown></div>
         <div>
             @can('reply', $comment)
                 <button
