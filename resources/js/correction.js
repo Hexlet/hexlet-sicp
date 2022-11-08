@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { Modal } from 'bootstrap';
 import routes from './common/routes.js';
 
 const ctrlEnterHandler = (event) => {
@@ -35,7 +34,7 @@ const ctrlEnterHandler = (event) => {
       elements.feedback.classList.add('d-none');
     });
 
-    const modal = new Modal(elements.modal);
+    const modal = new window.bootstrap.Modal(elements.modal);
     modal.show();
 
     elements.btn.addEventListener('click', async () => {
