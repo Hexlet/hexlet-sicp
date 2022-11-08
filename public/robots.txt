@@ -3,3 +3,5 @@ Disallow: */register
 Disallow: */login
 Disallow: */oauth/
 Disallow: */users/
+Disallow: /en/
+Disallow: *?
