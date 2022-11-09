@@ -7,7 +7,6 @@
         "sicp",
         "project"
     ],
-
     "license": "MIT",
     "require": {
         "php": "^8.1.0",
