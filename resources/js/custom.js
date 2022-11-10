@@ -1,5 +1,4 @@
 /* eslint-disable */
-import { Tab } from 'bootstrap'
 import $ from 'jquery'
 
 const escapeFragments = ['output', 'teacherSolution', 'editor', 'tests'];
@@ -11,8 +10,10 @@ if (url.indexOf('#') > 0) {
       ? '.nav[role="tablist"] a[href="#exercise-discussion"]'
       : `.nav[role="tablist"] a[href="#${activeTabUrl}"]`;
     const activeTab = document.querySelector(selector);
-    const tab = new Tab(activeTab);
-    tab.show();
+    if (activeTab) {
+      const tab = new window.bootstrap.Tab(activeTab);
+      tab.show();
+    }
   }
 }
 

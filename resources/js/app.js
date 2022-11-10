@@ -1,9 +1,10 @@
 import $ from 'jquery';
 import lodash from 'lodash';
-import 'bootstrap';
+import * as bootstrap from 'bootstrap';
 import axios from 'axios';
 import correctionListener from './correction';
 
+window.bootstrap = bootstrap;
 window.$ = $;
 window.jQuery = $;
 window._ = lodash;
