@@ -3,8 +3,12 @@
  * @var \App\Models\Comment $comment
  */
 @endphp
+{{--@php--}}
+{{--$parser = new Parsedown();--}}
+{{--@endphp--}}
 @php
-$parser = new Parsedown();
+    require_once __DIR__ . '/../../../resources/views/components/comment/MyParseDown.php';
+    $parser = new MyParseDown();
 @endphp
 <div id="comment-{{ $comment->id }}" class="media">
     <div class="media-body rounded-lg p-2 {{ $loop->last ? '' : 'mb-3' }}">
@@ -29,7 +33,9 @@ $parser = new Parsedown();
                 <div class="small text-muted ml-2">{{ $comment->parent->content }}</div>
             </div>
         @endif
-        <div class="my-2">{!! $parser->line($comment->content) !!}</div>
+        <div class="my-2">{!! $parser->text($comment->content) !!}</div>
+        {{--        <div class="my-2">{!! $parser->text($comment->content) !!}</div>--}}
+        {{--        <div class="my-2">{{ $parser->text($comment->content) }}</div>--}}
         <div>
             @can('reply', $comment)
                 <button
