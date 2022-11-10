@@ -15,12 +15,14 @@ class SolutionController extends Controller
 {
     public function index(Request $request): View
     {
-        $filter = array_merge(['user_id' => null, 'exercise_id' => null], (array)$request->input('filter', []));
+        $filter = array_merge(['name' => null, 'exercise_id' => null], (array)$request->input('filter', []));
 
         $solutions = QueryBuilder::for(Solution::versioned())
+            ->join('users', 'solutions.user_id', 'users.id')
+            ->with(['user', 'exercise'])
             ->allowedFilters([
                 AllowedFilter::exact('exercise_id'),
-                AllowedFilter::exact('user_id'),
+                AllowedFilter::partial('name', 'users.name', false),
             ])
             ->whereHas('user')
             ->latest()
