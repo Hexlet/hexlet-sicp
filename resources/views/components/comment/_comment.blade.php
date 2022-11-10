@@ -7,7 +7,7 @@
 {{--$parser = new Parsedown();--}}
 {{--@endphp--}}
 @php
-    require_once __DIR__ . '/../../../resources/views/components/comment/MyParseDown.php';
+    require_once __DIR__ . '/../../../MyParseDown.php';
     $parser = new MyParseDown();
 @endphp
 <div id="comment-{{ $comment->id }}" class="media">
