@@ -1,5 +1,4 @@
 @extends('layouts..app')
-@php($parsedown = new Parsedown())
 @section('description'){{ __('rating.index.description') }}@endsection
 @section('content')
     <div class="my-4">
@@ -35,7 +34,7 @@
                                     </a>
                                 @endif
                             </td>
-                            <td>{!! strip_tags($parsedown->text($comment->content, 80)) !!}</td>
+                            <td>{!! strip_tags(getMarkdownText($comment->content, 80)) !!}</td>
                             <td>{{ $comment->created_at->format('Y-m-d') }}</td>
                         </tr>
                     @endforeach

@@ -3,7 +3,6 @@
  * @var \App\Models\Comment $comment
  */
 @endphp
-@php($parser = new Parsedown())
 <div id="comment-{{ $comment->id }}" class="media">
     <div class="media-body rounded-lg p-2 {{ $loop->last ? '' : 'mb-3' }}">
         <h5 class="mt-0 mb-1">
@@ -27,7 +26,7 @@
                 <div class="small text-muted ml-2">{{ $comment->parent->content }}</div>
             </div>
         @endif
-        <div class="my-2">{!! $parser->text($comment->content) !!}</div>
+        <div class="my-2">{!! getMarkdownText($comment->content) !!}</div>
         <div>
             @can('reply', $comment)
                 <button
