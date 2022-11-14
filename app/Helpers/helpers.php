@@ -6,6 +6,7 @@ use App\Helpers\ChartHelper;
 use App\Helpers\CommentHelper;
 use App\Helpers\ExerciseHelper;
 use App\Helpers\LocalizationHelper;
+use App\Helpers\MarkdownHelper;
 use App\Helpers\RatingCommentsHelper;
 use App\Helpers\RatingHelper;
 use App\Helpers\TemplateHelper;
@@ -181,5 +182,12 @@ if (!function_exists('getProfileImageLink')) {
     function getProfileImageLink(User $user): string
     {
         return UserHelper::getProfileImageLink($user);
+    }
+}
+
+if (!function_exists('getMarkdownText')) {
+    function getMarkdownText(string $text): string
+    {
+        return MarkdownHelper::text($text);
     }
 }
