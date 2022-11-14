@@ -15,15 +15,17 @@ class SolutionController extends Controller
 {
     public function index(Request $request): View
     {
-        $filter = array_merge(['user_id' => null, 'exercise_id' => null], (array)$request->input('filter', []));
+        $filter = array_merge(['name' => null, 'exercise_id' => null], (array)$request->input('filter', []));
 
         $solutions = QueryBuilder::for(Solution::versioned())
             ->allowedFilters([
                 AllowedFilter::exact('exercise_id'),
-                AllowedFilter::exact('user_id'),
+                AllowedFilter::partial('name', 'users.name', false),
             ])
+            ->join('users', 'solutions.user_id', 'users.id')
+            ->with(['user', 'exercise'])
             ->whereHas('user')
-            ->latest()
+            ->latest('solutions.created_at')
             ->paginate(50);
 
         $exercises = Exercise::orderBy('id')->get();
