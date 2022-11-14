@@ -25,7 +25,7 @@ class SolutionController extends Controller
             ->join('users', 'solutions.user_id', 'users.id')
             ->with(['user', 'exercise'])
             ->whereHas('user')
-            ->latest()
+            ->latest('solutions.created_at')
             ->paginate(50);
 
         $exercises = Exercise::orderBy('id')->get();
