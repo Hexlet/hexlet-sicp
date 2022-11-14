@@ -184,10 +184,3 @@ if (!function_exists('getProfileImageLink')) {
         return UserHelper::getProfileImageLink($user);
     }
 }
-
-if (!function_exists('getMarkdownText')) {
-    function getMarkdownText(string $text): string
-    {
-        return MarkdownHelper::text($text);
-    }
-}
