@@ -2,6 +2,7 @@
 @php
 /** @var \Illuminate\Support\Collection|\App\Models\Activity[] $logItems */
 /** @var \Illuminate\Support\Collection|\App\Models\Comment[] $comments */
+use App\Helpers\MarkdownHelper;
 @endphp
 @push('styles')
 <link href="{{ mix('css/_activity_chart.css') }}" rel="stylesheet">
@@ -79,7 +80,7 @@
                             {{ getLogItemDescription($logItem) }}
                         </a>
                         <span>
-                        {{ $logItem->getExtraProperty('comment.content') }}
+                        {!! strip_tags(MarkdownHelper::text($logItem->getExtraProperty('comment.content'))) !!}
                         </span>
                         @break
                      @case('add_solution')
@@ -132,7 +133,7 @@
                     </strong>
                     <a href="{{ getCommentLink($comment) }}">{{ $comment->created_at }}</a>
                 </div>
-                    <span>{{ str_limit($comment->content, 80) }}</span>
+                    <span>{!! strip_tags(MarkdownHelper::text(str_limit($comment->content, 80))) !!}</span>
             </div>
         </div>
         @endforeach

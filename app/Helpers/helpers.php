@@ -6,6 +6,7 @@ use App\Helpers\ChartHelper;
 use App\Helpers\CommentHelper;
 use App\Helpers\ExerciseHelper;
 use App\Helpers\LocalizationHelper;
+use App\Helpers\MarkdownHelper;
 use App\Helpers\RatingCommentsHelper;
 use App\Helpers\RatingHelper;
 use App\Helpers\TemplateHelper;

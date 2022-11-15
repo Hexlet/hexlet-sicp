@@ -2,8 +2,8 @@
 /**
  * @var \App\Models\Comment $comment
  */
+use App\Helpers\MarkdownHelper;
 @endphp
-
 <div id="comment-{{ $comment->id }}" class="media">
     <div class="media-body rounded-lg p-2 {{ $loop->last ? '' : 'mb-3' }}">
         <h5 class="mt-0 mb-1">
@@ -27,7 +27,7 @@
                 <div class="small text-muted ml-2">{{ $comment->parent->content }}</div>
             </div>
         @endif
-        <div class="my-2">{{ $comment->content }}</div>
+        <div class="my-2">{!! MarkdownHelper::text($comment->content) !!}</div>
         <div>
             @can('reply', $comment)
                 <button

@@ -24,6 +24,7 @@
         "browner12/helpers": "^3.4",
         "diglactic/laravel-breadcrumbs": "^8.0",
         "doctrine/dbal": "^3.4",
+        "erusev/parsedown": "^1.7",
         "fakerphp/faker": "^1.20",
         "graham-campbell/github": "^10.5",
         "guzzlehttp/guzzle": "^7.4",
