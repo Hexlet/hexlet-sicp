@@ -6,6 +6,14 @@ import addHashActiveTab from './custom';
 import correctionListener from './correction.js';
 import 'jquery-ujs';
 import '../sass/app.scss';
+import '../sass/_activity_chart.scss';
+import '../sass/_custom.scss';
+
+import.meta.glob([
+  '../assets/img/**',
+  '../assets/img/exercises/**',
+]);
+
 
 window.$ = $;
 window.jQuery = $;

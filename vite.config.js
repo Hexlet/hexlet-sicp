@@ -1,6 +1,5 @@
 import { defineConfig } from 'vite';
 import laravel from 'laravel-vite-plugin';
-import react from '@vitejs/plugin-react';
 
 export default defineConfig({
     plugins: [
@@ -8,9 +7,8 @@ export default defineConfig({
             'resources/js/app.js',
             'resources/js/hljs.js',
             'resources/js/editor.js',
-
+            'resources/js/font-awesome.js',
         ]),
-        react(),
     ],
     resolve: {
         alias: [
@@ -23,5 +21,5 @@ export default defineConfig({
     },
     server: {
         port: 3000
-    }
+    },
 });

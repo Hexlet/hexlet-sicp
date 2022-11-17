@@ -31,7 +31,12 @@
         crossorigin="anonymous"
     >
     @stack('styles')
-    @vite(['resources/js/app.js'])
+    @vite([
+        'resources/js/app.js',
+        'resources/js/hljs.js',
+        'resources/js/editor.js',
+        'resources/js/font-awesome.js',
+    ])
     @includeWhen(app()->environment('production'), 'layouts.deps._gtm_body')
     @includeWhen(app()->environment('production'), 'layouts.deps._metrika')
 </head>

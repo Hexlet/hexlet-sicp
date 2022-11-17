@@ -8,7 +8,7 @@
                         <div class="float-lg-right w-25 d-none d-sm-block">
                             <img
                                 class="img-fluid"
-                                src="{{ mix('img/Patchouli_Gives_SICP.png') }}"
+                                src="{{ Vite::asset('resources/assets/img/Patchouli_Gives_SICP.png') }}"
                                 alt="{{ __('landing.start_learning') }}"
                             >
                         </div>

@@ -13,9 +13,9 @@
     <div class="col-md-8">
         <a href="https://mitpress.mit.edu/sites/default/files/sicp/index.html">
             @if(rand(0, 10) === 0)
-                <img class="img-fluid" src="{{ mix('img/advice_dog.jpg') }}" alt="Начать изучать sicp">
+                <img class="img-fluid" src="{{ Vite::asset('resources/assets/img/advice_dog.jpg') }}" alt="Начать изучать sicp">
             @else
-                <img class="img-fluid" src="{{ mix('img/Patchouli_Gives_SICP.png') }}" alt="Начать изучать sicp">
+                <img class="img-fluid" src="{{ Vite::asset('resources/assets/img/Patchouli_Gives_SICP.png') }}" alt="Начать изучать sicp">
             @endif
         </a>
     </div>
