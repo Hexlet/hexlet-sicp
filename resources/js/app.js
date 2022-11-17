@@ -14,7 +14,6 @@ import.meta.glob([
   '../assets/img/exercises/**',
 ]);
 
-
 window.$ = $;
 window.jQuery = $;
 window._ = lodash;
