@@ -32,7 +32,6 @@ class HomeController extends Controller
         }
 
         $statisticTable = $this->getStatisticTable();
-//        dd($statisticTable);
         $logItems = Activity::latest()->has('causer')->with('causer')->limit(10)->get();
         $chart = getChart();
         $comments = Comment::latest()->has('user')->with('user')->with('commentable')->limit(10)->get();
