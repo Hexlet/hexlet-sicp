@@ -8,17 +8,78 @@ use App\Helpers\MarkdownHelper;
 <link href="{{ mix('css/_activity_chart.css') }}" rel="stylesheet">
 @endpush
 @section('content')
-<h1 class="my-4">{{ __('welcome.title') }}</h1>
-<p>{{ __('welcome.description') }}</p>
 <div class="row">
     <div class="col-md-8">
+        <h1 class="my-4">{{ __('welcome.title') }}</h1>
+        <p>{{ __('welcome.description') }}</p>
         <a href="https://xuanji.appspot.com/isicp/index.html">
-            @if(rand(0, 10) === 0)
-                <img class="img-fluid" src="{{ mix('img/advice_dog.jpg') }}" alt="Начать изучать sicp">
-            @else
-                <img class="img-fluid" src="{{ mix('img/Patchouli_Gives_SICP.png') }}" alt="Начать изучать sicp">
-            @endif
+            Интерактивная версия книги SICP
+{{--            @if(rand(0, 10) === 0)--}}
+{{--                <img class="img-fluid" src="{{ mix('img/advice_dog.jpg') }}" alt="Начать изучать sicp">--}}
+{{--            @else--}}
+{{--                <img class="img-fluid" src="{{ mix('img/Patchouli_Gives_SICP.png') }}" alt="Начать изучать sicp">--}}
+{{--            @endif--}}
         </a>
+        <hr class="dropdown-divider">
+        <h2> Статистика прохождения книги всеми пользователями системы</h2>
+        <div class="col-md-auto ">
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a
+                        class=
+                            "
+                            nav-link
+                            {{ request()->getQueryString() === "filter=all" ? 'active' : '' }}
+                            "
+                        aria-current="page"
+                        href="/?filter=all"
+                    >
+                        За все время
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a
+                        class=
+                            "
+                            {{ request()->getQueryString() === "filter=month" ? 'active' : '' }}
+                            nav-link
+                            "
+                        href="/?filter=month"
+                    >
+                        За месяц
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a
+                        class=
+                            "
+                            {{ request()->getQueryString() === "filter=week" ? 'active' : '' }}
+                            nav-link
+                            "
+                        href="/?filter=week"
+                    >
+                        За неделю
+                    </a>
+                </li>
+            </ul>
+            <div class="container mt-2">
+                <div class="row text-center">
+                    <div class="col mt-4">
+                        <p>Количество очков:</p>
+                        <h3>{{ $statisticTable['countPoints'] }}</h3>
+                    </div>
+                    <div class="col mt-4">
+                        <p>Глав прочитано:</p>
+                        <h3>{{ $statisticTable['countChapters'] }}</h3>
+                    </div>
+                    <div class="col mt-4">
+                        <p>Заданий выполнено:</p>
+                        <h3>{{ $statisticTable['countExercises'] }}</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
     <div class="col-md-4">
         <h2 class="my-3">{{ __('welcome.what_is_here') }}</h2>
@@ -31,13 +92,13 @@ use App\Helpers\MarkdownHelper;
             <li>{{ __(sprintf('welcome.features_list.%s', $key)) }}</li>
             @endforeach
         </ul>
-        <h2 class="my-3">{{ __('welcome.coming_soon') }}</h2>
-        <ul>
-            @foreach (__('welcome.coming_soon_list') as $key => $item)
-            <li>{{ __(sprintf('welcome.coming_soon_list.%s', $key)) }}</li>
-            @endforeach
+{{--        <h2 class="my-3">{{ __('welcome.coming_soon') }}</h2>--}}
+{{--        <ul>--}}
+{{--            @foreach (__('welcome.coming_soon_list') as $key => $item)--}}
+{{--            <li>{{ __(sprintf('welcome.coming_soon_list.%s', $key)) }}</li>--}}
+{{--            @endforeach--}}
 
-        </ul>
+{{--        </ul>--}}
         <a class="btn btn-primary btn-lg" href="{{ (route('my')) }}">{{ __('layout.welcome.start_learning') }}</a>
     </div>
 </div>

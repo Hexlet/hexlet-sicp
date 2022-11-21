@@ -7,6 +7,7 @@ use App\Models\Chapter;
 use App\Models\Comment;
 use App\Models\Exercise;
 use App\Models\User;
+use Illuminate\Support\Carbon;
 use Illuminate\View\View;
 
 class HomeController extends Controller
@@ -28,6 +29,7 @@ class HomeController extends Controller
             ));
         }
 
+        $statisticTable = $this->getStatisticTable();
         $logItems = Activity::latest()->has('causer')->with('causer')->limit(10)->get();
         $chart = getChart();
         $comments = Comment::latest()->has('user')->with('user')->with('commentable')->limit(10)->get();
@@ -35,7 +37,31 @@ class HomeController extends Controller
         return view('home.index', compact(
             'logItems',
             'chart',
-            'comments'
+            'comments',
+            'statisticTable',
         ));
+    }
+
+    private function getStatisticTable(): array
+    {
+        $query = $_GET['filter'] ?? '';
+        $periodsForQuery = ['week', 'month'];
+
+        if (!in_array($query, $periodsForQuery, true)) {
+            $countChapters = Chapter::all()->count();
+            $countExercises = Exercise::all()->count();
+        } else {
+            $subPeriod = 'sub' . $query;
+            $period = Carbon::today()->$subPeriod(1);
+
+            $countChapters = Chapter::where('created_at', '>', $period)->count();
+            $countExercises = Exercise::where('created_at', '>', $period)->count();
+        }
+
+        return [
+            'countChapters' => $countChapters,
+            'countExercises' => $countExercises,
+            'countPoints' => $countChapters + $countExercises * 3,
+        ];
     }
 }
