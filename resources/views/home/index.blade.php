@@ -1,4 +1,4 @@
-@extends('layouts..app')
+@extends('layouts.app')
 @php
 /** @var \Illuminate\Support\Collection|\App\Models\Activity[] $logItems */
 /** @var \Illuminate\Support\Collection|\App\Models\Comment[] $comments */
@@ -14,11 +14,6 @@ use App\Helpers\MarkdownHelper;
         <p>{{ __('welcome.description') }}</p>
         <a href="https://xuanji.appspot.com/isicp/index.html">
             Интерактивная версия книги SICP
-{{--            @if(rand(0, 10) === 0)--}}
-{{--                <img class="img-fluid" src="{{ mix('img/advice_dog.jpg') }}" alt="Начать изучать sicp">--}}
-{{--            @else--}}
-{{--                <img class="img-fluid" src="{{ mix('img/Patchouli_Gives_SICP.png') }}" alt="Начать изучать sicp">--}}
-{{--            @endif--}}
         </a>
         <hr class="dropdown-divider">
         <h2> Статистика прохождения книги всеми пользователями системы</h2>
@@ -29,10 +24,10 @@ use App\Helpers\MarkdownHelper;
                         class=
                             "
                             nav-link
-                            {{ request()->getQueryString() === "filter=all" ? 'active' : '' }}
+                            {{ $statisticTable['filterForQuery'] === "all" ? 'active' : '' }}
                             "
                         aria-current="page"
-                        href="/?filter=all"
+                        href="{{ route('home', ['filter' => 'all']) }}"
                     >
                         За все время
                     </a>
@@ -41,10 +36,10 @@ use App\Helpers\MarkdownHelper;
                     <a
                         class=
                             "
-                            {{ request()->getQueryString() === "filter=month" ? 'active' : '' }}
+                            {{ $statisticTable['filterForQuery'] === "month" ? 'active' : '' }}
                             nav-link
                             "
-                        href="/?filter=month"
+                        href="{{ route('home', ['filter' => 'month']) }}"
                     >
                         За месяц
                     </a>
@@ -53,10 +48,10 @@ use App\Helpers\MarkdownHelper;
                     <a
                         class=
                             "
-                            {{ request()->getQueryString() === "filter=week" ? 'active' : '' }}
+                            {{ $statisticTable['filterForQuery'] === "week" ? 'active' : '' }}
                             nav-link
                             "
-                        href="/?filter=week"
+                        href="{{ route('home', ['filter' => 'week']) }}"
                     >
                         За неделю
                     </a>
@@ -70,11 +65,11 @@ use App\Helpers\MarkdownHelper;
                     </div>
                     <div class="col mt-4">
                         <p>Глав прочитано:</p>
-                        <h3>{{ $statisticTable['countChapters'] }}</h3>
+                        <h3>{{ $statisticTable['countReadChapter'] }}</h3>
                     </div>
                     <div class="col mt-4">
                         <p>Заданий выполнено:</p>
-                        <h3>{{ $statisticTable['countExercises'] }}</h3>
+                        <h3>{{ $statisticTable['countCompletedExercise'] }}</h3>
                     </div>
                 </div>
             </div>

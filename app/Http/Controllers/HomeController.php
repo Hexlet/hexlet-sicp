@@ -11,6 +11,7 @@ use App\Models\ReadChapter;
 use App\Models\User;
 use Illuminate\Support\Carbon;
 use Illuminate\View\View;
+use Request;
 
 class HomeController extends Controller
 {
@@ -31,7 +32,8 @@ class HomeController extends Controller
             ));
         }
 
-        $statisticTable = $this->getStatisticTable();
+        $filter = Request::query('filter');
+        $statisticTable = $this->getStatisticTable($filter);
         $logItems = Activity::latest()->has('causer')->with('causer')->limit(10)->get();
         $chart = getChart();
         $comments = Comment::latest()->has('user')->with('user')->with('commentable')->limit(10)->get();
@@ -44,28 +46,26 @@ class HomeController extends Controller
         ));
     }
 
-    private function getStatisticTable(): array
+    private function getStatisticTable($filter): array
     {
-        $query = $_GET['filter'] ?? '';
-        $periodsForQuery = ['week', 'month'];
-        $completedExercise = new CompletedExercise();
-        $readChapters = new ReadChapter();
+        $periodsForFilter = ['week', 'month'];
 
-        if (!in_array($query, $periodsForQuery, true)) {
-            $countReadChapters = $readChapters->all()->count();
-            $countCompletedExercise = $completedExercise->all()->count();
+        if (!in_array($filter, $periodsForFilter, true)) {
+            $countReadChapter = ReadChapter::count();
+            $countCompletedExercise = CompletedExercise::count();
         } else {
-            $subPeriod = 'sub' . $query;
+            $subPeriod = "sub{$filter}";
             $period = Carbon::today()->$subPeriod(1);
 
-            $countReadChapters = $readChapters::where('created_at', '>', $period)->count();
-            $countCompletedExercise = $completedExercise::where('created_at', '>', $period)->count();
+            $countReadChapter = ReadChapter::where('created_at', '>', $period)->count();
+            $countCompletedExercise = CompletedExercise::where('created_at', '>', $period)->count();
         }
 
         return [
-            'countChapters' => $countReadChapters,
-            'countExercises' => $countCompletedExercise,
-            'countPoints' => $countReadChapters + $countCompletedExercise * 3,
+            'countReadChapter' => $countReadChapter,
+            'countCompletedExercise' => $countCompletedExercise,
+            'countPoints' => $countReadChapter + $countCompletedExercise * 3,
+            'filterForQuery' => $filter,
         ];
     }
 }
