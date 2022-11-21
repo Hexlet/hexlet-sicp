@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Activity;
 use App\Models\Chapter;
 use App\Models\Comment;
+use App\Models\CompletedExercise;
 use App\Models\Exercise;
+use App\Models\ReadChapter;
 use App\Models\User;
 use Illuminate\Support\Carbon;
 use Illuminate\View\View;
@@ -30,6 +32,7 @@ class HomeController extends Controller
         }
 
         $statisticTable = $this->getStatisticTable();
+//        dd($statisticTable);
         $logItems = Activity::latest()->has('causer')->with('causer')->limit(10)->get();
         $chart = getChart();
         $comments = Comment::latest()->has('user')->with('user')->with('commentable')->limit(10)->get();
@@ -46,22 +49,24 @@ class HomeController extends Controller
     {
         $query = $_GET['filter'] ?? '';
         $periodsForQuery = ['week', 'month'];
+        $completedExercise = new CompletedExercise();
+        $readChapters = new ReadChapter();
 
         if (!in_array($query, $periodsForQuery, true)) {
-            $countChapters = Chapter::all()->count();
-            $countExercises = Exercise::all()->count();
+            $countReadChapters = $readChapters->all()->count();
+            $countCompletedExercise = $completedExercise->all()->count();
         } else {
             $subPeriod = 'sub' . $query;
             $period = Carbon::today()->$subPeriod(1);
 
-            $countChapters = Chapter::where('created_at', '>', $period)->count();
-            $countExercises = Exercise::where('created_at', '>', $period)->count();
+            $countReadChapters = $readChapters::where('created_at', '>', $period)->count();
+            $countCompletedExercise = $completedExercise::where('created_at', '>', $period)->count();
         }
 
         return [
-            'countChapters' => $countChapters,
-            'countExercises' => $countExercises,
-            'countPoints' => $countChapters + $countExercises * 3,
+            'countChapters' => $countReadChapters,
+            'countExercises' => $countCompletedExercise,
+            'countPoints' => $countReadChapters + $countCompletedExercise * 3,
         ];
     }
 }
