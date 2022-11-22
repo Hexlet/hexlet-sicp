@@ -30,8 +30,9 @@ class ExerciseController extends Controller
 
         $userSolutions = $authUser->solutions()
             ->where('exercise_id', $exercise->id)
-            ->orderBy('id', 'desc')
             ->get();
+
+        $isShowSavedSolutionsButton = collect($userSolutions)->isEmpty();
 
         return view('exercise.show', compact(
             'exercise',
@@ -39,7 +40,7 @@ class ExerciseController extends Controller
             'authUser',
             'previousExercise',
             'nextExercise',
-            'userSolutions'
+            'isShowSavedSolutionsButton'
         ));
     }
 }
