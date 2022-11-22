@@ -2,7 +2,6 @@
 @php
     /**
      * @var \App\Models\Exercise $exercise
-     * @var \App\Models\Solution $userSolutions
      * @var bool $userCompletedExercise
      * @var \App\Models\User $authUser
      */
@@ -67,7 +66,7 @@
                                         </a>
                                     @endif
 
-                                    @if(!$userSolutions->isEmpty())
+                                    @if(!$isShowSavedSolutionsButton)
                                     <a href="{{ route('solutions.index', ['filter' => ['exercise_id' => $exercise->id, 'user_id' => $authUser->id]]) }}" class="mr-1 btn btn-primary btn-light">{{ __('solution.show_solution') }}</a>
                                     @endif
                                     @if($exercise->users->isEmpty())
