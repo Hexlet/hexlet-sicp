@@ -24,4 +24,17 @@ return [
     'comments' => [
         'latest' => 'Последние комментарии',
     ],
+    'link_to_book' => 'Интерактивная версия книги SICP',
+    'statistic' => [
+        'title' => 'Статистика прохождения книги всеми пользователями сайта',
+        'table' => [
+            'per_all_time' => 'За все время',
+            'per_month' => 'За месяц',
+            'per_week' => 'За неделю',
+            'count_read_chapter' => 'Глав прочитано',
+            'count_completed_exercise' => 'Заданий выполнено',
+            'count_points' => 'Количество очков',
+        ],
+    ],
+
 ];

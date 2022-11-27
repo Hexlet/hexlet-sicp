@@ -23,4 +23,16 @@ return [
     'comments' => [
         'latest' => 'Latest comments',
     ],
+    'link_to_book' => 'Interactive version of the SICP book',
+    'statistic' => [
+        'title' => 'Statistics of the passage of the book by all users of the site',
+        'table' => [
+            'per_all_time' => 'All this time',
+            'per_month' => 'Per month',
+            'per_week' => 'Per week',
+            'count_read_chapter' => 'Count read chapter',
+            'count_completed_exercise' => 'Count completed exercise',
+            'count_points' => 'Count points',
+        ],
+    ],
 ];

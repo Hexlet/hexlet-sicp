@@ -13,10 +13,10 @@ use App\Helpers\MarkdownHelper;
         <h1 class="my-4">{{ __('welcome.title') }}</h1>
         <p>{{ __('welcome.description') }}</p>
         <a href="https://xuanji.appspot.com/isicp/index.html">
-            Интерактивная версия книги SICP
+            {{ __('welcome.link_to_book') }}
         </a>
         <hr class="dropdown-divider">
-        <h2> Статистика прохождения книги всеми пользователями системы</h2>
+        <h2> {{ __('welcome.statistic.title') }}</h2>
         <div class="col-md-auto ">
             <ul class="nav nav-tabs">
                 <li class="nav-item">
@@ -29,7 +29,7 @@ use App\Helpers\MarkdownHelper;
                         aria-current="page"
                         href="{{ route('home', ['filter' => 'all']) }}"
                     >
-                        За все время
+                        {{ __('welcome.statistic.table.per_all_time') }}
                     </a>
                 </li>
                 <li class="nav-item">
@@ -41,7 +41,7 @@ use App\Helpers\MarkdownHelper;
                             "
                         href="{{ route('home', ['filter' => 'month']) }}"
                     >
-                        За месяц
+                        {{ __('welcome.statistic.table.per_month') }}
                     </a>
                 </li>
                 <li class="nav-item">
@@ -53,22 +53,22 @@ use App\Helpers\MarkdownHelper;
                             "
                         href="{{ route('home', ['filter' => 'week']) }}"
                     >
-                        За неделю
+                        {{ __('welcome.statistic.table.per_week') }}
                     </a>
                 </li>
             </ul>
             <div class="container mt-2">
                 <div class="row text-center">
                     <div class="col mt-4">
-                        <p>Количество очков:</p>
+                        <p>{{ __('welcome.statistic.table.count_points') }}:</p>
                         <h3>{{ $statisticTable['countPoints'] }}</h3>
                     </div>
                     <div class="col mt-4">
-                        <p>Глав прочитано:</p>
+                        <p>{{ __('welcome.statistic.table.count_read_chapter') }}:</p>
                         <h3>{{ $statisticTable['countReadChapter'] }}</h3>
                     </div>
                     <div class="col mt-4">
-                        <p>Заданий выполнено:</p>
+                        <p>{{ __('welcome.statistic.table.count_completed_exercise') }}:</p>
                         <h3>{{ $statisticTable['countCompletedExercise'] }}</h3>
                     </div>
                 </div>
@@ -87,13 +87,6 @@ use App\Helpers\MarkdownHelper;
             <li>{{ __(sprintf('welcome.features_list.%s', $key)) }}</li>
             @endforeach
         </ul>
-{{--        <h2 class="my-3">{{ __('welcome.coming_soon') }}</h2>--}}
-{{--        <ul>--}}
-{{--            @foreach (__('welcome.coming_soon_list') as $key => $item)--}}
-{{--            <li>{{ __(sprintf('welcome.coming_soon_list.%s', $key)) }}</li>--}}
-{{--            @endforeach--}}
-
-{{--        </ul>--}}
         <a class="btn btn-primary btn-lg" href="{{ (route('my')) }}">{{ __('layout.welcome.start_learning') }}</a>
     </div>
 </div>
