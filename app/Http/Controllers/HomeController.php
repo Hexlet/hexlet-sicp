@@ -46,7 +46,7 @@ class HomeController extends Controller
         ));
     }
 
-    private function getStatisticTable($filter): array
+    private function getStatisticTable(string $filter): array
     {
         $periodsForFilter = ['week', 'month'];
 
