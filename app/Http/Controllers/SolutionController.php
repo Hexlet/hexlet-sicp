@@ -20,7 +20,6 @@ class SolutionController extends Controller
         $solutions = QueryBuilder::for(Solution::versioned())
             ->allowedFilters([
                 AllowedFilter::exact('exercise_id'),
-                AllowedFilter::exact('user_id'),
                 AllowedFilter::partial('name', 'users.name', false),
             ])
             ->join('users', 'solutions.user_id', 'users.id')
