@@ -30,13 +30,6 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
         crossorigin="anonymous"
     >
-    @stack('styles')
-    @vite([
-        'resources/js/app.js',
-        'resources/js/hljs.js',
-        'resources/js/editor.js',
-        'resources/js/font-awesome.js',
-    ])
     @includeWhen(app()->environment('production'), 'layouts.deps._gtm_body')
     @includeWhen(app()->environment('production'), 'layouts.deps._metrika')
 </head>
@@ -118,9 +111,11 @@
     </footer>
 
     @livewireScripts
-    <script src="{{ mix('js/app.js') }}" defer></script>
-    <script src="{{ mix('js/hljs.js')}}"></script>
-    <script src="{{ mix('js/font-awesome.js') }}" defer></script>
+    @vite([
+        'resources/js/app.js',
+        'resources/js/hljs.js',
+        'resources/js/font-awesome.js',
+    ])
     @stack('scripts')
 </body>
 </html>

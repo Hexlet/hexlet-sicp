@@ -23,3 +23,5 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 // LINK TO TABS from https://github.com/twbs/bootstrap/issues/25220#issuecomment-535915733
 addHashActiveTab();
 correctionListener();
+
+window.global = window;

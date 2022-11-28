@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\Vite;
 use URL;
 use DB;
 use Blade;
@@ -40,5 +41,9 @@ class AppServiceProvider extends ServiceProvider
         Blade::include('components.comments', 'comments');
         Blade::include('components.solutions', 'solutions');
         Blade::include("components.solution", 'solution');
+
+        Vite::useScriptTagAttributes([
+            'defer' => true,
+        ]);
     }
 }
