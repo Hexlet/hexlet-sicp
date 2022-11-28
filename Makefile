@@ -77,4 +77,4 @@ setup-git-hooks:
 
 .PHONY: test
 
-pre-push-hook: lint
+pre-push-hook: lint analyse
