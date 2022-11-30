@@ -21,7 +21,7 @@ class ExerciseEditor extends Component
 
     public function check(ExerciseService $exerciseService): void
     {
-        if (!ExerciseHelper::exerciseHasTests($this->exercise)) {
+        if (!$this->exercise->hasTests()) {
             $this->completeExercise();
             return;
         }
@@ -62,7 +62,7 @@ class ExerciseEditor extends Component
     {
         $this->exercise = $exercise;
         $this->user = $user;
-        $this->tests = ExerciseHelper::exerciseHasTests($exercise)
+        $this->tests = $exercise->hasTests()
             ? ExerciseHelper::getExerciseTests($exercise)
             : '';
 

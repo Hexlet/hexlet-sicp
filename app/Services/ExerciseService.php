@@ -19,7 +19,7 @@ class ExerciseService
 
     public function check(User $user, Exercise $exercise, string $solutionCode): CheckResult
     {
-        if (!ExerciseHelper::exerciseHasTests($exercise)) {
+        if (!$exercise->hasTests()) {
             $this->completeExercise($user, $exercise);
             return new CheckResult(0, '');
         }

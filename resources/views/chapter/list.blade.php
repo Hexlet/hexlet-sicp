@@ -26,7 +26,7 @@
             <li>
                 <i class="bi bi-keyboard-fill icon-lg"></i>
                 <a href="{{ route('exercises.show', [$exercise]) }}">
-                    {{ getFullExerciseTitle($exercise) }}
+                    {{ $exercise->getFullTitle() }}
                 </a>
             </li>
             @endforeach

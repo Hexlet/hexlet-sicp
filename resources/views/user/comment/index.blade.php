@@ -26,7 +26,7 @@ use App\Helpers\MarkdownHelper;
                                     title="{{ __('exercise.exercise') }} {{ $comment->commentable->path }}"
                                     href="{{ route('exercises.show', [$comment->commentable]) . '#exercise-discussion' }}"
                                 >
-                                    {{ getFullExerciseTitle($comment->commentable) }}
+                                    {{ $comment->commentable->getFullTitle() }}
                                 </a>
                                 @else
                                     <a

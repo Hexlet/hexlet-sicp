@@ -1,15 +1,15 @@
 @extends('layouts..app')
 
 @section('meta-robots', 'nofollow, noindex')
-@section('title'){{ __('solution.exercise') }} {{ getTitleContent(getFullExerciseTitle($currentExercise)) }}@endsection
-@section('description'){{ $user->id }} - {{ __('solution.code_review') }} - {{ $user->name }} - {{ __('solution.exercise') }} {{ getFullExerciseTitle($currentExercise) }}@endsection
+@section('title'){{ __('solution.exercise') }} {{ getTitleContent($currentExercise->getFullTitle()) }}@endsection
+@section('description'){{ $user->id }} - {{ __('solution.code_review') }} - {{ $user->name }} - {{ __('solution.exercise') }} {{ $currentExercise->getFullTitle() }}@endsection
 
 @section('content')
 
 <div class="d-flex flex-wrap justify-content-between mb-2 mb-lg-4">
     <div class="h5">
         <a href="{{ route('exercises.show', $currentExercise) }}">
-        {{ __('solution.exercise') }} {{ getFullExerciseTitle($currentExercise) }}
+        {{ __('solution.exercise') }} {{ $currentExercise->getFullTitle() }}
     </div>
     <div class="h5">
         <a href="{{ route('users.show', $user) }}">{{ $user->name }}</a>

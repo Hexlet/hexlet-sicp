@@ -53,7 +53,7 @@
                 @endif
                 <a href="{{ route('exercises.show', [$exercise]) }}"
                    class="link-dark">
-                    {{ getFullExerciseTitle($exercise) }}
+                    {{ $exercise->getFullTitle() }}
                 </a>
             </li>
         @endforeach

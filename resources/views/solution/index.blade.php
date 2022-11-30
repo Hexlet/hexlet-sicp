@@ -49,7 +49,7 @@
                             </td>
                             <td>
                                 <a href="{{ route('exercises.show', $solution->exercise) }}">
-                                    {{ getFullExerciseTitle($solution->exercise) }}
+                                    {{ $solution->exercise->getFullTitle() }}
                                 </a>
                             </td>
                             <td>{{ $solution->created_at }}</td>

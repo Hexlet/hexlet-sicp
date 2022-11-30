@@ -66,13 +66,13 @@ use App\Helpers\MarkdownHelper;
                     @case('completed_exercise')
                         {{ getLogItemDescription($logItem) }}
                         <a href="{{ route('exercises.show', $logItem->getExtraProperty('exercise_id')) }}">
-                            {{ getFullExerciseTitle($logItem->subject) }}
+                            {{ $logItem->subject->getFullTitle() }}
                         </a>
                         @break
                     @case('destroy_exercise')
                         {{ getLogItemDescription($logItem) }}
                         <a href="{{ route('exercises.show', $logItem->getExtraProperty('exercise_id')) }}">
-                            {{ getFullExerciseTitle($logItem->subject) }}
+                            {{ $logItem->subject->getFullTitle() }}
                         </a>
                         @break
                     @case('commented')

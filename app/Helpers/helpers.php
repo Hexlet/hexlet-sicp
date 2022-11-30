@@ -6,7 +6,6 @@ use App\Helpers\ChartHelper;
 use App\Helpers\CommentHelper;
 use App\Helpers\ExerciseHelper;
 use App\Helpers\LocalizationHelper;
-use App\Helpers\MarkdownHelper;
 use App\Helpers\RatingCommentsHelper;
 use App\Helpers\RatingHelper;
 use App\Helpers\TemplateHelper;
@@ -85,20 +84,6 @@ if (!function_exists('getExerciseListingViewFilepath')) {
         return ExerciseHelper::getExerciseListingViewFilepath($exercise);
     }
 
-}
-
-if (!function_exists('getExerciseTitle')) {
-    function getExerciseTitle(Exercise $exercise): string
-    {
-        return ExerciseHelper::getExerciseTitle($exercise);
-    }
-}
-
-if (!function_exists('getFullExerciseTitle')) {
-    function getFullExerciseTitle(Exercise $exercise): string
-    {
-        return ExerciseHelper::getFullExerciseTitle($exercise);
-    }
 }
 
 if (!function_exists('getExerciseOriginLink')) {
