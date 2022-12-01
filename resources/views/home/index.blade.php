@@ -21,11 +21,10 @@ use App\Helpers\MarkdownHelper;
             <ul class="nav nav-tabs">
                 <li class="nav-item">
                     <a
-                        class=
-                            "
-                            nav-link
-                            {{ $statisticTable['filterForQuery'] === "all" ? 'active' : '' }}
-                            "
+                        @class([
+                            "nav-link" => true,
+                            'active' => $statisticTable['mapForFilter']['all'],
+                        ])
                         aria-current="page"
                         href="{{ route('home', ['filter' => 'all']) }}"
                     >
@@ -34,11 +33,10 @@ use App\Helpers\MarkdownHelper;
                 </li>
                 <li class="nav-item">
                     <a
-                        class=
-                            "
-                            {{ $statisticTable['filterForQuery'] === "month" ? 'active' : '' }}
-                            nav-link
-                            "
+                        @class([
+                            "nav-link" => true,
+                            'active' => $statisticTable['mapForFilter']['month'],
+                        ])
                         href="{{ route('home', ['filter' => 'month']) }}"
                     >
                         {{ __('welcome.statistic.table.per_month') }}
@@ -46,11 +44,10 @@ use App\Helpers\MarkdownHelper;
                 </li>
                 <li class="nav-item">
                     <a
-                        class=
-                            "
-                            {{ $statisticTable['filterForQuery'] === "week" ? 'active' : '' }}
-                            nav-link
-                            "
+                        @class([
+                            "nav-link" => true,
+                            'active' => $statisticTable['mapForFilter']['week'],
+                        ])
                         href="{{ route('home', ['filter' => 'week']) }}"
                     >
                         {{ __('welcome.statistic.table.per_week') }}
