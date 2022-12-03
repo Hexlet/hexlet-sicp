@@ -22,7 +22,7 @@ use App\Helpers\MarkdownHelper;
                 <li class="nav-item">
                     <a
                         @class([
-                            "nav-link" => true,
+                            "nav-link",
                             'active' => $statisticTable['mapForFilter']['all'],
                         ])
                         aria-current="page"
@@ -34,7 +34,7 @@ use App\Helpers\MarkdownHelper;
                 <li class="nav-item">
                     <a
                         @class([
-                            "nav-link" => true,
+                            "nav-link",
                             'active' => $statisticTable['mapForFilter']['month'],
                         ])
                         href="{{ route('home', ['filter' => 'month']) }}"
@@ -45,7 +45,7 @@ use App\Helpers\MarkdownHelper;
                 <li class="nav-item">
                     <a
                         @class([
-                            "nav-link" => true,
+                            "nav-link",
                             'active' => $statisticTable['mapForFilter']['week'],
                         ])
                         href="{{ route('home', ['filter' => 'week']) }}"

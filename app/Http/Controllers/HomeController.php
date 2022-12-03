@@ -32,7 +32,7 @@ class HomeController extends Controller
             ));
         }
 
-        $filter = Request::query('filter') ?? '';
+        $filter = Request::query('filter', '');
         $statisticTable = $this->getStatisticTable($filter);
         $logItems = Activity::latest()->has('causer')->with('causer')->limit(10)->get();
         $chart = getChart();
