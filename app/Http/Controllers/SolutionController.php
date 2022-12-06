@@ -18,12 +18,12 @@ class SolutionController extends Controller
         $filter = array_merge(['name' => null, 'exercise_id' => null], (array)$request->input('filter', []));
 
         $solutions = QueryBuilder::for(Solution::versioned())
-            ->select('*', 'solutions.id as id')
             ->allowedFilters([
                 AllowedFilter::exact('exercise_id'),
                 AllowedFilter::exact('user_id'),
                 AllowedFilter::partial('name', 'users.name', false),
             ])
+            ->select('*', 'solutions.id as id')
             ->join('users', 'solutions.user_id', 'users.id')
             ->with(['user', 'exercise'])
             ->whereHas('user')
