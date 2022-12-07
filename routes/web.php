@@ -1,6 +1,8 @@
 <?php
 
-Route::get('sitemap.xml', 'SitemapController@index');
+Route::get("sitemap.xml" , function () {
+    return \Illuminate\Support\Facades\Redirect::to('sitemap.xml');
+     });
 
 Route::group([
     'prefix' => LaravelLocalization::setLocale(),
