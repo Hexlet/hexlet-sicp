@@ -40,7 +40,6 @@
         "laravel/tinker": "^2.7",
         "laravel/ui": "^4.0",
         "laravelcollective/html": "^6.0",
-        "livewire/livewire": "^2.4",
         "mcamara/laravel-localization": "^1.7",
         "mikehaertl/php-shellcommand": "^1.6",
         "rollbar/rollbar-laravel": "~7.0",
