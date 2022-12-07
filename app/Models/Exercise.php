@@ -63,7 +63,7 @@ class Exercise extends Model
     private function isPathExist(string $file_name): bool
     {
         $underscoredExercisePath = self::underscoreExercisePath($this->path);
-        $path = $this->getPath($underscoredExercisePath, $file_name);
+        $path = $this->getExercisePath($underscoredExercisePath, $file_name);
 
         return File::exists($path);
     }
@@ -73,7 +73,7 @@ class Exercise extends Model
         return $this->present()->fullTitle;
     }
 
-    public function getPath(string $underscoredExercisePath, string $file_name): string
+    public function getExercisePath(string $underscoredExercisePath, string $file_name): string
     {
         $path = implode(DIRECTORY_SEPARATOR, [
             resource_path(),

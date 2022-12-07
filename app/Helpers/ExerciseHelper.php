@@ -49,7 +49,7 @@ class ExerciseHelper
     private static function getFileContent(Exercise $exercise, string $file_name): string
     {
         $underscoredExercisePath = $exercise->present()->underscorePath;
-        $path = $exercise->getPath($underscoredExercisePath, $file_name);
+        $path = $exercise->getExercisePath($underscoredExercisePath, $file_name);
         $fileContent = File::get($path);
 
         return $fileContent;
