@@ -23,6 +23,7 @@ class SolutionController extends Controller
                 AllowedFilter::exact('user_id'),
                 AllowedFilter::partial('name', 'users.name', false),
             ])
+            ->select('*', 'solutions.id as id')
             ->join('users', 'solutions.user_id', 'users.id')
             ->with(['user', 'exercise'])
             ->whereHas('user')
