@@ -1,7 +1,8 @@
 <?php
 
 use GuzzleHttp\RequestOptions;
-use Spatie\Sitemap\Crawler\Profile;
+use App\Providers\CustomCrawlProfile;
+
 
 return [
 
@@ -44,7 +45,7 @@ return [
 
     /*
      * The package will make an educated guess as to where Google Chrome is installed.
-     * You can also manually pass it's location here.
+     * You can also manually pass its location here.
      */
     'chrome_binary_path' => null,
 
@@ -52,8 +53,14 @@ return [
      * The sitemap generator uses a CrawlProfile implementation to determine
      * which urls should be crawled for the sitemap.
      */
-    'crawl_profile' => Profile::class,
+    'crawl_profile' => CustomCrawlProfile::class,
 
-    'gist_id' => env('SITEMAP_GIST_ID'),
+    'page_exceptions' => [
+        '/solutions/',
+        '/users/',
+        '/en/'
+    ],
+
+    'sitemap_path' => 'public\sitemap.xml'
 
 ];
