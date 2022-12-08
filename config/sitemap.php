@@ -3,7 +3,6 @@
 use GuzzleHttp\RequestOptions;
 use App\Providers\CustomCrawlProfile;
 
-
 return [
 
     /*
@@ -55,12 +54,10 @@ return [
      */
     'crawl_profile' => CustomCrawlProfile::class,
 
-    'page_exceptions' => [
+    'url_parts_to_filter' => [
         '/solutions/',
         '/users/',
-        '/en/'
+        '/en/',
     ],
-
-    'sitemap_path' => 'public\sitemap.xml'
 
 ];
