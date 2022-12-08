@@ -3,7 +3,6 @@
 namespace App\Helpers;
 
 use App\Models\Exercise;
-use File;
 
 class ExerciseHelper
 {
@@ -33,7 +32,7 @@ class ExerciseHelper
 
     public static function getExerciseTests(Exercise $exercise): string
     {
-        $fileContent = self::getFileContent($exercise, '.blade.php');
+        $fileContent = $exercise->getFileContent('.blade.php');
         [, $testsLines] = explode(';;; END', $fileContent);
 
         return trim($testsLines);
@@ -41,17 +40,8 @@ class ExerciseHelper
 
     public static function getExerciseTeacherSolution(Exercise $exercise): string
     {
-        $fileContent = self::getFileContent($exercise, '_solution.blade.php');
+        $fileContent = $exercise->getFileContent('_solution.blade.php');
 
         return trim($fileContent);
-    }
-
-    private static function getFileContent(Exercise $exercise, string $file_name): string
-    {
-        $underscoredExercisePath = $exercise->present()->underscorePath;
-        $path = $exercise->getExercisePath($underscoredExercisePath, $file_name);
-        $fileContent = File::get($path);
-
-        return $fileContent;
     }
 }

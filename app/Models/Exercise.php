@@ -84,4 +84,13 @@ class Exercise extends Model
         ]);
         return $path;
     }
+
+    public function getFileContent(string $file_name): string
+    {
+        $underscoredExercisePath = $this->present()->underscorePath;
+        $path = $this->getExercisePath($underscoredExercisePath, $file_name);
+        $fileContent = File::get($path);
+
+        return $fileContent;
+    }
 }
