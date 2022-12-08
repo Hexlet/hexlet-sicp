@@ -18,10 +18,6 @@ class CustomCrawlProfile extends CrawlProfile
             return false;
         }
 
-        if (Str::contains($url->getPath(), config('sitemap.url_parts_to_filter'))) {
-            return false;
-        }
-
-        return true;
+        return !Str::contains($url->getPath(), config('sitemap.url_parts_to_filter'));
     }
 }
