@@ -17,13 +17,29 @@ class SolutionController extends Controller
     {
         $filter = array_merge(['name' => null, 'exercise_id' => null], (array)$request->input('filter', []));
 
+        $columns = [
+            "solutions.id as id",
+            "solutions.exercise_id",
+            "solutions.user_id",
+            "solutions.content",
+            "solutions.created_at",
+            "solutions.updated_at",
+            "users.name",
+            "users.email",
+            "users.email_verified_at",
+            "users.remember_token",
+            "users.deleted_at",
+            "users.github_name",
+            "users.hexlet_nickname",
+        ];
+
         $solutions = QueryBuilder::for(Solution::versioned())
             ->allowedFilters([
                 AllowedFilter::exact('exercise_id'),
                 AllowedFilter::exact('user_id'),
                 AllowedFilter::partial('name', 'users.name', false),
             ])
-            ->select('*', 'solutions.id as id')
+            ->select($columns)
             ->join('users', 'solutions.user_id', 'users.id')
             ->with(['user', 'exercise'])
             ->whereHas('user')
