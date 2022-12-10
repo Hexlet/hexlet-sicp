@@ -23,7 +23,7 @@ use App\Helpers\MarkdownHelper;
                     <a
                         @class([
                             "nav-link",
-                            'active' => $statisticTable['mapForFilter']['all'],
+                            'active' => $statisticTable['filterForQuery'] === 'all',
                         ])
                         aria-current="page"
                         href="{{ route('home', ['filter' => 'all']) }}"
@@ -35,7 +35,7 @@ use App\Helpers\MarkdownHelper;
                     <a
                         @class([
                             "nav-link",
-                            'active' => $statisticTable['mapForFilter']['month'],
+                            'active' => $statisticTable['filterForQuery'] === 'month',
                         ])
                         href="{{ route('home', ['filter' => 'month']) }}"
                     >
@@ -46,7 +46,7 @@ use App\Helpers\MarkdownHelper;
                     <a
                         @class([
                             "nav-link",
-                            'active' => $statisticTable['mapForFilter']['week'],
+                            'active' => $statisticTable['filterForQuery'] === 'week',
                         ])
                         href="{{ route('home', ['filter' => 'week']) }}"
                     >
