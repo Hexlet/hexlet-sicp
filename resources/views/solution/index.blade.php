@@ -16,7 +16,7 @@
                 {{ Form::open(['url' => route('solutions.index'), 'method' => 'GET' , 'class' => 'form-inline']) }}
                 <div class="input-group mb-3">
                     <span class="input-group-text">{{ __('views.solution.index.filter.user') }}</span>
-                    {{ Form::input('text', 'filter[name]', array_get($filter, 'name', null), ['placeholder' => __('views.solution.index.filter.user'), 'class' => 'form-control']) }}
+                    {{ Form::input('text', 'filter[user.name]', array_get($filter, 'user.name', null), ['placeholder' => __('views.solution.index.filter.user'), 'class' => 'form-control']) }}
                     <span class="input-group-text">{{ __('views.solution.index.filter.exercise') }}</span>
                     {{ Form::select('filter[exercise_id]', $exerciseTitles, array_get($filter, 'exercise_id', null), ['placeholder' => __('views.solution.index.filter.exercise'), 'class' => 'form-control']) }}
                     {{ Form::submit(__('views.solution.index.filter.apply_button'), ['class' => 'btn btn-outline-primary']) }}
