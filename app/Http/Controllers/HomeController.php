@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\PointsCalculator;
 use App\Models\Activity;
 use App\Models\Chapter;
 use App\Models\Comment;
@@ -53,6 +54,7 @@ class HomeController extends Controller
         if (!in_array($filter, $periodsForFilter, true)) {
             $countReadChapter = ReadChapter::count();
             $countCompletedExercise = CompletedExercise::count();
+            $filter = 'all';
         } else {
             $subPeriod = "sub{$filter}";
             $period = Carbon::today()->$subPeriod(1);
@@ -64,7 +66,7 @@ class HomeController extends Controller
         return [
             'countReadChapter' => $countReadChapter,
             'countCompletedExercise' => $countCompletedExercise,
-            'countPoints' => $countReadChapter + $countCompletedExercise * 3,
+            'countPoints' => PointsCalculator::calculate($countReadChapter, $countCompletedExercise),
             'filterForQuery' => $filter,
         ];
     }
