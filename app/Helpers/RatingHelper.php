@@ -3,6 +3,7 @@
 namespace App\Helpers;
 
 use App\Models\User;
+use App\Services\PointsCalculator;
 use Illuminate\Support\Collection;
 use Spatie\QueryBuilder\QueryBuilder;
 

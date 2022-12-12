@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Helpers\PointsCalculator;
 use App\Models\Activity;
 use App\Models\Chapter;
 use App\Models\Comment;
@@ -10,6 +9,7 @@ use App\Models\CompletedExercise;
 use App\Models\Exercise;
 use App\Models\ReadChapter;
 use App\Models\User;
+use App\Services\PointsCalculator;
 use Illuminate\Support\Carbon;
 use Illuminate\View\View;
 use Request;
