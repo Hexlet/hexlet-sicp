@@ -1,4 +1,4 @@
-@extends('layouts..app')
+@extends('layouts.app')
 @php
 /** @var \Illuminate\Support\Collection|\App\Models\Activity[] $logItems */
 /** @var \Illuminate\Support\Collection|\App\Models\Comment[] $comments */
@@ -8,17 +8,70 @@ use App\Helpers\MarkdownHelper;
 <link href="{{ mix('css/_activity_chart.css') }}" rel="stylesheet">
 @endpush
 @section('content')
-<h1 class="my-4">{{ __('welcome.title') }}</h1>
-<p>{{ __('welcome.description') }}</p>
 <div class="row">
     <div class="col-md-8">
+        <h1 class="my-4">{{ __('welcome.title') }}</h1>
+        <p>{{ __('welcome.description') }}</p>
         <a href="https://xuanji.appspot.com/isicp/index.html">
-            @if(rand(0, 10) === 0)
-                <img class="img-fluid" src="{{ mix('img/advice_dog.jpg') }}" alt="Начать изучать sicp">
-            @else
-                <img class="img-fluid" src="{{ mix('img/Patchouli_Gives_SICP.png') }}" alt="Начать изучать sicp">
-            @endif
+            {{ __('welcome.link_to_book') }}
         </a>
+        <hr class="dropdown-divider">
+        <h2> {{ __('welcome.statistic.title') }}</h2>
+        <div class="col-md-auto ">
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a
+                        @class([
+                            "nav-link",
+                            'active' => $statisticTable['filterForQuery'] === 'all',
+                        ])
+                        aria-current="page"
+                        href="{{ route('home', ['filter' => 'all']) }}"
+                    >
+                        {{ __('welcome.statistic.table.per_all_time') }}
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a
+                        @class([
+                            "nav-link",
+                            'active' => $statisticTable['filterForQuery'] === 'month',
+                        ])
+                        href="{{ route('home', ['filter' => 'month']) }}"
+                    >
+                        {{ __('welcome.statistic.table.per_month') }}
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a
+                        @class([
+                            "nav-link",
+                            'active' => $statisticTable['filterForQuery'] === 'week',
+                        ])
+                        href="{{ route('home', ['filter' => 'week']) }}"
+                    >
+                        {{ __('welcome.statistic.table.per_week') }}
+                    </a>
+                </li>
+            </ul>
+            <div class="container mt-2">
+                <div class="row text-center">
+                    <div class="col mt-4">
+                        <p>{{ __('welcome.statistic.table.count_points') }}:</p>
+                        <h3>{{ $statisticTable['countPoints'] }}</h3>
+                    </div>
+                    <div class="col mt-4">
+                        <p>{{ __('welcome.statistic.table.count_read_chapter') }}:</p>
+                        <h3>{{ $statisticTable['countReadChapter'] }}</h3>
+                    </div>
+                    <div class="col mt-4">
+                        <p>{{ __('welcome.statistic.table.count_completed_exercise') }}:</p>
+                        <h3>{{ $statisticTable['countCompletedExercise'] }}</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
     <div class="col-md-4">
         <h2 class="my-3">{{ __('welcome.what_is_here') }}</h2>
@@ -30,13 +83,6 @@ use App\Helpers\MarkdownHelper;
             @foreach (__('welcome.features_list') as $key => $item)
             <li>{{ __(sprintf('welcome.features_list.%s', $key)) }}</li>
             @endforeach
-        </ul>
-        <h2 class="my-3">{{ __('welcome.coming_soon') }}</h2>
-        <ul>
-            @foreach (__('welcome.coming_soon_list') as $key => $item)
-            <li>{{ __(sprintf('welcome.coming_soon_list.%s', $key)) }}</li>
-            @endforeach
-
         </ul>
         <a class="btn btn-primary btn-lg" href="{{ (route('my')) }}">{{ __('layout.welcome.start_learning') }}</a>
     </div>

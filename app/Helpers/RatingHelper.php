@@ -3,6 +3,7 @@
 namespace App\Helpers;
 
 use App\Models\User;
+use App\Services\PointsCalculator;
 use Illuminate\Support\Collection;
 use Spatie\QueryBuilder\QueryBuilder;
 
@@ -23,7 +24,7 @@ class RatingHelper
             ->get();
             $calculatedRating = $users->map(fn(User $user) => [
                 'user' => $user,
-                'points' => $user->read_chapters_count + $user->completed_exercises_count * 3,
+                'points' => PointsCalculator::calculate($user->read_chapters_count, $user->completed_exercises_count),
             ])
             ->when(empty($sort), function ($collection) {
                 return $collection->sortByDesc('points');
