@@ -29,19 +29,4 @@ class ExerciseHelper
 
         return $exercise;
     }
-
-    public static function getExerciseTests(Exercise $exercise): string
-    {
-        $fileContent = $exercise->getFileContent('.blade.php');
-        [, $testsLines] = explode(';;; END', $fileContent);
-
-        return trim($testsLines);
-    }
-
-    public static function getExerciseTeacherSolution(Exercise $exercise): string
-    {
-        $fileContent = $exercise->getFileContent('_solution.blade.php');
-
-        return trim($fileContent);
-    }
 }

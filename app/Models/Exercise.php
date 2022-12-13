@@ -93,4 +93,19 @@ class Exercise extends Model
 
         return $fileContent;
     }
+
+    public function getExerciseTests(): string
+    {
+        $fileContent = $this->getFileContent('.blade.php');
+        [, $testsLines] = explode(';;; END', $fileContent);
+
+        return trim($testsLines);
+    }
+
+    public function getExerciseTeacherSolution(): string
+    {
+        $fileContent = $this->getFileContent('_solution.blade.php');
+
+        return trim($fileContent);
+    }
 }
