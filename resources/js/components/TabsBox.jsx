@@ -9,8 +9,6 @@ import TeacherSolution from './TeacherSolution.jsx';
 import tabNames from '../common/tabNamesMap.js';
 import { changeTab } from '../slices/tabsBoxSlice.js';
 import locationMap from '../common/hashLocationMap.js';
-import { Card } from 'react-bootstrap';
-
 
 const TabsBox = () => {
   const { t } = useTranslation();
@@ -29,35 +27,35 @@ const TabsBox = () => {
   };
 
   return (
-      <Tab.Container activeKey={currentTab} onSelect={changeActiveTab}>
-          <Nav variant="tabs" className="justify-content-center">
-            {Object.values(tabNames).map((tabName) => (
-              <Nav.Item key={tabName}>
-                <Nav.Link
-                  className="border-top-0 rounded-0"
-                  eventKey={tabName}
-                  href={`#${tabName}`}
-                >
-                  {t(tabName)}
-                </Nav.Link>
-              </Nav.Item>
-            ))}
-          </Nav>
-          <Tab.Content className="flex-grow-1 overflow-auto" style={{height: '75vh'}}>
-            <Tab.Pane eventKey={tabNames.editor} bsPrefix="tab-pane h-100 w-100">
-              <Editor />
-            </Tab.Pane>
-            <Tab.Pane eventKey={tabNames.output} bsPrefix="tab-pane h-100 w-100">
-              <Output />
-            </Tab.Pane>
-            <Tab.Pane eventKey={tabNames.tests} bsPrefix="tab-pane h-100 w-100">
-              <Tests />
-            </Tab.Pane>
-            <Tab.Pane eventKey={tabNames.teacherSolution} bsPrefix="tab-pane h-100 w-100">
-              <TeacherSolution />
-            </Tab.Pane>
-          </Tab.Content>
-      </Tab.Container>
+    <Tab.Container activeKey={currentTab} onSelect={changeActiveTab}>
+      <Nav variant="tabs" className="justify-content-center">
+        {Object.values(tabNames).map((tabName) => (
+          <Nav.Item key={tabName}>
+            <Nav.Link
+              className="border-top-0 rounded-0"
+              eventKey={tabName}
+              href={`#${tabName}`}
+            >
+              {t(tabName)}
+            </Nav.Link>
+          </Nav.Item>
+        ))}
+      </Nav>
+      <Tab.Content className="flex-grow-1 overflow-auto" style={{ height: '75vh' }}>
+        <Tab.Pane eventKey={tabNames.editor} bsPrefix="tab-pane h-100 w-100">
+          <Editor />
+        </Tab.Pane>
+        <Tab.Pane eventKey={tabNames.output} bsPrefix="tab-pane h-100 w-100">
+          <Output />
+        </Tab.Pane>
+        <Tab.Pane eventKey={tabNames.tests} bsPrefix="tab-pane h-100 w-100">
+          <Tests />
+        </Tab.Pane>
+        <Tab.Pane eventKey={tabNames.teacherSolution} bsPrefix="tab-pane h-100 w-100">
+          <TeacherSolution />
+        </Tab.Pane>
+      </Tab.Content>
+    </Tab.Container>
   );
 };
 
