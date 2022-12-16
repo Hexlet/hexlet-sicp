@@ -48,7 +48,7 @@
                                     title="{{ __('exercise.exercise') }} {{ $exercise->path }}"
                                     href="{{ route('exercises.show', $exercise) }}"
                                 >
-                                    {{ getFullExerciseTitle($exercise) }}
+                                    {{ $exercise->getFullTitle() }}
                                 </a>
                             </li>
                         @endforeach

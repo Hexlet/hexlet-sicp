@@ -11,16 +11,16 @@ class ExerciseController extends Controller
 {
     public function show(Exercise $exercise): Response
     {
-        $hasTests = ExerciseHelper::exerciseHasTests($exercise);
+        $hasTests = $exercise->hasTests();
         $testCode = $hasTests
-            ? ExerciseHelper::getExerciseTests($exercise)
+            ? $exercise->getExerciseTests()
             : '';
         $originalCode = $hasTests
             ? view(ExerciseHelper::getExerciseListingViewFilepath($exercise))->render()
             : '';
-        $hasTeacherSolution = ExerciseHelper::exerciseHasTeacherSolution($exercise);
+        $hasTeacherSolution = $exercise->hasTeacherSolution();
         $teacherSolutionCode = $hasTeacherSolution
-            ? ExerciseHelper::getExerciseTeacherSolution($exercise)
+            ? $exercise->getExerciseTeacherSolution()
             : '';
 
         return response([

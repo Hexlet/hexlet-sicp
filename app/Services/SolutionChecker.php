@@ -2,7 +2,6 @@
 
 namespace App\Services;
 
-use App\Helpers\ExerciseHelper;
 use App\Models\Exercise;
 use App\Models\User;
 use Illuminate\Support\Facades\Storage;
@@ -12,7 +11,7 @@ class SolutionChecker
 {
     public function check(User $user, Exercise $exercise, string $solutionCode): CheckResult
     {
-        $tests = ExerciseHelper::getExerciseTests($exercise);
+        $tests = $exercise->getExerciseTests();
         $contents = view(
             'exercise.solution_sandbox_wrapper',
             [

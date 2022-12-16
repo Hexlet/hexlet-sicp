@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Services;
 
-use App\Helpers\ExerciseHelper;
 use App\Models\User;
 use App\Models\Exercise;
 use App\Models\Solution;
@@ -19,7 +18,7 @@ class ExerciseService
 
     public function check(User $user, Exercise $exercise, string $solutionCode): CheckResult
     {
-        if (!ExerciseHelper::exerciseHasTests($exercise)) {
+        if (!$exercise->hasTests()) {
             $this->completeExercise($user, $exercise);
             return new CheckResult(0, '');
         }

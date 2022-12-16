@@ -62,7 +62,7 @@
                 <ul>
                     @foreach ($chapter->exercises as $exercise)
                         <li><a href="{{ route('exercises.show', $exercise) }}">{{ $exercise->path }}
-                                . {{ getExerciseTitle($exercise) }}</a></li>
+                                . {{ $exercise->getTitle() }}</a></li>
                     @endforeach
                 </ul>
             @endif

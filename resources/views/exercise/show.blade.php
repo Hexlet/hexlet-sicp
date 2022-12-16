@@ -6,8 +6,8 @@
      * @var \App\Models\User $authUser
      */
 @endphp
-@section('title'){{ getTitleContent(getExerciseTitle($exercise)) }}@endsection
-@section('description'){{ __('exercise.exercise') }} {{ $exercise->path }} {{ getExerciseTitle($exercise) }} {{ __('exercise.show.description') }}@endsection
+@section('title'){{ getTitleContent($exercise->getTitle()) }}@endsection
+@section('description'){{ __('exercise.exercise') }} {{ $exercise->path }} {{ $exercise->getTitle() }} {{ __('exercise.show.description') }}@endsection
 @section('content')
     {{ Breadcrumbs::render('exercise', $exercise) }}
     <div class="row justify-content-center">
@@ -40,7 +40,7 @@
                 <div class="tab-content card-body" id="pills-tabContent">
                     <div class="tab-pane fade show active" id="exercise-description" role="tabpanel" aria-labelledby="exercise-description-tab">
                         <h1 class="mb-2 h3">
-                            {{ getExerciseTitle($exercise) }}
+                            {{ $exercise->getTitle() }}
                             <sup class="h6">
                                 <a class="text-muted"
                                    target="_blank"
