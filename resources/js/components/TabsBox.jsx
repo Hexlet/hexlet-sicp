@@ -41,7 +41,7 @@ const TabsBox = () => {
           </Nav.Item>
         ))}
       </Nav>
-      <Tab.Content className="flex-grow-1 overflow-auto vh-75">
+      <Tab.Content className="flex-grow-1 overflow-auto x-vh-75">
         <Tab.Pane eventKey={tabNames.editor} bsPrefix="tab-pane h-100 w-100">
           <Editor />
         </Tab.Pane>
