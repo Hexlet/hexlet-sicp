@@ -60,4 +60,6 @@ return [
         '/en/',
     ],
 
+    'gist_id' => env('SITEMAP_GIST_ID'),
+
 ];
