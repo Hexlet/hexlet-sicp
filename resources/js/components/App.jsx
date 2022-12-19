@@ -4,16 +4,12 @@ import TabsBox from './TabsBox.jsx';
 import ControlBox from './ControlBox.jsx';
 
 const App = () => (
-  <div className="vh-100">
-    <Card className="h-75 overflow-auto">
-      <Card.Body className="p-0">
-        <TabsBox />
-      </Card.Body>
-      <Card.Footer>
-        <ControlBox />
-      </Card.Footer>
-    </Card>
-  </div>
+  <Card>
+    <TabsBox />
+    <Card.Footer>
+      <ControlBox />
+    </Card.Footer>
+  </Card>
 );
 
 export default App;
