@@ -1,4 +1,4 @@
-@extends('layouts..app')
+@extends('layouts.app')
 
 @section('meta-robots', 'nofollow, noindex')
 @section('title'){{ __('solution.exercise') }} {{ getTitleContent($currentExercise->getFullTitle()) }}@endsection

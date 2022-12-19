@@ -1,4 +1,4 @@
-@extends('layouts..app')
+@extends('layouts.app')
 @php
 use App\Helpers\MarkdownHelper;
 @endphp

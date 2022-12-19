@@ -1,4 +1,4 @@
-@extends('layouts..app')
+@extends('layouts.app')
 @section('content')
     <div id="sicpCarousel" class="carousel slide mb-3" data-bs-ride="carousel" data-bs-speed="7000">
         <div class="carousel-inner">
