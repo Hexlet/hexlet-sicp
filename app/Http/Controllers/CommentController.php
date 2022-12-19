@@ -41,7 +41,7 @@ class CommentController extends Controller
 
         $this->activityService->logCreatedComment($user, $comment, $commentable);
 
-        return redirect(getCommentLink($comment));
+        return redirect($comment->present()->getLink());
     }
 
     public function update(CommentRequest $request, Comment $comment): RedirectResponse
@@ -55,13 +55,13 @@ class CommentController extends Controller
             flash()->error(__('layout.flash.error'));
         }
 
-        return redirect(getCommentLink($comment));
+        return redirect($comment->present()->getLink());
     }
 
     public function show(Comment $comment): RedirectResponse
     {
         return redirect(
-            getCommentLink($comment)
+            $comment->present()->getLink()
         );
     }
 

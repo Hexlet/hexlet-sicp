@@ -178,7 +178,7 @@ use App\Helpers\ActivityLogHelper;
                             <a href="{{ route('users.show', $comment->user->id) }}">{{ $comment->user->name }}</a>
                         @endif
                     </strong>
-                    <a href="{{ getCommentLink($comment) }}">{{ $comment->created_at }}</a>
+                    <a href="{{ $comment->present()->getLink() }}">{{ $comment->created_at }}</a>
                 </div>
                     <span>{!! strip_tags(MarkdownHelper::text(str_limit($comment->content, 80))) !!}</span>
             </div>

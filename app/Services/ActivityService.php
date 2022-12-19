@@ -93,7 +93,7 @@ class ActivityService
         activity()
             ->performedOn($commentable)
             ->causedBy($user)
-            ->withProperties(['comment' => $comment, 'url' => getCommentLink($comment)])
+            ->withProperties(['comment' => $comment, 'url' => $comment->present()->getLink()])
             ->log(self::COMMENTED);
     }
 

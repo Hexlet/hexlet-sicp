@@ -2,7 +2,9 @@
 
 namespace App\Models;
 
+use App\Presenters\CommentPresenter;
 use Database\Factories\CommentFactory;
+use Hemp\Presenter\Presentable;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -30,11 +32,16 @@ use Illuminate\Support\Carbon;
  * @property-read int|null $replies_count
  * @property-read User $user
  * @method static CommentFactory factory(...$parameters)
+ * @mixin \App\Presenters\CommentPresenter
+ * @method static present()
  */
 class Comment extends Model
 {
     use SoftDeletes;
     use HasFactory;
+    use Presentable;
+
+    public string $defaultPresenter = CommentPresenter::class;
 
     protected $with = ['user'];
     protected $fillable = ['content', 'commentable_type', 'commentable_id', 'parent_id'];

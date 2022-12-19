@@ -9,7 +9,7 @@ use App\Helpers\MarkdownHelper;
         <h5 class="mt-0 mb-1">
             <div class="d-flex justify-content-between">
                 <div>
-                    <a href="{{ getCommentLink($comment) }}" class="small">#</a>
+                    <a href="{{ $comment->present()->getLink() }}" class="small">#</a>
                     {{ $comment->user->name }}
                     @if ($comment->isReply())
                         <span class="small">
