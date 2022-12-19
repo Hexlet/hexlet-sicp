@@ -5,7 +5,7 @@
 {{ __('exercises/1_36.description.3') }}
 <code>display</code>
 {{ __('exercises/1_36.description.4') }}
-<a href="{{ route('exercises.show', getExercise('1.22')) }}">1.22</a>
+<a href="{{ route('exercises.show', App\Models\Exercise::findByPath('1.22')) }}">1.22</a>
 {{ __('exercises/1_36.description.5') }}
 <code>x^x = 1000</code>
 {{ __('exercises/1_36.description.6') }}

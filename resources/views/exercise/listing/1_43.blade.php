@@ -44,5 +44,5 @@
 <p>{{ __('exercises/1_43.description.21') }}
 <code>compose</code>
 {{ __('exercises/1_43.description.22') }}
-<a href="{{ route('exercises.show', getExercise('1.42')) }}">1.42</a>
+<a href="{{ route('exercises.show', App\Models\Exercise::findByPath('1.42')) }}">1.42</a>
 {{ __('exercises/1_43.description.23') }}</p>

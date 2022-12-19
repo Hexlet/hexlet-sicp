@@ -1,7 +1,7 @@
 <p>{{ __('exercises/3_70.description.1') }}
 <code>merge</code>
 {{ __('exercises/3_70.description.2') }}
-<a href="{{ route('exercises.show', getExercise('3.56')) }}">3.56</a>
+<a href="{{ route('exercises.show', App\Models\Exercise::findByPath('3.56')) }}">3.56</a>
 {{ __('exercises/3_70.description.3') }}
 <code>W(i, j)</code>
 {{ __('exercises/3_70.description.4') }}

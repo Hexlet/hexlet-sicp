@@ -1,7 +1,7 @@
 <p>{{ __('exercises/3_61.description.1') }}
 <code>S</code>
 {{ __('exercises/3_61.description.2') }}
-<a href="{{ route('exercises.show', getExercise('3.59')) }}">3.59</a>
+<a href="{{ route('exercises.show', App\Models\Exercise::findByPath('3.59')) }}">3.59</a>
 {{ __('exercises/3_61.description.3') }}
 <code>1</code>
 {{ __('exercises/3_61.description.4') }}
@@ -40,4 +40,4 @@
 {{ __('exercises/3_61.description.20') }}
 <code>mul-series</code>
 {{ __('exercises/3_61.description.21') }}
-<a href="{{ route('exercises.show', getExercise('3.60')) }}">3.60</a></p>
+<a href="{{ route('exercises.show', App\Models\Exercise::findByPath('3.60')) }}">3.60</a></p>

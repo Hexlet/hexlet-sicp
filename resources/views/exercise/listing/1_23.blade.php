@@ -15,6 +15,6 @@
 {{ __('exercises/1_23.description.8') }}
 <code>smallest-divisor</code>
 {{ __('exercises/1_23.description.9') }}
-<a href="{{ route('exercises.show', getExercise('1.22')) }}">1.22</a>
+<a href="{{ route('exercises.show', App\Models\Exercise::findByPath('1.22')) }}">1.22</a>
 {{ __('exercises/1_23.description.10') }}
 </p>

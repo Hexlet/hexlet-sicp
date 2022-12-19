@@ -1,7 +1,7 @@
 <p>{{ __('exercises/1_33.description.1') }}
 <code>accumulate</code>
 {{ __('exercises/1_33.description.2') }}
-<a href="{{ route('exercises.show', getExercise('1.32')) }}">1.32</a>
+<a href="{{ route('exercises.show', App\Models\Exercise::findByPath('1.32')) }}">1.32</a>
 {{ __('exercises/1_33.description.3') }}
 <code>filtered-accumulate</code>
 {{ __('exercises/1_33.description.4') }}

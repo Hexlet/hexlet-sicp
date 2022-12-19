@@ -4,7 +4,7 @@
     {{ __('exercises/3_13.description.2') }}
     <code>last-pair</code>
     {{ __('exercises/3_13.description.3') }}
-    <a title="3.12" href="{{ route('exercises.show', getExercise('3.12')) }}">3.12</a>
+    <a title="3.12" href="{{ route('exercises.show', App\Models\Exercise::findByPath('3.12')) }}">3.12</a>
     :
 </p>
 <pre><code>(define (make-cycle x)

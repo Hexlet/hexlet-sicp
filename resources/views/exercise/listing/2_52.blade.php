@@ -5,7 +5,7 @@
 <p>{{ __('exercises/2_52.description.3') }}
 <code>wave</code>
 {{ __('exercises/2_52.description.4') }}
-<a href="{{ route('exercises.show', getExercise('2.49')) }}">2.49</a>
+<a href="{{ route('exercises.show', App\Models\Exercise::findByPath('2.49')) }}">2.49</a>
 {{ __('exercises/2_52.description.5') }}</p>
 <p>{{ __('exercises/2_52.description.6') }}
 <code>corner-split</code>

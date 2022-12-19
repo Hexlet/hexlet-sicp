@@ -7,11 +7,11 @@ JOB     2   WAH 1
 <p>{{ __('exercises/2_70.description.2') }}
 <code>generate-huffman-tree</code>
 {{ __('exercises/2_70.description.3') }}
-<a href="{{ route('exercises.show', getExercise('2.69')) }}">2.69</a>
+<a href="{{ route('exercises.show', App\Models\Exercise::findByPath('2.69')) }}">2.69</a>
 {{ __('exercises/2_70.description.4') }}
 <code>encode</code>
 {{ __('exercises/2_70.description.5') }}
-<a href="{{ route('exercises.show', getExercise('2.68')) }}">2.68</a>
+<a href="{{ route('exercises.show', App\Models\Exercise::findByPath('2.68')) }}">2.68</a>
 {{ __('exercises/2_70.description.6') }}</p>
 <pre><code>Get a job
 

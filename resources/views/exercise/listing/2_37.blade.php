@@ -42,7 +42,7 @@
 <p>{{ __('exercises/2_37.description.14') }}
 <code>accumulate-n</code>
 {{ __('exercises/2_37.description.15') }}
-<a href="{{ route('exercises.show', getExercise('2.36')) }}">2.36</a>
+<a href="{{ route('exercises.show', App\Models\Exercise::findByPath('2.36')) }}">2.36</a>
 {{ __('exercises/2_37.description.16') }}</p>
 <pre><code>(define (matrix-*-vector m v)
   (map &lt;??&gt; m))

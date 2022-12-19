@@ -1,11 +1,11 @@
-<p>{{ __('exercises/5_46.description.1') }}<a href="{{ route('exercises.show', getExercise('5.45')) }}">5.45</a>
+<p>{{ __('exercises/5_46.description.1') }}<a href="{{ route('exercises.show', App\Models\Exercise::findByPath('5.45')) }}">5.45</a>
 {{ __('exercises/5_46.description.2') }}</p>
 <pre><code>(define (fib n)
   (if (< n 2)
       n
       (+ (fib (- n 1)) (fib (- n 2)))))
 </code></pre>
-<p>{{ __('exercises/5_46.description.3') }}<a href="{{ route('exercises.show', getExercise('5.29')) }}">5.29</a>
+<p>{{ __('exercises/5_46.description.3') }}<a href="{{ route('exercises.show', App\Models\Exercise::findByPath('5.29')) }}">5.29</a>
 {{ __('exercises/5_46.description.4') }}
 <code>n</code>
 {{ __('exercises/5_46.description.5') }}
@@ -37,7 +37,7 @@
    (restore val)                      ; val now contains Fib(n - 1)
    (restore continue)
    (assign val                        ;  Fib(n - 1) +  Fib(n - 2)
-           (op +) (reg val) (reg n)) 
+           (op +) (reg val) (reg n))
    (goto (reg continue))              ; return to caller, answer is in val
  immediate-answer
    (assign val (reg n))               ; base case:  Fib(n) = n

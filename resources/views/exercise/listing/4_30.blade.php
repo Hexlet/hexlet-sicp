@@ -13,7 +13,7 @@
 <p>{{ __('exercises/4_30.description.5') }}
 <code>for-each</code>
 {{ __('exercises/4_30.description.6') }}
-<a href="{{ route('exercises.show', getExercise('2.23')) }}">2.23</a>
+<a href="{{ route('exercises.show', App\Models\Exercise::findByPath('2.23')) }}">2.23</a>
 {{ __('exercises/4_30.description.7') }}</p>
 <pre><code>(define (for-each proc items)
   (if (null? items)

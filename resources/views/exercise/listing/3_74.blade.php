@@ -34,7 +34,7 @@
 <p>{{ __('exercises/3_74.description.12') }}
 <code>stream-map</code>
 {{ __('exercises/3_74.description.13') }}
-<a href="{{ route('exercises.show', getExercise('3.50')) }}">3.50</a>
+<a href="{{ route('exercises.show', App\Models\Exercise::findByPath('3.50')) }}">3.50</a>
 {{ __('exercises/3_74.description.14') }}</p>
 <pre><code>(define zero-crossings
   (stream-map sign-change-detector sense-data &lt;expression&gt;))

@@ -1,4 +1,4 @@
-<p>{{ __('exercises/3_60.description.1') }}<a href="{{ route('exercises.show', getExercise('3.59')) }}">3.59</a>
+<p>{{ __('exercises/3_60.description.1') }}<a href="{{ route('exercises.show', App\Models\Exercise::findByPath('3.59')) }}">3.59</a>
 {{ __('exercises/3_60.description.2') }}
 <code>add-streams</code>
 {{ __('exercises/3_60.description.3') }}
@@ -9,4 +9,4 @@
 <p>{{ __('exercises/3_60.description.4') }}
 <code>sin²x + cos²x = 1</code>
 {{ __('exercises/3_60.description.5') }}
-<a href="{{ route('exercises.show', getExercise('3.59')) }}">3.59</a></p>
+<a href="{{ route('exercises.show', App\Models\Exercise::findByPath('3.59')) }}">3.59</a></p>

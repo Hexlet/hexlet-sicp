@@ -1,7 +1,7 @@
 <p>{{ __('exercises/4_62.description.1') }}
 <code>last-pair</code>
 {{ __('exercises/4_62.description.2') }}
-<a href="{{ route('exercises.show', getExercise('2.17')) }}">2.17</a>
+<a href="{{ route('exercises.show', App\Models\Exercise::findByPath('2.17')) }}">2.17</a>
 {{ __('exercises/4_62.description.3') }}
 <code>(last-pair (3) ?x)</code>
 {{ __('exercises/4_62.description.4') }}

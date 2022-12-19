@@ -18,6 +18,6 @@
 {{ __('exercises/4_66.description.7') }}
 <code>qeval</code>
 {{ __('exercises/4_66.description.8') }}
-<a href="{{ route('exercises.show', getExercise('4.65')) }}">4.65</a>
+<a href="{{ route('exercises.show', App\Models\Exercise::findByPath('4.65')) }}">4.65</a>
 {{ __('exercises/4_66.description.9') }}</p>
 <p>{{ __('exercises/4_66.description.10') }}</p>

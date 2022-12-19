@@ -14,5 +14,5 @@
 {{ __('exercises/1_39.description.4') }}
 <code>K</code>
 {{ __('exercises/1_39.description.5') }}
-<a href="{{ route('exercises.show', getExercise('1.37')) }}">1.37</a>
+<a href="{{ route('exercises.show', App\Models\Exercise::findByPath('1.37')) }}">1.37</a>
 {{ __('exercises/1_39.description.6') }}</p>

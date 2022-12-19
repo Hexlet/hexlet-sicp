@@ -3,4 +3,4 @@
 {{ __('exercises/4_50.description.2') }}
 <code>amb</code>
 {{ __('exercises/4_50.description.3') }}
-<a href="{{ route('exercises.show', getExercise('4.49')) }}">4.49</a></p>
+<a href="{{ route('exercises.show', App\Models\Exercise::findByPath('4.49')) }}">4.49</a></p>

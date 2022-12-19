@@ -1,7 +1,7 @@
 <p>{{ __('exercises/4_29.description.1') }}
 <code>id</code>
 {{ __('exercises/4_29.description.2') }}
-<a href="{{ route('exercises.show', getExercise('4.27')) }}">4.27</a>
+<a href="{{ route('exercises.show', App\Models\Exercise::findByPath('4.27')) }}">4.27</a>
 {{ __('exercises/4_29.description.3') }}
 <code>count</code>
 {{ __('exercises/4_29.description.4') }}

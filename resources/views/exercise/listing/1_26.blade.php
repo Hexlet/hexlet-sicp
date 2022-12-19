@@ -1,4 +1,4 @@
-<p>{{ __('exercises/1_26.description.1') }}<a href="{{ route('exercises.show', getExercise('1.24')) }}">1.24</a>
+<p>{{ __('exercises/1_26.description.1') }}<a href="{{ route('exercises.show', App\Models\Exercise::findByPath('1.24')) }}">1.24</a>
 {{ __('exercises/1_26.description.2') }}
 <code>fast-prime?</code>
 {{ __('exercises/1_26.description.3') }}

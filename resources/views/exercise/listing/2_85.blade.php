@@ -1,7 +1,7 @@
 <p>{{ __('exercises/2_85.description.1') }}
 <code>drop</code>
 {{ __('exercises/2_85.description.2') }}
-<a href="{{ route('exercises.show', getExercise('2.83')) }}">2.83</a>
+<a href="{{ route('exercises.show', App\Models\Exercise::findByPath('2.83')) }}">2.83</a>
 {{ __('exercises/2_85.description.3') }}
 <code>1.5 + 0i</code>
 {{ __('exercises/2_85.description.4') }}
@@ -19,11 +19,11 @@
 {{ __('exercises/2_85.description.10') }}
 <code>project</code>
 {{ __('exercises/2_85.description.11') }}
-<a href="{{ route('exercises.show', getExercise('2.79')) }}">2.79</a>
+<a href="{{ route('exercises.show', App\Models\Exercise::findByPath('2.79')) }}">2.79</a>
 {{ __('exercises/2_85.description.12') }}
 <code>drop</code>
 {{ __('exercises/2_85.description.13') }}
 <code>apply-generic</code>
 {{ __('exercises/2_85.description.14') }}
-<a href="{{ route('exercises.show', getExercise('2.84')) }}">2.84</a>
+<a href="{{ route('exercises.show', App\Models\Exercise::findByPath('2.84')) }}">2.84</a>
 {{ __('exercises/2_85.description.15') }}</p>

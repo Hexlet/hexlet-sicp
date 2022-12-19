@@ -83,12 +83,6 @@ if (!function_exists('getExerciseOriginLink')) {
     }
 }
 
-if (!function_exists('getExercise')) {
-    function getExercise(string $path): Exercise
-    {
-        return ExerciseHelper::getExercise($path);
-    }
-}
 
 if (!function_exists('getLocalizedHttpsURL')) {
     function getLocalizedHttpsURL(string $localeCode): string

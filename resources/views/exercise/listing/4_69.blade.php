@@ -1,4 +1,4 @@
-<p>{{ __('exercises/4_69.description.1') }}<a href="{{ route('exercises.show', getExercise('4.63')) }}">4.63</a>
+<p>{{ __('exercises/4_69.description.1') }}<a href="{{ route('exercises.show', App\Models\Exercise::findByPath('4.63')) }}">4.63</a>
 {{ __('exercises/4_69.description.2') }}
 <code>greats</code>
 {{ __('exercises/4_69.description.3') }}

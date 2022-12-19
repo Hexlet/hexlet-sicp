@@ -133,7 +133,7 @@ use App\Helpers\ActivityLogHelper;
                      @case('add_solution')
                         {{ $logItem->getDescription() }}
                         <a href="{{ route('exercises.show', $logItem->getExtraProperty('exercise_id')) }}">
-                            {{ $logItem->getExtraProperty('exercise_path') }} {{ getExercise($logItem->getExtraProperty('exercise_path'))->getTitle() }}
+                            {{ $logItem->getExtraProperty('exercise_path') }} {{ App\Models\Exercise::findByPath($logItem->getExtraProperty('exercise_path'))->getTitle() }}
                         </a>
                         @break
                     @case('removed')

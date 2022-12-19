@@ -55,7 +55,7 @@
 {{ __('exercises/4_20.description.18') }}
 <code>let</code>
 {{ __('exercises/4_20.description.19') }}
-<a href="{{ route('exercises.show', getExercise('4.18')) }}">4.18</a>
+<a href="{{ route('exercises.show', App\Models\Exercise::findByPath('4.18')) }}">4.18</a>
 {{ __('exercises/4_20.description.20') }}
 <code>letrec</code>
 {{ __('exercises/4_20.description.21') }}

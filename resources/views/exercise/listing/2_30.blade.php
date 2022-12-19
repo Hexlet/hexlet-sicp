@@ -3,7 +3,7 @@
 {{ __('exercises/2_30.description.2') }}
 <code>square-list</code>
 {{ __('exercises/2_30.description.3') }}
-<a href="{{ route('exercises.show', getExercise('2.21')) }}">2.21</a>
+<a href="{{ route('exercises.show', App\Models\Exercise::findByPath('2.21')) }}">2.21</a>
 {{ __('exercises/2_30.description.4') }}
 <code>square-tree</code>
 {{ __('exercises/2_30.description.5') }}

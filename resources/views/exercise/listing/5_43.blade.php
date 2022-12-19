@@ -7,5 +7,5 @@
 {{ __('exercises/5_43.description.4') }}
 <code>set!</code>
 {{ __('exercises/5_43.description.5') }}
-<a href="{{ route('exercises.show', getExercise('4.16')) }}">4.16</a>
+<a href="{{ route('exercises.show', App\Models\Exercise::findByPath('4.16')) }}">4.16</a>
 {{ __('exercises/5_43.description.6') }}</p>

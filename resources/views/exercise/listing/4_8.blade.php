@@ -35,7 +35,7 @@
 <p>{{ __('exercises/4_8.description.14') }}
 <code>let->combination</code>
 {{ __('exercises/4_8.description.15') }}
-<a href="{{ route('exercises.show', getExercise('4.6')) }}">4.6</a>
+<a href="{{ route('exercises.show', App\Models\Exercise::findByPath('4.6')) }}">4.6</a>
 {{ __('exercises/4_8.description.16') }}
 <code>let</code>
 {{ __('exercises/4_8.description.17') }}

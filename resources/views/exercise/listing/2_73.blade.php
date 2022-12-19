@@ -35,7 +35,7 @@
 {{ __('exercises/2_73.description.7') }}
 </p>
 <p>{{ __('exercises/2_73.description.8') }}</p>
-<p>{{ __('exercises/2_73.description.9') }}<a href="{{ route('exercises.show', getExercise('2.56')) }}">2.56</a>
+<p>{{ __('exercises/2_73.description.9') }}<a href="{{ route('exercises.show', App\Models\Exercise::findByPath('2.56')) }}">2.56</a>
 {{ __('exercises/2_73.description.10') }}</p>
 <p>{{ __('exercises/2_73.description.11') }}
 <code>deriv</code>

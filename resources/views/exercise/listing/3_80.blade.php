@@ -40,7 +40,7 @@
 {{ __('exercises/3_80.description.20') }}
 <code>RC</code>
 {{ __('exercises/3_80.description.21') }}
-<a href="{{ route('exercises.show', getExercise('3.73')) }}">3.73</a>
+<a href="{{ route('exercises.show', App\Models\Exercise::findByPath('3.73')) }}">3.73</a>
 {{ __('exercises/3_80.description.22') }}
 <code>RLC</code>
 {{ __('exercises/3_80.description.23') }}

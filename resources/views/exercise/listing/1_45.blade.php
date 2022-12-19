@@ -19,5 +19,5 @@
 {{ __('exercises/1_45.description.10') }}
 <code>repeated</code>
 {{ __('exercises/1_45.description.11') }}
-<a href="{{ route('exercises.show', getExercise('1.43')) }}">1.43</a>
+<a href="{{ route('exercises.show', App\Models\Exercise::findByPath('1.43')) }}">1.43</a>
 {{ __('exercises/1_45.description.12') }}</p>

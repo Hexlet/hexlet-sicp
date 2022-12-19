@@ -20,13 +20,4 @@ class ExerciseHelper
 
         return $link;
     }
-
-    public static function getExercise(string $path): Exercise
-    {
-        $exercise = Exercise::query()
-            ->where('path', $path)
-            ->first();
-
-        return $exercise;
-    }
 }

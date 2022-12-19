@@ -13,5 +13,5 @@
 {{ __('exercises/2_68.description.3') }}
 <code>encode-symbol</code>
 {{ __('exercises/2_68.description.4') }}
-<a href="{{ route('exercises.show', getExercise('2.67')) }}">2.67</a>
+<a href="{{ route('exercises.show', App\Models\Exercise::findByPath('2.67')) }}">2.67</a>
 {{ __('exercises/2_68.description.5') }}</p>

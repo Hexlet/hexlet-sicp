@@ -20,6 +20,11 @@ class Exercise extends Model
 
     public string $defaultPresenter = ExercisePresenter::class;
 
+    public static function findByPath(string $path): static
+    {
+        return static::wherePath($path)->firstOrFail();
+    }
+
     public function chapter(): BelongsTo
     {
         return $this->belongsTo(Chapter::class);

@@ -13,7 +13,7 @@
 {{ __('exercises/1_38.description.7') }}
 <code>cont-frac</code>
 {{ __('exercises/1_38.description.8') }}
-<a href="{{ route('exercises.show', getExercise('1.37')) }}">1.37</a>
+<a href="{{ route('exercises.show', App\Models\Exercise::findByPath('1.37')) }}">1.37</a>
 {{ __('exercises/1_38.description.9') }}
 <code>e</code>
 {{ __('exercises/1_38.description.10') }}

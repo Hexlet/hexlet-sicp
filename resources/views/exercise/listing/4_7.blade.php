@@ -21,7 +21,7 @@
 {{ __('exercises/4_7.description.9') }}
 <code>let</code>
 {{ __('exercises/4_7.description.10') }}
-<a href="{{ route('exercises.show', getExercise('4.6')) }}">4.6</a>
+<a href="{{ route('exercises.show', App\Models\Exercise::findByPath('4.6')) }}">4.6</a>
 {{ __('exercises/4_7.description.11') }}
 <code>let*</code>
 {{ __('exercises/4_7.description.12') }}

@@ -1,4 +1,4 @@
-<p>{{ __('exercises/4_37.description.1') }}<a href="{{ route('exercises.show', getExercise('4.35')) }}">4.35</a>
+<p>{{ __('exercises/4_37.description.1') }}<a href="{{ route('exercises.show', App\Models\Exercise::findByPath('4.35')) }}">4.35</a>
 {{ __('exercises/4_37.description.2') }}</p>
 <pre><code>(define (a-pythagorean-triple-between low high)
   (let ((i (an-integer-between low high))

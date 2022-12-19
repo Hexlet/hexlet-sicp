@@ -1,7 +1,7 @@
 <p>{{ __('exercises/4_68.description.1') }}
 <code>reverse</code>
 {{ __('exercises/4_68.description.2') }}
-<a href="{{ route('exercises.show', getExercise('2.18')) }}">2.18</a>
+<a href="{{ route('exercises.show', App\Models\Exercise::findByPath('2.18')) }}">2.18</a>
 {{ __('exercises/4_68.description.3') }}
 <code>append-to-form</code>
 {{ __('exercises/4_68.description.4') }}

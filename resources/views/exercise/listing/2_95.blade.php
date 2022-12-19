@@ -25,7 +25,7 @@ P<sub>3</sub>: 13x + 5
 {{ __('exercises/2_95.description.11') }}
 <code>greatest-common-divisor</code>
 {{ __('exercises/2_95.description.12') }}
-<a href="{{ route('exercises.show', getExercise('2.94')) }}">2.94</a>
+<a href="{{ route('exercises.show', App\Models\Exercise::findByPath('2.94')) }}">2.94</a>
 {{ __('exercises/2_95.description.13') }}
 <code>Q₁</code>
 {{ __('exercises/2_95.description.14') }}
@@ -37,7 +37,7 @@ P<sub>3</sub>: 13x + 5
 {{ __('exercises/2_95.description.17') }}
 </p>
 <p>{{ __('exercises/2_95.description.18') }}
-<a href="{{ route('exercises.show', getExercise('2.95')) }}">2.95</a>
+<a href="{{ route('exercises.show', App\Models\Exercise::findByPath('2.95')) }}">2.95</a>
 {{ __('exercises/2_95.description.19') }}</p>
 <p>{{ __('exercises/2_95.description.20') }}
 <code>P</code>

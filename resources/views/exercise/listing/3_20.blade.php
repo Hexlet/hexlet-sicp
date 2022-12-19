@@ -8,5 +8,5 @@
 <i>17</i></code></pre>
 <p>
     {{ __('exercises/3_20.description.2') }}
-    <a title="3.11" href="{{ route('exercises.show', getExercise('3.11')) }}">3.11</a>.)
+    <a title="3.11" href="{{ route('exercises.show', App\Models\Exercise::findByPath('3.11')) }}">3.11</a>.)
 </p>
