@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\ChartHelper;
 use App\Models\User;
 use Illuminate\View\View;
 
@@ -23,7 +24,7 @@ class UserController extends Controller
             $userRatingPosition = 'N/A';
         }
         $user->load('readChapters', 'completedExercises');
-        $chart = getChart($user->id);
+        $chart = ChartHelper::getChart($user->id);
         return view('user.show', compact(
             'user',
             'userRatingPosition',

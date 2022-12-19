@@ -52,13 +52,6 @@ if (!function_exists('getChapterOriginLinkForNumber')) {
     }
 }
 
-if (!function_exists('getChart')) {
-    function getChart(?int $userId = null): Generator
-    {
-        return ChartHelper::getChart($userId);
-    }
-}
-
 if (!function_exists('getExerciseListingViewFilepath')) {
     function getExerciseListingViewFilepath(Exercise $exercise): string
     {
