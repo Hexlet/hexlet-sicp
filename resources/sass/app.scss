@@ -1,28 +1,14 @@
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
 
-@import "bootstrap/scss/functions";
-
-// Variables
-@import 'variables';
-
-@import "bootstrap/scss/variables";
-
-@import "bootstrap/scss/utilities";
-
-@import 'utilities';
-
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
-
+@import 'bootstrap-icons/font/bootstrap-icons';
+@import 'variables';
 @import 'profile';
-
 @import 'activity_chart';
-
 @import "carousel";
-
 @import "custom";
-
 @import "icons";
 
 // NOTE: move if it will be necessary. It should be do for the site.
