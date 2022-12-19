@@ -3,6 +3,7 @@
 /** @var \Illuminate\Support\Collection|\App\Models\Activity[] $logItems */
 /** @var \Illuminate\Support\Collection|\App\Models\Comment[] $comments */
 use App\Helpers\MarkdownHelper;
+use App\Helpers\ActivityLogHelper;
 @endphp
 @push('styles')
 <link href="{{ mix('css/_activity_chart.css') }}" rel="stylesheet">
@@ -110,27 +111,27 @@ use App\Helpers\MarkdownHelper;
                 </div>
                 @switch($logItem->description)
                     @case('completed_exercise')
-                        {{ getLogItemDescription($logItem) }}
+                        {{ $logItem->getDescription() }}
                         <a href="{{ route('exercises.show', $logItem->getExtraProperty('exercise_id')) }}">
                             {{ $logItem->subject->getFullTitle() }}
                         </a>
                         @break
                     @case('destroy_exercise')
-                        {{ getLogItemDescription($logItem) }}
+                        {{ $logItem->getDescription() }}
                         <a href="{{ route('exercises.show', $logItem->getExtraProperty('exercise_id')) }}">
                             {{ $logItem->subject->getFullTitle() }}
                         </a>
                         @break
                     @case('commented')
                         <a href="{{ $logItem->getExtraProperty('url') }}">
-                            {{ getLogItemDescription($logItem) }}
+                            {{ $logItem->getDescription() }}
                         </a>
                         <span>
                         {!! strip_tags(MarkdownHelper::text($logItem->getExtraProperty('comment.content'))) !!}
                         </span>
                         @break
                      @case('add_solution')
-                        {{ getLogItemDescription($logItem) }}
+                        {{ $logItem->getDescription() }}
                         <a href="{{ route('exercises.show', $logItem->getExtraProperty('exercise_id')) }}">
                             {{ $logItem->getExtraProperty('exercise_path') }} {{ getExercise($logItem->getExtraProperty('exercise_path'))->getTitle() }}
                         </a>
@@ -142,7 +143,7 @@ use App\Helpers\MarkdownHelper;
                                href="#collapseExp{{ $logItem->id }}"
                                aria-expanded="false"
                                aria-controls="collapseExp{{ $logItem->id }}">
-                                {{ getLogItemDescription($logItem) }}
+                                {{ $logItem->getDescription() }}
                             </a>
                             <div class="collapse" id="collapseExp{{ $logItem->id }}">
                                 @if($logItem->getExtraProperty('chapters'))

@@ -28,7 +28,7 @@
                                 @switch($logItem->description)
                                     @case('added')
                                     @case('removed')
-                                        {{ getLogItemDescription($logItem) }}
+                                        {{ $logItem->getDescription() }}
                                         <ul>
                                             @foreach($logItem->getExtraProperty('chapters') as $chapter)
                                             <li>
@@ -40,25 +40,25 @@
                                         </ul>
                                         @break
                                     @case('commented')
-                                        {{ getLogItemDescription($logItem) }}
+                                        {{ $logItem->getDescription() }}
                                         <a href="{{ $logItem->getExtraProperty('url') }}">
                                             {{ $logItem->getExtraProperty('comment.content') }}
                                         </a>
                                         @break
                                     @case('completed_exercise')
-                                        {{ getLogItemDescription($logItem) }}
+                                        {{ $logItem->getDescription() }}
                                         <a href="{{ route('exercises.show', $logItem->getExtraProperty('exercise_id')) }}">
                                             {{ $logItem->subject->getFullTitle() }}
                                         </a>
                                         @break
                                     @case('destroy_exercise')
-                                        {{ getLogItemDescription($logItem) }}
+                                        {{ $logItem->getDescription() }}
                                         <a href="{{ route('exercises.show', $logItem->getExtraProperty('exercise_id')) }}">
                                             {{ $logItem->subject->getFullTitle() }}
                                         </a>
                                         @break
                                     @case('add_solution')
-                                        {{ getLogItemDescription($logItem) }}
+                                        {{ $logItem->getDescription() }}
                                         <a href="{{ route('exercises.show', $logItem->getExtraProperty('exercise_id')) }}">
                                             {{ $logItem->getExtraProperty('exercise_path') }} {{ getExercise($logItem->getExtraProperty('exercise_path'))->getTitle() }}
                                         </a>

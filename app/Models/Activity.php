@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use \Spatie\Activitylog\Models\Activity as BaseActivity;
+
 /**
  * @property int $id
  * @property string|null $log_name
@@ -16,6 +18,12 @@ namespace App\Models;
  * @property-read \Illuminate\Support\Collection $changes
  * @property-read \Illuminate\Database\Eloquent\Model|\Eloquent $subject
  */
-class Activity extends \Spatie\Activitylog\Models\Activity
+class Activity extends BaseActivity
 {
+    public function getDescription()
+    {
+        $itemsCount = $this->getExtraProperty('count');
+        $description = $this->description;
+        return trans_choice("activitylog.action_{$description}", $itemsCount, ['count' => $itemsCount]);
+    }
 }

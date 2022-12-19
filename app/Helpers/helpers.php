@@ -1,6 +1,5 @@
 <?php
 
-use App\Helpers\ActivityLogHelper;
 use App\Helpers\ChapterHelper;
 use App\Helpers\ChartHelper;
 use App\Helpers\CommentHelper;
@@ -10,19 +9,11 @@ use App\Helpers\RatingCommentsHelper;
 use App\Helpers\RatingHelper;
 use App\Helpers\TemplateHelper;
 use App\Helpers\UserHelper;
-use App\Models\Activity;
 use App\Models\User;
 use App\Models\Chapter;
 use App\Models\Comment;
 use App\Models\Exercise;
 use Illuminate\Support\Collection;
-
-if (!function_exists('getLogItemDescription')) {
-    function getLogItemDescription(Activity $logItem): string
-    {
-        return ActivityLogHelper::getLogItemDescription($logItem);
-    }
-}
 
 if (!function_exists('getChapterName')) {
     function getChapterName(string $chapter): string
