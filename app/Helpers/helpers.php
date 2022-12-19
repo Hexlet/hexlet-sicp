@@ -8,7 +8,6 @@ use App\Helpers\LocalizationHelper;
 use App\Helpers\RatingCommentsHelper;
 use App\Helpers\RatingHelper;
 use App\Helpers\TemplateHelper;
-use App\Helpers\UserHelper;
 use App\Models\User;
 use App\Models\Chapter;
 use App\Models\Comment;
@@ -151,12 +150,5 @@ if (!function_exists('isActiveRoute')) {
     function isActiveRoute(string $routeAlias): bool
     {
         return TemplateHelper::isActiveRoute($routeAlias);
-    }
-}
-
-if (!function_exists('getProfileImageLink')) {
-    function getProfileImageLink(User $user): string
-    {
-        return UserHelper::getProfileImageLink($user);
     }
 }

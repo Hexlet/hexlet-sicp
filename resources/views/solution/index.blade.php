@@ -43,7 +43,7 @@
                         <tr>
                             <td>
                                 <a class="text-decoration-none" href="{{ route('users.show', $solution->user) }}">
-                                <img class="rounded-circle mr-1" width="30" height="30" src="{{ getProfileImageLink($solution->user) }}" alt="Profile image">
+                                <img class="rounded-circle mr-1" width="30" height="30" src="{{ $solution->user->present()->getProfileImageLink() }}" alt="Profile image">
                                     {{ $solution->user->name }}
                                 </a>
                             </td>

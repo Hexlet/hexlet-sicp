@@ -26,7 +26,7 @@
                 </div>
                 <div class="col-md-4">
                     <div class="card">
-                        <img class="card-img-top" src="{{ getProfileImageLink($user) }}" alt="Card image cap">
+                        <img class="card-img-top" src="{{ $user->present()->getProfileImageLink() }}" alt="Card image cap">
                         <div class="card-body">
                             <p class="card-text">
                                 <a href="https://gravatar.com" target="_blank">Go to Gravatar.com</a>

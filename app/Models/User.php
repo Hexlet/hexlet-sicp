@@ -2,7 +2,9 @@
 
 namespace App\Models;
 
+use App\Presenters\UserPresenter;
 use Database\Factories\UserFactory;
+use Hemp\Presenter\Presentable;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -46,6 +48,9 @@ class User extends Authenticatable implements MustVerifyEmail
     use Notifiable;
     use SoftDeletes;
     use HasFactory;
+    use Presentable;
+
+    public string $defaultPresenter = UserPresenter::class;
 
     protected $dates = ['deleted_at'];
 

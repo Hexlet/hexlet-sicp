@@ -16,7 +16,7 @@
     <div class="row my-4">
         <div class="col-12 col-md-3">
             <div class="sticky-top pt-4 mb-2 x-z-index-0">
-                <img class="w-100 img-fluid" src="{{ getProfileImageLink($user) }}" alt="User avatar">
+                <img class="w-100 img-fluid" src="{{ $user->present()->getProfileImageLink() }}" alt="User avatar">
                 <h1 class="h4 text-break my-2">{{ $user->name }}</h1>
                 <div class="h5">
                     <span class="bi bi-trophy-fill"></span>

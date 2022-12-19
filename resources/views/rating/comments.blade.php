@@ -21,7 +21,7 @@
                             <td>{{ $position }}</td>
                             <td>
                                 <a class="text-decoration-none" href="{{ route('users.show', $user) }}">
-                                    <img class="rounded-circle mr-1" width="30" height="30" src="{{ getProfileImageLink($user) }}" alt="Profile image">
+                                    <img class="rounded-circle mr-1" width="30" height="30" src="{{ $user->present()->getProfileImageLink() }}" alt="Profile image">
                                     {{ $user->name }}
                                 </a>
                             </td>
