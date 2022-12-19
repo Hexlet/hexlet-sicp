@@ -2,10 +2,8 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
 
 // Bootstrap
-@import '~bootstrap/scss/bootstrap';
-@import 'bootstrap-icons/font/bootstrap-icons';
 @import 'variables';
-@import 'profile';
+@import '~bootstrap/scss/bootstrap';
 @import 'activity_chart';
 @import "carousel";
 @import "custom";
