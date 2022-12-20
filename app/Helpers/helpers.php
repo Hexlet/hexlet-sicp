@@ -2,7 +2,6 @@
 
 use App\Helpers\ChapterHelper;
 use App\Helpers\ExerciseHelper;
-use App\Helpers\LocalizationHelper;
 use App\Helpers\RatingCommentsHelper;
 use App\Helpers\RatingHelper;
 use App\Helpers\TemplateHelper;
@@ -57,49 +56,6 @@ if (!function_exists('getExerciseOriginLink')) {
     function getExerciseOriginLink(Exercise $exercise): ?string
     {
         return ExerciseHelper::getExerciseOriginLink($exercise);
-    }
-}
-
-
-if (!function_exists('getLocalizedHttpsURL')) {
-    function getLocalizedHttpsURL(string $localeCode): string
-    {
-        return LocalizationHelper::getLocalizedHttpsURL($localeCode);
-    }
-}
-
-if (!function_exists('getPathToLocaleFlag')) {
-    function getPathToLocaleFlag(string $currentLocale): string
-    {
-        return LocalizationHelper::getPathToLocaleFlag($currentLocale);
-    }
-}
-
-if (!function_exists('getLocalizedURL')) {
-    function getLocalizedURL(string $currentLocale): string
-    {
-        return LocalizationHelper::getLocalizedURL($currentLocale);
-    }
-}
-
-if (!function_exists('getOtherLocales')) {
-    function getOtherLocales(string $currentLocale, array $locales): array
-    {
-        return LocalizationHelper::getOtherLocales($currentLocale, $locales);
-    }
-}
-
-if (!function_exists('getNativeLanguageName')) {
-    function getNativeLanguageName(string $currentLocale): string
-    {
-        return LocalizationHelper::getNativeLanguageName($currentLocale);
-    }
-}
-
-if (!function_exists('normalizeNativeLanguageName')) {
-    function normalizeNativeLanguageName(string $language, string $encoding = 'utf-8'): string
-    {
-        return LocalizationHelper::normalizeNativeLanguageName($language, $encoding);
     }
 }
 

@@ -1,8 +1,8 @@
 @php
-    use \App\Helpers\TemplateHelper;
+    use App\Helpers\TemplateHelper;
+    use App\Helpers\LocalizationHelper;
     $currentLocale = LaravelLocalization::getCurrentLocale();
     $locales = LaravelLocalization::getSupportedLocales();
-    $otherLocales = getOtherLocales($currentLocale, $locales);
     $user = Auth::user();
 @endphp
 <nav class="py-2 bg-light border-bottom">
@@ -109,17 +109,17 @@
                         href="#"
                     >
                         <img
-                            src="{{ getPathToLocaleFlag($currentLocale) }}"
-                            alt="{{ getNativeLanguageName($currentLocale) }}"
+                            src="{{ LocalizationHelper::getPathToLocaleFlag($currentLocale) }}"
+                            alt="{{ LocalizationHelper::getNativeLanguageName($currentLocale) }}"
                             class="me-1" width="24"
                         >
-                        <span class="d-md-none">{{ getNativeLanguageName($currentLocale) }}</span>
+                        <span class="d-md-none">{{ LocalizationHelper::getNativeLanguageName($currentLocale) }}</span>
                     </a>
                     <ul
                         class="dropdown-menu dropdown-menu-right x-min-w-0"
                         aria-labelledby="dropdownFlagButton"
                     >
-                    @foreach($otherLocales as $localeCode => ['native' => $language])
+                    @foreach(LocalizationHelper::getOtherLocales($currentLocale, $locales) as $localeCode => ['native' => $language])
                         <li>
                             <a
                                 href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}"
@@ -127,11 +127,11 @@
                                 hreflang="{{ $localeCode }}"
                             >
                                 <img
-                                    src="{{ getPathToLocaleFlag($localeCode) }}"
-                                    alt="{{ normalizeNativeLanguageName($language) }}"
+                                    src="{{ LocalizationHelper::getPathToLocaleFlag($localeCode) }}"
+                                    alt="{{ LocalizationHelper::normalizeNativeLanguageName($language) }}"
                                     class="mr-1" width="24"
                                 >
-                                <span class="d-md-none">{{ normalizeNativeLanguageName($language) }}</span>
+                                <span class="d-md-none">{{ LocalizationHelper::normalizeNativeLanguageName($language) }}</span>
                             </a>
                         </li>
                     @endforeach

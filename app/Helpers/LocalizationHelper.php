@@ -37,7 +37,7 @@ class LocalizationHelper
     public static function getNativeLanguageName(string $currentLocale): string
     {
         $locales = LaravelLocalization::getSupportedLocales();
-        return normalizeNativeLanguageName($locales[$currentLocale]['native']);
+        return self::normalizeNativeLanguageName($locales[$currentLocale]['native']);
     }
 
     public static function normalizeNativeLanguageName(string $language, string $encoding = 'utf-8'): string
