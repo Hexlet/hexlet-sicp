@@ -8,10 +8,7 @@ class TemplateHelper
 {
     public static function isActiveRoute(string $routeAlias): bool
     {
-        /** @var \Illuminate\Routing\Route */
-        $currentRoute = Request::route();
-
-        return $currentRoute->getName() === $routeAlias;
+        return Request::routeIs($routeAlias);
     }
 
     public static function getTitleContent(string $header): string

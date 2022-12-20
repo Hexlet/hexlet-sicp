@@ -2,10 +2,8 @@
 
 use App\Helpers\ChapterHelper;
 use App\Helpers\ExerciseHelper;
-use App\Helpers\RatingCommentsHelper;
 use App\Helpers\RatingHelper;
 use App\Helpers\TemplateHelper;
-use App\Models\User;
 use App\Models\Chapter;
 use App\Models\Exercise;
 use Illuminate\Support\Collection;
@@ -50,13 +48,6 @@ if (!function_exists('getExerciseOriginLink')) {
     function getExerciseOriginLink(Exercise $exercise): ?string
     {
         return ExerciseHelper::getExerciseOriginLink($exercise);
-    }
-}
-
-if (!function_exists('getCommentsRating')) {
-    function getCommentsRating(): Collection
-    {
-        return RatingCommentsHelper::getCommentsRating();
     }
 }
 

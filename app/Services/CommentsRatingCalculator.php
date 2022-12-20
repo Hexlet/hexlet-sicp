@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Helpers;
+namespace App\Services;
 
-use App\Models\User;
 use Illuminate\Support\Collection;
+use App\Models\User;
 
-class RatingCommentsHelper
+class CommentsRatingCalculator
 {
-    public static function getCommentsRating(): Collection
+    public static function calculate(): Collection
     {
         $commentsRating = User::query()
             ->withCount('comments')
