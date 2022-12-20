@@ -13,8 +13,14 @@
     @endforeach
 @else
 <div class="form-check m-2 border-bottom">
-    <input type="checkbox" name="chapters_id[]" id="subChapter{{ $chapter->id }}" value="{{ $chapter->id }}"
-        class="form-check-input" {{ haveRead($user, $chapter) ? 'checked' : '' }}>
+    <input
+        type="checkbox"
+        name="chapters_id[]"
+        id="subChapter{{ $chapter->id }}"
+        value="{{ $chapter->id }}"
+        class="form-check-input"
+        @checked(haveRead($user, $chapter))
+        >
     <label for="subChapter{{ $chapter->id }}" class="form-check-label">
         {{ App\Helpers\ChapterHelper::fullChapterName($chapter->path) }}
     </label>
