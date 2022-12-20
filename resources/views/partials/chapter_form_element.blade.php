@@ -19,7 +19,7 @@
         id="subChapter{{ $chapter->id }}"
         value="{{ $chapter->id }}"
         class="form-check-input"
-        @checked(haveRead($user, $chapter))
+        @checked($user->haveRead($chapter))
         >
     <label for="subChapter{{ $chapter->id }}" class="form-check-label">
         {{ App\Helpers\ChapterHelper::fullChapterName($chapter->path) }}

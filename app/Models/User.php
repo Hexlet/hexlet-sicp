@@ -120,4 +120,9 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->exists === false;
     }
+
+    public function haveRead(Chapter $chapter): bool
+    {
+        return $this->chapters->contains($chapter);
+    }
 }

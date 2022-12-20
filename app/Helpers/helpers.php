@@ -16,12 +16,6 @@ if (!function_exists('getTitleContent')) {
         return TemplateHelper::getTitleContent($titleName);
     }
 }
-if (!function_exists('haveRead')) {
-    function haveRead(User $user, Chapter $chapter): bool
-    {
-        return ChapterHelper::haveRead($user, $chapter);
-    }
-}
 
 if (!function_exists('getChapterHeaderTag')) {
     function getChapterHeaderTag(Chapter $chapter): string

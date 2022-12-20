@@ -14,11 +14,6 @@ class ChapterHelper
         return "$chapterNumber $chapterTitle";
     }
 
-    public static function haveRead(User $user, Chapter $chapter): bool
-    {
-        return $user->chapters->contains($chapter);
-    }
-
     public static function getChapterHeaderTag(Chapter $chapter): string
     {
         return $chapter->can_read
