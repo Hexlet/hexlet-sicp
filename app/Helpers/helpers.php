@@ -57,10 +57,3 @@ if (!function_exists('getCalculatedRating')) {
         return RatingHelper::getCalculatedRating();
     }
 }
-
-if (!function_exists('isActiveRoute')) {
-    function isActiveRoute(string $routeAlias): bool
-    {
-        return TemplateHelper::isActiveRoute($routeAlias);
-    }
-}

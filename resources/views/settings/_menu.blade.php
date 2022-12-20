@@ -4,13 +4,13 @@
             {{ __('account.settings') }}
         </div>
         <div class="list-group list-group-flush">
-            <a class="nav-link list-group-item list-group-item-action {{ isActiveRoute('settings.profile.index')  ? 'active' : ''}}"
+            <a class="nav-link list-group-item list-group-item-action {{ Request::routeIs('settings.profile.index')  ? 'active' : ''}}"
                href="{{ route('settings.profile.index') }}">
                 {{ __('account.profile') }}
             </a>
         </div>
         <div class="list-group list-group-flush">
-            <a class="nav-link list-group-item list-group-item-action {{ isActiveRoute('settings.account.index')  ? 'active' : '' }}"
+            <a class="nav-link list-group-item list-group-item-action {{ Request::routeIs('settings.account.index')  ? 'active' : '' }}"
                href="{{ route('settings.account.index') }}">
                 {{ __('account.account') }}
             </a>
