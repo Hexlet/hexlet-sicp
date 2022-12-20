@@ -15,7 +15,7 @@ use App\Helpers\MarkdownHelper;
                         <span class="small">
                             <span class="text-lowercase">{{ __('comment.replied_to') }}</span>
                             {{ $comment->parent->user->name }}
-                            <a href="{{ getCommentLink($comment->parent) }}">#</a>
+                            <a href="{{ $comment->parent->present()->getLink() }}">#</a>
                         </span>
                     @endif
                 </div>
