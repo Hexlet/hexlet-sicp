@@ -20,7 +20,7 @@ class Exercise extends Model
 
     public string $defaultPresenter = ExercisePresenter::class;
 
-    public static function findByPath(string $path): static
+    public static function findByPath(string $path): self
     {
         return static::wherePath($path)->firstOrFail();
     }

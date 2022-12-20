@@ -4,6 +4,9 @@ namespace App\Presenters;
 
 use Hemp\Presenter\Presenter;
 
+/**
+ * @mixin \App\Models\User
+ */
 class UserPresenter extends Presenter
 {
     public function getProfileImageLink(): string

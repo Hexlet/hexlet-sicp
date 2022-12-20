@@ -9,8 +9,6 @@ use App\Services\ActivityService;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\RedirectResponse;
 
-use function getCommentLink;
-
 class CommentController extends Controller
 {
     /**

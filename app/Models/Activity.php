@@ -20,7 +20,7 @@ use Spatie\Activitylog\Models\Activity as BaseActivity;
  */
 class Activity extends BaseActivity
 {
-    public function getDescription()
+    public function getDescription(): string
     {
         $itemsCount = $this->getExtraProperty('count');
         $description = $this->description;
