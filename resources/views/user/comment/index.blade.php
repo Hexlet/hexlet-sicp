@@ -33,7 +33,7 @@ use App\Helpers\MarkdownHelper;
                                         title="{{ __('chapter.chapter') }} {{ $comment->commentable->path }}"
                                         href="{{ route('chapters.show', $comment->commentable) }}"
                                     >
-                                        {{$comment->commentable->path}} {{ getChapterName($comment->commentable->path) }}
+                                        {{ App\Helpers\ChapterHelper::fullChapterName($comment->commentable->path) }}
                                     </a>
                                 @endif
                             </td>

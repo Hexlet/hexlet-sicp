@@ -10,7 +10,7 @@
                role="tab"
                aria-controls="subChapters{{ $mainChapter->id }}"
                aria-selected="{{ $mainChapter->path === '1' ? 'true' : 'false' }}">
-                {{ $mainChapter->path }} {{ getChapterName($mainChapter->path) }}
+                {{ App\Helpers\ChapterHelper::fullChapterName($mainChapter->path) }}
             </button>
             @endforeach
         </div>

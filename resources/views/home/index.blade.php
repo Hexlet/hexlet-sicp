@@ -148,10 +148,10 @@ use App\Helpers\ActivityLogHelper;
                             <div class="collapse" id="collapseExp{{ $logItem->id }}">
                                 @if($logItem->getExtraProperty('chapters'))
                                     <ul>
-                                        @foreach(($logItem->getExtraProperty('chapters')) as $chapter)
+                                        @foreach(($logItem->getExtraProperty('chapters')) as $chapterPath)
                                             <li>
-                                                <a href="{{ getChapterOriginLinkForNumber($chapter) }}">
-                                                    {{ $chapter }} {{ getChapterName($chapter) }}
+                                                <a href="{{ getChapterOriginLinkForNumber($chapterPath) }}">
+                                                    {{ App\Helpers\ChapterHelper::fullChapterName($chapterPath) }}
                                                 </a>
                                             </li>
                                         @endforeach

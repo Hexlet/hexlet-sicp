@@ -9,7 +9,7 @@
      * @var bool $isCompletedChapter
      */
 @endphp
-@section('title'){{ $chapter->path }}. {{ getTitleContent(getChapterName($chapter->path)) }}@endsection
+@section('title'){{ getTitleContent(App\Helpers\ChapterHelper::fullChapterName($chapter->path)) }}@endsection
 @section('description')@foreach (Breadcrumbs::generate('chapter', $chapter) as $breadcrumb){{$breadcrumb->title}} / @endforeach @endsection
 @section('content')
     {{ Breadcrumbs::render('chapter', $chapter) }}
@@ -28,12 +28,12 @@
             <small>
                 @if ($chapter->parent)
                     <a href="{{ route('chapters.show', $chapter->parent) }}">
-                        {{ $chapter->parent->path }}. {{ getChapterName($chapter->parent->path) }}
+                        {{ App\Helpers\ChapterHelper::fullChapterName($chapter->parent->path) }}
                     </a>
                 @endif
             </small>
             <h1 class="h2">
-                {{ $chapter->path }}. {{ getChapterName($chapter->path) }}
+                {{ App\Helpers\ChapterHelper::fullChapterName($chapter->path) }}
                 <small>
                     <a class="text-muted"
                        target="_blank"
@@ -50,7 +50,7 @@
                     <li>
                         <h2 class="h5">
                             <a href="{{ route('chapters.show', $child) }}">
-                                {{ $child->path }}. {{ getChapterName($child->path) }}
+                                {{ App\Helpers\ChapterHelper::fullChapterName($child->path) }}
                             </a>
                         </h2>
                     </li>

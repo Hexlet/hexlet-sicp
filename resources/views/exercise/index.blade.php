@@ -25,7 +25,7 @@
                             aria-controls="subChapters{{ $rootChapterPath }}"
                             aria-selected="{{ $rootChapterPath === '1' ? 'true' : 'false' }}"
                         >
-                            {{ $rootChapterPath }}. {{ getChapterName($rootChapterPath) }}
+                            {{ App\Helpers\ChapterHelper::fullChapterName($rootChapterPath) }}
                         </a>
                     </li>
                 @endforeach

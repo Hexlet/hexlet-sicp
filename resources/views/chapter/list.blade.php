@@ -8,8 +8,7 @@
     @foreach ($chapters[$parent] as $chapter)
     <div class="list-group-item">
         <a href="{{ route('chapters.show', $chapter) }}">
-            <strong class="text-dark">{{ $chapter->path }}</strong>
-            {{ getChapterName($chapter->path) }}
+            {{ App\Helpers\ChapterHelper::fullChapterName($chapter->path) }}
         </a>
         <br>
         @if($chapter->exercises->isNotEmpty())

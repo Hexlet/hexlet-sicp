@@ -1,7 +1,6 @@
 <?php
 
 use App\Helpers\ChapterHelper;
-use App\Helpers\ChartHelper;
 use App\Helpers\ExerciseHelper;
 use App\Helpers\LocalizationHelper;
 use App\Helpers\RatingCommentsHelper;
@@ -12,12 +11,6 @@ use App\Models\Chapter;
 use App\Models\Exercise;
 use Illuminate\Support\Collection;
 
-if (!function_exists('getChapterName')) {
-    function getChapterName(string $chapter): string
-    {
-        return ChapterHelper::getChapterName($chapter);
-    }
-}
 if (!function_exists('getTitleContent')) {
     function getTitleContent(string $titleName): string
     {

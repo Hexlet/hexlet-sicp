@@ -7,9 +7,11 @@ use App\Models\User;
 
 class ChapterHelper
 {
-    public static function getChapterName(string $chapter): string
+    public static function fullChapterName(string $chapterNumber): string
     {
-        return __('sicp.chapters')[$chapter] ?? __('sicp.chapters.' . $chapter);
+        $chapterTitle = __("sicp.chapters")[$chapterNumber];
+
+        return "$chapterNumber $chapterTitle";
     }
 
     public static function haveRead(User $user, Chapter $chapter): bool

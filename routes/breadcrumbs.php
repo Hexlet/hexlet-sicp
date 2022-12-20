@@ -14,8 +14,8 @@ Breadcrumbs::for('chapter', function (BreadcrumbTrail $trail, Chapter $chapter):
             $pushChapters($chapter->parent);
         }
 
-        $chapterName = getChapterName($chapter->path);
-        $trail->push("{$chapter->path} {$chapterName}", route('chapters.show', $chapter));
+        $chapterName = App\Helpers\ChapterHelper::fullChapterName($chapter->path);
+        $trail->push($chapterName, route('chapters.show', $chapter));
     };
 
     $pushChapters($chapter);
