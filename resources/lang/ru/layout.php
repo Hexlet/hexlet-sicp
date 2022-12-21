@@ -36,7 +36,7 @@ return [
     'footer' => [
         'about'             => 'О проекте',
         'source_code'       => 'Исходный код',
-        'other_os_projects' => 'Другие open-source проекты',
+        'other_os_projects' => 'OpenSource',
         'help'              => 'Помощь',
         'knowledge'         => 'База знаний',
         'blog'              => 'Блог',

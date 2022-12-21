@@ -1,13 +1,9 @@
-// Fonts
-@import url('https://fonts.googleapis.com/css?family=Open+Sans');
-
 // Bootstrap
 @import 'variables';
-@import '~bootstrap/scss/bootstrap';
 @import 'activity_chart';
-@import "carousel";
-@import "custom";
-@import "icons";
+@import 'custom';
+@import 'icons';
+@import '~bootstrap/scss/bootstrap';
 
 // NOTE: move if it will be necessary. It should be do for the site.
 // TODO grep and replace by .bd-gray-200

@@ -36,7 +36,7 @@ return [
     'footer' => [
         'about'             => 'About',
         'source_code'       => 'Source code',
-        'other_os_projects' => 'Other open-source projects',
+        'other_os_projects' => 'OpenSource',
         'help'              => 'Help',
         'knowledge'         => 'Knowledge',
         'blog'              => 'Blog',
