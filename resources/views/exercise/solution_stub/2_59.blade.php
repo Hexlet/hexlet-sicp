@@ -5,9 +5,9 @@
 {!! $solution !!}
 ;;; END
 
-(define first '(1 2 3 5))
-(define second '(3 4 5 6))
+(define first '(1 0 5 2 9))
+(define second '(10 1 19 5 50))
 
-(check-equal? (union-set first second) '(6 4 1 2 3 5))
+(check-equal? (union-set first second) '(0 2 9 10 1 19 5 50))
 (check-equal? (union-set first '()) first)
 (check-equal? (union-set '() second) second)
