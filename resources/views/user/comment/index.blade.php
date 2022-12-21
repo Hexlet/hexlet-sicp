@@ -12,9 +12,9 @@ use App\Helpers\MarkdownHelper;
                 <table class="table table-striped">
                     <thead>
                     <tr>
-                        <th class="w-15">{{ __('comment.user.location') }}</th>
-                        <th class="w-70">{{ __('comment.user.text') }}</th>
-                        <th class="w-15">{{ __('comment.user.date') }}</th>
+                        <th>{{ __('comment.user.location') }}</th>
+                        <th>{{ __('comment.user.text') }}</th>
+                        <th>{{ __('comment.user.date') }}</th>
                     </tr>
                     </thead>
                     <tbody>
