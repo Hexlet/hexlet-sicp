@@ -20,5 +20,5 @@
 
 (define interval2 (make-interval lower2 upper2))
 
-(check-equal?  (sub-interval interval2 interval2) '(0 . 0))
-(check-equal?  (sub-interval interval2 interval1) '(10 . 15))
+(check-equal?  (sub-interval interval1 interval2) '(-20 . -5))
+(check-equal?  (sub-interval interval2 interval1) '(5 . 20))

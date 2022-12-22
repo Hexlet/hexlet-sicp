@@ -5,5 +5,5 @@
   (cdr interval))
 
 (define (sub-interval a b)
-  (make-interval (- (lower-bound a) (lower-bound b))
-                 (- (upper-bound a) (upper-bound b))))
+  (make-interval (- (lower-bound a) (upper-bound b))
+                 (- (upper-bound a) (lower-bound b))))
