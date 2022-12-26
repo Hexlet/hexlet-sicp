@@ -10,8 +10,4 @@ hljs.registerLanguage('scheme', scheme);
 hljs.registerLanguage('vbnet', vbnet);
 hljs.registerLanguage('sql', sql);
 
-Livewire.hook('message.processed', () => {
-  hljs.highlightAll();
-});
-
 hljs.highlightAll();
