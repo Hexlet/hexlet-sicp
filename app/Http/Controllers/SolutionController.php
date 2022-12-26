@@ -21,6 +21,7 @@ class SolutionController extends Controller
             ->allowedFilters([
                 AllowedFilter::exact('exercise_id'),
                 AllowedFilter::partial('user.name'),
+                AllowedFilter::exact('user_id'),
             ])
             ->with(['user', 'exercise'])
             ->whereHas('user')
