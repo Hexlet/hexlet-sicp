@@ -38,7 +38,7 @@ test:
 	php artisan test
 
 test-solutions:
-	php artisan test --filter {testTeacherSolutions}
+	php artisan test --testsuite "Exercises"
 
 test-coverage:
 	XDEBUG_MODE=coverage php artisan test --coverage-clover build/logs/clover.xml

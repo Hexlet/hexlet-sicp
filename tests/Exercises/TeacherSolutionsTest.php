@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Exercises;
 
 use Tests\TestCase;
 use App\Services\SolutionChecker;
@@ -25,7 +25,13 @@ class TeacherSolutionsTest extends TestCase
         /** @var User $user */
         $user = User::factory()->create();
         $this->user = $user;
-        $this->exercises = Exercise::orderBy('id')->get();
+
+        // NOTE: The Miller Rabin test is probabilistic and its result is non-deterministic
+        $millerRabinExercisePath = '1.28';
+        $this->exercises = Exercise::where('path', '!=', $millerRabinExercisePath)
+            ->orderBy('id')
+            ->get();
+
         $this->solutionChecker = new SolutionChecker();
     }
 
