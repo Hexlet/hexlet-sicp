@@ -17,7 +17,10 @@
             <ul class="navbar-nav">
                 <li class="nav-item"><a href="{{ route('chapters.index') }}" class="nav-link p-2">{{ __('layout.nav.chapters') }}</a></li>
                 <li class="nav-item"><a href="{{ route('exercises.index') }}" class="nav-link p-2">{{ __('layout.nav.exercises') }}</a></li>
-                <li class="nav-item"><a href="https://guides.hexlet.io/how-to-learn-sicp/" class="nav-link p-2">{{ __('layout.nav.sicp_read') }}</a></li>
+                <!-- TODO: translate guide to english -->
+                @if (App::isLocale('ru'))
+                    <li class="nav-item"><a href="https://guides.hexlet.io/how-to-learn-sicp/" class="nav-link p-2">{{ __('layout.nav.sicp_read') }}</a></li>
+                @endif
                 <li class="nav-item"><a href="{{ route('top.index') }}" class="nav-link p-2">{{ __('layout.nav.rating') }}</a></li>
                 <li class="nav-item"><a href="{{ TemplateHelper::getBookLink($currentLocale) }}" class="nav-link link-info p-2">{{ __('layout.nav.sicp_book') }}</a></li>
             </ul>
