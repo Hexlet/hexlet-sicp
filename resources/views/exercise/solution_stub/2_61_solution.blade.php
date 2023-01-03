@@ -1,5 +1,3 @@
-(require racket/bool)
-
 (define (element-of-set? x set)
   (cond ((null? set) #f)
         ((= x (car set)) #t)
