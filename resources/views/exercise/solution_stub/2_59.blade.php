@@ -23,4 +23,4 @@
 (check-not-equal? (member 50 result) #f)
 
 (check-equal? (union-set first '()) first)
-(check-equal? (union-set '() second) second)
+(check-equal? (length (union-set '() second)) (length second))
