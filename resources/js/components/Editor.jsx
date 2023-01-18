@@ -5,8 +5,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { changeContent } from '../slices/editorSlice.js';
 import codeTemplates from '../common/codeTemplates.js';
+import theme from '../common/currentTheme';
 
 import 'codemirror/lib/codemirror.css';
+import 'codemirror/theme/material-darker.css';
+import 'codemirror/theme/neat.css';
 import 'codemirror/addon/scroll/simplescrollbars.css';
 import 'codemirror/addon/scroll/simplescrollbars.js';
 import 'codemirror/addon/edit/closebrackets.js';
@@ -55,6 +58,7 @@ const Editor = () => {
     scrollbarStyle: 'overlay',
     lineNumbers: true,
     tabSize: 2,
+    theme: theme === 'dark' ? 'material-darker' : 'neat',
   };
 
   return loadingState === 'loading'
