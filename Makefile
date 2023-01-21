@@ -35,7 +35,7 @@ lint-fix:
 	composer exec phpcbf -v
 
 test:
-	php artisan test --testsuite "Feature"
+	php artisan test
 
 test-solutions:
 	composer exec phpunit -- --testsuite "Exercises"
