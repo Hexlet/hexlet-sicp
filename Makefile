@@ -46,7 +46,7 @@ test-coverage:
 analyse:
 	composer exec phpstan analyse -v -- --memory-limit=512M
 
-check: lint analyse test
+check: test lint analyse
 
 config-clear:
 	php artisan config:clear

@@ -21,12 +21,12 @@ class ExerciseMember extends Model
             'state' => 'started',
         ];
 
-    protected function getGraph()
+    protected function getGraph(): string
     {
         return 'completed_exercise';
     }
 
-    protected function saveBeforeTransition()
+    protected function saveBeforeTransition(): bool
     {
         return true;
     }

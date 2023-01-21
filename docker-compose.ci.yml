@@ -12,7 +12,7 @@ services:
       DB_HOST: database
       DB_DATABASE: postgres
       DB_USERNAME: postgres
-    command: ["make", "analyse", "lint", "test-coverage"]
+    command: ["make", "test-coverage", "analyse", "lint"]
 
   database:
     image: postgres:13.2-alpine
