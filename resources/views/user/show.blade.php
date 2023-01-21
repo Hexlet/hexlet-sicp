@@ -79,7 +79,7 @@
                     </div>
                     <div class="col-4 col-md text-center my-2">
                         <div class="h2 text-info">
-                            {{ $user->exerciseMembers->count() }}
+                            {{ $user->exerciseMembers()->finished()->count() }}
                         </div>
                         <div class="text-secondary">
                             {{ trans_choice('user.show.statistics.exercise_members', $user->exerciseMembers->count()) }}
