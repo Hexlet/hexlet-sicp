@@ -35,10 +35,10 @@ lint-fix:
 	composer exec phpcbf -v
 
 test:
-	php artisan test
+	php artisan test --testsuite "Feature"
 
 test-solutions:
-	php artisan test --testsuite "Exercises"
+	composer exec phpunit -- --testsuite "Exercises"
 
 test-coverage:
 	XDEBUG_MODE=coverage php artisan test --coverage-clover build/logs/clover.xml

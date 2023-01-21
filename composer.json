@@ -94,6 +94,10 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "scripts": {
+        "test-solutions": [
+            "Composer\\Config::disableProcessTimeout",
+            "phpunit --testsuite Exercises"
+        ],
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover --ansi"
