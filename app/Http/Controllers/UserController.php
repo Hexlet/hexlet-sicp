@@ -23,7 +23,7 @@ class UserController extends Controller
             $points = 0;
             $userRatingPosition = 'N/A';
         }
-        $user->load('readChapters', 'completedExercises');
+        $user->load('readChapters', 'exerciseMembers');
         $chart = ChartHelper::getChart($user->id);
         return view('user.show', compact(
             'user',

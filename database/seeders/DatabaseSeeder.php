@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder
             ExercisesTableSeeder::class,
             UsersTableSeeder::class,
             SolutionsTableSeeder::class,
-            CompletedExercisesTableSeeder::class,
+            ExerciseMembersTableSeeder::class,
             ReadChaptersTableSeeder::class,
             CommentsTableSeeder::class,
         ]);

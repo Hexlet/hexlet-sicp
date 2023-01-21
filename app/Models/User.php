@@ -31,8 +31,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property-read int|null $chapters_count
  * @property-read Collection|Comment[] $comments
  * @property-read int|null $comments_count
- * @property-read Collection|CompletedExercise[] $completedExercises
- * @property-read int|null $completed_exercises_count
+ * @property-read Collection|ExerciseMember[] $exerciseMembers
+ * @property-read int|null $exercise_members_count
  * @property-read Collection|Exercise[] $exercises
  * @property-read int|null $exercises_count
  * @property-read Collection|ReadChapter[] $readChapters
@@ -89,14 +89,14 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(ReadChapter::class);
     }
 
-    public function completedExercises(): HasMany
+    public function exerciseMembers(): HasMany
     {
-        return $this->hasMany(CompletedExercise::class);
+        return $this->hasMany(ExerciseMember::class);
     }
 
     public function exercises(): BelongsToMany
     {
-        return $this->belongsToMany(Exercise::class, 'completed_exercises')->withTimestamps();
+        return $this->belongsToMany(Exercise::class, 'exercise_members')->withTimestamps();
     }
 
     public function comments(): HasMany
@@ -111,7 +111,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function hasCompletedExercise(Exercise $exercise): bool
     {
-        return $this->completedExercises()->whereExerciseId($exercise->id)->exists();
+        return $this->exerciseMembers()->whereExerciseId($exercise->id)->exists();
     }
 
     public function isGuest(): bool

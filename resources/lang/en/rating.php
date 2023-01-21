@@ -18,5 +18,5 @@ return [
     'number_of_points' => 'Points',
     'number_of_comments' => 'Comments',
     'read_chapters_from' => 'Chapters read, out of :count',
-    'completed_exercises_from' => 'Exercises completed, out of :count',
+    'exercise_members_from' => 'Exercises completed, out of :count',
 ];

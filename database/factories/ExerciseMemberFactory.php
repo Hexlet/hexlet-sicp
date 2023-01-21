@@ -2,16 +2,16 @@
 
 namespace Database\Factories;
 
-use App\Models\CompletedExercise;
+use App\Models\ExerciseMember;
 use App\Models\Exercise;
 use App\Models\User;
 use App\Services\ActivityService;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-/** @extends Factory<CompletedExercise> */
-class CompletedExerciseFactory extends Factory
+/** @extends Factory<ExerciseMember> */
+class ExerciseMemberFactory extends Factory
 {
-    protected $model = CompletedExercise::class;
+    protected $model = ExerciseMember::class;
 
     public function definition(): array
     {
@@ -38,10 +38,10 @@ class CompletedExerciseFactory extends Factory
     public function configure(): self
     {
         return $this
-            ->afterMaking(function (CompletedExercise $completedExercise) {
+            ->afterMaking(function (ExerciseMember $completedExercise) {
                 $completedExercise->finish();
             })
-            ->afterCreating(function (CompletedExercise $completedExercise) {
+            ->afterCreating(function (ExerciseMember $completedExercise) {
                 /** @var ActivityService $service */
                 $service = app()->make(ActivityService::class);
                 $service->logCompletedExercise(

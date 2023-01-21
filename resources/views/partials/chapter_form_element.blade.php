@@ -37,7 +37,7 @@
         <ul class="list-unstyled">
         @foreach($chapter->exercises as $exercise)
             <li>
-                @if($completedExercises->has($exercise->id))
+                @if($exerciseMembers->has($exercise->id))
                 <a href="{{ route('users.exercises.destroy', [$user, $exercise]) }}"
                    class="text-decoration-none"
                    data-bs-toggle="tooltip"

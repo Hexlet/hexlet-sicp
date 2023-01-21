@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\CompletedExercise;
+use App\Models\ExerciseMember;
 use App\Models\Exercise;
 use App\Models\User;
 use Illuminate\View\View;
@@ -23,7 +23,7 @@ class ExerciseController extends Controller
         $exercise->load('chapter', 'users');
         /** @var User $authUser */
         $authUser = auth()->user() ?? new User();
-        $userCompletedExercise = $authUser->completedExercises()
+        $userCompletedExercise = $authUser->exerciseMembers()
             ->where('exercise_id', $exercise->id)
             ->exists();
 
@@ -35,9 +35,9 @@ class ExerciseController extends Controller
             ->get();
 
         $isShowSavedSolutionsButton = collect($userSolutions)->isEmpty();
-        /** @var CompletedExercise $completedExercise */
+        /** @var ExerciseMember $completedExercise */
         $completedExercise = $authUser
-            ->completedExercises()
+            ->exerciseMembers()
             ->whereBelongsTo($exercise)->firstOrNew([]);
 
         if (

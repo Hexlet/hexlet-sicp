@@ -6,7 +6,7 @@ use App\Helpers\ChartHelper;
 use App\Models\Activity;
 use App\Models\Chapter;
 use App\Models\Comment;
-use App\Models\CompletedExercise;
+use App\Models\ExerciseMember;
 use App\Models\Exercise;
 use App\Models\ReadChapter;
 use App\Models\User;
@@ -54,14 +54,14 @@ class HomeController extends Controller
 
         if (!in_array($filter, $periodsForFilter, true)) {
             $countReadChapter = ReadChapter::count();
-            $countCompletedExercise = CompletedExercise::count();
+            $countCompletedExercise = ExerciseMember::count();
             $filter = 'all';
         } else {
             $subPeriod = "sub{$filter}";
             $period = Carbon::today()->$subPeriod(1);
 
             $countReadChapter = ReadChapter::where('created_at', '>', $period)->count();
-            $countCompletedExercise = CompletedExercise::where('created_at', '>', $period)->count();
+            $countCompletedExercise = ExerciseMember::where('created_at', '>', $period)->count();
         }
 
         return [

@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\CompletedExercise;
+use App\Models\ExerciseMember;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -18,7 +18,7 @@ return new class extends Migration
             Schema::table('completed_exercises', function (Blueprint $t) {
                 $t->string('state')->nullable();
             });
-            CompletedExercise::query()->update([
+            DB::table('completed_exercises')->update([
                 'state' => 'finished',
             ]);
         });

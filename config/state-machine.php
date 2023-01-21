@@ -1,10 +1,10 @@
 <?php
 
-use App\Models\CompletedExercise;
+use App\Models\ExerciseMember;
 
 return [
     'completed_exercise' => [
-        'class' => CompletedExercise::class,
+        'class' => ExerciseMember::class,
         'graph' => 'completed_exercise',
         'property_path' => 'state',
         'states' => [

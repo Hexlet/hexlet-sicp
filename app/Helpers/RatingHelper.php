@@ -17,14 +17,14 @@ class RatingHelper
             ->defaultSort('name')
             ->allowedSorts($sort ?? 'name')
             ->whereHas('readChapters')
-            ->orWhereHas('completedExercises')
+            ->orWhereHas('exerciseMembers')
             ->withCount('readChapters')
-            ->withCount('completedExercises')
+            ->withCount('exerciseMembers')
             ->limit(100)
             ->get();
             $calculatedRating = $users->map(fn(User $user) => [
                 'user' => $user,
-                'points' => PointsCalculator::calculate($user->read_chapters_count, $user->completed_exercises_count),
+                'points' => PointsCalculator::calculate($user->read_chapters_count, $user->exercise_members_count),
             ])
             ->when(empty($sort), function ($collection) {
                 return $collection->sortByDesc('points');
