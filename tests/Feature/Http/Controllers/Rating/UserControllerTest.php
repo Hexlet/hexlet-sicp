@@ -3,24 +3,30 @@
 namespace Tests\Feature\Http\Controllers\Rating;
 
 use App\Models\Chapter;
+use App\Models\Exercise;
 use App\Models\User;
 use Tests\TestCase;
+use Illuminate\Support\Collection;
 
 class UserControllerTest extends TestCase
 {
-    protected function setUp(): void
+    public function testIndex(): void
     {
-        parent::setUp();
-
         $users = User::factory()->count(10)->create();
-        $users->each(function (User $user): void {
-            $count = random_int(1, 10);
-            $chapters = Chapter::inRandomOrder()->limit($count)->get();
-            $user->chapters()->saveMany($chapters);
+        $users->chunk(2)->each(function (Collection $chunk, $i) {
+            $chunk->each(function (User $user) use ($i): void {
+                $chapters = Chapter::inRandomOrder()->limit($i)->get();
+                $exercises = Exercise::inRandomOrder()->limit($i)->get();
+                $user->chapters()->saveMany($chapters);
+                $user->exercises()->saveMany($exercises);
+            });
         });
+
+        $this->get(route('top.index'))
+            ->assertOk();
     }
 
-    public function testIndex(): void
+    public function testIndexWithoutUsers(): void
     {
         $this->get(route('top.index'))
             ->assertOk();
