@@ -37,13 +37,17 @@ class CompletedExerciseFactory extends Factory
 
     public function configure(): self
     {
-        return $this->afterCreating(function (CompletedExercise $completedExercise) {
-            /** @var ActivityService $service */
-            $service = app()->make(ActivityService::class);
-            $service->logCompletedExercise(
-                $completedExercise->user,
-                $completedExercise->exercise
-            );
-        });
+        return $this
+            ->afterMaking(function (CompletedExercise $completedExercise) {
+                $completedExercise->finish();
+            })
+            ->afterCreating(function (CompletedExercise $completedExercise) {
+                /** @var ActivityService $service */
+                $service = app()->make(ActivityService::class);
+                $service->logCompletedExercise(
+                    $completedExercise->user,
+                    $completedExercise->exercise
+                );
+            });
     }
 }

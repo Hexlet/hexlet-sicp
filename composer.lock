@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "32769b3fddfb3a654afb555d9757236d",
+    "content-hash": "77be698c7a2716643e0608b581db65e5",
     "packages": [
         {
             "name": "brick/math",
@@ -1950,6 +1950,68 @@
                 "source": "https://github.com/http-interop/http-factory-guzzle/tree/1.2.0"
             },
             "time": "2021-07-21T13:50:14+00:00"
+        },
+        {
+            "name": "iben12/laravel-statable",
+            "version": "v1.5.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/iben12/laravel-statable.git",
+                "reference": "324aafb2c5239ac087033fbc4a50329cbd424aee"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/iben12/laravel-statable/zipball/324aafb2c5239ac087033fbc4a50329cbd424aee",
+                "reference": "324aafb2c5239ac087033fbc4a50329cbd424aee",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.3|^8.0",
+                "sebdesign/laravel-state-machine": "^3.2"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.2.3",
+                "orchestra/testbench": "^5.19.0",
+                "phpunit/phpunit": "^9.5"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Iben\\Statable\\ServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Iben\\Statable\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Bence Ivady",
+                    "email": "iben@iben.hu",
+                    "homepage": "http://github.com/iben12",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Statable trait for Laravel Eloquent models",
+            "homepage": "http://github.com/iben12/laravel-statable",
+            "keywords": [
+                "event",
+                "laravel",
+                "state",
+                "statemachine"
+            ],
+            "support": {
+                "issues": "https://github.com/iben12/laravel-statable/issues",
+                "source": "https://github.com/iben12/laravel-statable/tree/v1.5.1"
+            },
+            "time": "2021-07-15T21:15:30+00:00"
         },
         {
             "name": "intervention/image",
@@ -5837,6 +5899,73 @@
             "time": "2022-03-21T16:45:01+00:00"
         },
         {
+            "name": "sebdesign/laravel-state-machine",
+            "version": "v3.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sebdesign/laravel-state-machine.git",
+                "reference": "8b0fd4fd3555f346391e41b7ef4962cbe0ebd3c2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sebdesign/laravel-state-machine/zipball/8b0fd4fd3555f346391e41b7ef4962cbe0ebd3c2",
+                "reference": "8b0fd4fd3555f346391e41b7ef4962cbe0ebd3c2",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "^7.0 | ^8.0 | ^9.0",
+                "php": "^7.2.5 | ^8.0",
+                "winzou/state-machine": "^0.4.2"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.3.1",
+                "orchestra/testbench": "^5.0 | ^6.0 | ^7.0",
+                "phpunit/phpunit": "^8.5 | ^9.3",
+                "symfony/process": "^4.3 | ^5.0 | ^6.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Sebdesign\\SM\\ServiceProvider"
+                    ],
+                    "aliases": {
+                        "StateMachine": "Sebdesign\\SM\\Facade"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Sebdesign\\SM\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Sébastien Nikolaou",
+                    "email": "info@sebdesign.eu",
+                    "homepage": "http://sebdesign.eu",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Winzou State Machine service provider for Laravel",
+            "homepage": "https://github.com/sebdesign/laravel-state-machine",
+            "keywords": [
+                "event",
+                "laravel",
+                "state",
+                "statemachine"
+            ],
+            "support": {
+                "issues": "https://github.com/sebdesign/laravel-state-machine/issues",
+                "source": "https://github.com/sebdesign/laravel-state-machine/tree/v3.3.0"
+            },
+            "time": "2022-02-01T22:58:52+00:00"
+        },
+        {
             "name": "spatie/browsershot",
             "version": "3.57.5",
             "source": {
@@ -7263,6 +7392,69 @@
             "time": "2022-11-25T10:21:52+00:00"
         },
         {
+            "name": "symfony/expression-language",
+            "version": "v6.2.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/expression-language.git",
+                "reference": "e558680a661eddd31f8718f968e75c9c3c8bdad1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/expression-language/zipball/e558680a661eddd31f8718f968e75c9c3c8bdad1",
+                "reference": "e558680a661eddd31f8718f968e75c9c3c8bdad1",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.1",
+                "symfony/cache": "^5.4|^6.0",
+                "symfony/service-contracts": "^1.1|^2|^3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\ExpressionLanguage\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Provides an engine that can compile and evaluate expressions",
+            "homepage": "https://symfony.com",
+            "support": {
+                "source": "https://github.com/symfony/expression-language/tree/v6.2.2"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2022-12-13T15:46:14+00:00"
+        },
+        {
             "name": "symfony/finder",
             "version": "v6.2.0",
             "source": {
@@ -8543,6 +8735,175 @@
             "time": "2022-11-02T09:08:04+00:00"
         },
         {
+            "name": "symfony/property-access",
+            "version": "v6.2.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/property-access.git",
+                "reference": "9c267d87dd665d5d33e897290bbb9f64ae905b94"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/property-access/zipball/9c267d87dd665d5d33e897290bbb9f64ae905b94",
+                "reference": "9c267d87dd665d5d33e897290bbb9f64ae905b94",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.1",
+                "symfony/deprecation-contracts": "^2.1|^3",
+                "symfony/property-info": "^5.4|^6.0"
+            },
+            "require-dev": {
+                "symfony/cache": "^5.4|^6.0"
+            },
+            "suggest": {
+                "psr/cache-implementation": "To cache access methods."
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\PropertyAccess\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Provides functions to read and write from/to an object or array using a simple string notation",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "access",
+                "array",
+                "extraction",
+                "index",
+                "injection",
+                "object",
+                "property",
+                "property path",
+                "reflection"
+            ],
+            "support": {
+                "source": "https://github.com/symfony/property-access/tree/v6.2.3"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2022-12-23T08:18:26+00:00"
+        },
+        {
+            "name": "symfony/property-info",
+            "version": "v6.2.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/property-info.git",
+                "reference": "b4cbbbcc8679460cfeb1d5bdcb8127a2e85c376c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/property-info/zipball/b4cbbbcc8679460cfeb1d5bdcb8127a2e85c376c",
+                "reference": "b4cbbbcc8679460cfeb1d5bdcb8127a2e85c376c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.1",
+                "symfony/string": "^5.4|^6.0"
+            },
+            "conflict": {
+                "phpdocumentor/reflection-docblock": "<5.2",
+                "phpdocumentor/type-resolver": "<1.5.1",
+                "symfony/dependency-injection": "<5.4"
+            },
+            "require-dev": {
+                "doctrine/annotations": "^1.10.4|^2",
+                "phpdocumentor/reflection-docblock": "^5.2",
+                "phpstan/phpdoc-parser": "^1.0",
+                "symfony/cache": "^5.4|^6.0",
+                "symfony/dependency-injection": "^5.4|^6.0",
+                "symfony/serializer": "^5.4|^6.0"
+            },
+            "suggest": {
+                "phpdocumentor/reflection-docblock": "To use the PHPDoc",
+                "psr/cache-implementation": "To cache results",
+                "symfony/doctrine-bridge": "To use Doctrine metadata",
+                "symfony/serializer": "To use Serializer metadata"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\PropertyInfo\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kévin Dunglas",
+                    "email": "dunglas@gmail.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Extracts information about PHP class' properties using metadata of popular sources",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "doctrine",
+                "phpdoc",
+                "property",
+                "symfony",
+                "type",
+                "validator"
+            ],
+            "support": {
+                "source": "https://github.com/symfony/property-info/tree/v6.2.3"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2022-12-20T16:41:15+00:00"
+        },
+        {
             "name": "symfony/routing",
             "version": "v6.2.0",
             "source": {
@@ -9558,6 +9919,64 @@
                 "source": "https://github.com/webmozarts/assert/tree/1.11.0"
             },
             "time": "2022-06-03T18:03:27+00:00"
+        },
+        {
+            "name": "winzou/state-machine",
+            "version": "0.4.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/winzou/state-machine.git",
+                "reference": "d155f66d8386e7743c99e7add7d3201d6b55fcc2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/winzou/state-machine/zipball/d155f66d8386e7743c99e7add7d3201d6b55fcc2",
+                "reference": "d155f66d8386e7743c99e7add7d3201d6b55fcc2",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.1.3|^8.0",
+                "symfony/event-dispatcher": "^4.3|^5.0|^6.0",
+                "symfony/expression-language": "^4.3|^5.0|^6.0",
+                "symfony/property-access": "^4.3|^5.0|^6.0"
+            },
+            "require-dev": {
+                "phpspec/phpspec": "^5.0|^6.0|^7.1",
+                "twig/twig": "^2.10|^3.0"
+            },
+            "suggest": {
+                "twig/twig": "Access the state machine in your twig templates (^2.10|^3.0)"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "SM": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Alexandre Bacco",
+                    "email": "alexandre.bacco@gmail.com",
+                    "homepage": "http://alex.bacco.fr"
+                }
+            ],
+            "description": "A very lightweight yet powerful PHP state machine",
+            "homepage": "https://github.com/winzou/StateMachine",
+            "keywords": [
+                "callback",
+                "event",
+                "state",
+                "statemachine"
+            ],
+            "support": {
+                "issues": "https://github.com/winzou/state-machine/issues",
+                "source": "https://github.com/winzou/state-machine/tree/0.4.3"
+            },
+            "time": "2022-01-29T13:38:09+00:00"
         }
     ],
     "packages-dev": [

@@ -6,6 +6,7 @@ use Database\Factories\CompletedExerciseFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Iben\Statable\Statable;
 
 /**
  * @method static CompletedExerciseFactory factory(...$parameters)
@@ -13,6 +14,21 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class CompletedExercise extends Model
 {
     use HasFactory;
+    use Statable;
+
+    protected $attributes = [
+            'state' => 'started',
+        ];
+
+    protected function getGraph()
+    {
+        return 'completed_exercise';
+    }
+
+    protected function saveBeforeTransition()
+    {
+        return true;
+    }
 
     public function user(): BelongsTo
     {
@@ -22,5 +38,20 @@ class CompletedExercise extends Model
     public function exercise(): BelongsTo
     {
         return $this->belongsTo(Exercise::class);
+    }
+
+    public function isFinished(): bool
+    {
+        return $this->state === 'finished';
+    }
+
+    public function isNotFinished(): bool
+    {
+        return !$this->isFinished();
+    }
+
+    public function finish(): void
+    {
+        $this->apply('finish');
     }
 }
