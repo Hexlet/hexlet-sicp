@@ -1,0 +1,24 @@
+name: CI status
+
+on:
+  push:
+    branches:
+      - 'main'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: satackey/action-docker-layer-caching@v0.0.11
+
+      - name: Run CI
+        run: |
+          make ci
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v3
+        with:
+          file: build/logs/clover.xml
+        # fail_ci_if_error: true
