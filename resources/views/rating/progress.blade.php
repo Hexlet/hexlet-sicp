@@ -20,8 +20,8 @@
                         <th>
                             @include('components.sorting_widget',[
                                'sortParams' => $sortParams,
-                               'nameParams' => 'completed_exercises_count',
-                               'name' => __('rating.completed_exercises_from', ['count' => $exercisesCount]),
+                               'nameParams' => 'exercise_members_count',
+                               'name' => __('rating.exercise_members_from', ['count' => $exercisesCount]),
                                'route' => route('progress_top.index', $nextExercisesParameterFromSort),
                            ])
                         </th>
@@ -40,7 +40,7 @@
                                 </a>
                             </td>
                             <td>{{ $user->read_chapters_count }}</td>
-                            <td>{{ $user->completed_exercises_count }}</td>
+                            <td>{{ $user->exercise_members_count }}</td>
                         </tr>
                     @endforeach
                 </tbody>

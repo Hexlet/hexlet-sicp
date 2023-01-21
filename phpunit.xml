@@ -10,6 +10,7 @@
          processIsolation="false"
          stopOnFailure="true"
          xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.3/phpunit.xsd"
+         defaultTestSuite="Feature"
 >
     <coverage processUncoveredFiles="true">
         <include>

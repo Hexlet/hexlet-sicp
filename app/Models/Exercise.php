@@ -37,7 +37,7 @@ class Exercise extends Model
 
     public function users(): BelongsToMany
     {
-        return $this->belongsToMany(User::class, 'completed_exercises');
+        return $this->belongsToMany(User::class, 'exercise_members');
     }
 
     public function solutions(): HasMany

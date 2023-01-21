@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\Http\Controllers\User;
 
-use App\Models\CompletedExercise;
+use App\Models\ExerciseMember;
 use App\Models\Exercise;
 use Database\Seeders\ChaptersTableSeeder;
 use Database\Seeders\ExercisesTableSeeder;
@@ -37,7 +37,7 @@ class UserExerciseControllerTest extends ControllerTestCase
         $response->assertSessionDoesntHaveErrors();
         $response->assertRedirect();
 
-        $this->assertDatabaseHas('completed_exercises', [
+        $this->assertDatabaseHas('exercise_members', [
             'user_id'     => $this->user->id,
             'exercise_id' => $exercise->id,
         ]);
@@ -45,8 +45,8 @@ class UserExerciseControllerTest extends ControllerTestCase
 
     public function testDestroy(): void
     {
-        /** @var CompletedExercise $completedExercise */
-        $completedExercise = $this->user->completedExercises()->firstOrFail();
+        /** @var ExerciseMember $completedExercise */
+        $completedExercise = $this->user->exerciseMembers()->firstOrFail();
 
         $response = $this->delete(route('users.exercises.destroy', [
             $completedExercise->user_id,
@@ -56,7 +56,7 @@ class UserExerciseControllerTest extends ControllerTestCase
         $response->assertSessionDoesntHaveErrors();
         $response->assertRedirect();
 
-        $this->assertDatabaseMissing('completed_exercises', [
+        $this->assertDatabaseMissing('exercise_members', [
             'user_id'     => $completedExercise->user_id,
             'exercise_id' => $completedExercise->exercise_id,
         ]);

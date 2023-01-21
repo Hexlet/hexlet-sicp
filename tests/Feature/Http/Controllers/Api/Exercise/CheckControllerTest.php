@@ -46,7 +46,7 @@ class CheckControllerTest extends ControllerTestCase
             'subject_id' => $exercise->id,
             'subject_type' => $exercise::class,
         ]);
-        $this->assertDatabaseHas('completed_exercises', [
+        $this->assertDatabaseHas('exercise_members', [
             'user_id' => $this->user->id,
             'exercise_id' => $exercise->id,
         ]);

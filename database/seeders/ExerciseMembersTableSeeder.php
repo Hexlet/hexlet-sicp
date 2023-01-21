@@ -2,12 +2,12 @@
 
 namespace Database\Seeders;
 
-use App\Models\CompletedExercise;
+use App\Models\ExerciseMember;
 use App\Models\Exercise;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
-class CompletedExercisesTableSeeder extends Seeder
+class ExerciseMembersTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -20,7 +20,7 @@ class CompletedExercisesTableSeeder extends Seeder
         $exercises = Exercise::get();
 
         $users->each(function (User $user) use ($exercises) {
-            CompletedExercise::factory()
+            ExerciseMember::factory()
                 ->user($user)
                 ->exercise($exercises->random())
                 ->create();

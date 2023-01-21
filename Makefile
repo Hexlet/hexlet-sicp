@@ -35,7 +35,7 @@ lint-fix:
 	composer exec phpcbf -v
 
 test:
-	php artisan test --testsuite "Feature"
+	php artisan test
 
 test-solutions:
 	composer exec phpunit -- --testsuite "Exercises"
@@ -46,7 +46,7 @@ test-coverage:
 analyse:
 	composer exec phpstan analyse -v -- --memory-limit=512M
 
-check: lint analyse test
+check: test lint analyse
 
 config-clear:
 	php artisan config:clear

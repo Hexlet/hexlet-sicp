@@ -18,5 +18,5 @@ return [
     'number_of_points' => 'Количество очков',
     'number_of_comments' => 'Количество комментариев',
     'read_chapters_from' => 'Прочитано глав из :count',
-    'completed_exercises_from' => 'Выполнено заданий из :count',
+    'exercise_members_from' => 'Выполнено заданий из :count',
 ];

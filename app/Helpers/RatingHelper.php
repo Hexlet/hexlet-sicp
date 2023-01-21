@@ -16,15 +16,15 @@ class RatingHelper
         $users = QueryBuilder::for(User::class)
             ->defaultSort('name')
             ->allowedSorts($sort ?? 'name')
-            ->whereHas('readChapters')
-            ->orWhereHas('completedExercises')
-            ->withCount('readChapters')
-            ->withCount('completedExercises')
+            ->withCount([
+                'readChapters',
+                'exerciseMembers' => fn($query) => $query->finished(),
+            ])
             ->limit(100)
             ->get();
             $calculatedRating = $users->map(fn(User $user) => [
                 'user' => $user,
-                'points' => PointsCalculator::calculate($user->read_chapters_count, $user->completed_exercises_count),
+                'points' => PointsCalculator::calculate($user->read_chapters_count, $user->exercise_members_count),
             ])
             ->when(empty($sort), function ($collection) {
                 return $collection->sortByDesc('points');
