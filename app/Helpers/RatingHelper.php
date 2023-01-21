@@ -20,8 +20,6 @@ class RatingHelper
                 'readChapters',
                 'exerciseMembers' => fn($query) => $query->finished(),
             ])
-            ->where('read_chapters_count', '>', 0)
-            ->orWhere('exercise_members_count', '>', 0)
             ->limit(100)
             ->get();
             $calculatedRating = $users->map(fn(User $user) => [
