@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Iben\Statable\Statable;
+use Illuminate\Database\Eloquent\Builder;
 
 /**
  * @method static ExerciseMemberFactory factory(...$parameters)
@@ -53,5 +54,10 @@ class ExerciseMember extends Model
     public function finish(): void
     {
         $this->apply('finish');
+    }
+
+    public function scopeFinished(Builder $builder): Builder
+    {
+        return $builder->where('state', '=', 'finished');
     }
 }
