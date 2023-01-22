@@ -97,5 +97,5 @@ return [
         ],
     ],
 
-    'log_sql_queries' => true,
+    'log_sql_queries' => false,
 ];
