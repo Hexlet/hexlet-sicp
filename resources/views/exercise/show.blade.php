@@ -96,14 +96,13 @@
             <div id="codemirrorContainer"></div>
         </div>
     </div>
-    <script>
-      const userId = "{{ $authUser->id }}";
-      const exerciseId = "{{ $exercise->id }}";
-      const locale = "{{ LaravelLocalization::getCurrentLocale() }}";
-      window.sicpEditorData = { userId, exerciseId, locale };
-    </script>
-
-    @push('scripts')
-    <script src="{{ mix('js/editor.js') }}" defer></script>
-    @endpush
 @endsection
+@push('scripts')
+    <script>
+        const userId = "{{ $authUser->id }}";
+        const exerciseId = "{{ $exercise->id }}";
+        const locale = "{{ LaravelLocalization::getCurrentLocale() }}";
+        window.sicpEditorData = { userId, exerciseId, locale };
+    </script>
+    <script src="{{ mix('js/editor.js') }}" defer></script>
+@endpush
