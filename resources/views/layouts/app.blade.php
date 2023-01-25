@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="h-100" lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html class="h-100" lang="{{ str_replace('_', '-', app()->getLocale()) }}" data-bs-theme="light">
 
 <head>
   <meta charset="utf-8">
@@ -27,43 +27,23 @@
 </head>
 
 <body class="min-vh-100 d-flex flex-column">
-  <div class="modal fade" id="correctionModal" tabindex="-1" aria-labelledby="correctionModal" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h3 class="modal-title" id="correctionModal">{{ __('layout.modal.title') }}</h3>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <p class="text-danger d-none" id="correctionModalFeedback">{{ __('layout.modal.network_error') }}</p>
-          <b>{{ __('layout.modal.body') }}</b>
-          <p class="p-4 my-3 bg-light">
-            <span id="typoTextBefore"></span>
-            <mark id="typoText"></mark>
-            <span id="typoTextAfter"></span>
-          </p>
-          <div class="my-3">
-            <textarea class="form-control" id="correctionModalReporterComment" rows="3"></textarea>
-            <input type="hidden" id="correctionModalReporterName" value="{{ data_get(auth()->user(), 'name', __('layout.modal.guest')) }}">
-          </div>
-          <b>{{ __('layout.modal.question') }}</b>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ __('layout.modal.button_cancel') }}</button>
-          <button type="button" class="btn btn-primary" id="correctionModalSendButton">{{ __('layout.modal.button_send') }}</button>
-        </div>
-      </div>
-    </div>
-  </div>
   @include('layouts._nav')
+  @include('flash::message')
+  @hasSection('content')
   <main class='flex-grow-1 m-0'>
     <div class="container p-0">
-      @include('flash::message')
       @yield('content')
     </div>
-    @yield('content_landing')
-    @include('layouts._footer')
   </main>
+  @endif
+
+  @hasSection('landing_content')
+  <main>
+    @yield('landing_content')
+  </main>
+  @endif
+
+  @include('layouts._footer')
   <script src="{{ mix('js/app.js') }}" defer></script>
   <script src="{{ mix('js/hljs.js')}}"></script>
   <script src="{{ mix('js/custom.js')}}" defer></script>

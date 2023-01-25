@@ -3,7 +3,8 @@ import { useSelector } from 'react-redux';
 import { Alert } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import Highlight from 'react-syntax-highlighter';
-import { vs } from 'react-syntax-highlighter/dist/esm/styles/hljs';
+import { vs, vs2015 } from 'react-syntax-highlighter/dist/esm/styles/hljs';
+import theme from '../common/currentTheme';
 
 const statusToTypeMap = {
   success: 'success',
@@ -37,7 +38,12 @@ const Output = () => {
           <Alert className="m-3" variant={alertClassName}>
             {message}
           </Alert>
-          <Highlight className="flex-grow-1 m-0" language="vbnet" style={vs} showLineNumbers>
+          <Highlight
+            className="flex-grow-1 m-0"
+            language="vbnet"
+            style={theme === 'dark' ? vs2015 : vs}
+            showLineNumbers
+          >
             {output}
           </Highlight>
         </>
