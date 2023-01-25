@@ -94,7 +94,7 @@ make test # run tests
 
     ```dotenv
     DB_CONNECTION=pgsql
-    DB_HOST=localhost
+    DB_HOST=database
     DB_PORT=5432
     DB_DATABASE=postgres
     DB_USERNAME=postgres
