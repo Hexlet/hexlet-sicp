@@ -1,11 +1,20 @@
 /* Article - https://bitsofco.de/github-contribution-graph-css-grid/ */
 
 /* Grid-related CSS */
-
 :root {
     --square-size: 15px;
     --square-gap: 5px;
     --week-width: calc(var(--square-size) + var(--square-gap));
+    --light-background: #ebedf0;
+    --dark-background: #343a40;
+}
+
+[data-bs-theme='light'] {
+    --theme-background-color: var(--light-background);
+}
+
+[data-bs-theme='dark'] {
+    --theme-background-color: var(--dark-background);
 }
 
 .squares {
@@ -22,7 +31,7 @@
 }
 
 .squares li {
-    background-color: #ebedf0;
+    background-color: var(--theme-background-color);
     list-style: none;
 }
 
