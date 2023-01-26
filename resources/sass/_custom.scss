@@ -17,3 +17,18 @@
 .x-vh-75 {
     height: 75vh
 }
+
+.x-bg-gray {
+    background: #e9ecef;
+}
+
+[data-bs-theme=dark] {
+    .x-bg-gray {
+        background: #343a40;
+    }
+
+    .hljs {
+        color: inherit;
+        background-color: inherit;
+    }
+}
