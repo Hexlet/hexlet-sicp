@@ -64,7 +64,7 @@
             </div>
         </div>
         <div class="col-12 col-md-9 my-4">
-            <div class="shadow bg-white rounded p-3 mb-5">
+            <div class="shadow rounded p-3 mb-5">
                 <div class="h2 text-center text-secondary mb-2">
                     {{ __('user.show.statistics.statistics') }}
                 </div>
