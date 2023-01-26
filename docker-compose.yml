@@ -2,7 +2,9 @@ version: '3.7'
 
 services:
   application:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
     volumes:
       - .:/app:delegated
       - ~/.bash_history:/home/sicp/.bash_history:delegated
@@ -13,7 +15,9 @@ services:
     command: ["make", "start-app"]
 
   frontend:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
     volumes:
       - .:/app:delegated
     command: ["make", "start-frontend"]

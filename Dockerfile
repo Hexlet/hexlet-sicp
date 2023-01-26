@@ -1,47 +1,24 @@
-FROM ubuntu:22.04
+# syntax = edrevo/dockerfile-plus
 
-ENV DEBIAN_FRONTEND=noninteractive
-ENV TZ=Europe/Moscow
-ENV PATH=node_modules/.bin:$PATH
+INCLUDE+ Dockerfile.dev
 
-WORKDIR /app
+ENV PORT=80
 
-RUN apt-get update && apt-get install -y \
-    make \
-    curl \
-    git \
-    libpq-dev \
-    libzip-dev \
-    racket \
-    sqlite3 \
-    unzip \
-    zip \
-    php \
-    php-bcmath \
-    php-exif \
-    php-pdo \
-    php-pgsql \
-    php-pgsql \
-    php-zip \
-    php-xdebug \
-    php-dom \
-    php-xml \
-    php-mbstring \
-    php-sqlite3 \
-    php-curl
+COPY composer.json composer.lock ./
+COPY app/Helpers/helpers.php ./app/Helpers/helpers.php
 
-RUN apt-get update && apt-get install -y \
-    software-properties-common \
-    && rm -rf /var/lib/apt/lists/*
+RUN composer install --prefer-dist --no-scripts --no-dev --no-autoloader
 
-RUN add-apt-repository -y ppa:plt/racket
-RUN apt update && apt-get install -y racket
-RUN raco pkg install sicp
+COPY package.json package-lock.json ./
 
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-COPY ./xdebug.ini /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+RUN npm ci
 
-RUN curl -sL https://deb.nodesource.com/setup_18.x | bash -
-RUN apt-get update && apt-get install -y nodejs
+COPY . .
 
-ENV PATH=node_modules/.bin:$PATH
+RUN composer dump-autoload --no-dev --optimize
+
+RUN npm run prod
+
+CMD ["bash", "-c", "make db-prepare start-app"]
+
+EXPOSE ${PORT}

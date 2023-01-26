@@ -1,4 +1,7 @@
+
 include make-compose.mk
+
+PORT ?= 8000
 
 console:
 	php artisan tinker
@@ -21,13 +24,13 @@ start:
 	heroku local -f Procfile.dev
 
 start-app:
-	php artisan serve --host 0.0.0.0
+	php artisan serve --host 0.0.0.0 --port ${PORT}
 
 start-frontend:
 	npm run watch
 
 db-prepare:
-	php artisan migrate:fresh --seed
+	php artisan migrate:fresh --force --seed
 
 lint: lint-js lint-php
 
@@ -81,3 +84,6 @@ setup-git-hooks:
 .PHONY: test
 
 pre-push-hook: lint analyse
+
+docker-build-render:
+	DOCKER_BUILDKIT=1 COMPOSE_DOCKER_CLI_BUILD=1 docker build . -t hexlet-sicp:cached

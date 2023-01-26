@@ -2,7 +2,9 @@ version: '3.7'
 
 services:
   application:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
     volumes:
       - .:/app
     depends_on:
