@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import Highlight from 'react-syntax-highlighter';
-import { vs, vs2015 } from 'react-syntax-highlighter/dist/esm/styles/hljs';
+import { vs, monokaiSublime } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import theme from '../common/currentTheme';
 
 const Tests = () => {
@@ -10,9 +10,9 @@ const Tests = () => {
   return hasTests ? (
     <div className="d-flex h-100">
       <Highlight
-        className="h-100"
+        className="h-100 w-100"
         language="scheme"
-        style={theme === 'dark' ? vs2015 : vs}
+        style={theme === 'dark' ? monokaiSublime : vs}
         showLineNumbers
       >
         {testCode}
