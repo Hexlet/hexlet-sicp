@@ -14,7 +14,7 @@ class CheckController extends Controller
     public function store(Exercise $exercise, Request $request, ExerciseService $exerciseService): Response
     {
         $data = $request->validate([
-            'user_id' => 'nullable',
+            'user_id' => 'integer|nullable',
             'solution_code' => 'required',
         ]);
 

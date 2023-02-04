@@ -40,6 +40,11 @@ class Exercise extends Model
         return $this->belongsToMany(User::class, 'exercise_members');
     }
 
+    public function members(): HasMany
+    {
+        return $this->hasMany(ExerciseMember::class);
+    }
+
     public function solutions(): HasMany
     {
         return $this->hasMany(Solution::class);

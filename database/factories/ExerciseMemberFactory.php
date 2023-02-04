@@ -38,15 +38,15 @@ class ExerciseMemberFactory extends Factory
     public function configure(): self
     {
         return $this
-            ->afterMaking(function (ExerciseMember $completedExercise) {
-                $completedExercise->finish();
+            ->afterMaking(function (ExerciseMember $exerciseMember) {
+                $exerciseMember->finish();
             })
-            ->afterCreating(function (ExerciseMember $completedExercise) {
+            ->afterCreating(function (ExerciseMember $exerciseMember) {
                 /** @var ActivityService $service */
                 $service = app()->make(ActivityService::class);
                 $service->logCompletedExercise(
-                    $completedExercise->user,
-                    $completedExercise->exercise
+                    $exerciseMember->user,
+                    $exerciseMember->exercise
                 );
             });
     }
