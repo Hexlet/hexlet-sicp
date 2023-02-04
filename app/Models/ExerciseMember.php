@@ -41,6 +41,11 @@ class ExerciseMember extends Model
         return $this->belongsTo(Exercise::class);
     }
 
+    public function mayFinish(): bool
+    {
+        return $this->canApply('finish');
+    }
+
     public function isFinished(): bool
     {
         return $this->state === 'finished';
@@ -54,6 +59,11 @@ class ExerciseMember extends Model
     public function finish(): void
     {
         $this->apply('finish');
+    }
+
+    public function isStarted(): bool
+    {
+        return $this->state === 'started';
     }
 
     public function scopeFinished(Builder $builder): Builder

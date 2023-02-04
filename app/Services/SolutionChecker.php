@@ -3,14 +3,17 @@
 namespace App\Services;
 
 use App\Models\Exercise;
-use App\Models\User;
 use Illuminate\Support\Facades\Storage;
 use mikehaertl\shellcommand\Command;
 
 class SolutionChecker
 {
-    public function check(User $user, Exercise $exercise, string $solutionCode): CheckResult
+    public function check(Exercise $exercise, string $solutionCode): CheckResult
     {
+        if (!$exercise->hasTests()) {
+            return new CheckResult(CheckResult::SUCCESS_EXIT_CODE);
+        }
+
         $tests = $exercise->getExerciseTests();
         $contents = view(
             'exercise.solution_sandbox_wrapper',
@@ -20,8 +23,7 @@ class SolutionChecker
             ]
         )->render();
 
-
-        $hashedUserExerciseSolutionId = hash('sha256', implode('', [$user->id, $exercise->id]));
+        $hashedUserExerciseSolutionId = hash('sha256', implode('', [time(), $exercise->id]));
         $userSolutionPath = sprintf('solutions/%s.rkt', $hashedUserExerciseSolutionId);
 
         Storage::put($userSolutionPath, $contents);

@@ -1,2 +1,2 @@
-web: make start-app
+web: PORT=8000 make start-app
 frontend: make start-frontend

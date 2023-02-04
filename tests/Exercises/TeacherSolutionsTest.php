@@ -22,9 +22,6 @@ class TeacherSolutionsTest extends TestCase
         parent::setUp();
         $this->seed(ChaptersTableSeeder::class);
         $this->seed(ExercisesTableSeeder::class);
-        /** @var User $user */
-        $user = User::factory()->create();
-        $this->user = $user;
 
         $this->solutionChecker = new SolutionChecker();
     }
@@ -57,7 +54,7 @@ class TeacherSolutionsTest extends TestCase
             $this->markTestSkipped("Exercise {$exercisePath} doesnt have teacher solution");
         }
         $teacherSolution = $exercise->getExerciseTeacherSolution();
-        $checkResult = $this->solutionChecker->check($this->user, $exercise, $teacherSolution);
+        $checkResult = $this->solutionChecker->check($exercise, $teacherSolution);
 
         $exercisePath = $exercise->path;
         $output = $checkResult->getOutput();

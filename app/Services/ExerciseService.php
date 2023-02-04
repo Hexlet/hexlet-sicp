@@ -6,6 +6,7 @@ namespace App\Services;
 
 use App\Models\User;
 use App\Models\Exercise;
+use App\Models\ExerciseMember;
 use App\Models\Solution;
 use App\Services\SolutionChecker;
 use Illuminate\Support\Facades\Log;
@@ -18,41 +19,40 @@ class ExerciseService
 
     public function check(User $user, Exercise $exercise, string $solutionCode): CheckResult
     {
-        if (!$exercise->hasTests()) {
-            $this->completeExercise($user, $exercise);
-            return new CheckResult(0, '');
-        }
-
-        $checkResult = $this->checker->check($user, $exercise, $solutionCode);
-
-        if ($checkResult->isSuccess()) {
-            $this->completeExercise($user, $exercise);
-        }
+        $checkResult = $this->checker->check($exercise, $solutionCode);
 
         if ($checkResult->isCheckExecutionError()) {
             Log::error(
                 "Failed to execute check. Output: {$checkResult->getOutput()}"
             );
+
+            return $checkResult;
+        }
+
+        if ($user->isGuest()) {
+            return $checkResult;
+        }
+
+        /** @var \App\Models\ExerciseMember $exerciseMember */
+        $exerciseMember = ExerciseMember
+            ::whereBelongsTo($user)
+            ->whereBelongsTo($exercise)
+            ->firstOrNew();
+
+        $exerciseMember->user()->associate($user);
+        $exerciseMember->exercise()->associate($exercise);
+        $exerciseMember->save();
+
+        if ($checkResult->isSuccess() && $user->isRegistered()) {
+            if ($exerciseMember->mayFinish()) {
+                $exerciseMember->finish();
+                $exerciseMember->save();
+                Log::info('finished');
+                $this->activityService->logCompletedExercise($user, $exercise);
+            }
         }
 
         return $checkResult;
-    }
-
-    public function completeExercise(User $user, Exercise $exercise): void
-    {
-        if ($user->hasCompletedExercise($exercise) || $user->isGuest()) {
-            return;
-        }
-
-        $user->exercises()->syncWithoutDetaching($exercise);
-        $this->activityService->logCompletedExercise($user, $exercise);
-    }
-
-    // TODO: remove me
-    public function removeCompletedExercise(User $user, Exercise $exercise): void
-    {
-        $user->exercises()->detach($exercise);
-        $this->activityService->logRemovedExercise($user, $exercise);
     }
 
     public function createSolution(User $user, Exercise $exercise, string $solutionCode): Solution

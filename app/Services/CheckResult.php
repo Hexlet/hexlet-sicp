@@ -16,7 +16,7 @@ class CheckResult
     private int $exitCode;
     private string $output;
 
-    public function __construct(int $exitCode, string $output)
+    public function __construct(int $exitCode, string $output = '')
     {
         $this->exitCode = $exitCode;
         $this->output = $output;
