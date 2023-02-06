@@ -47,7 +47,7 @@ class ExerciseService
             if ($exerciseMember->mayFinish()) {
                 $exerciseMember->finish();
                 $exerciseMember->save();
-                Log::info('finished');
+
                 $this->activityService->logCompletedExercise($user, $exercise);
             }
         }
