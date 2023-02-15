@@ -7,7 +7,7 @@ const solutionSlice = createSlice({
   name: 'showSolution',
   initialState: {
     startTime: Date.now(),
-    waitingTime: 30000,
+    waitingTime: 1200000,
     displaySolutionState: 'notShown',
   },
   reducers: {
