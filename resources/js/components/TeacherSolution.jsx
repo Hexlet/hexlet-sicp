@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from 'react';
+import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Countdown from 'react-countdown';
 import { format } from 'date-fns';
@@ -6,23 +6,11 @@ import Highlight from 'react-syntax-highlighter';
 import { vs, monokaiSublime } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import { useTranslation } from 'react-i18next';
 
-import axios from 'axios';
 import { changeShowStatus } from '../slices/solutionSlice';
 import waitingClock from '../../assets/img/waiting_clock.png';
 import theme from '../common/currentTheme';
-import routes from '../common/routes';
-import ExerciseIdContext from '../context/ExerciseIdContext.js';
 
 const TeacherSolution = () => {
-  const exerciseId = useContext(ExerciseIdContext);
-  useEffect(() => {
-    async function test() {
-      const resp = await axios.get(routes.saveSolutionPath(exerciseId));
-      console.log(resp);
-      return resp;
-    }
-    test();
-  }, []);
   const dispatch = useDispatch();
   const { t } = useTranslation();
   const { hasTeacherSolution, teacherSolutionCode } = useSelector((state) => state.exerciseInfo);
