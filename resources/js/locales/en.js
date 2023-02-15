@@ -7,6 +7,9 @@ export default {
     tests: 'Tests',
     loading: 'Loading...',
     teacherSolution: 'Solution',
+    solutionInstructions: "Teacher's solution will be available in:",
+    solutionNotice: "It's best to solve the problem yourself, but if you're stuck for a long time, feel free to check out the solution. But make sure to study it thoroughly to truly understand it.",
+    showSolution: 'Show solution',
     editorContent: {
       withTemplate: 'Write your solution here',
       withoutTemplate: 'This exercise has no tests.\nAny solution is a right answer.',
