@@ -71,7 +71,7 @@
         </figure>
       </div>
       <div class="d-none d-md-block col-md-6 text-center">
-        <img src="{{ mix('img/Patchouli_Gives_SICP.png') }}" alt="{{ __('landing.start_learning') }}" class="img-fluid">
+        <img src="{{ mix('images/Patchouli_Gives_SICP.png') }}" alt="{{ __('landing.start_learning') }}" class="img-fluid">
       </div>
     </div>
   </div>

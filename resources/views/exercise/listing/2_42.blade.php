@@ -1,4 +1,4 @@
-<img class="img-fluid" src="{{ mix('img/exercises/2_42.gif') }}" alt="2.42">
+<img class="img-fluid" src="{{ mix('images/exercises/2_42.gif') }}" alt="2.42">
 <p>{{ __('exercises/2_42.description.1') }}</p>
 <p>{{ __('exercises/2_42.description.2') }}
 <code>k − 1</code>

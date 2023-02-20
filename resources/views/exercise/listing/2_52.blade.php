@@ -20,6 +20,6 @@
 {{ __('exercises/2_52.description.11') }}
 <code>square-of-four</code>
 {{ __('exercises/2_52.description.12') }}</p>
-<img class="img-fluid" src="{{ mix('img/exercises/2_52_1.gif') }}" alt="2.52_1">
-<img class="img-fluid" src="{{ mix('img/exercises/2_52_2.gif') }}" alt="2.52_2">
+<img class="img-fluid" src="{{ mix('images/exercises/2_52_1.gif') }}" alt="2.52_1">
+<img class="img-fluid" src="{{ mix('images/exercises/2_52_2.gif') }}" alt="2.52_2">
 <p>{{ __('exercises/2_52.description.13') }}</p>

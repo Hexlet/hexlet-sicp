@@ -49,7 +49,7 @@
                     @if($user->hexlet_nickname)
                     <span>
                         <a class="x-link-without-decoration mr-2 text-dark" target="_blank" rel="noopener noreferrer" href="https://ru.hexlet.io/u/{{ $user->hexlet_nickname }}">
-                            <img class="mb-3" src={{ mix('img/hexlet_logo.png') }} width="20" height="30" alt="Hexlet logo"  >
+                            <img class="mb-3" src={{ mix('images/hexlet_logo.png') }} width="20" height="30" alt="Hexlet logo"  >
                         </a>
                     </span>
                     @endif

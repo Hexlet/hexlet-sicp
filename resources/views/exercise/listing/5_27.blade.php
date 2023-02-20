@@ -15,5 +15,5 @@
 <code>n</code>
 {{ __('exercises/5_27.description.7') }}
 </p>
-<img class="img-fluid" src="{{ mix('img/exercises/5_27.gif') }}" alt="5.27">
+<img class="img-fluid" src="{{ mix('images/exercises/5_27.gif') }}" alt="5.27">
 <p>{{ __('exercises/5_27.description.8') }}</p>

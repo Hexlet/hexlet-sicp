@@ -22,8 +22,8 @@ mix
   .sass('resources/sass/app.scss', 'public/css')
   .sass('resources/sass/_activity_chart.scss', 'public/css')
   .sass('resources/sass/_custom.scss', 'public/css')
-  .copyDirectory('resources/assets/img', 'public/img')
-  .copyDirectory('resources/assets/img/exercises', 'public/img/exercises');
+  .copyDirectory('resources/assets/images', 'public/images')
+  .copyDirectory('resources/assets/images/exercises', 'public/images/exercises');
 // .then(() => {
 //     const convertToFileHash = require("laravel-mix-make-file-hash");
 //     convertToFileHash({
