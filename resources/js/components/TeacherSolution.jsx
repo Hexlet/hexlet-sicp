@@ -7,7 +7,7 @@ import { vs, monokaiSublime } from 'react-syntax-highlighter/dist/esm/styles/hlj
 import { useTranslation } from 'react-i18next';
 
 import { changeShowStatus } from '../slices/solutionSlice';
-import waitingClock from '../../assets/img/waiting_clock.png';
+import waitingClock from '../../assets/images/waiting_clock.png';
 import theme from '../common/currentTheme';
 
 const TeacherSolution = () => {
