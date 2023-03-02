@@ -15,7 +15,7 @@ return [
     ],
     'positions' => 'Позиция',
     'user' => 'Пользователь',
-    'number_of_points' => 'Количество очков',
+    'number_of_points' => 'Количество баллов',
     'number_of_comments' => 'Количество комментариев',
     'read_chapters_from' => 'Прочитано глав из :count',
     'exercise_members_from' => 'Выполнено заданий из :count',

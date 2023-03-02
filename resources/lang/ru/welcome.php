@@ -33,7 +33,7 @@ return [
             'per_week' => 'За неделю',
             'count_read_chapter' => 'Глав прочитано',
             'count_completed_exercise' => 'Заданий выполнено',
-            'count_points' => 'Количество очков',
+            'count_points' => 'Количество баллов',
         ],
     ],
 
