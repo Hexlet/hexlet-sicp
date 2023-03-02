@@ -15,7 +15,7 @@ Hexlet SICP is a service for those studying the book Structure and Interpretatio
 
 ## For contributors
 
-* Discuss the project in #hexlet-volunteers on Slack: http://slack.hexlet.io
+* Discuss the project on Telegram: https://t.me/hexletcommunity/12
 
 ### Recorded meetings
 
