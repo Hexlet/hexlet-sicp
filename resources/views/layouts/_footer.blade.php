@@ -7,7 +7,7 @@
               __('layout.footer.about') }}</a></li>
           <li><a href="https://github.com/Hexlet/hexlet-sicp" class="nav-link px-0">{{
               __('layout.footer.source_code') }}</a></li>
-          <li><a href="https://slack-ru.hexlet.io/" class="nav-link px-0">Slack #hexlet-volunteers</a></li>
+          <li><a href="https://t.me/hexletcommunity/12" class="nav-link px-0">канал Волонтеры в Telegram</a></li>
         </ul>
       </div>
       <div class="col">
