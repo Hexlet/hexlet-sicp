@@ -36,6 +36,7 @@ return [
     'footer' => [
         'about'             => 'About',
         'source_code'       => 'Source code',
+        'volunteers_in_tg'  => 'Telegram',
         'other_os_projects' => 'OpenSource',
         'help'              => 'Help',
         'knowledge'         => 'Knowledge',
