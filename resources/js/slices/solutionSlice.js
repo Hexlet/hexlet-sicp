@@ -1,5 +1,8 @@
 /* eslint-disable no-param-reassign */
 
+/*  TODO: issue https://github.com/Hexlet/hexlet-sicp/issues/1526
+    Упростить логику, убрав стейт из редакса и сделав локальный стейт в Teacher's Solution!
+*/
 import { createSlice } from '@reduxjs/toolkit';
 import { handleNewCheckResult } from './checkResultSlice';
 
