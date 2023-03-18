@@ -36,6 +36,7 @@ return [
     'footer' => [
         'about'             => 'О проекте',
         'source_code'       => 'Исходный код',
+        'volunteers_in_tg'  => 'Telegram',
         'other_os_projects' => 'OpenSource',
         'help'              => 'Помощь',
         'knowledge'         => 'База знаний',
