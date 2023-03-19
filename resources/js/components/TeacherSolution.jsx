@@ -1,28 +1,24 @@
-import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import Countdown from 'react-countdown';
 import { format } from 'date-fns';
 import Highlight from 'react-syntax-highlighter';
 import { vs, monokaiSublime } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import { useTranslation } from 'react-i18next';
 
-import { changeShowStatus } from '../slices/solutionSlice';
 import waitingClock from '../../assets/images/waiting_clock.png';
 import theme from '../common/currentTheme';
 
+const startTime = Date.now();
+
 const TeacherSolution = () => {
-  const dispatch = useDispatch();
   const { t } = useTranslation();
   const { hasTeacherSolution, teacherSolutionCode } = useSelector((state) => state.exerciseInfo);
-  const {
-    displaySolutionState,
-    startTime,
-    waitingTime,
-  } = useSelector((state) => state.showSolution);
+  const checkedSolutionStatus = useSelector((state) => state.checkResult.resultStatus);
 
-  const handleShowSolution = () => {
-    dispatch(changeShowStatus('isShown'));
-  };
+  const [isShown, setIsShown] = useState(false);
+
+  const waitingTime = 1200000;
 
   const renderShowButton = () => (
     <>
@@ -31,7 +27,7 @@ const TeacherSolution = () => {
         <button
           type="button"
           className="btn btn-secondary px-4"
-          onClick={handleShowSolution}
+          onClick={() => setIsShown(true)}
         >
           {t('showSolution')}
         </button>
@@ -42,7 +38,7 @@ const TeacherSolution = () => {
   const renderCountdown = (countdownData) => {
     const { completed } = countdownData;
 
-    if (completed || displaySolutionState === 'canBeShown') {
+    if (completed || checkedSolutionStatus === 'success') {
       return renderShowButton();
     }
 
@@ -57,7 +53,7 @@ const TeacherSolution = () => {
     );
   };
 
-  const renderShowSolution = () => (displaySolutionState === 'isShown' ? (
+  const renderShowSolution = () => (isShown ? (
     <div className="d-flex h-100">
       <Highlight
         className="h-100 w-100"
