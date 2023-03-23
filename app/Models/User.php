@@ -50,8 +50,6 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public string $defaultPresenter = UserPresenter::class;
 
-    protected $dates = ['deleted_at'];
-
     /**
      * The attributes that are mass assignable.
      *
@@ -77,7 +75,7 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'deleted_at' => 'date:Y-m-d',
+        'deleted_at' => 'datetime',
     ];
 
     public function chapters(): BelongsToMany
