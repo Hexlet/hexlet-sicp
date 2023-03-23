@@ -77,6 +77,7 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'deleted_at' => 'date:Y-m-d',
     ];
 
     public function chapters(): BelongsToMany
