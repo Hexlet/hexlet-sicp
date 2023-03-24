@@ -28,7 +28,7 @@ class SolutionChecker
 
         Storage::put($userSolutionPath, $contents);
         $solutionPath = Storage::path($userSolutionPath);
-
+        // todo необходимо перейти на новые компоненты laravel 10
         $command = new Command("raco test --check-stderr --quiet {$solutionPath}");
 
         $command->execute();
