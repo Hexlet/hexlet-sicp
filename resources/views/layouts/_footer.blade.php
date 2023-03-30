@@ -35,7 +35,7 @@
       <div class="col">
         <div class="fw-bold">{{ __('layout.footer.additionally') }}</div>
         <ul class="nav flex-column align-items-start">
-          <li><a class="nav-link px-0"="https://ru.code-basics.com/">{{
+          <li><a class="nav-link px-0" href="https://ru.code-basics.com/">{{
               __('layout.footer.os_projects.code_basics') }}</a></li>
           <li><a class="nav-link px-0" href="https://codebattle.hexlet.io/">{{
               __('layout.footer.os_projects.codebattle') }}</a></li>
