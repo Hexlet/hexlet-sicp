@@ -44,7 +44,7 @@ return [
         'recommended_books' => 'Recommended books',
         'additionally'      => 'Extras',
         'os_projects' => [
-            'editor' => 'Hexlet Editor',
+            'editor' => 'Run IT',
             'cv' => 'Hexlet CV',
             'friends' => 'Hexlet Friends',
             'code_basics' => 'Code Basics',
