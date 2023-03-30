@@ -44,7 +44,7 @@ return [
         'recommended_books' => 'Рекомендуемые книги',
         'additionally'      => 'Дополнительно',
         'os_projects' => [
-            'editor' => 'Хекслет-редактор',
+            'editor' => 'Run IT',
             'cv' => 'Хекслет-резюме',
             'friends' => 'Друзья Хекслета',
             'code_basics' => 'Code Basics',
