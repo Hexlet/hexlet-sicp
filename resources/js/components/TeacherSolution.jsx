@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import Countdown from 'react-countdown';
 import { format } from 'date-fns';
@@ -9,14 +9,17 @@ import { useTranslation } from 'react-i18next';
 import waitingClock from '../../assets/images/waiting_clock.png';
 import theme from '../common/currentTheme';
 
-const startTime = Date.now();
-
 const TeacherSolution = () => {
   const { t } = useTranslation();
   const { hasTeacherSolution, teacherSolutionCode } = useSelector((state) => state.exerciseInfo);
   const checkedSolutionStatus = useSelector((state) => state.checkResult.resultStatus);
 
   const [isShown, setIsShown] = useState(false);
+  const [startTime, setStartTime] = useState(null);
+
+  useEffect(() => {
+    setStartTime(Date.now());
+  }, []);
 
   const waitingTime = 1200000;
 
