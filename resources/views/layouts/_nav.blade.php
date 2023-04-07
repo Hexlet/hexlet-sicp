@@ -43,7 +43,7 @@ $user = Auth::user();
         <li class="nav-item"><a href="{{ route('register') }}" class="nav-link p-2">{{ __('layout.nav.register') }}</a>
         </li>
         @else
-        <li class="nav-item dropdown d-none d-md-block">
+        <li class="nav-item dropdown d-md-block">
           <a class="nav-link dropdown-toggle py-1 px-2 link-secondary" id="dropdownMenuButton" data-bs-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false" href="#">
             <i class="bi bi-person align-middle fs-4"></i>
