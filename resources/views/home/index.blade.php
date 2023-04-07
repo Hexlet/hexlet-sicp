@@ -100,7 +100,7 @@ use App\Helpers\ActivityLogHelper;
         <h3 class="my-3"><a href="{{ (route('log.index')) }}">{{ __('activitylog.title') }}</a></h3>
         @foreach($logItems as $logItem)
         <div class="media text-muted pt-1">
-            <div class="media-body pb-1 mb-0 small lh-125 border-bottom border-gray">
+            <div class="text-truncate media-body pb-1 mb-0 small lh-125 border-bottom border-gray">
                 <div class="d-flex justify-content-between align-items-center w-100">
                     <strong class="text-gray-dark">
                         @if($logItem->causer)
@@ -171,7 +171,7 @@ use App\Helpers\ActivityLogHelper;
         <h3 class="h4 my-3">@lang('welcome.comments.latest')</h3>
         @foreach($comments as $comment)
         <div class="media text-muted pt-1">
-            <div class="media-body pb-1 mb-0 small lh-125 border-bottom border-gray">
+            <div class="text-truncate media-body pb-1 mb-0 small lh-125 border-bottom border-gray">
                 <div class="d-flex justify-content-between align-items-center w-100">
                     <strong class="text-gray-dark">
                         @if($comment->user)
