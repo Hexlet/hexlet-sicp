@@ -19,5 +19,6 @@ return [
     'How to learn the SICP?' => 'How to learn the SICP?',
     'Repository with Racket settings for the SICP' => 'Repository with Racket settings for the SICP',
     'Video course' => 'Video course "Structure and Interpretation of Computer Programs"',
+    'MIT course' => 'MIT Video course',
     'Participate in the project' => 'Participate in the project (source code)',
 ];

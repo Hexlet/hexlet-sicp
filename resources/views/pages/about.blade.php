@@ -18,5 +18,6 @@
 <p><a href="https://guides.hexlet.io/how-to-learn-sicp">{{ __('about.How to learn the SICP?') }}</a></p>
 <p><a href="https://github.com/hexlet-boilerplates/sicp-racket">{{ __('about.Repository with Racket settings for the SICP') }}</a></p>
 <p><a href="https://www.youtube.com/watch?v=bFMbqKRjU84&list=PLo6puixMwuSO8eB2uBH5lZy5kjNtdhTfT">{{ __('about.Video course') }}</a></p>
+<p><a href="https://www.youtube.com/playlist?list=PLc6AqfeLgwzPPK1H3XV1Wfb_CGvT6sXkC">{{ __('about.MIT course') }}</a></p>
 <p><a href="https://github.com/Hexlet/hexlet-sicp">{{ __('about.Participate in the project') }}</a></p>
 @endsection

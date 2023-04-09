@@ -20,5 +20,6 @@ return [
     'How to learn the SICP?' => 'Как изучать СИКП?',
     'Repository with Racket settings for the SICP' => 'Репозиторий с настройками Racket для прохождения СИКП',
     'Video course' => 'Видео-курс "Структура и интерпретация компьютерных программ"',
+    'MIT course' => 'Лекции от авторов курса',
     'Participate in the project' => 'Участвовать в проекте (исходный код)',
 ];
