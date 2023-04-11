@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\View\View;
+use LaravelLocalization;
 
 class PagesController extends Controller
 {
@@ -15,7 +16,8 @@ class PagesController extends Controller
      */
     public function show($id): View
     {
-        $view = "pages.{$id}";
+        $locale = LaravelLocalization::getCurrentLocale();
+        $view = "pages.{$id}.{$locale}";
 
         abort_if(!view()->exists($view), 404);
 
