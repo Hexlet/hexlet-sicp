@@ -78,18 +78,18 @@
 </section>
 
 <section class="mb-5">
-  <div class="container">
-    <div class="row d-flex justify-content-center">
-      <div class="col-3 text-center">
+  <div class="container px-1">
+    <div class="row d-flex justify-content-center gx-2">
+      <div class="col-2 text-center">
         <i class="bi bi-book fs-1 text-primary"></i>
         <p class="h2">{{ __('landing.actions_list.1') }}</p>
       </div>
-      <div class="col-2 text-center">
+      <div class="col-3 text-center">
         <i class="bi bi-code-square fs-1 text-primary"></i>
         <p class="h2">{{ __('landing.actions_list.2') }}</p>
       </div>
 
-      <div class="col-2 text-center">
+      <div class="col-4 text-center">
         <i class="bi bi-pen fs-1 text-primary"></i>
         <p class="h2">{{ __('landing.actions_list.3') }}</p>
       </div>
