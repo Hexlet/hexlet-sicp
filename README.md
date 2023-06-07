@@ -1,8 +1,7 @@
 # Hexlet SICP
 
 [![github action status](https://github.com/Hexlet/hexlet-sicp/actions/workflows/master.yml/badge.svg)](https://github.com/Hexlet/hexlet-sicp/actions)
-[![Maintainability](https://api.codeclimate.com/v1/badges/117a4957bde29b93eb7b/maintainability)](https://codeclimate.com/github/Hexlet/hexlet-sicp/maintainability)
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/3cf6169da8c64d048b1a807487c9cadc)](https://www.codacy.com/manual/fey/hexlet-sicp?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=fey/hexlet-sicp&amp;utm_campaign=Badge_Grade)
+
 [![codecov](https://codecov.io/gh/Hexlet/hexlet-sicp/branch/master/graph/badge.svg)](https://codecov.io/gh/Hexlet/hexlet-sicp)
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
