@@ -13,8 +13,8 @@ class CheckResult
     private const TESTS_FAILED_STATUS = 'tests_failed';
     private const CHECK_EXECUTION_ERROR_STATUS = 'check_error';
 
-    private int $exitCode;
-    private string $output;
+    public int $exitCode;
+    public string $output;
 
     public function __construct(int $exitCode, string $output = '')
     {
