@@ -22,6 +22,7 @@
         "ext-xml": "*",
         "ext-zip": "*",
         "browner12/helpers": "^3.4",
+        "dedoc/scramble": "^0.7.2",
         "diglactic/laravel-breadcrumbs": "^v8.1.0",
         "doctrine/dbal": "^3.4",
         "erusev/parsedown": "^1.7",
