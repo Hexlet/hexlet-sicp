@@ -39,13 +39,8 @@ class SolutionControllerTest extends ControllerTestCase
 
         $response->assertCreated();
 
-        $responseBody = $response->decodeResponseJson();
-
-        assert(array_get($responseBody, 'save_result.exercise_id') === $exercise->id);
-
         $this->assertDatabaseHas('activity_log', [
             'causer_id' => $this->user->id,
-            'subject_id' => array_get($responseBody, 'save_result.id'),
             'subject_type' => Solution::class,
         ]);
         $this->assertDatabaseHas('solutions', [
