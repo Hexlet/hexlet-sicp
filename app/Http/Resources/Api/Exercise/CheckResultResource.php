@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 /**
- * Check Solution response
  * @property \App\Services\CheckResult $resource
  */
 class CheckResultResource extends JsonResource
