@@ -25,8 +25,12 @@ class SolutionController extends Controller
 
         $solutionCode = $data['solution_code'];
 
-        $exerciseService->createSolution($user, $exercise, $solutionCode);
+        $solutionResult = $exerciseService->createSolution($user, $exercise, $solutionCode);
 
-        return response(null, 201);
+        return response([
+            'save_result' => [
+                'id' => (int)$solutionResult->id,
+            ],
+        ], 201);
     }
 }
