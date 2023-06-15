@@ -9,11 +9,7 @@ $user = Auth::user();
 <header class="navbar navbar-expand-lg">
   <nav class="container py-2 border-bottom">
     <a href="{{ LaravelLocalization::getLocalizedURL($currentLocale, route('home')) }}" class="navbar-brand">
-      @if (App::isLocale('ru'))
-      <img src="images/logo.svg" alt="Хекслет СИКП" height="25px">
-      @else
-      <img src="images/logo-eng.svg" alt="Hexlet SICP" height="25px">
-      @endif</a>
+      <img src="images/logo-{{$currentLocale}}.svg" alt="{{ __('layout.nav.logo_alt') }}" height="25px"></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-responsive" aria-controls="navbar-responsive" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
