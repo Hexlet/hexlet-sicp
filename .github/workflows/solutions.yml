@@ -1,4 +1,4 @@
-name: CI status
+name: Solutions status
 
 on:
   push:
