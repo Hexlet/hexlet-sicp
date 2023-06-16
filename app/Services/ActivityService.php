@@ -88,10 +88,10 @@ class ActivityService
             )->log(self::ACTIVITY_CHAPTER_REMOVED);
     }
 
-    public function logCreatedComment(User $user, Comment $comment, Model $commentable): void
+    public function logCreatedComment(User $user, Comment $comment): void
     {
         activity()
-            ->performedOn($commentable)
+            ->performedOn($comment)
             ->causedBy($user)
             ->withProperties(['comment' => $comment, 'url' => $comment->present()->getLink()])
             ->log(self::COMMENTED);

@@ -24,11 +24,6 @@ class CommentController extends Controller
 
     public function store(CommentRequest $request): RedirectResponse
     {
-        $commentableModel = $request->get('commentable_type');
-        $commentableId = $request->get('commentable_id');
-        /** @var Model $commentable */
-        $commentable = $commentableModel::findOrFail($commentableId);
-
         /** @var User $user */
         $user = auth()->user();
 
@@ -37,7 +32,7 @@ class CommentController extends Controller
             new Comment($request->validated())
         );
 
-        $this->activityService->logCreatedComment($user, $comment, $commentable);
+        $this->activityService->logCreatedComment($user, $comment);
 
         return redirect($comment->present()->getLink());
     }

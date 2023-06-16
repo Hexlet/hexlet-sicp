@@ -36,7 +36,7 @@ class HomeController extends Controller
 
         $filter = Request::query('filter', '');
         $statisticTable = $this->getStatisticTable($filter);
-        $logItems = Activity::latest()->has('causer')->with('causer')->limit(10)->get();
+        $logItems = Activity::latest()->has('subject')->has('causer')->with('causer')->limit(10)->get();
         $chart = ChartHelper::getChart();
         $comments = Comment::latest()->has('user')->with('user')->with('commentable')->limit(10)->get();
 
