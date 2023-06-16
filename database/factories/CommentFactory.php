@@ -31,7 +31,7 @@ class CommentFactory extends Factory
         return $this->afterCreating(function (Comment $comment) {
             /** @var ActivityService $service */
             $service = app()->make(ActivityService::class);
-            $service->logCreatedComment($comment->user, $comment, $comment->commentable);
+            $service->logCreatedComment($comment->user, $comment);
         });
     }
 
