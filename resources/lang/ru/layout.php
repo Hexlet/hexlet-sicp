@@ -21,6 +21,7 @@ return [
         'chapters' => 'Оглавление',
         'exercises' => 'Упражнения',
         'sicp_book' => 'Книга',
+        'logo_alt' => 'Хекслет СИКП',
     ],
     'login' => [
         'form_header' => 'Войти',

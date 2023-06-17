@@ -21,6 +21,7 @@ return [
         'chapters' => 'Contents',
         'exercises' => 'Exercises',
         'sicp_book' => 'The book',
+        'logo_alt' => 'Hexlet SICP',
     ],
     'login' => [
         'form_header' => 'Login',
