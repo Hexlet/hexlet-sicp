@@ -89,6 +89,10 @@ class CommentControllerTest extends ControllerTestCase
         $response->assertRedirect();
 
         $this->assertDatabaseHas('comments', array_merge($commentData, ['id' => $comment->id]));
+
+        $this->assertDatabaseHas('activity_log', [
+            'properties->comment->content' => $commentData['content'],
+        ]);
     }
 
     /**
@@ -130,13 +134,10 @@ class CommentControllerTest extends ControllerTestCase
 
     private function createComment(User $user, Model $commentable): Comment
     {
-        /** @var Comment $comment */
-        $comment = Comment::factory()->make();
-
-        $comment->user()->associate($user);
-        $comment->commentable()->associate($commentable);
-        $comment->save();
-
-        return $comment;
+        return Comment::factory()->create([
+            'user_id' => $user,
+            'commentable_id' => $commentable,
+            'commentable_type' => $commentable::class,
+        ]);
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\Activity;
 use App\Models\Chapter;
 use App\Models\Comment;
 use App\Models\Exercise;
@@ -93,8 +94,27 @@ class ActivityService
         activity()
             ->performedOn($comment)
             ->causedBy($user)
-            ->withProperties(['comment' => $comment, 'url' => $comment->present()->getLink()])
+            ->withProperties($this->getCreatedCommentActivityProperties($comment))
             ->log(self::COMMENTED);
+    }
+
+    public function updateCreatedCommentActivity(Comment $comment): void
+    {
+        $activity = Activity::where('subject_type', Comment::class)
+            ->where('subject_id', $comment->id)
+            ->where('description', self::COMMENTED)
+            ->first();
+
+        $activity->properties = collect($this->getCreatedCommentActivityProperties($comment));
+        $activity->save();
+    }
+
+    private function getCreatedCommentActivityProperties(Comment $comment): array
+    {
+        return [
+            'comment' => $comment,
+            'url' => $comment->present()->getLink(),
+        ];
     }
 
     private function calculateChaptersDiff(Collection $chaptersOld, Collection $chaptersNew): array

@@ -48,6 +48,8 @@ class CommentController extends Controller
             flash()->error(__('layout.flash.error'));
         }
 
+        $this->activityService->updateCreatedCommentActivity($comment);
+
         return redirect($comment->present()->getLink());
     }
 
