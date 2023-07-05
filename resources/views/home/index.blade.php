@@ -123,12 +123,10 @@ use App\Helpers\ActivityLogHelper;
                         </a>
                         @break
                     @case('commented')
+                        {{ $logItem->getDescription() }}.
                         <a href="{{ $logItem->getExtraProperty('url') }}">
-                            {{ $logItem->getDescription() }}
+                            {{ $logItem->subject->getCommentableName() }}
                         </a>
-                        <span>
-                        {!! strip_tags(MarkdownHelper::text($logItem->getExtraProperty('comment.content'))) !!}
-                        </span>
                         @break
                      @case('add_solution')
                         {{ $logItem->getDescription() }}
@@ -168,7 +166,7 @@ use App\Helpers\ActivityLogHelper;
         @endforeach
     </div>
     <div class="col-md-6">
-        <h3 class="h4 my-3">@lang('welcome.comments.latest')</h3>
+        <h3 class="my-3"><a href="{{ (route('comments.index')) }}">{{ __('comment.latest_comments') }}</a></h3>
         @foreach($comments as $comment)
         <div class="media text-muted pt-1">
             <div class="text-truncate media-body pb-1 mb-0 small lh-125 border-bottom border-gray">

@@ -1,6 +1,13 @@
 <?php
 
 return [
+    'latest_comments' => 'Latest comments',
+    'author' => 'User',
+    'comment' => 'Comment',
+    'link' => 'Link',
+    'time' => 'Time',
+    'exercise' => 'Exercise',
+    'chapter' => 'Chapter',
     'none_comments' => 'There are no comments yet.',
     'authentication_required' => 'Authentication required',
     'must_log_in' => 'You must log in to post a comment.',

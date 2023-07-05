@@ -40,9 +40,9 @@
                                         </ul>
                                         @break
                                     @case('commented')
-                                        {{ $logItem->getDescription() }}
+                                        {{ $logItem->getDescription() }}.
                                         <a href="{{ $logItem->getExtraProperty('url') }}">
-                                            {{ $logItem->getExtraProperty('comment.content') }}
+                                            {{ $logItem->subject->getCommentableName() }}
                                         </a>
                                         @break
                                     @case('completed_exercise')

@@ -37,7 +37,7 @@ Route::group([
     Route::resource('chapters', 'ChapterController')->only('index', 'show');
     Route::resource('exercises', 'ExerciseController')->only('index', 'show');
     Route::resource('log', 'ActivityController')->only('index');
-    Route::resource('comments', 'CommentController')->only('store', 'update', 'show', 'destroy');
+    Route::resource('comments', 'CommentController')->only('index', 'store', 'update', 'show', 'destroy');
     Route::resource('pages', 'PagesController')->only('show');
 
     Route::fallback(function () {

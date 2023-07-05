@@ -26,6 +26,13 @@ class CommentControllerTest extends ControllerTestCase
         $this->actingAs($this->user);
     }
 
+    public function testIndex(): void
+    {
+        $response = $this->get(route('comments.index'));
+
+        $response->assertOk();
+    }
+
     /**
      * @dataProvider dataCommentable
      */

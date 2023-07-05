@@ -8,9 +8,17 @@ use App\Models\User;
 use App\Services\ActivityService;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
 
 class CommentController extends Controller
 {
+    public function index(): View
+    {
+        $comments = Comment::with('user')->latest()->paginate(15);
+
+        return view('comment.index', compact('comments'));
+    }
+
     /**
      * @var ActivityService
      */
