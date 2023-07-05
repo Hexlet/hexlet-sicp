@@ -123,12 +123,10 @@ use App\Helpers\ActivityLogHelper;
                         </a>
                         @break
                     @case('commented')
+                        {{ $logItem->getDescription() }}.
                         <a href="{{ $logItem->getExtraProperty('url') }}">
-                            {{ $logItem->getDescription() }}
+                            {{ $logItem->subject->getCommentableName() }}
                         </a>
-                        <span>
-                        {!! strip_tags(MarkdownHelper::text($logItem->getExtraProperty('comment.content'))) !!}
-                        </span>
                         @break
                      @case('add_solution')
                         {{ $logItem->getDescription() }}

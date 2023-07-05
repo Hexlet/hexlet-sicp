@@ -2,8 +2,6 @@
 
 @php
     use App\Helpers\MarkdownHelper;
-    use App\Models\Chapter;
-    use App\Models\Exercise;
 @endphp
 
 @section('content')
@@ -37,17 +35,7 @@
 
                                 <td>
                                     <a href="{{ $comment->present()->getLink() }}">
-                                        @switch($comment->commentable_type)
-                                            @case(Chapter::class)
-                                                {{ __('comment.chapter') }}
-                                                @break
-                                            @case(Exercise::class)
-                                                {{ __('comment.exercise') }}
-                                                @break
-                                            @default
-                                        @endswitch
-
-                                        {{ $comment->commentable->path }}
+                                        {{ $comment->getCommentableName() }}
                                     </a>
                                 </td>
 
