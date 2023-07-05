@@ -31,7 +31,7 @@
                                 @endif
                                 </td>
 
-                                <td>{!! strip_tags(MarkdownHelper::text($comment->content)) !!}</td>
+                                <td class="text-break">{!! strip_tags(MarkdownHelper::text($comment->content)) !!}</td>
 
                                 <td>
                                     <a href="{{ $comment->present()->getLink() }}">
