@@ -71,14 +71,22 @@ class Comment extends Model
         return isset($this->parent);
     }
 
-    public function getCommentableName(): string
+    public function getCommentableName(): ?string
     {
         $commentableTypeName = match ($this->commentable_type) {
             Chapter::class => __('comment.chapter'),
             Exercise::class => __('comment.exercise'),
+            default => null,
         };
 
-        return "{$commentableTypeName} {$this->commentable->path}";
+        if (!$commentableTypeName) {
+            return null;
+        }
+
+        /** @var Chapter|Exercise $commentable */
+        $commentable = $this->commentable;
+
+        return "{$commentableTypeName} {$commentable->path}";
     }
 
     protected static function boot(): void
