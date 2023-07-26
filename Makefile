@@ -36,6 +36,7 @@ lint: lint-js lint-php
 
 lint-fix:
 	composer exec phpcbf -v
+	npx prettier --write resources/**/*.blade.php
 
 test:
 	php artisan test
