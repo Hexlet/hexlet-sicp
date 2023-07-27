@@ -2,12 +2,12 @@
 (require racket/sandbox)
 
 (define base-module-eval
-  (make-module-evaluator '(module m racket/base
-                            (require rackunit)
-                            ;;; BEGIN
+(make-module-evaluator '(module m racket/base
+(require rackunit)
+;;; BEGIN
 {!! $solution !!}
-                            ;;; END
+;;; END
 {!! $tests !!}
-                            )
-                         )
-  )
+)
+)
+)

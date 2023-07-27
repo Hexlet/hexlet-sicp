@@ -17,7 +17,7 @@ indent_size = 2
 [*.{js,jsx,scss}]
 indent_size = 2
 
-[*.{blade.php}]
+[*.blade.php]
 indent_size = 2
 
 [package.json]

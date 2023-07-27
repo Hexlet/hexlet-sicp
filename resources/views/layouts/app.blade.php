@@ -5,8 +5,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="@yield('description', __('layout.meta.description'))">
-  @hasSection ('meta-robots')
-  <meta name="robots" content="@yield('meta-robots')">
+  @hasSection('meta-robots')
+    <meta name="robots" content="@yield('meta-robots')">
   @endif
 
   <!-- CSRF Token -->
@@ -30,23 +30,23 @@
   @include('layouts._nav')
   @include('flash::message')
   @hasSection('content')
-  <main class='flex-grow-1 m-0'>
-    <div class="container p-0">
-      @yield('content')
-    </div>
-  </main>
+    <main class='flex-grow-1 m-0'>
+      <div class="container p-0">
+        @yield('content')
+      </div>
+    </main>
   @endif
 
   @hasSection('landing_content')
-  <main>
-    @yield('landing_content')
-  </main>
+    <main>
+      @yield('landing_content')
+    </main>
   @endif
 
   @include('layouts._footer')
   <script src="{{ mix('js/app.js') }}" defer></script>
-  <script src="{{ mix('js/hljs.js')}}"></script>
-  <script src="{{ mix('js/custom.js')}}" defer></script>
+  <script src="{{ mix('js/hljs.js') }}"></script>
+  <script src="{{ mix('js/custom.js') }}" defer></script>
   @stack('scripts')
 </body>
 
