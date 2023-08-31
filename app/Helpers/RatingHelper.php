@@ -20,7 +20,6 @@ class RatingHelper
                 'readChapters',
                 'exerciseMembers' => fn($query) => $query->finished(),
             ])
-            ->limit(100)
             ->get();
             $calculatedRating = $users->map(fn(User $user) => [
                 'user' => $user,
@@ -30,7 +29,8 @@ class RatingHelper
                 return $collection->sortByDesc('points');
             })
             ->values()
-            ->keyBy(fn($ratingPosition, $index) => $index + 1);
+            ->keyBy(fn($ratingPosition, $index) => $index + 1)
+            ->take(100);
 
         return $calculatedRating;
     }
