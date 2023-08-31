@@ -51,6 +51,7 @@ return [
             'code_basics' => 'Code Basics',
             'codebattle' => 'Кодбаттл',
             'guides' => 'Гайды Хекслета',
+            'hexlet' => 'Хекслет',
         ],
     ],
     'flash' => [
