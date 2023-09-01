@@ -21,7 +21,19 @@ class MyController extends Controller
         $user->load('readChapters', 'exerciseMembers');
 
         $chapters = Chapter::with('children', 'exercises')->get();
-        $mainChapters = $chapters->where('parent_id', null);
+        $mainChapters = $chapters->where('parent_id', null)->sortBy('id');
+
+        $firstUnfinishedChapter = 1;
+        foreach ($mainChapters as $mainChapter) {
+            if (!$user->haveReadMainChapter($mainChapter)) {
+                break;
+            }
+            $firstUnfinishedChapter += 1;
+        }
+        if ($firstUnfinishedChapter > $mainChapters->count()) {
+            $firstUnfinishedChapter = 1;
+        }
+
         $exerciseMembers = $user->exerciseMembers->keyBy('exercise_id');
         $savedSolutionsExercises = $user->solutions()
             ->versioned()
@@ -36,7 +48,8 @@ class MyController extends Controller
             'chapters',
             'mainChapters',
             'exerciseMembers',
-            'savedSolutionsExercises'
+            'savedSolutionsExercises',
+            'firstUnfinishedChapter',
         ));
     }
 }

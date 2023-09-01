@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Helpers\ChapterHelper;
 use App\Presenters\UserPresenter;
 use Database\Factories\UserFactory;
 use Hemp\Presenter\Presentable;
@@ -126,5 +127,18 @@ class User extends Authenticatable implements MustVerifyEmail
     public function haveRead(Chapter $chapter): bool
     {
         return $this->chapters->contains($chapter);
+    }
+
+    public function haveReadMainChapter(Chapter $chapter): bool
+    {
+        $subChapters = ChapterHelper::getChapterDescendants($chapter);
+
+        foreach ($subChapters as $subChapter) {
+            if (!$this->haveRead($subChapter)) {
+                return false;
+            }
+        }
+
+        return true;
     }
 }
