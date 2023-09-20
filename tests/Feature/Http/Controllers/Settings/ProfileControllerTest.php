@@ -58,7 +58,7 @@ class ProfileControllerTest extends ControllerTestCase
             ->assertSessionHasErrors('name');
     }
 
-    public function dataInvalidNamesProvider(): array
+    public static function dataInvalidNamesProvider(): array
     {
         return [
             ['-'],

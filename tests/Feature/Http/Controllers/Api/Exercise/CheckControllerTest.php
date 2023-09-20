@@ -39,7 +39,7 @@ class CheckControllerTest extends ControllerTestCase
 
         $responseBody = $response->decodeResponseJson();
 
-        assert(array_get($responseBody, 'check_result.exit_code') === CheckResult::SUCCESS_EXIT_CODE);
+        $this->assertTrue(array_get($responseBody, 'check_result.exit_code') === CheckResult::SUCCESS_EXIT_CODE);
 
         $this->assertDatabaseHas('activity_log', [
             'causer_id' => $this->user->id,
@@ -69,6 +69,6 @@ class CheckControllerTest extends ControllerTestCase
         $response->assertCreated();
         $responseBody = $response->decodeResponseJson();
 
-        assert(array_get($responseBody, 'check_result.exit_code') === CheckResult::SUCCESS_EXIT_CODE);
+        $this->assertTrue(array_get($responseBody, 'check_result.exit_code') === CheckResult::SUCCESS_EXIT_CODE);
     }
 }

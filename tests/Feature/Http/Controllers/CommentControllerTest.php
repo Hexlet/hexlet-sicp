@@ -123,7 +123,7 @@ class CommentControllerTest extends ControllerTestCase
         $this->assertDatabaseMissing('comments', $commentData);
     }
 
-    public function dataCommentable(): array
+    public static function dataCommentable(): array
     {
         return [
             'test with chapter'  => [Chapter::class],
