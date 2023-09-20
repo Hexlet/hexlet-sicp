@@ -1,13 +1,14 @@
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import initEditor from './init.jsx';
 
 const USER_ID = window.sicpEditorData.userId;
 const EXERCISE_ID = window.sicpEditorData.exerciseId;
 
 const runEditor = async () => {
-  const vdom = await initEditor(USER_ID, EXERCISE_ID);
+  const editor = await initEditor(USER_ID, EXERCISE_ID);
   const container = document.getElementById('codemirrorContainer');
-  ReactDOM.render(vdom, container);
+  const root = createRoot(container);
+  root.render(editor);
 };
 
 runEditor();
