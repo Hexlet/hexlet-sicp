@@ -21,3 +21,4 @@ public/js
 public/img/*
 public/images
 composer.phar
+.phpunit.cache

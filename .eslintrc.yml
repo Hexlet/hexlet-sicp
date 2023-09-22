@@ -8,7 +8,7 @@ plugins:
 
 extends:
   - airbnb
-  - "plugin:functional/external-recommended"
+  - "plugin:functional/external-vanilla-recommended"
   - "plugin:functional/recommended"
   - "plugin:react/recommended"
   - "plugin:react-hooks/recommended"
@@ -28,6 +28,9 @@ rules:
   functional/functional-parameters: 0
   functional/no-try-statement: 0
   functional/no-throw-statement: 0
+  functional/no-return-void: 0
+  functional/no-conditional-statements: 0
+  functional/no-expression-statements: 0
   no-underscore-dangle: [2, { "allow": ["__filename", "__dirname"] }]
   testing-library/no-debug: 0
   react/function-component-definition: 0
