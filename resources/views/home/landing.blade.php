@@ -3,11 +3,11 @@
   <section class="my-5">
     <div class="container">
       <div class="row">
-        <div class="col col-lg-7">
+        <div class="col-md-12 col-lg-7">
           <h2 class="fw-bold text-uppercase">{{ __('landing.what_for') }}</h2>
           <p class="lead">{{ __('landing.what_do') }}</p>
           <h3 class="mt-5">{{ __('landing.this_is') }}</h3>
-          <div class="row row-cols-2 row-cols-lg-4 mb-5 mb-lg-0">
+          <div class="row row-cols-2 row-cols-lg-4 mb-5 mb-lg-0 gy-3">
             <div class="col">
               <span class="h3 text-primary">{{ $countChapters }}</span>
               <div>{{ __('landing.content.1') }}</div>
@@ -26,9 +26,9 @@
             </div>
           </div>
         </div>
-        <div class="col col-lg-5">
-          <div class="border-0 card d-flex h-100 ps-3">
-            <div class="card-body d-flex flex-column justify-content-center">
+        <div class="col-md-11 col-lg-5 p-0">
+          <div class="border-0 card d-flex h-100 ps-3 pe-3">
+            <div class="card-body d-flex flex-column justify-content-center p-0">
               <h2 class="card-title">{{ __('landing.features') }}</h2>
               <ul class="card-text">
                 <li>{{ __('landing.features_list.1') }}</li>
@@ -80,21 +80,21 @@
 
   <section class="mb-5">
     <div class="container px-1">
-      <div class="row d-flex justify-content-center gx-2">
-        <div class="col-2 text-center">
+      <div class="row d-flex justify-content-center gx-2 gy-3">
+        <div class="col-6 col-md-3 text-center">
           <i class="bi bi-book fs-1 text-primary"></i>
           <p class="h2">{{ __('landing.actions_list.1') }}</p>
         </div>
-        <div class="col-3 text-center">
+        <div class="col-6 col-md-3 text-center">
           <i class="bi bi-code-square fs-1 text-primary"></i>
           <p class="h2">{{ __('landing.actions_list.2') }}</p>
         </div>
 
-        <div class="col-4 text-center">
+        <div class="col-6 col-md-3 text-center">
           <i class="bi bi-pen fs-1 text-primary"></i>
           <p class="h2">{{ __('landing.actions_list.3') }}</p>
         </div>
-        <div class="col-3 text-center">
+        <div class="col-6 col-md-3 text-center">
           <i class="bi bi-award fs-1 text-primary"></i>
           <p class="h2">{{ __('landing.actions_list.4') }}</p>
         </div>
