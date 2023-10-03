@@ -6,7 +6,7 @@
   $user = Auth::user();
 @endphp
 
-<header class="navbar navbar-expand-lg">
+<header class="navbar navbar-expand-xl">
   <nav class="container py-2 border-bottom">
     <a href="{{ LaravelLocalization::getLocalizedURL($currentLocale, route('home')) }}" class="navbar-brand">
       <img src="{{ mix("images/logo-$currentLocale.svg") }}" alt="{{ __('layout.nav.logo_alt') }}" height="25px"
