@@ -48,8 +48,8 @@
 
   <section class="mb-5 bg-dark text-light">
     <div class="container">
-      <div class="row align-items-center">
-        <div class="col col-md-6">
+      <div class="row">
+        <div class="col col-lg-6 d-flex flex-column justify-content-center py-4">
           <h1 class="fw-bold mb-5 text-uppercase">{{ __('landing.title.1') }}
             <span class="text-primary">{{ __('landing.title.2') }}</span>
           </h1>
@@ -70,7 +70,7 @@
             </figcaption>
           </figure>
         </div>
-        <div class="d-none d-md-block col-md-6 text-center">
+        <div class="d-none d-lg-block col-md-6 text-center align-self-end">
           <img src="{{ mix('images/Patchouli_Gives_SICP.png') }}" alt="{{ __('landing.start_learning') }}"
             class="img-fluid">
         </div>
