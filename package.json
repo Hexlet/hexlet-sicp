@@ -24,7 +24,7 @@
     "@codemirror/view": "^6.20.0",
     "@popperjs/core": "^2.11.8",
     "@reduxjs/toolkit": "^1.9.5",
-    "axios": "^1.5",
+    "axios": "^1.6",
     "bootstrap": "^5.3.2",
     "cm6-theme-basic-dark": "^0.2.0",
     "cm6-theme-basic-light": "^0.2.0",
