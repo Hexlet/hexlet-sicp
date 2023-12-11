@@ -11,8 +11,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-#       - uses: satackey/action-docker-layer-caching@v0.0.11
-
       - name: Run CI
         run: |
           make ci

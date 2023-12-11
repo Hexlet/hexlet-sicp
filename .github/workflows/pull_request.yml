@@ -14,8 +14,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: jpribyl/action-docker-layer-caching@v0.1.1
-
       - name: Run CI
         run: |
           make ci

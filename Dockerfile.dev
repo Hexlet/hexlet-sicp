@@ -1,47 +1,50 @@
 FROM ubuntu:22.04
 
+WORKDIR /app
+
 ENV DEBIAN_FRONTEND=noninteractive
 ENV TZ=Europe/Moscow
 ENV PATH=node_modules/.bin:$PATH
+ENV PHP_VERSION=8.3
+ENV NODE_MAJOR=20
 
-WORKDIR /app
-
-RUN apt-get update && apt-get install -y \
+RUN apt-get update \
+    && apt-get -y install software-properties-common \
+    && add-apt-repository ppa:ondrej/php \
+    && add-apt-repository -y ppa:plt/racket \
+    && apt-get install -y \
     make \
     curl \
+    gnupg \
     git \
     libpq-dev \
     libzip-dev \
-    racket \
     sqlite3 \
     unzip \
     zip \
-    php \
-    php-bcmath \
-    php-exif \
-    php-pdo \
-    php-pgsql \
-    php-pgsql \
-    php-zip \
-    php-xdebug \
-    php-dom \
-    php-xml \
-    php-mbstring \
-    php-sqlite3 \
-    php-curl
+    racket
 
-RUN apt-get update && apt-get install -y \
-    software-properties-common \
-    && rm -rf /var/lib/apt/lists/*
-
-RUN add-apt-repository -y ppa:plt/racket
-RUN apt update && apt-get install -y racket
 RUN raco pkg install sicp
 
+RUN apt-get install -y \
+    php${PHP_VERSION} \
+    php${PHP_VERSION}-bcmath \
+    php${PHP_VERSION}-exif \
+    php${PHP_VERSION}-pdo \
+    php${PHP_VERSION}-pgsql \
+    php${PHP_VERSION}-pgsql \
+    php${PHP_VERSION}-zip \
+    php${PHP_VERSION}-xdebug \
+    php${PHP_VERSION}-dom \
+    php${PHP_VERSION}-xml \
+    php${PHP_VERSION}-mbstring \
+    php${PHP_VERSION}-sqlite3 \
+    php${PHP_VERSION}-curl
+
+RUN mkdir -p /etc/apt/keyrings
+RUN curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg
+RUN echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_${NODE_MAJOR}.x nodistro main" | tee /etc/apt/sources.list.d/nodesource.list
+RUN apt update && apt-get install nodejs -y
+
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-COPY ./xdebug.ini /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
-
-RUN curl -sL https://deb.nodesource.com/setup_18.x | bash -
-RUN apt-get update && apt-get install -y nodejs && npm install -g npm@10.1.0
-
-ENV PATH=node_modules/.bin:$PATH
+COPY ./xdebug.ini /etc/php/{$PHP_VERSION}/conf.d/docker-php-ext-xdebug.ini

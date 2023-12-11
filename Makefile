@@ -48,7 +48,7 @@ test-coverage:
 	XDEBUG_MODE=coverage php artisan test --coverage-clover build/logs/clover.xml
 
 analyse:
-	composer exec phpstan analyse -v -- --memory-limit=512M --xdebug
+	composer exec phpstan analyse -v -- --memory-limit=512M
 
 check: test lint analyse
 
