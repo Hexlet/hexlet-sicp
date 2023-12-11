@@ -48,7 +48,7 @@
         "sebdesign/laravel-state-machine": "^3.4",
         "spatie/laravel-activitylog": "^4.7.3",
         "spatie/laravel-query-builder": "^5.6",
-        "spatie/laravel-sitemap": "^6.4",
+        "spatie/laravel-sitemap": "^7.0",
         "symfony/yaml": "^6.4"
     },
     "require-dev": {
