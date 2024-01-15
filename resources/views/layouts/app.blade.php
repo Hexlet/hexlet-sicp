@@ -30,7 +30,7 @@
   @include('layouts._nav')
   @include('flash::message')
   @hasSection('content')
-    <main class='flex-grow-1 m-0'>
+    <main class='flex-grow-1'>
       <div class="container p-0">
         @yield('content')
       </div>

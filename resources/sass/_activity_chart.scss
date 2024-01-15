@@ -24,6 +24,23 @@
     grid-auto-flow: column;
     grid-auto-columns: var(--square-size);
     padding: 0;
+    overflow-x: auto;
+}
+
+.squares::-webkit-scrollbar {
+    width: 10px;
+    height: 8px;
+}
+  
+.squares::-webkit-scrollbar-track {
+    -webkit-box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.2) inset;
+    background-color: #f9f9fd;
+    border-radius: 10px;
+}
+  
+.squares::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: linear-gradient(180deg, #00c6fb, #005bea);
 }
 
 .graph {
