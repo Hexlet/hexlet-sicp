@@ -23,7 +23,8 @@
     grid-template-rows: repeat(7, var(--square-size));
     grid-auto-flow: column;
     grid-auto-columns: var(--square-size);
-    padding: 0;
+    padding: 0 0 5px 0;
+    overflow-x: auto;
 }
 
 .graph {

@@ -45,8 +45,8 @@
             </a>
           </li>
         </ul>
-        <div class="container mt-2">
-          <div class="row text-center">
+        <div class="container m-0 p-0  mt-2">
+          <div class="row m-0 p-0  text-center">
             <div class="col mt-4">
               <p>{{ __('welcome.statistic.table.count_points') }}:</p>
               <h3>{{ $statisticTable['countPoints'] }}</h3>

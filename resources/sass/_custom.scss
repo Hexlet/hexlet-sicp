@@ -35,3 +35,10 @@
         background-color: #343a40 !important;
     }
 }
+
+@media (max-width: 576px) {
+    main.flex-grow-1 {
+      margin-left: 16px;
+      margin-right: 16px;
+    }
+}
