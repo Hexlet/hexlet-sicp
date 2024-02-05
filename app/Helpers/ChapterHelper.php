@@ -34,4 +34,20 @@ class ChapterHelper
 
         return $links[$chapter] ?? null;
     }
+
+    public static function getChapterDescendants(Chapter $chapter): array
+    {
+        $descendants = [];
+        $children = $chapter->children;
+
+        foreach ($children as $child) {
+            if (!$child->children->isEmpty()) {
+                $descendants = [...$descendants, ...self::getChapterDescendants($child)];
+            } else {
+                $descendants[] = $child;
+            }
+        }
+
+        return $descendants;
+    }
 }
