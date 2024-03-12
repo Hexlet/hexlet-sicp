@@ -47,6 +47,7 @@
         "rollbar/rollbar-laravel": "^8.0",
         "sebdesign/laravel-state-machine": "^3.4",
         "spatie/laravel-activitylog": "^4.7.3",
+        "spatie/laravel-html": "^3.6",
         "spatie/laravel-query-builder": "^5.6",
         "spatie/laravel-sitemap": "^6.4",
         "symfony/yaml": "^6.4"
