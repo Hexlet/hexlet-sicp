@@ -23,14 +23,6 @@ return [
         'sicp_book' => 'The book',
         'logo_alt' => 'Hexlet SICP',
     ],
-    'login' => [
-        'form_header' => 'Login',
-        'remember_me' => 'Remember Me',
-        'password' => 'Password',
-        'button' => 'Login',
-        'email' => 'E-mail',
-        'reset_password' => 'Forgot Your Password?',
-    ],
     'welcome' => [
         'start_learning' => 'Start learning',
     ],

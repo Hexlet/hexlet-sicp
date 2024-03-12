@@ -2,12 +2,10 @@
 
 return [
     'title' => 'Registration',
-    'emailPlaceholder' => 'Email',
-    'namePlaceholder' => 'Name',
-    'passwordPlaceholder' => 'Password',
-    'passwordConfirmationPlaceholder' => 'Confirm password',
-    'registerButton' => 'Sign up',
-    'accountExists' => 'Already have an account?',
-    'logIn' => 'Log in',
-    'or' => 'or',
+    'email' => 'Email',
+    'name' => 'Name',
+    'password' => 'Password',
+    'password_confirmation' => 'Confirm password',
+    'submit' => 'Sign up',
+    'login' => 'Log in',
 ];
