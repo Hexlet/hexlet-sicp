@@ -7,5 +7,5 @@ return [
     'password' => 'Пароль',
     'reset_password' => 'Забыли пароль?',
     'submit' => 'Войти',
-    'register' => 'Зарегистрироваться'
+    'register' => 'Зарегистрироваться',
 ];

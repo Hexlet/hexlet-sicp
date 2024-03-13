@@ -7,5 +7,5 @@ return [
     'submit' => 'Login',
     'email' => 'E-mail',
     'reset_password' => 'Forgot Your Password?',
-    'register' => 'Sign up'
+    'register' => 'Sign up',
 ];
