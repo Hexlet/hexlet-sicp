@@ -18,7 +18,7 @@
               <x-bs.form.text name="github_name" label="settings.profile.github_name" />
               <x-bs.form.text name="hexlet_nickname" label="settings.profile.hexlet_nickname" />
               <x-bs.form.submit />
-              {{ html()->form()->close() }}
+              {{ html()->closeModelForm() }}
             </div>
           </div>
         </div>

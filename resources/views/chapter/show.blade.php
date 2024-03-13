@@ -69,17 +69,16 @@
       @endif
       @if ($chapter->can_read)
         @auth
-          {{ BsForm::open(route('users.chapters.store', [$authUser])) }}
+          {{ html()->form(action: route('users.chapters.store', [$authUser]))->open() }}
           @foreach ($authUser->chapters as $userChapter)
-            {{ Form::hidden('chapters_id[]', $userChapter->id) }}
+            {{ html()->hidden('chapters_id[]')->value($userChapter->id) }}
           @endforeach
-          {{ Form::hidden('chapters_id[]', $chapter->id) }}
+          {{ html()->hidden('chapters_id[]')->value($chapter->id) }}
           <div class="form-group">
-            {{ Form::button(
-                ($isCompletedChapter ? '<i class="bi bi-check"></i> ' : '') .
-                    __(sprintf('chapter.show.%s', $isCompletedChapter ? 'already_completed' : 'mark_read')),
-                ['type' => 'submit', 'class' => 'btn btn-success', 'disabled' => $isCompletedChapter],
-            ) }}
+            {{ html()->submit(($isCompletedChapter ? '<i class="bi bi-check"></i> ' : '') .
+            __(sprintf('chapter.show.%s', $isCompletedChapter ? 'already_completed' : 'mark_read')))
+                     ->class('btn btn-success')
+                     ->disabled($isCompletedChapter) }}
           </div>
           @if ($isCompletedChapter)
             <a href="{{ route('users.chapters.destroy', [$authUser, $chapter]) }}" class="text-decoration-none"
@@ -89,7 +88,7 @@
               <span class="pl-2">{{ __('layout.common.cancel') }}</span>
             </a>
           @endif
-          {{ BsForm::close() }}
+          {{ html()->form()->close() }}
         @endauth
         @if ($chapter->users->isNotEmpty())
           <br />
