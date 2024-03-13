@@ -65,4 +65,5 @@ return [
         'guest' => 'Guest',
         'network_error' => 'Network error',
     ],
+    'submit' => 'Submit',
 ];

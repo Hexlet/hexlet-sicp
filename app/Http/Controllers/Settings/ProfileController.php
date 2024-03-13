@@ -58,6 +58,6 @@ class ProfileController extends Controller
             flash()->error(__('layout.flash.error'));
         }
 
-        return redirect()->route('settings.profile.index', $user);
+        return redirect()->route('settings.profile.index');
     }
 }

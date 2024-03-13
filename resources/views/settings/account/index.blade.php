@@ -19,10 +19,10 @@
       </div>
       <div class="card mb-2">
         <div class="card-body">
-          <h3 class="card-title">{{ __('layout.login.password') }}</h3>
+          <h3 class="card-title">{{ __('settings.account.password') }}</h3>
           <p class="card-text">
             <a class="" href="{{ route('password.request') }}">
-              {{ __('layout.login.reset_password') }}
+              {{ __('settings.account.reset_password') }}
             </a>
           </p>
         </div>

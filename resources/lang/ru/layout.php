@@ -65,4 +65,5 @@ return [
         'guest' => 'Гость',
         'network_error' => 'Ошибка сети',
     ],
+    'submit' => 'Отправить',
 ];
