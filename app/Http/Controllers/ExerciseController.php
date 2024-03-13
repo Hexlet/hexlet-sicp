@@ -19,7 +19,7 @@ class ExerciseController extends Controller
 
     public function show(Exercise $exercise): View
     {
-        $exercise->load('chapter', 'users');
+        $exercise->load('chapter', 'users', 'comments');
         /** @var User $authUser */
         $authUser = auth()->user() ?? new User();
         $userCompletedExercise = $authUser->exerciseMembers()
