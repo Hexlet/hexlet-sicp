@@ -8,4 +8,5 @@ return [
     'password_confirmation' => 'Подтверждение пароля',
     'submit' => 'Зарегистрироваться',
     'login' => 'Войти',
+    'reset_password' => 'Забыли пароль?',
 ];

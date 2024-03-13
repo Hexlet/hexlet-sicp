@@ -8,4 +8,5 @@ return [
     'password_confirmation' => 'Confirm password',
     'submit' => 'Sign up',
     'login' => 'Log in',
+    'reset_password' => 'Forgot Your Password?',
 ];

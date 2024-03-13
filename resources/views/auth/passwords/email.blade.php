@@ -8,20 +8,26 @@
           {{ __('passwords.reset_password.form_header') }}
         </h1>
         <div class="card-body mb-3">
+            @if($errors->any())
+            <div class="alert alert-danger" role="alert">
+              {{ $errors->first() }}
+            </div>
+            @endif
           @if (session('status'))
             <div class="alert alert-success" role="alert">
               {{ session('status') }}
             </div>
           @endif
-
-          {{ BsForm::open(route('password.email')) }}
-          {{ BsForm::text('email')->label(__('passwords.reset_password.email')) }}
-
-          <div class="mt-4">
-            {{ BsForm::submit(__('passwords.reset_password.button_send_link'))->attribute('class', 'btn btn-primary btn-block') }}
+          {{ html()->form()->action(route('password.email'))->open() }}
+          <div class="mb-3">
+            {{ html()->label(__(__('passwords.reset_password.email')))->for('email')->class('form-label') }}
+            {{ html()->email('email')->class(['form-control', 'is-invalid' => $errors->has('email')]) }}
+            @error('email')
+            <span class="invalid-feedback">{{ $errors->first('email') }}</span>
+            @enderror
           </div>
-
-          {{ BsForm::close() }}
+          {{ html()->submit(__('passwords.reset_password.button_send_link'))->class('btn btn-primary btn-block') }}
+          {{ html()->form()->close() }}
         </div>
       </div>
     </div>

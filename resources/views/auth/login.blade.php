@@ -7,7 +7,7 @@
           {{ __('login.title') }}
         </h1>
         <div class="card-body">
-          {{ html()->form('POST', route('login'))->open() }}
+          {{ html()->form()->route('login')->open() }}
           <div class="mb-3">
             {{ html()->label(__('login.email'))->for('email')->class('form-label') }}
             {{ html()->email('email')->class(['form-control', 'is-invalid' => $errors->has('email')]) }}
