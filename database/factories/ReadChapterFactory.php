@@ -13,9 +13,6 @@ class ReadChapterFactory extends Factory
 {
     protected $model = ReadChapter::class;
 
-    /**
-     * @return array
-     */
     public function definition(): array
     {
         return [

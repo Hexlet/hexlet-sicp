@@ -8,6 +8,6 @@ return [
     ],
     'account' => [
         'password' => 'Пароль',
-        'reset_password' => 'Сбросить пароль'
+        'reset_password' => 'Сбросить пароль',
     ],
 ];
