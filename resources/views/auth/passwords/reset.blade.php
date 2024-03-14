@@ -11,29 +11,10 @@
 
           {{ html()->form()->action(route('password.update'))->open() }}
           {{ html()->hidden('token')->value($token )}}
-          <div class="mb-3">
-            {{ html()->label(__(__('passwords.reset_password.email')))->for('email')->class('form-label') }}
-            {{ html()->email('email')->class(['form-control', 'is-invalid' => $errors->has('email')]) }}
-            @error('email')
-            <span class="invalid-feedback">{{ $errors->first('email') }}</span>
-            @enderror
-          </div>
-          <div class="mb-3">
-            {{ html()->label(__('passwords.reset_password.password'))->for('password')->class('form-label') }}
-            {{ html()->password('password')->class(['form-control', 'is-invalid' => $errors->has('password')]) }} @error('password')
-            <span class="invalid-feedback">{{ $errors->first('password') }}</span>
-            @enderror
-          </div>
-          <div class="mb-3">
-            {{ html()->label(__('passwords.reset_password.confirm_password'))->for('password')->class('form-label') }}
-            {{ html()->password('password_confirmation')->class(['form-control', 'is-invalid' => $errors->has('password_confirmation')]) }}
-            @error('password_confirmation')
-            <span class="invalid-feedback">{{ $errors->first('password_confirmation') }}</span>
-            @enderror
-          </div>
-          <div class="mb-3">
-            {{ html()->submit(__('passwords.reset_password.button'))->class('btn btn-primary btn-block') }}
-          </div>
+          <x-bs.form.text name="email" label="passwords.reset_password.email" />
+          <x-bs.form.password name="password" label="passwords.reset_password.password" />
+          <x-bs.form.password name="password_confirmation" label="passwords.reset_password.confirm_password" />
+          <x-bs.form.submit label='passwords.reset_password.button' />
           {{ html()->form()->close() }}
         </div>
       </div>

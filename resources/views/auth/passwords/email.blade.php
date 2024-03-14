@@ -19,14 +19,8 @@
             </div>
           @endif
           {{ html()->form()->action(route('password.email'))->open() }}
-          <div class="mb-3">
-            {{ html()->label(__(__('passwords.reset_password.email')))->for('email')->class('form-label') }}
-            {{ html()->email('email')->class(['form-control', 'is-invalid' => $errors->has('email')]) }}
-            @error('email')
-            <span class="invalid-feedback">{{ $errors->first('email') }}</span>
-            @enderror
-          </div>
-          {{ html()->submit(__('passwords.reset_password.button_send_link'))->class('btn btn-primary btn-block') }}
+          <x-bs.form.text name="email" label="passwords.reset_password.email" />
+          <x-bs.form.submit label='passwords.reset_password.button_send_link' />
           {{ html()->form()->close() }}
         </div>
       </div>
