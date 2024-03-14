@@ -7,19 +7,15 @@
         <h1 class="h4 text-center card-header p-3">
           {{ __('passwords.reset_password.form_header') }}
         </h1>
-        <div class="card-body mb-3">
-          {{ BsForm::open(route('password.update')) }}
-          {{ Form::hidden('token', $token) }}
-          {{ BsForm::text('email', $email ?? old('email'))->label(__('passwords.reset_password.email')) }}
+        <div class="card-body">
 
-          {{ BsForm::password('password')->label(__('passwords.reset_password.password')) }}
-          {{ BsForm::password('password_confirmation')->label(__('passwords.reset_password.confirm_password')) }}
-
-          <div class="mt-4">
-            {{ BsForm::submit(__('passwords.reset_password.button'))->attribute('class', 'btn btn-primary btn-block') }}
-          </div>
-
-          {{ BsForm::close() }}
+          {{ html()->form()->action(route('password.update'))->open() }}
+          {{ html()->hidden('token')->value($token )}}
+          <x-bs.form.text name="email" label="passwords.reset_password.email" />
+          <x-bs.form.password name="password" label="passwords.reset_password.password" />
+          <x-bs.form.password name="password_confirmation" label="passwords.reset_password.confirm_password" />
+          <x-bs.form.submit label='passwords.reset_password.button' />
+          {{ html()->form()->close() }}
         </div>
       </div>
     </div>

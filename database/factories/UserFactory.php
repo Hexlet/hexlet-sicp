@@ -10,9 +10,6 @@ class UserFactory extends Factory
 {
     protected $model = User::class;
 
-    /**
-     * @return array
-     */
     public function definition(): array
     {
         return [

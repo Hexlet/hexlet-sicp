@@ -13,14 +13,12 @@
           <div class="card mb-2">
             <div class="card-body">
               <h1 class="card-title h3">{{ __('account.profile') }} {{ $user->email }}</h1>
-              {{ BsForm::patch(route('settings.profile.update', [$user])) }}
-              {{ BsForm::text('name', $user->name)->label(__('register.namePlaceholder')) }}
-              {{ BsForm::text('github_name', $user->github_name)->label(__('account.github_name')) }}
-              {{ BsForm::text('hexlet_nickname', $user->hexlet_nickname)->label(__('account.hexlet_nickname')) }}
-              <div class="form-group mt-2">
-                {{ BsForm::submit(__('layout.common.save'))->primary() }}
-              </div>
-              {{ BsForm::close() }}
+              {{ html()->modelForm($user, 'PATCH', route('settings.profile.update', [$user]))->open() }}
+              <x-bs.form.text name="name" label="settings.profile.name" />
+              <x-bs.form.text name="github_name" label="settings.profile.github_name" />
+              <x-bs.form.text name="hexlet_nickname" label="settings.profile.hexlet_nickname" />
+              <x-bs.form.submit />
+              {{ html()->closeModelForm() }}
             </div>
           </div>
         </div>

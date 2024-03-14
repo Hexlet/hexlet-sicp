@@ -4,25 +4,22 @@
     <div class="col-md-5 mx-auto">
       <div class="card">
         <h1 class="h4 text-center card-header p-3">
-          {{ __('layout.login.form_header') }}
+          {{ __('login.title') }}
         </h1>
         <div class="card-body">
-          {{ BsForm::open(route('login')) }}
-          {{ BsForm::email('email')->label(__('layout.login.email')) }}
-          {{ BsForm::password('password')->label(__('layout.login.password')) }}
-          {{ BsForm::checkbox('remember')->label(__('layout.login.remember_me')) }}
-          {{ BsForm::submit(__('layout.login.button'))->attribute('class', 'btn btn-primary btn-block') }}
-          <div class="mt-2">
-            @if (Route::has('password.request'))
-              <a href="{{ route('password.request') }}">
-                {{ __('layout.login.reset_password') }}
-              </a>
-            @endif
-          </div>
-          {{ BsForm::close() }}
-        </div>
-        <div class="card-footer p-4 text-center bg-transparent">
-          @include('components.social_login')
+          {{ html()->form()->route('login')->open() }}
+
+          <x-bs.form.text name="email" label="login.email" />
+          <x-bs.form.password name="password" label="login.password" />
+          <x-bs.form.checkbox name="remember" label="login.remember_me" />
+
+          <x-bs.form.submit label='login.submit' />
+
+          <a class="mt-2 d-block" href="{{ route('register') }}">{{ __('login.register') }}</a>
+          <a class="mt-2 d-block" href="{{ route('password.request') }}">{{ __('login.reset_password') }}</a>
+          <a href="{{ route('oauth.github') }}" class="mt-2 d-block"> {{ __('auth.with_github') }}</a>
+
+          {{ html()->form()->close() }}
         </div>
       </div>
     </div>

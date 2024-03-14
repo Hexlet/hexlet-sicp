@@ -2,12 +2,11 @@
 
 return [
     'title' => 'Регистрация',
-    'namePlaceholder' => 'Имя',
-    'emailPlaceholder' => 'Электронная почта',
-    'passwordPlaceholder' => 'Пароль',
-    'passwordConfirmationPlaceholder' => 'Подтверждение пароля',
-    'registerButton' => 'Зарегистрироваться',
-    'accountExists' => 'Уже есть аккаунт?',
-    'logIn' => 'Войти',
-    'or' => 'или',
+    'name' => 'Имя',
+    'email' => 'Электронная почта',
+    'password' => 'Пароль',
+    'password_confirmation' => 'Подтверждение пароля',
+    'submit' => 'Зарегистрироваться',
+    'login' => 'Войти',
+    'reset_password' => 'Забыли пароль?',
 ];

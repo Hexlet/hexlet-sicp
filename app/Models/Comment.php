@@ -43,7 +43,7 @@ class Comment extends Model
 
     public string $defaultPresenter = CommentPresenter::class;
 
-    protected $with = ['user'];
+    protected $with = ['user', 'commentable', 'parent'];
     protected $fillable = ['content', 'commentable_type', 'commentable_id', 'parent_id'];
 
     public function user(): BelongsTo

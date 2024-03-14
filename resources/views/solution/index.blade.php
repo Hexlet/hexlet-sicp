@@ -12,21 +12,32 @@
 
       <h1 class="h3">{{ __('views.solution.index.header.h1') }}</h1>
 
-      <div class="mb-3 mt-3">
-        {{ Form::open(['url' => route('solutions.index'), 'method' => 'GET', 'class' => 'form-inline']) }}
-        <div class="input-group mb-3">
-          <span class="input-group-text">{{ __('views.solution.index.filter.user') }}</span>
-          {{ Form::input('text', 'filter[user.name]', array_get($filter, 'user.name', null), ['placeholder' => __('views.solution.index.filter.user'), 'class' => 'form-control']) }}
-          <span class="input-group-text">{{ __('views.solution.index.filter.exercise') }}</span>
-          {{ Form::select('filter[exercise_id]', $exerciseTitles, array_get($filter, 'exercise_id', null), ['placeholder' => __('views.solution.index.filter.exercise'), 'class' => 'form-control']) }}
-          {{ Form::submit(__('views.solution.index.filter.apply_button'), ['class' => 'btn btn-outline-primary']) }}
-          <a href="{{ route('solutions.index') }}" class="btn btn-outline-secondary ml-3">
-            {{ __('views.solution.index.filter.reset_button') }}
-          </a>
+      {{ html()->form('GET', route('solutions.index'))->class('my-3 row row-cols-lg-auto g-3 align-items-center')->open() }}
+        <div class="col">
+          <div class="input-group">
+            <div class="input-group-text">{{ __('views.solution.index.filter.user') }}</div>
+            {{ html()->text('filter[user.name]')
+                     ->value(array_get($filter, 'user.name', null))
+                     ->placeholder(__('views.solution.index.filter.user'))->class('form-control') }}
+          </div>
         </div>
-
-        {{ Form::close() }}
-      </div>
+        <div class="col">
+          <div class="input-group">
+            <div class="input-group-text">{{ __('views.solution.index.filter.exercise') }}</div>
+            {{ html()->select('filter[exercise_id]', $exerciseTitles)
+                     ->value(array_get($filter, 'exercise_id', null))
+                     ->placeholder(__('views.solution.index.filter.exercise'))->class('form-control') }}
+          </div>
+        </div>
+        <div class="col">
+          {{ html()->submit(__('views.solution.index.filter.apply_button'))
+                   ->class('btn btn-outline-primary') }}
+        </div>
+        <div class="col">
+          {{ html()->a(route('solutions.index'), __('views.solution.index.filter.reset_button'))
+                   ->class('btn btn-outline-secondary ml-3') }}
+        </div>
+      {{ html()->form()->close() }}
 
       <div class="table-responsive">
         <table class="table table-striped">

@@ -12,7 +12,7 @@
     </div>
   </div>
   <div class="col-12 col-md-8">
-    {{ BsForm::open(route('users.chapters.store', [$user])) }}
+    {{ html()->form(action: route('users.chapters.store', [$user]))->open() }}
     <div class="tab-content m-2 m-lg-4">
       @foreach ($mainChapters as $mainChapter)
         <div class="tab-pane fade {{ $mainChapter->path === '1' ? 'show active' : '' }}"
@@ -22,9 +22,9 @@
         </div>
       @endforeach
       <div class="text-end mt-2 mt-lg-4">
-        {{ BsForm::submit(__('layout.common.save'))->primary() }}
+        <x-bs.form.submit label="layout.common.save"/>
       </div>
     </div>
-    {{ BsForm::close() }}
+    {{ html()->form()->close() }}
   </div>
 </div>
