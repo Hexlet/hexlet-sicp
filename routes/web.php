@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Chapter\ChapterMemberController;
+
 Route::get('sitemap.xml', 'SitemapController@index');
 
 Route::group([
@@ -34,6 +36,11 @@ Route::group([
     });
 
     Route::resource('solutions', 'SolutionController')->only('index', 'show');
+    Route::namespace('Chapter')->prefix('chapters/{chapter}')->group(function (): void {
+        Route::put('members/finish', [ChapterMemberController::class, 'finish'])
+            ->name('chapters.members.finish');
+    });
+
     Route::resource('chapters', 'ChapterController')->only('index', 'show');
     Route::resource('exercises', 'ExerciseController')->only('index', 'show');
     Route::resource('log', 'ActivityController')->only('index');

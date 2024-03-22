@@ -6,7 +6,7 @@
    * @var \App\Models\Chapter $nextChapter
    * @var \App\Models\Exercise $exercise
    * @var \App\Models\User $authUser
-   * @var bool $isCompletedChapter
+   * @var \App\Models\Chaptermember $currentChapterMember
    */
 @endphp
 @section('title')
@@ -69,28 +69,14 @@
       @endif
       @if ($chapter->can_read)
         @auth
-          {{ html()->form(action: route('users.chapters.store', [$authUser]))->open() }}
-          @foreach ($authUser->chapters as $userChapter)
-            {{ html()->hidden('chapters_id[]')->value($userChapter->id) }}
-          @endforeach
-          {{ html()->hidden('chapters_id[]')->value($chapter->id) }}
-          <div class="form-group">
-            {{ html()->submit(($isCompletedChapter ? '<i class="bi bi-check"></i> ' : '') .
-            __(sprintf('chapter.show.%s', $isCompletedChapter ? 'already_completed' : 'mark_read')))
-                     ->class('btn btn-success')
-                     ->disabled($isCompletedChapter) }}
-          </div>
-          @if ($isCompletedChapter)
-            <a href="{{ route('users.chapters.destroy', [$authUser, $chapter]) }}" class="text-decoration-none"
-              data-bs-toggle="tooltip" data-bs-placement="bottom"
-              data-confirm="{{ __('chapter.remove_completed_chapter', ['chapter_path' => $chapter->path]) }}"
-              data-method="delete">
-              <span class="pl-2">{{ __('layout.common.cancel') }}</span>
-            </a>
-          @endif
-          {{ html()->form()->close() }}
+          <a href="{{ route('chapters.members.finish', $chapter) }}" class="text-decoration-none"
+            {{-- TODO: fix confirm messages --}}
+            data-confirm="{{ __('chapter.remove_completed_chapter', ['chapter_path' => $chapter->path]) }}"
+            data-method="put">
+            <span class="pl-2">{{ __('chapter_member.finish') }}</span>
+          </a>
         @endauth
-        @if ($chapter->users->isNotEmpty())
+        @if ($chapter->members->isNotEmpty())
           <br />
           <button type="button" class="btn btn-primary" data-bs-toggle="modal"
             data-bs-target="#modalCart">{{ __('chapter.show.who_completed') }}</button>
@@ -105,8 +91,8 @@
                 </div>
                 <div class="modal-body">
                   <ul>
-                    @foreach ($chapter->users as $user)
-                      <li><a href="{{ route('users.show', $user) }}">{{ $user->name }}</a></li>
+                    @foreach ($chapter->members as $chaptermember)
+                      <li><a href="{{ route('users.show', $chaptermember->user) }}">{{ $chaptermember->user->name }}</a></li>
                     @endforeach
                   </ul>
                 </div>

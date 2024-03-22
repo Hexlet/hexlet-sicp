@@ -17,13 +17,13 @@ class RatingHelper
             ->defaultSort('name')
             ->allowedSorts($sort ?? 'name')
             ->withCount([
-                'readChapters',
+                'chapterMembers',
                 'exerciseMembers' => fn($query) => $query->finished(),
             ])
             ->get();
             $calculatedRating = $users->map(fn(User $user) => [
                 'user' => $user,
-                'points' => PointsCalculator::calculate($user->read_chapters_count, $user->exercise_members_count),
+                'points' => PointsCalculator::calculate($user->chapter_members_count, $user->exercise_members_count),
             ])
             ->when(empty($sort), function ($collection) {
                 return $collection->sortByDesc('points');

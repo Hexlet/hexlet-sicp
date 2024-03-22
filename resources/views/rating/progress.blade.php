@@ -15,8 +15,8 @@
             <th>
               @include('components.sorting_widget', [
                   'sortParams' => $sortParams,
-                  'nameParams' => 'read_chapters_count',
-                  'name' => __('rating.read_chapters_from', ['count' => App\Models\Chapter::MARKABLE_COUNT]),
+                  'nameParams' => 'chapter_members_count',
+                  'name' => __('rating.chapter_members_from', ['count' => App\Models\Chapter::MARKABLE_COUNT]),
                   'route' => route('progress_top.index', $nextChaptersParameterFromSort),
               ])
             <th>
@@ -43,7 +43,7 @@
                   {{ $user->name }}
                 </a>
               </td>
-              <td>{{ $user->read_chapters_count }}</td>
+              <td>{{ $user->chapter_members_count }}</td>
               <td>{{ $user->exercise_members_count }}</td>
             </tr>
           @endforeach

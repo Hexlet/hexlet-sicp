@@ -3,15 +3,15 @@
 namespace Database\Factories;
 
 use App\Models\Chapter;
-use App\Models\ReadChapter;
+use App\Models\ChapterMember;
 use App\Models\User;
 use App\Services\ActivityService;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-/** @extends Factory<ReadChapter> */
-class ReadChapterFactory extends Factory
+/** @extends Factory<ChapterMember> */
+class ChapterMemberFactory extends Factory
 {
-    protected $model = ReadChapter::class;
+    protected $model = ChapterMember::class;
 
     public function definition(): array
     {
@@ -37,12 +37,12 @@ class ReadChapterFactory extends Factory
 
     public function configure(): self
     {
-        return $this->afterCreating(function (ReadChapter $readChapter) {
+        return $this->afterCreating(function (ChapterMember $chapterMember) {
             /** @var ActivityService $service */
             $service = app()->make(ActivityService::class);
             $service->logChangedUserChapters(
-                $readChapter->user,
-                collect($readChapter->chapter->path),
+                $chapterMember->user,
+                collect($chapterMember->chapter->path),
                 collect()
             );
         });

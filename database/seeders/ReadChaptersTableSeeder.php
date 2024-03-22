@@ -3,11 +3,11 @@
 namespace Database\Seeders;
 
 use App\Models\Chapter;
-use App\Models\ReadChapter;
+use App\Models\ChapterMember;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
-class ReadChaptersTableSeeder extends Seeder
+class ChapterMembersTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -20,7 +20,7 @@ class ReadChaptersTableSeeder extends Seeder
         $chapters = Chapter::get();
 
         $users->each(function (User $user) use ($chapters) {
-            ReadChapter::factory()
+            ChapterMember::factory()
                 ->user($user)
                 ->chapter($chapters->random())
                 ->create();

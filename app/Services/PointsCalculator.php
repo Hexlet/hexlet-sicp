@@ -4,8 +4,8 @@ namespace App\Services;
 
 class PointsCalculator
 {
-    public static function calculate(int $readChaptersCount, int $exerciseMembersCount): int
+    public static function calculate(int $chapterMembersCount, int $exerciseMembersCount): int
     {
-        return $readChaptersCount + $exerciseMembersCount * 3;
+        return $chapterMembersCount + $exerciseMembersCount * 3;
     }
 }

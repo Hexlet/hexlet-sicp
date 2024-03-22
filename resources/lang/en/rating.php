@@ -17,6 +17,6 @@ return [
     'user' => 'Username',
     'number_of_points' => 'Points',
     'number_of_comments' => 'Comments',
-    'read_chapters_from' => 'Chapters read, out of :count',
+    'chapter_members_from' => 'Chapters read, out of :count',
     'exercise_members_from' => 'Exercises completed, out of :count',
 ];

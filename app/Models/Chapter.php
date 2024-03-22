@@ -12,9 +12,9 @@ class Chapter extends Model
 {
     public const MARKABLE_COUNT = 101;
 
-    public function users(): BelongsToMany
+    public function members(): HasMany
     {
-        return $this->belongsToMany(User::class, 'read_chapters');
+        return $this->hasMany(ChapterMember::class);
     }
 
     public function comments(): MorphMany

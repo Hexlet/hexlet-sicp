@@ -33,11 +33,11 @@ class UserChapterControllerTest extends ControllerTestCase
         $response->assertSessionDoesntHaveErrors();
         $response->assertRedirect($myPage);
 
-        $expectedReadChaptersData = $chapters
+        $expectedChapterMembersData = $chapters
             ->map(fn(Chapter $chapter) => $chapter->only('chapter_id', 'user_id'))
             ->toArray();
 
-        $this->assertDatabaseHas('read_chapters', $expectedReadChaptersData);
+        $this->assertDatabaseHas('chapter_members', $expectedChapterMembersData);
     }
 
     public function testDestroy(): void
@@ -54,7 +54,7 @@ class UserChapterControllerTest extends ControllerTestCase
         $response->assertSessionDoesntHaveErrors();
         $response->assertRedirect();
 
-        $this->assertDatabaseMissing('read_chapters', [
+        $this->assertDatabaseMissing('chapter_members', [
             'chapter_id' => $chapter->id,
             'user_id' => $this->user->id,
         ]);
