@@ -73,7 +73,7 @@ class ChapterMember extends Model
     protected function state(): Attribute
     {
         return Attribute::make(
-            get:fn ($state) => $state ?? self::INITIAL_STATE
+            get:fn($state) => $state ?? self::INITIAL_STATE
         );
     }
 }
