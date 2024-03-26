@@ -9,7 +9,7 @@ class ActivityController extends Controller
 {
     public function index(): View
     {
-        $logItems = Activity::with('causer')
+        $logItems = Activity::with('causer', 'subject')
             ->orderBy('created_at', 'DESC')
             ->paginate(15);
 

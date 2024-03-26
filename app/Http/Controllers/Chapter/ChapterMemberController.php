@@ -6,11 +6,12 @@ use App\Http\Controllers\Controller;
 use App\Models\Chapter;
 use App\Models\ChapterMember;
 use App\Models\User;
+use App\Services\ActivityService;
 use Flash;
 
 class ChapterMemberController extends Controller
 {
-    public function finish(Chapter $chapter)
+    public function finish(Chapter $chapter, ActivityService $activityService)
     {
         $user = auth()->user();
         $currentChapterMember = $this->getMember($user, $chapter);
@@ -19,6 +20,7 @@ class ChapterMemberController extends Controller
 
         // TODO: add points for finishing
         flash()->info(__('layout.flash.success'))->success();
+        $activityService->logChapterMemberFinished($currentChapterMember);
 
         return back();
     }

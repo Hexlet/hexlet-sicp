@@ -39,12 +39,13 @@ class ChapterMemberFactory extends Factory
     {
         return $this->afterCreating(function (ChapterMember $chapterMember) {
             /** @var ActivityService $service */
-            $service = app()->make(ActivityService::class);
-            $service->logChangedUserChapters(
-                $chapterMember->user,
-                collect($chapterMember->chapter->path),
-                collect()
-            );
+            // TODO: add logging
+            // $service = app()->make(ActivityService::class);
+            // $service->logChangedUserChapters(
+            //     $chapterMember->user,
+            //     collect($chapterMember->chapter->path),
+            //     collect()
+            // );
         });
     }
 }
