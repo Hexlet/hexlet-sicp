@@ -6,7 +6,7 @@
    * @var \App\Models\Chapter $nextChapter
    * @var \App\Models\Exercise $exercise
    * @var \App\Models\User $authUser
-   * @var \App\Models\Chaptermember $currentChapterMember
+   * @var \App\Models\ChapterMember $currentChapterMember
    */
 @endphp
 @section('title')
@@ -57,7 +57,20 @@
           </li>
         @endforeach
       </ul>
-
+      @if ($chapter->can_read)
+        @auth
+          @if ($currentChapterMember->isFinished())
+          <span class="text-decoration-none text-muted">@lang('chapter.members.finished')</span><i class="bi bi-check-lg text-success"></i>
+          @elseif ($currentChapterMember->mayFinish())
+          <a href="{{ route('chapters.members.finish', $chapter) }}" class="text-decoration-none"
+            {{-- TODO: fix confirm messages --}}
+            data-confirm="{{ __('chapter.members.confirm_finish', ['chapter_path' => $chapter->path]) }}"
+            data-method="put">
+            {{ __('chapter.members.finish') }}
+          </a>
+          @endif
+        @endauth
+      @endif
       @if ($chapter->exercises->isNotEmpty())
         <p>{{ __('chapter.show.exercises_list') }}:</p>
         <ul>
@@ -66,46 +79,6 @@
                 . {{ $exercise->getTitle() }}</a></li>
           @endforeach
         </ul>
-      @endif
-      @if ($chapter->can_read)
-        @auth
-          <a href="{{ route('chapters.members.finish', $chapter) }}" class="text-decoration-none"
-            {{-- TODO: fix confirm messages --}}
-            data-confirm="{{ __('chapter.remove_completed_chapter', ['chapter_path' => $chapter->path]) }}"
-            data-method="put">
-            <span class="pl-2">{{ __('chapter_member.finish') }}</span>
-          </a>
-        @endauth
-        @if ($chapter->members->isNotEmpty())
-          <br />
-          <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-            data-bs-target="#modalCart">{{ __('chapter.show.who_completed') }}</button>
-          <div class="modal fade" id="modalCart" tabindex="-1" role="dialog" aria-labelledby="completed-by-modal-title"
-            aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h4 class="modal-title" id="completed-by-modal-title">{{ __('chapter.show.completed_by') }}</h4>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal"
-                    aria-label="{{ __('layout.common.close') }}"></button>
-                </div>
-                <div class="modal-body">
-                  <ul>
-                    @foreach ($chapter->members as $chaptermember)
-                      <li><a href="{{ route('users.show', $chaptermember->user) }}">{{ $chaptermember->user->name }}</a></li>
-                    @endforeach
-                  </ul>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-outline-primary"
-                    data-bs-dismiss="modal">{{ __('layout.common.close') }}</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        @else
-          <p class="mt-3">{{ __('chapter.show.nobody_completed') }}</p>
-        @endif
       @endif
       @comments(['model' => $chapter])
     </div>

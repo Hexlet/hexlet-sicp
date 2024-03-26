@@ -21,8 +21,6 @@ class ChapterController extends Controller
         $chapter->load([
             'parent',
             'children',
-            'members',
-            'members.user',
             'exercises',
             'comments',
         ]);

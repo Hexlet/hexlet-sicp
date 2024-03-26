@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Chapter;
 use App\Models\ChapterMember;
 use App\Models\User;
+use Flash;
 
 class ChapterMemberController extends Controller
 {
@@ -17,9 +18,8 @@ class ChapterMemberController extends Controller
         $currentChapterMember->save();
 
         // TODO: add points for finishing
-        // TODO: add flash
+        flash()->info(__('layout.flash.success'))->success();
 
-        // dd($currentChapterMember);
         return back();
     }
 
