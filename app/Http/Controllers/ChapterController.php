@@ -34,7 +34,7 @@ class ChapterController extends Controller
         $currentChapterMember = $chapter
             ->members()
             ->whereUserId($authUser->id)->firstOr(function () use ($chapter, $authUser): ChapterMember {
-                $chapterMember = ChapterMember::make([]);
+                $chapterMember = new ChapterMember([]);
 
                 $chapterMember->user()->associate($authUser);
                 $chapterMember->chapter()->associate($chapter);

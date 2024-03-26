@@ -19,7 +19,6 @@ parameters:
         - vendor/*
         - app/Http/Controllers/Auth/*
     ignoreErrors:
-        - '/Parameter #1 \$value of function collect expects/'
         - '/PHPDoc type array of property App\\Models\\User::\$hidden is not covariant with PHPDoc type/'
         - '/PHPDoc type array of property App\\Models\\User::\$casts is not covariant with PHPDoc type/'
         - '/Unable to resolve the template type TKey in call to function collect/'

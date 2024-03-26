@@ -38,7 +38,6 @@ class ChapterMemberFactory extends Factory
     public function configure(): self
     {
         return $this->afterCreating(function (ChapterMember $chapterMember) {
-            /** @var ActivityService $service */
             // TODO: add logging
             // $service = app()->make(ActivityService::class);
             // $service->logChangedUserChapters(

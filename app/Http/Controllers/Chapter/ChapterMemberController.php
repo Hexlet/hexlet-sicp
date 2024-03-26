@@ -8,10 +8,11 @@ use App\Models\ChapterMember;
 use App\Models\User;
 use App\Services\ActivityService;
 use Flash;
+use Illuminate\Http\RedirectResponse;
 
 class ChapterMemberController extends Controller
 {
-    public function finish(Chapter $chapter, ActivityService $activityService)
+    public function finish(Chapter $chapter, ActivityService $activityService): RedirectResponse
     {
         $user = auth()->user();
         $currentChapterMember = $this->getMember($user, $chapter);
@@ -31,7 +32,7 @@ class ChapterMemberController extends Controller
             ->members()
             ->whereUserId($user->id)
             ->firstOr(function () use ($chapter, $user): ChapterMember {
-                $chapterMember = ChapterMember::make([]);
+                $chapterMember = new ChapterMember([]);
 
                 $chapterMember->user()->associate($user);
                 $chapterMember->chapter()->associate($chapter);
