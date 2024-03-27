@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Log;
 
 class ExerciseService
 {
+    private const POINTS_PER_EXERCISE = 3;
+
     public function __construct(private SolutionChecker $checker, private ActivityService $activityService)
     {
     }
@@ -46,6 +48,7 @@ class ExerciseService
         if ($checkResult->isSuccess() && $user->isRegistered()) {
             if ($exerciseMember->mayFinish()) {
                 $exerciseMember->finish();
+                $user->increment('points', self::POINTS_PER_EXERCISE);
                 $exerciseMember->save();
 
                 $this->activityService->logCompletedExercise($user, $exercise);
