@@ -4,7 +4,7 @@
 @endsection
 @section('content')
   <div class="my-4">
-    @include('rating.menu')
+    @include('rating._menu')
 
     <h1 class="h3">{{ __('rating.comments.title') }}</h1>
 

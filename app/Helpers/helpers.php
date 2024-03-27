@@ -50,10 +50,3 @@ if (!function_exists('getExerciseOriginLink')) {
         return ExerciseHelper::getExerciseOriginLink($exercise);
     }
 }
-
-if (!function_exists('getCalculatedRating')) {
-    function getCalculatedRating(): Collection
-    {
-        return RatingHelper::getCalculatedRating();
-    }
-}

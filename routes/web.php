@@ -29,7 +29,7 @@ Route::group([
     });
 
     Route::namespace('Rating')->prefix('ratings')->group(function (): void {
-        Route::resource('top', 'UserController')->only('index');
+        Route::resource('top', 'TopController')->only('index');
         Route::resource('comments_top', 'CommentController')->only('index');
     });
 

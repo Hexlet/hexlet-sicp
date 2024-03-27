@@ -4,13 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Helpers\ChartHelper;
 use App\Models\User;
+use App\Services\RatingCalculator;
 use Illuminate\View\View;
 
 class UserController extends Controller
 {
-    public function show(User $user): View
+    public function show(User $user, RatingCalculator $ratingCalculator): View
     {
-        $rating = getCalculatedRating();
+        $rating = $ratingCalculator->calculate();
         $userInRating = $rating->get($user->id);
         if ($userInRating) {
             $points = $userInRating->points;

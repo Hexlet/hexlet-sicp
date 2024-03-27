@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Helpers;
+namespace App\Services;
 
 use App\Models\User;
 use Illuminate\Support\Collection;
 
-class RatingHelper
+class RatingCalculator
 {
-    public static function getCalculatedRating(): Collection
+    public static function calculate(): Collection
     {
         $ratings = User::select('users.*')
             ->selectRaw('DENSE_RANK() OVER (ORDER BY points desc, created_at) AS position')
