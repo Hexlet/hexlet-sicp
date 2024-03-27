@@ -11,23 +11,19 @@ class UserController extends Controller
     public function show(User $user): View
     {
         $rating = getCalculatedRating();
-        $userRatingPosition = $rating
-            ->search(function (array $ratingPosition) use ($user) {
-                ['user' => $ratingUser] = $ratingPosition;
-                return $ratingUser->id === $user->id;
-            });
-
-        if ($userRatingPosition) {
-            ['points' => $points] = $rating->get($userRatingPosition);
+        $userInRating = $rating->get($user->id);
+        if ($userInRating) {
+            $points = $userInRating->points;
+            $position = $userInRating->position;
         } else {
             $points = 0;
-            $userRatingPosition = 'N/A';
+            $position = 'N/A';
         }
         $user->load('chapterMembers', 'exerciseMembers');
         $chart = ChartHelper::getChart($user->id);
         return view('user.show', compact(
             'user',
-            'userRatingPosition',
+            'position',
             'points',
             'chart'
         ));
