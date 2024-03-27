@@ -35,8 +35,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property-read int|null $exercise_members_count
  * @property-read Collection|Exercise[] $exercises
  * @property-read int|null $exercises_count
- * @property-read Collection|ReadChapter[] $readChapters
- * @property-read int|null $read_chapters_count
+ * @property-read Collection|ChapterMember[] $chapterMembers
+ * @property-read int|null $chapter_members_count
  * @property-read Collection|Solution[] $solutions
  * @property-read int|null $solutions_count
  * @method static UserFactory factory(...$parameters)
@@ -80,12 +80,12 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function chapters(): BelongsToMany
     {
-        return $this->belongsToMany(Chapter::class, 'read_chapters')->withTimestamps();
+        return $this->belongsToMany(Chapter::class, 'chapter_members')->withTimestamps();
     }
 
-    public function readChapters(): HasMany
+    public function chapterMembers(): HasMany
     {
-        return $this->hasMany(ReadChapter::class);
+        return $this->hasMany(ChapterMember::class);
     }
 
     public function exerciseMembers(): HasMany

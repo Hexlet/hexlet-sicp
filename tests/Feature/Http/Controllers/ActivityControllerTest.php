@@ -19,38 +19,10 @@ class ActivityControllerTest extends ControllerTestCase
         $this->actingAs($this->user);
     }
 
-    public function testStoreAddChapters(): void
+    public function testIndex(): void
     {
-        $chapters = Chapter::limit(3)->get();
+        $response = $this->get(route('log.index'));
 
-        $response = $this->post(route('users.chapters.store', [$this->user]), [
-                'chapters_id' => $chapters->pluck('id')->toArray(),
-        ]);
-
-        $response->assertSessionDoesntHaveErrors();
-        $response->assertRedirect();
-
-        $this->assertDatabaseHas('activity_log', [
-            'description' => ActivityService::ACTIVITY_CHAPTER_ADDED,
-            'causer_id' => $this->user->id,
-        ]);
-    }
-
-    public function testStoreRemovedChapters(): void
-    {
-        $chapters = Chapter::limit(3)->get();
-        $this->user->chapters()->saveMany($chapters);
-
-        $response = $this->post(route('users.chapters.store', [$this->user->id]), [
-            'chapters_id' => [],
-        ]);
-
-        $response->assertSessionDoesntHaveErrors();
-        $response->assertRedirect();
-
-        $this->assertDatabaseHas('activity_log', [
-            'description' => ActivityService::ACTIVITY_CHAPTER_REMOVED,
-            'causer_id' => $this->user->id,
-        ]);
+        $response->assertOk();
     }
 }

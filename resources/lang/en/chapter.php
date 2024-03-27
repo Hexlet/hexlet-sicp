@@ -1,6 +1,11 @@
 <?php
 
 return [
+    'members' => [
+        'finished' => 'Chapter is finished',
+        'finish' => 'Finish the chapter',
+        'confirm_finish' => 'Are you sure you want to complete the chapter?',
+    ],
     'chapter' => 'Chapter',
     'index' => [
         'description' => 'Contents of the book Structure and Interpretation of Computer Programs',

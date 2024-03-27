@@ -18,10 +18,11 @@ class MyController extends Controller
     {
         /** @var User $user */
         $user = Auth::user();
-        $user->load('readChapters', 'exerciseMembers');
+        $user->load('chapterMembers', 'exerciseMembers');
 
         $chapters = Chapter::with('children', 'exercises')->get();
         $mainChapters = $chapters->where('parent_id', null);
+        $chapterMembers = $user->chapterMembers->keyBy('chapter_id');
         $exerciseMembers = $user->exerciseMembers->keyBy('exercise_id');
         $savedSolutionsExercises = $user->solutions()
             ->versioned()
@@ -35,6 +36,7 @@ class MyController extends Controller
             'user',
             'chapters',
             'mainChapters',
+            'chapterMembers',
             'exerciseMembers',
             'savedSolutionsExercises'
         ));

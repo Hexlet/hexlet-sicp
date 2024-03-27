@@ -53,7 +53,7 @@
             </div>
             <div class="col mt-4">
               <p>{{ __('welcome.statistic.table.count_read_chapter') }}:</p>
-              <h3>{{ $statisticTable['countReadChapter'] }}</h3>
+              <h3>{{ $statisticTable['countChapterMember'] }}</h3>
             </div>
             <div class="col mt-4">
               <p>{{ __('welcome.statistic.table.count_completed_exercise') }}:</p>
@@ -130,7 +130,7 @@
               @break
 
               @case('removed')
-              @case('added')
+              @case('multiple_chapters_added')
                 <div class="d-block">
                   <a data-bs-toggle="collapse" href="#collapseExp{{ $logItem->id }}" aria-expanded="false"
                     aria-controls="collapseExp{{ $logItem->id }}">

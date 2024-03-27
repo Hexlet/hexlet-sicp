@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
             UsersTableSeeder::class,
             SolutionsTableSeeder::class,
             ExerciseMembersTableSeeder::class,
-            ReadChaptersTableSeeder::class,
+            ChapterMembersTableSeeder::class,
             CommentsTableSeeder::class,
         ]);
     }

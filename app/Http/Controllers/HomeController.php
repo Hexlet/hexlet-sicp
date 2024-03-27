@@ -8,7 +8,7 @@ use App\Models\Chapter;
 use App\Models\Comment;
 use App\Models\ExerciseMember;
 use App\Models\Exercise;
-use App\Models\ReadChapter;
+use App\Models\ChapterMember;
 use App\Models\User;
 use App\Services\PointsCalculator;
 use Illuminate\Support\Carbon;
@@ -53,21 +53,21 @@ class HomeController extends Controller
         $periodsForFilter = ['week', 'month'];
 
         if (!in_array($filter, $periodsForFilter, true)) {
-            $countReadChapter = ReadChapter::count();
+            $countChapterMember = ChapterMember::count();
             $countCompletedExercise = ExerciseMember::count();
             $filter = 'all';
         } else {
             $subPeriod = "sub{$filter}";
             $period = Carbon::today()->$subPeriod(1);
 
-            $countReadChapter = ReadChapter::where('created_at', '>', $period)->count();
+            $countChapterMember = ChapterMember::where('created_at', '>', $period)->count();
             $countCompletedExercise = ExerciseMember::where('created_at', '>', $period)->count();
         }
 
         return [
-            'countReadChapter' => $countReadChapter,
+            'countChapterMember' => $countChapterMember,
             'countCompletedExercise' => $countCompletedExercise,
-            'countPoints' => PointsCalculator::calculate($countReadChapter, $countCompletedExercise),
+            'countPoints' => PointsCalculator::calculate($countChapterMember, $countCompletedExercise),
             'filterForQuery' => $filter,
         ];
     }

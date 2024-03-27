@@ -74,10 +74,10 @@
         <div class="row no-gutters my-2">
           <div class="col-4 col-md text-center my-2">
             <div class="h2 text-info">
-              {{ $user->readChapters->count() }}
+              {{ $user->chapterMembers->count() }}
             </div>
             <div class="text-secondary">
-              {{ trans_choice('user.show.statistics.read_chapters', $user->readChapters->count()) }}
+              {{ trans_choice('user.show.statistics.chapter_members', $user->chapterMembers->count()) }}
             </div>
           </div>
           <div class="col-4 col-md text-center my-2">

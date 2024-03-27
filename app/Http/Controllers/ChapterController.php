@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Chapter;
+use App\Models\ChapterMember;
 use App\Models\User;
 use Illuminate\View\View;
 
@@ -20,7 +21,6 @@ class ChapterController extends Controller
         $chapter->load([
             'parent',
             'children',
-            'users',
             'exercises',
             'comments',
         ]);
@@ -31,11 +31,20 @@ class ChapterController extends Controller
         $authUser = auth()->user() ?? new User();
         $previousChapter = Chapter::whereId($chapter->id - 1)->firstOrNew([]);
         $nextChapter = Chapter::whereId($chapter->id + 1)->firstOrNew([]);
-        $isCompletedChapter = $authUser->readChapters()->where('chapter_id', $chapter->id)->exists();
+        $currentChapterMember = $chapter
+            ->members()
+            ->whereUserId($authUser->id)->firstOr(function () use ($chapter, $authUser): ChapterMember {
+                $chapterMember = new ChapterMember([]);
+
+                $chapterMember->user()->associate($authUser);
+                $chapterMember->chapter()->associate($chapter);
+
+                return $chapterMember;
+            });
 
         return view('chapter.show', compact(
+            'currentChapterMember',
             'chapter',
-            'isCompletedChapter',
             'authUser',
             'previousChapter',
             'nextChapter',
