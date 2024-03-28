@@ -8,7 +8,7 @@ use App\Models\User;
 use Tests\TestCase;
 use Illuminate\Support\Collection;
 
-class UserControllerTest extends TestCase
+class TopControllerTest extends TestCase
 {
     public function testIndex(): void
     {

@@ -10,7 +10,6 @@ use App\Models\ExerciseMember;
 use App\Models\Exercise;
 use App\Models\ChapterMember;
 use App\Models\User;
-use App\Services\PointsCalculator;
 use Illuminate\Support\Carbon;
 use Illuminate\View\View;
 use Request;
@@ -67,7 +66,6 @@ class HomeController extends Controller
         return [
             'countChapterMember' => $countChapterMember,
             'countCompletedExercise' => $countCompletedExercise,
-            'countPoints' => PointsCalculator::calculate($countChapterMember, $countCompletedExercise),
             'filterForQuery' => $filter,
         ];
     }

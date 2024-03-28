@@ -20,7 +20,7 @@
         <h1 class="h4 text-break my-2">{{ $user->name }}</h1>
         <div class="h5">
           <span class="bi bi-trophy-fill"></span>
-          <span>{{ $userRatingPosition }}</span>
+          <span>{{ $position }}</span>
           <a class="h6" href="{{ route('top.index') }}">
             {{ __('user.show.statistics.rating') }}
           </a>

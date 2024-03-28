@@ -7,7 +7,7 @@
 @endsection
 @section('content')
   <div class="my-4">
-    @include('rating.menu')
+    @include('rating._menu')
 
     <section>
       <h1 class="h3">{{ __('rating.index.title') }}</h1>
@@ -22,9 +22,9 @@
             </tr>
           </thead>
           <tbody>
-            @foreach ($rating as $position => ['user' => $user, 'points' => $points])
+            @foreach ($rating as $user)
               <tr>
-                <td>{{ $position }}</td>
+                <td>{{ $user->position }}</td>
                 <td>
                   <a class="text-decoration-none" href="{{ route('users.show', $user) }}">
                     <img class="rounded-circle mr-1" width="30" height="30"
@@ -32,7 +32,7 @@
                     {{ $user->name }}
                   </a>
                 </td>
-                <td>{{ $points }}</td>
+                <td>{{ $user->points }}</td>
               </tr>
             @endforeach
           </tbody>

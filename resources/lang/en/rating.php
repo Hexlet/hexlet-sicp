@@ -9,10 +9,6 @@ return [
         'title' => 'Top commenters',
         'description' => 'The sicp.hexlet.ru top commenters ranking',
     ],
-    'progress' => [
-        'title' => 'Top students',
-        'description' => 'The sicp.hexlet.ru top students ranking',
-    ],
     'positions' => 'Rank',
     'user' => 'Username',
     'number_of_points' => 'Points',

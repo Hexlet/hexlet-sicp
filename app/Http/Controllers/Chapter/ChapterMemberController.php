@@ -7,7 +7,7 @@ use App\Models\Chapter;
 use App\Models\ChapterMember;
 use App\Models\User;
 use App\Services\ActivityService;
-use Flash;
+use DB;
 use Illuminate\Http\RedirectResponse;
 
 class ChapterMemberController extends Controller
@@ -18,8 +18,8 @@ class ChapterMemberController extends Controller
         $currentChapterMember = $this->getMember($user, $chapter);
         $currentChapterMember->finish();
         $currentChapterMember->save();
+        $user->increment('points');
 
-        // TODO: add points for finishing
         flash()->info(__('layout.flash.success'))->success();
         $activityService->logChapterMemberFinished($currentChapterMember);
 

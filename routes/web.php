@@ -24,14 +24,12 @@ Route::group([
 
     Route::resource('users', 'UserController')->only('show');
     Route::namespace('User')->group(function (): void {
-        Route::resource('users.chapters', 'UserChapterController')->only('store', 'destroy');
         Route::resource('users.solutions', 'SolutionController')->only('store', 'show', 'destroy');
         Route::resource('users.comments', 'UserCommentController')->only('index');
     });
 
     Route::namespace('Rating')->prefix('ratings')->group(function (): void {
-        Route::resource('top', 'UserController')->only('index');
-        Route::resource('progress_top', 'ProgressController')->only('index');
+        Route::resource('top', 'TopController')->only('index');
         Route::resource('comments_top', 'CommentController')->only('index');
     });
 
