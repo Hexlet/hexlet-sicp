@@ -7,7 +7,7 @@
    */
 @endphp
 @section('title')
-  {{ getTitleContent($exercise->getTitle()) }}
+  {{ __('exercise.exercise') }} {{ getTitleContent($exercise->getFullTitle()) }}
 @endsection
 @section('description')
   {{ __('exercise.exercise') }} {{ $exercise->path }} {{ $exercise->getTitle() }} {{ __('exercise.show.description') }}
