@@ -13,13 +13,12 @@ class UserController extends Controller
     {
         $rating = $ratingCalculator->calculate();
         $userInRating = $rating->get($user->id);
-        if ($userInRating) {
-            $points = $userInRating->points;
-            $position = $userInRating->position;
-        } else {
-            $points = 0;
-            $position = 'N/A';
-        }
+        $points = $user->points;
+
+        $position = $rating->has($user->id)
+            ? $userInRating->position
+            : 'N/A';
+
         $user->load('chapterMembers', 'exerciseMembers');
         $chart = ChartHelper::getChart($user->id);
         return view('user.show', compact(
