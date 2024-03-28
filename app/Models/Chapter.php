@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
+use App\Helpers\ChapterHelper;
 
 class Chapter extends Model
 {
@@ -45,5 +46,10 @@ class Chapter extends Model
     public function getChapterLevel(): int
     {
         return count(explode('.', $this->path));
+    }
+
+    public function getFullTitle(): string
+    {
+        return ChapterHelper::fullChapterName($this->path);
     }
 }
