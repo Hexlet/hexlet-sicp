@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'exercise' => 'Exercise',
+    'exercise' => 'Exercise :exercise',
     'index' => [
         'description' => 'List of exercises in the book Structure and Interpretation of Computer Programs',
     ],

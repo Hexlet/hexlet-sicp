@@ -10,4 +10,5 @@ return [
     'exercise' => 'Exercise',
     'code_review' => 'Code Review',
     'sub_title' => 'Compare your solutions',
+    'solution_for_title' => 'Solution for Exercise :exercise',
 ];

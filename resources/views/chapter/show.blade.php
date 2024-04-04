@@ -10,7 +10,7 @@
    */
 @endphp
 @section('title')
-  {{ getTitleContent(App\Helpers\ChapterHelper::fullChapterName($chapter->path)) }}
+  {{ getTitleContent(__('chapter.chapter', ['chapter' => $chapter->getFullTitle()])) }}
 @endsection
 @section('description')
   @foreach (Breadcrumbs::generate('chapter', $chapter) as $breadcrumb)
@@ -38,7 +38,7 @@
         @endif
       </small>
       <h1 class="h2">
-        {{ App\Helpers\ChapterHelper::fullChapterName($chapter->path) }}
+        {{ $chapter->getFullTitle() }}
         <small>
           <a class="text-muted" target="_blank" href="{{ getChapterOriginLink($chapter) }}" data-bs-toggle="tooltip"
             data-bs-placement="right" title="{{ __('layout.common.origin') }}">
