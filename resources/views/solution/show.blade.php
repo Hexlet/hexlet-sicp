@@ -1,7 +1,9 @@
 @extends('layouts.app')
 
 @section('meta-robots', 'nofollow, noindex')
-@section('title'){{ __('solution.exercise') }} {{ getTitleContent($currentExercise->getFullTitle()) }}@endsection
+@section('title')
+  {{ getTitleContent(__('solution.solution_for_title', ['exercise' => $currentExercise->getFullTitle()])) }}
+@endsection
 @section('description'){{ $user->id }} - {{ __('solution.code_review') }} - {{ $user->name }} -
   {{ __('solution.exercise') }} {{ $currentExercise->getFullTitle() }}@endsection
 

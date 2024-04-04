@@ -6,7 +6,7 @@ return [
         'finish' => 'Finish the chapter',
         'confirm_finish' => 'Are you sure you want to complete the chapter?',
     ],
-    'chapter' => 'Chapter',
+    'chapter' => 'Chapter :chapter',
     'index' => [
         'description' => 'Contents of the book Structure and Interpretation of Computer Programs',
     ],

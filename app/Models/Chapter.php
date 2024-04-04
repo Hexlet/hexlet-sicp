@@ -2,14 +2,23 @@
 
 namespace App\Models;
 
+use App\Presenters\ChapterPresenter;
+use Hemp\Presenter\Presentable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 
+/**
+ * @method ChapterPresenter present()
+ */
 class Chapter extends Model
 {
+    use Presentable;
+
+    public string $defaultPresenter = ChapterPresenter::class;
+
     public const MARKABLE_COUNT = 101;
 
     public function members(): HasMany
@@ -45,5 +54,10 @@ class Chapter extends Model
     public function getChapterLevel(): int
     {
         return count(explode('.', $this->path));
+    }
+
+    public function getFullTitle(): string
+    {
+        return $this->present()->fullTitle;
     }
 }
