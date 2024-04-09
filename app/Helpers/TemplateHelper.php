@@ -13,9 +13,8 @@ class TemplateHelper
     public static function getBookLink(string $locale): string
     {
         return match ($locale) {
-            'ru' => 'https://mirror.yandex.ru/mirrors/ftp.linux.kiev.ua/docs/developer/general/sicp-ru/sicp-ru-screen.pdf',
-            'en' => 'https://web.mit.edu/6.001/6.037/sicp.pdf',
-            default => '',
+            'ru' => 'https://drive.google.com/file/d/1xc9r6txuTZMZ5lPy9YQuD1Dwv9spg7Nt/view?usp=sharing',
+            default => 'https://drive.google.com/file/d/1t3rlltwuU85ow7g0ZI6Kx7eY5n-Umh8p/view?usp=sharing',
         };
     }
 }
