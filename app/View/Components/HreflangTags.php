@@ -14,7 +14,7 @@ class HreflangTags extends Component
         $this->generateLanguageUrls();
     }
 
-    private function generateLanguageUrls()
+    private function generateLanguageUrls(): void
     {
         $defaultLocale = config('app.locale');
         $currentLocale = app()->getLocale();
