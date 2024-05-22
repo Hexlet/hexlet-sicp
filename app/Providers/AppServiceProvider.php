@@ -45,5 +45,6 @@ class AppServiceProvider extends ServiceProvider
         Blade::include('components.comments', 'comments');
         Blade::include('components.solutions', 'solutions');
         Blade::include("components.solution", 'solution');
+        Blade::include("components.hreflang_tags", 'hreflang_tags');
     }
 }

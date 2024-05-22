@@ -24,6 +24,7 @@
   <link href="{{ mix('css/app.css') }}" rel="stylesheet">
   @includeWhen(app()->environment('production'), 'layouts.deps._gtm_body')
   @includeWhen(app()->environment('production'), 'layouts.deps._metrika')
+  <x-hreflang-tags/>
 </head>
 
 <body class="min-vh-100 d-flex flex-column">
