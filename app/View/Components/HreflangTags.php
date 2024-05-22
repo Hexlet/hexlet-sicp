@@ -8,6 +8,7 @@ use Illuminate\View\View;
 class HreflangTags extends Component
 {
     public array $languageUrls = [];
+    public string $currentLocale;
 
     public function __construct()
     {
@@ -17,25 +18,31 @@ class HreflangTags extends Component
     private function generateLanguageUrls(): void
     {
         $defaultLocale = config('app.locale');
-        $currentLocale = app()->getLocale();
+        $this->currentLocale = app()->getLocale();
         $segments = request()->segments();
 
-        // Combine segments into a URL
         $url = implode('/', $segments);
 
-        if ($currentLocale !== $defaultLocale) {
-            $url = $currentLocale . '/' . $url;
+        if ($this->currentLocale !== $defaultLocale) {
+            $url = "$this->currentLocale/$url";
         }
 
-        $alternateLocale = ($currentLocale === 'en') ? 'ru' : 'en';
+        if ($this->currentLocale === 'ru') {
+            $this->languageUrls['en'] = $this->removeLanguagePrefixes($url);
+        } else {
+            $this->languageUrls['ru'] = "ru/$url";
+        }
 
-        $this->languageUrls[$alternateLocale] = $url;
+        $this->languageUrls['x-default'] = $this->removeLanguagePrefixes($url);
+    }
 
-        $this->languageUrls['x-default'] = implode('/', array_slice($segments, 1));
+    public function removeLanguagePrefixes(string $url): string
+    {
+        return preg_replace('/(^\/ru\/?|\/ru\/?|\/?ru\/?|\/$)/u', '', $url);
     }
 
     public function render(): View
     {
-        return view('components.hreflang_tags', ['languageUrls' => $this->languageUrls]);
+        return view('components.hreflang_tags', ['languageUrls' => $this->languageUrls, 'currentLocale' => $this->currentLocale]);
     }
 }
