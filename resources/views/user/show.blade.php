@@ -10,7 +10,7 @@
 @endphp
 @section('description', $user->name)
 @push('styles')
-  @vite('resources/css/_activity_chart.css')
+  @vite('resources/sass/_activity_chart.scss')
 @endpush
 @section('content')
   <div class="row my-4">
