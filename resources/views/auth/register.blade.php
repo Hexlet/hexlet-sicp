@@ -9,18 +9,18 @@
         </h1>
         <div class="card-body">
           {{ html()->form()->route('register')->open() }}
-          <x-bs.form.text name="email" label="register.email" />
-          <x-bs.form.text name="name" label="register.name" />
-          <x-bs.form.password name="password" label="register.password" />
-          <x-bs.form.password name="password_confirmation" label="register.password_confirmation" />
+            <x-bs.form.text name="email" label="register.email" />
+            <x-bs.form.text name="name" label="register.name" />
+            <x-bs.form.password name="password" label="register.password" />
+            <x-bs.form.password name="password_confirmation" label="register.password_confirmation" />
 
-          <x-bs.form.submit label='register.submit' />
+            <x-bs.form.submit label='register.submit' />
 
-          <div class="mt-2">
-            <a href="{{ route('login') }}">{{ __('register.login') }}</a>
-            <a class="mt-2 d-block" href="{{ route('password.request') }}">{{ __('register.reset_password') }}</a>
-            <a href="{{ route('oauth.github') }}" class="mt-2 d-block"> {{ __('auth.with_github') }}</a>
-          </div>
+            <div class="mt-2">
+              <a href="{{ route('login') }}">{{ __('register.login') }}</a>
+              <a class="mt-2 d-block" href="{{ route('password.request') }}">{{ __('register.reset_password') }}</a>
+              <a href="{{ route('oauth.github') }}" class="mt-2 d-block"> {{ __('auth.with_github') }}</a>
+            </div>
           {{ html()->form()->close() }}
         </div>
       </div>

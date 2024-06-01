@@ -41,7 +41,7 @@
         {{ $chapter->getFullTitle() }}
         <small>
           <a class="text-muted" target="_blank" href="{{ getChapterOriginLink($chapter) }}" data-bs-toggle="tooltip"
-             data-bs-placement="right" title="{{ __('layout.common.origin') }}">
+            data-bs-placement="right" title="{{ __('layout.common.origin') }}">
             <i class="bi bi-box-arrow-up-right"></i>
           </a>
         </small>
@@ -60,14 +60,14 @@
       @if ($chapter->can_read)
         @auth
           @if ($currentChapterMember->isFinished())
-            <span class="text-decoration-none text-muted">@lang('chapter.members.finished')</span><i class="bi bi-check-lg text-success"></i>
+          <span class="text-decoration-none text-muted">@lang('chapter.members.finished')</span><i class="bi bi-check-lg text-success"></i>
           @elseif ($currentChapterMember->mayFinish())
-            <a href="{{ route('chapters.members.finish', $chapter) }}" class="text-decoration-none"
-               {{-- TODO: fix confirm messages --}}
-               data-confirm="{{ __('chapter.members.confirm_finish', ['chapter_path' => $chapter->path]) }}"
-               data-method="put">
-              {{ __('chapter.members.finish') }}
-            </a>
+          <a href="{{ route('chapters.members.finish', $chapter) }}" class="text-decoration-none"
+            {{-- TODO: fix confirm messages --}}
+            data-confirm="{{ __('chapter.members.confirm_finish', ['chapter_path' => $chapter->path]) }}"
+            data-method="put">
+            {{ __('chapter.members.finish') }}
+          </a>
           @endif
         @endauth
       @endif

@@ -31,49 +31,49 @@
     <div>
       @can('reply', $comment)
         <button data-bs-toggle="modal" data-bs-target="#reply-modal-{{ $comment->id }}"
-                class="btn btn-sm btn-link text-uppercase p-0 mr-2">
+          class="btn btn-sm btn-link text-uppercase p-0 mr-2">
           {{ __('comment.reply') }}
         </button>
       @endcan
       @can('update', $comment)
         <button data-bs-toggle="modal" data-bs-target="#comment-modal-{{ $comment->id }}"
-                class="btn btn-sm btn-link text-uppercase p-0 mr-2">
+          class="btn btn-sm btn-link text-uppercase p-0 mr-2">
           {{ __('comment.edit') }}
         </button>
       @endcan
       @can('delete', $comment)
         <a href="{{ route('comments.destroy', $comment) }}" class="btn btn-sm btn-link text-danger text-uppercase p-0"
-           data-confirm="Are you sure?" data-method="delete" rel="nofollow">
+          data-confirm="Are you sure?" data-method="delete" rel="nofollow">
           {{ __('comment.delete') }}
         </a>
       @endcan
     </div>
     @can('update', $comment)
-      <div class="modal fade" id="comment-modal-{{ $comment->id }}" tabindex="-1">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            {{ html()->modelForm($comment, 'PUT', route('comments.update', ['comment' => $comment]))->open() }}
-            <div class="modal-header">
-              <h5 class="modal-title">{{ __('comment.edit_comment') }}/h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-            </div>
-            <div class="modal-body">
-              {{ html()->hidden('commentable_type') }}
-              {{ html()->hidden('commentable_id') }}
-              <div class="form-floating">
-                {{ html()->textarea('content')->class('form-control h-100')->required() }}
-                <label for="content">{{ __('comment.enter_your_message') }}</label>
-              </div>
-            </div>
-            <div class="modal-footer text-left">
-              {{ html()->submit((__('comment.update')))->class('btn btn-success btn-sm text-uppercase') }}
-              {{ html()->button(__('comment.cancel'))->type('button')->class('btn btn-secondary btn-sm text-uppercase
-              mr-auto')->data('bs-dismiss', 'modal') }}
-            </div>
-            {{ html()->closeModelForm() }}
+    <div class="modal fade" id="comment-modal-{{ $comment->id }}" tabindex="-1">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          {{ html()->modelForm($comment, 'PUT', route('comments.update', ['comment' => $comment]))->open() }}
+          <div class="modal-header">
+            <h5 class="modal-title">{{ __('comment.edit_comment') }}/h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
           </div>
+          <div class="modal-body">
+            {{ html()->hidden('commentable_type') }}
+            {{ html()->hidden('commentable_id') }}
+            <div class="form-floating">
+              {{ html()->textarea('content')->class('form-control h-100')->required() }}
+              <label for="content">{{ __('comment.enter_your_message') }}</label>
+            </div>
+          </div>
+          <div class="modal-footer text-left">
+            {{ html()->submit((__('comment.update')))->class('btn btn-success btn-sm text-uppercase') }}
+            {{ html()->button(__('comment.cancel'))->type('button')->class('btn btn-secondary btn-sm text-uppercase
+            mr-auto')->data('bs-dismiss', 'modal') }}
+          </div>
+          {{ html()->closeModelForm() }}
         </div>
       </div>
+    </div>
     @endcan
     @can('reply', $comment)
       @include('components.comment.reply._modal')
