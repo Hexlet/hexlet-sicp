@@ -1,1 +1,1 @@
-require('./components/index');
+import './components/index';

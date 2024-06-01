@@ -11,7 +11,7 @@ window._ = lodash;
 window.axios = axios;
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
-require('jquery-ujs');
-require('./correction');
+import 'jquery-ujs';
+import './correction';
 
 correctionListener();
