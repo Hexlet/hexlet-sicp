@@ -8,5 +8,5 @@ Mary:	(set! balance (- balance (/ balance 2)))
 {{ __('exercises/3_38.description.3') }}
 </p>
 <p>{{ __('exercises/3_38.description.4') }}</p>
-<img class="img-fluid" src="{{ asset('images/exercises/3_38.gif') }}" alt="3.38">
+<img class="img-fluid" src="{{ asset('build/images/exercises/3_38.gif') }}" alt="3.38">
 <p>{{ __('exercises/3_38.description.5') }}</p>

@@ -20,7 +20,7 @@
 <code>start</code>
 {{ __('exercises/5_14.description.11') }}
 </p>
-<img class="img-fluid" src="{{ asset('images/exercises/5_14.gif') }}" alt="5.14">
+<img class="img-fluid" src="{{ asset('build/images/exercises/5_14.gif') }}" alt="5.14">
 <pre><code>(controller
   gcd-loop
     (assign a (op read))
@@ -37,7 +37,7 @@
     (goto (label gcd-loop)))
 </code></pre>
 <p>{{ __('exercises/5_14.description.12') }}</p>
-<img class="img-fluid" src="{{ asset('images/exercises/5_12.gif') }}" alt="5.12">
+<img class="img-fluid" src="{{ asset('build/images/exercises/5_12.gif') }}" alt="5.12">
 <pre><code>(controller
    (assign continue (label fact-done))     ; set up final return address
  fact-loop

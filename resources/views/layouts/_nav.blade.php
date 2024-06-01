@@ -9,7 +9,7 @@
 <header class="navbar navbar-expand-xl">
   <nav class="container py-2 border-bottom">
     <a href="{{ LaravelLocalization::getLocalizedURL($currentLocale, route('home')) }}" class="navbar-brand">
-      <img src="{{ asset("images/logo-{$currentLocale}.svg") }}" alt="{{ __('layout.nav.logo_alt') }}" height="25px"
+      <img src="{{ asset("build/images/logo-{$currentLocale}.svg") }}" alt="{{ __('layout.nav.logo_alt') }}" height="25px"
         class="align-baseline"></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-responsive"
       aria-controls="navbar-responsive" aria-expanded="false" aria-label="Toggle navigation">
