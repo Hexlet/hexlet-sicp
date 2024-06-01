@@ -6,16 +6,11 @@
         "pre-push": "make pre-push-hook"
     },
     "scripts": {
-        "dev": "npm run development",
-        "development": "mix",
-        "watch": "mix watch",
-        "watch-poll": "mix watch -- --watch-options-poll=1000",
-        "hot": "mix watch --hot",
-        "production": "mix --production",
-        "prod": "npm run production",
-        "heroku-postbuild": "npm run production",
+        "heroku-postbuild": "npm run build",
         "lint-js": "node_modules/.bin/eslint --ext .jsx,.js ./resources/js",
-        "lint-js-fix": "node_modules/.bin/eslint --fix --ext .jsx,.js ./resources/js"
+        "lint-js-fix": "node_modules/.bin/eslint --fix --ext .jsx,.js ./resources/js",
+        "dev": "vite",
+        "build": "vite build"
     },
     "dependencies": {
         "@codemirror/language": "^6.9.3",

@@ -10,7 +10,7 @@ deploy:
 	git push heroku main
 
 setup: env-prepare sqlite-prepare install key db-prepare ide-helper
-	npm run development
+	npm run dev
 
 install-app:
 	composer install
@@ -27,7 +27,7 @@ start-app:
 	php artisan serve --host 0.0.0.0 --port ${PORT}
 
 start-frontend:
-	npm run watch
+	npm run dev
 
 db-prepare:
 	php artisan migrate:fresh --force --seed
