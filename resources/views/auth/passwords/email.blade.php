@@ -8,7 +8,7 @@
           {{ __('passwords.reset_password.form_header') }}
         </h1>
         <div class="card-body mb-3">
-          @if ($errors->any())
+          @if($errors->any())
             <div class="alert alert-danger" role="alert">
               {{ $errors->first() }}
             </div>

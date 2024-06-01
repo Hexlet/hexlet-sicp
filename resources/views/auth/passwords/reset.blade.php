@@ -10,7 +10,7 @@
         <div class="card-body">
 
           {{ html()->form()->action(route('password.update'))->open() }}
-          {{ html()->hidden('token')->value($token) }}
+          {{ html()->hidden('token')->value($token )}}
           <x-bs.form.text name="email" label="passwords.reset_password.email" />
           <x-bs.form.password name="password" label="passwords.reset_password.password" />
           <x-bs.form.password name="password_confirmation" label="passwords.reset_password.confirm_password" />

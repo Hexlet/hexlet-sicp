@@ -31,19 +31,19 @@
     <div>
       @can('reply', $comment)
         <button data-bs-toggle="modal" data-bs-target="#reply-modal-{{ $comment->id }}"
-          class="btn btn-sm btn-link text-uppercase p-0 mr-2">
+                class="btn btn-sm btn-link text-uppercase p-0 mr-2">
           {{ __('comment.reply') }}
         </button>
       @endcan
       @can('update', $comment)
         <button data-bs-toggle="modal" data-bs-target="#comment-modal-{{ $comment->id }}"
-          class="btn btn-sm btn-link text-uppercase p-0 mr-2">
+                class="btn btn-sm btn-link text-uppercase p-0 mr-2">
           {{ __('comment.edit') }}
         </button>
       @endcan
       @can('delete', $comment)
         <a href="{{ route('comments.destroy', $comment) }}" class="btn btn-sm btn-link text-danger text-uppercase p-0"
-          data-confirm="Are you sure?" data-method="delete" rel="nofollow">
+           data-confirm="Are you sure?" data-method="delete" rel="nofollow">
           {{ __('comment.delete') }}
         </a>
       @endcan
@@ -66,11 +66,9 @@
               </div>
             </div>
             <div class="modal-footer text-left">
-              {{ html()->submit(__('comment.update'))->class('btn btn-success btn-sm text-uppercase') }}
-              {{ html()->button(__('comment.cancel'))->type('button')->class(
-                      'btn btn-secondary btn-sm text-uppercase
-                          mr-auto',
-                  )->data('bs-dismiss', 'modal') }}
+              {{ html()->submit((__('comment.update')))->class('btn btn-success btn-sm text-uppercase') }}
+              {{ html()->button(__('comment.cancel'))->type('button')->class('btn btn-secondary btn-sm text-uppercase
+              mr-auto')->data('bs-dismiss', 'modal') }}
             </div>
             {{ html()->closeModelForm() }}
           </div>
