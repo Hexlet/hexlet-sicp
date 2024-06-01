@@ -49,31 +49,33 @@
       @endcan
     </div>
     @can('update', $comment)
-    <div class="modal fade" id="comment-modal-{{ $comment->id }}" tabindex="-1">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          {{ html()->modelForm($comment, 'PUT', route('comments.update', ['comment' => $comment]))->open() }}
-          <div class="modal-header">
-            <h5 class="modal-title">{{ __('comment.edit_comment') }}/h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-          </div>
-          <div class="modal-body">
-            {{ html()->hidden('commentable_type') }}
-            {{ html()->hidden('commentable_id') }}
-            <div class="form-floating">
-              {{ html()->textarea('content')->class('form-control h-100')->required() }}
-              <label for="content">{{ __('comment.enter_your_message') }}</label>
+      <div class="modal fade" id="comment-modal-{{ $comment->id }}" tabindex="-1">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            {{ html()->modelForm($comment, 'PUT', route('comments.update', ['comment' => $comment]))->open() }}
+            <div class="modal-header">
+              <h5 class="modal-title">{{ __('comment.edit_comment') }}/h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
+            <div class="modal-body">
+              {{ html()->hidden('commentable_type') }}
+              {{ html()->hidden('commentable_id') }}
+              <div class="form-floating">
+                {{ html()->textarea('content')->class('form-control h-100')->required() }}
+                <label for="content">{{ __('comment.enter_your_message') }}</label>
+              </div>
+            </div>
+            <div class="modal-footer text-left">
+              {{ html()->submit(__('comment.update'))->class('btn btn-success btn-sm text-uppercase') }}
+              {{ html()->button(__('comment.cancel'))->type('button')->class(
+                      'btn btn-secondary btn-sm text-uppercase
+                          mr-auto',
+                  )->data('bs-dismiss', 'modal') }}
+            </div>
+            {{ html()->closeModelForm() }}
           </div>
-          <div class="modal-footer text-left">
-            {{ html()->submit((__('comment.update')))->class('btn btn-success btn-sm text-uppercase') }}
-            {{ html()->button(__('comment.cancel'))->type('button')->class('btn btn-secondary btn-sm text-uppercase
-            mr-auto')->data('bs-dismiss', 'modal') }}
-          </div>
-          {{ html()->closeModelForm() }}
         </div>
       </div>
-    </div>
     @endcan
     @can('reply', $comment)
       @include('components.comment.reply._modal')

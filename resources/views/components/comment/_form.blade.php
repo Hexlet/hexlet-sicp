@@ -13,7 +13,7 @@
       <label for="content">{{ __('comment.enter_your_message') }}</label>
     </div>
     <div class="mt-3">
-          {{ html()->submit(__('comment.submit'))->class('btn btn-success btn-sm text-uppercase') }}
+      {{ html()->submit(__('comment.submit'))->class('btn btn-success btn-sm text-uppercase') }}
     </div>
     {{ html()->form()->close() }}
   </div>

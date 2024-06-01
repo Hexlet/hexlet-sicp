@@ -1,0 +1,82 @@
+{
+  "__commonjsHelpers.js": {
+    "file": "js/_commonjsHelpers.js",
+    "name": "_commonjsHelpers"
+  },
+  "_jquery.js": {
+    "file": "js/jquery.js",
+    "name": "jquery",
+    "imports": [
+      "__commonjsHelpers.js"
+    ]
+  },
+  "_routes.js": {
+    "file": "js/routes.js",
+    "name": "routes"
+  },
+  "resources/assets/images/waiting_clock.png": {
+    "file": "images/waiting_clock.png",
+    "src": "resources/assets/images/waiting_clock.png"
+  },
+  "resources/js/app.js": {
+    "file": "js/app.js",
+    "name": "app",
+    "src": "resources/js/app.js",
+    "isEntry": true,
+    "imports": [
+      "_jquery.js",
+      "__commonjsHelpers.js",
+      "_routes.js"
+    ]
+  },
+  "resources/js/custom.js": {
+    "file": "js/custom.js",
+    "name": "custom",
+    "src": "resources/js/custom.js",
+    "isEntry": true,
+    "imports": [
+      "_jquery.js",
+      "__commonjsHelpers.js"
+    ]
+  },
+  "resources/js/editor.js": {
+    "file": "js/editor.js",
+    "name": "editor",
+    "src": "resources/js/editor.js",
+    "isEntry": true,
+    "imports": [
+      "__commonjsHelpers.js",
+      "_routes.js"
+    ],
+    "assets": [
+      "images/waiting_clock.png"
+    ]
+  },
+  "resources/js/hljs.js": {
+    "file": "js/hljs.js",
+    "name": "hljs",
+    "src": "resources/js/hljs.js",
+    "isEntry": true,
+    "imports": [
+      "__commonjsHelpers.js"
+    ],
+    "css": [
+      "css/hljs.css"
+    ]
+  },
+  "resources/sass/_activity_chart.scss": {
+    "file": "css/_activity_chart.css",
+    "src": "resources/sass/_activity_chart.scss",
+    "isEntry": true
+  },
+  "resources/sass/_custom.scss": {
+    "file": "css/_custom.css",
+    "src": "resources/sass/_custom.scss",
+    "isEntry": true
+  },
+  "resources/sass/app.scss": {
+    "file": "css/app.css",
+    "src": "resources/sass/app.scss",
+    "isEntry": true
+  }
+}
