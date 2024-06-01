@@ -21,7 +21,7 @@
 
   <!-- Styles -->
   @stack('styles')
-  <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+  @vite('resources/css/app.css')
   @includeWhen(app()->environment('production'), 'layouts.deps._gtm_body')
   @includeWhen(app()->environment('production'), 'layouts.deps._metrika')
   <x-hreflang-tags/>
@@ -45,9 +45,9 @@
   @endif
 
   @include('layouts._footer')
-  <script src="{{ mix('js/app.js') }}" defer></script>
-  <script src="{{ mix('js/hljs.js') }}"></script>
-  <script src="{{ mix('js/custom.js') }}" defer></script>
+  @vite('resources/js/app.js')
+  @vite('resources/js/hljs.js')
+  @vite('resources/js/custom.js')
   @stack('scripts')
 </body>
 

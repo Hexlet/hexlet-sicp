@@ -111,5 +111,5 @@
       locale
     };
   </script>
-  <script src="{{ mix('js/editor.js') }}" defer></script>
+  @vite('resources/js/editor.js')
 @endpush

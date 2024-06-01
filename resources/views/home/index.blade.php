@@ -6,7 +6,7 @@
   use App\Helpers\ActivityLogHelper;
 @endphp
 @push('styles')
-  <link href="{{ mix('css/_activity_chart.css') }}" rel="stylesheet">
+  @vite('resources/css/_activity_chart.css')
 @endpush
 @section('content')
   <div class="row">
