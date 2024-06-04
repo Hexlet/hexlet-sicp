@@ -10,7 +10,7 @@ deploy:
 	git push heroku main
 
 setup: env-prepare sqlite-prepare install key db-prepare ide-helper
-	npm run dev
+	npm run build
 
 install-app:
 	composer install
