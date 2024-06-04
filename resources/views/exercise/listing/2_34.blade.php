@@ -4,9 +4,9 @@
 <code>x</code>
 {{ __('exercises/2_34.description.3') }}
 </p>
-<img class="img-fluid" src="{{ asset('build/images/exercises/2_34_1.gif') }}" alt="2.34.1">
+<img class="img-fluid" src="{{ Vite::asset("resources/assets/images/exercises/2_34_1.gif") }}" alt="2.34.1">
 <p>{{ __('exercises/2_34.description.4') }}</p>
-<img class="img-fluid" src="{{ asset('build/images/exercises/2_34_2.gif') }}" alt="2.34.2">
+<img class="img-fluid" src="{{ Vite::asset("resources/assets/images/exercises/2_34_2.gif") }}" alt="2.34.2">
 <p>{{ __('exercises/2_34.description.5') }}
 <code>aₙ</code>
 {{ __('exercises/2_34.description.6') }}

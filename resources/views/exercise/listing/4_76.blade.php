@@ -22,5 +22,5 @@
 <code>and</code>
 {{ __('exercises/4_76.description.12') }}
 </p>
-<img class="img-fluid" src="{{ asset('build/images/exercises/4_76.gif') }}" alt="4.76">
+<img class="img-fluid" src="{{ Vite::asset("resources/assets/images/exercises/4_76.gif") }}" alt="4.76">
 <p>{{ __('exercises/4_76.description.13') }}</p>

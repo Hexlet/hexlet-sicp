@@ -20,7 +20,7 @@
 </p>
 <p>{{ __('exercises/5_45.description.12') }}</p>
 <p>{{ __('exercises/5_45.description.13') }}</p>
-<img class="img-fluid" src="{{ asset('build/images/exercises/5_12.gif') }}" alt="5.12">
+<img class="img-fluid" src="{{ Vite::asset("resources/assets/images/exercises/5_45.gif") }}" alt="5.45">
 <pre><code>(controller
    (assign continue (label fact-done))     ; set up final return address
  fact-loop

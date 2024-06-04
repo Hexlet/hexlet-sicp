@@ -4,7 +4,7 @@
 <code>m = (mᵢⱼ)</code>
 {{ __('exercises/2_37.description.3') }}
 </p>
-<img class="img-fluid" src="{{ asset('build/images/exercises/2_37.gif') }}" alt="2.37">
+<img class="img-fluid" src="{{ Vite::asset("resources/assets/images/exercises/2_37.gif") }}" alt="2.37">
 <p>{{ __('exercises/2_37.description.4') }}
 <code>((1 2 3 4) (4 5 6 6) (6 7 8 9))</code>
 {{ __('exercises/2_37.description.5') }}

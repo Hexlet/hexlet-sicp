@@ -59,8 +59,7 @@
         "resolve-url-loader": "^5.0.0",
         "sass": "^1.69.5",
         "sass-loader": "^13.x",
-        "simple-git-hooks": "^2.9.0",
-        "vite-plugin-static-copy": "^1.0.5"
+        "simple-git-hooks": "^2.9.0"
     },
     "engines": {
         "node": "20.x"

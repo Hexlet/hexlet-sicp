@@ -6,7 +6,7 @@
 <code>b</code>
 {{ __('exercises/1_29.description.4') }}
 </p>
-<img class="img-fluid" src="{{ asset('build/images/exercises/1_29.gif') }}" alt="1.29">
+<img class="img-fluid" src="{{ Vite::asset("resources/assets/images/exercises/1_29.gif") }}" alt="1.29">
 <p>{{ __('exercises/1_29.description.5') }}
 <code>h = (b − a)/n</code>
 {{ __('exercises/1_29.description.6') }}

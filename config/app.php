@@ -227,6 +227,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Yaml' => Symfony\Component\Yaml\Yaml::class,
+        'Vite' => Illuminate\Support\Facades\Vite::class,
     ],
 
 ];

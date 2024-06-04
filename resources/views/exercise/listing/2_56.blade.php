@@ -1,5 +1,5 @@
 <p>{{ __('exercises/2_56.description.1') }}</p>
-<img class="img-fluid" src="{{ asset('build/images/exercises/2_56.gif') }}" alt="2.56">
+<img class="img-fluid" src="{{ Vite::asset("resources/assets/images/exercises/2_56.gif") }}" alt="2.56">
 <p>{{ __('exercises/2_56.description.2') }}
 <code>deriv</code>
 {{ __('exercises/2_56.description.3') }}
