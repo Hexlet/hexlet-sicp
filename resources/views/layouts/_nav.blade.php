@@ -9,8 +9,8 @@
 <header class="navbar navbar-expand-xl">
   <nav class="container py-2 border-bottom">
     <a href="{{ LaravelLocalization::getLocalizedURL($currentLocale, route('home')) }}" class="navbar-brand">
-      <img src="{{ mix("images/logo-$currentLocale.svg") }}" alt="{{ __('layout.nav.logo_alt') }}" height="25px"
-        class="align-baseline"></a>
+      <img src="{{ Vite::asset("resources/assets/images/logo-{$currentLocale}.svg") }}" alt="{{ __('layout.nav.logo_alt') }}" height="25px"
+           class="align-baseline"></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-responsive"
       aria-controls="navbar-responsive" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>

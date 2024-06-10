@@ -15,5 +15,5 @@
 <code>y</code>
 {{ __('exercises/5_20.description.7') }}
 </p>
-<img class="img-fluid" src="{{ mix('images/exercises/5_20.gif') }}" alt="5.20">
+<img class="img-fluid" src="{{ Vite::asset("resources/assets/images/exercises/5_20.gif") }}" alt="5.20">
 <p>{{ __('exercises/5_20.description.8') }}</p>

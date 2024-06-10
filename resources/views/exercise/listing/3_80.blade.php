@@ -12,20 +12,20 @@
 <code>i</code>
 {{ __('exercises/3_80.description.7') }}
 </p>
-<img class="img-fluid" src="{{ mix('images/exercises/3_80_1.gif') }}" alt="3.80_1">
+<img class="img-fluid" src="{{ Vite::asset("resources/assets/images/exercises/3_80_1.gif") }}" alt="3.80_1">
 <p>{{ __('exercises/3_80.description.8') }}</p>
-<img class="img-fluid" src="{{ mix('images/exercises/3_80_2.gif') }}" alt="3.80_2">
+<img class="img-fluid" src="{{ Vite::asset("resources/assets/images/exercises/3_80_2.gif") }}" alt="3.80_2">
 <p>{{ __('exercises/3_80.description.9') }}
 <code>vC</code>
 {{ __('exercises/3_80.description.10') }}
 <code>iL</code>
 {{ __('exercises/3_80.description.11') }}
 </p>
-<img class="img-fluid" src="{{ mix('images/exercises/3_80_3.gif') }}" alt="3.80_3">
+<img class="img-fluid" src="{{ Vite::asset("resources/assets/images/exercises/3_80_3.gif") }}" alt="3.80_3">
 <p>{{ __('exercises/3_80.description.12') }}</p>
-<img class="img-fluid" src="{{ mix('images/exercises/3_80_4.gif') }}" alt="3.80_4">
+<img class="img-fluid" src="{{ Vite::asset("resources/assets/images/exercises/3_80_4.gif") }}" alt="3.80_4">
 <p>{{ __('exercises/3_80.description.13') }}</p>
-<img class="img-fluid" src="{{ mix('images/exercises/3_80_5.gif') }}" alt="3.80_5">
+<img class="img-fluid" src="{{ Vite::asset("resources/assets/images/exercises/3_80_5.gif") }}}" alt="3.80_5">
 <p>{{ __('exercises/3_80.description.14') }}</p>
 <p>{{ __('exercises/3_80.description.15') }}
 <code>RLC</code>

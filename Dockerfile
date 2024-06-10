@@ -17,7 +17,7 @@ COPY . .
 
 RUN composer dump-autoload --no-dev --optimize
 
-RUN npm run prod
+RUN npm run build
 
 CMD ["bash", "-c", "make db-prepare start-app"]
 

@@ -1,5 +1,6 @@
 /node_modules
 /public/hot
+/public/build
 /public/storage
 /storage/*.key
 /vendor
@@ -15,10 +16,10 @@ yarn-error.log
 _ide_helper.php
 _ide_helper_models.php
 .phpstorm.meta.php
-/public/mix-manifest.json
-public/css
-public/js
+/mix-manifest.json
+css
+js
 public/img/*
-public/images
+images
 composer.phar
 .phpunit.cache

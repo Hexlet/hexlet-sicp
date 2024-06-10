@@ -26,7 +26,7 @@
     </li>
 </ul>
 <p>{{ __('exercises/5_12.description.14') }}</p>
-<img class="img-fluid" src="{{ mix('images/exercises/5_12.gif') }}" alt="5.12">
+<img class="img-fluid" src="{{ Vite::asset("resources/assets/images/exercises/5_12.gif") }}" alt="5.12">
 <pre><code>(controller
    (assign continue (label fact-done))     ; set up final return address
  fact-loop

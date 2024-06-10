@@ -70,8 +70,9 @@
             </figcaption>
           </figure>
         </div>
+
         <div class="d-none d-lg-block col-md-6 text-center align-self-end">
-          <img src="{{ mix('images/Patchouli_Gives_SICP.png') }}" alt="{{ __('landing.start_learning') }}"
+          <img src="  {{ Vite::asset("resources/assets/images/Patchouli_Gives_SICP.png") }}" alt="{{ __('landing.start_learning') }}"
             class="img-fluid">
         </div>
       </div>

@@ -21,7 +21,7 @@
 <code>n</code>
 {{ __('exercises/2_63.description.4') }}
 </p>
-<img class="img-fluid" src="{{ mix('images/exercises/2_63.gif') }}" alt="2.63">
+<img class="img-fluid" src="{{ Vite::asset("resources/assets/images/exercises/2_63.gif") }}" alt="2.63">
 <p>{{ __('exercises/2_63.description.5') }}
 <code>{1, 3, 5, 7, 9, 11}</code>
 {{ __('exercises/2_63.description.6') }}
