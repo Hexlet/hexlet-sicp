@@ -32,7 +32,7 @@ return [
         'volunteers_in_tg'  => 'Telegram',
         'other_os_projects' => 'OpenSource',
         'help'              => 'Помощь',
-        'knowledge'         => 'База знаний',
+        'free'              => 'Бесплатно',
         'blog'              => 'Блог',
         'recommended_books' => 'Рекомендуемые книги',
         'additionally'      => 'Дополнительно',
