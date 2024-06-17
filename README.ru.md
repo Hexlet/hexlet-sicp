@@ -27,7 +27,7 @@ A: Сбросить кеш конфига `php artisan config:clear`
 
 ### Предварительные требования
 
-* PHP ^8.1
+* PHP ^8.3
 * Composer
 * Node.js (v16+) & NPM (6+)
 * SQLite for local, PostgreSQL for production
