@@ -9,7 +9,7 @@
     {{ html()->hidden('commentable_type')->value(get_class($model)) }}
     {{ html()->hidden('commentable_id')->value($model->id) }}
     <div class="form-floating">
-      {{ html()->textarea('content')->class('form-control x-min-h-100')->required() }}
+      {{ html()->textarea('content')->class('form-control x-min-h-100px')->required() }}
       <label for="content">{{ __('comment.enter_your_message') }}</label>
     </div>
     <div class="mt-3">
