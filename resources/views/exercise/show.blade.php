@@ -62,7 +62,7 @@
             <hr>
             <div>
               @auth
-                <div class="d-flex mb-4">
+                <div class="d-flex justify-content-between mb-4">
                   @if ($exercise->solutions()->exists())
                     <a class="btn btn-secondary mr-1"
                       href="{{ route('solutions.index', ['filter' => ['exercise_id' => $exercise->id]]) }}" role="button">
