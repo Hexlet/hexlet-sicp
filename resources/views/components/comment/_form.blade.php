@@ -10,7 +10,7 @@
     {{ html()->hidden('commentable_id')->value($model->id) }}
     <div class="form-floating">
       {{ html()->textarea('content')->class('form-control x-min-h-100px')->required() }}
-      <label for="content">{{ __('comment.enter_your_message') }}</label>
+      <label for="content" class="w-100">{{ __('comment.enter_your_message') }}</label>
     </div>
     <div class="mt-3">
           {{ html()->submit(__('comment.submit'))->class('btn btn-success btn-sm text-uppercase') }}
