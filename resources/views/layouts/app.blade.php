@@ -14,7 +14,6 @@
   <meta name="csrf-param" content="_token" />
 
   <title>@yield('title', __('layout.title.name'))</title>
-  @includeWhen(app()->environment('production'), 'layouts.deps._gtm_head')
 
   <!-- Icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
@@ -22,12 +21,13 @@
   <!-- Styles -->
   @stack('styles')
   @vite('resources/sass/app.scss')
-  @includeWhen(app()->environment('production'), 'layouts.deps._gtm_body')
-  @includeWhen(app()->environment('production'), 'layouts.deps._metrika')
   <x-hreflang-tags/>
 </head>
 
 <body class="min-vh-100 d-flex flex-column">
+  @includeWhen(app()->environment('production'), 'layouts.deps._gtm_head')
+  @includeWhen(app()->environment('production'), 'layouts.deps._gtm_body')
+  @includeWhen(app()->environment('production'), 'layouts.deps._metrika')
   @include('layouts._nav')
   @include('flash::message')
   @hasSection('content')
