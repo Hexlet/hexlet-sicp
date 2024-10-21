@@ -62,7 +62,7 @@
             {{ html()->hidden('commentable_id') }}
             <div class="form-floating">
               {{ html()->textarea('content')->class('form-control h-100')->required() }}
-              <label for="content" class="w-100">{{ __('comment.enter_your_message') }}</label>
+              <label for="content" class="w-100 text-wrap">{{ __('comment.enter_your_message') }}</label>
             </div>
           </div>
           <div class="modal-footer text-left">
