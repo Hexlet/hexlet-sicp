@@ -28,8 +28,8 @@
         @endif
         <li class="nav-item"><a href="{{ route('top.index') }}" class="nav-link p-2">{{ __('layout.nav.rating') }}</a>
         </li>
-        <li class="nav-item"><a href="{{ Vite::asset("resources/assets/pdf/sicp-{$currentLocale}.pdf") }}"
-            class="nav-link link-info p-2" target="_blank">{{ __('layout.nav.sicp_book') }}</a></li>
+        <li class="nav-item"><a href="{{ Vite::asset("resources/assets/pdf/sicp-{$currentLocale}.pdf") }}" target="_blank"
+            class="nav-link link-info p-2">{{ __('layout.nav.sicp_book') }}</a></li>
       </ul>
       <ul class="navbar-nav ms-md-auto">
         @guest
