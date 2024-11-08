@@ -7,6 +7,7 @@ import correctionListener from './correction';
 
 import.meta.glob([
   '../assets/images/**',
+  '../assets/pdf/**',
 ]);
 
 window.bootstrap = bootstrap;
