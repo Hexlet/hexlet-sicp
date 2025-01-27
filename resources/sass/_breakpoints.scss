@@ -1,0 +1,20 @@
+
+@include media-breakpoint-down(md) {
+    .input-group .input-group-text {
+        border-radius: var(--bs-border-radius) var(--bs-border-radius) 0 0 !important;
+        width: 100%;
+    }
+    
+    .input-group .form-control {
+        border-radius: 0 0 var(--bs-border-radius) var(--bs-border-radius) !important;
+        margin: 0 !important;
+        width: 100%;
+    }
+}
+
+@include media-breakpoint-down(sm) {
+    main.flex-grow-1 {
+      margin-left: 16px;
+      margin-right: 16px;
+    }
+}
