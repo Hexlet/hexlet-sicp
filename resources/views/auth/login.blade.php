@@ -17,8 +17,10 @@
 
           <a class="mt-2 d-block" href="{{ route('register') }}">{{ __('login.register') }}</a>
           <a class="mt-2 d-block" href="{{ route('password.request') }}">{{ __('login.reset_password') }}</a>
+          @if(app()->getLocale() !== 'ru')
           <a href="{{ route('oauth.github') }}" class="mt-2 d-block"> {{ __('auth.with_github') }}</a>
-
+          @endif
+          
           {{ html()->form()->close() }}
         </div>
       </div>
