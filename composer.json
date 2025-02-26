@@ -9,16 +9,6 @@
         "project"
     ],
     "license": "MIT",
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/fey/davidhemphill-presenter"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/atmonshi/Laravel-GitHub"
-        }
-    ],
     "require": {
         "php": "^8.3.0",
         "ext-bcmath": "*",
@@ -32,14 +22,14 @@
         "ext-sqlite3": "*",
         "ext-xml": "*",
         "ext-zip": "*",
-        "browner12/helpers": "dev-master",
-        "dedoc/scramble": "^0.9",
+        "browner12/helpers": "3.6",
+        "dedoc/scramble": "^0.12",
         "diglactic/laravel-breadcrumbs": "^v9.0",
         "erusev/parsedown": "^1.7",
         "fakerphp/faker": "^1.23",
-        "graham-campbell/github": "dev-laravel-11",
+        "graham-campbell/github": "^12.6",
         "guzzlehttp/guzzle": "^7.8",
-        "hemp/presenter": "dev-support-for-laravel-11",
+        "hemp/presenter": "^3.0",
         "http-interop/http-factory-guzzle": "^1.2",
         "iben12/laravel-statable": "^1.5",
         "laracasts/flash": "^3.2",
@@ -60,7 +50,7 @@
         "symfony/yaml": "^6.4"
     },
     "require-dev": {
-        "barryvdh/laravel-debugbar": "^3.9",
+        "barryvdh/laravel-debugbar": "^3.15",
         "barryvdh/laravel-ide-helper": "^3.0",
         "spatie/laravel-ignition": "^2.3",
         "heroku/heroku-buildpack-php": "^231",
