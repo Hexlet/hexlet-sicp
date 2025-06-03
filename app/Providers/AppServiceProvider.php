@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use App;
+use App\Github\Github;
+use App\Github\GithubInterface;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Pagination\Paginator;
 use URL;
@@ -12,6 +14,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class AppServiceProvider extends ServiceProvider
 {
+    public $bindings = [
+        GithubInterface::class => Github::class,
+    ];
     /**
      * Register any application services.
      *

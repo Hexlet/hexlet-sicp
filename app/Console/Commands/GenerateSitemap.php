@@ -2,9 +2,10 @@
 
 namespace App\Console\Commands;
 
+use App\Github\Github;
+use App\Github\GithubInterface;
 use Illuminate\Console\Command;
 use Spatie\Sitemap\SitemapGenerator;
-use GrahamCampbell\GitHub\GitHubManager;
 
 class GenerateSitemap extends Command
 {
@@ -13,9 +14,9 @@ class GenerateSitemap extends Command
     /** @var string  */
     protected $description = 'Generate the sitemap.';
 
-    private GithubManager $github;
+    private GithubInterface $github;
 
-    public function __construct(GitHubManager $github)
+    public function __construct(GithubInterface $github)
     {
         parent::__construct();
         $this->github = $github;
