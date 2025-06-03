@@ -43,6 +43,7 @@
         "mikehaertl/php-shellcommand": "^1.7",
         "rollbar/rollbar-laravel": "^8.0",
         "sebdesign/laravel-state-machine": "^3.4",
+        "sentry/sentry-laravel": "^4.14",
         "spatie/laravel-activitylog": "^4.7.3",
         "spatie/laravel-html": "^3.6",
         "spatie/laravel-query-builder": "^6.3",
