@@ -111,5 +111,6 @@
       locale
     };
   </script>
+  @viteReactRefresh
   @vite('resources/js/editor.js')
 @endpush
