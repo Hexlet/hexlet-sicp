@@ -5,8 +5,8 @@ WORKDIR /app
 ENV DEBIAN_FRONTEND=noninteractive
 ENV TZ=Europe/Moscow
 ENV PATH=node_modules/.bin:$PATH
-ENV PHP_VERSION=8.3
-ENV NODE_MAJOR=20
+ENV PHP_VERSION=8.4
+ENV NODE_MAJOR=22
 
 RUN apt-get update \
     && apt-get -y install software-properties-common \
@@ -47,4 +47,6 @@ RUN echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesourc
 RUN apt update && apt-get install nodejs -y
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-COPY ./xdebug.ini /etc/php/{$PHP_VERSION}/conf.d/docker-php-ext-xdebug.ini
+COPY ./xdebug.ini /etc/php/${PHP_VERSION}/conf.d/docker-php-ext-xdebug.ini
+
+ENV PATH=/app/node_modules/.bin/:${PATH}
