@@ -4,4 +4,4 @@ export default {
   failure: 'failure',
   check_error: 'failure',
   tests_failed: 'failure',
-};
+}

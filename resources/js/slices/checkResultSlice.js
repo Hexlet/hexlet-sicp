@@ -1,8 +1,7 @@
 // @ts-check
-/* eslint-disable no-param-reassign */
 
-import { createSlice } from '@reduxjs/toolkit';
-import checkStatusMap from '../common/checkStatusMap.js';
+import { createSlice } from '@reduxjs/toolkit'
+import checkStatusMap from '../common/checkStatusMap.js'
 
 const slice = createSlice({
   name: 'checkResult',
@@ -13,13 +12,13 @@ const slice = createSlice({
   },
   reducers: {
     handleNewCheckResult(state, { payload: { exitCode, resultStatus, output } }) {
-      state.exitCode = exitCode;
-      state.resultStatus = checkStatusMap[resultStatus];
-      state.output = output;
+      state.exitCode = exitCode
+      state.resultStatus = checkStatusMap[resultStatus]
+      state.output = output
     },
   },
-});
+})
 
-export const { handleNewCheckResult } = slice.actions;
+export const { handleNewCheckResult } = slice.actions
 
-export default slice.reducer;
+export default slice.reducer

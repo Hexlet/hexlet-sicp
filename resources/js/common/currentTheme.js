@@ -1,1 +1,1 @@
-export default document.querySelector('html').dataset.bsTheme;
+export default document.querySelector('html').dataset.bsTheme

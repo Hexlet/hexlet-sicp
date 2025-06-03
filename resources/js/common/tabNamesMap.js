@@ -3,4 +3,4 @@ export default {
   output: 'output',
   tests: 'tests',
   teacherSolution: 'teacherSolution',
-};
+}

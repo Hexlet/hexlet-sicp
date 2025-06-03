@@ -1,19 +1,19 @@
-import React from 'react';
-import { Provider } from 'react-redux';
-import i18n from 'i18next';
-import { I18nextProvider, initReactI18next } from 'react-i18next';
-import resources from '../locales/index.js';
-import App from './App.jsx';
-import createStore from './store.js';
-import { UserIdProvider } from '../context/UserIdContext.js';
-import { ExerciseIdProvider } from '../context/ExerciseIdContext.js';
-import { actions } from '../slices/exerciseInfoSlice.js';
+import React from 'react'
+import { Provider } from 'react-redux'
+import i18n from 'i18next'
+import { I18nextProvider, initReactI18next } from 'react-i18next'
+import resources from '../locales/index.js'
+import App from './App.jsx'
+import createStore from './store.js'
+import { UserIdProvider } from '../context/UserIdContext.js'
+import { ExerciseIdProvider } from '../context/ExerciseIdContext.js'
+import { actions } from '../slices/exerciseInfoSlice.js'
 
-export default async (userId, exerciseId) => {
-  const { locale: lng } = window.sicpEditorData;
-  const store = createStore();
-  store.dispatch(actions.loadExerciseInfo({ exerciseId }));
-  const i18nInstance = i18n.createInstance();
+const SicpEditor = async (userId, exerciseId) => {
+  const { locale: lng } = window.sicpEditorData
+  const store = createStore()
+  store.dispatch(actions.loadExerciseInfo({ exerciseId }))
+  const i18nInstance = i18n.createInstance()
   await i18nInstance
     .use(initReactI18next)
     .init({
@@ -22,7 +22,7 @@ export default async (userId, exerciseId) => {
       interpolation: {
         escapeValue: false,
       },
-    });
+    })
 
   return (
     <Provider store={store}>
@@ -34,5 +34,7 @@ export default async (userId, exerciseId) => {
         </UserIdProvider>
       </I18nextProvider>
     </Provider>
-  );
-};
+  )
+}
+
+export default SicpEditor

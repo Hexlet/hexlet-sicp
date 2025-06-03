@@ -1,10 +1,9 @@
 // @ts-check
-/* eslint-disable no-param-reassign */
 
-import { createSlice } from '@reduxjs/toolkit';
-import { changeTab } from './tabsBoxSlice.js';
+import { createSlice } from '@reduxjs/toolkit'
+import { changeTab } from './tabsBoxSlice.js'
 
-const initialContent = '';
+const initialContent = ''
 
 const slice = createSlice({
   name: 'editor',
@@ -14,19 +13,19 @@ const slice = createSlice({
   },
   reducers: {
     changeContent(state, { payload: { content } }) {
-      state.content = content;
+      state.content = content
     },
   },
   extraReducers: (builder) => {
     builder
       .addCase(changeTab, (state, { payload: { newActiveTab } }) => {
         if (newActiveTab === 'editor') {
-          state.focusesCount += 1;
+          state.focusesCount += 1
         }
-      });
+      })
   },
-});
+})
 
-export const { changeContent } = slice.actions;
+export const { changeContent } = slice.actions
 
-export default slice.reducer;
+export default slice.reducer

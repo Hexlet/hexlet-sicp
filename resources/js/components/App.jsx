@@ -1,7 +1,7 @@
-import React from 'react';
-import { Card } from 'react-bootstrap';
-import TabsBox from './TabsBox.jsx';
-import ControlBox from './ControlBox.jsx';
+import React from 'react'
+import { Card } from 'react-bootstrap'
+import TabsBox from './TabsBox.jsx'
+import ControlBox from './ControlBox.jsx'
 
 const App = () => (
   <Card>
@@ -10,6 +10,6 @@ const App = () => (
       <ControlBox />
     </Card.Footer>
   </Card>
-);
+)
 
-export default App;
+export default App

@@ -1,27 +1,27 @@
-import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
-import Countdown from 'react-countdown';
-import { format } from 'date-fns';
-import Highlight from 'react-syntax-highlighter';
-import { vs, monokaiSublime } from 'react-syntax-highlighter/dist/esm/styles/hljs';
-import { useTranslation } from 'react-i18next';
+import React, { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux'
+import Countdown from 'react-countdown'
+import { format } from 'date-fns'
+import Highlight from 'react-syntax-highlighter'
+import { vs, monokaiSublime } from 'react-syntax-highlighter/dist/esm/styles/hljs'
+import { useTranslation } from 'react-i18next'
 
-import waitingClock from '../../assets/images/waiting_clock.png';
-import theme from '../common/currentTheme';
+import waitingClock from '../../assets/images/waiting_clock.png'
+import theme from '../common/currentTheme'
 
 const TeacherSolution = () => {
-  const { t } = useTranslation();
-  const { hasTeacherSolution, teacherSolutionCode } = useSelector((state) => state.exerciseInfo);
-  const checkedSolutionStatus = useSelector((state) => state.checkResult.resultStatus);
+  const { t } = useTranslation()
+  const { hasTeacherSolution, teacherSolutionCode } = useSelector(state => state.exerciseInfo)
+  const checkedSolutionStatus = useSelector(state => state.checkResult.resultStatus)
 
-  const [isShown, setIsShown] = useState(false);
-  const [startTime, setStartTime] = useState(null);
+  const [isShown, setIsShown] = useState(false)
+  const [startTime, setStartTime] = useState(null)
 
   useEffect(() => {
-    setStartTime(Date.now());
-  }, []);
+    setStartTime(Date.now())
+  }, [])
 
-  const waitingTime = 1200000;
+  const waitingTime = 1200000
 
   const renderShowButton = () => (
     <>
@@ -36,16 +36,16 @@ const TeacherSolution = () => {
         </button>
       </div>
     </>
-  );
+  )
 
   const renderCountdown = (countdownData) => {
-    const { completed } = countdownData;
+    const { completed } = countdownData
 
     if (completed || checkedSolutionStatus === 'success') {
-      return renderShowButton();
+      return renderShowButton()
     }
 
-    const remainingTime = format(new Date(countdownData.total), 'mm:ss');
+    const remainingTime = format(new Date(countdownData.total), 'mm:ss')
 
     return (
       <div className="text-center">
@@ -53,27 +53,29 @@ const TeacherSolution = () => {
         <div className="display-4">{ remainingTime }</div>
         <img className="img-fluid px-5" src={waitingClock} alt="waiting_clock" />
       </div>
-    );
-  };
+    )
+  }
 
-  const renderShowSolution = () => (isShown ? (
-    <div className="d-flex h-100">
-      <Highlight
-        className="h-100 w-100"
-        language="scheme"
-        style={theme === 'dark' ? monokaiSublime : vs}
-        showLineNumbers
-      >
-        {teacherSolutionCode}
-      </Highlight>
-    </div>
-  ) : (
-    <div className="p-3">
-      <Countdown date={startTime + waitingTime} renderer={renderCountdown} />
-    </div>
-  ));
+  const renderShowSolution = () => (isShown
+    ? (
+        <div className="d-flex h-100">
+          <Highlight
+            className="h-100 w-100"
+            language="scheme"
+            style={theme === 'dark' ? monokaiSublime : vs}
+            showLineNumbers
+          >
+            {teacherSolutionCode}
+          </Highlight>
+        </div>
+      )
+    : (
+        <div className="p-3">
+          <Countdown date={startTime + waitingTime} renderer={renderCountdown} />
+        </div>
+      ))
 
-  return hasTeacherSolution ? renderShowSolution() : null;
-};
+  return hasTeacherSolution ? renderShowSolution() : null
+}
 
-export default TeacherSolution;
+export default TeacherSolution
