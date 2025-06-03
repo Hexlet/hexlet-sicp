@@ -14,7 +14,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class AppServiceProvider extends ServiceProvider
 {
-    public $bindings = [
+    public array $bindings = [
         GithubInterface::class => Github::class,
     ];
 
