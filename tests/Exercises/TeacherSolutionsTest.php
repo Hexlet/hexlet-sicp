@@ -9,6 +9,7 @@ use App\Models\User;
 use Database\Seeders\ChaptersTableSeeder;
 use Database\Seeders\ExercisesTableSeeder;
 use Illuminate\Support\Collection;
+use PHPUnit\Framework\Attributes\DataProvider;
 use Symfony\Component\Yaml\Yaml;
 
 class TeacherSolutionsTest extends TestCase
@@ -26,21 +27,7 @@ class TeacherSolutionsTest extends TestCase
         $this->solutionChecker = new SolutionChecker();
     }
 
-    public function dataProvider(): array
-    {
-        $fixturePath = implode('/', [__DIR__, '..', '..', 'database', 'exercises.yml']);
-        $exercisesByChapters =  collect(Yaml::parseFile($fixturePath));
-
-        return $exercisesByChapters
-            ->pluck('children')
-            ->flatten()
-            ->map(fn($path) => [$path])
-            ->toArray();
-    }
-
-    /**
-     * @dataProvider dataProvider
-     */
+    #[DataProvider('dataProvider')]
     public function testTeacherSolutions(string $exercisePath): void
     {
         $millerRabinExercisePath = '1.28';
