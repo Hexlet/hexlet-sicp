@@ -8,8 +8,8 @@
     },
     "scripts": {
         "heroku-postbuild": "npm run build",
-        "lint-js": "node_modules/.bin/eslint --ext .jsx,.js ./resources/js",
-        "lint-js-fix": "node_modules/.bin/eslint --fix --ext .jsx,.js ./resources/js",
+        "lint-js": "eslint --ext .jsx,.js ./resources/js",
+        "lint-js-fix": "eslint --fix --ext .jsx,.js ./resources/js",
         "dev": "vite",
         "build": "vite build"
     },
@@ -62,6 +62,6 @@
         "simple-git-hooks": "^2.9.0"
     },
     "engines": {
-        "node": "20.x"
+        "node": ">=22.x"
     }
 }
