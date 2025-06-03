@@ -9,7 +9,7 @@
         {{ html()->form(action: route('comments.store'))->open() }}
         {{ html()->hidden('commentable_type')->value($comment->commentable_type) }}
         {{ html()->hidden('commentable_id')->value($comment->commentable_id) }}
-        {{ html() ->hidden('parent_id')->value($comment->id) }}
+        {{ html()->hidden('parent_id')->value($comment->id) }}
         <div class="form-floating">
           {{ html()->textarea('content')->class('form-control h-100')->required() }}
           <label for="content" class="w-100 text-wrap">{{ __('comment.enter_your_message') }}</label>

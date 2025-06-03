@@ -21,7 +21,7 @@
   <!-- Styles -->
   @stack('styles')
   @vite('resources/sass/app.scss')
-  <x-hreflang-tags/>
+  <x-hreflang-tags />
 </head>
 
 <body class="min-vh-100 d-flex flex-column">

@@ -12,9 +12,6 @@ compose-stop:
 	docker compose stop || true
 
 compose-down:
-	docker compose down --remove-orphans || true
-
-compose-clear:
 	docker compose down -v --remove-orphans || true
 
 compose-logs:
@@ -56,7 +53,7 @@ compose-lint-fix:
 	docker compose run --rm application make lint-fix
 
 compose-test:
-	docker compose run application make test
+	docker compose run --rm application make test
 
 compose-test-coverage:
 	docker compose run --rm application make test-coverage
