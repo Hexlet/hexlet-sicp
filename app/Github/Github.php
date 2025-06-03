@@ -3,7 +3,7 @@
 namespace App\Github;
 
 use GrahamCampbell\GitHub\GitHubManager;
-use \Github\Api\Gists;
+use Github\Api\Gists;
 
 class Github implements GithubInterface
 {

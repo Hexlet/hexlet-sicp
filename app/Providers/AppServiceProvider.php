@@ -17,6 +17,7 @@ class AppServiceProvider extends ServiceProvider
     public $bindings = [
         GithubInterface::class => Github::class,
     ];
+
     /**
      * Register any application services.
      *

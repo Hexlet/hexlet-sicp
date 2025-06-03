@@ -5,6 +5,7 @@
  *
  * @see https://docs.sentry.io/platforms/php/guides/laravel/configuration/options/
  */
+
 return [
 
     // @see https://docs.sentry.io/product/sentry-basics/dsn-explainer/
