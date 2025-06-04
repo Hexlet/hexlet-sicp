@@ -10,6 +10,7 @@
   defaultTestSuite="Feature"
   cacheDirectory=".phpunit.cache"
   backupStaticProperties="false"
+  stopOnError="true"
   >
   <coverage/>
   <testsuites>
