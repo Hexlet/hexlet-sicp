@@ -9,16 +9,6 @@
         "project"
     ],
     "license": "MIT",
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/fey/davidhemphill-presenter"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/atmonshi/Laravel-GitHub"
-        }
-    ],
     "require": {
         "php": "^8.3.0",
         "ext-bcmath": "*",
@@ -32,14 +22,14 @@
         "ext-sqlite3": "*",
         "ext-xml": "*",
         "ext-zip": "*",
-        "browner12/helpers": "dev-master",
-        "dedoc/scramble": "^0.9",
-        "diglactic/laravel-breadcrumbs": "^v9.0",
+        "browner12/helpers": "3.6",
+        "dedoc/scramble": "^0.12",
+        "diglactic/laravel-breadcrumbs": "^v10.0",
         "erusev/parsedown": "^1.7",
         "fakerphp/faker": "^1.23",
-        "graham-campbell/github": "dev-laravel-11",
+        "graham-campbell/github": "^12.6",
         "guzzlehttp/guzzle": "^7.8",
-        "hemp/presenter": "dev-support-for-laravel-11",
+        "hemp/presenter": "^3.0",
         "http-interop/http-factory-guzzle": "^1.2",
         "iben12/laravel-statable": "^1.5",
         "laracasts/flash": "^3.2",
@@ -53,21 +43,22 @@
         "mikehaertl/php-shellcommand": "^1.7",
         "rollbar/rollbar-laravel": "^8.0",
         "sebdesign/laravel-state-machine": "^3.4",
+        "sentry/sentry-laravel": "^4.14",
         "spatie/laravel-activitylog": "^4.7.3",
         "spatie/laravel-html": "^3.6",
-        "spatie/laravel-query-builder": "^5.6",
+        "spatie/laravel-query-builder": "^6.3",
         "spatie/laravel-sitemap": "^7.2",
-        "symfony/yaml": "^6.4"
+        "symfony/yaml": "^7.2"
     },
     "require-dev": {
-        "barryvdh/laravel-debugbar": "^3.9",
+        "barryvdh/laravel-debugbar": "^3.15",
         "barryvdh/laravel-ide-helper": "^3.0",
         "spatie/laravel-ignition": "^2.3",
-        "heroku/heroku-buildpack-php": "^231",
+        "heroku/heroku-buildpack-php": "^263",
         "mockery/mockery": "^1.6",
-        "nunomaduro/collision": "^8.0",
-        "larastan/larastan": "^2.7",
-        "phpunit/phpunit": "^10.5",
+        "nunomaduro/collision": "^8.6",
+        "larastan/larastan": "^3.1",
+        "phpunit/phpunit": "^11.5",
         "roave/security-advisories": "dev-master",
         "slevomat/coding-standard": "dev-master",
         "squizlabs/php_codesniffer": "*"

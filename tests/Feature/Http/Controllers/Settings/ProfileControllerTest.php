@@ -4,6 +4,7 @@ namespace Tests\Feature\Http\Controllers\Settings;
 
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
+use PHPUnit\Framework\Attributes\DataProvider;
 use Tests\ControllerTestCase;
 
 class ProfileControllerTest extends ControllerTestCase
@@ -44,9 +45,7 @@ class ProfileControllerTest extends ControllerTestCase
         $this->assertDatabaseHas('users', ['id' => $this->user->id, 'name' => $this->user->name]);
     }
 
-    /**
-     * @dataProvider dataInvalidNamesProvider
-     */
+    #[DataProvider('dataInvalidNamesProvider')]
     public function testUpdateInvalidName(string $invalidName): void
     {
         $this->expectException(ValidationException::class);

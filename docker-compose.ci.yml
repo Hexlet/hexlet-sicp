@@ -1,5 +1,3 @@
-version: '3.7'
-
 services:
   application:
     build:
@@ -17,6 +15,6 @@ services:
     command: ["make", "test-coverage", "analyse", "lint"]
 
   database:
-    image: postgres:13.2-alpine
+    image: postgres:17-alpine
     environment:
       POSTGRES_HOST_AUTH_METHOD: trust

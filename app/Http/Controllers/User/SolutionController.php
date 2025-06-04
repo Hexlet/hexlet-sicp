@@ -28,10 +28,13 @@ class SolutionController extends Controller
         ]);
 
         $exercise = Exercise::findOrFail($request->get('exercise_id'));
+
+
         $solution = new Solution($validatedData);
 
-        $solution = $solution->user()->associate($user);
-        $solution = $solution->exercise()->associate($exercise);
+        $solution->user()->associate($user);
+        $solution->exercise()->associate($exercise);
+
         $solution->save();
 
         flash()->success(__('layout.flash.success'));

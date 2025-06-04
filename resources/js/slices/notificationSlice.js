@@ -1,8 +1,7 @@
 // @ts-check
-/* eslint-disable no-param-reassign */
 
-import { createSlice } from '@reduxjs/toolkit';
-import { handleNewCheckResult } from './checkResultSlice';
+import { createSlice } from '@reduxjs/toolkit'
+import { handleNewCheckResult } from './checkResultSlice'
 
 const slice = createSlice({
   name: 'notification',
@@ -13,22 +12,22 @@ const slice = createSlice({
   },
   reducers: {
     showNotification(state, { payload: { content, style } }) {
-      state.show = true;
-      state.content = content;
-      state.style = style;
+      state.show = true
+      state.content = content
+      state.style = style
     },
     hideNotification(state) {
-      state.show = false;
+      state.show = false
     },
   },
   extraReducers: (builder) => {
     builder
       .addCase(handleNewCheckResult, (state) => {
-        state.show = false;
-      });
+        state.show = false
+      })
   },
-});
+})
 
-export const { showNotification, hideNotification } = slice.actions;
+export const { showNotification, hideNotification } = slice.actions
 
-export default slice.reducer;
+export default slice.reducer

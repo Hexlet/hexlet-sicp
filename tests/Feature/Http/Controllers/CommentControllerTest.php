@@ -10,6 +10,7 @@ use Database\Seeders\ChaptersTableSeeder;
 use Database\Seeders\ExercisesTableSeeder;
 use Database\Seeders\UsersTableSeeder;
 use Illuminate\Database\Eloquent\Model;
+use PHPUnit\Framework\Attributes\DataProvider;
 use Tests\ControllerTestCase;
 
 class CommentControllerTest extends ControllerTestCase
@@ -33,9 +34,7 @@ class CommentControllerTest extends ControllerTestCase
         $response->assertOk();
     }
 
-    /**
-     * @dataProvider dataCommentable
-     */
+    #[DataProvider('dataCommentable')]
     public function testShow(string $commentableClass): void
     {
         /** @var Exercise|Chapter $commentableClass */
@@ -48,9 +47,7 @@ class CommentControllerTest extends ControllerTestCase
         $response->assertOk();
     }
 
-    /**
-     * @dataProvider dataCommentable
-     */
+    #[DataProvider('dataCommentable')]
     public function testStore(string $commentableClass): void
     {
         /** @var Exercise|Chapter $commentableClass */
@@ -71,9 +68,7 @@ class CommentControllerTest extends ControllerTestCase
         $this->assertDatabaseHas('comments', $commentData);
     }
 
-    /**
-     * @dataProvider dataCommentable
-     */
+    #[DataProvider('dataCommentable')]
     public function testUpdate(string $commentableClass): void
     {
         /** @var Exercise|Chapter $commentableClass */
@@ -102,9 +97,7 @@ class CommentControllerTest extends ControllerTestCase
         ]);
     }
 
-    /**
-     * @dataProvider dataCommentable
-     */
+    #[DataProvider('dataCommentable')]
     public function testDestroy(string $commentableClass): void
     {
         /** @var Exercise|Chapter $commentableClass */

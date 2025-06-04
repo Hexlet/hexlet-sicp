@@ -1,6 +1,6 @@
-import { createContext } from 'react';
+import { createContext } from 'react'
 
-const ExerciseIdContext = createContext(null);
+const ExerciseIdContext = createContext(null)
 
-export const ExerciseIdProvider = ExerciseIdContext.Provider;
-export default ExerciseIdContext;
+export const ExerciseIdProvider = ExerciseIdContext.Provider
+export default ExerciseIdContext

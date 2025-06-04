@@ -1,25 +1,25 @@
-import React from 'react';
-import { Spinner } from 'react-bootstrap';
-import { useSelector } from 'react-redux';
-import { useTranslation } from 'react-i18next';
+import React from 'react'
+import { Spinner } from 'react-bootstrap'
+import { useSelector } from 'react-redux'
+import { useTranslation } from 'react-i18next'
 
-import EditorBuilder from './EditorBuilder.jsx';
+import EditorBuilder from './EditorBuilder.jsx'
 
 const Editor = () => {
-  const { loadingState } = useSelector((state) => state.exerciseInfo);
-  const { t } = useTranslation();
+  const { loadingState } = useSelector(state => state.exerciseInfo)
+  const { t } = useTranslation()
 
   return loadingState === 'loading'
     ? (
-      <div className="d-flex h-100 justify-content-center align-items-center">
-        <Spinner animation="border" role="status" variant="primary">
-          <span className="visually-hidden">{t('loading')}</span>
-        </Spinner>
-      </div>
-    )
+        <div className="d-flex h-100 justify-content-center align-items-center">
+          <Spinner animation="border" role="status" variant="primary">
+            <span className="visually-hidden">{t('loading')}</span>
+          </Spinner>
+        </div>
+      )
     : (
-      <EditorBuilder />
-    );
-};
+        <EditorBuilder />
+      )
+}
 
-export default Editor;
+export default Editor

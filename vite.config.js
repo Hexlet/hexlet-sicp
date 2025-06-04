@@ -10,6 +10,7 @@ export default defineConfig({
     },
   },
   plugins: [
+    react(),
     laravel({
       input: [
         'resources/js/app.js',
@@ -22,8 +23,6 @@ export default defineConfig({
       ],
       refresh: true,
     }),
-    react(),
-
   ],
   build: {
     outDir: 'public/build',

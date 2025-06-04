@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use GrahamCampbell\GitHub\GitHubManager;
+use App\Github\GithubInterface;
 use Illuminate\Http\Response;
 
 class SitemapController extends Controller
 {
-    public function index(GitHubManager $github): Response
+    public function index(GithubInterface $github): Response
     {
         $gistId = config('sitemap.gist_id');
         $gist = $github->gists()->show($gistId);

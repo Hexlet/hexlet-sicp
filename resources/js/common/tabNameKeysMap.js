@@ -3,4 +3,4 @@ export default {
   outputKey: 'output',
   testForExerciseKey: 'testForExercise',
   teacherSolutionKey: 'teacherSolution',
-};
+}

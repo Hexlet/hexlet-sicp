@@ -28,6 +28,7 @@ class ChapterMemberController extends Controller
 
     private function getMember(User $user, Chapter $chapter): ChapterMember
     {
+        /** @var \App\Models\ChapterMember $currentChapterMember */
         $currentChapterMember = $chapter
             ->members()
             ->whereUserId($user->id)

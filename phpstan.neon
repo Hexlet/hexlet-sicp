@@ -1,9 +1,7 @@
 includes:
-    - ./vendor/larastan/larastan/extension.neon
+    - vendor/larastan/larastan/extension.neon
 
 parameters:
-    checkMissingIterableValueType: false
-    checkGenericClassInNonGenericObjectType: false
     paths:
         - app
         - database
@@ -13,14 +11,16 @@ parameters:
         - tests
 
     # The level 8 is the highest level
-    level: 6
+    level: 5
 
     excludePaths:
         - vendor/*
         - app/Http/Controllers/Auth/*
     ignoreErrors:
+        # - identifier: missingType.generics
+        # - identifier: missingType.iterableValue
         - '/PHPDoc type array of property App\\Models\\User::\$hidden is not covariant with PHPDoc type/'
         - '/PHPDoc type array of property App\\Models\\User::\$casts is not covariant with PHPDoc type/'
-        - '/Unable to resolve the template type TKey in call to function collect/'
-        - '/Unable to resolve the template type TValue in call to function collect/'
+        # - '/Unable to resolve the template type TKey in call to function collect/'
+        # - '/Unable to resolve the template type TValue in call to function collect/'
         - '/is not covariant with PHPDoc type/'
