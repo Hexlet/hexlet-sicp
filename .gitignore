@@ -20,6 +20,5 @@ _ide_helper_models.php
 css
 js
 public/img/*
-images
 composer.phar
 .phpunit.cache
