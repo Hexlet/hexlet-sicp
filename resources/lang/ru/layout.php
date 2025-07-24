@@ -33,7 +33,6 @@ return [
         'other_os_projects' => 'OpenSource',
         'help'              => 'Помощь',
         'free'              => 'Учиться бесплатно',
-        'blog'              => 'Блог',
         'recommended_books' => 'Рекомендуемые книги',
         'additionally'      => 'Дополнительно',
         'os_projects' => [
