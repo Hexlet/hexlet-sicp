@@ -113,7 +113,8 @@
               @case('commented')
                 {{ $logItem->getDescription() }}.
                 <a href="{{ $logItem->getExtraProperty('url') }}">
-                  {{ $logItem->subject->getCommentableName() }}
+                  <!-- FIXME: add check for null // use soft delete -->
+                  {{ $logItem?->subject?->getCommentableName() }}
                 </a>
               @break
 
