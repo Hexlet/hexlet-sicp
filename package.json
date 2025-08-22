@@ -3,9 +3,6 @@
     "name": "hexlet-sicp",
     "type": "module",
     "version": "1.0.0",
-    "simple-git-hooks": {
-        "pre-push": "make pre-push-hook"
-    },
     "scripts": {
         "heroku-postbuild": "npm run build",
         "lint-js": "eslint --ext .jsx,.js ./resources/js",
