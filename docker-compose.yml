@@ -23,7 +23,7 @@ services:
     command: ["make", "start-frontend"]
 
   database:
-    image: postgres:13.2-alpine
+    image: postgres:alpine
     environment:
       POSTGRES_HOST_AUTH_METHOD: trust
     ports:
