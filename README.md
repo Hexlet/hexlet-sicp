@@ -1,4 +1,4 @@
-# Hexlet SICP
+# Hexlet SICP 
 
 [![github action status](https://github.com/Hexlet/hexlet-sicp/actions/workflows/master.yml/badge.svg)](https://github.com/Hexlet/hexlet-sicp/actions)
 
