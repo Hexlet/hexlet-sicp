@@ -15,7 +15,7 @@
         <div class="fw-bold">{{ __('layout.footer.help') }}</div>
         <ul class="nav flex-column align-items-start">
           </li>
-          <li><a href="https://ru.hexlet.io/webinars" class="nav-link px-0">{{ __('layout.footer.free') }}</a>
+          <li><a href="https://ru.hexlet.io/courses_free" class="nav-link px-0">{{ __('layout.footer.free') }}</a>
           </li>
           <li><a href="https://ru.hexlet.io/pages/recommended-books"
               class="nav-link px-0">{{ __('layout.footer.recommended_books') }}</a></li>
