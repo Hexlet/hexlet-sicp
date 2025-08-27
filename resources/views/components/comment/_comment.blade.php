@@ -55,7 +55,7 @@
           <div class="modal-content">
             {{ html()->modelForm($comment, 'PUT', route('comments.update', ['comment' => $comment]))->open() }}
             <div class="modal-header">
-              <h5 class="modal-title">{{ __('comment.edit_comment') }}/h5>
+              <h5 class="modal-title">{{ __('comment.edit_comment') }}</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body">
