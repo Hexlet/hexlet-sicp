@@ -15,8 +15,13 @@ class RegisterControllerTest extends TestCase
     {
         $this->expectException(\Illuminate\Validation\ValidationException::class);
 
+        $password = $this->faker->password(8);
+
         $this->post(route('register'), [
+            'name' => $this->faker->name,
             'email' => 'тест@тест.рф',
+            'password' => $password,
+            'password_confirmation' => $password,
         ]);
 
         $this->assertDatabaseMissing('users', [
@@ -28,8 +33,13 @@ class RegisterControllerTest extends TestCase
     {
         $this->expectException(\Illuminate\Validation\ValidationException::class);
 
+        $password = $this->faker->password(8);
+
         $this->post(route('register'), [
+            'name' => $this->faker->name,
             'email' => 'test@mail',
+            'password' => $password,
+            'password_confirmation' => $password,
         ]);
 
         $this->assertDatabaseMissing('users', [
@@ -41,11 +51,13 @@ class RegisterControllerTest extends TestCase
     {
         $email = $this->faker->userName . '@gmail.com';
 
+        $password = $this->faker->password(8);
+
         $response = $this->post(route('register'), [
             'name' => $this->faker->name,
             'email' => $email,
-            'password' => '12345678',
-            'password_confirmation' => '12345678',
+            'password' => $password,
+            'password_confirmation' => $password,
         ]);
 
         $response->assertRedirect(route('my'));
