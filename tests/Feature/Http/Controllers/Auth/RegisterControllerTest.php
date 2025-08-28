@@ -8,7 +8,8 @@ use Tests\TestCase;
 
 class RegisterControllerTest extends TestCase
 {
-    use RefreshDatabase, WithFaker;
+    use RefreshDatabase;
+    use WithFaker;
 
     public function testRegisterWithCyrillicEmail(): void
     {
