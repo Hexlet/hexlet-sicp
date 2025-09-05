@@ -10,6 +10,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Socialite;
+use Str;
 use Validator;
 
 class GithubController extends Controller
@@ -59,7 +60,7 @@ class GithubController extends Controller
         if (!$user->exists) {
             $user->name = $name;
             $user->email_verified_at = now();
-            $user->password = Hash::make(random_bytes(10));
+            $user->password = Hash::make(Str::random(10));
             $user->saveOrFail();
         }
 
