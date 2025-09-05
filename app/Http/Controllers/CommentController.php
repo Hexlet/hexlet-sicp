@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Comment;
 use App\Http\Requests\CommentRequest;
+use App\Models\Activity;
 use App\Models\User;
 use App\Services\ActivityService;
 use Illuminate\Database\Eloquent\Model;
@@ -70,6 +71,10 @@ class CommentController extends Controller
 
     public function destroy(Comment $comment): RedirectResponse
     {
+        Activity::whereSubjectId($comment->id)
+            ->whereSubjectType($comment::class)
+            ->delete();
+
         if ($comment->delete()) {
             flash()->success(__('layout.flash.success'));
         } else {
