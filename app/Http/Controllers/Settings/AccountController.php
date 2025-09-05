@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Settings;
 use App\Models\User;
 use Auth;
 use App\Http\Controllers\Controller;
+use DB;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 
@@ -25,17 +26,17 @@ class AccountController extends Controller
 
     public function destroy(): RedirectResponse
     {
-        /** @var User $user */
-        $user = Auth::user();
-        // $user->comments()->delete();
+        DB::transaction(function () {
+            /** @var User $user */
+            $user = Auth::user();
 
-        if ($user->delete()) {
-            flash()->success(__('account.your_account_deleted'));
-        } else {
-            flash()->error(__('layout.flash.error'));
-        }
-
-        Auth::logout();
+            if ($user->delete()) {
+                flash()->success(__('account.your_account_deleted'));
+                Auth::logout();
+            } else {
+                flash()->error(__('layout.flash.error'));
+            }
+        });
 
         return redirect()->route('home');
     }

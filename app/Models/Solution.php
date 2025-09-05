@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * @method static SolutionFactory factory(...$parameters)
@@ -14,6 +15,7 @@ use Illuminate\Database\Eloquent\Builder;
 class Solution extends Model
 {
     use HasFactory;
+    use SoftDeletes;
 
     protected $fillable = [
         'content',

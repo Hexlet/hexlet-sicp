@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\Activitylog\Models\Activity as BaseActivity;
 
 /**
@@ -20,6 +21,8 @@ use Spatie\Activitylog\Models\Activity as BaseActivity;
  */
 class Activity extends BaseActivity
 {
+    use SoftDeletes;
+
     public function getDescription(): string
     {
         $itemsCount = $this->getExtraProperty('count');

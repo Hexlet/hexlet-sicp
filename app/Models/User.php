@@ -13,6 +13,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Date;
 
 /**
  * App\Models\User
@@ -78,6 +79,28 @@ class User extends Authenticatable implements MustVerifyEmail
         'deleted_at' => 'datetime',
     ];
 
+    public static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function (self $user) {
+            $user->name = null;
+            $user->email = null;
+            $user->github_name = null;
+            $user->hexlet_nickname = null;
+            $user->remember_token = null;
+            $user->password = null;
+
+            $user->save();
+
+            $user->comments()->delete();
+            $user->solutions()->delete();
+            $user->chapterMembers()->delete();
+            $user->exerciseMembers()->delete();
+            $user->activities()->delete();
+        });
+    }
+
     public function chapters(): BelongsToMany
     {
         return $this->belongsToMany(Chapter::class, 'chapter_members')->withTimestamps();
@@ -106,6 +129,11 @@ class User extends Authenticatable implements MustVerifyEmail
     public function solutions(): HasMany
     {
         return $this->hasMany(Solution::class);
+    }
+
+    public function activities(): HasMany
+    {
+        return $this->hasMany(Activity::class, 'causer_id');
     }
 
     public function hasCompletedExercise(Exercise $exercise): bool

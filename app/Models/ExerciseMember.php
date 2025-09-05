@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Iben\Statable\Statable;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * @method static ExerciseMemberFactory factory(...$parameters)
@@ -16,6 +17,7 @@ class ExerciseMember extends Model
 {
     use HasFactory;
     use Statable;
+    use SoftDeletes;
 
     protected $attributes = [
             'state' => 'started',
