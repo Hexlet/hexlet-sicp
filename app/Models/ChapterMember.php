@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * @method static ChapterMemberFactory factory(...$parameters)
@@ -19,6 +20,7 @@ class ChapterMember extends Model
 {
     use HasFactory;
     use Statable;
+    use SoftDeletes;
 
     public const INITIAL_STATE = 'started';
 
