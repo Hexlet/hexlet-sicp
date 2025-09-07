@@ -25,7 +25,7 @@ class RegisterControllerTest extends TestCase
             mkdir($cassettePath, 0777, true);
         }
 
-        VCR::configure()->setCassettePath($cassettePath);
+        VCR::configure()->setCassettePath($cassettePath)->enableLibraryHooks(['stream_wrapper', 'curl']);
         VCR::turnOn();
     }
 
