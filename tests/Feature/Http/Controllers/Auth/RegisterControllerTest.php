@@ -19,7 +19,9 @@ class RegisterControllerTest extends TestCase
     {
         parent::setUp();
 
-        VCR::configure()->setCassettePath('tests/fixtures/cassettes');
+        $cassettePath = storage_path('framework/testing/cassettes');
+
+        VCR::configure()->setCassettePath($cassettePath);
         VCR::turnOn();
     }
 
