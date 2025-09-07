@@ -21,6 +21,10 @@ class RegisterControllerTest extends TestCase
 
         $cassettePath = storage_path('framework/testing/cassettes');
 
+        if (!is_dir($cassettePath)) {
+            mkdir($cassettePath, 0777, true);
+        }
+
         VCR::configure()->setCassettePath($cassettePath);
         VCR::turnOn();
     }
