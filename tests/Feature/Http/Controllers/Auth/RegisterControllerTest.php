@@ -19,7 +19,7 @@ class RegisterControllerTest extends TestCase
     {
         parent::setUp();
 
-        $cassettePath = storage_path('framework/testing/cassettes');
+        $cassettePath = storage_path('tests/fixtures/cassettes');
 
         if (!is_dir($cassettePath)) {
             mkdir($cassettePath, 0777, true);
