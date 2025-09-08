@@ -2,12 +2,12 @@
 
 namespace Tests\Feature\Http\Controllers\Auth;
 
+use Egulias\EmailValidator\EmailValidator;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\Hash;
 use Tests\TestCase;
 use App\Models\User;
-use Egulias\EmailValidator\EmailValidator;
 use VCR\VCR;
 
 class RegisterControllerTest extends TestCase
@@ -19,7 +19,7 @@ class RegisterControllerTest extends TestCase
     {
         parent::setUp();
 
-        $cassettePath = storage_path('tests/fixtures/cassettes');
+        $cassettePath = storage_path('tests/fixtures/casettes/');
 
         if (!is_dir($cassettePath)) {
             mkdir($cassettePath, 0777, true);
@@ -73,14 +73,12 @@ class RegisterControllerTest extends TestCase
 
     public function testRegisterWithValidEmail(): void
     {
-        $this->app->instance(EmailValidator::class, new class extends EmailValidator {
-            public function isValid($email, $validation): bool
-            {
-                return true;
-            }
-        });
-
         VCR::insertCassette('register_valid_email');
+
+        $mockValidator = $this->mock(EmailValidator::class);
+        $mockValidator->shouldReceive('isValid')
+            ->once()
+            ->andReturn(true);
 
         $name = $this->faker->name;
         $email = $this->faker->freeEmail();
