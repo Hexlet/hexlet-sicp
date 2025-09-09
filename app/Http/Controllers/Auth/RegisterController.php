@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Http\Rules\EmailValidation;
 use App\Models\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Contracts\Validation\Validator as ValidatorContract;
@@ -27,12 +28,11 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => 'required|string|max:255',
-            'email' => 'required|email:rfc,dns,filter|string|max:255|unique:users',
+            'email' => ['required', 'string', 'max:255', 'unique:users', new EmailValidation()],
             'password' => 'required|confirmed|min:8',
             'password_confirmation' => 'required|same:password',
         ]);
     }
-
     protected function create(array $data): User
     {
         flash(__('auth.mail.send_link'));

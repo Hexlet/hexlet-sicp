@@ -2,32 +2,12 @@
 
 namespace Tests\Feature\Http\Controllers\Auth;
 
-use Egulias\EmailValidator\EmailValidator;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\Hash;
 use Tests\TestCase;
 use App\Models\User;
-use VCR\VCR;
 
 class RegisterControllerTest extends TestCase
 {
-    use RefreshDatabase;
-    use WithFaker;
-
-    protected function setUp(): void
-    {
-        parent::setUp();
-
-        $cassettePath = base_path('tests/fixtures/cassettes/');
-
-        if (!is_dir($cassettePath)) {
-            mkdir($cassettePath, 0777, true);
-        }
-
-        VCR::configure()->setCassettePath($cassettePath)->enableLibraryHooks(['stream_wrapper', 'curl']);
-        VCR::turnOn();
-    }
 
     public function testRegisterWithCyrillicEmail(): void
     {
@@ -73,8 +53,6 @@ class RegisterControllerTest extends TestCase
 
     public function testRegisterWithValidEmail(): void
     {
-        VCR::insertCassette('register_valid_email');
-
         $name = $this->faker->name;
         $email = $this->faker->freeEmail();
         $password = $this->faker->password(8);
@@ -96,6 +74,5 @@ class RegisterControllerTest extends TestCase
         $user = User::where('email', $email)->first();
         $this->assertTrue(Hash::check($password, $user->password));
 
-        VCR::eject();
     }
 }
