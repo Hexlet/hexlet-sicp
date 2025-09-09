@@ -17,7 +17,7 @@
         "@codemirror/view": "^6.38.1",
         "@popperjs/core": "^2.11.8",
         "@rails/ujs": "^7.1.3-4",
-        "@reduxjs/toolkit": "^2.8.2",
+        "@reduxjs/toolkit": "^2.9.0",
         "axios": "^1.11",
         "bootstrap": "^5.3.7",
         "cm6-theme-basic-dark": "^0.2.0",
