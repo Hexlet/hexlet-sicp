@@ -19,7 +19,7 @@ class RegisterControllerTest extends TestCase
     {
         parent::setUp();
 
-        $cassettePath = storage_path('tests/fixtures/casettes/');
+        $cassettePath = base_path('tests/fixtures/cassettes/');
 
         if (!is_dir($cassettePath)) {
             mkdir($cassettePath, 0777, true);
@@ -75,11 +75,6 @@ class RegisterControllerTest extends TestCase
     {
         VCR::insertCassette('register_valid_email');
 
-        $mockValidator = $this->mock(EmailValidator::class);
-        $mockValidator->shouldReceive('isValid')
-            ->once()
-            ->andReturn(true);
-
         $name = $this->faker->name;
         $email = $this->faker->freeEmail();
         $password = $this->faker->password(8);
@@ -103,4 +98,5 @@ class RegisterControllerTest extends TestCase
 
         VCR::eject();
     }
+
 }
