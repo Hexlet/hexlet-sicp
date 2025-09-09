@@ -8,7 +8,6 @@ use App\Models\User;
 
 class RegisterControllerTest extends TestCase
 {
-
     public function testRegisterWithCyrillicEmail(): void
     {
         $this->expectException(\Illuminate\Validation\ValidationException::class);
@@ -73,6 +72,5 @@ class RegisterControllerTest extends TestCase
 
         $user = User::where('email', $email)->first();
         $this->assertTrue(Hash::check($password, $user->password));
-
     }
 }

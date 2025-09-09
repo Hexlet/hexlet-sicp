@@ -33,6 +33,7 @@ class RegisterController extends Controller
             'password_confirmation' => 'required|same:password',
         ]);
     }
+
     protected function create(array $data): User
     {
         flash(__('auth.mail.send_link'));
