@@ -57,7 +57,6 @@
         "larastan/larastan": "^3.1",
         "mockery/mockery": "^1.6",
         "nunomaduro/collision": "^8.6",
-        "php-vcr/php-vcr": "dev-master",
         "phpunit/phpunit": "^11.5",
         "roave/security-advisories": "dev-master",
         "slevomat/coding-standard": "dev-master",
