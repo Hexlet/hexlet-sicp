@@ -98,5 +98,4 @@ class RegisterControllerTest extends TestCase
 
         VCR::eject();
     }
-
 }
