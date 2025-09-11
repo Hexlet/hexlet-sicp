@@ -53,7 +53,7 @@ class RegisterControllerTest extends TestCase
     public function testRegisterWithValidEmail(): void
     {
         $name = $this->faker->name;
-        $email = $this->faker->freeEmail();
+        $email = $this->faker->safeEmail();
         $password = $this->faker->password(8);
 
         $response = $this->post(route('register'), [
