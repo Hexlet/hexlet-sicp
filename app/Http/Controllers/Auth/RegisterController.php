@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Http\Rules\EmailValidation;
 use App\Models\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Contracts\Validation\Validator as ValidatorContract;
@@ -27,7 +28,7 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => 'required|string|max:255',
-            'email' => 'required|email|string|max:255|unique:users',
+            'email' => 'required|email:rfc,filter|string|max:255|unique:users',
             'password' => 'required|confirmed|min:8',
             'password_confirmation' => 'required|same:password',
         ]);
