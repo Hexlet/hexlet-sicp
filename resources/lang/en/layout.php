@@ -43,7 +43,6 @@ return [
             'friends' => 'Hexlet Friends',
             'code_basics' => 'Code Basics',
             'codebattle' => 'CodeBattle',
-            'guides' => 'Hexlet Guides',
             'hexlet' => 'Hexlet',
         ],
     ],
