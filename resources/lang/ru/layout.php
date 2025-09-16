@@ -41,7 +41,6 @@ return [
             'friends' => 'Друзья Хекслета',
             'code_basics' => 'Code Basics',
             'codebattle' => 'Кодбаттл',
-            'guides' => 'Гайды Хекслета',
             'hexlet' => 'Хекслет',
         ],
     ],

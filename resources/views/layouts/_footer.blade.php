@@ -41,8 +41,6 @@
               href="https://ru.code-basics.com/">{{ __('layout.footer.os_projects.code_basics') }}</a></li>
           <li><a class="nav-link px-0"
               href="https://codebattle.hexlet.io/">{{ __('layout.footer.os_projects.codebattle') }}</a></li>
-          <li><a class="nav-link px-0"
-              href="https://guides.hexlet.io/">{{ __('layout.footer.os_projects.guides') }}</a></li>
         </ul>
       </div>
     </div>
