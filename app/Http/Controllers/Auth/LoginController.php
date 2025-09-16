@@ -16,9 +16,23 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
+    public function showLoginForm()
+    {
+        $previousUrl = url()->previous();
+        session()->put('login_previous_url', $previousUrl);
+        return view('auth.login');
+    }
+
     public function redirectTo()
     {
+        $previousUrl = session()->pull('login_previous_url', null);
+
         flash(__('auth.logged_in'))->success();
+
+        if ($previousUrl) {
+            return $previousUrl;
+        }
+
         return route('my');
     }
 
