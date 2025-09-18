@@ -2,11 +2,9 @@
 
 use App\Helpers\ChapterHelper;
 use App\Helpers\ExerciseHelper;
-use App\Helpers\RatingHelper;
 use App\Helpers\TemplateHelper;
 use App\Models\Chapter;
 use App\Models\Exercise;
-use Illuminate\Support\Collection;
 
 if (!function_exists('getTitleContent')) {
     function getTitleContent(string $titleName): string
