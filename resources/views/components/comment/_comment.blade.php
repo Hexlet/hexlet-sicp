@@ -28,7 +28,7 @@
         <div class="small text-muted ml-2">{{ $comment->parent->content }}</div>
       </div>
     @endif
-    <div class="my-2 text-break">{!! MarkdownHelper::text($comment->content) !!}</div>
+    <div class="my-2 text-break">{{ MarkdownHelper::text($comment->content) }}</div>
     <div>
       @can('reply', $comment)
         <button data-bs-toggle="modal" data-bs-target="#reply-modal-{{ $comment->id }}"
