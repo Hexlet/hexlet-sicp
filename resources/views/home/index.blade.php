@@ -63,7 +63,11 @@
     <div class="col-md-4">
       <h2 class="my-3">{{ __('welcome.what_is_here') }}</h2>
       <p>{{ __('welcome.about_sicp') }}
-        <a href="https://guides.hexlet.io/how-to-learn-sicp/">{{ __('layout.nav.sicp_read') }}</a>
+        @if (App::isLocale('ru'))
+          <a href="https://guides.hexlet.io/how-to-learn-sicp/">{{ __('layout.nav.sicp_read') }}</a>
+        @else
+          <a href="{{ route('pages.show', ['page' => 'how-to-learn-sicp']) }}">{{ __('layout.nav.sicp_read') }}</a>
+        @endif
       </p>
       <h2 class="my-3">{{ __('welcome.features') }}</h2>
       <ul>
