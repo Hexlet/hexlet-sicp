@@ -37,16 +37,6 @@ class LoginController extends Controller
         return route('my');
     }
 
-    private function setPreviousUrl($url)
-    {
-        session()->put(self::LOGIN_PREVIOUS_URL, $url);
-    }
-
-    private function pullPreviousUrl()
-    {
-        return session()->pull(self::LOGIN_PREVIOUS_URL, null);
-    }
-
     public function devLogin()
     {
         $user = User::first();
@@ -61,5 +51,15 @@ class LoginController extends Controller
         Auth::logout();
         flash(__('auth.logout'))->success();
         return redirect()->back();
+    }
+
+    private function setPreviousUrl($url)
+    {
+        session()->put(self::LOGIN_PREVIOUS_URL, $url);
+    }
+
+    private function pullPreviousUrl()
+    {
+        return session()->pull(self::LOGIN_PREVIOUS_URL, null);
     }
 }

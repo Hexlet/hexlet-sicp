@@ -9,40 +9,47 @@ use Illuminate\Support\Facades\Hash;
 
 class LoginControllerTest extends TestCase
 {
+    protected string $email = 'test@example.com';
+    protected string $password = 'password';
+
     protected function setUp(): void
     {
         parent::setUp();
 
         User::factory()->create([
-            'email' => 'test@example.com',
-            'password' => Hash::make('password'),
+            'email' => $this->email,
+            'password' => Hash::make($this->password),
         ]);
     }
 
-    public function testRedirectsToPreviousUrlAfterLogin()
+    public function testLoginAndRedirectToPreviousUrlWhenSessionHasPreviousUrl(): void
     {
         $previousUrl = '/ru/chapters/6';
 
         $response = $this
             ->withSession(['login_previous_url' => $previousUrl])
-            ->post('/login', [
-                'email' => 'test@example.com',
-                'password' => 'password',
+            ->post(route('login'), [
+                'email' => $this->email,
+                'password' => $this->password,
             ]);
+
+        $this->assertAuthenticated();
 
         $response->assertRedirect($previousUrl);
     }
 
-    public function testRedirectsToProgressPageWhenNoPreviousUrl()
+    public function testLoginAndRedirectToProgressPageWhenNoPreviousUrlInSession(): void
     {
         $progressUrl = route('my');
 
         $response = $this
             ->withSession([])
-            ->post('/login', [
-                'email' => 'test@example.com',
-                'password' => 'password',
+            ->post(route('login'), [
+                'email' => $this->email,
+                'password' => $this->password,
             ]);
+
+        $this->assertAuthenticated();
 
         $response->assertRedirect($progressUrl);
     }
