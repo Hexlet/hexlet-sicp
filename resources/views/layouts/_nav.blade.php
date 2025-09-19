@@ -26,6 +26,9 @@
         @if (App::isLocale('ru'))
           <li class="nav-item"><a href="https://guides.hexlet.io/how-to-learn-sicp/"
               class="nav-link p-2">{{ __('layout.nav.sicp_read') }}</a></li>
+        @else
+          <li class="nav-item"><a href="{{ route('pages.show', ['page' => 'how-to-learn-sicp']) }}"
+              class="nav-link p-2">{{ __('layout.nav.sicp_read') }}</a></li>
         @endif
         <li class="nav-item"><a href="{{ route('top.index') }}" class="nav-link p-2">{{ __('layout.nav.rating') }}</a>
         </li>
