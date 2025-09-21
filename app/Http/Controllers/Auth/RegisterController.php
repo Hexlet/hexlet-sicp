@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Rules\EmailValidation;
 use App\Models\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Contracts\Validation\Validator as ValidatorContract;
