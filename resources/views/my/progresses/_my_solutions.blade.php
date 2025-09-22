@@ -20,4 +20,4 @@
     </thead>
   </table>
 </div>
-{{ $savedSolutionsExercises->fragment('nav-solutions')->links() }}
+{{ $savedSolutionsExercises->appends(['tab' => 'solutions'])->links() }}
