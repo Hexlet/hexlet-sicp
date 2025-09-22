@@ -149,10 +149,8 @@
                 <h2>Additional links</h2>
 
                 <ul>
-                    <li><a href="https://www.youtube.com/watch?v=bFMbqKRjU84&list=PLo6puixMwuSO8eB2uBH5lZy5kjNtdhTfT">Course: Structure and Interpretation of Computer Programs (SICP in Russian)</a></li>
-                    <li><a href="https://sicp.hexlet.io/">Service for tracking your progress while studying the book</a></li>
-                    <li><a href="https://www.youtube.com/playlist?list=PLc6AqfeLgwzPPK1H3XV1Wfb_CGvT6sXkC">Lectures by the authors, translated into Russian</a></li>
-                    <li><a href="https://www.ozon.ru/product/struktura-i-interpretatsiya-kompyuternyh-programm-5322055/?partner=hexlet&sh=CjnOUmRR">SICP on Ozon</a></li>
+                    <li><a href="https://web.mit.edu/6.001/6.037/sicp.pdf">Structure and Interpretation of Computer Programs, 2nd ed.</a></li>
+                    <li><a href="https://www.youtube.com/playlist?list=PLhMnuBfGeCDNgVzLPxF9o5UNKG1b-LFY9">Course: Structure and Interpretation of Computer Programs (UC Berkeley, 2010)</a></li>
                 </ul>
             </div>
         </div>
