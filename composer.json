@@ -27,7 +27,7 @@
         "diglactic/laravel-breadcrumbs": "^v10.0",
         "erusev/parsedown": "^1.7",
         "fakerphp/faker": "^1.23",
-        "graham-campbell/github": "^12.6",
+        "graham-campbell/github": "^13.0",
         "guzzlehttp/guzzle": "^7.8",
         "hemp/presenter": "^3.0",
         "http-interop/http-factory-guzzle": "^1.2",
