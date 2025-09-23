@@ -36,8 +36,7 @@
     }
 }
 
-$min-heights: 100px, 300px;
-@each $height in $min-heights {
+@each $height in 100px, 300px {
   .x-min-h-#{$height} {
     min-height: #{$height} !important;
   }
