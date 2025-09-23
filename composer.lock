@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fb7f36ef7493789286376825d7017fc9",
+    "content-hash": "cf8c197b965e79277638397fc0e394c8",
     "packages": [
         {
             "name": "brick/math",
@@ -1161,35 +1161,35 @@
         },
         {
             "name": "graham-campbell/github",
-            "version": "v12.8.0",
+            "version": "v13.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrahamCampbell/Laravel-GitHub.git",
-                "reference": "1e90e4efdb61b314615dd1ca27c217971f96311d"
+                "reference": "2186c83785c25bab95ddd2134c681a4e61c0934f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrahamCampbell/Laravel-GitHub/zipball/1e90e4efdb61b314615dd1ca27c217971f96311d",
-                "reference": "1e90e4efdb61b314615dd1ca27c217971f96311d",
+                "url": "https://api.github.com/repos/GrahamCampbell/Laravel-GitHub/zipball/2186c83785c25bab95ddd2134c681a4e61c0934f",
+                "reference": "2186c83785c25bab95ddd2134c681a4e61c0934f",
                 "shasum": ""
             },
             "require": {
-                "graham-campbell/bounded-cache": "^1.2 || ^2.2 || ^3.0",
-                "graham-campbell/manager": "^5.1",
+                "graham-campbell/bounded-cache": "^3.0",
+                "graham-campbell/manager": "^5.2",
                 "guzzlehttp/guzzle": "^7.9.2",
                 "guzzlehttp/psr7": "^2.7.0",
-                "illuminate/contracts": "^8.75 || ^9.0 || ^10.0 || ^11.0",
-                "illuminate/support": "^8.75 || ^9.0 || ^10.0 || ^11.0",
+                "illuminate/contracts": "^10.44 || ^11.0 || ^12.0",
+                "illuminate/support": "^10.44 || ^11.0 || ^12.0",
                 "knplabs/github-api": "3.16.*",
-                "lcobucci/jwt": "^4.3 || ^5.2",
-                "php": "^7.4.15 || ^8.0.2",
-                "symfony/cache": "^5.4 || ^6.0 || ^7.0"
+                "lcobucci/jwt": "^5.2",
+                "php": "^8.1",
+                "symfony/cache": "^6.2 || ^7.0"
             },
             "require-dev": {
-                "graham-campbell/analyzer": "^4.2.1",
+                "graham-campbell/analyzer": "^5.0",
                 "graham-campbell/testbench": "^6.2",
                 "mockery/mockery": "^1.6.6",
-                "phpunit/phpunit": "^9.6.17 || ^10.5.13"
+                "phpunit/phpunit": "^10.5.45 || ^11.5.10"
             },
             "type": "library",
             "extra": {
@@ -1231,7 +1231,7 @@
             ],
             "support": {
                 "issues": "https://github.com/GrahamCampbell/Laravel-GitHub/issues",
-                "source": "https://github.com/GrahamCampbell/Laravel-GitHub/tree/v12.8.0"
+                "source": "https://github.com/GrahamCampbell/Laravel-GitHub/tree/v13.0.0"
             },
             "funding": [
                 {
@@ -1243,7 +1243,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-03-02T22:44:47+00:00"
+            "time": "2025-03-03T21:35:19+00:00"
         },
         {
             "name": "graham-campbell/manager",
