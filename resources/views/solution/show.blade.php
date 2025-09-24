@@ -58,11 +58,11 @@
       </div>
     </div>
 
-    @if (count($solutionsListForCurrentExercise) > 1)
+    @if (count($solutionsOfOtherUsers ?? []) > 0)
       <div class="d-none d-md-block border-left"></div>
       <div class="col p-2 p-lg-4">
         <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-          @foreach ($solutionsListForCurrentExercise as $currentSolution)
+          @foreach ($solutionsOfOtherUsers as $currentSolution)
             @if ($loop->first)
               <li class="nav-item" role="presentation">
                 <a class="nav-link active" id="pills-{{ $currentSolution->id }}double-tab" data-bs-toggle="pill"
@@ -81,7 +81,7 @@
           @endforeach
         </ul>
         <div class="tab-content" id="pills-tabContent">
-          @foreach ($solutionsListForCurrentExercise as $currentSolution)
+          @foreach ($solutionsOfOtherUsers as $currentSolution)
             @if ($loop->first)
               <div class="tab-pane fade show active" id="pills-{{ $currentSolution->id }}double" role="tabpanel"
                 aria-labelledby="pills-{{ $currentSolution->id }}double-tab">
