@@ -27,7 +27,7 @@ class YandexController extends Controller
     public function redirectToProvider(): RedirectResponse
     {
         try {
-            return $this->socialite::driver('yandex')->scopes(['login:email', 'login:info'])->redirect();
+            return $this->socialite::driver('yandex')->scopes(['login:email'])->redirect();
         } catch (Exception $e) {
             return $this->sendFailedResponse($e->getMessage());
         }
