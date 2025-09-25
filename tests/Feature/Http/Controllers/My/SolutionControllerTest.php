@@ -1,12 +1,12 @@
 <?php
 
-namespace Tests\Feature\Http\Controllers;
+namespace Tests\Feature\Http\Controllers\My;
 
 use Database\Seeders\ChaptersTableSeeder;
 use Database\Seeders\ExercisesTableSeeder;
 use Tests\ControllerTestCase;
 
-class MyControllerTest extends ControllerTestCase
+class SolutionControllerTest extends ControllerTestCase
 {
     public function setUp(): void
     {
@@ -21,7 +21,7 @@ class MyControllerTest extends ControllerTestCase
 
     public function testIndex(): void
     {
-        $response = $this->get(route('my.index'));
+        $response = $this->get(route('my.solutions.index'));
         $response->assertOk();
     }
 }

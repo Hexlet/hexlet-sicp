@@ -33,26 +33,4 @@ class MyController extends Controller
             'chapterMembers',
         ));
     }
-
-    public function solutions(): View
-    {
-        /** @var User $user */
-        $user = Auth::user();
-        $user->load('exerciseMembers');
-
-        $exerciseMembers = $user->exerciseMembers->keyBy('exercise_id');
-        $savedSolutionsExercises = $user->solutions()
-            ->versioned()
-            ->with([
-                'exercise',
-                'exercise.chapter',
-            ])
-            ->paginate(10);
-
-        return view('my.solutions', compact(
-            'user',
-            'exerciseMembers',
-            'savedSolutionsExercises'
-        ));
-    }
 }

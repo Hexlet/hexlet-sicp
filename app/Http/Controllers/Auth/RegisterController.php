@@ -21,7 +21,7 @@ class RegisterController extends Controller
 
     public function redirectTo()
     {
-        return route('my');
+        return route('my.index');
     }
 
     protected function validator(array $data): ValidatorContract

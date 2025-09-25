@@ -12,7 +12,7 @@
                 <a class="text-decoration-none" href="{{ route('users.show', $user) }}">{{ $user->name }}</a>
             </div>
         </div>
-        <h4><a href="{{ route('my') }}">{{ __('progresses.chapters') }}</a> / {{  __('progresses.my_solutions') }}</h4>
+        <h4><a href="{{ route('my.index') }}">{{ __('progresses.chapters') }}</a> / {{  __('progresses.my_solutions') }}</h4>
 
         <div class="table-responsive border border-top-0 p-2 p-lg-4">
             <table class="table">

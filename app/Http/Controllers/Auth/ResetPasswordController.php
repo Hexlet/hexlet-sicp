@@ -17,7 +17,7 @@ class ResetPasswordController extends Controller
     public function redirectTo()
     {
         flash(__('passwords.reset'))->success();
-        return route('my');
+        return route('my.index');
     }
 
     protected function rules()

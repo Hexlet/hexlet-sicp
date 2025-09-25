@@ -16,9 +16,9 @@ Route::group([
     Auth::routes(['verify' => true]);
     Route::post('/dev-login', 'Auth\LoginController@devLogin')->name('auth.dev-login');
 
-    Route::controller('MyController')->name('my')->prefix('my')->group(function () {
-        Route::get('/', 'index')->name('');
-        Route::get('/solutions', 'solutions')->name('.solutions');
+    Route::resource('my', 'MyController')->only('index');
+    Route::namespace('My')->prefix('my')->name('my.')->group(function (): void {
+        Route::resource('solutions', 'SolutionController')->only('index');
     });
 
     Route::namespace('Settings')->prefix('settings')->name('settings.')->group(function (): void {
