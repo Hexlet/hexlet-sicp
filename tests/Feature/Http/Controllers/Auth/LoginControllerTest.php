@@ -4,7 +4,6 @@ namespace Tests\Feature\Http\Controllers\Auth;
 
 use Tests\TestCase;
 use App\Models\User;
-use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Hash;
 
 class LoginControllerTest extends TestCase
@@ -27,7 +26,7 @@ class LoginControllerTest extends TestCase
         $previousUrl = '/ru/chapters/6';
 
         $response = $this
-            ->withSession(['login_previous_url' => $previousUrl])
+            ->withSession(['url.intended' => $previousUrl])
             ->post(route('login'), [
                 'email' => $this->email,
                 'password' => $this->password,

@@ -11,8 +11,6 @@ class LoginController extends Controller
 {
     use AuthenticatesUsers;
 
-    private const LOGIN_PREVIOUS_URL = 'login_previous_url';
-
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
@@ -20,7 +18,8 @@ class LoginController extends Controller
 
     public function showLoginForm()
     {
-        $this->setPreviousUrl(url()->previous());
+        session()->put('url.intended', url()->previous());
+
         return view('auth.login');
     }
 
@@ -28,13 +27,7 @@ class LoginController extends Controller
     {
         flash(__('auth.logged_in'))->success();
 
-        $previousUrl = $this->pullPreviousUrl();
-
-        if ($previousUrl) {
-            return $previousUrl;
-        }
-
-        return route('my');
+        return session()->get('url.intended', route('my'));
     }
 
     public function devLogin()
@@ -51,15 +44,5 @@ class LoginController extends Controller
         Auth::logout();
         flash(__('auth.logout'))->success();
         return redirect()->back();
-    }
-
-    private function setPreviousUrl($url)
-    {
-        session()->put(self::LOGIN_PREVIOUS_URL, $url);
-    }
-
-    private function pullPreviousUrl()
-    {
-        return session()->pull(self::LOGIN_PREVIOUS_URL, null);
     }
 }
