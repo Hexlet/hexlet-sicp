@@ -34,6 +34,33 @@
         </li>
         <li class="nav-item"><a href="{{ TemplateHelper::getBookLink($currentLocale) }}"
             class="nav-link link-info p-2">{{ __('layout.nav.sicp_book') }}</a></li>
+        @auth
+          @if(auth()->user()->is_admin)
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle p-2" href="#" id="adminDropdown" role="button"
+                 data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-shield-lock"></i> {{ __('admin.title') }}
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="adminDropdown">
+                <li>
+                  <a class="dropdown-item" href="{{ route('admin.users.index') }}">
+                    <i class="bi bi-people"></i> {{ __('admin.users.title') }}
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="{{ route('admin.comments.index') }}">
+                    <i class="bi bi-chat-dots"></i> {{ __('admin.comments.title') }}
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="{{ route('admin.solutions.index') }}">
+                    <i class="bi bi-code-square"></i> {{ __('admin.solutions.title') }}
+                  </a>
+                </li>
+              </ul>
+            </li>
+          @endif
+        @endauth
       </ul>
       <ul class="navbar-nav ms-md-auto">
         @guest
