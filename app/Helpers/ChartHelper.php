@@ -26,14 +26,18 @@ class ChartHelper
             });
 
         $chart = CarbonPeriod::create(now()->subMonths(12), '1 day', now())
-            ->map(function (Carbon $dayDate) use ($countActivitiesByDays): int {
+            ->map(function (Carbon $dayDate) use ($countActivitiesByDays): array {
                 $day = $dayDate->format('Y-m-d');
                 $dayActivitiesCount = $countActivitiesByDays->get($day, 0);
                 $magicNumber = 4;
                 $maxDayActivityLevel = 4;
                 $dayActivityLevel = (ceil(($dayActivitiesCount) / $magicNumber));
 
-                return (int) min($dayActivityLevel, $maxDayActivityLevel);
+                return [
+                    'date' => $day,
+                    'count' => $dayActivitiesCount,
+                    'level' => (int) min($dayActivityLevel, $maxDayActivityLevel),
+                ];
             });
 
         return $chart;

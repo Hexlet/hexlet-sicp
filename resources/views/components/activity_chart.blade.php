@@ -10,22 +10,20 @@
   </ul>
   <div class="activityChart m-1">
     <ul class="months">
-      <li>{{ __('activityChart.month.january') }}</li>
-      <li>{{ __('activityChart.month.february') }}</li>
-      <li>{{ __('activityChart.month.march') }}</li>
-      <li>{{ __('activityChart.month.april') }}</li>
-      <li>{{ __('activityChart.month.may') }}</li>
-      <li>{{ __('activityChart.month.june') }}</li>
-      <li>{{ __('activityChart.month.july') }}</li>
-      <li>{{ __('activityChart.month.august') }}</li>
-      <li>{{ __('activityChart.month.september') }}</li>
-      <li>{{ __('activityChart.month.october') }}</li>
-      <li>{{ __('activityChart.month.november') }}</li>
-      <li>{{ __('activityChart.month.december') }}</li>
+      @php
+        $currentMonth = now()->month;
+        $monthKeys = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];
+        $orderedMonths = array_merge(array_slice($monthKeys, $currentMonth), array_slice($monthKeys, 0, $currentMonth));
+      @endphp
+      @foreach ($orderedMonths as $monthKey)
+        <li>{{ __('activityChart.month.' . $monthKey) }}</li>
+      @endforeach
     </ul>
     <ul class="squares mb-0">
       @foreach ($chart as $square)
-        <li data-level="{{ $square }}"></li>
+        <li data-level="{{ $square['level'] }}"
+            title="{{ $square['date'] }}: {{ $square['count'] }} "
+        ></li>
       @endforeach
     </ul>
   </div>
