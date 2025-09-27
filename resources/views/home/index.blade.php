@@ -13,7 +13,7 @@
     <div class="col-md-8">
       <h1 class="my-4">{{ __('welcome.title') }}</h1>
       <p>{{ __('welcome.description') }}</p>
-      <a href="https://xuanji.appspot.com/isicp/index.html">
+      <a href="https://mitp-content-server.mit.edu/books/content/sectbyfn/books_pres_0/6515/sicp.zip/full-text/book/book-Z-H-4.html">
         {{ __('welcome.link_to_book') }}
       </a>
       <hr class="dropdown-divider">
