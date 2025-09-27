@@ -4,10 +4,10 @@ import React, {
 
 import { useDispatch, useSelector } from 'react-redux'
 import { EditorView } from 'codemirror'
-import { history, defaultKeymap, historyKeymap } from '@codemirror/commands';
-import { highlightSelectionMatches, searchKeymap } from '@codemirror/search';
-import { closeBrackets, autocompletion, closeBracketsKeymap, completionKeymap } from '@codemirror/autocomplete';
-import { lintKeymap } from '@codemirror/lint';
+import { history, defaultKeymap, historyKeymap } from '@codemirror/commands'
+import { highlightSelectionMatches, searchKeymap } from '@codemirror/search'
+import { closeBrackets, autocompletion, closeBracketsKeymap, completionKeymap } from '@codemirror/autocomplete'
+import { lintKeymap } from '@codemirror/lint'
 import { lineNumbers,
   highlightActiveLineGutter,
   highlightSpecialChars,
@@ -15,13 +15,13 @@ import { lineNumbers,
   dropCursor,
   rectangularSelection,
   crosshairCursor,
-  keymap, } from '@codemirror/view';
+  keymap } from '@codemirror/view'
 import { foldGutter,
   indentOnInput,
   syntaxHighlighting,
   defaultHighlightStyle,
   bracketMatching,
-  foldKeymap, } from '@codemirror/language';
+  foldKeymap } from '@codemirror/language'
 
 import { EditorState } from '@codemirror/state'
 import { StreamLanguage } from '@codemirror/language'
@@ -59,9 +59,9 @@ const basicSetup = (() => [
     ...historyKeymap,
     ...foldKeymap,
     ...completionKeymap,
-    ...lintKeymap
-  ])
-])();
+    ...lintKeymap,
+  ]),
+])()
 
 const EditorBuilder = () => {
   const { focusesCount } = useSelector(state => state.editor)
