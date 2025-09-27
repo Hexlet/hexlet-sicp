@@ -3,7 +3,6 @@
   /** @var \Illuminate\Support\Collection|\App\Models\Activity[] $logItems */
   /** @var \Illuminate\Support\Collection|\App\Models\Comment[] $comments */
   use App\Helpers\MarkdownHelper;
-  use App\Helpers\ActivityLogHelper;
 @endphp
 @push('styles')
   @vite('resources/sass/_activity_chart.scss')
