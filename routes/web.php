@@ -52,6 +52,12 @@ Route::group([
     Route::resource('comments', 'CommentController')->only('index', 'store', 'update', 'show', 'destroy');
     Route::resource('pages', 'PagesController')->only('show');
 
+    Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('admin')->group(function (): void {
+        Route::resource('users', 'UserController')->only('index');
+        Route::resource('comments', 'CommentController')->only('index');
+        Route::resource('solutions', 'SolutionController')->only('index');
+    });
+
     Route::fallback(function () {
         return response()->view('errors.404', [], 404);
     });
