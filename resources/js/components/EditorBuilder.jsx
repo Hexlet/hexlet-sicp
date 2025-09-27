@@ -15,13 +15,13 @@ import { lineNumbers,
   dropCursor,
   rectangularSelection,
   crosshairCursor,
-  keymap } from '@codemirror/view';
+  keymap, } from '@codemirror/view';
 import { foldGutter,
   indentOnInput,
   syntaxHighlighting,
   defaultHighlightStyle,
   bracketMatching,
-  foldKeymap } from '@codemirror/language';
+  foldKeymap, } from '@codemirror/language';
 
 import { EditorState } from '@codemirror/state'
 import { StreamLanguage } from '@codemirror/language'
