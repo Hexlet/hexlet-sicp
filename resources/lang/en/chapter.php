@@ -3,7 +3,7 @@
 return [
     'members' => [
         'finished' => 'Chapter is finished',
-        'finish' => 'Finish the chapter',
+        'finish' => 'Mark as Read',
         'confirm_finish' => 'Are you sure you want to complete the chapter?',
     ],
     'chapter' => 'Chapter :chapter',
