@@ -14,31 +14,23 @@ class MyController extends Controller
         $this->middleware('auth');
     }
 
-    public function __invoke(): View
+    public function show(): View
     {
         /** @var User $user */
         $user = Auth::user();
-        $user->load('chapterMembers', 'exerciseMembers');
+        $user->load('exerciseMembers', 'chapterMembers');
 
         $chapters = Chapter::with('children', 'exercises')->get();
         $mainChapters = $chapters->where('parent_id', null);
         $chapterMembers = $user->chapterMembers->keyBy('chapter_id');
         $exerciseMembers = $user->exerciseMembers->keyBy('exercise_id');
-        $savedSolutionsExercises = $user->solutions()
-            ->versioned()
-            ->with([
-                'exercise',
-                'exercise.chapter',
-            ])
-            ->paginate(10);
 
         return view('my.index', compact(
             'user',
             'chapters',
+            'exerciseMembers',
             'mainChapters',
             'chapterMembers',
-            'exerciseMembers',
-            'savedSolutionsExercises'
         ));
     }
 }

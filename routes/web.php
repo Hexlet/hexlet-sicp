@@ -16,7 +16,11 @@ Route::group([
     Auth::routes(['verify' => true]);
     Route::post('/dev-login', 'Auth\LoginController@devLogin')->name('auth.dev-login');
 
-    Route::get('/my', 'MyController')->name('my');
+    Route::singleton('my', 'MyController')->only('show');
+    Route::namespace('My')->prefix('my')->name('my.')->group(function (): void {
+        Route::resource('solutions', 'SolutionController')->only('index');
+    });
+
     Route::namespace('Settings')->prefix('settings')->name('settings.')->group(function (): void {
         Route::resource('account', 'AccountController')->only('index', 'destroy');
         Route::resource('profile', 'ProfileController')->only('index', 'update');

@@ -2,7 +2,7 @@
 
 return [
     'chapter' => 'Глава',
-    'сhapters' => 'Главы',
+    'chapters' => 'Главы',
     'my_solutions' => 'Мои Решения',
     'exercise' => 'Упражнение',
     'see_details' => 'Подробнее',
