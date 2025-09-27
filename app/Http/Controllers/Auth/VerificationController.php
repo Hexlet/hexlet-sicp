@@ -21,7 +21,7 @@ class VerificationController extends Controller
 
     public function redirectTo()
     {
-        return route('my.index');
+        return route('my.show');
     }
 
     public function verify(Request $request)

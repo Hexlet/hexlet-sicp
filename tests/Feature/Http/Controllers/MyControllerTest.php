@@ -21,7 +21,7 @@ class MyControllerTest extends ControllerTestCase
 
     public function testIndex(): void
     {
-        $response = $this->get(route('my.index'));
+        $response = $this->get(route('my.show'));
         $response->assertOk();
     }
 }

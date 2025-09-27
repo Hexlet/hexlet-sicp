@@ -28,7 +28,7 @@ class GithubControllerTest extends TestCase
         $email = $this->faker->email;
         $this->stubSocialiteFacade($email, $name, $nickname, $token, random_int(1, 100));
         $githubCallback = route('oauth.github-callback');
-        $this->get($githubCallback)->assertLocation(route('my.index'));
+        $this->get($githubCallback)->assertLocation(route('my.show'));
 
         $this->assertDatabaseHas('users', ['email' => $email]);
     }
@@ -41,7 +41,7 @@ class GithubControllerTest extends TestCase
         $email = $this->faker->email;
         $this->stubSocialiteFacade($email, $name, $nickname, $token, random_int(1, 100));
         $githubCallback = route('oauth.github-callback');
-        $this->get($githubCallback)->assertLocation(route('my.index'));
+        $this->get($githubCallback)->assertLocation(route('my.show'));
 
         $user = User::where('email', $email)->firstOrFail();
         $this->assertDatabaseHas('users', ['email' => $email]);
@@ -54,7 +54,7 @@ class GithubControllerTest extends TestCase
 
         $this->stubSocialiteFacade($email, $name, $nickname, $token, random_int(1, 100));
         $githubCallback = route('oauth.github-callback');
-        $this->get($githubCallback)->assertLocation(route('my.index'));
+        $this->get($githubCallback)->assertLocation(route('my.show'));
 
         $this->assertDatabaseHas('users', ['email' => $email]);
     }
@@ -68,7 +68,7 @@ class GithubControllerTest extends TestCase
 
         $this->stubSocialiteFacade($email, $name, $nickname, $token, random_int(1, 100));
         $githubCallback = route('oauth.github-callback');
-        $this->get($githubCallback)->assertLocation(route('my.index'));
+        $this->get($githubCallback)->assertLocation(route('my.show'));
 
         $this->assertDatabaseHas('users', [ 'email' => $email, 'name' => $nickname ]);
     }

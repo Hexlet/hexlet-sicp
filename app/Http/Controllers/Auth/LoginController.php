@@ -19,7 +19,7 @@ class LoginController extends Controller
     public function redirectTo()
     {
         flash(__('auth.logged_in'))->success();
-        return route('my.index');
+        return route('my.show');
     }
 
     public function devLogin()

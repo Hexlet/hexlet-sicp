@@ -14,7 +14,7 @@ class MyController extends Controller
         $this->middleware('auth');
     }
 
-    public function index(): View
+    public function show(): View
     {
         /** @var User $user */
         $user = Auth::user();

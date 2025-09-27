@@ -63,7 +63,7 @@ class RegisterControllerTest extends TestCase
             'password_confirmation' => $password,
         ]);
 
-        $response->assertRedirect(route('my.index'));
+        $response->assertRedirect(route('my.show'));
 
         $this->assertDatabaseHas('users', [
             'email' => $email,
