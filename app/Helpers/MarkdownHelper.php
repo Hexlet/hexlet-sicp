@@ -8,6 +8,6 @@ class MarkdownHelper
 {
     public static function text(string $text): string
     {
-        return (new Parsedown())->text($text);
+        return (new Parsedown())->setSafeMode(true)->text($text);
     }
 }
