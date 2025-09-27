@@ -38,7 +38,7 @@ return [
         'os_projects' => [
             'editor' => 'Run IT',
             'cv' => 'Хекслет-резюме',
-            'friends' => 'Друзья Хекслета',
+            'friends' => 'Хекслет.Карьера',
             'code_basics' => 'Code Basics',
             'codebattle' => 'Кодбаттл',
             'hexlet' => 'Хекслет',

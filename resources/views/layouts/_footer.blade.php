@@ -24,12 +24,20 @@
       <div class="col-5">
         <div class="fw-bold">{{ __('layout.footer.other_os_projects') }}</div>
         <ul class="nav flex-column align-items-start">
-          <li><a class="nav-link px-0"
-              href="https://github.com/Hexlet/hexlet-cv">{{ __('layout.footer.os_projects.cv') }}</a></li>
-          <li><a class="nav-link px-0"
-              href="https://github.com/hexlet-rus/runit">{{ __('layout.footer.os_projects.editor') }}</a></li>
-          <li><a class="nav-link px-0"
-              href="https://github.com/Hexlet/hexlet-friends">{{ __('layout.footer.os_projects.friends') }}</a></li>
+          <li>
+            <a class="nav-link px-0"
+               href="https://github.com/Hexlet/hexlet-cv">{{ __('layout.footer.os_projects.cv') }}</a>
+          </li>
+          <li>
+            <a class="nav-link px-0"
+               href="https://github.com/hexlet-rus/runit">{{ __('layout.footer.os_projects.editor') }}</a>
+          </li>
+          @if(app()->getLocale() === 'ru')
+            <li>
+              <a class="nav-link px-0"
+                 href="https://career.hexlet.io/">{{ __('layout.footer.os_projects.friends') }}</a>
+            </li>
+          @endif
         </ul>
       </div>
       <div class="col-5">
