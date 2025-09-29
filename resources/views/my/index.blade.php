@@ -1,31 +1,42 @@
 @extends('layouts.app')
+
 @section('description')
   {{ __('my.description') }}
 @endsection
+
 @section('content')
   <div class="my-4">
     <div class="d-flex flex-wrap justify-content-between">
-      <h1 class="h3">{{ __('layout.nav.my_progress') }}</h1>
+      <h3>{{ __('layout.nav.my_progress') }}</h3>
       <div class="h5 align-self-center">
         <a class="text-decoration-none" href="{{ route('users.show', $user) }}">{{ $user->name }}</a>
       </div>
     </div>
-    <nav>
-      <div class="nav nav-tabs" id="nav-tab" role="tablist">
-        <button class="nav-link active" id="nav-chapters-tab" data-bs-toggle="tab" data-bs-target="#nav-chapters"
-          type="button" role="tab" aria-controls="nav-chapters"
-          aria-selected="true">{{ __('progresses.сhapters') }}</button>
-        <button class="nav-link" id="nav-solutions-tab" data-bs-toggle="tab" data-bs-target="#nav-solutions"
-          type="button" role="tab" aria-controls="nav-solutions"
-          aria-selected="false">{{ __('progresses.my_solutions') }}</button>
+    <h4>{{ __('progresses.chapters') }} / <a href="{{ route('my.solutions.index') }}">{{  __('progresses.my_solutions') }}</a></h4>
+
+    <div class="row g-0 border border-top-0">
+      <div class="col-12 col-md-4 border-end x-z-index-0">
+        <div class="nav nav-pills flex-column sticky-top m-2 pt-2" role="tablist" aria-orientation="vertical">
+          @foreach ($mainChapters as $mainChapter)
+            <button class="nav-link text-start {{ $mainChapter->path === '1' ? 'active' : '' }}"
+                    id="subChapters{{ $mainChapter->id }}-tab" data-bs-target="#subChapters{{ $mainChapter->id }}"
+                    data-bs-toggle="tab" type="button" role="tab" aria-controls="subChapters{{ $mainChapter->id }}"
+                    aria-selected="{{ $mainChapter->path === '1' ? 'true' : 'false' }}">
+              {{ App\Helpers\ChapterHelper::fullChapterName($mainChapter->path) }}
+            </button>
+          @endforeach
+        </div>
       </div>
-    </nav>
-    <div class="tab-content" id="nav-tabContent">
-      <div class="tab-pane fade show active" id="nav-chapters" role="tabpanel" aria-labelledby="nav-chapters-tab">
-        @include('my.progresses._my_chapters')
-      </div>
-      <div class="tab-pane fade show" id="nav-solutions" role="tabpanel" aria-labelledby="nav-solutions-tab">
-        @include('my.progresses._my_solutions')
+      <div class="col-12 col-md-8">
+        <div class="tab-content m-2 m-lg-4">
+          @foreach ($mainChapters as $mainChapter)
+            <div class="tab-pane fade {{ $mainChapter->path === '1' ? 'show active' : '' }}"
+                 id="subChapters{{ $mainChapter->id }}" role="tabpanel"
+                 aria-labelledby="subChapters{{ $mainChapter->id }}-tab">
+              @include('partials.chapter_partial', ['chapter' => $mainChapter])
+            </div>
+          @endforeach
+        </div>
       </div>
     </div>
   </div>

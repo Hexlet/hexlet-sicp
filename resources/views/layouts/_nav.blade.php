@@ -64,7 +64,7 @@
                 <a class="dropdown-item" href="{{ route('settings.account.index') }}">{{ __('account.settings') }}</a>
               </li>
               <li>
-                <a class="dropdown-item" href="{{ route('my') }}">
+                <a class="dropdown-item" href="{{ route('my.show') }}">
                   {{ __('layout.nav.my_progress') }}
                 </a>
               </li>

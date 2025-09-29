@@ -75,7 +75,7 @@
           <li>{{ __(sprintf('welcome.features_list.%s', $key)) }}</li>
         @endforeach
       </ul>
-      <a class="btn btn-primary btn-lg" href="{{ route('my') }}">{{ __('layout.welcome.start_learning') }}</a>
+      <a class="btn btn-primary btn-lg" href="{{ route('my.show') }}">{{ __('layout.welcome.start_learning') }}</a>
     </div>
   </div>
 
