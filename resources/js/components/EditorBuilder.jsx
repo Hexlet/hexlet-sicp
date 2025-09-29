@@ -3,7 +3,26 @@ import React, {
 } from 'react'
 
 import { useDispatch, useSelector } from 'react-redux'
-import { EditorView, basicSetup } from 'codemirror'
+import { EditorView } from 'codemirror'
+import { history, defaultKeymap, historyKeymap } from '@codemirror/commands'
+import { highlightSelectionMatches, searchKeymap } from '@codemirror/search'
+import { closeBrackets, autocompletion, closeBracketsKeymap, completionKeymap } from '@codemirror/autocomplete'
+import { lintKeymap } from '@codemirror/lint'
+import { lineNumbers,
+  highlightActiveLineGutter,
+  highlightSpecialChars,
+  drawSelection,
+  dropCursor,
+  rectangularSelection,
+  crosshairCursor,
+  keymap } from '@codemirror/view'
+import { foldGutter,
+  indentOnInput,
+  syntaxHighlighting,
+  defaultHighlightStyle,
+  bracketMatching,
+  foldKeymap } from '@codemirror/language'
+
 import { EditorState } from '@codemirror/state'
 import { StreamLanguage } from '@codemirror/language'
 import { scheme } from '@codemirror/legacy-modes/mode/scheme'
@@ -15,6 +34,34 @@ import codeTemplates from '../common/codeTemplates.js'
 import theme from '../common/currentTheme'
 
 const myTheme = theme === 'dark' ? basicDark : basicLight
+
+const basicSetup = (() => [
+  lineNumbers(),
+  highlightActiveLineGutter(),
+  highlightSpecialChars(),
+  history(),
+  foldGutter(),
+  drawSelection(),
+  dropCursor(),
+  EditorState.allowMultipleSelections.of(true),
+  indentOnInput(),
+  syntaxHighlighting(defaultHighlightStyle, { fallback: true }),
+  bracketMatching(),
+  closeBrackets(),
+  autocompletion(),
+  rectangularSelection(),
+  crosshairCursor(),
+  highlightSelectionMatches(),
+  keymap.of([
+    ...closeBracketsKeymap,
+    ...defaultKeymap,
+    ...searchKeymap,
+    ...historyKeymap,
+    ...foldKeymap,
+    ...completionKeymap,
+    ...lintKeymap,
+  ]),
+])()
 
 const EditorBuilder = () => {
   const { focusesCount } = useSelector(state => state.editor)
