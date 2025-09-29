@@ -13,10 +13,13 @@
       @php
         $currentMonth = now()->month;
         $monthKeys = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];
-        $orderedMonths = array_merge(array_slice($monthKeys, $currentMonth), array_slice($monthKeys, 0, $currentMonth));
+        $orderedMonths = collect($monthKeys)
+            ->splice($currentMonth)
+            ->merge(collect($monthKeys)->take($currentMonth))
+            ->toArray();
       @endphp
       @foreach ($orderedMonths as $monthKey)
-        <li>{{ __('activityChart.month.' . $monthKey) }}</li>
+        <li>{{ __("activityChart.month.$monthKey") }}</li>
       @endforeach
     </ul>
     <ul class="squares mb-0">
