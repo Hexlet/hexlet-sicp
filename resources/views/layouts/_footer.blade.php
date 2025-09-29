@@ -35,7 +35,7 @@
           @if(app()->getLocale() === 'ru')
             <li>
               <a class="nav-link px-0"
-                 href="https://career.hexlet.io/">{{ __('layout.footer.os_projects.friends') }}</a>
+                 href="https://career.hexlet.io/">{{ __('layout.footer.os_projects.career') }}</a>
             </li>
           @endif
         </ul>
