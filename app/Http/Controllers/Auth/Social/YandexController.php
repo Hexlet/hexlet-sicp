@@ -67,7 +67,7 @@ class YandexController extends Controller
         Auth::login($user, true);
         flash()->success(__('auth.logged_in'));
 
-        return redirect()->route('my');
+        return redirect()->route('my.show');
     }
 
     private function sendFailedResponse($msg = null): RedirectResponse
