@@ -36,7 +36,7 @@ class YandexController extends Controller
     public function handleProviderCallback(): RedirectResponse
     {
         try {
-            $socialiteUser = $this->socialite::driver('yandex')->stateless()->user();
+            $socialiteUser = $this->socialite::driver('yandex')->user();
         } catch (Exception $e) {
             return $this->sendFailedResponse($e->getMessage());
         }
