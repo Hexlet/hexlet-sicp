@@ -30,7 +30,7 @@ class YandexControllerTest extends TestCase
         $this->stubSocialiteFacade($email, $name, $nickname, $token, random_int(1, 100));
 
         $callback = route('oauth.yandex-callback');
-        $this->get($callback)->assertLocation(route('my'));
+        $this->get($callback)->assertLocation(route('my.show'));
 
         $this->assertDatabaseHas('users', ['email' => $email]);
     }
@@ -45,7 +45,7 @@ class YandexControllerTest extends TestCase
         $this->stubSocialiteFacade($email, $name, $nickname, $token, random_int(1, 100));
 
         $callback = route('oauth.yandex-callback');
-        $this->get($callback)->assertLocation(route('my'));
+        $this->get($callback)->assertLocation(route('my.show'));
 
         $user = User::where('email', $email)->firstOrFail();
         $this->assertDatabaseHas('users', ['email' => $email]);
@@ -57,7 +57,7 @@ class YandexControllerTest extends TestCase
 
         // Авторизация снова
         $this->stubSocialiteFacade($email, $name, $nickname, $token, random_int(1, 100));
-        $this->get($callback)->assertLocation(route('my'));
+        $this->get($callback)->assertLocation(route('my.show'));
 
         $this->assertDatabaseHas('users', ['email' => $email]);
     }
@@ -72,7 +72,7 @@ class YandexControllerTest extends TestCase
         $this->stubSocialiteFacade($email, $name, $nickname, $token, random_int(1, 100));
 
         $callback = route('oauth.yandex-callback');
-        $this->get($callback)->assertLocation(route('my'));
+        $this->get($callback)->assertLocation(route('my.show'));
 
         $this->assertDatabaseHas('users', [
             'email' => $email,
