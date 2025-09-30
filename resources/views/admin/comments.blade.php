@@ -60,7 +60,7 @@
                                                 </a>
                                                 @if(!$user)
                                                     <div class="small">
-                                                        <a href="{{ route('admin.comments.index', ['user_id' => $comment->user->id]) }}"
+                                                        <a href="{{ route('admin.comments.index', ['filter[user_id]' => $comment->user->id]) }}"
                                                            class="text-muted text-decoration-none">
                                                             {{ __('admin.comments.view_all_user_comments') }}
                                                         </a>

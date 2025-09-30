@@ -61,7 +61,7 @@
                                                 </a>
                                                 @if(!$user)
                                                     <div class="small">
-                                                        <a href="{{ route('admin.solutions.index', ['user_id' => $solution->user->id]) }}"
+                                                        <a href="{{ route('admin.solutions.index', ['filter[user_id]' => $solution->user->id]) }}"
                                                            class="text-muted text-decoration-none">
                                                             {{ __('admin.solutions.view_all_user_solutions') }}
                                                         </a>

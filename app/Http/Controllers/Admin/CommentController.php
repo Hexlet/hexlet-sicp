@@ -7,29 +7,29 @@ use App\Models\User;
 use App\Models\Comment;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
+use Spatie\QueryBuilder\AllowedFilter;
+use Spatie\QueryBuilder\QueryBuilder;
 
 class CommentController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('can:access-admin');
+    }
+
     public function index(Request $request): View
     {
-        $query = Comment::with(['user', 'commentable']);
+        $comments = QueryBuilder::for(Comment::class)
+            ->allowedFilters([
+                AllowedFilter::exact('user_id'),
+            ])
+            ->with(['user', 'commentable'])
+            ->latest()
+            ->paginate(50)
+            ->appends($request->query());
 
-        $userId = $request->get('user_id');
-        $commentableType = $request->get('commentable_type');
-        $commentableId = $request->get('commentable_id');
-
-        $user = User::find($userId);
-
-        if (!empty($userId)) {
-            $query->where('user_id', $userId);
-        }
-
-        if (!empty($commentableType) && !empty($commentableId)) {
-            $query->where('commentable_type', $commentableType)
-                ->where('commentable_id', $commentableId);
-        }
-
-        $comments = $query->orderBy('created_at', 'desc')->paginate(50);
+        $userId = $request->input('filter.user_id');
+        $user = $userId ? User::find($userId) : null;
 
         return view('admin.comments', compact('comments', 'user'));
     }
