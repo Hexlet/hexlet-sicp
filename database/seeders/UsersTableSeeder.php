@@ -18,6 +18,7 @@ class UsersTableSeeder extends Seeder
         User::factory()->count(1)->create([
             'name' => 'Admin',
             'email' => 'admin@test.com',
+            'password' => bcrypt('password'),
             'is_admin' => true,
         ]);
     }
