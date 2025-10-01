@@ -32,7 +32,7 @@ class LoginController extends Controller
 
     public function devLogin()
     {
-        $user = User::where(['is_admin' => true])->first();
+        $user = User::admins()->first();
 
         Auth::login($user);
 

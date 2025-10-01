@@ -22,15 +22,14 @@ class SolutionController extends Controller
         $solutions = QueryBuilder::for(Solution::class)
             ->allowedFilters([
                 AllowedFilter::exact('user_id'),
+                AllowedFilter::partial('name', 'user.name'),
+                AllowedFilter::partial('email', 'user.email'),
             ])
             ->with(['user', 'exercise'])
             ->latest()
             ->paginate(50)
             ->appends($request->query());
 
-        $userId = $request->input('filter.user_id');
-        $user = $userId ? User::find($userId) : null;
-
-        return view('admin.solutions', compact('solutions', 'user'));
+        return view('admin.solutions', compact('solutions'));
     }
 }

@@ -21,16 +21,14 @@ class CommentController extends Controller
     {
         $comments = QueryBuilder::for(Comment::class)
             ->allowedFilters([
-                AllowedFilter::exact('user_id'),
+                AllowedFilter::partial('name', 'user.name'),
+                AllowedFilter::partial('email', 'user.email'),
             ])
             ->with(['user', 'commentable'])
             ->latest()
             ->paginate(50)
             ->appends($request->query());
 
-        $userId = $request->input('filter.user_id');
-        $user = $userId ? User::find($userId) : null;
-
-        return view('admin.comments', compact('comments', 'user'));
+        return view('admin.comments', compact('comments'));
     }
 }
