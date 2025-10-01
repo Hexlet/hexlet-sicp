@@ -2,6 +2,11 @@
 
 return [
     'title' => 'Admin',
+    'search' => 'Search',
+    'filter' => [
+        'user_name' => 'User name',
+        'user_email' => 'User email',
+    ],
     'users' => [
         'title' => 'Users',
         'total' => 'Total',
@@ -11,12 +16,17 @@ return [
             'email' => 'Email',
             'github' => 'GitHub',
             'hexlet' => 'Hexlet',
+            'role' => 'Role',
             'comments' => 'Comments',
             'solutions' => 'Solutions',
             'chapters' => 'Chapters',
             'exercises' => 'Exercises',
             'created' => 'Created',
             'actions' => 'Actions',
+        ],
+        'role' => [
+            'admin' => 'Admin',
+            'user' => 'User',
         ],
         'status' => [
             'deleted' => 'Deleted',

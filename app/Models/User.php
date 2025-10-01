@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Presenters\UserPresenter;
 use Database\Factories\UserFactory;
 use Hemp\Presenter\Presentable;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -156,5 +157,10 @@ class User extends Authenticatable implements MustVerifyEmail
     public function haveRead(Chapter $chapter): bool
     {
         return $this->chapters->contains($chapter);
+    }
+
+    public function scopeAdmins(Builder $builder): Builder
+    {
+        return $builder->where('is_admin', '=', true);
     }
 }

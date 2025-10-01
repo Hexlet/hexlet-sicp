@@ -10,27 +10,22 @@
 @section('content')
 
     <div class="row my-4">
-        <div class="col-12">
+        <div class="col-md-3 col-lg-2">
             @include('admin.partials.navigation')
-
+        </div>
+        <div class="col-md-9 col-lg-10">
             <div class="d-flex justify-content-between align-items-center mb-4">
                 <div>
                     <h1 class="h2">{{ __('admin.solutions.title') }}</h1>
-                    @if($user)
-                        <p class="text-muted mb-0">{{ __('admin.solutions.by_user') }} {{ $user->name }}</p>
-                    @endif
                 </div>
                 <div class="d-flex align-items-center gap-3">
-                    @if($user)
-                        <a href="{{ route('admin.users.index') }}" class="btn btn-outline-secondary btn-sm">
-                            <i class="bi bi-arrow-left"></i> {{ __('admin.solutions.back_to_users') }}
-                        </a>
-                    @endif
                     <div class="text-muted">
                         {{ __('admin.solutions.total') }}: {{ $solutions->total() }}
                     </div>
                 </div>
             </div>
+
+            @include('admin.partials.search-form', ['action' => route('admin.solutions.index')])
 
             <div class="card">
                 <div class="card-body p-0">
@@ -51,22 +46,10 @@
                                     <td>{{ $solution->id }}</td>
                                     <td>
                                         <div class="d-flex align-items-center">
-                                            <img src="{{ $solution->user->present()->getProfileImageLink() }}"
-                                                 alt="{{ $solution->user->name }}"
-                                                 class="rounded-circle me-2"
-                                                 width="30" height="30">
                                             <div>
                                                 <a href="{{ route('users.show', $solution->user) }}">
-                                                    <strong>{{ $solution->user->name ?: __('admin.not_available') }}</strong>
+                                                    <strong>{{ $solution->user->name }}</strong>
                                                 </a>
-                                                @if(!$user)
-                                                    <div class="small">
-                                                        <a href="{{ route('admin.solutions.index', ['filter[user_id]' => $solution->user->id]) }}"
-                                                           class="text-muted text-decoration-none">
-                                                            {{ __('admin.solutions.view_all_user_solutions') }}
-                                                        </a>
-                                                    </div>
-                                                @endif
                                             </div>
                                         </div>
                                     </td>
@@ -96,11 +79,7 @@
                             @empty
                                 <tr>
                                     <td colspan="6" class="text-center py-4 text-muted">
-                                        @if($user)
-                                            {{ __('admin.solutions.empty_user') }}
-                                        @else
-                                            {{ __('admin.solutions.empty') }}
-                                        @endif
+                                        {{ __('admin.solutions.empty') }}
                                     </td>
                                 </tr>
                             @endforelse
