@@ -2,7 +2,11 @@
 
 return [
     'title' => 'Админ',
-    'not_available' => 'N/A',
+    'search' => 'Поиск',
+    'filter' => [
+        'user_name' => 'Имя пользователя',
+        'user_email' => 'Email пользователя',
+    ],
     'users' => [
         'title' => 'Пользователи',
         'total' => 'Всего',
@@ -12,12 +16,17 @@ return [
             'email' => 'Email',
             'github' => 'GitHub',
             'hexlet' => 'Hexlet',
+            'role' => 'Роль',
             'comments' => 'Комментарии',
             'solutions' => 'Решения',
             'chapters' => 'Главы',
             'exercises' => 'Упражнения',
             'created' => 'Создан',
             'actions' => 'Действия',
+        ],
+        'role' => [
+            'admin' => 'Админ',
+            'user' => 'Пользователь',
         ],
         'status' => [
             'deleted' => 'Удален',
