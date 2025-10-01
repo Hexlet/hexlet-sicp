@@ -66,7 +66,7 @@
                                     <td>
                                         <div class="comment-content" style="max-width: 300px;">
                                             <a href="{{ route('comments.show', $comment) }}">
-                                                {{ mb_substr(MarkdownHelper::text($comment->content), 0, 100) }} &#8230;
+                                                {!! mb_substr(MarkdownHelper::text($comment->content), 0, 100) !!} &#8230;
                                             </a>
                                         </div>
                                     </td>

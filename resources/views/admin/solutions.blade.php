@@ -66,7 +66,7 @@
                                     <td>
                                         <div class="solution-content" style="max-width: 300px;">
                                             <a href="{{ route('users.solutions.show', [$solution->user, $solution]) }}">
-                                                {{ mb_substr(MarkdownHelper::text($solution->content), 0, 100) }} &#8230;
+                                                {{ mb_substr($solution->content, 0, 100) }} &#8230;
                                             </a>
                                         </div>
                                     </td>
