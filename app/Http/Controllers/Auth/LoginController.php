@@ -16,10 +16,18 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
+    public function showLoginForm()
+    {
+        session()->put('url.intended', url()->previous());
+
+        return view('auth.login');
+    }
+
     public function redirectTo()
     {
         flash(__('auth.logged_in'))->success();
-        return route('my.show');
+
+        return session()->get('url.intended', route('my.show'));
     }
 
     public function devLogin()
