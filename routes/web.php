@@ -13,6 +13,9 @@ Route::group([
     Route::get('/oauth/github', 'Auth\\Social\\GithubController@redirectToProvider')->name('oauth.github');
     Route::get('/oauth/github/callback', 'Auth\\Social\\GithubController@handleProviderCallback')->name('oauth.github-callback');
 
+    Route::get('/oauth/yandex', 'Auth\\Social\\YandexController@redirectToProvider')->name('oauth.yandex');
+    Route::get('/oauth/yandex/callback', 'Auth\\Social\\YandexController@handleProviderCallback')->name('oauth.yandex-callback');
+
     Auth::routes(['verify' => true]);
     Route::post('/dev-login', 'Auth\LoginController@devLogin')->name('auth.dev-login');
 

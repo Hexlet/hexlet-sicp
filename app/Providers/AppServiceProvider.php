@@ -11,6 +11,9 @@ use URL;
 use DB;
 use Blade;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Event;
+use SocialiteProviders\Manager\SocialiteWasCalled;
+use SocialiteProviders\Yandex\Provider as YandexProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -52,5 +55,9 @@ class AppServiceProvider extends ServiceProvider
         Blade::include('components.solutions', 'solutions');
         Blade::include("components.solution", 'solution');
         Blade::include("components.hreflang_tags", 'hreflang_tags');
+
+        Event::listen(function (SocialiteWasCalled $event) {
+            $event->extendSocialite('yandex', YandexProvider::class);
+        });
     }
 }
