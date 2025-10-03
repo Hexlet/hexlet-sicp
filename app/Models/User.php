@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Presenters\UserPresenter;
 use Database\Factories\UserFactory;
 use Hemp\Presenter\Presentable;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -22,6 +23,7 @@ use Illuminate\Support\Facades\Date;
  * @property string $email
  * @property string $github_name
  * @property string $hexlet_nickname
+ * @property bool $is_admin
  * @property \Illuminate\Support\Carbon|null $email_verified_at
  * @property string $password
  * @property string|null $remember_token
@@ -90,6 +92,7 @@ class User extends Authenticatable implements MustVerifyEmail
             $user->hexlet_nickname = null;
             $user->remember_token = null;
             $user->password = null;
+            $user->is_admin = false;
 
             $user->save();
 
@@ -154,5 +157,10 @@ class User extends Authenticatable implements MustVerifyEmail
     public function haveRead(Chapter $chapter): bool
     {
         return $this->chapters->contains($chapter);
+    }
+
+    public function scopeAdmins(Builder $builder): Builder
+    {
+        return $builder->where('is_admin', '=', true);
     }
 }
