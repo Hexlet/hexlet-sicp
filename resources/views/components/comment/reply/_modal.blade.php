@@ -13,6 +13,12 @@
         <div class="form-floating">
           {{ html()->textarea('content')->class('form-control x-min-h-150px')->required() }}
           <label for="content" class="w-100 text-wrap">{{ __('comment.enter_your_message') }}</label>
+          {{ html()
+            ->textarea('content')
+            ->class('form-control x-min-h-150px')
+            ->attribute('maxlength', $maxCommentLength)
+            ->required() }}
+          <label for="content" class="w-100 text-wrap">{{ __('comment.enter_your_message', ['max' => $maxCommentLength]) }}</label>
         </div>
       </div>
       <div class="modal-footer text-left">
