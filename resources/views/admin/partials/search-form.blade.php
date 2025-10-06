@@ -10,7 +10,7 @@
                            value="{{ request('filter.name') }}">
                 </div>
                 <div class="col-md-5">
-                    <input type="email"
+                    <input type="text"
                            class="form-control"
                            name="filter[email]"
                            placeholder="{{ __('admin.filter.user_email') }}"
