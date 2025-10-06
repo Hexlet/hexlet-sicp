@@ -2,6 +2,7 @@
 
 @php
     use App\Helpers\MarkdownHelper;
+    use App\Helpers\CommentHelper;
 @endphp
 
 @section('title', __('admin.comments.title'))
@@ -53,15 +54,9 @@
                                         </div>
                                     </td>
                                     <td>
-                                        @if($comment->commentable_type === 'App\Models\Chapter')
-                                            <a href="{{ route('chapters.show', $comment->commentable) }}">
-                                                <strong>{{ $comment->getCommentableName() }}</strong>
-                                            </a>
-                                        @elseif($comment->commentable_type === 'App\Models\Exercise')
-                                            <a href="{{ route('exercises.show', $comment->commentable) }}">
-                                                <strong>{{ $comment->getCommentableName() }}</strong>
-                                            </a>
-                                        @endif
+                                        <a href="{{ CommentHelper::getCommentableUrl($comment) }}">
+                                            <strong>{{ $comment->getCommentableName() }}</strong>
+                                        </a>
                                     </td>
                                     <td>
                                         <div class="comment-content" style="max-width: 300px;">

@@ -48,13 +48,6 @@
                                     </td>
                                     <td>
                                         <span class="text-break">{{ $user->email }}</span>
-                                        @if($user->email_verified_at)
-                                            <i class="bi bi-check-circle-fill text-success ms-1"
-                                               title="{{ __('admin.users.status.email_verified') }}"></i>
-                                        @else
-                                            <i class="bi bi-exclamation-circle-fill text-warning ms-1"
-                                               title="{{ __('admin.users.status.email_not_verified') }}"></i>
-                                        @endif
                                     </td>
                                     <td>
                                         @if($user->is_admin)
