@@ -11,7 +11,7 @@
         {{ html()->hidden('commentable_id')->value($comment->commentable_id) }}
         {{ html()->hidden('parent_id')->value($comment->id) }}
         <div class="form-floating">
-          {{ html()->textarea('content')->class('form-control x-min-h-300px')->required() }}
+          {{ html()->textarea('content')->class('form-control x-min-h-150px')->required() }}
           <label for="content" class="w-100 text-wrap">{{ __('comment.enter_your_message') }}</label>
         </div>
       </div>
