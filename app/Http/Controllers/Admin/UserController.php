@@ -2,20 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
 
-class UserController extends Controller
+class UserController extends AdminController
 {
-    public function __construct()
-    {
-        $this->middleware('can:access-admin');
-    }
-
     public function index(Request $request): View
     {
         $users = QueryBuilder::for(User::class)
