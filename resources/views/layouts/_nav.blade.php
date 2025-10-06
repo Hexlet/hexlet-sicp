@@ -41,7 +41,7 @@
                  data-bs-toggle="dropdown" aria-expanded="false">
                 <i class="bi bi-shield-lock"></i> {{ __('admin.title') }}
               </a>
-              <ul class="dropdown-menu" aria-labelledby="adminDropdown">
+              <ul class="dropdown-menu x-z-index-dropdown dropdown-menu-right" aria-labelledby="adminDropdown">
                 <li>
                   <a class="dropdown-item" href="{{ route('admin.users.index') }}">
                     <i class="bi bi-people"></i> {{ __('admin.users.title') }}
