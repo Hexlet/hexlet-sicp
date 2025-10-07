@@ -12,6 +12,7 @@ return [
             'created_at' => 'In the community since',
             'comments' => '{0} comment|{1} comment|[2,*]comments',
             'statistics' => 'Statistics',
+            'chapters_progress' => 'Chapters progress',
             'contribution_to_community' => 'Contribution to the community',
             'edit_profile' => 'Edit profile',
         ],
