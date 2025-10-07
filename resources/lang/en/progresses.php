@@ -2,7 +2,7 @@
 
 return [
     'chapter' => 'Chapter',
-    'сhapters' => 'Chapters',
+    'chapters' => 'Chapters',
     'my_solutions' => 'My Solutions',
     'exercise' => 'Exercise',
     'see_details' => 'See details',
