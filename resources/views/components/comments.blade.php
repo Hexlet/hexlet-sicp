@@ -3,6 +3,8 @@
    * @var \Illuminate\Database\Eloquent\Model $model
    * @var \App\Models\Comment $comment
    */
+  use App\Http\Requests\CommentRequest;
+  $maxCommentLength = CommentRequest::MAX_CONTENT_LENGTH;
 @endphp
 <div class="mt-2">
   @if ($model->comments->isEmpty())
@@ -12,11 +14,11 @@
   @endif
   <ul class="list-unstyled">
     @foreach ($model->comments as $comment)
-      @include('components.comment._comment', ['comment' => $comment])
+      @include('components.comment._comment', ['comment' => $comment, 'maxCommentLength' => $maxCommentLength])
     @endforeach
   </ul>
   @auth
-    @include('components.comment._form')
+    @include('components.comment._form', ['maxCommentLength' => $maxCommentLength])
   @else
     <div class="card">
       <div class="card-body">
