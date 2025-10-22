@@ -15,4 +15,5 @@ return [
     'number_of_comments' => 'Comments',
     'chapter_members_from' => 'Chapters read, out of :count',
     'exercise_members_from' => 'Exercises completed, out of :count',
+    'edit_profile' => 'Edit profile',
 ];

@@ -15,4 +15,5 @@ return [
     'number_of_comments' => 'Количество комментариев',
     'chapter_members_from' => 'Прочитано глав из :count',
     'exercise_members_from' => 'Выполнено заданий из :count',
+    'edit_profile' => 'Редактировать профиль',
 ];

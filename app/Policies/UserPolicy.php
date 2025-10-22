@@ -11,6 +11,6 @@ class UserPolicy
 
     public function update(?User $user, User $resourceUser): bool
     {
-        return $resourceUser->is($user);
+        return $user && ($resourceUser->is($user) || $user->is_admin);
     }
 }
