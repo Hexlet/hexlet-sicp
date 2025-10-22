@@ -17,9 +17,13 @@ class ProfileController extends Controller
         $this->middleware('auth');
     }
 
-    public function index(): View
+    public function index(Request $request): View
     {
-        $user = auth()->user();
+        if (auth()->user()->is_admin && $request->has('user_id')) {
+            $user = User::findOrFail($request->input('user_id'));
+        } else {
+            $user = auth()->user();
+        }
 
         return view('settings.profile.index', compact('user'));
     }
@@ -27,7 +31,12 @@ class ProfileController extends Controller
     public function update(Request $request): RedirectResponse
     {
         /** @var User $user */
-        $user = Auth::user();
+        if (auth()->user()->is_admin && $request->has('user_id')) {
+            $user = User::findOrFail($request->input('user_id'));
+        } else {
+            $user = Auth::user();
+        }
+
         $this->validate($request, [
             'name' => [
                 'required',
@@ -51,12 +60,20 @@ class ProfileController extends Controller
         $user->github_name = $request->get('github_name');
         $user->hexlet_nickname = $request->get('hexlet_nickname');
 
+        if (auth()->user()->is_admin) {
+            $user->is_admin = $request->input('is_admin') === '1';
+        }
+
         if ($user->save()) {
             flash()->success(__('account.account_updated'));
         } else {
             flash()->error(__('layout.flash.error'));
         }
 
-        return redirect()->route('settings.profile.index');
+        if (auth()->user()->is_admin && $request->has('user_id')) {
+            return redirect()->route('settings.profile.index', ['user_id' => $user->id]);
+        } else {
+            return redirect()->route('settings.profile.index');
+        }
     }
 }

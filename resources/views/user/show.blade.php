@@ -57,13 +57,21 @@
             </span>
           @endif
         </div>
+
         @can('update', $user)
           <div class="small mt-4">
-            <a class="text-muted" href="{{ route('settings.profile.index') }}">
-              {{ __('user.show.statistics.edit_profile') }}
-            </a>
+            @if(auth()->user()->is_admin && auth()->id() !== $user->id)
+              <a class="text-muted" href="{{ route('settings.profile.index') }}?user_id={{ $user->id }}">
+                {{ __('user.show.statistics.edit_profile') }}
+              </a>
+            @else
+              <a class="text-muted" href="{{ route('settings.profile.index') }}">
+                {{ __('user.show.statistics.edit_profile') }}
+              </a>
+            @endif
           </div>
         @endcan
+
       </div>
     </div>
     <div class="col-12 col-md-9 my-4">

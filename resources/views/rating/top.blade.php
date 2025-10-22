@@ -19,6 +19,11 @@
               <th>{{ __('rating.positions') }}</th>
               <th>{{ __('rating.user') }}</th>
               <th>{{ __('rating.number_of_points') }}</th>
+              @auth
+                @if(auth()->user()->is_admin)
+                  <th>Действия</th>
+                @endif
+              @endauth
             </tr>
           </thead>
           <tbody>
@@ -33,6 +38,15 @@
                   </a>
                 </td>
                 <td>{{ $user->points }}</td>
+                @auth
+                  @if(auth()->user()->is_admin)
+                    <td>
+                      <a href="{{ route('settings.profile.index', ['user_id' => $user->id]) }}" class="btn btn-sm btn-primary">
+                        {{ __('rating.edit_profile') }}
+                      </a>
+                    </td>
+                  @endif
+                @endauth
               </tr>
             @endforeach
           </tbody>
