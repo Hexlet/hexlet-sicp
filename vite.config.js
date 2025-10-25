@@ -25,13 +25,20 @@ export default defineConfig({
     }),
   ],
   optimizeDeps: {
-    exclude: ['refractor']
+    exclude: [
+      'refractor',
+      'react-syntax-highlighter'
+    ]
   },
   build: {
     rollupOptions: {
       external: [
-        'refractor/lib/all',
-        'refractor/lib/core'
+        /^refractor\/lang\/.*/,
+        /^refractor\/lib\/.*/,
+        'refractor/lang/abap.js',
+        'refractor/lang/ada.js',
+        'refractor/lang/abnf.js',
+        'refractor/lang/actionscript.js'
       ]
     },
     outDir: 'public/build',
