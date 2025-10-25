@@ -24,7 +24,16 @@ export default defineConfig({
       refresh: true,
     }),
   ],
+  optimizeDeps: {
+    exclude: ['refractor']
+  },
   build: {
+    rollupOptions: {
+      external: [
+        'refractor/lib/all',
+        'refractor/lib/core'
+      ]
+    },
     outDir: 'public/build',
     emptyOutDir: false,
   },
