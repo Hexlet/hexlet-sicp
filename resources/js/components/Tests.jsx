@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import Highlight from 'react-syntax-highlighter'
+import { Light as Highlight } from 'react-syntax-highlighter'
 import { vs, monokaiSublime } from 'react-syntax-highlighter/dist/esm/styles/hljs'
 import theme from '../common/currentTheme'
 
