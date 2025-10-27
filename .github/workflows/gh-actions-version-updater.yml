@@ -1,0 +1,14 @@
+---
+name: GitHub Actions Version Updater (launcher)
+on:
+  schedule:
+    - cron: 0 10 * * 1  # понедельник 10:00 UTC
+  workflow_dispatch: {}
+jobs:
+  call:
+    uses: Hexlet/.github/workflows/gh-actions-version-updater.yml@main
+    secrets:
+      WORKFLOW_SECRET: ${{ secrets.WORKFLOW_SECRET }}
+    permissions:
+      contents: write
+      pull-requests: write
