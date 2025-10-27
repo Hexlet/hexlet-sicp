@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e3f02d4363ab8d4e2636dbc1b8e4830f",
+    "content-hash": "ab5f095f3237b89b055404f605f3507d",
     "packages": [
         {
             "name": "brick/math",
@@ -68,22 +68,22 @@
         },
         {
             "name": "browner12/helpers",
-            "version": "v3.6.0",
+            "version": "v3.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/browner12/helpers.git",
-                "reference": "218f90caa8aa6d13849deb824254dedc651a7ba7"
+                "reference": "dfbc47b0d2b972c41d1afef9add40c662d4146f1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/browner12/helpers/zipball/218f90caa8aa6d13849deb824254dedc651a7ba7",
-                "reference": "218f90caa8aa6d13849deb824254dedc651a7ba7",
+                "url": "https://api.github.com/repos/browner12/helpers/zipball/dfbc47b0d2b972c41d1afef9add40c662d4146f1",
+                "reference": "dfbc47b0d2b972c41d1afef9add40c662d4146f1",
                 "shasum": ""
             },
             "require": {
-                "illuminate/console": "^6.0|^7.0|^8.0|^9.0|^10.0|^11.0",
-                "illuminate/contracts": "^6.0|^7.0|^8.0|^9.0|^10.0|^11.0",
-                "illuminate/support": "^6.0|^7.0|^8.0|^9.0|^10.0|^11.0",
+                "illuminate/console": "^6.0|^7.0|^8.0|^9.0|^10.0|^11.0|^12.0",
+                "illuminate/contracts": "^6.0|^7.0|^8.0|^9.0|^10.0|^11.0|^12.0",
+                "illuminate/support": "^6.0|^7.0|^8.0|^9.0|^10.0|^11.0|^12.0",
                 "php": "^7.2|^8.0"
             },
             "require-dev": {
@@ -129,9 +129,9 @@
             ],
             "support": {
                 "issues": "https://github.com/browner12/helpers/issues",
-                "source": "https://github.com/browner12/helpers/tree/v3.6.0"
+                "source": "https://github.com/browner12/helpers/tree/v3.7.0"
             },
-            "time": "2024-03-14T18:54:23+00:00"
+            "time": "2025-03-20T15:49:03+00:00"
         },
         {
             "name": "carbonphp/carbon-doctrine-types",
@@ -270,16 +270,16 @@
         },
         {
             "name": "dedoc/scramble",
-            "version": "v0.12.36",
+            "version": "v0.13.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/dedoc/scramble.git",
-                "reference": "e2741add99b5f9360a7a58a58ce97781569e4cc6"
+                "reference": "1cf25c29ba1059584d9e7b0a31feffadae0db1c0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dedoc/scramble/zipball/e2741add99b5f9360a7a58a58ce97781569e4cc6",
-                "reference": "e2741add99b5f9360a7a58a58ce97781569e4cc6",
+                "url": "https://api.github.com/repos/dedoc/scramble/zipball/1cf25c29ba1059584d9e7b0a31feffadae0db1c0",
+                "reference": "1cf25c29ba1059584d9e7b0a31feffadae0db1c0",
                 "shasum": ""
             },
             "require": {
@@ -338,7 +338,7 @@
             ],
             "support": {
                 "issues": "https://github.com/dedoc/scramble/issues",
-                "source": "https://github.com/dedoc/scramble/tree/v0.12.36"
+                "source": "https://github.com/dedoc/scramble/tree/v0.13.1"
             },
             "funding": [
                 {
@@ -346,7 +346,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-10-20T08:06:09+00:00"
+            "time": "2025-10-26T11:36:56+00:00"
         },
         {
             "name": "dflydev/dot-access-data",
@@ -11187,16 +11187,16 @@
         },
         {
             "name": "heroku/heroku-buildpack-php",
-            "version": "v263",
+            "version": "v277",
             "source": {
                 "type": "git",
                 "url": "https://github.com/heroku/heroku-buildpack-php.git",
-                "reference": "48b1bfbe1ed46681ce0129e6ba61d11765faf8f6"
+                "reference": "dd5059c37dbf3803377869b488d93285b89a73d6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/heroku/heroku-buildpack-php/zipball/48b1bfbe1ed46681ce0129e6ba61d11765faf8f6",
-                "reference": "48b1bfbe1ed46681ce0129e6ba61d11765faf8f6",
+                "url": "https://api.github.com/repos/heroku/heroku-buildpack-php/zipball/dd5059c37dbf3803377869b488d93285b89a73d6",
+                "reference": "dd5059c37dbf3803377869b488d93285b89a73d6",
                 "shasum": ""
             },
             "bin": [
@@ -11226,9 +11226,9 @@
             ],
             "support": {
                 "issues": "https://github.com/heroku/heroku-buildpack-php/issues",
-                "source": "https://github.com/heroku/heroku-buildpack-php/tree/v263"
+                "source": "https://github.com/heroku/heroku-buildpack-php/tree/v277"
             },
-            "time": "2025-02-14T21:41:47+00:00"
+            "time": "2025-10-24T22:16:51+00:00"
         },
         {
             "name": "iamcal/sql-parser",
@@ -14754,6 +14754,6 @@
         "ext-xml": "*",
         "ext-zip": "*"
     },
-    "platform-dev": [],
+    "platform-dev": {},
     "plugin-api-version": "2.6.0"
 }
