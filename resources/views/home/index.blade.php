@@ -3,7 +3,6 @@
   /** @var \Illuminate\Support\Collection|\App\Models\Activity[] $logItems */
   /** @var \Illuminate\Support\Collection|\App\Models\Comment[] $comments */
   use App\Helpers\MarkdownHelper;
-  use App\Helpers\ActivityLogHelper;
 @endphp
 @push('styles')
   @vite('resources/sass/_activity_chart.scss')
@@ -13,7 +12,7 @@
     <div class="col-md-8">
       <h1 class="my-4">{{ __('welcome.title') }}</h1>
       <p>{{ __('welcome.description') }}</p>
-      <a href="https://xuanji.appspot.com/isicp/index.html">
+      <a href="https://mitp-content-server.mit.edu/books/content/sectbyfn/books_pres_0/6515/sicp.zip/full-text/book/book-Z-H-4.html">
         {{ __('welcome.link_to_book') }}
       </a>
       <hr class="dropdown-divider">
@@ -63,7 +62,11 @@
     <div class="col-md-4">
       <h2 class="my-3">{{ __('welcome.what_is_here') }}</h2>
       <p>{{ __('welcome.about_sicp') }}
-        <a href="https://guides.hexlet.io/how-to-learn-sicp/">{{ __('layout.nav.sicp_read') }}</a>
+        @if (App::isLocale('ru'))
+          <a href="https://guides.hexlet.io/how-to-learn-sicp/">{{ __('layout.nav.sicp_read') }}</a>
+        @else
+          <a href="{{ route('pages.show', ['page' => 'how-to-learn-sicp']) }}">{{ __('layout.nav.sicp_read') }}</a>
+        @endif
       </p>
       <h2 class="my-3">{{ __('welcome.features') }}</h2>
       <ul>
@@ -71,7 +74,7 @@
           <li>{{ __(sprintf('welcome.features_list.%s', $key)) }}</li>
         @endforeach
       </ul>
-      <a class="btn btn-primary btn-lg" href="{{ route('my') }}">{{ __('layout.welcome.start_learning') }}</a>
+      <a class="btn btn-primary btn-lg" href="{{ route('my.show') }}">{{ __('layout.welcome.start_learning') }}</a>
     </div>
   </div>
 
@@ -169,7 +172,7 @@
               </strong>
               <a href="{{ $comment->present()->getLink() }}">{{ $comment->created_at }}</a>
             </div>
-            <span>{!! strip_tags(MarkdownHelper::text(str_limit($comment->content, 80))) !!}</span>
+            <span>{!! MarkdownHelper::text(str_limit($comment->content, 80)) !!}</span>
           </div>
         </div>
       @endforeach

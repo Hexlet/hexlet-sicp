@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Helpers\ChartHelper;
+use App\Components\ActivityChart\ActivityChart;
 use App\Models\User;
 use App\Services\RatingCalculator;
 use Illuminate\View\View;
@@ -20,12 +20,12 @@ class UserController extends Controller
             : 'N/A';
 
         $user->load('chapterMembers', 'exerciseMembers');
-        $chart = ChartHelper::getChart($user->id);
+        $activityChart = ActivityChart::for($user->id);
         return view('user.show', compact(
             'user',
             'position',
             'points',
-            'chart'
+            'activityChart'
         ));
     }
 }

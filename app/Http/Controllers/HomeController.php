@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Helpers\ChartHelper;
+use App\Components\ActivityChart\ActivityChart;
 use App\Models\Activity;
 use App\Models\Chapter;
-use App\Models\Comment;
-use App\Models\ExerciseMember;
-use App\Models\Exercise;
 use App\Models\ChapterMember;
+use App\Models\Comment;
+use App\Models\Exercise;
+use App\Models\ExerciseMember;
 use App\Models\User;
 use Illuminate\Support\Carbon;
 use Illuminate\View\View;
@@ -18,7 +18,6 @@ class HomeController extends Controller
 {
     public function index(): View
     {
-
         if (auth()->guest()) {
             $countComments = Comment::count();
             $countExercises = Exercise::count();
@@ -36,12 +35,12 @@ class HomeController extends Controller
         $filter = Request::query('filter', '');
         $statisticTable = $this->getStatisticTable($filter);
         $logItems = Activity::latest()->has('subject')->has('causer')->with('causer', 'subject')->limit(10)->get();
-        $chart = ChartHelper::getChart();
+        $activityChart = ActivityChart::for(auth()->user()->id);
         $comments = Comment::latest()->has('user')->with('user')->with('commentable', 'user')->limit(10)->get();
 
         return view('home.index', compact(
             'logItems',
-            'chart',
+            'activityChart',
             'comments',
             'statisticTable',
         ));

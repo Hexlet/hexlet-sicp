@@ -51,7 +51,7 @@
     </div>
     @can('update', $comment)
       <div class="modal fade" id="comment-modal-{{ $comment->id }}" tabindex="-1">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-lg" role="document">
           <div class="modal-content">
             {{ html()->modelForm($comment, 'PUT', route('comments.update', ['comment' => $comment]))->open() }}
             <div class="modal-header">
@@ -61,9 +61,14 @@
             <div class="modal-body">
               {{ html()->hidden('commentable_type') }}
               {{ html()->hidden('commentable_id') }}
-              <div class="form-floating">
-                {{ html()->textarea('content')->class('form-control h-100')->required() }}
-                <label for="content" class="w-100 text-wrap">{{ __('comment.enter_your_message') }}</label>
+              <label class="w-100 text-wrap">{{ __('comment.enter_your_message', ['max' => $maxCommentLength]) }}</label>
+              <div>
+                {{ html()
+                  ->textarea('content')
+                  ->class('form-control x-min-h-150px')
+                  ->attribute('maxlength', $maxCommentLength)
+                  ->required() }}
+                
               </div>
             </div>
             <div class="modal-footer text-left">
@@ -79,7 +84,7 @@
       </div>
     @endcan
     @can('reply', $comment)
-      @include('components.comment.reply._modal')
+      @include('components.comment.reply._modal', ['maxCommentLength' => $maxCommentLength])
     @endcan
   </div>
 </div>

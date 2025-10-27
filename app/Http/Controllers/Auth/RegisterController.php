@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Rules\EmailValidation;
 use App\Models\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Contracts\Validation\Validator as ValidatorContract;
@@ -21,7 +20,7 @@ class RegisterController extends Controller
 
     public function redirectTo()
     {
-        return route('my');
+        return route('my.show');
     }
 
     protected function validator(array $data): ValidatorContract

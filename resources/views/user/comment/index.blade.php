@@ -35,7 +35,7 @@
                     </a>
                   @endif
                 </td>
-                <td>{!! strip_tags(MarkdownHelper::text($comment->content, 80)) !!}</td>
+                <td class="text-break">{!! MarkdownHelper::text($comment->content) !!}</td>
                 <td>{{ $comment->created_at->format('Y-m-d') }}</td>
               </tr>
             @endforeach

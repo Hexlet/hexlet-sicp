@@ -2,9 +2,9 @@
 
 return [
     'members' => [
-        'finished' => 'Chapter is finished',
-        'finish' => 'Finish the chapter',
-        'confirm_finish' => 'Are you sure you want to complete the chapter?',
+        'finished' => 'Chapter completed',
+        'finish' => 'Mark as Read',
+        'confirm_finish' => 'Are you sure you want to mark this chapter as completed?',
     ],
     'chapter' => 'Chapter :chapter',
     'index' => [

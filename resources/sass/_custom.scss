@@ -36,6 +36,8 @@
     }
 }
 
-.x-min-h-100px {
-    min-height: 100px !important;
+@each $height in 100px, 150px {
+  .x-min-h-#{$height} {
+    min-height: #{$height} !important;
+  }
 }

@@ -27,7 +27,6 @@ class ProfileControllerTest extends ControllerTestCase
         $userParams = [
             'name' => $this->faker->name,
             'github_name' => $this->faker->userName,
-            'hexlet_nickname' => $this->faker->userName,
         ];
         $response = $this->patch(route('settings.profile.update', $this->user), $userParams);
         $response->assertSessionHasNoErrors();

@@ -33,15 +33,8 @@ class ProfileController extends Controller
                 'required',
                 'min:2',
                 'max:255',
-                Rule::unique('users')->ignore($user),
             ],
             'github_name' => [
-                'nullable',
-                'min:2',
-                'max:255',
-                Rule::unique('users')->ignore($user),
-            ],
-            'hexlet_nickname' => [
                 'nullable',
                 'min:2',
                 'max:255',
@@ -50,7 +43,6 @@ class ProfileController extends Controller
         ]);
         $user->name = $request->get('name');
         $user->github_name = $request->get('github_name');
-        $user->hexlet_nickname = $request->get('hexlet_nickname');
 
         if ($user->save()) {
             flash()->success(__('account.account_updated'));

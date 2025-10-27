@@ -44,6 +44,6 @@ RUN curl -sL https://deb.nodesource.com/setup_${NODE_MAJOR}.x | bash -
 RUN apt-get install -y nodejs
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-COPY ./xdebug.ini /etc/php/${PHP_VERSION}/conf.d/docker-php-ext-xdebug.ini
+COPY ./xdebug.ini /etc/php/${PHP_VERSION}/cli/conf.d/99-xdebug-custom.ini
 
 ENV PATH=/app/node_modules/.bin/:${PATH}

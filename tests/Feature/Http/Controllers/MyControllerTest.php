@@ -19,9 +19,9 @@ class MyControllerTest extends ControllerTestCase
         $this->actingAs($this->user);
     }
 
-    public function testShow(): void
+    public function testIndex(): void
     {
-        $response = $this->get(route('my'));
+        $response = $this->get(route('my.show'));
         $response->assertOk();
     }
 }
