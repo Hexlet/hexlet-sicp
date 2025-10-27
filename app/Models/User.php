@@ -22,7 +22,6 @@ use Illuminate\Support\Facades\Date;
  * @property string $name
  * @property string $email
  * @property string $github_name
- * @property string $hexlet_nickname
  * @property bool $is_admin
  * @property \Illuminate\Support\Carbon|null $email_verified_at
  * @property string $password
@@ -89,7 +88,6 @@ class User extends Authenticatable implements MustVerifyEmail
             $user->name = null;
             $user->email = null;
             $user->github_name = null;
-            $user->hexlet_nickname = null;
             $user->remember_token = null;
             $user->password = null;
             $user->is_admin = false;
