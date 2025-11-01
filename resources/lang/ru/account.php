@@ -13,4 +13,5 @@ return [
     'current_email' => 'Текущий email',
     'go_to_gravatar' => 'Перейти на Gravatar.com',
     'github_name' => 'Имя на GitHub',
+    'is_admin' => 'Администратор',
 ];
