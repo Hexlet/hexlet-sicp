@@ -35,6 +35,7 @@ return [
         ],
         'empty' => 'No users found',
         'not_available' => 'N/A',
+        'edit' => 'Edit User',
     ],
     'comments' => [
         'title' => 'Comments',
