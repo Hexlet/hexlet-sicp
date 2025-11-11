@@ -44,7 +44,7 @@ class ActivityChart
         $dayOfWeek = $startDate->dayOfWeekIso;
         $emptySquaresCount = $dayOfWeek - 1;
 
-        for ($i = 0; $i < $emptySquaresCount; $i++) {
+        for ($i = 0; $i < $emptySquaresCount; $i += 1) {
             $squares->prepend(null);
         }
 
@@ -90,13 +90,13 @@ class ActivityChart
                 if ($currentMonth !== null) {
                     $months[] = [
                         'month' => Month::fromNumber($currentMonth),
-                        'weeks' => $weekCount
+                        'weeks' => $weekCount,
                     ];
                 }
                 $currentMonth = $monthNumber;
                 $weekCount = 1;
             } else {
-                $weekCount++;
+                $weekCount += 1;
             }
 
             $currentDate->addWeek();
@@ -105,7 +105,7 @@ class ActivityChart
         if ($currentMonth !== null) {
             $months[] = [
                 'month' => Month::fromNumber($currentMonth),
-                'weeks' => $weekCount
+                'weeks' => $weekCount,
             ];
         }
 
