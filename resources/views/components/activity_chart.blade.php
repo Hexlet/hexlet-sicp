@@ -6,15 +6,19 @@
   </ul>
   <div class="activityChart m-1">
     <ul class="months">
-      @foreach ($activityChart->getMonths() as $month)
-        <li>{{ __($month->getTranslationKey()) }}</li>
+      @foreach ($activityChart->getMonths() as $monthData)
+        <li data-weeks="{{ $monthData['weeks'] }}">{{ __($monthData['month']->getTranslationKey()) }}</li>
       @endforeach
     </ul>
     <ul class="squares mb-0">
       @foreach ($activityChart->getSquares() as $square)
-        <li data-level="{{ $square->getLevel()->value }}"
-            title="{{ $square->getTitle() }}"
-        ></li>
+        @if ($square === null)
+          <li class="empty"></li>
+        @else
+          <li data-level="{{ $square->getLevel()->value }}"
+              title="{{ $square->getTitle() }}"
+          ></li>
+        @endif
       @endforeach
     </ul>
   </div>
