@@ -34,12 +34,11 @@ class UserController extends AdminController
         $data = $request->validate([
             'name' => 'required|string|max:255',
             'github_name' => 'nullable|string|max:255',
-            'is_admin' => 'sometimes|boolean',
         ]);
 
-        $data['is_admin'] = $request->has('is_admin');
-
         $user->update($data);
+        $user->admin = $request->has('admin');
+        $user->save();
 
         return redirect()->route('admin.users.index')
             ->with('success', 'User updated');
