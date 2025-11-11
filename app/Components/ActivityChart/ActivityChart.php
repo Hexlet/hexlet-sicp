@@ -30,14 +30,25 @@ class ActivityChart
     private function buildSquares(?int $userId): Collection
     {
         $activitiesByDay = $this->getActivitiesByDay($userId);
+        $startDate = now()->subYear();
+        $endDate = now();
 
-        return collect(CarbonPeriod::create(now()->subMonths(12), '1 day', now()))
+        $squares = collect(CarbonPeriod::create($startDate, '1 day', $endDate))
             ->map(function (Carbon $date) use ($activitiesByDay): Square {
                 $day = $date->format('Y-m-d');
                 $count = $activitiesByDay->get($day, 0);
 
                 return new Square($date, $count);
             });
+
+        $dayOfWeek = $startDate->dayOfWeekIso;
+        $emptySquaresCount = $dayOfWeek - 1;
+
+        for ($i = 0; $i < $emptySquaresCount; $i++) {
+            $squares->prepend(null);
+        }
+
+        return $squares;
     }
 
     private function getActivitiesByDay(?int $userId): Collection
@@ -64,12 +75,38 @@ class ActivityChart
 
     private function buildMonths(): array
     {
-        $currentMonth = now()->month;
-        $months = [];
+        $startDate = now()->subYear();
+        $endDate = now();
+        $currentDate = $startDate->copy()->startOfWeek();
 
-        for ($i = 1; $i <= 12; $i = $i + 1) {
-            $monthNumber = ($currentMonth + $i - 1) % 12 + 1;
-            $months[] = Month::fromNumber($monthNumber);
+        $months = [];
+        $currentMonth = null;
+        $weekCount = 0;
+
+        while ($currentDate->lte($endDate)) {
+            $monthNumber = $currentDate->month;
+
+            if ($currentMonth !== $monthNumber) {
+                if ($currentMonth !== null) {
+                    $months[] = [
+                        'month' => Month::fromNumber($currentMonth),
+                        'weeks' => $weekCount
+                    ];
+                }
+                $currentMonth = $monthNumber;
+                $weekCount = 1;
+            } else {
+                $weekCount++;
+            }
+
+            $currentDate->addWeek();
+        }
+
+        if ($currentMonth !== null) {
+            $months[] = [
+                'month' => Month::fromNumber($currentMonth),
+                'weeks' => $weekCount
+            ];
         }
 
         return $months;
