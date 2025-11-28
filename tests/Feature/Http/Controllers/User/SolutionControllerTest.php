@@ -3,6 +3,7 @@
 namespace Tests\Feature\Http\Controllers\User;
 
 use App\Models\Solution;
+use App\Models\User;
 use Database\Seeders\ChaptersTableSeeder;
 use Database\Seeders\ExercisesTableSeeder;
 use Tests\ControllerTestCase;
