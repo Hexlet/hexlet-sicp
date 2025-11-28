@@ -33,7 +33,7 @@
         "http-interop/http-factory-guzzle": "^1.2",
         "iben12/laravel-statable": "^1.5",
         "laracasts/flash": "^3.2",
-        "laravel/framework": "^11.0",
+        "laravel/framework": "^12.39",
         "laravel/helpers": "^1.7",
         "laravel/legacy-factories": "^1.3",
         "laravel/socialite": "^5.11",
