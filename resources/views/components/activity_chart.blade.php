@@ -6,8 +6,8 @@
   </ul>
   <div class="activityChart m-1">
     <ul class="months">
-      @foreach ($activityChart->getMonths() as $monthData)
-        <li data-weeks="{{ $monthData['weeks'] }}">{{ __($monthData['month']->getTranslationKey()) }}</li>
+      @foreach ($activityChart->getMonths() as $chartMonth)
+        <li data-weeks="{{ $chartMonth->getWeekCount() }}">{{ __($chartMonth->getMonth()->getTranslationKey()) }}</li>
       @endforeach
     </ul>
     <ul class="squares mb-0">
