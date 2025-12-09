@@ -2,29 +2,28 @@
 
 namespace App\Console\Commands;
 
+use App\Services\AnalyticsExporter;
 use Illuminate\Console\Command;
 
 class DataExport extends Command
 {
-    /**
-     * The name and signature of the console command.
-     *
-     * @var string
-     */
-    protected $signature = 'app:data-export';
+    protected $signature = 'app:data-export {--path=analytics_export}';
+    protected $description = 'Export analytical data from Eloquent models into CSV files';
 
-    /**
-     * The console command description.
-     *
-     * @var string
-     */
-    protected $description = 'Command description';
+    public function __construct(
+        private readonly AnalyticsExporter $exporter
+    ) {
+        parent::__construct();
+    }
 
-    /**
-     * Execute the console command.
-     */
-    public function handle()
+    public function handle(): int
     {
-        //
+        $directory = $this->option('path');
+
+        $this->exporter->export($directory);
+
+        $this->info("Экспорт завершён: storage/app/{$directory}");
+
+        return self::SUCCESS;
     }
 }
