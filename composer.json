@@ -49,7 +49,7 @@
         "spatie/laravel-html": "^3.12",
         "spatie/laravel-query-builder": "^6.3.5",
         "spatie/laravel-sitemap": "^7.3.7",
-        "symfony/yaml": "^7.3.3"
+        "symfony/yaml": "^8.0.1"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.15",
