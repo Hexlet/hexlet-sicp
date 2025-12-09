@@ -92,7 +92,7 @@ class AnalyticsExporter
 
         foreach ($collection as $item) {
             $quoted = array_map(
-                static fn ($value): string => '"' . str_replace('"', '""', (string) $value) . '"',
+                static fn($value): string => '"' . str_replace('"', '""', (string) $value) . '"',
                 $item->getAttributes()
             );
 
