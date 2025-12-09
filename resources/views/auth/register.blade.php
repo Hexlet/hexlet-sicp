@@ -21,7 +21,7 @@
             <a class="mt-2 d-block" href="{{ route('password.request') }}">{{ __('register.reset_password') }}</a>
             @if (app()->getLocale() == 'ru' && config('services.yandex.enabled'))
               <a href="{{ route('oauth.yandex') }}" class="mt-2 d-block"> {{ __('auth.with_yandex') }}</a>
-            @else
+            @elseif (app()->getLocale() == 'en')
               <a href="{{ route('oauth.github') }}" class="mt-2 d-block"> {{ __('auth.with_github') }}</a>
             @endif
           </div>
