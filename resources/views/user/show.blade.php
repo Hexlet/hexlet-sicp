@@ -112,17 +112,8 @@
                     {{ __('user.show.statistics.chapters_progress') }}
                 </div>
                 <div class="chapter-progress">
-                    @foreach($allChapters as $chapter)
-                        @include(
-                            'partials.user_chapter_partial',
-                            [
-                                'chapters' => $chapters,
-                                'chapter' => $chapter,
-                                'chapterMembers' => $chapterMembers,
-                                'exerciseMembers' => $exerciseMembers,
-                                'level' => 0
-                            ]
-                        )
+                    @foreach($chaptersProgress as $chapterProgress)
+                        @include('partials.user_chapter_partial', ['progress' => $chapterProgress])
                     @endforeach
                 </div>
             </div>
