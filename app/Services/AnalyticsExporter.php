@@ -27,8 +27,7 @@ class AnalyticsExporter
 
     private function exportUsers(string $path): void
     {
-        $data = User::withTrashed()
-            ->select(['id', 'name', 'email', 'github_name', 'hexlet_nickname', 'points', 'created_at'])
+        $data = User::select(['id', 'name', 'email', 'github_name', 'hexlet_nickname', 'points', 'created_at'])
             ->get();
 
         $this->writeCsv($data, $path);
@@ -36,8 +35,7 @@ class AnalyticsExporter
 
     private function exportChapters(string $path): void
     {
-        $data = Chapter::withTrashed()
-            ->select(['id', 'path', 'parent_id', 'created_at'])
+        $data = Chapter::select(['id', 'path', 'parent_id', 'created_at'])
             ->get();
 
         $this->writeCsv($data, $path);
@@ -45,8 +43,7 @@ class AnalyticsExporter
 
     private function exportExercises(string $path): void
     {
-        $data = Exercise::withTrashed()
-            ->select(['id', 'chapter_id', 'path', 'created_at'])
+        $data = Exercise::select(['id', 'chapter_id', 'path', 'created_at'])
             ->get();
 
         $this->writeCsv($data, $path);
@@ -54,8 +51,7 @@ class AnalyticsExporter
 
     private function exportSolutions(string $path): void
     {
-        $data = Solution::withTrashed()
-            ->select(['id', 'exercise_id', 'user_id', 'created_at'])
+        $data = Solution::select(['id', 'exercise_id', 'user_id', 'created_at'])
             ->get();
 
         $this->writeCsv($data, $path);
@@ -63,8 +59,7 @@ class AnalyticsExporter
 
     private function exportComments(string $path): void
     {
-        $data = Comment::withTrashed()
-            ->select(['id', 'user_id', 'commentable_type', 'commentable_id', 'parent_id', 'created_at'])
+        $data = Comment::select(['id', 'user_id', 'commentable_type', 'commentable_id', 'parent_id', 'created_at'])
             ->get();
 
         $this->writeCsv($data, $path);
@@ -72,8 +67,7 @@ class AnalyticsExporter
 
     private function exportActivityLog(string $path): void
     {
-        $data = Activity::withTrashed()
-            ->select(['id', 'log_name', 'subject_id', 'subject_type', 'causer_id', 'event', 'created_at'])
+        $data = Activity::select(['id', 'log_name', 'subject_id', 'subject_type', 'causer_id', 'event', 'created_at'])
             ->get();
 
         $this->writeCsv($data, $path);
