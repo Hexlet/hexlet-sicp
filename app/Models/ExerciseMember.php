@@ -19,8 +19,11 @@ class ExerciseMember extends Model
     use Statable;
     use SoftDeletes;
 
+    public const string STATE_STARTED = 'started';
+    public const string STATE_FINISHED = 'finished';
+
     protected $attributes = [
-            'state' => 'started',
+            'state' => self::STATE_STARTED,
         ];
 
     protected function getGraph(): string
@@ -48,16 +51,6 @@ class ExerciseMember extends Model
         return $this->canApply('finish');
     }
 
-    public function isFinished(): bool
-    {
-        return $this->state === 'finished';
-    }
-
-    public function isNotFinished(): bool
-    {
-        return !$this->isFinished();
-    }
-
     public function finish(): void
     {
         $this->apply('finish');
@@ -65,11 +58,21 @@ class ExerciseMember extends Model
 
     public function isStarted(): bool
     {
-        return $this->state === 'started';
+        return $this->state === self::STATE_STARTED;
+    }
+
+    public function isFinished(): bool
+    {
+        return $this->state === self::STATE_FINISHED;
+    }
+
+    public function isNotFinished(): bool
+    {
+        return !$this->isFinished();
     }
 
     public function scopeFinished(Builder $builder): Builder
     {
-        return $builder->where('state', '=', 'finished');
+        return $builder->where('state', '=', self::STATE_FINISHED);
     }
 }
