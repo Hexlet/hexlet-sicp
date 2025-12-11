@@ -22,7 +22,8 @@ class ChapterMember extends Model
     use Statable;
     use SoftDeletes;
 
-    public const INITIAL_STATE = 'started';
+    public const string STATE_STARTED = 'started';
+    public const string STATE_FINISHED = 'finished';
 
     protected function getGraph(): string
     {
@@ -41,7 +42,7 @@ class ChapterMember extends Model
 
     public function isFinished(): bool
     {
-        return $this->state === 'finished';
+        return $this->state === self::STATE_FINISHED;
     }
 
     public function isNotFinished(): bool
@@ -56,12 +57,12 @@ class ChapterMember extends Model
 
     public function isStarted(): bool
     {
-        return $this->state === 'started';
+        return $this->state === self::STATE_STARTED;
     }
 
     public function scopeFinished(Builder $builder): Builder
     {
-        return $builder->where('state', '=', 'finished');
+        return $builder->where('state', '=', self::STATE_FINISHED);
     }
 
     public function user(): BelongsTo
@@ -77,7 +78,7 @@ class ChapterMember extends Model
     protected function state(): Attribute
     {
         return Attribute::make(
-            get:fn($state) => $state ?? self::INITIAL_STATE
+            get:fn($state) => $state ?? self::STATE_STARTED
         );
     }
 }

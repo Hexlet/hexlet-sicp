@@ -39,8 +39,7 @@ class UserController extends Controller
             fn($chapter) => $chapterProgressService->buildChapterProgress(
                 $chapter,
                 $chapterMembers,
-                $exerciseMembers,
-                0
+                $exerciseMembers
             )
         );
 

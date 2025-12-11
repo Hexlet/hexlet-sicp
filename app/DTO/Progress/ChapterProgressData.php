@@ -11,31 +11,36 @@ readonly class ChapterProgressData
         public Chapter $chapter,
         public bool $hasChildren,
         public bool $isCompleted,
-        public int $level,
-        public ?int $completedChildren = null,
-        public ?int $totalChildren = null,
         public ?Collection $childrenProgress = null,
         public ?Collection $exercisesProgress = null,
     ) {
     }
 
-    public function isFullyCompleted(): bool
+    public function getCompletedChildrenCount(): int
     {
-        return $this->hasChildren && $this->completedChildren === $this->totalChildren;
+        if (!$this->hasChildren || $this->childrenProgress === null) {
+            return 0;
+        }
+
+        return $this->childrenProgress->filter(fn($child) => $child->isCompleted)->count();
     }
 
-    public function isPartiallyCompleted(): bool
+    public function getTotalChildrenCount(): int
     {
-        return $this->hasChildren && $this->completedChildren > 0 && $this->completedChildren < $this->totalChildren;
+        if (!$this->hasChildren || $this->childrenProgress === null) {
+            return 0;
+        }
+
+        return $this->childrenProgress->count();
+    }
+
+    public function isStarted(): bool
+    {
+        return $this->getCompletedChildrenCount() > 0 && !$this->isCompleted;
     }
 
     public function isRootLevel(): bool
     {
-        return $this->level === 0;
-    }
-
-    public function isNestedLevel(): bool
-    {
-        return $this->level === 1 || $this->level === 2;
+        return $this->chapter->getChapterLevel() === 1;
     }
 }

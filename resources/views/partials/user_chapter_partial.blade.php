@@ -7,7 +7,7 @@
     use App\Helpers\ChapterHelper;
 @endphp
 
-<div @class(['chapter-item', 'mb-3', 'ps-4' => $progress->isNestedLevel()])>
+<div @class(['chapter-item', 'mb-3', 'ps-4' => !$progress->isRootLevel()])>
     @if($progress->hasChildren)
         <div class="d-flex align-items-center justify-content-between p-2 border rounded"
              data-bs-toggle="collapse"
@@ -29,12 +29,12 @@
             </div>
             <span @class([
                 'badge',
-                'bg-success' => $progress->isFullyCompleted(),
-                'bg-warning' => $progress->isPartiallyCompleted(),
-                'bg-secondary' => !$progress->isFullyCompleted() && !$progress->isPartiallyCompleted(),
-                'small' => $progress->level > 0,
+                'bg-success' => $progress->isCompleted,
+                'bg-warning' => $progress->isStarted(),
+                'bg-secondary' => !$progress->isCompleted && !$progress->isStarted(),
+                'small' => !$progress->isRootLevel(),
             ])>
-                {{ $progress->completedChildren }}/{{ $progress->totalChildren }}
+                {{ $progress->getCompletedChildrenCount() }}/{{ $progress->getTotalChildrenCount() }}
             </span>
         </div>
         <div class="collapse" id="children-{{ $progress->chapter->id }}">
@@ -72,7 +72,7 @@
                             <span class="me-2">
                                 <i @class([
                                     'bi',
-                                    'bi-check-circle-fill text-success' => $exerciseProgress->isCompleted,
+                                    'bi-check-circle-fill text-success' => $exerciseProgress->isCompleted(),
                                     'bi-clock-history text-warning' => $exerciseProgress->isInProgress(),
                                     'bi-circle text-muted' => $exerciseProgress->isNotStarted(),
                                 ])></i>

@@ -44,20 +44,11 @@
                 <div class="mt-3">
                     @if ($user->github_name)
                         <span>
-              <a class="x-link-without-decoration mr-3 mb-2 text-dark" target="_blank" rel="noopener noreferrer"
-                 href="https://github.com/{{ $user->github_name }}">
-                <i class="bi bi-github icon-2x"></i>
-              </a>
-            </span>
-                    @endif
-                    @if ($user->hexlet_nickname)
-                        <span>
-              <a class="x-link-without-decoration mr-2 text-dark" target="_blank" rel="noopener noreferrer"
-                 href="https://ru.hexlet.io/u/{{ $user->hexlet_nickname }}">
-                <img class="mb-3" src={{ Vite::asset('resources/assets/images/hexlet_logo.png') }} width="20"
-                     height="30" alt="Hexlet logo">
-              </a>
-            </span>
+                          <a class="x-link-without-decoration mr-3 mb-2 text-dark" target="_blank" rel="noopener noreferrer"
+                             href="https://github.com/{{ $user->github_name }}">
+                            <i class="bi bi-github icon-2x"></i>
+                          </a>
+                        </span>
                     @endif
                 </div>
                 @can('update', $user)
