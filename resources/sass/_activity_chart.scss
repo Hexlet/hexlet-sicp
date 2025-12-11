@@ -61,28 +61,31 @@
 }
 
 .months {
-  display: grid;
+  display: flex;
   height: 20px;
   padding: 0;
   margin: 0;
   align-content: start;
-  grid-template-columns: calc(var(--week-width) * 4) /* Jan */
-                         calc(var(--week-width) * 4) /* Feb */
-                         calc(var(--week-width) * 4) /* Mar */
-                         calc(var(--week-width) * 5) /* Apr */
-                         calc(var(--week-width) * 4) /* May */
-                         calc(var(--week-width) * 4) /* Jun */
-                         calc(var(--week-width) * 5) /* Jul */
-                         calc(var(--week-width) * 4) /* Aug */
-                         calc(var(--week-width) * 5) /* Sep */
-                         calc(var(--week-width) * 4) /* Oct */
-                         calc(var(--week-width) * 5) /* Nov */
-                         calc(var(--week-width) * 4) /* Dec */;
+}
+
+.months li {
+  flex: 0 0 auto;
+}
+
+@for $weeks from 1 through 6 {
+  .months li[data-weeks="#{$weeks}"] {
+    width: calc(var(--week-width) * #{$weeks});
+  }
 }
 
 .squares li {
     background-color: var(--theme-background-color);
     list-style: none;
+}
+
+.squares li.empty {
+    background-color: transparent;
+    pointer-events: none;
 }
 
 .squares li[data-level="1"] {

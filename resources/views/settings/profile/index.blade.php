@@ -16,7 +16,6 @@
               {{ html()->modelForm($user, 'PATCH', route('settings.profile.update', [$user]))->open() }}
               <x-bs.form.text name="name" label="settings.profile.name" />
               <x-bs.form.text name="github_name" label="settings.profile.github_name" />
-              <x-bs.form.text name="hexlet_nickname" label="settings.profile.hexlet_nickname" />
               <x-bs.form.submit />
               {{ html()->closeModelForm() }}
             </div>

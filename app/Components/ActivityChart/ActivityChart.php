@@ -12,7 +12,7 @@ use Illuminate\Support\Collection;
 class ActivityChart
 {
     private Collection $squares;
-    private array $months;
+    private Collection $months;
     private array $days;
 
     private function __construct(int $userId)
@@ -30,14 +30,23 @@ class ActivityChart
     private function buildSquares(?int $userId): Collection
     {
         $activitiesByDay = $this->getActivitiesByDay($userId);
+        $startDate = now()->subYear();
+        $endDate = now();
 
-        return collect(CarbonPeriod::create(now()->subMonths(12), '1 day', now()))
+        $squares = collect(CarbonPeriod::create($startDate, '1 day', $endDate))
             ->map(function (Carbon $date) use ($activitiesByDay): Square {
                 $day = $date->format('Y-m-d');
                 $count = $activitiesByDay->get($day, 0);
 
                 return new Square($date, $count);
             });
+
+        $dayOfWeek = $startDate->dayOfWeekIso;
+        $emptySquaresCount = $dayOfWeek - 1;
+
+        $emptySquares = collect(array_fill(0, $emptySquaresCount, null));
+
+        return $emptySquares->merge($squares);
     }
 
     private function getActivitiesByDay(?int $userId): Collection
@@ -62,17 +71,22 @@ class ActivityChart
         return DayOfWeek::getAll();
     }
 
-    private function buildMonths(): array
+    private function buildMonths(): Collection
     {
-        $currentMonth = now()->month;
-        $months = [];
+        $startDate = now()->subYear();
+        $endDate = now();
+        $startOfWeek = $startDate->copy()->startOfWeek();
 
-        for ($i = 1; $i <= 12; $i = $i + 1) {
-            $monthNumber = ($currentMonth + $i - 1) % 12 + 1;
-            $months[] = Month::fromNumber($monthNumber);
-        }
-
-        return $months;
+        return collect(CarbonPeriod::create($startOfWeek, '1 week', $endDate))
+            ->groupBy(fn(Carbon $date) => $date->format('Y-m'))
+            ->map(function (Collection $weeks, string $yearMonth) {
+                [, $month] = explode('-', $yearMonth);
+                return new ChartMonth(
+                    Month::fromNumber((int) $month),
+                    $weeks->count()
+                );
+            })
+            ->values();
     }
 
     public function getDays(): array
@@ -80,7 +94,7 @@ class ActivityChart
         return $this->days;
     }
 
-    public function getMonths(): array
+    public function getMonths(): Collection
     {
         return $this->months;
     }
