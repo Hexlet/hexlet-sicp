@@ -2,15 +2,15 @@
 
 namespace Tests\Feature\Services;
 
-use Tests\TestCase;
-use App\Services\AnalyticsExporter;
-use App\Models\User;
 use App\Models\Chapter;
+use App\Models\Comment;
 use App\Models\Exercise;
 use App\Models\Solution;
-use App\Models\Comment;
+use App\Models\User;
+use App\Services\AnalyticsExporter;
+use Database\Factories\ActivityFactory;
 use Illuminate\Support\Facades\Storage;
-use Spatie\Activitylog\Models\Activity;
+use Tests\TestCase;
 
 class AnalyticsExporterTest extends TestCase
 {
@@ -21,19 +21,30 @@ class AnalyticsExporterTest extends TestCase
         parent::setUp();
         Storage::fake();
     }
+
     public function testExportCreatesDirectoryAndFiles(): void
     {
-        User::factory()->create();
-        Chapter::factory()->create();
-        Exercise::factory()->create();
-        Solution::factory()->create();
-        Comment::factory()->create();
-        Activity::factory()->create();
+        $user = User::factory()->create();
+        $chapter = Chapter::factory()->create();
+        $exercise = Exercise::factory()->create([
+            'chapter_id' => $chapter->id,
+        ]);
+
+        $solution = Solution::factory()->create([
+            'exercise_id' => $exercise->id,
+            'user_id' => $user->id,
+        ]);
+
+        $comment = Comment::factory()->create([
+            'user_id' => $user->id,
+            'commentable_id' => $solution->id,
+            'commentable_type' => Solution::class,
+        ]);
+
+        $activity = ActivityFactory::new()->create();
 
         $service = new AnalyticsExporter();
         $service->export($this->directory);
-
-        Storage::assertExists("{$this->directory}/users.csv");
 
         $files = [
             'users.csv',
@@ -53,7 +64,7 @@ class AnalyticsExporterTest extends TestCase
     {
         $user = User::factory()->create([
             'name' => 'John Doe',
-            'email' => 'john@example.com'
+            'email' => 'john@example.com',
         ]);
 
         $service = new AnalyticsExporter();
@@ -62,8 +73,10 @@ class AnalyticsExporterTest extends TestCase
         $content = Storage::disk('local')->get("{$this->directory}/users.csv");
         $lines = explode("\n", trim($content));
 
-        $expectedHeader = 'id,name,email,github_name,hexlet_nickname,points,created_at';
-        $this->assertEquals($expectedHeader, $lines[0]);
+        $expectedHeader = ['id','name','email','github_name','hexlet_nickname','points','created_at'];
+        $actualHeader = str_getcsv($lines[0]);
+
+        $this->assertEquals($expectedHeader, $actualHeader);
 
         $this->assertStringContainsString('"'.$user->id.'"', $lines[1]);
         $this->assertStringContainsString('"John Doe"', $lines[1]);
