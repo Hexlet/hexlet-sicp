@@ -8,13 +8,13 @@ return [
         'class' => ChapterMember::class,
         'graph' => 'chapter_member',
         'states' => [
-            'started',
-            'finished',
+            ChapterMember::STATE_STARTED,
+            ChapterMember::STATE_FINISHED,
         ],
         'transitions' => [
             'finish' => [
-                'from' => ['started'],
-                'to' => 'finished',
+                'from' => [ChapterMember::STATE_STARTED],
+                'to' => ChapterMember::STATE_FINISHED,
             ],
         ],
     ],
@@ -23,13 +23,13 @@ return [
         'graph' => 'completed_exercise',
         'property_path' => 'state',
         'states' => [
-            'started',
-            'finished',
+            ExerciseMember::STATE_STARTED,
+            ExerciseMember::STATE_FINISHED,
         ],
         'transitions' => [
             'finish' => [
-                'from' => ['started'],
-                'to' => 'finished',
+                'from' => [ExerciseMember::STATE_STARTED],
+                'to' => ExerciseMember::STATE_FINISHED,
             ],
         ],
     ],
