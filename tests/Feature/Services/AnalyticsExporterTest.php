@@ -73,7 +73,7 @@ class AnalyticsExporterTest extends TestCase
         $content = Storage::disk('local')->get("{$this->directory}/users.csv");
         $lines = explode("\n", trim($content));
 
-        $expectedHeader = ['id','name','email','github_name','points','created_at'];
+        $expectedHeader = ['id','name','email','email_verified_at','github_name','points','created_at','is_admin'];
         $actualHeader = str_getcsv($lines[0]);
 
         $this->assertEquals($expectedHeader, $actualHeader);
