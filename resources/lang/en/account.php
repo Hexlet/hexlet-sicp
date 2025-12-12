@@ -13,4 +13,6 @@ return [
     'current_email' => 'Current email',
     'go_to_gravatar' => 'Go to Gravatar.com',
     'github_name' => 'GitHub username',
+    'admin' => 'Admin',
+    'name' => 'Name',
 ];
