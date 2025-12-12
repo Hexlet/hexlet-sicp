@@ -132,6 +132,24 @@ return [
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
+        'content' => [
+            'required' => 'Please enter comment text',
+            'min' => 'Comment text must be at least :min character',
+            'max' => 'Comment text cannot be longer than :max characters',
+        ],
+        'commentable_type' => [
+            'required' => 'Commentable type is not specified',
+            'in' => 'Comments can only be left on exercises and chapters',
+        ],
+        'commentable_id' => [
+            'required' => 'Commentable object is not specified',
+            'min' => 'Invalid object ID',
+            'exists' => 'The specified object does not exist',
+            'invalid_type' => 'Invalid commentable type',
+        ],
+        'parent_id' => [
+            'exists' => 'Parent comment not found',
+        ],
     ],
 
     /*
