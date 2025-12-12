@@ -22,11 +22,16 @@ class CommentData extends Data
     public const string URL_ANCHOR = '#exercise-discussion';
 
     public function __construct(
-        #[RequiredWith('commentable_id'), In([Chapter::class, Exercise::class])]
+        #[RequiredWith('commentable_id')]
+        #[In([Chapter::class, Exercise::class])]
         public string|Optional $commentable_type,
-        #[RequiredWith('commentable_type'), Min(1), Rule(new CommentableExists())]
+        #[RequiredWith('commentable_type')]
+        #[Min(1)]
+        #[Rule(new CommentableExists())]
         public int|Optional $commentable_id,
-        #[Required, Min(1), Max(CommentRequest::MAX_CONTENT_LENGTH)]
+        #[Required]
+        #[Min(1)]
+        #[Max(CommentRequest::MAX_CONTENT_LENGTH)]
         public string $content,
         #[Exists('comments', 'id')]
         public int|Optional|null $parent_id = null,
