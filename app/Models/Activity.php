@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\Activitylog\Models\Activity as BaseActivity;
 
@@ -22,6 +23,7 @@ use Spatie\Activitylog\Models\Activity as BaseActivity;
 class Activity extends BaseActivity
 {
     use SoftDeletes;
+    use HasFactory;
 
     public function getDescription(): string
     {

@@ -17,9 +17,10 @@ class UserFactory extends Factory
             'email' => $this->faker->safeEmail,
             'email_verified_at' => now(),
             'github_name' => $this->faker->userName,
-            // password
+            'points' => $this->faker->numberBetween(0, 1000),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',
-            'remember_token' => str_random(10),
+            'remember_token' => \Str::random(10),
+            'is_admin' => false,
         ];
     }
 }
