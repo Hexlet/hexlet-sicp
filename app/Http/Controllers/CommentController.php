@@ -3,11 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Comment;
-use App\Http\Requests\CommentRequest;
+use App\DTO\CommentData;
 use App\Models\Activity;
 use App\Models\User;
 use App\Services\ActivityService;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 
@@ -31,14 +30,14 @@ class CommentController extends Controller
         $this->activityService = $activityService;
     }
 
-    public function store(CommentRequest $request): RedirectResponse
+    public function store(CommentData $data): RedirectResponse
     {
         /** @var User $user */
         $user = auth()->user();
 
         /** @var Comment $comment */
         $comment = $user->comments()->save(
-            new Comment($request->validated())
+            new Comment($data->toArray())
         );
 
         $this->activityService->logCreatedComment($user, $comment);
@@ -46,18 +45,16 @@ class CommentController extends Controller
         return redirect($comment->present()->getLink());
     }
 
-    public function update(CommentRequest $request, Comment $comment): RedirectResponse
+    public function update(CommentData $data, Comment $comment): RedirectResponse
     {
-        $content = $request->get('content', $comment->content);
-        $comment->fill(['content' => $content]);
+        $comment->fill($data->toArray());
 
         if ($comment->save()) {
             flash()->success(__('layout.flash.success'));
+            $this->activityService->updateCreatedCommentActivity($comment);
         } else {
             flash()->error(__('layout.flash.error'));
         }
-
-        $this->activityService->updateCreatedCommentActivity($comment);
 
         return redirect($comment->present()->getLink());
     }

@@ -9,6 +9,17 @@
     {{ html()->form(action: route('comments.store'))->open() }}
     {{ html()->hidden('commentable_type')->value(get_class($model)) }}
     {{ html()->hidden('commentable_id')->value($model->id) }}
+
+    @if ($errors->any())
+      <div class="alert alert-danger">
+        <ul class="mb-0">
+          @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+          @endforeach
+        </ul>
+      </div>
+    @endif
+
     <label for="content" class="w-100 text-wrap">{{ __('comment.enter_your_message', ['max' => $maxCommentLength]) }}</label>
     <div>
       {{ html()
