@@ -15,7 +15,7 @@ class ActivityChart
     private Collection $months;
     private array $days;
 
-    private function __construct(int $userId)
+    private function __construct(?int $userId = null)
     {
         $this->squares = $this->buildSquares($userId);
         $this->months = $this->buildMonths();
@@ -25,6 +25,11 @@ class ActivityChart
     public static function for(int $userId): self
     {
         return new self($userId);
+    }
+
+    public static function all(): self
+    {
+        return new self();
     }
 
     private function buildSquares(?int $userId): Collection
