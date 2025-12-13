@@ -48,23 +48,23 @@ final class CommentService
 
     private function resolveCommentable(CommentData $data): Model
     {
-        $type = $data->commentable_type instanceof Optional ? null : $data->commentable_type;
-        $id = $data->commentable_id instanceof Optional ? null : $data->commentable_id;
+        $commentableType = $data->commentable_type instanceof Optional ? null : $data->commentable_type;
+        $commentableId = $data->commentable_id instanceof Optional ? null : $data->commentable_id;
 
-        if (!$type || !$id) {
+        if (!$commentableType || !$commentableId) {
             throw ValidationException::withMessages([
                 'commentable_type' => __('validation.custom.commentable_type.required'),
                 'commentable_id' => __('validation.custom.commentable_id.required'),
             ]);
         }
 
-        if (!in_array($type, [Chapter::class, Exercise::class], true)) {
+        if (!in_array($commentableType, [Chapter::class, Exercise::class], true)) {
             throw ValidationException::withMessages([
                 'commentable_type' => __('validation.custom.commentable_type.in'),
             ]);
         }
 
-        $model = $type::find($id);
+        $model = $commentableType::find($commentableId);
 
         if (!$model) {
             throw ValidationException::withMessages([
