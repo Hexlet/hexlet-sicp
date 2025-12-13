@@ -7,11 +7,19 @@ use App\DTO\CommentData;
 use App\Models\Activity;
 use App\Models\User;
 use App\Services\ActivityService;
+use App\Services\CommentService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 
 class CommentController extends Controller
 {
+    public function __construct(
+        private readonly ActivityService $activityService,
+        private readonly CommentService $commentService
+    ) {
+        $this->authorizeResource(Comment::class, 'comment');
+    }
+
     public function index(): View
     {
         $comments = Comment::with('user')->latest()->paginate(15);
@@ -19,26 +27,12 @@ class CommentController extends Controller
         return view('comment.index', compact('comments'));
     }
 
-    /**
-     * @var ActivityService
-     */
-    private ActivityService $activityService;
-
-    public function __construct(ActivityService $activityService)
-    {
-        $this->authorizeResource(Comment::class, 'comment');
-        $this->activityService = $activityService;
-    }
-
     public function store(CommentData $data): RedirectResponse
     {
         /** @var User $user */
         $user = auth()->user();
 
-        /** @var Comment $comment */
-        $comment = $user->comments()->save(
-            new Comment($data->toArray())
-        );
+        $comment = $this->commentService->create($user, $data);
 
         $this->activityService->logCreatedComment($user, $comment);
 
@@ -47,14 +41,10 @@ class CommentController extends Controller
 
     public function update(CommentData $data, Comment $comment): RedirectResponse
     {
-        $comment->fill($data->toArray());
+        $comment = $this->commentService->update($comment, $data);
 
-        if ($comment->save()) {
-            flash()->success(__('layout.flash.success'));
-            $this->activityService->updateCreatedCommentActivity($comment);
-        } else {
-            flash()->error(__('layout.flash.error'));
-        }
+        flash()->success(__('layout.flash.success'));
+        $this->activityService->updateCreatedCommentActivity($comment);
 
         return redirect($comment->present()->getLink());
     }

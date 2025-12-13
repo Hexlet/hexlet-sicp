@@ -149,6 +149,7 @@ return [
         ],
         'parent_id' => [
             'exists' => 'Parent comment not found',
+            'different_discussion' => 'Cannot reply to a comment from a different discussion',
         ],
     ],
 
