@@ -10,10 +10,9 @@ class CommentableExists implements ValidationRule, DataAwareRule
 {
     protected array $data = [];
 
-    public function setData(array $data): static
+    public function setData(array $data): void
     {
         $this->data = $data;
-        return $this;
     }
 
     public function validate(string $attribute, mixed $value, Closure $fail): void
