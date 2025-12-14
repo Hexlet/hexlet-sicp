@@ -35,13 +35,13 @@ class AnalyticsExporterTest extends TestCase
             'user_id' => $user->id,
         ]);
 
-        $comment = Comment::factory()->create([
+        Comment::factory()->create([
             'user_id' => $user->id,
             'commentable_id' => $solution->id,
             'commentable_type' => Solution::class,
         ]);
 
-        $activity = ActivityFactory::new()->create();
+        ActivityFactory::new()->create();
 
         $service = new AnalyticsExporter();
         $service->export($this->directory);
@@ -78,7 +78,7 @@ class AnalyticsExporterTest extends TestCase
 
         $this->assertEquals($expectedHeader, $actualHeader);
 
-        $this->assertStringContainsString('"'.$user->id.'"', $lines[1]);
+        $this->assertStringContainsString("\"{$user->id}\"", $lines[1]);
         $this->assertStringContainsString('"John Doe"', $lines[1]);
         $this->assertStringContainsString('"john@example.com"', $lines[1]);
     }

@@ -17,6 +17,7 @@ class Chapter extends Model
 {
     use Presentable;
     use HasFactory;
+
     public string $defaultPresenter = ChapterPresenter::class;
 
     public const MARKABLE_COUNT = 101;
