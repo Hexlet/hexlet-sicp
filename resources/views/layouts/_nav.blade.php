@@ -56,6 +56,9 @@
                   <a class="dropdown-item" href="{{ route('admin.solutions.index') }}">
                     <i class="bi bi-code-square"></i> {{ __('admin.solutions.title') }}
                   </a>
+                  <a class="dropdown-item" href="{{ route('admin.export.index') }}">
+                    <i class="bi bi-download"></i> {{ __('admin.export.title') }}
+                  </a>
                 </li>
               </ul>
             </li>

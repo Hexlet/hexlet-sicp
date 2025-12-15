@@ -13,16 +13,32 @@ use Spatie\Activitylog\Models\Activity;
 
 class AnalyticsExporter
 {
-    public function export(string $directory): void
+    public function export(string $directory, string $type): void
     {
         Storage::makeDirectory($directory);
 
-        $this->exportUsers("{$directory}/users.csv");
-        $this->exportChapters("{$directory}/chapters.csv");
-        $this->exportExercises("{$directory}/exercises.csv");
-        $this->exportSolutions("{$directory}/solutions.csv");
-        $this->exportComments("{$directory}/comments.csv");
-        $this->exportActivityLog("{$directory}/activity_log.csv");
+        switch ($type) {
+            case 'users':
+                $this->exportUsers("{$directory}/users.csv");
+                break;
+            case 'chapters':
+                $this->exportChapters("{$directory}/chapters.csv");
+                break;
+            case 'exercises':
+                $this->exportExercises("{$directory}/exercises.csv");
+                break;
+            case 'solutions':
+                $this->exportSolutions("{$directory}/solutions.csv");
+                break;
+            case 'comments':
+                $this->exportComments("{$directory}/comments.csv");
+                break;
+            case 'activity':
+                $this->exportActivityLog("{$directory}/activity.csv");
+                break;
+            default:
+                throw new \InvalidArgumentException("Unknown export type: {$type}");
+        }
     }
 
     private function exportUsers(string $path): void

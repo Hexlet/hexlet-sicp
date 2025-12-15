@@ -22,14 +22,11 @@ class AnalyticsExporterTest extends TestCase
         Storage::fake();
     }
 
-    public function testExportCreatesDirectoryAndFiles(): void
+    public function testExportEachTypeCreatesCsvFile(): void
     {
         $user = User::factory()->create();
         $chapter = Chapter::factory()->create();
-        $exercise = Exercise::factory()->create([
-            'chapter_id' => $chapter->id,
-        ]);
-
+        $exercise = Exercise::factory()->create(['chapter_id' => $chapter->id]);
         $solution = Solution::factory()->create([
             'exercise_id' => $exercise->id,
             'user_id' => $user->id,
@@ -44,18 +41,18 @@ class AnalyticsExporterTest extends TestCase
         ActivityFactory::new()->create();
 
         $service = new AnalyticsExporter();
-        $service->export($this->directory);
 
-        $files = [
-            'users.csv',
-            'chapters.csv',
-            'exercises.csv',
-            'solutions.csv',
-            'comments.csv',
-            'activity_log.csv',
+        $types = [
+            'users' => 'users.csv',
+            'chapters' => 'chapters.csv',
+            'exercises' => 'exercises.csv',
+            'solutions' => 'solutions.csv',
+            'comments' => 'comments.csv',
+            'activity' => 'activity_log.csv',
         ];
 
-        foreach ($files as $file) {
+        foreach ($types as $type => $file) {
+            $service->export($this->directory, $type);
             Storage::assertExists("{$this->directory}/{$file}");
         }
     }
@@ -68,7 +65,7 @@ class AnalyticsExporterTest extends TestCase
         ]);
 
         $service = new AnalyticsExporter();
-        $service->export($this->directory);
+        $service->export($this->directory, 'users');
 
         $content = Storage::disk('local')->get("{$this->directory}/users.csv");
         $lines = explode("\n", trim($content));
@@ -77,7 +74,6 @@ class AnalyticsExporterTest extends TestCase
         $actualHeader = str_getcsv($lines[0]);
 
         $this->assertEquals($expectedHeader, $actualHeader);
-
         $this->assertStringContainsString("\"{$user->id}\"", $lines[1]);
         $this->assertStringContainsString('"John Doe"', $lines[1]);
         $this->assertStringContainsString('"john@example.com"', $lines[1]);
@@ -86,10 +82,10 @@ class AnalyticsExporterTest extends TestCase
     public function testEmptyTablesProduceEmptyCsv(): void
     {
         $service = new AnalyticsExporter();
-        $service->export($this->directory);
+
+        $service->export($this->directory, 'chapters');
 
         $content = Storage::disk('local')->get("{$this->directory}/chapters.csv");
-
         $this->assertSame("", $content);
     }
 }
