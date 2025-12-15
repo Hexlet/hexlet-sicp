@@ -48,7 +48,7 @@ class AnalyticsExporterTest extends TestCase
             'exercises' => 'exercises.csv',
             'solutions' => 'solutions.csv',
             'comments' => 'comments.csv',
-            'activity' => 'activity_log.csv',
+            'activity' => 'activity.csv',
         ];
 
         foreach ($types as $type => $file) {
