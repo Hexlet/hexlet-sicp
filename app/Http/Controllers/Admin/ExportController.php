@@ -10,7 +10,6 @@ use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class ExportController extends AdminController
 {
-
     public function __construct(
         private readonly AnalyticsExporter $exporter
     ) {
