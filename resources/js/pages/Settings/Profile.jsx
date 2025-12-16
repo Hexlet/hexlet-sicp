@@ -1,13 +1,10 @@
 import { Container, Row, Col } from 'react-bootstrap'
-import { useTranslation } from 'react-i18next'
 import SettingsLayout from '../../components/Settings/SettingsLayout'
 import ProfileForm from '../../components/Settings/ProfileForm'
 import ProfileImage from '../../components/Settings/ProfileImage'
 import Flash from '../../components/Common/Flash'
 
 const Profile = ({ user, profileImage, flash }) => {
-  const { t } = useTranslation()
-
   return (
     <SettingsLayout>
       <Container className="my-4">

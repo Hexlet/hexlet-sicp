@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import Countdown from 'react-countdown'
 import { format } from 'date-fns'
@@ -11,8 +11,8 @@ import theme from '../common/currentTheme'
 
 const TeacherSolution = () => {
   const { t } = useTranslation()
-  const { hasTeacherSolution, teacherSolutionCode } = useSelector(state => state.exerciseInfo)
-  const checkedSolutionStatus = useSelector(state => state.checkResult.resultStatus)
+  const { hasTeacherSolution, teacherSolutionCode } = useSelector((state) => state.exerciseInfo)
+  const checkedSolutionStatus = useSelector((state) => state.checkResult.resultStatus)
 
   const [isShown, setIsShown] = useState(false)
   const [startTime, setStartTime] = useState(null)

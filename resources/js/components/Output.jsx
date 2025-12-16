@@ -1,4 +1,3 @@
-import React from 'react'
 import { useSelector } from 'react-redux'
 import { Alert } from 'react-bootstrap'
 import { useTranslation } from 'react-i18next'
@@ -13,8 +12,8 @@ const statusToTypeMap = {
 
 const Output = () => {
   const { t } = useTranslation()
-  const { resultStatus, output } = useSelector(state => state.checkResult)
-  const { show, style, content } = useSelector(state => state.notification)
+  const { resultStatus, output } = useSelector((state) => state.checkResult)
+  const { show, style, content } = useSelector((state) => state.notification)
 
   const message = t(`message.${resultStatus}`)
 

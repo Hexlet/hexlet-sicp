@@ -1,4 +1,3 @@
-import React from 'react'
 import { Spinner } from 'react-bootstrap'
 import { useSelector } from 'react-redux'
 import { useTranslation } from 'react-i18next'
@@ -6,7 +5,7 @@ import { useTranslation } from 'react-i18next'
 import EditorBuilder from './EditorBuilder.jsx'
 
 const Editor = () => {
-  const { loadingState } = useSelector(state => state.exerciseInfo)
+  const { loadingState } = useSelector((state) => state.exerciseInfo)
   const { t } = useTranslation()
 
   return loadingState === 'loading'

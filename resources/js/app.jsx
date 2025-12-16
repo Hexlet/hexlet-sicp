@@ -16,7 +16,7 @@ createInertiaApp({
     createRoot(el).render(
       <I18nextProvider i18n={i18n}>
         <App {...props} />
-      </I18nextProvider>
+      </I18nextProvider>,
     )
   },
   progress: {

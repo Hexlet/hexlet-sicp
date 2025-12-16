@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import { Nav, Tab } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import { useTranslation } from 'react-i18next'
@@ -12,7 +12,7 @@ import locationMap from '../common/hashLocationMap.js'
 
 const TabsBox = () => {
   const { t } = useTranslation()
-  const { currentTab } = useSelector(state => state.tabsBox)
+  const { currentTab } = useSelector((state) => state.tabsBox)
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -29,7 +29,7 @@ const TabsBox = () => {
   return (
     <Tab.Container activeKey={currentTab} onSelect={changeActiveTab}>
       <Nav variant="tabs" className="justify-content-center">
-        {Object.values(tabNames).map(tabName => (
+        {Object.values(tabNames).map((tabName) => (
           <Nav.Item key={tabName}>
             <Nav.Link
               className="border-top-0 rounded-0"
