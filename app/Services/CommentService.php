@@ -73,10 +73,7 @@ final class CommentService
             ]);
         }
 
-        if (
-            $parent->commentable_type !== $commentable::class
-            || $parent->commentable_id !== $commentable->getKey()
-        ) {
+        if (!$parent->belongsToSameDiscussion($commentable)) {
             throw ValidationException::withMessages([
                 'parent_id' => __('validation.custom.parent_id.different_discussion'),
             ]);
