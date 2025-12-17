@@ -15,7 +15,7 @@
                 <p class="lead">Why and how to study one of the most important books in computer science</p>
 
                 <img
-                        src="{{ Vite::asset('resources/assets/images/sicp_cover.jpg') }}"
+                        src="{{ asset('images/sicp_cover.jpg') }}"
                         alt="SICP Book Cover"
                         width="60%"
                         height="60%"

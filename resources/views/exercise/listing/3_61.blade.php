@@ -20,7 +20,7 @@
 <code>X</code>
 {{ __('exercises/3_61.description.11') }}
 </p>
-<img class="img-fluid" src="{{ Vite::asset("resources/assets/images/exercises/3_61.gif") }}" alt="3.61">
+<img class="img-fluid" src="{{ asset("images/exercises/3_61.gif") }}" alt="3.61">
 <p>{{ __('exercises/3_61.description.12') }}
 <code>X</code>
 {{ __('exercises/3_61.description.13') }}

@@ -33,7 +33,7 @@
 <code>apply-generic</code>
 {{ __('exercises/2_77.description.15') }}
 </p>
-<img class="img-fluid" src="{{ Vite::asset("resources/assets/images/exercises/2_77.gif") }}" alt="2.77">
+<img class="img-fluid" src="{{ asset("images/exercises/2_77.gif") }}" alt="2.77">
 <p>{{ __('exercises/2_77.description.16') }}
 <code>3 + 4i</code>
 {{ __('exercises/2_77.description.17') }}
