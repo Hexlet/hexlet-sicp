@@ -3,9 +3,7 @@
 namespace App\Services;
 
 use App\DTO\CommentData;
-use App\Models\Chapter;
 use App\Models\Comment;
-use App\Models\Exercise;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Validation\ValidationException;
@@ -48,23 +46,7 @@ final class CommentService
 
     private function resolveCommentable(CommentData $data): Model
     {
-        $commentableType = $data->commentable_type instanceof Optional ? null : $data->commentable_type;
-        $commentableId = $data->commentable_id instanceof Optional ? null : $data->commentable_id;
-
-        if (!$commentableType || !$commentableId) {
-            throw ValidationException::withMessages([
-                'commentable_type' => __('validation.custom.commentable_type.required'),
-                'commentable_id' => __('validation.custom.commentable_id.required'),
-            ]);
-        }
-
-        if (!in_array($commentableType, [Chapter::class, Exercise::class], true)) {
-            throw ValidationException::withMessages([
-                'commentable_type' => __('validation.custom.commentable_type.in'),
-            ]);
-        }
-
-        $model = $commentableType::find($commentableId);
+        $model = $data->commentable_type->value::find($data->commentable_id);
 
         if (!$model) {
             throw ValidationException::withMessages([
