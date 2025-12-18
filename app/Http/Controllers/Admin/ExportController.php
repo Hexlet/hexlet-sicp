@@ -33,13 +33,12 @@ class ExportController extends AdminController
 
         $directory = implode('/', $directoryParts);
 
-        Storage::makeDirectory($directory);
-
         $this->exporter->export($directory, $request->type);
 
         $fileName = "{$request->type}.csv";
-        $filePath = storage_path(implode('/', ['app', $directory, $fileName]));
+        $relativePath = implode('/', [$directory, $fileName]);
+        $absolutePath = Storage::disk('public')->path($relativePath);
 
-        return response()->download($filePath)->deleteFileAfterSend();
+        return response()->download($absolutePath)->deleteFileAfterSend();
     }
 }

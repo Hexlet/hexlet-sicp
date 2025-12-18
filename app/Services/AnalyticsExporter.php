@@ -9,14 +9,13 @@ use App\Models\Solution;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Storage;
+use League\Csv\Writer;
 use Spatie\Activitylog\Models\Activity;
 
 class AnalyticsExporter
 {
     public function export(string $directory, string $type): void
     {
-        Storage::makeDirectory($directory);
-
         switch ($type) {
             case 'users':
                 $this->exportUsers("{$directory}/users.csv");
@@ -91,24 +90,32 @@ class AnalyticsExporter
 
     private function writeCsv(Collection $collection, string $path): void
     {
+        $disk = Storage::disk('public');
+        $directory = dirname($path);
+
+        if (!$disk->exists($directory)) {
+            $disk->makeDirectory($directory);
+        }
+        $csv = Writer::createFromPath(
+            $disk->path($path),
+            'w+'
+        );
+
+        $csv->setDelimiter(',');
+        $csv->setNewline("\n");
+
         if ($collection->isEmpty()) {
-            Storage::put($path, '');
             return;
         }
 
-        $rows = [];
-
-        $rows[] = implode(',', array_keys($collection->first()->getAttributes()));
+        $csv->insertOne(
+            array_keys($collection->first()->getAttributes())
+        );
 
         foreach ($collection as $item) {
-            $quoted = array_map(
-                static fn($value): string => '"' . str_replace('"', '""', (string) $value) . '"',
-                $item->getAttributes()
+            $csv->insertOne(
+                array_values($item->getAttributes())
             );
-
-            $rows[] = implode(',', $quoted);
         }
-
-        Storage::put($path, implode("\n", $rows) . "\n");
     }
 }
