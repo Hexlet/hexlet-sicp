@@ -27,7 +27,9 @@ class GithubController extends Controller
     public function redirectToProvider(): RedirectResponse
     {
         try {
-            return $this->socialite::driver('github')->scopes(['user:email'])->redirect();
+            return $this->socialite::driver('github')
+                ->scopes(['user:email', 'repo', 'write:repo_hook'])
+                ->redirect();
         } catch (Exception $e) {
             return $this->sendFailedResponse($e->getMessage());
         }
@@ -65,6 +67,16 @@ class GithubController extends Controller
         }
 
         Auth::login($user, true);
+
+        $user->github_access_token = encrypt($socialiteUser->token);
+        $user->github_refresh_token = $socialiteUser->refreshToken
+            ? encrypt($socialiteUser->refreshToken)
+            : null;
+        $user->github_token_expires_at = $socialiteUser->expiresIn
+            ? now()->addSeconds($socialiteUser->expiresIn)
+            : null;
+        $user->save();
+
         flash()->success(__('auth.logged_in'));
 
         return redirect()->route('my.show');
