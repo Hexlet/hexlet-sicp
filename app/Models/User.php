@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -67,7 +68,10 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password',
+        'remember_token',
+        'github_access_token',
+        'github_refresh_token',
     ];
 
     /**
@@ -78,6 +82,9 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $casts = [
         'email_verified_at' => 'datetime',
         'deleted_at' => 'datetime',
+        'github_access_token' => 'encrypted',
+        'github_refresh_token' => 'encrypted',
+        'github_token_expires_at' => 'datetime',
     ];
 
     public static function boot()
@@ -160,5 +167,10 @@ class User extends Authenticatable implements MustVerifyEmail
     public function scopeAdmins(Builder $builder): Builder
     {
         return $builder->where('is_admin', '=', true);
+    }
+
+    public function githubRepository(): HasOne
+    {
+        return $this->hasOne(GitHubRepository::class);
     }
 }
