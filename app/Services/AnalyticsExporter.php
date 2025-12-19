@@ -14,88 +14,76 @@ use Spatie\Activitylog\Models\Activity;
 
 class AnalyticsExporter
 {
-    public function export(string $directory, string $type): void
+    public function export(string $type): string
     {
-        switch ($type) {
-            case 'users':
-                $this->exportUsers("{$directory}/users.csv");
-                break;
-            case 'chapters':
-                $this->exportChapters("{$directory}/chapters.csv");
-                break;
-            case 'exercises':
-                $this->exportExercises("{$directory}/exercises.csv");
-                break;
-            case 'solutions':
-                $this->exportSolutions("{$directory}/solutions.csv");
-                break;
-            case 'comments':
-                $this->exportComments("{$directory}/comments.csv");
-                break;
-            case 'activity':
-                $this->exportActivityLog("{$directory}/activity.csv");
-                break;
-            default:
-                throw new \InvalidArgumentException("Unknown export type: {$type}");
-        }
+        return match ($type) {
+            'users'     => $this->exportUsers("export/users.csv"),
+            'chapters'  => $this->exportChapters("export/chapters.csv"),
+            'exercises' => $this->exportExercises("export/exercises.csv"),
+            'solutions' => $this->exportSolutions("export/solutions.csv"),
+            'comments'  => $this->exportComments("export/comments.csv"),
+            'activity'  => $this->exportActivityLog("export/activity.csv"),
+            default     => throw new \InvalidArgumentException("Unknown export type: {$type}"),
+        };
     }
 
-    private function exportUsers(string $path): void
+    private function exportUsers(string $path): string
     {
         $data = User::select(['id', 'name', 'email', 'email_verified_at', 'github_name', 'points', 'created_at', 'is_admin'])
             ->get();
 
-        $this->writeCsv($data, $path);
+        return $this->writeCsv($data, $path);
     }
 
-    private function exportChapters(string $path): void
+    private function exportChapters(string $path): string
     {
         $data = Chapter::select(['id', 'path', 'parent_id', 'created_at'])
             ->get();
 
-        $this->writeCsv($data, $path);
+        return $this->writeCsv($data, $path);
     }
 
-    private function exportExercises(string $path): void
+    private function exportExercises(string $path): string
     {
         $data = Exercise::select(['id', 'chapter_id', 'path', 'created_at'])
             ->get();
 
-        $this->writeCsv($data, $path);
+        return $this->writeCsv($data, $path);
     }
 
-    private function exportSolutions(string $path): void
+    private function exportSolutions(string $path): string
     {
         $data = Solution::select(['id', 'exercise_id', 'user_id', 'created_at'])
             ->get();
 
-        $this->writeCsv($data, $path);
+        return $this->writeCsv($data, $path);
     }
 
-    private function exportComments(string $path): void
+    private function exportComments(string $path): string
     {
         $data = Comment::select(['id', 'user_id', 'commentable_type', 'commentable_id', 'parent_id', 'created_at'])
             ->get();
 
-        $this->writeCsv($data, $path);
+        return $this->writeCsv($data, $path);
     }
 
-    private function exportActivityLog(string $path): void
+    private function exportActivityLog(string $path): string
     {
         $data = Activity::select(['id', 'log_name', 'subject_id', 'subject_type', 'causer_id', 'event', 'created_at'])
             ->get();
 
-        $this->writeCsv($data, $path);
+        return $this->writeCsv($data, $path);
     }
 
-    private function writeCsv(Collection $collection, string $path): void
+    private function writeCsv(Collection $collection, string $path): string
     {
-        $disk = Storage::disk('public');
+        $disk = Storage::disk();
         $directory = dirname($path);
 
         if (!$disk->exists($directory)) {
             $disk->makeDirectory($directory);
         }
+
         $csv = Writer::createFromPath(
             $disk->path($path),
             'w+'
@@ -104,18 +92,14 @@ class AnalyticsExporter
         $csv->setDelimiter(',');
         $csv->setNewline("\n");
 
-        if ($collection->isEmpty()) {
-            return;
+        if ($collection->isNotEmpty()) {
+            $csv->insertOne(array_keys($collection->first()->getAttributes()));
+
+            foreach ($collection as $item) {
+                $csv->insertOne(array_values($item->getAttributes()));
+            }
         }
 
-        $csv->insertOne(
-            array_keys($collection->first()->getAttributes())
-        );
-
-        foreach ($collection as $item) {
-            $csv->insertOne(
-                array_values($item->getAttributes())
-            );
-        }
+        return $disk->path($path);
     }
 }

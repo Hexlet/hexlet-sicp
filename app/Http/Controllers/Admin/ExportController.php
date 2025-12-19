@@ -26,19 +26,8 @@ class ExportController extends AdminController
             'type' => 'required|string',
         ]);
 
-        $directoryParts = [
-            'exports',
-            now()->format('Y-m-d_H-i-s'),
-        ];
+        $filePath = $this->exporter->export($request->type);
 
-        $directory = implode('/', $directoryParts);
-
-        $this->exporter->export($directory, $request->type);
-
-        $fileName = "{$request->type}.csv";
-        $relativePath = implode('/', [$directory, $fileName]);
-        $absolutePath = Storage::disk('public')->path($relativePath);
-
-        return response()->download($absolutePath)->deleteFileAfterSend();
+        return response()->download($filePath)->deleteFileAfterSend();
     }
 }
