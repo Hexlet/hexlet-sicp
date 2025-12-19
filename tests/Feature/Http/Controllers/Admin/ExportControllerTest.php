@@ -3,8 +3,8 @@
 namespace Tests\Feature\Controllers\Admin;
 
 use App\Models\User;
-use App\Services\AnalyticsExporter;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Storage;
 use Tests\TestCase;
 
 class ExportControllerTest extends TestCase
@@ -13,35 +13,28 @@ class ExportControllerTest extends TestCase
 
     public function testExportUsersCsv(): void
     {
+        Storage::disk('local')->deleteDirectory('export');
+
         $user = User::factory()->create([
             'name' => 'John Doe',
             'email' => 'john@example.com',
         ]);
 
-        $this->app->instance(AnalyticsExporter::class, new AnalyticsExporter());
-
-        $response = $this->post(route('admin.export'), [
+        $response = $this->post(route('admin.export.store'), [
             'type' => 'users',
         ]);
 
         $response->assertStatus(200);
+        $response->assertHeader('content-disposition');
 
-        $exportsPath = storage_path('app/exports');
-        $folders = glob($exportsPath . '/*', GLOB_ONLYDIR);
-        rsort($folders);
-        $latestFolder = $folders[0];
-
-        $filePath = $latestFolder . '/users.csv';
+        $filePath = storage_path('app/export/users.csv');
 
         $this->assertFileExists($filePath);
 
         $content = file_get_contents($filePath);
-        $this->assertStringContainsString('"John Doe"', $content);
-        $this->assertStringContainsString('"john@example.com"', $content);
-        $this->assertStringContainsString((string)$user->id, $content);
-
-        unlink($filePath);
-        rmdir($latestFolder);
+        $this->assertStringContainsString('John Doe', $content);
+        $this->assertStringContainsString('john@example.com', $content);
+        $this->assertStringContainsString((string) $user->id, $content);
     }
 
     public function testExportInvalidTypeThrowsException(): void
