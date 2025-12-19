@@ -20,7 +20,7 @@ class ExportController extends AdminController
         return view('admin.export');
     }
 
-    public function export(Request $request): BinaryFileResponse
+    public function store(Request $request): BinaryFileResponse
     {
         $request->validate([
             'type' => 'required|string',

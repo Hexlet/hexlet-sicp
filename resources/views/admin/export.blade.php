@@ -15,7 +15,7 @@
                     <i class="bi bi-download"></i> {{ __('admin.export.title') }}
                 </h4>
 
-                <form method="POST" action="{{ route('admin.export') }}">
+                <form method="POST" action="{{ route('admin.export.store') }}">
                     @csrf
 
                     <div class="mb-3">

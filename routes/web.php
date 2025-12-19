@@ -56,9 +56,7 @@ Route::group([
         Route::resource('users', 'UserController')->only('index');
         Route::resource('comments', 'CommentController')->only('index');
         Route::resource('solutions', 'SolutionController')->only('index');
-
-        Route::get('export', 'ExportController@index')->name('export.index');
-        Route::post('export', 'ExportController@export')->name('export');
+        Route::resource('export', 'ExportController')->only('index', 'store');
     });
 
     Route::fallback(function () {
