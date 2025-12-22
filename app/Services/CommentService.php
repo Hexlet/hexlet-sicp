@@ -34,21 +34,23 @@ final class CommentService
 
     public function update(Comment $comment, CommentData $data): Comment
     {
-        $commentable = $this->resolveCommentable($data);
-        $parent = $this->resolveParent($data, $commentable);
-
-        $comment->fill([
-            'content' => $data->content,
-        ]);
-
-        $comment->commentable()->associate($commentable);
-
-        if ($parent) {
-            $comment->parent()->associate($parent);
-        } else {
-            $comment->parent()->dissociate();
+        if (
+            $data->commentable_type->value !== $comment->commentable_type
+            || $data->commentable_id !== $comment->commentable_id
+        ) {
+            throw ValidationException::withMessages([
+                'commentable_id' => __('validation.comment.commentable_id.cannot_change'),
+            ]);
         }
 
+        $newParentId = $data->parent_id instanceof Optional ? null : $data->parent_id;
+        if ($newParentId !== $comment->parent_id) {
+            throw ValidationException::withMessages([
+                'parent_id' => __('validation.comment.parent_id.cannot_change'),
+            ]);
+        }
+
+        $comment->content = $data->content;
         $comment->save();
 
         return $comment;

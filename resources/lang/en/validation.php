@@ -148,10 +148,12 @@ return [
             'min' => 'Invalid object ID',
             'exists' => 'The specified object does not exist',
             'invalid_type' => 'Invalid commentable type',
+            'cannot_change' => 'Cannot change comment context',
         ],
         'parent_id' => [
             'exists' => 'Parent comment not found',
             'different_discussion' => 'Cannot reply to a comment from a different discussion',
+            'cannot_change' => 'Cannot change parent comment',
         ],
     ],
 
