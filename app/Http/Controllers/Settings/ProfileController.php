@@ -8,7 +8,6 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Auth;
 use Illuminate\Validation\Rule;
-use Inertia\Inertia;
 use Inertia\Response;
 
 class ProfileController extends Controller
@@ -22,7 +21,7 @@ class ProfileController extends Controller
     {
         $user = auth()->user();
 
-        return Inertia::render('Settings/Profile', [
+        return $this->inertia([
             'user' => $user,
             'profileImage' => $user->present()->getProfileImageLink(),
         ]);
