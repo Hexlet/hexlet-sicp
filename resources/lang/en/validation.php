@@ -132,6 +132,8 @@ return [
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
+    ],
+    'comment' => [
         'content' => [
             'required' => 'Please enter comment text',
             'min' => 'Comment text must be at least :min character',

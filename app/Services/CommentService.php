@@ -18,11 +18,15 @@ final class CommentService
 
         $comment = new Comment([
             'content' => $data->content,
-            'parent_id' => $parent?->id,
         ]);
 
         $comment->commentable()->associate($commentable);
         $comment->user()->associate($user);
+
+        if ($parent) {
+            $comment->parent()->associate($parent);
+        }
+
         $comment->save();
 
         return $comment;
@@ -35,10 +39,16 @@ final class CommentService
 
         $comment->fill([
             'content' => $data->content,
-            'parent_id' => $parent?->id,
         ]);
 
         $comment->commentable()->associate($commentable);
+
+        if ($parent) {
+            $comment->parent()->associate($parent);
+        } else {
+            $comment->parent()->dissociate();
+        }
+
         $comment->save();
 
         return $comment;
@@ -75,7 +85,7 @@ final class CommentService
 
         if (!$parent->belongsToSameDiscussion($commentable)) {
             throw ValidationException::withMessages([
-                'parent_id' => __('validation.custom.parent_id.different_discussion'),
+                'parent_id' => __('validation.comment.parent_id.different_discussion'),
             ]);
         }
 
