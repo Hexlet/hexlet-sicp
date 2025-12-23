@@ -16,7 +16,7 @@ class ExportControllerTest extends TestCase
         Storage::disk('local')->deleteDirectory('export');
 
         $user = User::factory()->create([
-            'name' => 'John Doe',
+            'name'  => 'John Doe',
             'email' => 'john@example.com',
         ]);
 
@@ -32,16 +32,16 @@ class ExportControllerTest extends TestCase
         $this->assertFileExists($filePath);
 
         $content = file_get_contents($filePath);
+        $this->assertStringContainsString((string) $user->id, $content);
         $this->assertStringContainsString('John Doe', $content);
         $this->assertStringContainsString('john@example.com', $content);
-        $this->assertStringContainsString((string) $user->id, $content);
     }
 
     public function testExportInvalidTypeThrowsException(): void
     {
         $this->expectException(\InvalidArgumentException::class);
 
-        $this->post(route('admin.export'), [
+        $this->post(route('admin.export.store'), [
             'type' => 'invalid_type',
         ]);
     }
