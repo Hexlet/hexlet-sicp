@@ -1,7 +1,7 @@
 import { Container, Row, Col, Card } from 'react-bootstrap'
 import { Link, usePage } from '@inertiajs/react'
 import { useTranslation } from 'react-i18next'
-import Flash from "@/components/Common/Flash.jsx";
+import Flash from '@/components/Common/Flash.jsx'
 
 const SettingsLayout = ({ children }) => {
   const { t } = useTranslation()
