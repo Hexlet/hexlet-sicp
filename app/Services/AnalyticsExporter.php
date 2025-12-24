@@ -89,16 +89,16 @@ class AnalyticsExporter
             'w+'
         );
 
-        $csv->setDelimiter(',');
-        $csv->setNewline("\n");
-
-        if ($collection->isNotEmpty()) {
-            $csv->insertOne(array_keys($collection->first()->getAttributes()));
-
-            foreach ($collection as $item) {
-                $csv->insertOne(array_values($item->getAttributes()));
-            }
+        if ($collection->isEmpty()) {
+            return $disk->path($path);
         }
+
+        $rows = $collection->map(
+            static fn ($model) => $model->getAttributes()
+        )->toArray();
+
+        $csv->insertOne(array_keys($rows[0]));
+        $csv->insertAll($rows);
 
         return $disk->path($path);
     }
