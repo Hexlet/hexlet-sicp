@@ -44,12 +44,10 @@ public function testExportEachTypeCreatesCsvFile(): void
     public function testUsersCsvContainsCorrectHeadersAndRow(): void
     {
         $user = User::factory()->create([
-            'name'  => 'John Doe',
-            'email' => 'john@example.com',
+            'points' => 150,
         ]);
 
         $service = new AnalyticsExporter();
-
         $service->export('users');
 
         $content = Storage::get('export/users.csv');
@@ -57,19 +55,17 @@ public function testExportEachTypeCreatesCsvFile(): void
 
         $expectedHeader = [
             'id',
-            'name',
-            'email',
-            'email_verified_at',
-            'github_name',
             'points',
             'created_at',
-            'is_admin',
         ];
 
         $this->assertEquals($expectedHeader, str_getcsv($lines[0]));
-        $this->assertStringContainsString((string) $user->id, $lines[1]);
-        $this->assertStringContainsString('John Doe', $lines[1]);
-        $this->assertStringContainsString('john@example.com', $lines[1]);
+
+        $row = str_getcsv($lines[1]);
+
+        $this->assertEquals($user->id, (int) $row[0]);
+        $this->assertEquals($user->points, (int) $row[1]);
+        $this->assertNotEmpty($row[2]);
     }
 
     public function testEmptyTablesProduceEmptyCsv(): void

@@ -16,8 +16,7 @@ class ExportControllerTest extends TestCase
         Storage::disk('local')->deleteDirectory('export');
 
         $user = User::factory()->create([
-            'name'  => 'John Doe',
-            'email' => 'john@example.com',
+            'points' => 120,
         ]);
 
         $response = $this->post(route('admin.export.store'), [
@@ -28,13 +27,21 @@ class ExportControllerTest extends TestCase
         $response->assertHeader('content-disposition');
 
         $filePath = storage_path('app/export/users.csv');
-
         $this->assertFileExists($filePath);
 
         $content = file_get_contents($filePath);
-        $this->assertStringContainsString((string) $user->id, $content);
-        $this->assertStringContainsString('John Doe', $content);
-        $this->assertStringContainsString('john@example.com', $content);
+        $lines = explode("\n", trim($content));
+
+        $this->assertEquals(
+            ['id', 'points', 'created_at'],
+            str_getcsv($lines[0])
+        );
+
+        $row = str_getcsv($lines[1]);
+
+        $this->assertEquals($user->id, (int) $row[0]);
+        $this->assertEquals($user->points, (int) $row[1]);
+        $this->assertNotEmpty($row[2]);
     }
 
     public function testExportInvalidTypeThrowsException(): void

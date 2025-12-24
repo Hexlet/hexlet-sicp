@@ -29,7 +29,7 @@ class AnalyticsExporter
 
     private function exportUsers(string $path): string
     {
-        $data = User::select(['id', 'name', 'email', 'email_verified_at', 'github_name', 'points', 'created_at', 'is_admin'])
+        $data = User::select(['id', 'points', 'created_at'])
             ->get();
 
         return $this->writeCsv($data, $path);
