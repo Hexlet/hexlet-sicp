@@ -17,8 +17,8 @@ _ide_helper.php
 _ide_helper_models.php
 .phpstorm.meta.php
 /mix-manifest.json
-css
-js
+/public/css
+/public/js
 public/img/*
 composer.phar
 .phpunit.cache

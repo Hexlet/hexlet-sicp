@@ -4,9 +4,6 @@
   /** @var \Illuminate\Support\Collection|\App\Models\Comment[] $comments */
   use App\Helpers\MarkdownHelper;
 @endphp
-@push('styles')
-  @vite('resources/sass/_activity_chart.scss')
-@endpush
 @section('content')
   <div class="row">
     <div class="col-md-8">

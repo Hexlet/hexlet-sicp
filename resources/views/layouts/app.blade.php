@@ -45,7 +45,7 @@
   @endif
 
   @include('layouts._footer')
-  @vite('resources/js/app.js')
+  @vite('resources/js/bootstrap.js')
   @vite('resources/js/hljs.js')
   @vite('resources/js/custom.js')
   @stack('scripts')

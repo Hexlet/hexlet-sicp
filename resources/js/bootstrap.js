@@ -5,10 +5,6 @@ import axios from 'axios'
 import ujs from '@rails/ujs'
 import correctionListener from './correction'
 
-import.meta.glob([
-  '../assets/images/**',
-])
-
 window.bootstrap = bootstrap
 window.$ = $
 window.jQuery = $

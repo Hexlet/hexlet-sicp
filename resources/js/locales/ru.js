@@ -26,5 +26,21 @@ export default {
       success: 'Вы молодец! Не забудьте сохранить решение.',
       failure: 'Не удалось проверить решение.',
     },
+    layout: {
+      save: 'Сохранить',
+    },
+    account: {
+      profile: 'Профиль',
+      account: 'Аккаунт',
+      settings: 'Настройки',
+      account_updated: 'Аккаунт успешно обновлен',
+      go_to_gravatar: 'Перейти на Gravatar.com',
+    },
+    settings: {
+      profile: {
+        name: 'Имя',
+        github_name: 'Имя на GitHub',
+      },
+    },
   },
 }

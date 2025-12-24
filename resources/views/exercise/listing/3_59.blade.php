@@ -1,5 +1,5 @@
 <p>{{ __('exercises/3_59.description.1') }}</p>
-<img class="img-fluid" src="{{ Vite::asset("resources/assets/images/exercises/3_59_1.gif") }}" alt="3.59_1">
+<img class="img-fluid" src="{{ asset("images/exercises/3_59_1.gif") }}" alt="3.59_1">
 <p>{{ __('exercises/3_59.description.2') }}
 <code>a₀ + a₁x + a₂x² + a₃x³ + ···</code>
 {{ __('exercises/3_59.description.3') }}
@@ -10,7 +10,7 @@
 <code>a₀ + a₁x + a₂x² + a₃x³ + ···</code>
 {{ __('exercises/3_59.description.6') }}
 </p>
-<img class="img-fluid" src="{{ Vite::asset("resources/assets/images/exercises/3_59_2.gif") }}" alt="3.59_2">
+<img class="img-fluid" src="{{ asset("images/exercises/3_59_2.gif") }}" alt="3.59_2">
 <p>{{ __('exercises/3_59.description.7') }}
 <code>c</code>
 {{ __('exercises/3_59.description.8') }}

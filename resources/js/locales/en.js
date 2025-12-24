@@ -26,5 +26,21 @@ export default {
       success: 'Great job! Don\'t forget to save your solution.',
       failure: 'Failed to verify the solution.',
     },
+    layout: {
+      save: 'Save Changes',
+    },
+    account: {
+      profile: 'Profile',
+      account: 'Account',
+      settings: 'Settings',
+      account_updated: 'Account updated successfully',
+      go_to_gravatar: 'Go to Gravatar.com',
+    },
+    settings: {
+      profile: {
+        name: 'Full Name',
+        github_name: 'GitHub Username',
+      },
+    },
   },
 }

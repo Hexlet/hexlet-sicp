@@ -7,8 +7,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Auth;
-use Illuminate\View\View;
 use Illuminate\Validation\Rule;
+use Inertia\Response;
 
 class ProfileController extends Controller
 {
@@ -17,11 +17,14 @@ class ProfileController extends Controller
         $this->middleware('auth');
     }
 
-    public function index(): View
+    public function index(): Response
     {
         $user = auth()->user();
 
-        return view('settings.profile.index', compact('user'));
+        return $this->inertia([
+            'user' => $user,
+            'profileImage' => $user->present()->getProfileImageLink(),
+        ]);
     }
 
     public function update(Request $request): RedirectResponse
@@ -44,12 +47,10 @@ class ProfileController extends Controller
         $user->name = $request->get('name');
         $user->github_name = $request->get('github_name');
 
-        if ($user->save()) {
-            flash()->success(__('account.account_updated'));
-        } else {
-            flash()->error(__('layout.flash.error'));
-        }
+        $flash = $user->save()
+            ? ['success' => __('account.account_updated')]
+            : ['error' => __('layout.flash.error')];
 
-        return redirect()->route('settings.profile.index');
+        return redirect()->route('settings.profile.index')->with($flash);
     }
 }
