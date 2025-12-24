@@ -94,7 +94,7 @@ class AnalyticsExporter
         }
 
         $rows = $collection->map(
-            static fn ($model) => $model->getAttributes()
+            static fn($model) => $model->getAttributes()
         )->toArray();
 
         $csv->insertOne(array_keys($rows[0]));
