@@ -1,47 +1,42 @@
 import { defineConfig } from 'vite';
 import laravel from 'laravel-vite-plugin';
-import react from '@vitejs/plugin-react';
+import path from 'path';
 
 export default defineConfig({
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, './resources/js'),
+    },
+  },
   server: {
     host: '0.0.0.0',
     hmr: {
       host: 'localhost',
     },
   },
+  esbuild: {
+    jsx: 'automatic',
+    jsxImportSource: 'react',
+  },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        api: 'modern-compiler',
+        silenceDeprecations: ['import', 'global-builtin', 'color-functions', 'if-function'],
+      },
+    },
+  },
   plugins: [
-    react(),
     laravel({
       input: [
-        'resources/js/app.js',
+        'resources/js/app.jsx',
+        'resources/js/bootstrap.js',
         'resources/js/custom.js',
         'resources/js/hljs.js',
         'resources/js/editor.js',
         'resources/sass/app.scss',
-        'resources/sass/_activity_chart.scss',
-        'resources/sass/_custom.scss',
       ],
       refresh: true,
     }),
   ],
-  optimizeDeps: {
-    exclude: [
-      'refractor',
-      'react-syntax-highlighter'
-    ]
-  },
-  build: {
-    rollupOptions: {
-      external: [
-        /^refractor\/lang\/.*/,
-        /^refractor\/lib\/.*/,
-        'refractor/lang/abap.js',
-        'refractor/lang/ada.js',
-        'refractor/lang/abnf.js',
-        'refractor/lang/actionscript.js'
-      ]
-    },
-    outDir: 'public/build',
-    emptyOutDir: false,
-  },
 });

@@ -12,1100 +12,1235 @@
 			"name": "unauthorised_actions",
 			"item": [
 				{
-					"name": "main_ru",
-					"event": [
+					"name": "chapters",
+					"item": [
 						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {",
-									"    pm.response.to.have.status(200);",
-									"});"
-								],
-								"type": "text/javascript",
-								"packages": {},
-								"requests": {}
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{sicp}}ru",
-							"host": [
-								"{{sicp}}ru"
-							],
-							"query": [
+							"name": "chapters_ru",
+							"event": [
 								{
-									"key": "filter",
-									"value": "",
-									"description": "require login; values: all, month, week",
-									"disabled": true
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
 								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "main_en",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {",
-									"    pm.response.to.have.status(200);",
-									"});"
-								],
-								"type": "text/javascript",
-								"packages": {},
-								"requests": {}
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{sicp}}en?filter",
-							"host": [
-								"{{sicp}}en"
 							],
-							"query": [
-								{
-									"key": "filter",
-									"value": null,
-									"description": "require login; values: all, month, week"
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{sicp}}ru/chapters",
+									"host": [
+										"{{sicp}}ru"
+									],
+									"path": [
+										"chapters"
+									]
 								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "chapters_ru",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {",
-									"    pm.response.to.have.status(200);",
-									"});"
-								],
-								"type": "text/javascript",
-								"packages": {},
-								"requests": {}
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{sicp}}ru/chapters",
-							"host": [
-								"{{sicp}}ru"
-							],
-							"path": [
-								"chapters"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "chapters_en",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {",
-									"    pm.response.to.have.status(200);",
-									"});"
-								],
-								"type": "text/javascript",
-								"packages": {},
-								"requests": {}
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{sicp}}en/chapters",
-							"host": [
-								"{{sicp}}en"
-							],
-							"path": [
-								"chapters"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "chapter_ru",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"let id = parseInt(pm.environment.get(\"chapterId\") || 1, 10);",
-									"",
-									"// Если ещё не дошли до 129 — идём дальше",
-									"if (id < 129) {",
-									"    pm.environment.set(\"chapterId\", id + 1);",
-									"    postman.setNextRequest(pm.info.requestName);",
-									"} else {",
-									"    // Остановить цикл после 129",
-									"    postman.setNextRequest(null);",
-									"}",
-									"",
-									"pm.test(\"Status code is 200\", function () {",
-									"    pm.response.to.have.status(200);",
-									"});"
-								],
-								"type": "text/javascript",
-								"packages": {},
-								"requests": {}
-							}
+							},
+							"response": []
 						},
 						{
-							"listen": "prerequest",
-							"script": {
-								"exec": [
-									"// Берём текущий id или начинаем с 1",
-									"let id = parseInt(pm.environment.get(\"chapterId\") || 1, 10);",
-									"",
-									"// Подставляем id вместо :id в URL",
-									"let newUrl = pm.request.url.toString().replace(\":id\", id);",
-									"pm.variables.set(\"resolvedUrl\", newUrl); ",
-									"pm.request.url = newUrl;"
-								],
-								"type": "text/javascript",
-								"packages": {},
-								"requests": {}
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{sicp}}ru/chapters/{{chapterId}}",
-							"host": [
-								"{{sicp}}ru"
+							"name": "chapters_en",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
 							],
-							"path": [
-								"chapters",
-								"{{chapterId}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "chapter_en",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"let id = parseInt(pm.environment.get(\"chapterId\") || 1, 10);",
-									"",
-									"// Если ещё не дошли до 129 — идём дальше",
-									"if (id < 129) {",
-									"    pm.environment.set(\"chapterId\", id + 1);",
-									"    postman.setNextRequest(pm.info.requestName);",
-									"} else {",
-									"    // Остановить цикл после 129",
-									"    postman.setNextRequest(null);",
-									"}",
-									"",
-									"pm.test(\"Status code is 200\", function () {",
-									"    pm.response.to.have.status(200);",
-									"});"
-								],
-								"type": "text/javascript",
-								"packages": {},
-								"requests": {}
-							}
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{sicp}}en/chapters",
+									"host": [
+										"{{sicp}}en"
+									],
+									"path": [
+										"chapters"
+									]
+								}
+							},
+							"response": []
 						},
 						{
-							"listen": "prerequest",
-							"script": {
-								"exec": [
-									"// Берём текущий id или начинаем с 1",
-									"let id = parseInt(pm.environment.get(\"chapterId\") || 1, 10);",
-									"",
-									"// Подставляем id вместо :id в URL",
-									"let newUrl = pm.request.url.toString().replace(\":id\", id);",
-									"pm.variables.set(\"resolvedUrl\", newUrl); ",
-									"pm.request.url = newUrl;"
-								],
-								"type": "text/javascript",
-								"packages": {},
-								"requests": {}
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{sicp}}en/chapters/{{chapterId}}",
-							"host": [
-								"{{sicp}}en"
+							"name": "chapter_ru",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"let id = parseInt(pm.environment.get(\"chapterId\") || 1, 10);",
+											"",
+											"// Если ещё не дошли до 129 — идём дальше",
+											"if (id < 129) {",
+											"    pm.environment.set(\"chapterId\", id + 1);",
+											"    postman.setNextRequest(pm.info.requestName);",
+											"} else {",
+											"    // Остановить цикл после 129",
+											"    postman.setNextRequest(null);",
+											"}",
+											"",
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"// Берём текущий id или начинаем с 1",
+											"let id = parseInt(pm.environment.get(\"chapterId\") || 1, 10);",
+											"",
+											"// Подставляем id вместо :id в URL",
+											"let newUrl = pm.request.url.toString().replace(\":id\", id);",
+											"pm.variables.set(\"resolvedUrl\", newUrl); ",
+											"pm.request.url = newUrl;"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
 							],
-							"path": [
-								"chapters",
-								"{{chapterId}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "exercises_ru",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {",
-									"    pm.response.to.have.status(200);",
-									"});"
-								],
-								"type": "text/javascript",
-								"packages": {},
-								"requests": {}
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{sicp}}ru/exercises",
-							"host": [
-								"{{sicp}}ru"
-							],
-							"path": [
-								"exercises"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "exercises_en",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {",
-									"    pm.response.to.have.status(200);",
-									"});"
-								],
-								"type": "text/javascript",
-								"packages": {},
-								"requests": {}
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{sicp}}en/exercises",
-							"host": [
-								"{{sicp}}en"
-							],
-							"path": [
-								"exercises"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "exercise_ru",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"let id = parseInt(pm.environment.get(\"exerciseId\") || 1, 10);",
-									"",
-									"// Если ещё не дошли до 356 — идём дальше",
-									"if (id < 356) {",
-									"    pm.environment.set(\"exerciseId\", id + 1);",
-									"    postman.setNextRequest(pm.info.requestName);",
-									"} else {",
-									"    // Остановить цикл после 356",
-									"    postman.setNextRequest(null);",
-									"}",
-									"",
-									"pm.test(\"Status code is 200\", function () {",
-									"    pm.response.to.have.status(200);",
-									"});"
-								],
-								"type": "text/javascript",
-								"packages": {},
-								"requests": {}
-							}
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{sicp}}ru/chapters/{{chapterId}}",
+									"host": [
+										"{{sicp}}ru"
+									],
+									"path": [
+										"chapters",
+										"{{chapterId}}"
+									]
+								}
+							},
+							"response": []
 						},
 						{
-							"listen": "prerequest",
-							"script": {
-								"exec": [
-									"// Берём текущий id или начинаем с 1",
-									"let id = parseInt(pm.environment.get(\"exerciseId\") || 1, 10);",
-									"",
-									"// Подставляем id вместо :id в URL",
-									"let newUrl = pm.request.url.toString().replace(\":id\", id);",
-									"pm.variables.set(\"resolvedUrl\", newUrl); ",
-									"pm.request.url = newUrl;"
-								],
-								"type": "text/javascript",
-								"packages": {},
-								"requests": {}
-							}
+							"name": "chapter_en",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"let id = parseInt(pm.environment.get(\"chapterId\") || 1, 10);",
+											"",
+											"// Если ещё не дошли до 129 — идём дальше",
+											"if (id < 129) {",
+											"    pm.environment.set(\"chapterId\", id + 1);",
+											"    postman.setNextRequest(pm.info.requestName);",
+											"} else {",
+											"    // Остановить цикл после 129",
+											"    postman.setNextRequest(null);",
+											"}",
+											"",
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"// Берём текущий id или начинаем с 1",
+											"let id = parseInt(pm.environment.get(\"chapterId\") || 1, 10);",
+											"",
+											"// Подставляем id вместо :id в URL",
+											"let newUrl = pm.request.url.toString().replace(\":id\", id);",
+											"pm.variables.set(\"resolvedUrl\", newUrl); ",
+											"pm.request.url = newUrl;"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{sicp}}en/chapters/{{chapterId}}",
+									"host": [
+										"{{sicp}}en"
+									],
+									"path": [
+										"chapters",
+										"{{chapterId}}"
+									]
+								}
+							},
+							"response": []
 						}
 					],
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{sicp}}ru/exercises/{{exerciseId}}",
-							"host": [
-								"{{sicp}}ru"
-							],
-							"path": [
-								"exercises",
-								"{{exerciseId}}"
-							]
-						}
-					},
-					"response": []
+					"description": "Доступность Оглавления и отдельных глав книги"
 				},
 				{
-					"name": "exercise_en",
-					"event": [
+					"name": "exercises",
+					"item": [
 						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"let id = parseInt(pm.environment.get(\"exerciseId\") || 1, 10);",
-									"",
-									"// Если ещё не дошли до 356 — идём дальше",
-									"if (id < 356) {",
-									"    pm.environment.set(\"exerciseId\", id + 1);",
-									"    postman.setNextRequest(pm.info.requestName);",
-									"} else {",
-									"    // Остановить цикл после 356",
-									"    postman.setNextRequest(null);",
-									"}",
-									"",
-									"pm.test(\"Status code is 200\", function () {",
-									"    pm.response.to.have.status(200);",
-									"});"
-								],
-								"type": "text/javascript",
-								"packages": {},
-								"requests": {}
-							}
+							"name": "exercises_ru",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{sicp}}ru/exercises",
+									"host": [
+										"{{sicp}}ru"
+									],
+									"path": [
+										"exercises"
+									]
+								}
+							},
+							"response": []
 						},
 						{
-							"listen": "prerequest",
-							"script": {
-								"exec": [
-									"// Берём текущий id или начинаем с 1",
-									"let id = parseInt(pm.environment.get(\"exerciseId\") || 1, 10);",
-									"",
-									"// Подставляем id вместо :id в URL",
-									"let newUrl = pm.request.url.toString().replace(\":id\", id);",
-									"pm.variables.set(\"resolvedUrl\", newUrl); ",
-									"pm.request.url = newUrl;"
-								],
-								"type": "text/javascript",
-								"packages": {},
-								"requests": {}
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{sicp}}en/exercises/{{exerciseId}}",
-							"host": [
-								"{{sicp}}en"
-							],
-							"path": [
-								"exercises",
-								"{{exerciseId}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "solutions_ru",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {",
-									"    pm.response.to.have.status(200);",
-									"});"
-								],
-								"type": "text/javascript",
-								"packages": {},
-								"requests": {}
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{sicp}}ru/solutions",
-							"host": [
-								"{{sicp}}ru"
-							],
-							"path": [
-								"solutions"
-							],
-							"query": [
+							"name": "exercises_en",
+							"event": [
 								{
-									"key": "filter%5Buser.name%5D",
-									"value": "name",
-									"description": "user name",
-									"disabled": true
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{sicp}}en/exercises",
+									"host": [
+										"{{sicp}}en"
+									],
+									"path": [
+										"exercises"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "exercise_ru",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"let id = parseInt(pm.environment.get(\"exerciseId\") || 1, 10);",
+											"",
+											"// Если ещё не дошли до 356 — идём дальше",
+											"if (id < 356) {",
+											"    pm.environment.set(\"exerciseId\", id + 1);",
+											"    postman.setNextRequest(pm.info.requestName);",
+											"} else {",
+											"    // Остановить цикл после 356",
+											"    postman.setNextRequest(null);",
+											"}",
+											"",
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
 								},
 								{
-									"key": "filter%5Bexercise_id%5D",
-									"value": "5",
-									"description": "exersise id",
-									"disabled": true
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"// Берём текущий id или начинаем с 1",
+											"let id = parseInt(pm.environment.get(\"exerciseId\") || 1, 10);",
+											"",
+											"// Подставляем id вместо :id в URL",
+											"let newUrl = pm.request.url.toString().replace(\":id\", id);",
+											"pm.variables.set(\"resolvedUrl\", newUrl); ",
+											"pm.request.url = newUrl;"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{sicp}}ru/exercises/{{exerciseId}}",
+									"host": [
+										"{{sicp}}ru"
+									],
+									"path": [
+										"exercises",
+										"{{exerciseId}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "exercise_en",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"let id = parseInt(pm.environment.get(\"exerciseId\") || 1, 10);",
+											"",
+											"// Если ещё не дошли до 356 — идём дальше",
+											"if (id < 356) {",
+											"    pm.environment.set(\"exerciseId\", id + 1);",
+											"    postman.setNextRequest(pm.info.requestName);",
+											"} else {",
+											"    // Остановить цикл после 356",
+											"    postman.setNextRequest(null);",
+											"}",
+											"",
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
 								},
 								{
-									"key": "page",
-									"value": "2",
-									"description": "page number",
-									"disabled": true
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"// Берём текущий id или начинаем с 1",
+											"let id = parseInt(pm.environment.get(\"exerciseId\") || 1, 10);",
+											"",
+											"// Подставляем id вместо :id в URL",
+											"let newUrl = pm.request.url.toString().replace(\":id\", id);",
+											"pm.variables.set(\"resolvedUrl\", newUrl); ",
+											"pm.request.url = newUrl;"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
 								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "solutions_en",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {",
-									"    pm.response.to.have.status(200);",
-									"});"
-								],
-								"type": "text/javascript",
-								"packages": {},
-								"requests": {}
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{sicp}}en/solutions",
-							"host": [
-								"{{sicp}}en"
 							],
-							"path": [
-								"solutions"
-							],
-							"query": [
-								{
-									"key": "filter%5Buser.name%5D",
-									"value": "name",
-									"description": "user name",
-									"disabled": true
-								},
-								{
-									"key": "filter%5Bexercise_id%5D",
-									"value": "5",
-									"description": "exersise id",
-									"disabled": true
-								},
-								{
-									"key": "page",
-									"value": "2",
-									"description": "page number",
-									"disabled": true
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{sicp}}en/exercises/{{exerciseId}}",
+									"host": [
+										"{{sicp}}en"
+									],
+									"path": [
+										"exercises",
+										"{{exerciseId}}"
+									]
 								}
-							]
+							},
+							"response": []
 						}
-					},
-					"response": []
+					]
 				},
 				{
-					"name": "top_ru",
-					"event": [
+					"name": "auth",
+					"item": [
 						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {",
-									"    pm.response.to.have.status(200);",
-									"});"
-								],
-								"type": "text/javascript",
-								"packages": {},
-								"requests": {}
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{sicp}}ru/ratings/top",
-							"host": [
-								"{{sicp}}ru"
-							],
-							"path": [
-								"ratings",
-								"top"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "top_en",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {",
-									"    pm.response.to.have.status(200);",
-									"});"
-								],
-								"type": "text/javascript",
-								"packages": {},
-								"requests": {}
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{sicp}}en/ratings/top",
-							"host": [
-								"{{sicp}}en"
-							],
-							"path": [
-								"ratings",
-								"top"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "comments_top_ru",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {",
-									"    pm.response.to.have.status(200);",
-									"});"
-								],
-								"type": "text/javascript",
-								"packages": {},
-								"requests": {}
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{sicp}}ru/ratings/comments_top",
-							"host": [
-								"{{sicp}}ru"
-							],
-							"path": [
-								"ratings",
-								"comments_top"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "comments_top_en",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {",
-									"    pm.response.to.have.status(200);",
-									"});"
-								],
-								"type": "text/javascript",
-								"packages": {},
-								"requests": {}
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{sicp}}en/ratings/comments_top",
-							"host": [
-								"{{sicp}}en"
-							],
-							"path": [
-								"ratings",
-								"comments_top"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "user`s_comments_ru",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {",
-									"    pm.response.to.have.status(200);",
-									"});"
-								],
-								"type": "text/javascript",
-								"packages": {},
-								"requests": {}
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{sicp}}ru/users/:id/comments",
-							"host": [
-								"{{sicp}}ru"
-							],
-							"path": [
-								"users",
-								":id",
-								"comments"
-							],
-							"variable": [
+							"name": "login_ru",
+							"event": [
 								{
-									"key": "id",
-									"value": "1"
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
 								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "user`s_comments_en",
-					"event": [
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{sicp}}ru/login",
+									"host": [
+										"{{sicp}}ru"
+									],
+									"path": [
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
 						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {",
-									"    pm.response.to.have.status(200);",
-									"});"
-								],
-								"type": "text/javascript",
-								"packages": {},
-								"requests": {}
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{sicp}}en/users/:id/comments",
-							"host": [
-								"{{sicp}}en"
-							],
-							"path": [
-								"users",
-								":id",
-								"comments"
-							],
-							"variable": [
+							"name": "login_en",
+							"event": [
 								{
-									"key": "id",
-									"value": "1"
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
 								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "register_ru",
-					"event": [
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{sicp}}en/login",
+									"host": [
+										"{{sicp}}en"
+									],
+									"path": [
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
 						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {",
-									"    pm.response.to.have.status(200);",
-									"});"
-								],
-								"type": "text/javascript",
-								"packages": {},
-								"requests": {}
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{sicp}}ru/register",
-							"host": [
-								"{{sicp}}ru"
-							],
-							"path": [
-								"register"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "register_en",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {",
-									"    pm.response.to.have.status(200);",
-									"});"
-								],
-								"type": "text/javascript",
-								"packages": {},
-								"requests": {}
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{sicp}}en/register",
-							"host": [
-								"{{sicp}}en"
-							],
-							"path": [
-								"register"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "login_ru",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {",
-									"    pm.response.to.have.status(200);",
-									"});"
-								],
-								"type": "text/javascript",
-								"packages": {},
-								"requests": {}
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{sicp}}ru/login",
-							"host": [
-								"{{sicp}}ru"
-							],
-							"path": [
-								"login"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "login_en",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {",
-									"    pm.response.to.have.status(200);",
-									"});"
-								],
-								"type": "text/javascript",
-								"packages": {},
-								"requests": {}
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{sicp}}en/login",
-							"host": [
-								"{{sicp}}en"
-							],
-							"path": [
-								"login"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "about_ru",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {",
-									"    pm.response.to.have.status(200);",
-									"});"
-								],
-								"type": "text/javascript",
-								"packages": {},
-								"requests": {}
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{sicp}}ru/pages/about",
-							"host": [
-								"{{sicp}}ru"
-							],
-							"path": [
-								"pages",
-								"about"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "about_en",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {",
-									"    pm.response.to.have.status(200);",
-									"});"
-								],
-								"type": "text/javascript",
-								"packages": {},
-								"requests": {}
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{sicp}}en/pages/about",
-							"host": [
-								"{{sicp}}en"
-							],
-							"path": [
-								"pages",
-								"about"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "user_id_ru",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {",
-									"    pm.response.to.have.status(200);",
-									"});"
-								],
-								"type": "text/javascript",
-								"packages": {},
-								"requests": {}
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{sicp}}ru/users/:id",
-							"host": [
-								"{{sicp}}ru"
-							],
-							"path": [
-								"users",
-								":id"
-							],
-							"variable": [
+							"name": "register_ru",
+							"event": [
 								{
-									"key": "id",
-									"value": "1"
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
 								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "user_id_en",
-					"event": [
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{sicp}}ru/register",
+									"host": [
+										"{{sicp}}ru"
+									],
+									"path": [
+										"register"
+									]
+								}
+							},
+							"response": []
+						},
 						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {",
-									"    pm.response.to.have.status(200);",
-									"});"
-								],
-								"type": "text/javascript",
-								"packages": {},
-								"requests": {}
-							}
+							"name": "register_en",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{sicp}}en/register",
+									"host": [
+										"{{sicp}}en"
+									],
+									"path": [
+										"register"
+									]
+								}
+							},
+							"response": []
 						}
 					],
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{sicp}}en/users/:id",
-							"host": [
-								"{{sicp}}en"
-							],
-							"path": [
-								"users",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "1"
-								}
-							]
-						}
-					},
-					"response": []
+					"description": "Доступность страниц Авторизации и Регистрации (без прочих действий)"
 				},
 				{
-					"name": "solutions_id_ru",
-					"event": [
+					"name": "top",
+					"item": [
 						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {",
-									"    pm.response.to.have.status(200);",
-									"});"
-								],
-								"type": "text/javascript",
-								"packages": {},
-								"requests": {}
-							}
+							"name": "top_ru",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{sicp}}ru/ratings/top",
+									"host": [
+										"{{sicp}}ru"
+									],
+									"path": [
+										"ratings",
+										"top"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "top_en",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{sicp}}en/ratings/top",
+									"host": [
+										"{{sicp}}en"
+									],
+									"path": [
+										"ratings",
+										"top"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "comments_top_ru",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{sicp}}ru/ratings/comments_top",
+									"host": [
+										"{{sicp}}ru"
+									],
+									"path": [
+										"ratings",
+										"comments_top"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "comments_top_en",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{sicp}}en/ratings/comments_top",
+									"host": [
+										"{{sicp}}en"
+									],
+									"path": [
+										"ratings",
+										"comments_top"
+									]
+								}
+							},
+							"response": []
 						}
 					],
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{sicp}}ru/solutions/:id",
-							"host": [
-								"{{sicp}}ru"
-							],
-							"path": [
-								"solutions",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "1"
-								}
-							]
-						}
-					},
-					"response": []
+					"description": "Топ рейтинга по количеству заработанных баллов и оставленных комментариев."
 				},
 				{
-					"name": "solutions_id_en",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{sicp}}en/solutions/:id",
-							"host": [
-								"{{sicp}}en"
-							],
-							"path": [
-								"solutions",
-								":id"
-							],
-							"variable": [
+					"name": "solutions",
+					"item": [
+						{
+							"name": "solutions_ru",
+							"event": [
 								{
-									"key": "id",
-									"value": "1"
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
 								}
-							]
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{sicp}}ru/solutions",
+									"host": [
+										"{{sicp}}ru"
+									],
+									"path": [
+										"solutions"
+									],
+									"query": [
+										{
+											"key": "filter%5Buser.name%5D",
+											"value": "name",
+											"description": "user name",
+											"disabled": true
+										},
+										{
+											"key": "filter%5Bexercise_id%5D",
+											"value": "5",
+											"description": "exersise id",
+											"disabled": true
+										},
+										{
+											"key": "page",
+											"value": "2",
+											"description": "page number",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "solutions_en",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{sicp}}en/solutions",
+									"host": [
+										"{{sicp}}en"
+									],
+									"path": [
+										"solutions"
+									],
+									"query": [
+										{
+											"key": "filter%5Buser.name%5D",
+											"value": "name",
+											"description": "user name",
+											"disabled": true
+										},
+										{
+											"key": "filter%5Bexercise_id%5D",
+											"value": "5",
+											"description": "exersise id",
+											"disabled": true
+										},
+										{
+											"key": "page",
+											"value": "2",
+											"description": "page number",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "solutions_id_ru",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{sicp}}ru/solutions/:id",
+									"host": [
+										"{{sicp}}ru"
+									],
+									"path": [
+										"solutions",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "solutions_id_en",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{sicp}}en/solutions/:id",
+									"host": [
+										"{{sicp}}en"
+									],
+									"path": [
+										"solutions",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
 						}
-					},
-					"response": []
+					],
+					"description": "Решения упражнений общие и отдельного пользователя (по id)"
+				},
+				{
+					"name": "main",
+					"item": [
+						{
+							"name": "main_ru",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{sicp}}ru",
+									"host": [
+										"{{sicp}}ru"
+									],
+									"query": [
+										{
+											"key": "filter",
+											"value": "",
+											"description": "require login; values: all, month, week",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "main_en",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{sicp}}en?filter",
+									"host": [
+										"{{sicp}}en"
+									],
+									"query": [
+										{
+											"key": "filter",
+											"value": null,
+											"description": "require login; values: all, month, week"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "Доступность Главной (без авторизации)"
+				},
+				{
+					"name": "comments",
+					"item": [
+						{
+							"name": "user`s_comments_ru",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{sicp}}ru/users/:id/comments",
+									"host": [
+										"{{sicp}}ru"
+									],
+									"path": [
+										"users",
+										":id",
+										"comments"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "user`s_comments_en",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{sicp}}en/users/:id/comments",
+									"host": [
+										"{{sicp}}en"
+									],
+									"path": [
+										"users",
+										":id",
+										"comments"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "neg_comments_ru",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 403\", function () {",
+											"    pm.response.to.have.status(403);",
+											"});",
+											"",
+											"pm.test(\"Body contains forbidden message\", function () {",
+											"    const body = pm.response.text();",
+											"",
+											"    pm.expect(",
+											"        body.includes(\"403\") ||",
+											"        body.toLowerCase().includes(\"forbidden\") ||",
+											"        body.toLowerCase().includes(\"unauthorized\")",
+											"    ).to.be.true;",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{sicp}}ru/comments",
+									"host": [
+										"{{sicp}}ru"
+									],
+									"path": [
+										"comments"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "neg_comments_en",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 403\", function () {",
+											"    pm.response.to.have.status(403);",
+											"});",
+											"",
+											"pm.test(\"Body contains forbidden message\", function () {",
+											"    const body = pm.response.text();",
+											"",
+											"    pm.expect(",
+											"        body.includes(\"403\") ||",
+											"        body.toLowerCase().includes(\"forbidden\") ||",
+											"        body.toLowerCase().includes(\"unauthorized\")",
+											"    ).to.be.true;",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{sicp}}en/comments",
+									"host": [
+										"{{sicp}}en"
+									],
+									"path": [
+										"comments"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "Комментарии пользователя (выбрать по id) и проверить недоступность страницы Комментарии для невторизованного пользователя"
+				},
+				{
+					"name": "about",
+					"item": [
+						{
+							"name": "about_ru",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{sicp}}ru/pages/about",
+									"host": [
+										"{{sicp}}ru"
+									],
+									"path": [
+										"pages",
+										"about"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "about_en",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{sicp}}en/pages/about",
+									"host": [
+										"{{sicp}}en"
+									],
+									"path": [
+										"pages",
+										"about"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "user id",
+					"item": [
+						{
+							"name": "user_id_ru",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{sicp}}ru/users/:id",
+									"host": [
+										"{{sicp}}ru"
+									],
+									"path": [
+										"users",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "user_id_en",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{sicp}}en/users/:id",
+									"host": [
+										"{{sicp}}en"
+									],
+									"path": [
+										"users",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
 				}
 			],
 			"description": "Availability tests that do not require user\\`s authorization. The tests which require one are in authorised_actions folder (below).\n\n__________\n\nТесты доступности страниц, не требующих авторизации пользователя. Тесты, в которых требуется авторизация пользователя в папке authorised_actions.\n\nВ тестах на доступность глав и упражнений написан скрипт, позволяющий проверить доступность ВСЕХ страниц с главами и упражнениями."
@@ -1114,1191 +1249,1333 @@
 			"name": "authorised_actions",
 			"item": [
 				{
-					"name": "login_ru",
-					"event": [
+					"name": "auth",
+					"item": [
 						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"// Извлекаем CSRF-токен из cookie",
-									"const csrfToken = pm.cookies.get('XSRF-TOKEN');",
-									"pm.environment.set('csrfToken', csrfToken);",
-									"",
-									"pm.test(\"Status code is 200\", function () {",
-									"    pm.response.to.have.status(200);",
-									"});"
-								],
-								"type": "text/javascript",
-								"packages": {},
-								"requests": {}
-							}
-						}
-					],
-					"request": {
-						"auth": {
-							"type": "noauth"
-						},
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{sicp}}ru/login",
-							"host": [
-								"{{sicp}}ru"
+							"name": "login_ru",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// Извлекаем CSRF-токен из cookie",
+											"const csrfToken = pm.cookies.get('XSRF-TOKEN');",
+											"pm.environment.set('csrfToken', csrfToken);",
+											"",
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
 							],
-							"path": [
-								"login"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "login_en",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"// Извлекаем CSRF-токен из cookie",
-									"const csrfToken = pm.cookies.get('XSRF-TOKEN');",
-									"pm.environment.set('csrfToken', csrfToken);",
-									"",
-									"pm.test(\"Status code is 200\", function () {",
-									"    pm.response.to.have.status(200);",
-									"});"
-								],
-								"type": "text/javascript",
-								"packages": {},
-								"requests": {}
-							}
-						}
-					],
-					"request": {
-						"auth": {
-							"type": "noauth"
-						},
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{sicp}}en/login",
-							"host": [
-								"{{sicp}}en"
-							],
-							"path": [
-								"login"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "POST_login_ru",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {",
-									"    pm.response.to.have.status(200);",
-									"});"
-								],
-								"type": "text/javascript",
-								"packages": {},
-								"requests": {}
-							}
-						}
-					],
-					"request": {
-						"auth": {
-							"type": "noauth"
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"type": "text"
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{sicp}}ru/login",
+									"host": [
+										"{{sicp}}ru"
+									],
+									"path": [
+										"login"
+									]
+								}
 							},
-							{
-								"key": "X-XSRF-TOKEN",
-								"value": "{{csrfToken}}",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"email\": \"test@test.com\",\n  \"password\": \"12345678\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
+							"response": []
 						},
-						"url": {
-							"raw": "{{sicp}}ru/login",
-							"host": [
-								"{{sicp}}ru"
-							],
-							"path": [
-								"login"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "POST_login_en",
-					"event": [
 						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {",
-									"    pm.response.to.have.status(200);",
-									"});"
-								],
-								"type": "text/javascript",
-								"packages": {},
-								"requests": {}
-							}
-						}
-					],
-					"request": {
-						"auth": {
-							"type": "noauth"
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"type": "text"
+							"name": "login_en",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// Извлекаем CSRF-токен из cookie",
+											"const csrfToken = pm.cookies.get('XSRF-TOKEN');",
+											"pm.environment.set('csrfToken', csrfToken);",
+											"",
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{sicp}}en/login",
+									"host": [
+										"{{sicp}}en"
+									],
+									"path": [
+										"login"
+									]
+								}
 							},
-							{
-								"key": "X-XSRF-TOKEN",
-								"value": "{{csrfToken}}",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"email\": \"test@test.com\",\n  \"password\": \"12345678\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
+							"response": []
 						},
-						"url": {
-							"raw": "{{sicp}}en/login",
-							"host": [
-								"{{sicp}}en"
-							],
-							"path": [
-								"login"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "comments_ru",
-					"event": [
 						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {",
-									"    pm.response.to.have.status(200);",
-									"});"
-								],
-								"type": "text/javascript",
-								"packages": {},
-								"requests": {}
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{sicp}}ru/comments",
-							"host": [
-								"{{sicp}}ru"
-							],
-							"path": [
-								"comments"
-							],
-							"query": [
+							"name": "POST_login_ru",
+							"event": [
 								{
-									"key": "page",
-									"value": "2",
-									"description": "page number",
-									"disabled": true
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
 								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "comments_en",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {",
-									"    pm.response.to.have.status(200);",
-									"});"
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "X-XSRF-TOKEN",
+										"value": "{{csrfToken}}",
+										"type": "text"
+									}
 								],
-								"type": "text/javascript",
-								"packages": {},
-								"requests": {}
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{sicp}}en/comments",
-							"host": [
-								"{{sicp}}en"
-							],
-							"path": [
-								"comments"
-							],
-							"query": [
-								{
-									"key": "page",
-									"value": "2",
-									"description": "page number",
-									"disabled": true
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"email\": \"test@test.com\",\n  \"password\": \"12345678\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{sicp}}ru/login",
+									"host": [
+										"{{sicp}}ru"
+									],
+									"path": [
+										"login"
+									]
 								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "log_ru",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {",
-									"    pm.response.to.have.status(200);",
-									"});"
-								],
-								"type": "text/javascript",
-								"packages": {},
-								"requests": {}
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{sicp}}ru/log",
-							"host": [
-								"{{sicp}}ru"
-							],
-							"path": [
-								"log"
-							],
-							"query": [
-								{
-									"key": "page",
-									"value": "2",
-									"description": "page number",
-									"disabled": true
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "log_en",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {",
-									"    pm.response.to.have.status(200);",
-									"});"
-								],
-								"type": "text/javascript",
-								"packages": {},
-								"requests": {}
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{sicp}}en/log",
-							"host": [
-								"{{sicp}}en"
-							],
-							"path": [
-								"log"
-							],
-							"query": [
-								{
-									"key": "page",
-									"value": "2",
-									"description": "page number",
-									"disabled": true
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "my_progress_ru",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {",
-									"    pm.response.to.have.status(200);",
-									"});"
-								],
-								"type": "text/javascript",
-								"packages": {},
-								"requests": {}
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{sicp}}ru/my",
-							"host": [
-								"{{sicp}}ru"
-							],
-							"path": [
-								"my"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "my_progress_en",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {",
-									"    pm.response.to.have.status(200);",
-									"});"
-								],
-								"type": "text/javascript",
-								"packages": {},
-								"requests": {}
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{sicp}}en/my",
-							"host": [
-								"{{sicp}}en"
-							],
-							"path": [
-								"my"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "my_solutions_ru",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {",
-									"    pm.response.to.have.status(200);",
-									"});"
-								],
-								"type": "text/javascript",
-								"packages": {},
-								"requests": {}
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{sicp}}ru/my/solutions",
-							"host": [
-								"{{sicp}}ru"
-							],
-							"path": [
-								"my",
-								"solutions"
-							],
-							"query": [
-								{
-									"key": "page",
-									"value": "1",
-									"description": "page number",
-									"disabled": true
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "my_solutions_en",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {",
-									"    pm.response.to.have.status(200);",
-									"});"
-								],
-								"type": "text/javascript",
-								"packages": {},
-								"requests": {}
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{sicp}}en/my/solutions",
-							"host": [
-								"{{sicp}}en"
-							],
-							"path": [
-								"my",
-								"solutions"
-							],
-							"query": [
-								{
-									"key": "page",
-									"value": "1",
-									"description": "page number",
-									"disabled": true
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "settings_account_ru",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {",
-									"    pm.response.to.have.status(200);",
-									"});"
-								],
-								"type": "text/javascript",
-								"packages": {},
-								"requests": {}
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{sicp}}ru/settings/account",
-							"host": [
-								"{{sicp}}ru"
-							],
-							"path": [
-								"settings",
-								"account"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "settings_account_en",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {",
-									"    pm.response.to.have.status(200);",
-									"});"
-								],
-								"type": "text/javascript",
-								"packages": {},
-								"requests": {}
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{sicp}}en/settings/account",
-							"host": [
-								"{{sicp}}en"
-							],
-							"path": [
-								"settings",
-								"account"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "settings_profile_ru",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {",
-									"    pm.response.to.have.status(200);",
-									"});"
-								],
-								"type": "text/javascript",
-								"packages": {},
-								"requests": {}
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{sicp}}ru/settings/profile",
-							"host": [
-								"{{sicp}}ru"
-							],
-							"path": [
-								"settings",
-								"profile"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "settings_profile_en",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {",
-									"    pm.response.to.have.status(200);",
-									"});"
-								],
-								"type": "text/javascript",
-								"packages": {},
-								"requests": {}
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{sicp}}en/settings/profile",
-							"host": [
-								"{{sicp}}en"
-							],
-							"path": [
-								"settings",
-								"profile"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "logout_ru",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Logout OK (Laravel 302/200/419 check)\", function () {",
-									"    const code = pm.response.code;",
-									"    pm.expect([200, 302, 204]).to.include(code);",
-									"});"
-								],
-								"type": "text/javascript",
-								"packages": {},
-								"requests": {}
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "X-XSRF-TOKEN",
-								"value": "{{csrfToken}}",
-								"type": "text"
 							},
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
+							"response": []
 						},
-						"url": {
-							"raw": "{{sicp}}ru/logout",
-							"host": [
-								"{{sicp}}ru"
-							],
-							"path": [
-								"logout"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "logout_en",
-					"event": [
 						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Logout OK (Laravel 302/200/419 check)\", function () {",
-									"    const code = pm.response.code;",
-									"    pm.expect([200, 302, 204]).to.include(code);",
-									"});"
+							"name": "POST_login_en",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "X-XSRF-TOKEN",
+										"value": "{{csrfToken}}",
+										"type": "text"
+									}
 								],
-								"type": "text/javascript",
-								"packages": {},
-								"requests": {}
-							}
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"email\": \"test@test.com\",\n  \"password\": \"12345678\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{sicp}}en/login",
+									"host": [
+										"{{sicp}}en"
+									],
+									"path": [
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "logout_ru",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Logout OK (Laravel 302/200/419 check)\", function () {",
+											"    const code = pm.response.code;",
+											"    pm.expect([200, 302, 204]).to.include(code);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-XSRF-TOKEN",
+										"value": "{{csrfToken}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{sicp}}ru/logout",
+									"host": [
+										"{{sicp}}ru"
+									],
+									"path": [
+										"logout"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "logout_en",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Logout OK (Laravel 302/200/419 check)\", function () {",
+											"    const code = pm.response.code;",
+											"    pm.expect([200, 302, 204]).to.include(code);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-XSRF-TOKEN",
+										"value": "{{csrfToken}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{sicp}}en/logout",
+									"host": [
+										"{{sicp}}en"
+									],
+									"path": [
+										"logout"
+									]
+								}
+							},
+							"response": []
 						}
 					],
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "X-XSRF-TOKEN",
-								"value": "{{csrfToken}}",
-								"type": "text"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{}",
-							"options": {
-								"raw": {
-									"language": "json"
+					"description": "Получение токена, авторизация и логаут пользователя"
+				},
+				{
+					"name": "comments",
+					"item": [
+						{
+							"name": "comments_ru",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
 								}
-							}
-						},
-						"url": {
-							"raw": "{{sicp}}en/logout",
-							"host": [
-								"{{sicp}}en"
 							],
-							"path": [
-								"logout"
-							]
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{sicp}}ru/comments",
+									"host": [
+										"{{sicp}}ru"
+									],
+									"path": [
+										"comments"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "2",
+											"description": "page number",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "comments_en",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{sicp}}en/comments",
+									"host": [
+										"{{sicp}}en"
+									],
+									"path": [
+										"comments"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "2",
+											"description": "page number",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "add_comment_ru",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// подсадить токен, который запомнит id комметнария",
+											"// --- Try to extract comment ID from JSON body ---",
+											"let json;",
+											"try {",
+											"    json = pm.response.json();",
+											"} catch (e) {",
+											"    json = null;",
+											"}",
+											"",
+											"let commentId = null;",
+											"",
+											"// 1) If ID is inside JSON response",
+											"if (json && (json.id || json.comment_id)) {",
+											"    commentId = json.id || json.comment_id;",
+											"}",
+											"",
+											"// 2) Try to extract from \"Location\" header (URL: .../comments/2337)",
+											"if (!commentId) {",
+											"    const location = pm.response.headers.get('Location');",
+											"    if (location) {",
+											"        const match = location.match(/comments\\/(\\d+)/);",
+											"        if (match) {",
+											"            commentId = match[1];",
+											"        }",
+											"    }",
+											"}",
+											"",
+											"// 3) Try to extract from HTML/redirect body (as fallback)",
+											"if (!commentId) {",
+											"    const body = pm.response.text();",
+											"    const match = body.match(/comments\\/(\\d+)/);",
+											"    if (match) {",
+											"        commentId = match[1];",
+											"    }",
+											"}",
+											"",
+											"// Save result",
+											"if (commentId) {",
+											"    pm.environment.set(\"commentId\", commentId);",
+											"    console.log(\"Saved commentId:\", commentId);",
+											"    pm.test(\"Comment ID saved\", function () {",
+											"        pm.expect(commentId).to.not.be.null;",
+											"    });",
+											"} else {",
+											"    pm.test(\"Comment ID NOT FOUND\", function () {",
+											"        pm.expect.fail(\"Comment ID was not found in response\");",
+											"    });",
+											"}",
+											"",
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "X-XSRF-TOKEN",
+										"value": "{{csrfToken}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"commentable_type\": \"App\\\\Models\\\\Chapter\", // комментарий в главу (оставить одно!)\n    \"commentable_type\": \"App\\\\Models\\\\Exercise\", // комментарий в упражнение (оставить одно!)\n    \"commentable_id\": 3, // номер главы/упражнения\n    \"parent_id\": 1803, // ответ на комментарий (убрать, если создается новый!)\n    \"content\": \"postman text\" // текст комментария\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{sicp}}ru/comments",
+									"host": [
+										"{{sicp}}ru"
+									],
+									"path": [
+										"comments"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "add_comment_en",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// подсадить токен, который запомнит id комметнария",
+											"// --- Try to extract comment ID from JSON body ---",
+											"let json;",
+											"try {",
+											"    json = pm.response.json();",
+											"} catch (e) {",
+											"    json = null;",
+											"}",
+											"",
+											"let commentId = null;",
+											"",
+											"// 1) If ID is inside JSON response",
+											"if (json && (json.id || json.comment_id)) {",
+											"    commentId = json.id || json.comment_id;",
+											"}",
+											"",
+											"// 2) Try to extract from \"Location\" header (URL: .../comments/2337)",
+											"if (!commentId) {",
+											"    const location = pm.response.headers.get('Location');",
+											"    if (location) {",
+											"        const match = location.match(/comments\\/(\\d+)/);",
+											"        if (match) {",
+											"            commentId = match[1];",
+											"        }",
+											"    }",
+											"}",
+											"",
+											"// 3) Try to extract from HTML/redirect body (as fallback)",
+											"if (!commentId) {",
+											"    const body = pm.response.text();",
+											"    const match = body.match(/comments\\/(\\d+)/);",
+											"    if (match) {",
+											"        commentId = match[1];",
+											"    }",
+											"}",
+											"",
+											"// Save result",
+											"if (commentId) {",
+											"    pm.environment.set(\"commentId\", commentId);",
+											"    console.log(\"Saved commentId:\", commentId);",
+											"    pm.test(\"Comment ID saved\", function () {",
+											"        pm.expect(commentId).to.not.be.null;",
+											"    });",
+											"} else {",
+											"    pm.test(\"Comment ID NOT FOUND\", function () {",
+											"        pm.expect.fail(\"Comment ID was not found in response\");",
+											"    });",
+											"}",
+											"",
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "X-XSRF-TOKEN",
+										"value": "{{csrfToken}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"commentable_type\": \"App\\\\Models\\\\Chapter\", // комментарий в главу (оставить одно!)\n    \"commentable_type\": \"App\\\\Models\\\\Exercise\", // комментарий в упражнение (оставить одно!)\n    \"commentable_id\": 3, // номер главы/упражнения\n    \"parent_id\": 1803, // ответ на комментарий (убрать, если создается новый!)\n    \"content\": \"postman text\" // текст комментария\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{sicp}}en/comments",
+									"host": [
+										"{{sicp}}en"
+									],
+									"path": [
+										"comments"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "edit_comment_ru",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "X-XSRF-TOKEN",
+										"value": "{{csrfToken}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"commentable_type\": \"App\\\\Models\\\\Chapter\", // комментарий в главу (оставить одно!)\n    \"commentable_type\": \"App\\\\Models\\\\Exercise\", // комментарий в упражнение (оставить одно!)\n    \"commentable_id\": 3, // номер главы/упражнения\n    \"content\": \"edit postman text\" // текст комментария\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{sicp}}ru/comments/{{commentId}}",
+									"host": [
+										"{{sicp}}ru"
+									],
+									"path": [
+										"comments",
+										"{{commentId}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "edit_comment_en",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "X-XSRF-TOKEN",
+										"value": "{{csrfToken}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"commentable_type\": \"App\\\\Models\\\\Chapter\", // комментарий в главу (оставить одно!)\n    \"commentable_type\": \"App\\\\Models\\\\Exercise\", // комментарий в упражнение (оставить одно!)\n    \"commentable_id\": 5, // номер главы/упражнения\n    \"content\": \"edit postman text\" // текст комментария\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{sicp}}en/comments/{{commentId}}",
+									"host": [
+										"{{sicp}}en"
+									],
+									"path": [
+										"comments",
+										"{{commentId}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete_comment_ru",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "X-XSRF-TOKEN",
+										"value": "{{csrfToken}}",
+										"type": "text"
+									},
+									{
+										"key": "commentable_type",
+										"value": "App\\Models\\Chapter",
+										"description": "комментарий в главу (оставить одно!)",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "commentable_type",
+										"value": "App\\Models\\Exercise",
+										"description": "комментарий в упражнение (оставить одно!)",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "commentable_id",
+										"value": "3",
+										"description": "// номер главы/упражнения",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{sicp}}ru/comments/{{commentId}}",
+									"host": [
+										"{{sicp}}ru"
+									],
+									"path": [
+										"comments",
+										"{{commentId}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete_comment_en",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "X-XSRF-TOKEN",
+										"value": "{{csrfToken}}",
+										"type": "text"
+									},
+									{
+										"key": "commentable_type",
+										"value": "App\\Models\\Chapter",
+										"description": "комментарий в главу (оставить одно!)",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "commentable_type",
+										"value": "App\\Models\\Exercise",
+										"description": "комментарий в упражнение (оставить одно!)",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "commentable_id",
+										"value": "5",
+										"description": "// номер главы/упражнения",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{sicp}}en/comments/{{commentId}}",
+									"host": [
+										"{{sicp}}en"
+									],
+									"path": [
+										"comments",
+										"{{commentId}}"
+									]
+								}
+							},
+							"response": []
 						}
-					},
-					"response": []
+					],
+					"description": "Tests and manipulations with comments. Login before run them.\n\n---\n\nТесты и манипуляции с комментами. Перед запуском нужно авторизоваться. GET-ы перед остальными запросыми запускать НЕ обязательно.\n\nВнимательно смотреть на содержимое Body запроса и читать комментарии\\*, они оставлены специально для тебя\n\n---\n\n\\*Перед запуском ВСЕ комментарии следует удалить (пример: // комментарий), т.к. отправленный запрос будет некорректным."
+				},
+				{
+					"name": "my",
+					"item": [
+						{
+							"name": "my_progress_ru",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{sicp}}ru/my",
+									"host": [
+										"{{sicp}}ru"
+									],
+									"path": [
+										"my"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "my_progress_en",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{sicp}}en/my",
+									"host": [
+										"{{sicp}}en"
+									],
+									"path": [
+										"my"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "my_solutions_ru",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{sicp}}ru/my/solutions",
+									"host": [
+										"{{sicp}}ru"
+									],
+									"path": [
+										"my",
+										"solutions"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1",
+											"description": "page number",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "my_solutions_en",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{sicp}}en/my/solutions",
+									"host": [
+										"{{sicp}}en"
+									],
+									"path": [
+										"my",
+										"solutions"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1",
+											"description": "page number",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "settings_account_ru",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{sicp}}ru/settings/account",
+									"host": [
+										"{{sicp}}ru"
+									],
+									"path": [
+										"settings",
+										"account"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "settings_account_en",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{sicp}}en/settings/account",
+									"host": [
+										"{{sicp}}en"
+									],
+									"path": [
+										"settings",
+										"account"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "settings_profile_ru",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{sicp}}ru/settings/profile",
+									"host": [
+										"{{sicp}}ru"
+									],
+									"path": [
+										"settings",
+										"profile"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "settings_profile_en",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{sicp}}en/settings/profile",
+									"host": [
+										"{{sicp}}en"
+									],
+									"path": [
+										"settings",
+										"profile"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "change_user_name_ru",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Профиль успешно изменен\", function () {",
+											"    var body = pm.response.text();",
+											"    pm.expect(body).to.include(\"Профиль успешно изменен!\");",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "X-XSRF-TOKEN",
+										"value": "{{csrfToken}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"TesterNew\",\n    \"github_name\": \"name\" // не использую в тестах\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{sicp}}ru/settings/profile/:id",
+									"host": [
+										"{{sicp}}ru"
+									],
+									"path": [
+										"settings",
+										"profile",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "41120",
+											"description": "id of the test user"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "change_user_name_en",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Профиль успешно изменен\", function () {",
+											"    var body = pm.response.text();",
+											"    pm.expect(body).to.include(\"Account updated successfully\");",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "X-XSRF-TOKEN",
+										"value": "{{csrfToken}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"TesterNew\",\n    \"github_name\": \"name\" // не использую в тестах\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{sicp}}en/settings/profile/:id",
+									"host": [
+										"{{sicp}}en"
+									],
+									"path": [
+										"settings",
+										"profile",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "41120",
+											"description": "id of the test user"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "Настройки аккаунта рользователя и личный прогресс.\n\n\\+ тест на смену имени пользователя"
+				},
+				{
+					"name": "log",
+					"item": [
+						{
+							"name": "log_ru",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{sicp}}ru/log",
+									"host": [
+										"{{sicp}}ru"
+									],
+									"path": [
+										"log"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "2",
+											"description": "page number",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "log_en",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{sicp}}en/log",
+									"host": [
+										"{{sicp}}en"
+									],
+									"path": [
+										"log"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "2",
+											"description": "page number",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "Лог активности"
 				}
 			],
 			"description": "Tests which require user\\`s authorisation\n\n______\n\nТесты на доступ к страницам, где требуется авторизация пользователя. Реализация: Подсажен GET запрос на страницу логина, извлекающий CSRF-токен из cookie. Т.о. возможно залогиниться и просматривать страницы, доступные только пользователю с авторизацией."
-		},
-		{
-			"name": "comments",
-			"item": [
-				{
-					"name": "add_comment_ru",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"// подсадить токен, который запомнит id комметнария",
-									"// --- Try to extract comment ID from JSON body ---",
-									"let json;",
-									"try {",
-									"    json = pm.response.json();",
-									"} catch (e) {",
-									"    json = null;",
-									"}",
-									"",
-									"let commentId = null;",
-									"",
-									"// 1) If ID is inside JSON response",
-									"if (json && (json.id || json.comment_id)) {",
-									"    commentId = json.id || json.comment_id;",
-									"}",
-									"",
-									"// 2) Try to extract from \"Location\" header (URL: .../comments/2337)",
-									"if (!commentId) {",
-									"    const location = pm.response.headers.get('Location');",
-									"    if (location) {",
-									"        const match = location.match(/comments\\/(\\d+)/);",
-									"        if (match) {",
-									"            commentId = match[1];",
-									"        }",
-									"    }",
-									"}",
-									"",
-									"// 3) Try to extract from HTML/redirect body (as fallback)",
-									"if (!commentId) {",
-									"    const body = pm.response.text();",
-									"    const match = body.match(/comments\\/(\\d+)/);",
-									"    if (match) {",
-									"        commentId = match[1];",
-									"    }",
-									"}",
-									"",
-									"// Save result",
-									"if (commentId) {",
-									"    pm.environment.set(\"commentId\", commentId);",
-									"    console.log(\"Saved commentId:\", commentId);",
-									"    pm.test(\"Comment ID saved\", function () {",
-									"        pm.expect(commentId).to.not.be.null;",
-									"    });",
-									"} else {",
-									"    pm.test(\"Comment ID NOT FOUND\", function () {",
-									"        pm.expect.fail(\"Comment ID was not found in response\");",
-									"    });",
-									"}",
-									"",
-									"pm.test(\"Status code is 200\", function () {",
-									"    pm.response.to.have.status(200);",
-									"});"
-								],
-								"type": "text/javascript",
-								"packages": {},
-								"requests": {}
-							}
-						}
-					],
-					"request": {
-						"auth": {
-							"type": "noauth"
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							},
-							{
-								"key": "X-XSRF-TOKEN",
-								"value": "{{csrfToken}}",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"commentable_type\": \"App\\\\Models\\\\Chapter\", // комментарий в главу (оставить одно!)\n    \"commentable_type\": \"App\\\\Models\\\\Exercise\", // комментарий в упражнение (оставить одно!)\n    \"commentable_id\": 3, // номер главы/упражнения\n    \"parent_id\": 1803, // ответ на комментарий (убрать, если создается новый!)\n    \"content\": \"postman text\" // текст комментария\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{sicp}}ru/comments",
-							"host": [
-								"{{sicp}}ru"
-							],
-							"path": [
-								"comments"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "add_comment_en",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"// подсадить токен, который запомнит id комметнария",
-									"// --- Try to extract comment ID from JSON body ---",
-									"let json;",
-									"try {",
-									"    json = pm.response.json();",
-									"} catch (e) {",
-									"    json = null;",
-									"}",
-									"",
-									"let commentId = null;",
-									"",
-									"// 1) If ID is inside JSON response",
-									"if (json && (json.id || json.comment_id)) {",
-									"    commentId = json.id || json.comment_id;",
-									"}",
-									"",
-									"// 2) Try to extract from \"Location\" header (URL: .../comments/2337)",
-									"if (!commentId) {",
-									"    const location = pm.response.headers.get('Location');",
-									"    if (location) {",
-									"        const match = location.match(/comments\\/(\\d+)/);",
-									"        if (match) {",
-									"            commentId = match[1];",
-									"        }",
-									"    }",
-									"}",
-									"",
-									"// 3) Try to extract from HTML/redirect body (as fallback)",
-									"if (!commentId) {",
-									"    const body = pm.response.text();",
-									"    const match = body.match(/comments\\/(\\d+)/);",
-									"    if (match) {",
-									"        commentId = match[1];",
-									"    }",
-									"}",
-									"",
-									"// Save result",
-									"if (commentId) {",
-									"    pm.environment.set(\"commentId\", commentId);",
-									"    console.log(\"Saved commentId:\", commentId);",
-									"    pm.test(\"Comment ID saved\", function () {",
-									"        pm.expect(commentId).to.not.be.null;",
-									"    });",
-									"} else {",
-									"    pm.test(\"Comment ID NOT FOUND\", function () {",
-									"        pm.expect.fail(\"Comment ID was not found in response\");",
-									"    });",
-									"}",
-									"",
-									"pm.test(\"Status code is 200\", function () {",
-									"    pm.response.to.have.status(200);",
-									"});"
-								],
-								"type": "text/javascript",
-								"packages": {},
-								"requests": {}
-							}
-						}
-					],
-					"request": {
-						"auth": {
-							"type": "noauth"
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							},
-							{
-								"key": "X-XSRF-TOKEN",
-								"value": "{{csrfToken}}",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"commentable_type\": \"App\\\\Models\\\\Chapter\", // комментарий в главу (оставить одно!)\n    \"commentable_type\": \"App\\\\Models\\\\Exercise\", // комментарий в упражнение (оставить одно!)\n    \"commentable_id\": 3, // номер главы/упражнения\n    \"parent_id\": 1803, // ответ на комментарий (убрать, если создается новый!)\n    \"content\": \"postman text\" // текст комментария\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{sicp}}en/comments",
-							"host": [
-								"{{sicp}}en"
-							],
-							"path": [
-								"comments"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "edit_comment_ru",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {",
-									"    pm.response.to.have.status(200);",
-									"});"
-								],
-								"type": "text/javascript",
-								"packages": {},
-								"requests": {}
-							}
-						}
-					],
-					"request": {
-						"auth": {
-							"type": "noauth"
-						},
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							},
-							{
-								"key": "X-XSRF-TOKEN",
-								"value": "{{csrfToken}}",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"commentable_type\": \"App\\\\Models\\\\Chapter\", // комментарий в главу (оставить одно!)\n    \"commentable_type\": \"App\\\\Models\\\\Exercise\", // комментарий в упражнение (оставить одно!)\n    \"commentable_id\": 3, // номер главы/упражнения\n    \"content\": \"edit postman text\" // текст комментария\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{sicp}}ru/comments/{{commentId}}",
-							"host": [
-								"{{sicp}}ru"
-							],
-							"path": [
-								"comments",
-								"{{commentId}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "edit_comment_en",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {",
-									"    pm.response.to.have.status(200);",
-									"});"
-								],
-								"type": "text/javascript",
-								"packages": {},
-								"requests": {}
-							}
-						}
-					],
-					"request": {
-						"auth": {
-							"type": "noauth"
-						},
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							},
-							{
-								"key": "X-XSRF-TOKEN",
-								"value": "{{csrfToken}}",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"commentable_type\": \"App\\\\Models\\\\Chapter\", // комментарий в главу (оставить одно!)\n    \"commentable_type\": \"App\\\\Models\\\\Exercise\", // комментарий в упражнение (оставить одно!)\n    \"commentable_id\": 5, // номер главы/упражнения\n    \"content\": \"edit postman text\" // текст комментария\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{sicp}}en/comments/{{commentId}}",
-							"host": [
-								"{{sicp}}en"
-							],
-							"path": [
-								"comments",
-								"{{commentId}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "delete_comment_ru",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {",
-									"    pm.response.to.have.status(200);",
-									"});"
-								],
-								"type": "text/javascript",
-								"packages": {},
-								"requests": {}
-							}
-						}
-					],
-					"request": {
-						"auth": {
-							"type": "noauth"
-						},
-						"method": "DELETE",
-						"header": [
-							{
-								"key": "X-XSRF-TOKEN",
-								"value": "{{csrfToken}}",
-								"type": "text"
-							},
-							{
-								"key": "commentable_type",
-								"value": "App\\Models\\Chapter",
-								"description": "комментарий в главу (оставить одно!)",
-								"type": "text",
-								"disabled": true
-							},
-							{
-								"key": "commentable_type",
-								"value": "App\\Models\\Exercise",
-								"description": "комментарий в упражнение (оставить одно!)",
-								"type": "text",
-								"disabled": true
-							},
-							{
-								"key": "commentable_id",
-								"value": "3",
-								"description": "// номер главы/упражнения",
-								"type": "text",
-								"disabled": true
-							}
-						],
-						"url": {
-							"raw": "{{sicp}}ru/comments/{{commentId}}",
-							"host": [
-								"{{sicp}}ru"
-							],
-							"path": [
-								"comments",
-								"{{commentId}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "delete_comment_en",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {",
-									"    pm.response.to.have.status(200);",
-									"});"
-								],
-								"type": "text/javascript",
-								"packages": {},
-								"requests": {}
-							}
-						}
-					],
-					"request": {
-						"auth": {
-							"type": "noauth"
-						},
-						"method": "DELETE",
-						"header": [
-							{
-								"key": "X-XSRF-TOKEN",
-								"value": "{{csrfToken}}",
-								"type": "text"
-							},
-							{
-								"key": "commentable_type",
-								"value": "App\\Models\\Chapter",
-								"description": "комментарий в главу (оставить одно!)",
-								"type": "text",
-								"disabled": true
-							},
-							{
-								"key": "commentable_type",
-								"value": "App\\Models\\Exercise",
-								"description": "комментарий в упражнение (оставить одно!)",
-								"type": "text",
-								"disabled": true
-							},
-							{
-								"key": "commentable_id",
-								"value": "5",
-								"description": "// номер главы/упражнения",
-								"type": "text",
-								"disabled": true
-							}
-						],
-						"url": {
-							"raw": "{{sicp}}en/comments/{{commentId}}",
-							"host": [
-								"{{sicp}}en"
-							],
-							"path": [
-								"comments",
-								"{{commentId}}"
-							]
-						}
-					},
-					"response": []
-				}
-			],
-			"description": "Tests and manipulations with comments. Login before run them.\n\n---\n\nТесты и манипуляции с комментами. Перед запуском нужно авторизоваться.\n\nВнимательно смотреть на содержимое Body запроса и читать комментарии\\*, они оставлены специально для тебя\n\n_______\n\n\\*Перед запуском ВСЕ комментарии следует удалить (пример: // комментарий), т.к. отправленный запрос будет некорректным."
 		},
 		{
 			"name": "negative_testing",
@@ -2661,9 +2938,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{sicp}}register",
+							"raw": "{{sicp}}en/register",
 							"host": [
-								"{{sicp}}register"
+								"{{sicp}}en"
+							],
+							"path": [
+								"register"
 							]
 						}
 					},
@@ -2764,9 +3044,118 @@
 							}
 						},
 						"url": {
-							"raw": "{{sicp}}register",
+							"raw": "{{sicp}}en/register",
 							"host": [
-								"{{sicp}}register"
+								"{{sicp}}en"
+							],
+							"path": [
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "invalid_email_ru",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Некорректный адрес электронной почты\", function () {",
+									"    var body = pm.response.text();",
+									"    pm.expect(body).to.include(\"Некорректный адрес электронной почты\");",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-XSRF-TOKEN",
+								"value": "{{csrfToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"del@\",\n  \"name\": \"Del\",\n  \"password\": \"12345678\",\n  \"password_confirmation\": \"12345678\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{sicp}}ru/register",
+							"host": [
+								"{{sicp}}ru"
+							],
+							"path": [
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "invalid_email_en",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Некорректный адрес электронной почты\", function () {",
+									"    var body = pm.response.text();",
+									"    pm.expect(body).to.include(\"The email must be a valid email address.\");",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-XSRF-TOKEN",
+								"value": "{{csrfToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"del@\",\n  \"name\": \"Del\",\n  \"password\": \"12345678\",\n  \"password_confirmation\": \"12345678\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{sicp}}en/register",
+							"host": [
+								"{{sicp}}en"
+							],
+							"path": [
+								"register"
 							]
 						}
 					},
@@ -2859,6 +3248,174 @@
 							"raw": "{{sicp}}ru/login",
 							"host": [
 								"{{sicp}}ru"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "wrong_password_login_en",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Учетные данные неверные\", function () {",
+									"    var body = pm.response.text();",
+									"    pm.expect(body).to.include(\"These credentials do not match our records.\");",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-XSRF-TOKEN",
+								"value": "{{csrfToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"test@test.com\",\n  \"password\": \"12345679\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{sicp}}en/login",
+							"host": [
+								"{{sicp}}en"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "wrong_login_login_ru",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Учетные данные неверные\", function () {",
+									"    var body = pm.response.text();",
+									"    pm.expect(body).to.include(\"Эти учетные данные не соответствуют нашим записям.\");",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-XSRF-TOKEN",
+								"value": "{{csrfToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"test@test.com\",\n  \"password\": \"12345679\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{sicp}}ru/login",
+							"host": [
+								"{{sicp}}ru"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "wrong_login_login_en",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Учетные данные неверные\", function () {",
+									"    var body = pm.response.text();",
+									"    pm.expect(body).to.include(\"These credentials do not match our records.\");",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-XSRF-TOKEN",
+								"value": "{{csrfToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"test@test.co\",\n  \"password\": \"12345678\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{sicp}}en/login",
+							"host": [
+								"{{sicp}}en"
 							],
 							"path": [
 								"login"

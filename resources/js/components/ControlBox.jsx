@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import { useContext, useState } from 'react'
 import {
   Button, OverlayTrigger, Tooltip, Spinner,
 } from 'react-bootstrap'
@@ -13,7 +13,7 @@ import { showNotification } from '../slices/notificationSlice'
 
 const ControlBox = () => {
   const { t } = useTranslation()
-  const editor = useSelector(state => state.editor)
+  const editor = useSelector((state) => state.editor)
   const userId = useContext(UserIdContext)
   const exerciseId = useContext(ExerciseIdContext)
   const [isSending, setIsSending] = useState(false)
@@ -72,7 +72,7 @@ const ControlBox = () => {
     }
   }
 
-  const isEditorEmpty = editorInstance => !editorInstance.content.trim()
+  const isEditorEmpty = (editorInstance) => !editorInstance.content.trim()
 
   const renderSaveButton = () => {
     const isDisabled = () => isSaving || isEditorEmpty(editor) || !userId

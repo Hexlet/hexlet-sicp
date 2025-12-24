@@ -12,9 +12,6 @@
     use App\Models\User;
 @endphp
 @section('description', $user->name)
-@push('styles')
-    @vite('resources/sass/_activity_chart.scss')
-@endpush
 @section('content')
     <div class="row my-4">
         <div class="col-12 col-md-3">

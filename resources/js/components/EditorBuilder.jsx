@@ -1,4 +1,4 @@
-import React, {
+import {
   useRef, useEffect, useLayoutEffect,
 } from 'react'
 
@@ -64,8 +64,8 @@ const basicSetup = (() => [
 ])()
 
 const EditorBuilder = () => {
-  const { focusesCount } = useSelector(state => state.editor)
-  const { hasTests, preparedCode } = useSelector(state => state.exerciseInfo)
+  const { focusesCount } = useSelector((state) => state.editor)
+  const { hasTests, preparedCode } = useSelector((state) => state.exerciseInfo)
 
   const editorRef = useRef()
   const viewRef = useRef()

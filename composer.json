@@ -32,6 +32,7 @@
         "hemp/presenter": "^3.0",
         "http-interop/http-factory-guzzle": "^1.2",
         "iben12/laravel-statable": "^1.5",
+        "inertiajs/inertia-laravel": "^2.0",
         "laracasts/flash": "^3.2",
         "laravel/framework": "^12.39",
         "laravel/helpers": "^1.7",
