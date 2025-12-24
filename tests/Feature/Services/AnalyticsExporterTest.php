@@ -18,28 +18,26 @@ class AnalyticsExporterTest extends TestCase
         Storage::fake();
     }
 
-public function testExportEachTypeCreatesCsvFile(): void
-{
-    Storage::fake();
+    public function testExportEachTypeCreatesCsvFile(): void
+    {
+        $this->seed();
 
-    $this->seed();
+        $service = new AnalyticsExporter();
 
-    $service = new AnalyticsExporter();
+        $types = [
+            'users'     => 'export/users.csv',
+            'chapters'  => 'export/chapters.csv',
+            'exercises' => 'export/exercises.csv',
+            'solutions' => 'export/solutions.csv',
+            'comments'  => 'export/comments.csv',
+            'activity'  => 'export/activity.csv',
+        ];
 
-    $types = [
-        'users'     => 'export/users.csv',
-        'chapters'  => 'export/chapters.csv',
-        'exercises' => 'export/exercises.csv',
-        'solutions' => 'export/solutions.csv',
-        'comments'  => 'export/comments.csv',
-        'activity'  => 'export/activity.csv',
-    ];
-
-    foreach ($types as $type => $path) {
-        $service->export($type);
-        Storage::assertExists($path);
+        foreach ($types as $type => $path) {
+            $service->export($type);
+            Storage::assertExists($path);
+        }
     }
-}
 
     public function testUsersCsvContainsCorrectHeadersAndRow(): void
     {
@@ -53,13 +51,10 @@ public function testExportEachTypeCreatesCsvFile(): void
         $content = Storage::get('export/users.csv');
         $lines = explode("\n", trim($content));
 
-        $expectedHeader = [
-            'id',
-            'points',
-            'created_at',
-        ];
-
-        $this->assertEquals($expectedHeader, str_getcsv($lines[0]));
+        $this->assertEquals(
+            ['id', 'points', 'created_at'],
+            str_getcsv($lines[0])
+        );
 
         $row = str_getcsv($lines[1]);
 
@@ -71,10 +66,10 @@ public function testExportEachTypeCreatesCsvFile(): void
     public function testEmptyTablesProduceEmptyCsv(): void
     {
         $service = new AnalyticsExporter();
-
         $service->export('chapters');
 
         $content = Storage::get('export/chapters.csv');
+
         $this->assertSame('', $content);
     }
 }
