@@ -71,6 +71,12 @@ class Comment extends Model
         return isset($this->parent);
     }
 
+    public function belongsToSameDiscussion(Model $commentable): bool
+    {
+        return $this->commentable_type === $commentable::class
+            && $this->commentable_id === $commentable->getKey();
+    }
+
     public function getCommentableName(): ?string
     {
         $commentableTypeName = match ($this->commentable_type) {

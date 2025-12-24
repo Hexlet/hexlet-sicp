@@ -2,18 +2,12 @@
 
 namespace App\DTO;
 
+use App\Enums\CommentableType;
 use App\Http\Requests\CommentRequest;
-use App\Models\Chapter;
-use App\Models\Exercise;
-use App\Rules\CommentableExists;
 use Illuminate\Routing\UrlGenerator;
-use Spatie\LaravelData\Attributes\Validation\In;
 use Spatie\LaravelData\Attributes\Validation\Max;
 use Spatie\LaravelData\Attributes\Validation\Min;
 use Spatie\LaravelData\Attributes\Validation\Required;
-use Spatie\LaravelData\Attributes\Validation\RequiredWith;
-use Spatie\LaravelData\Attributes\Validation\Exists;
-use Spatie\LaravelData\Attributes\Validation\Rule;
 use Spatie\LaravelData\Data;
 use Spatie\LaravelData\Optional;
 
@@ -22,18 +16,16 @@ class CommentData extends Data
     public const string URL_ANCHOR = '#exercise-discussion';
 
     public function __construct(
-        #[RequiredWith('commentable_id')]
-        #[In([Chapter::class, Exercise::class])]
-        public string|Optional $commentable_type,
-        #[RequiredWith('commentable_type')]
+        #[Required]
+        public CommentableType $commentable_type,
+        #[Required]
         #[Min(1)]
-        #[Rule(new CommentableExists())]
-        public int|Optional $commentable_id,
+        public int $commentable_id,
         #[Required]
         #[Min(1)]
         #[Max(CommentRequest::MAX_CONTENT_LENGTH)]
         public string $content,
-        #[Exists('comments', 'id')]
+        #[Min(1)]
         public int|Optional|null $parent_id = null,
     ) {
     }
