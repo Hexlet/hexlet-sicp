@@ -1,13 +1,15 @@
 import { Row, Col, Card } from 'react-bootstrap'
 import { Link, usePage } from '@inertiajs/react'
 import { useTranslation } from 'react-i18next'
+import Flash from '@/components/Common/Flash'
 
 const SettingsLayout = ({ children }) => {
   const { t } = useTranslation()
-  const { url } = usePage()
+  const { url, flash } = usePage().props
 
   return (
     <div className="container p-0">
+      {flash && <Flash type={flash.level} message={flash.message} />}
       <Row className="my-4">
         <Col md={3} className="mb-2">
           <Card className="shadow-sm">
