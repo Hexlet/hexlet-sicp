@@ -28,7 +28,7 @@ class GithubController extends Controller
     {
         try {
             return $this->socialite::driver('github')
-                ->scopes(['user:email', 'repo', 'write:repo_hook'])
+                ->scopes(['user:email', 'repo', 'write:repo_hook', 'workflow'])
                 ->redirect();
         } catch (Exception $e) {
             return $this->sendFailedResponse($e->getMessage());
@@ -68,13 +68,9 @@ class GithubController extends Controller
 
         Auth::login($user, true);
 
-        $user->github_access_token = encrypt($socialiteUser->token);
-        $user->github_refresh_token = $socialiteUser->refreshToken
-            ? encrypt($socialiteUser->refreshToken)
-            : null;
-        $user->github_token_expires_at = $socialiteUser->expiresIn
-            ? now()->addSeconds($socialiteUser->expiresIn)
-            : null;
+        $user->github_name = $socialiteUser->getNickname();
+        $user->github_access_token = $socialiteUser->token;
+        $user->github_refresh_token = $socialiteUser->refreshToken;
         $user->save();
 
         flash()->success(__('auth.logged_in'));

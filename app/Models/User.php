@@ -15,14 +15,15 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Support\Facades\Date;
 
 /**
  * App\Models\User
  * @property int $id
  * @property string $name
  * @property string $email
- * @property string $github_name
+ * @property string|null $github_name
+ * @property string|null $github_access_token
+ * @property string|null $github_refresh_token
  * @property bool $is_admin
  * @property \Illuminate\Support\Carbon|null $email_verified_at
  * @property string $password
@@ -42,6 +43,7 @@ use Illuminate\Support\Facades\Date;
  * @property-read int|null $chapter_members_count
  * @property-read Collection|Solution[] $solutions
  * @property-read int|null $solutions_count
+ * @property-read GithubRepository|null $githubRepository
  * @method static UserFactory factory(...$parameters)
  */
 class User extends Authenticatable implements MustVerifyEmail
@@ -84,7 +86,6 @@ class User extends Authenticatable implements MustVerifyEmail
         'deleted_at' => 'datetime',
         'github_access_token' => 'encrypted',
         'github_refresh_token' => 'encrypted',
-        'github_token_expires_at' => 'datetime',
     ];
 
     public static function boot()
@@ -171,6 +172,6 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function githubRepository(): HasOne
     {
-        return $this->hasOne(GitHubRepository::class);
+        return $this->hasOne(GithubRepository::class);
     }
 }
