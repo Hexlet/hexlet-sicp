@@ -4,33 +4,35 @@ import { useTranslation } from 'react-i18next'
 import { formatDistanceToNow } from 'date-fns'
 import { ru, enUS } from 'date-fns/locale'
 import SettingsLayout from '@/components/Settings/SettingsLayout'
+import { useRoute } from '@/utils/route'
 
 const Github = ({ user, repository }) => {
   const { t, i18n } = useTranslation()
   const { post, delete: destroy, processing } = useForm()
+  const route = useRoute()
 
   const formatDate = (dateString) => {
     if (!dateString) return null
-    const locale = i18n.language === 'ru' ? ru : enUS
+    const dateLocale = i18n.language === 'ru' ? ru : enUS
     return formatDistanceToNow(new Date(dateString), {
       addSuffix: true,
-      locale,
+      locale: dateLocale,
     })
   }
   const handleCreateRepository = (e) => {
     e.preventDefault()
-    post('/settings/github')
+    post(route('/settings/github'))
   }
 
   const handleSync = (e) => {
     e.preventDefault()
-    post('/settings/github/sync')
+    post(route('/settings/github/sync'))
   }
 
   const handleDelete = (e) => {
     e.preventDefault()
     if (window.confirm(t('account.github.confirm_delete'))) {
-      destroy(`/settings/github/${repository.id}`)
+      destroy(route(`/settings/github/${repository.id}`))
     }
   }
 
