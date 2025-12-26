@@ -53,6 +53,18 @@ class GithubController extends Controller
             return $this->sendFailedResponse();
         }
 
+        if (Auth::check()) {
+            $user = Auth::user();
+            $user->github_name = $socialiteUser->getNickname();
+            $user->github_access_token = $socialiteUser->token;
+            $user->github_refresh_token = $socialiteUser->refreshToken;
+            $user->save();
+
+            flash()->success(__('account.github.connected'));
+
+            return redirect()->route('settings.github.index');
+        }
+
         $user = User::withTrashed()->firstOrNew(['email' => $email]);
 
         if ($user->trashed()) {

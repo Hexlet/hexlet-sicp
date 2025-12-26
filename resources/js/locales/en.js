@@ -44,6 +44,7 @@ export default {
         description: 'Sync your SICP exercise solutions with GitHub. All your solutions will be automatically uploaded to a separate repository.',
         not_authorized: 'You are not authorized via GitHub. To set up integration, you need to connect your GitHub account.',
         connect_github: 'Connect GitHub',
+        connected: 'GitHub account connected successfully!',
         not_configured: 'GitHub integration is not configured.',
         setup_description: 'Click the button below to create a repository on GitHub and set up automatic synchronization of your solutions.',
         create_repository: 'Create Repository',
