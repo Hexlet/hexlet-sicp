@@ -15,5 +15,11 @@
         {{ __('account.account') }}
       </a>
     </div>
+    <div class="list-group list-group-flush">
+      <a class="nav-link list-group-item list-group-item-action {{ Request::routeIs('settings.github.index') ? 'active' : '' }}"
+        href="{{ route('settings.github.index') }}">
+        {{ __('account.github_integration') }}
+      </a>
+    </div>
   </div>
 </div>
