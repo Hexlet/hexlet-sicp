@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->text('github_access_token')->nullable()->after('github_name');
             $table->text('github_refresh_token')->nullable()->after('github_access_token');
-            $table->timestamp('github_token_expires_at')->nullable()->after('github_refresh_token');
         });
     }
 
@@ -24,7 +23,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn(['github_access_token', 'github_refresh_token', 'github_token_expires_at']);
+            $table->dropColumn(['github_access_token', 'github_refresh_token']);
         });
     }
 };
