@@ -396,6 +396,10 @@ class GithubRepositoryService
 
                     $solutionContent = $this->extractSolutionContent($fullContent);
 
+                    if ($this->isPlaceholderSolution($solutionContent)) {
+                        continue;
+                    }
+
                     $latestSolution = Solution::where('user_id', $user->id)
                         ->where('exercise_id', $exercise->id)
                         ->latest('id')
@@ -410,6 +414,8 @@ class GithubRepositoryService
                     $solution->exercise_id = $exercise->id;
                     $solution->content = $solutionContent;
                     $solution->save();
+
+                    $syncedCount += 1;
 
                     SolutionSyncLog::create([
                         'github_repository_id' => $repo->id,
@@ -562,6 +568,20 @@ class GithubRepositoryService
         }
 
         return trim(implode("\n", $contentLines));
+    }
+
+    private function isPlaceholderSolution(string $content): bool
+    {
+        $content = trim($content);
+
+        if (empty($content)) {
+            return true;
+        }
+
+        $templateContent = \File::get($this->getTemplatePath(self::TEMPLATE_PATHS['solution']));
+        $expectedPlaceholder = trim($this->extractSolutionContent($templateContent));
+
+        return hash('sha256', $content) === hash('sha256', $expectedPlaceholder);
     }
 
     private function getTemplatePath(string $template): string

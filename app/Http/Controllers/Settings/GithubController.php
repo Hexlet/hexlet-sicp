@@ -44,7 +44,7 @@ class GithubController extends Controller
             return redirect()->route('settings.github.index');
         }
 
-        //CreateGithubRepositoryJob::dispatch($user->id);
+        CreateGithubRepositoryJob::dispatch($user->id);
 
         flash()->success(__('account.github.creating'));
 
