@@ -18,7 +18,6 @@
     @includeWhen(app()->environment('production'), 'layouts.deps._gtm_body')
     @includeWhen(app()->environment('production'), 'layouts.deps._metrika')
     @include('layouts._nav')
-    @include('flash::message')
     <main class='flex-grow-1'>
         @inertia
     </main>
