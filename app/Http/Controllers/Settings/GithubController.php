@@ -8,7 +8,7 @@ use App\Jobs\SyncSolutionsToGithubJob;
 use App\Models\GithubRepository;
 use Auth;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\View\View;
+use Inertia\Response;
 
 class GithubController extends Controller
 {
@@ -17,12 +17,17 @@ class GithubController extends Controller
         $this->middleware('auth');
     }
 
-    public function index(): View
+    public function index(): Response
     {
         $user = Auth::user();
         $repository = $user->githubRepository;
 
-        return view('settings.github.index', compact('user', 'repository'));
+        return $this->inertia([
+            'user' => array_merge($user->toArray(), [
+                'has_github_token' => !empty($user->github_access_token),
+            ]),
+            'repository' => $repository,
+        ]);
     }
 
     public function store(): RedirectResponse
