@@ -12,6 +12,18 @@ services:
       - database
     command: ["make", "start-app"]
 
+  queue-worker:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    volumes:
+      - .:/app:delegated
+    depends_on:
+      - database
+      - application
+    command: ["php", "artisan", "queue:work", "--tries=3", "--timeout=300", "--sleep=3"]
+    restart: unless-stopped
+
   frontend:
     build:
       context: .
