@@ -6,7 +6,7 @@ Route::get('sitemap.xml', 'SitemapController@index');
 
 Route::group([
     'prefix' => LaravelLocalization::setLocale(),
-    'middleware' => [ 'localeSessionRedirect', 'localizationRedirect' ],
+    'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'setLocale' ],
 ], function (): void {
     Route::get('/', 'HomeController@index')->name('home');
 
