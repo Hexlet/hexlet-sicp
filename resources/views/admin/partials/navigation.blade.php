@@ -11,4 +11,8 @@
        href="{{ route('admin.solutions.index', request()->only(['filter'])) }}">
         <i class="bi bi-code-square"></i> {{ __('admin.solutions.title') }}
     </a>
+    <a class="nav-link {{ request()->routeIs('admin.export.*') ? 'active' : '' }}"
+       href="{{ route('admin.export.index', request()->only(['filter'])) }}">
+        <i class="bi bi-download"></i> {{ __('admin.export.title') }}
+    </a>
 </nav>

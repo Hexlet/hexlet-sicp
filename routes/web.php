@@ -56,6 +56,7 @@ Route::group([
         Route::resource('users', 'UserController')->only('index');
         Route::resource('comments', 'CommentController')->only('index');
         Route::resource('solutions', 'SolutionController')->only('index');
+        Route::resource('export', 'ExportController')->only('index', 'store');
     });
 
     Route::fallback(function () {

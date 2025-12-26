@@ -83,4 +83,19 @@ return [
         'empty' => 'No solutions found',
         'empty_user' => 'No solutions found for this user',
     ],
+    'export' => [
+        'title' => 'Data Export',
+        'select' => 'Select data to export',
+        'button' => 'Export',
+        'all' => 'All data',
+
+        'types' => [
+            'users' => 'Users',
+            'chapters' => 'Chapters',
+            'exercises' => 'Exercises',
+            'solutions' => 'Solutions',
+            'comments' => 'Comments',
+            'activity' => 'Activity log',
+        ],
+    ],
 ];
