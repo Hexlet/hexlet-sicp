@@ -47,10 +47,12 @@ class ProfileController extends Controller
         $user->name = $request->get('name');
         $user->github_name = $request->get('github_name');
 
-        $flash = $user->save()
-            ? ['success' => __('account.account_updated')]
-            : ['error' => __('layout.flash.error')];
+        if ($user->save()) {
+            flash()->success(__('account.account_updated'));
+        } else {
+            flash()->error(__('layout.flash.error'));
+        }
 
-        return redirect()->route('settings.profile.index')->with($flash);
+        return redirect()->route('settings.profile.index');
     }
 }
