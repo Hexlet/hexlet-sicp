@@ -1,0 +1,16 @@
+# Racket compiled files
+*.zo
+*.dep
+compiled/
+
+# Racket backup files
+*~
+*.bak
+*.swp
+
+# macOS
+.DS_Store
+
+# IDE
+.idea/
+.vscode/

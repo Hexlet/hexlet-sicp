@@ -1,0 +1,9 @@
+#lang racket
+(provide (all-defined-out))
+
+;;; Exercise {exercise_path}
+;;; See: {exercise_url}
+
+;;; BEGIN SOLUTION
+{content}
+;;; END SOLUTION
