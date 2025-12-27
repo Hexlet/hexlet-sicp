@@ -50,6 +50,7 @@
         "spatie/laravel-activitylog": "^4.10.2",
         "spatie/laravel-data": "^4.18",
         "spatie/laravel-html": "^3.12",
+        "spatie/laravel-model-states": "^2.12",
         "spatie/laravel-query-builder": "^6.3.5",
         "spatie/laravel-sitemap": "^7.3.7",
         "symfony/yaml": "^8.0.1"
