@@ -53,7 +53,7 @@ Route::group([
     Route::resource('pages', 'PagesController')->only('show');
 
     Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function (): void {
-        Route::resource('users', 'UserController')->only('index');
+        Route::resource('users', 'UserController')->only('index', 'edit', 'update');
         Route::resource('comments', 'CommentController')->only('index');
         Route::resource('solutions', 'SolutionController')->only('index');
         Route::resource('export', 'ExportController')->only('index', 'store');
