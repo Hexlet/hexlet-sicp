@@ -42,4 +42,14 @@ class Solution extends Model
                     ->from(self::getTable());
             }, $this->getTable());
     }
+
+    public function scopeLatestPerExercise(Builder $builder): Builder
+    {
+        return $builder->whereIn('id', function ($query) {
+            $query->selectRaw('MAX(id)')
+                ->from('solutions')
+                ->whereColumn('user_id', 'solutions.user_id')
+                ->groupBy('exercise_id');
+        });
+    }
 }

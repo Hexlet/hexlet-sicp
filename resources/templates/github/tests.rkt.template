@@ -1,0 +1,7 @@
+#lang racket
+(require rackunit)
+(require "solution.rkt")
+
+;;; Tests for Exercise {exercise_path}
+
+{tests}
