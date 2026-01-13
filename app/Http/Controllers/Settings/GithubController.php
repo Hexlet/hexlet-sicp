@@ -2,13 +2,18 @@
 
 namespace App\Http\Controllers\Settings;
 
+use App\Enums\SyncDirection;
+use App\Enums\SyncType;
 use App\Http\Controllers\Controller;
 use App\Jobs\CreateGithubRepositoryJob;
-use App\Jobs\SyncSolutionsToGithubJob;
+use App\Jobs\SetupGithubRepositoryJob;
+use App\Jobs\SyncSolutionsJob;
 use App\Models\GithubRepository;
 use Auth;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Bus;
 use Inertia\Response;
+use Log;
 
 class GithubController extends Controller
 {
@@ -44,7 +49,16 @@ class GithubController extends Controller
             return redirect()->route('settings.github.index');
         }
 
-        CreateGithubRepositoryJob::dispatch($user->id);
+        Bus::chain([
+            new CreateGithubRepositoryJob($user->id),
+            (new SetupGithubRepositoryJob($user->id))->delay(now()->addSeconds(5)),
+            new SyncSolutionsJob($user->id, SyncDirection::ToGithub, SyncType::Initial),
+        ])->catch(function (\Throwable $e) use ($user) {
+            Log::channel('github')->error('GitHub repository setup chain failed', [
+                'user_id' => $user->id,
+                'error' => $e->getMessage(),
+            ]);
+        })->dispatch();
 
         flash()->success(__('account.github.creating'));
 
@@ -60,7 +74,7 @@ class GithubController extends Controller
             return redirect()->route('settings.github.index');
         }
 
-        SyncSolutionsToGithubJob::dispatch($user->id);
+        SyncSolutionsJob::dispatch($user->id);
 
         flash()->success(__('account.github.syncing'));
 

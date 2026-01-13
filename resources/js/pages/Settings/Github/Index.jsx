@@ -37,9 +37,11 @@ const Github = ({ user, repository }) => {
   }
 
   const getStatusBadge = (status) => {
+    if (!status) {
+      return null
+    }
     const statusMap = {
       active: { variant: 'success', text: t('account.github.status_active') },
-      pending: { variant: 'warning', text: t('account.github.status_pending') },
       error: { variant: 'danger', text: t('account.github.status_error') },
     }
     const statusInfo = statusMap[status] || statusMap.error
@@ -98,11 +100,20 @@ const Github = ({ user, repository }) => {
                     <Card.Body>
                       <Card.Title as="h4">{t('account.github.repository_status')}</Card.Title>
 
-                      <div className="mb-3">
-                        <strong>{t('account.github.status')}:</strong>
-                        {' '}
-                        {getStatusBadge(repository.status)}
-                      </div>
+                      {repository.status && (
+                        <div className="mb-3">
+                          <strong>{t('account.github.status')}:</strong>
+                          {' '}
+                          {getStatusBadge(repository.status)}
+                        </div>
+                      )}
+
+                      {repository.state && (
+                        <div className="mb-3">
+                          <strong>{t('account.github.current_step')}:</strong>{' '}
+                          <Badge bg="info">{t(`account.github.state.${repository.state}`)}</Badge>
+                        </div>
+                      )}
 
                       <div className="mb-3">
                         <strong>{t('account.github.repository_name')}:</strong>{' '}
@@ -123,7 +134,7 @@ const Github = ({ user, repository }) => {
                         </div>
                       )}
 
-                      {repository.last_error && (
+                      {repository.last_error && user.is_admin && (
                         <Alert variant="danger">
                           <strong>{t('account.github.last_error')}:</strong>{' '}
                           {repository.last_error}
@@ -139,7 +150,7 @@ const Github = ({ user, repository }) => {
                       <Button
                         variant="primary"
                         onClick={handleSync}
-                        disabled={processing || repository.status !== 'active'}
+                        disabled={processing || !repository.status}
                         className="me-2 mb-2"
                       >
                         <i className="fas fa-sync"></i> {t('account.github.sync_solutions')}
