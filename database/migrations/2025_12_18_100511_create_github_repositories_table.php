@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('webhook_secret')->nullable();
             $table->bigInteger('webhook_id')->nullable();
-            $table->string('status')->default(GithubRepositoryStatus::Pending->value);
+            $table->string('status')->nullable();
             $table->text('last_error')->nullable();
             $table->timestamp('last_sync_at')->nullable();
             $table->timestamps();
