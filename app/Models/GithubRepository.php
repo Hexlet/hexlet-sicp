@@ -3,12 +3,13 @@
 namespace App\Models;
 
 use App\Enums\GithubRepositoryStatus;
-use Illuminate\Database\Eloquent\Builder;
+use App\States\GithubRepository\GithubRepositoryState;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Carbon;
+use Spatie\ModelStates\HasStates;
 
 /**
  * App\Models\GithubRepository
@@ -19,6 +20,7 @@ use Illuminate\Support\Carbon;
  * @property string $webhook_secret
  * @property string|null $webhook_id
  * @property GithubRepositoryStatus $status
+ * @property GithubRepositoryState $state
  * @property string|null $last_error
  * @property Carbon|null $last_sync_at
  * @property Carbon|null $created_at
@@ -32,6 +34,8 @@ use Illuminate\Support\Carbon;
  */
 class GithubRepository extends Model
 {
+    use HasStates;
+
     protected $fillable = [
         'user_id',
         'name',
@@ -39,6 +43,7 @@ class GithubRepository extends Model
         'webhook_secret',
         'webhook_id',
         'status',
+        'state',
         'last_error',
         'last_sync_at',
     ];
@@ -46,10 +51,17 @@ class GithubRepository extends Model
     protected $casts = [
         'last_sync_at' => 'datetime',
         'status' => GithubRepositoryStatus::class,
+        'state' => GithubRepositoryState::class,
     ];
 
     protected $hidden = [
         'webhook_secret',
+    ];
+
+    protected $appends = [
+        'owner',
+        'full_name',
+        'url',
     ];
 
     public function user(): BelongsTo

@@ -3,7 +3,11 @@
 namespace App\Jobs;
 
 use App\Enums\GithubRepositoryStatus;
+use App\Enums\SyncDirection;
 use App\Enums\SyncType;
+use App\Exceptions\Github\RepositoryNotActiveException;
+use App\Exceptions\Github\RepositoryNotFoundException;
+use App\Models\GithubRepository;
 use App\Models\User;
 use App\Services\GithubRepositoryService;
 use Illuminate\Bus\Queueable;
@@ -13,7 +17,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Log;
 
-class SyncSolutionsToGithubJob implements ShouldQueue
+class SyncSolutionsJob implements ShouldQueue
 {
     use Dispatchable;
     use InteractsWithQueue;
@@ -25,56 +29,46 @@ class SyncSolutionsToGithubJob implements ShouldQueue
 
     public function __construct(
         public int $userId,
+        public ?SyncDirection $direction = null,
+        public SyncType $syncType = SyncType::Manual,
     ) {
     }
 
     public function handle(GithubRepositoryService $githubService): void
     {
         $user = User::findOrFail($this->userId);
-        $repository = $user->githubRepository;
+        $repository = $user->githubRepository ?? throw RepositoryNotFoundException::forUser($this->userId);
 
-        Log::channel('github')->info('Starting manual solutions sync', [
-            'user_id' => $this->userId,
-            'repository_id' => $repository?->id,
-        ]);
-
-        if (!$repository) {
-            $this->fail(new \Exception('Repository not found'));
-            return;
+        if ($repository->status === null) {
+            throw RepositoryNotActiveException::notReady($repository->id);
         }
 
-        if ($repository->status !== GithubRepositoryStatus::Active) {
-            $this->fail(new \Exception("Repository status is {$repository->status->value}, expected Active"));
-            return;
-        }
+        match ($this->direction) {
+            null => $this->syncBoth($githubService, $user, $repository),
+            SyncDirection::ToGithub => $githubService->syncToGithub($user, $repository, $this->syncType),
+            SyncDirection::FromGithub => $githubService->syncFromGithub($user, $repository, $this->syncType),
+        };
+    }
 
-        Log::channel('github')->info('Syncing to GitHub...', ['user_id' => $this->userId]);
-        $githubService->syncExistingSolutions($user, $repository, SyncType::Manual);
-
-        Log::channel('github')->info('Syncing from GitHub...', ['user_id' => $this->userId]);
-        $githubService->syncFromGithub($user, $repository);
-
-        $repository->update(['last_sync_at' => now()]);
-
-        Log::channel('github')->info('Bidirectional sync completed', [
-            'user_id' => $this->userId,
-            'repository_id' => $repository->id,
-        ]);
+    private function syncBoth(GithubRepositoryService $githubService, User $user, GithubRepository $repo): void
+    {
+        $githubService->syncToGithub($user, $repo, $this->syncType);
+        $githubService->syncFromGithub($user, $repo, $this->syncType);
     }
 
     public function failed(\Throwable $exception): void
     {
         $repository = User::find($this->userId)?->githubRepository;
 
-        Log::channel('github')->error('Sync solutions job failed permanently', [
-            'user_id' => $this->userId,
-            'repository_id' => $repository?->id,
-            'error' => $exception->getMessage(),
+        $repository?->update([
+            'status'     => GithubRepositoryStatus::Error,
+            'last_error' => $exception->getMessage(),
         ]);
 
-        $repository?->update([
-            'status' => GithubRepositoryStatus::Error,
-            'last_error' => $exception->getMessage(),
+        Log::channel('github')->error('Solutions sync failed', [
+            'user_id'       => $this->userId,
+            'repository_id' => $repository?->id,
+            'error'         => $exception->getMessage(),
         ]);
     }
 }

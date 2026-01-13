@@ -3,6 +3,7 @@
 namespace App\Jobs;
 
 use App\Enums\GithubRepositoryStatus;
+use App\Exceptions\Github\MissingGithubTokenException;
 use App\Models\User;
 use App\Services\GithubRepositoryService;
 use Illuminate\Bus\Queueable;
@@ -32,8 +33,7 @@ class CreateGithubRepositoryJob implements ShouldQueue
         $user = User::findOrFail($this->userId);
 
         if (!$user->github_access_token) {
-            $this->fail(new \Exception('User does not have GitHub access token'));
-            return;
+            throw MissingGithubTokenException::forUser($this->userId);
         }
 
         if ($user->githubRepository) {
@@ -43,26 +43,22 @@ class CreateGithubRepositoryJob implements ShouldQueue
             return;
         }
 
-        $repository = $githubService->createRepository($user);
-
-        Log::channel('github')->info('GitHub repository created, starting setup', [
-            'user_id' => $this->userId,
-            'repository_id' => $repository->id,
-        ]);
-
-        SetupGithubRepositoryJob::dispatch($repository->id)->delay(now()->addSeconds(5));
+        $githubService->createRepository($user);
     }
 
     public function failed(\Throwable $exception): void
     {
-        Log::channel('github')->error('GitHub repository creation job failed after all retries', [
-            'user_id' => $this->userId,
-            'error' => $exception->getMessage(),
+        $repository = User::find($this->userId)?->githubRepository;
+
+        $repository?->update([
+            'status'     => GithubRepositoryStatus::Error,
+            'last_error' => $exception->getMessage(),
         ]);
 
-        User::find($this->userId)?->githubRepository?->update([
-            'status' => GithubRepositoryStatus::Error,
-            'last_error' => $exception->getMessage(),
+        Log::channel('github')->error('GitHub repository creation failed', [
+            'user_id'       => $this->userId,
+            'repository_id' => $repository?->id,
+            'error'         => $exception->getMessage(),
         ]);
     }
 }

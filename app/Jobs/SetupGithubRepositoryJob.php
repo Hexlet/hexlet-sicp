@@ -3,7 +3,9 @@
 namespace App\Jobs;
 
 use App\Enums\GithubRepositoryStatus;
+use App\Exceptions\Github\RepositoryNotFoundException;
 use App\Models\GithubRepository;
+use App\Models\User;
 use App\Services\GithubRepositoryService;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -24,37 +26,31 @@ class SetupGithubRepositoryJob implements ShouldQueue
     public $backoff = 5;
 
     public function __construct(
-        public int $repositoryId,
+        public int $userId,
     ) {
     }
 
     public function handle(GithubRepositoryService $githubService): void
     {
-        $repository = GithubRepository::findOrFail($this->repositoryId);
-        $user = $repository->user;
-
-        Log::channel('github')->info('Setting up GitHub repository', [
-            'repository_id' => $this->repositoryId,
-            'user_id' => $user->id,
-        ]);
+        $user = User::findOrFail($this->userId);
+        $repository = $user->githubRepository ?? throw RepositoryNotFoundException::forUser($this->userId);
 
         $githubService->setupRepository($user, $repository);
-
-        Log::channel('github')->info('GitHub repository setup completed', [
-            'repository_id' => $this->repositoryId,
-        ]);
     }
 
     public function failed(\Throwable $exception): void
     {
-        Log::channel('github')->error('GitHub repository setup failed after all retries', [
-            'repository_id' => $this->repositoryId,
-            'error' => $exception->getMessage(),
+        $repository = User::find($this->userId)?->githubRepository;
+
+        $repository?->update([
+            'status'     => GithubRepositoryStatus::Error,
+            'last_error' => $exception->getMessage(),
         ]);
 
-        GithubRepository::find($this->repositoryId)?->update([
-            'status' => GithubRepositoryStatus::Error,
-            'last_error' => $exception->getMessage(),
+        Log::channel('github')->error('GitHub repository setup failed', [
+            'user_id'       => $this->userId,
+            'repository_id' => $repository?->id,
+            'error' => $exception->getMessage(),
         ]);
     }
 }
