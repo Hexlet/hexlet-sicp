@@ -38,7 +38,7 @@ services:
     ports:
       - "80:80"
     volumes:
-      - ./deploy/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./deploy/stage/nginx.conf:/etc/nginx/conf.d/default.conf:ro
       - public_data:/app/public:ro
       - app_storage:/app/storage:ro
     restart: unless-stopped
