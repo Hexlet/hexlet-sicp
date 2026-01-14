@@ -1,2 +1,7 @@
+.env
+
 vendor
 node_modules
+
+storage/logs
+storage/app
