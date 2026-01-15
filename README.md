@@ -117,9 +117,8 @@ make test # run tests
 Stage environment uses Docker Compose to deploy a production-like setup on a single server.
 
 **Architecture:**
-- `app` - Laravel application container
+- `app` - Laravel application container (serves HTTP on port 80)
 - `queue` - background queue worker
-- `nginx` - reverse proxy and static assets server
 - `db` - PostgreSQL database
 
 **Initial setup** (first time only):
@@ -202,7 +201,7 @@ make stage-reset    # Complete rebuild: stop, remove volumes, rebuild, and reini
 
 **HTTPS setup:**
 
-The stage nginx listens on HTTP only. For HTTPS, use an external reverse proxy (Caddy, Traefik, or host-level nginx) for TLS termination.
+The stage app listens on HTTP (port 80) only. For HTTPS, use an external reverse proxy (Caddy, Traefik, or host-level nginx) for TLS termination.
 
 ## Coding stardards and other rules
 

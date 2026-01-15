@@ -75,6 +75,9 @@ db-migrate:
 db-migrate-seed:
 	php artisan migrate --force --seed
 
+db-seed:
+	php artisan db:seed --force
+
 env-prepare:
 	cp -n .env.example .env || true
 
@@ -109,6 +112,6 @@ pre-push-hook: lint analyse
 docker-build-render:
 	DOCKER_BUILDKIT=1 COMPOSE_DOCKER_CLI_BUILD=1 docker build . -t hexlet-sicp:cached
 
-stage-init: key db-migrate-seed storage-link cache-build
+stage-init: key db-seed storage-link cache-build
 
-stage-update: cache-clear db-migrate cache-build
+stage-update: cache-clear cache-build
