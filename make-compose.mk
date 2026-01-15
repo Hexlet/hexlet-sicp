@@ -72,3 +72,49 @@ ci-solutions:
 	docker compose -f docker-compose.ci.yml -p hexlet-sicp-ci build ${BUILD_ARGS}
 	docker compose -f docker-compose.ci.yml -p hexlet-sicp-ci run --rm application make install-app test-solutions
 	docker compose -f docker-compose.ci.yml -p hexlet-sicp-ci down -v --remove-orphans
+
+stage-setup:
+	docker compose -f docker-compose.stage.yml up -d
+	docker compose -f docker-compose.stage.yml exec app make stage-init
+
+stage-deploy:
+	git pull origin main
+	docker compose -f docker-compose.stage.yml build
+	docker compose -f docker-compose.stage.yml up -d
+	docker compose -f docker-compose.stage.yml exec app make stage-update
+
+stage-deploy-branch:
+	@if [ -z "$(BRANCH)" ]; then \
+		echo "Usage: make stage-deploy-branch BRANCH=your-branch-name"; \
+		exit 1; \
+	fi
+	git fetch origin
+	git checkout $(BRANCH)
+	git pull origin $(BRANCH)
+	docker compose -f docker-compose.stage.yml build
+	docker compose -f docker-compose.stage.yml up -d
+	docker compose -f docker-compose.stage.yml exec app make stage-update
+
+stage-start:
+	docker compose -f docker-compose.stage.yml up -d
+
+stage-stop:
+	docker compose -f docker-compose.stage.yml stop
+
+stage-restart:
+	docker compose -f docker-compose.stage.yml restart
+
+stage-logs:
+	docker compose -f docker-compose.stage.yml logs -f
+
+stage-bash:
+	docker compose -f docker-compose.stage.yml exec app bash
+
+stage-down:
+	docker compose -f docker-compose.stage.yml down
+
+stage-reset:
+	docker compose -f docker-compose.stage.yml down -v
+	docker compose -f docker-compose.stage.yml build
+	docker compose -f docker-compose.stage.yml up -d
+	docker compose -f docker-compose.stage.yml exec app make stage-init
