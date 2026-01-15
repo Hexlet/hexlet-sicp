@@ -107,6 +107,84 @@ make test # запуск тестов
     make test          # запустить тесты в docker-контейнере
     ```
 
+### Развертывание stage окружения
+
+Stage окружение использует Docker Compose для развертывания production-like конфигурации на одном сервере.
+
+**Архитектура:**
+- `app` - контейнер с Laravel приложением
+- `queue` - воркер для обработки фоновых задач
+- `nginx` - обратный прокси и сервер статических файлов
+- `db` - база данных PostgreSQL
+
+**Первоначальная установка** (только один раз):
+
+1. Подготовить файл `.env` на сервере
+
+    ```sh
+    cp .env.example .env
+    nano .env
+    ```
+
+2. Настроить переменные окружения (см. `docker-compose.stage.yml`)
+
+    ```dotenv
+    APP_ENV=production
+    APP_DEBUG=false
+    APP_URL=https://your-domain.com
+    PRODUCTION_URL=https://your-domain.com
+
+    DB_CONNECTION=pgsql
+    DB_HOST=db
+    DB_PORT=5432
+    DB_DATABASE=hexlet_sicp
+    DB_USERNAME=sicp_user
+    DB_PASSWORD=your_secure_password
+
+    QUEUE_CONNECTION=database
+    SESSION_DRIVER=cookie
+    ```
+
+3. Запустить первоначальную установку
+
+    ```sh
+    make stage-setup
+    ```
+
+    Эта команда:
+    - Запустит все контейнеры
+    - Сгенерирует ключ приложения
+    - Применит миграции с сидами
+    - Создаст символическую ссылку для storage
+    - Построит кэши конфигурации/роутов/views
+
+**Деплой обновлений:**
+
+```sh
+make stage-deploy
+```
+
+Эта команда:
+- Подтянет последний код из git
+- Пересоберет контейнеры
+- Применит новые миграции
+- Очистит и пересоздаст кэши
+
+**Другие команды:**
+
+```sh
+make stage-start    # Запустить контейнеры
+make stage-stop     # Остановить контейнеры
+make stage-restart  # Перезапустить контейнеры
+make stage-logs     # Просмотр логов
+make stage-bash     # Открыть bash в контейнере app
+make stage-down     # Остановить и удалить контейнеры
+```
+
+**Настройка HTTPS:**
+
+Stage nginx слушает только HTTP. Для HTTPS используйте внешний reverse proxy (Caddy, Traefik или nginx на хосте) для TLS терминации.
+
 ## Стандарты кодирования и прочие правила
 
 * Пулреквесты должны быть настолько маленькими, насколько это возможно с точки зрения здравого смысла

@@ -56,6 +56,25 @@ check: test lint analyse
 config-clear:
 	php artisan config:clear
 
+cache-clear:
+	php artisan config:clear
+	php artisan cache:clear
+	php artisan view:clear
+
+cache-build:
+	php artisan config:cache
+	php artisan route:cache
+	php artisan view:cache
+
+storage-link:
+	php artisan storage:link
+
+db-migrate:
+	php artisan migrate --force
+
+db-migrate-seed:
+	php artisan migrate --force --seed
+
 env-prepare:
 	cp -n .env.example .env || true
 
@@ -89,3 +108,7 @@ pre-push-hook: lint analyse
 
 docker-build-render:
 	DOCKER_BUILDKIT=1 COMPOSE_DOCKER_CLI_BUILD=1 docker build . -t hexlet-sicp:cached
+
+stage-init: key db-migrate-seed storage-link cache-build
+
+stage-update: db-migrate cache-clear cache-build

@@ -112,6 +112,84 @@ make test # run tests
     make test          # run tests inside docker container
     ```
 
+### Stage deployment
+
+Stage environment uses Docker Compose to deploy a production-like setup on a single server.
+
+**Architecture:**
+- `app` - Laravel application container
+- `queue` - background queue worker
+- `nginx` - reverse proxy and static assets server
+- `db` - PostgreSQL database
+
+**Initial setup** (first time only):
+
+1. Prepare the `.env` file on the server
+
+    ```sh
+    cp .env.example .env
+    nano .env
+    ```
+
+2. Configure environment variables (see `docker-compose.stage.yml`)
+
+    ```dotenv
+    APP_ENV=production
+    APP_DEBUG=false
+    APP_URL=https://your-domain.com
+    PRODUCTION_URL=https://your-domain.com
+
+    DB_CONNECTION=pgsql
+    DB_HOST=db
+    DB_PORT=5432
+    DB_DATABASE=hexlet_sicp
+    DB_USERNAME=sicp_user
+    DB_PASSWORD=your_secure_password
+
+    QUEUE_CONNECTION=database
+    SESSION_DRIVER=cookie
+    ```
+
+3. Run initial setup
+
+    ```sh
+    make stage-setup
+    ```
+
+    This will:
+    - Start all containers
+    - Generate application key
+    - Run migrations with seeders
+    - Create storage symlink
+    - Build config/route/view caches
+
+**Deploying updates:**
+
+```sh
+make stage-deploy
+```
+
+This will:
+- Pull latest code from git
+- Rebuild containers
+- Run new migrations
+- Clear and rebuild caches
+
+**Other commands:**
+
+```sh
+make stage-start    # Start containers
+make stage-stop     # Stop containers
+make stage-restart  # Restart containers
+make stage-logs     # View logs
+make stage-bash     # Open bash in app container
+make stage-down     # Stop and remove containers
+```
+
+**HTTPS setup:**
+
+The stage nginx listens on HTTP only. For HTTPS, use an external reverse proxy (Caddy, Traefik, or host-level nginx) for TLS termination.
+
 ## Coding stardards and other rules
 
 * Pull requests should be as small as reasonably possible
