@@ -69,7 +69,7 @@ const Github = ({ user, repository }) => {
                   <i className="fas fa-exclamation-triangle"></i>{' '}
                   {t('account.github.not_authorized')}
                 </Alert>
-                <a href="/oauth/github" className="btn btn-dark">
+                <a href={route('/oauth/github')} className="btn btn-dark">
                   <i className="fab fa-github"></i> {t('account.github.connect_github')}
                 </a>
               </Card.Body>
