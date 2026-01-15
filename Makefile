@@ -61,11 +61,6 @@ cache-clear:
 	php artisan cache:clear
 	php artisan view:clear
 
-cache-build:
-	php artisan config:cache
-	php artisan route:cache
-	php artisan view:cache
-
 storage-link:
 	php artisan storage:link
 
@@ -112,6 +107,6 @@ pre-push-hook: lint analyse
 docker-build-render:
 	DOCKER_BUILDKIT=1 COMPOSE_DOCKER_CLI_BUILD=1 docker build . -t hexlet-sicp:cached
 
-stage-init: key db-seed storage-link cache-build
+stage-init: key db-seed storage-link
 
-stage-update: cache-clear cache-build
+stage-update: cache-clear
