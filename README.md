@@ -170,7 +170,20 @@ make stage-deploy
 ```
 
 This will:
-- Pull latest code from git
+- Pull latest code from git (main branch)
+- Rebuild containers
+- Run new migrations
+- Clear and rebuild caches
+
+**Deploying a specific branch:**
+
+```sh
+make stage-deploy-branch BRANCH=feature/my-feature
+```
+
+This will:
+- Fetch and checkout the specified branch
+- Pull latest code from that branch
 - Rebuild containers
 - Run new migrations
 - Clear and rebuild caches

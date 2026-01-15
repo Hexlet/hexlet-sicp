@@ -83,6 +83,18 @@ stage-deploy:
 	docker compose -f docker-compose.stage.yml up -d
 	docker compose -f docker-compose.stage.yml exec app make stage-update
 
+stage-deploy-branch:
+	@if [ -z "$(BRANCH)" ]; then \
+		echo "Usage: make stage-deploy-branch BRANCH=your-branch-name"; \
+		exit 1; \
+	fi
+	git fetch origin
+	git checkout $(BRANCH)
+	git pull origin $(BRANCH)
+	docker compose -f docker-compose.stage.yml build
+	docker compose -f docker-compose.stage.yml up -d
+	docker compose -f docker-compose.stage.yml exec app make stage-update
+
 stage-start:
 	docker compose -f docker-compose.stage.yml up -d
 
