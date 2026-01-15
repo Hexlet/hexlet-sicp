@@ -111,4 +111,4 @@ docker-build-render:
 
 stage-init: key db-migrate-seed storage-link cache-build
 
-stage-update: db-migrate cache-clear cache-build
+stage-update: cache-clear db-migrate cache-build
