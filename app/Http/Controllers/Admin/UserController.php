@@ -23,4 +23,24 @@ class UserController extends AdminController
 
         return view('admin.users', compact('users'));
     }
+
+    public function edit(User $user)
+    {
+        return view('admin.users.edit', compact('user'));
+    }
+
+    public function update(Request $request, User $user)
+    {
+        $data = $request->validate([
+            'name' => 'required|string|max:255',
+            'github_name' => 'nullable|string|max:255',
+        ]);
+
+        $user->update($data);
+        $user->admin = $request->has('admin');
+        $user->save();
+
+        return redirect()->route('admin.users.index')
+            ->with('success', 'User updated');
+    }
 }
