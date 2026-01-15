@@ -197,6 +197,7 @@ make stage-restart  # Restart containers
 make stage-logs     # View logs
 make stage-bash     # Open bash in app container
 make stage-down     # Stop and remove containers
+make stage-reset    # Complete rebuild: stop, remove volumes, rebuild, and reinitialize
 ```
 
 **HTTPS setup:**

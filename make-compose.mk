@@ -112,3 +112,9 @@ stage-bash:
 
 stage-down:
 	docker compose -f docker-compose.stage.yml down
+
+stage-reset:
+	docker compose -f docker-compose.stage.yml down -v
+	docker compose -f docker-compose.stage.yml build
+	docker compose -f docker-compose.stage.yml up -d
+	docker compose -f docker-compose.stage.yml exec app make stage-init

@@ -11,6 +11,7 @@ services:
     expose:
       - "80"
     volumes:
+      - ./.env:/app/.env
       - app_storage:/app/storage
       - app_cache:/app/bootstrap/cache
       - public_data:/app/public
@@ -26,6 +27,7 @@ services:
       db:
         condition: service_healthy
     volumes:
+      - ./.env:/app/.env
       - app_storage:/app/storage
       - app_cache:/app/bootstrap/cache
     command: ["php", "artisan", "queue:work", "--tries=3", "--timeout=300", "--sleep=3"]

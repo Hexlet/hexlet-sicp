@@ -192,6 +192,7 @@ make stage-restart  # Перезапустить контейнеры
 make stage-logs     # Просмотр логов
 make stage-bash     # Открыть bash в контейнере app
 make stage-down     # Остановить и удалить контейнеры
+make stage-reset    # Полная пересборка: остановка, удаление volumes, пересборка и инициализация
 ```
 
 **Настройка HTTPS:**
