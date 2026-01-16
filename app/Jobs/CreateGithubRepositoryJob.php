@@ -6,7 +6,6 @@ use App\Enums\GithubRepositoryStatus;
 use App\Exceptions\Github\MissingGithubTokenException;
 use App\Models\User;
 use App\Services\GithubRepositoryService;
-use App\States\GithubRepository\CreateFailed;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
@@ -51,20 +50,10 @@ class CreateGithubRepositoryJob implements ShouldQueue
     {
         $repository = User::find($this->userId)?->githubRepository;
 
-        if ($repository) {
-            if ($repository->state instanceof CreateFailed) {
-                Log::channel('github')->info('Deleting failed repository record', [
-                    'user_id' => $this->userId,
-                    'repository_id' => $repository->id,
-                ]);
-                $repository->delete();
-            } else {
-                $repository->update([
-                    'status'     => GithubRepositoryStatus::Error,
-                    'last_error' => $exception->getMessage(),
-                ]);
-            }
-        }
+        $repository?->update([
+            'status'     => GithubRepositoryStatus::Error,
+            'last_error' => $exception->getMessage(),
+        ]);
 
         Log::channel('github')->error('GitHub repository creation failed', [
             'user_id'       => $this->userId,
