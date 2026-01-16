@@ -48,7 +48,6 @@ return [
         'sync_solutions' => 'Sync Solutions',
         'delete_integration' => 'Delete Integration',
         'confirm_delete' => 'Are you sure you want to delete GitHub integration? The repository on GitHub will remain, but automatic synchronization will be disabled.',
-        'processing' => 'Repository setup is in progress. Please wait, actions are temporarily unavailable.',
         'how_it_works' => 'How It Works',
         'instruction_1' => 'A private repository is created on your GitHub account',
         'instruction_2' => 'All your solutions are uploaded to the repository with the correct structure',

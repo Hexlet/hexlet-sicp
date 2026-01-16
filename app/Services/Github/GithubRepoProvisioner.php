@@ -4,6 +4,7 @@ namespace App\Services\Github;
 
 use App\Enums\GithubRepositoryStatus;
 use App\Exceptions\Github\GithubApiException;
+use App\Exceptions\Github\RepositoryAlreadyExistsException;
 use App\Models\Exercise;
 use App\Models\GithubRepository;
 use App\Models\User;
@@ -14,6 +15,7 @@ use App\States\GithubRepository\FillFailed;
 use App\States\GithubRepository\Filled;
 use App\States\GithubRepository\Filling;
 use Github\Client as GitHubClient;
+use Github\Exception\RuntimeException as GithubRuntimeException;
 use Log;
 
 class GithubRepoProvisioner
@@ -32,6 +34,10 @@ class GithubRepoProvisioner
     public function createRepository(User $user): GithubRepository
     {
         $client = $this->clientFactory->forUser($user);
+
+        if ($this->repositoryExistsOnGithub($client, $user)) {
+            throw RepositoryAlreadyExistsException::forRepository($user->github_name, self::REPOSITORY_NAME);
+        }
 
         $repo = new GithubRepository([
             'user_id' => $user->id,
@@ -247,5 +253,18 @@ class GithubRepoProvisioner
         }
 
         return $files;
+    }
+
+    private function repositoryExistsOnGithub(GitHubClient $client, User $user): bool
+    {
+        try {
+            $client->api('repo')->show($user->github_name, self::REPOSITORY_NAME);
+            return true;
+        } catch (GithubRuntimeException $e) {
+            if ($e->getCode() === 404) {
+                return false;
+            }
+            throw $e;
+        }
     }
 }
