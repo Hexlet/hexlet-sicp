@@ -14,6 +14,15 @@ abstract class GithubRepositoryState extends State
         return \Str::snake(class_basename(static::class));
     }
 
+    public static function getProcessingStates(): array
+    {
+        return [
+            Creating::getMorphClass(),
+            Filling::getMorphClass(),
+            Syncing::getMorphClass(),
+        ];
+    }
+
     public static function config(): StateConfig
     {
         return parent::config()

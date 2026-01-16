@@ -9,6 +9,7 @@ use App\Jobs\CreateGithubRepositoryJob;
 use App\Jobs\SetupGithubRepositoryJob;
 use App\Jobs\SyncSolutionsJob;
 use App\Models\GithubRepository;
+use App\States\GithubRepository\GithubRepositoryState;
 use Auth;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Bus;
@@ -32,6 +33,7 @@ class GithubController extends Controller
                 'has_github_token' => !empty($user->github_access_token),
             ]),
             'repository' => $repository,
+            'processingStates' => GithubRepositoryState::getProcessingStates(),
         ]);
     }
 

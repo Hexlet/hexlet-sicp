@@ -6,9 +6,9 @@ import { ru, enUS } from 'date-fns/locale'
 import SettingsLayout from '@/components/Settings/SettingsLayout'
 import { useRoute } from '@/utils/route'
 
-const Github = ({ user, repository }) => {
+const Github = ({ user, repository, processingStates }) => {
   const { t, i18n } = useTranslation()
-  const { post, delete: destroy, processing } = useForm()
+  const { post, delete: destroy, processing: isSubmitting } = useForm()
   const route = useRoute()
 
   const formatDate = (dateString) => {
@@ -18,6 +18,11 @@ const Github = ({ user, repository }) => {
       addSuffix: true,
       locale: dateLocale,
     })
+  }
+
+  const isProcessing = () => {
+    if (!repository || !repository.state) return false
+    return processingStates.includes(repository.state)
   }
   const handleCreateRepository = (e) => {
     e.preventDefault()
@@ -87,7 +92,7 @@ const Github = ({ user, repository }) => {
                     <Button
                       variant="primary"
                       onClick={handleCreateRepository}
-                      disabled={processing}
+                      disabled={isSubmitting}
                     >
                       <i className="fas fa-plus"></i> {t('account.github.create_repository')}
                     </Button>
@@ -147,10 +152,17 @@ const Github = ({ user, repository }) => {
                     <Card.Body>
                       <Card.Title as="h4">{t('account.github.actions')}</Card.Title>
 
+                      {isProcessing() && (
+                        <Alert variant="info" className="mb-3">
+                          <i className="fas fa-spinner fa-spin"></i>{' '}
+                          {t('account.github.processing')}
+                        </Alert>
+                      )}
+
                       <Button
                         variant="primary"
                         onClick={handleSync}
-                        disabled={processing || !repository.status}
+                        disabled={isSubmitting || !repository.status || isProcessing()}
                         className="me-2 mb-2"
                       >
                         <i className="fas fa-sync"></i> {t('account.github.sync_solutions')}
@@ -159,7 +171,7 @@ const Github = ({ user, repository }) => {
                       <Button
                         variant="danger"
                         onClick={handleDelete}
-                        disabled={processing}
+                        disabled={isSubmitting || isProcessing()}
                         className="mb-2"
                       >
                         <i className="fas fa-trash"></i> {t('account.github.delete_integration')}
