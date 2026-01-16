@@ -7,7 +7,7 @@ use Auth;
 use App\Http\Controllers\Controller;
 use DB;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\View\View;
+use Inertia\Response;
 
 class AccountController extends Controller
 {
@@ -16,12 +16,14 @@ class AccountController extends Controller
         $this->middleware('auth');
     }
 
-    public function index(): View
+    public function index(): Response
     {
         /** @var User $user */
         $user = Auth::user();
 
-        return view('settings.account.index', compact('user'));
+        return $this->inertia([
+            'user' => $user,
+        ]);
     }
 
     public function destroy(): RedirectResponse
