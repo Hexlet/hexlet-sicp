@@ -23,6 +23,15 @@ abstract class GithubRepositoryState extends State
         ];
     }
 
+    public static function getFailedStates(): array
+    {
+        return [
+            CreateFailed::getMorphClass(),
+            FillFailed::getMorphClass(),
+            SyncFailed::getMorphClass(),
+        ];
+    }
+
     public static function config(): StateConfig
     {
         return parent::config()

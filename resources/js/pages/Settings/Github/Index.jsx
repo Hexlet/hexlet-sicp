@@ -6,7 +6,7 @@ import { ru, enUS } from 'date-fns/locale'
 import SettingsLayout from '@/components/Settings/SettingsLayout'
 import { useRoute } from '@/utils/route'
 
-const Github = ({ user, repository, processingStates }) => {
+const Github = ({ user, repository, processingStates, failedStates }) => {
   const { t, i18n } = useTranslation()
   const { post, delete: destroy, processing: isSubmitting } = useForm()
   const route = useRoute()
@@ -23,6 +23,11 @@ const Github = ({ user, repository, processingStates }) => {
   const isProcessing = () => {
     if (!repository || !repository.state) return false
     return processingStates.includes(repository.state)
+  }
+
+  const hasFailed = () => {
+    if (!repository || !repository.state) return false
+    return failedStates.includes(repository.state)
   }
   const handleCreateRepository = (e) => {
     e.preventDefault()
@@ -139,7 +144,7 @@ const Github = ({ user, repository, processingStates }) => {
                         </div>
                       )}
 
-                      {repository.last_error && user.is_admin && (
+                      {repository.last_error && (
                         <Alert variant="danger">
                           <strong>{t('account.github.last_error')}:</strong>{' '}
                           {repository.last_error}
@@ -162,7 +167,7 @@ const Github = ({ user, repository, processingStates }) => {
                       <Button
                         variant="primary"
                         onClick={handleSync}
-                        disabled={isSubmitting || !repository.status || isProcessing()}
+                        disabled={isSubmitting || !repository.status || isProcessing() || hasFailed()}
                         className="me-2 mb-2"
                       >
                         <i className="fas fa-sync"></i> {t('account.github.sync_solutions')}

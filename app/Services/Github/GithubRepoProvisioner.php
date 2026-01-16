@@ -4,6 +4,7 @@ namespace App\Services\Github;
 
 use App\Enums\GithubRepositoryStatus;
 use App\Exceptions\Github\GithubApiException;
+use App\Exceptions\Github\GithubNotFoundException;
 use App\Exceptions\Github\RepositoryAlreadyExistsException;
 use App\Models\Exercise;
 use App\Models\GithubRepository;
@@ -15,7 +16,6 @@ use App\States\GithubRepository\FillFailed;
 use App\States\GithubRepository\Filled;
 use App\States\GithubRepository\Filling;
 use Github\Client as GitHubClient;
-use Github\Exception\RuntimeException as GithubRuntimeException;
 use Log;
 
 class GithubRepoProvisioner
@@ -35,10 +35,6 @@ class GithubRepoProvisioner
     {
         $client = $this->clientFactory->forUser($user);
 
-        if ($this->repositoryExistsOnGithub($client, $user)) {
-            throw RepositoryAlreadyExistsException::forRepository($user->github_name, self::REPOSITORY_NAME);
-        }
-
         $repo = new GithubRepository([
             'user_id' => $user->id,
             'name' => self::REPOSITORY_NAME,
@@ -55,6 +51,10 @@ class GithubRepoProvisioner
         ]);
 
         try {
+            if ($this->repositoryExistsOnGithub($client, $user)) {
+                throw RepositoryAlreadyExistsException::forRepository($user->github_name, self::REPOSITORY_NAME);
+            }
+
             $repoData = $client->api('repo')->create(
                 self::REPOSITORY_NAME,
                 self::REPOSITORY_DESCRIPTION,
@@ -260,7 +260,7 @@ class GithubRepoProvisioner
         try {
             $client->api('repo')->show($user->github_name, self::REPOSITORY_NAME);
             return true;
-        } catch (GithubRuntimeException $e) {
+        } catch (\Throwable $e) {
             if ($e->getCode() === 404) {
                 return false;
             }

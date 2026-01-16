@@ -34,6 +34,7 @@ class GithubController extends Controller
             ]),
             'repository' => $repository,
             'processingStates' => GithubRepositoryState::getProcessingStates(),
+            'failedStates' => GithubRepositoryState::getFailedStates(),
         ]);
     }
 
