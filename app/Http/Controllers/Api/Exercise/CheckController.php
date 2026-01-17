@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers\Api\Exercise;
 
+use App\DTO\Api\CheckSolutionData;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Api\Exercise\CheckSolutionRequest;
 use App\Http\Resources\Api\Exercise\CheckResultResource;
 use App\Models\Exercise;
 use App\Models\User;
 use App\Services\ExerciseService;
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
 class CheckController extends Controller
@@ -18,16 +17,14 @@ class CheckController extends Controller
      */
     public function store(
         Exercise $exercise,
-        CheckSolutionRequest $request,
+        CheckSolutionData $data,
         ExerciseService $exerciseService
     ): Response {
-        $data = $request->validated();
+        $user = $data->user_id !== null
+            ? User::findOrFail($data->user_id)
+            : new User();
 
-        $user = array_get($data, 'user_id') !== null ? User::findOrFail($data['user_id']) : new User();
-
-        $solutionCode = $data['solution_code'];
-
-        $checkResult = $exerciseService->check($user, $exercise, $solutionCode);
+        $checkResult = $exerciseService->check($user, $exercise, $data->solution_code);
 
         return response([
             'check_result' => new CheckResultResource($checkResult),

@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Api\Exercise;
 
+use App\DTO\Api\SaveSolutionData;
 use App\Http\Controllers\Controller;
 use App\Models\Exercise;
 use App\Models\User;
 use App\Services\ExerciseService;
 use Illuminate\Http\Response;
-use App\Http\Requests\Api\Exercise\SaveSolutionRequest;
 
 class SolutionController extends Controller
 {
@@ -16,20 +16,16 @@ class SolutionController extends Controller
      */
     public function store(
         Exercise $exercise,
-        SaveSolutionRequest $request,
+        SaveSolutionData $data,
         ExerciseService $exerciseService
     ): Response {
-        $data = $request->validated();
+        $user = User::findOrFail($data->user_id);
 
-        $user = User::findOrFail($data['user_id']);
-
-        $solutionCode = $data['solution_code'];
-
-        $solutionResult = $exerciseService->createSolution($user, $exercise, $solutionCode);
+        $solution = $exerciseService->createSolution($user, $exercise, $data->solution_code);
 
         return response([
             'save_result' => [
-                'id' => (int)$solutionResult->id,
+                'id' => (int) $solution->id,
             ],
         ], 201);
     }
