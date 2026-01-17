@@ -3,7 +3,6 @@
 namespace App\DTO;
 
 use App\Enums\CommentableType;
-use App\Http\Requests\CommentRequest;
 use Illuminate\Routing\UrlGenerator;
 use Spatie\LaravelData\Attributes\Validation\Max;
 use Spatie\LaravelData\Attributes\Validation\Min;
@@ -14,6 +13,7 @@ use Spatie\LaravelData\Optional;
 class CommentData extends Data
 {
     public const string URL_ANCHOR = '#exercise-discussion';
+    public const int MAX_CONTENT_LENGTH = 500;
 
     public function __construct(
         #[Required]
@@ -23,7 +23,7 @@ class CommentData extends Data
         public int $commentable_id,
         #[Required]
         #[Min(1)]
-        #[Max(CommentRequest::MAX_CONTENT_LENGTH)]
+        #[Max(self::MAX_CONTENT_LENGTH)]
         public string $content,
         #[Min(1)]
         public int|Optional|null $parent_id = null,
