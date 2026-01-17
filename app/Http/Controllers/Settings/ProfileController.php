@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers\Settings;
 
+use App\DTO\Settings\ProfileUpdateData;
 use App\Models\User;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Auth;
-use Illuminate\Validation\Rule;
+use Illuminate\Http\RedirectResponse;
 use Inertia\Response;
 
 class ProfileController extends Controller
@@ -27,25 +26,12 @@ class ProfileController extends Controller
         ]);
     }
 
-    public function update(Request $request): RedirectResponse
+    public function update(ProfileUpdateData $data): RedirectResponse
     {
         /** @var User $user */
         $user = Auth::user();
-        $this->validate($request, [
-            'name' => [
-                'required',
-                'min:2',
-                'max:255',
-            ],
-            'github_name' => [
-                'nullable',
-                'min:2',
-                'max:255',
-                Rule::unique('users')->ignore($user),
-            ],
-        ]);
-        $user->name = $request->get('name');
-        $user->github_name = $request->get('github_name');
+        $user->name = $data->name;
+        $user->github_name = $data->github_name;
 
         $flash = $user->save()
             ? ['success' => __('account.account_updated')]
