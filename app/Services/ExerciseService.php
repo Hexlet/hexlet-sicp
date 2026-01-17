@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Services;
 
+use App\DTO\CheckResultData;
 use App\Models\User;
 use App\Models\Exercise;
 use App\Models\ExerciseMember;
@@ -13,13 +14,13 @@ use Illuminate\Support\Facades\Log;
 
 class ExerciseService
 {
-    private const POINTS_PER_EXERCISE = 3;
+    private const int POINTS_PER_EXERCISE = 3;
 
     public function __construct(private SolutionChecker $checker, private ActivityService $activityService)
     {
     }
 
-    public function check(User $user, Exercise $exercise, string $solutionCode): CheckResult
+    public function check(User $user, Exercise $exercise, string $solutionCode): CheckResultData
     {
         $checkResult = $this->checker->check($exercise, $solutionCode);
 

@@ -2,16 +2,17 @@
 
 namespace App\Services;
 
+use App\DTO\CheckResultData;
 use App\Models\Exercise;
 use Illuminate\Support\Facades\Storage;
 use mikehaertl\shellcommand\Command;
 
 class SolutionChecker
 {
-    public function check(Exercise $exercise, string $solutionCode): CheckResult
+    public function check(Exercise $exercise, string $solutionCode): CheckResultData
     {
         if (!$exercise->hasTests()) {
-            return new CheckResult(CheckResult::SUCCESS_EXIT_CODE);
+            return new CheckResultData(CheckResultData::SUCCESS_EXIT_CODE);
         }
 
         $tests = $exercise->getExerciseTests();
@@ -38,7 +39,7 @@ class SolutionChecker
             ? $command->getOutput()
             : $command->getError();
 
-        return new CheckResult($exitCode, $output);
+        return new CheckResultData($exitCode, $output);
     }
 
     private function prettifyCode(string $code): string

@@ -2,21 +2,21 @@
 
 namespace App\Http\Resources\Api\Exercise;
 
+use App\DTO\CheckResultData;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 /**
- * @property \App\Services\CheckResult $resource
+ * @property CheckResultData $resource
  */
 class CheckResultResource extends JsonResource
 {
     public function toArray(Request $request): array
     {
         return [
-            /** @var int */
             'exit_code' => $this->resource->exitCode,
             'result_status' => $this->resource->getResultStatus(),
-            'output' => $this->resource->getOutput(),
+            'output' => $this->resource->output,
         ];
     }
 }
