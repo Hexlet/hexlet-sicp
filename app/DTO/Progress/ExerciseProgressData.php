@@ -4,8 +4,9 @@ namespace App\DTO\Progress;
 
 use App\Models\Exercise;
 use App\Models\ExerciseMember;
+use Spatie\LaravelData\Data;
 
-readonly class ExerciseProgressData
+class ExerciseProgressData extends Data
 {
     public function __construct(
         public Exercise $exercise,

@@ -4,8 +4,9 @@ namespace App\DTO\Progress;
 
 use App\Models\Chapter;
 use Illuminate\Support\Collection;
+use Spatie\LaravelData\Data;
 
-readonly class ChapterProgressData
+class ChapterProgressData extends Data
 {
     public function __construct(
         public Chapter $chapter,
