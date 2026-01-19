@@ -31,7 +31,7 @@ Route::group([
 
     Route::resource('users', 'UserController')->only('show');
     Route::namespace('User')->group(function (): void {
-        Route::resource('users.solutions', 'SolutionController')->only('store', 'show', 'destroy');
+        Route::resource('users.solutions', 'SolutionController')->only('show');
         Route::resource('users.comments', 'UserCommentController')->only('index');
     });
 
