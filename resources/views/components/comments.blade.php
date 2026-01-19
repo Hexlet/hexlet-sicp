@@ -3,8 +3,8 @@
    * @var \Illuminate\Database\Eloquent\Model $model
    * @var \App\Models\Comment $comment
    */
-  use App\Http\Requests\CommentRequest;
-  $maxCommentLength = CommentRequest::MAX_CONTENT_LENGTH;
+  use App\DTO\CommentData;
+  $maxCommentLength = CommentData::MAX_CONTENT_LENGTH;
 @endphp
 <div class="mt-2">
   @if ($model->comments->isEmpty())
