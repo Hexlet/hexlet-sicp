@@ -22,7 +22,7 @@ use Illuminate\Support\Facades\Date;
  * @property string $name
  * @property string $email
  * @property string $github_name
- * @property bool $is_admin
+ * @property bool $admin
  * @property \Illuminate\Support\Carbon|null $email_verified_at
  * @property string $password
  * @property string|null $remember_token
@@ -58,7 +58,7 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var string[]
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'github_name',
     ];
 
     /**
@@ -90,7 +90,7 @@ class User extends Authenticatable implements MustVerifyEmail
             $user->github_name = null;
             $user->remember_token = null;
             $user->password = null;
-            $user->is_admin = false;
+            $user->admin = false;
 
             $user->save();
 
@@ -159,6 +159,6 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function scopeAdmins(Builder $builder): Builder
     {
-        return $builder->where('is_admin', '=', true);
+        return $builder->where('admin', '=', true);
     }
 }

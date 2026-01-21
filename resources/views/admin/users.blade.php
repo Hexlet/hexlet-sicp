@@ -29,6 +29,7 @@
                                 <th>{{ __('admin.users.table.email') }}</th>
                                 <th>{{ __('admin.users.table.role') }}</th>
                                 <th>{{ __('admin.users.table.created') }}</th>
+                                <th>{{ __('admin.users.table.actions') }}</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -50,7 +51,7 @@
                                         <span class="text-break">{{ $user->email }}</span>
                                     </td>
                                     <td>
-                                        @if($user->is_admin)
+                                        @if($user->admin)
                                             <span class="badge bg-danger">
                                                 <i class="bi bi-shield-fill-check"></i> {{ __('admin.users.role.admin') }}
                                             </span>
@@ -62,6 +63,13 @@
                                         <small class="text-muted">
                                             {{ $user->created_at->format('d.m.Y H:i') }}
                                         </small>
+                                    </td>
+                                    <td>
+                                      <a href="{{ route('admin.users.edit', $user) }}"
+                                         class="btn btn-sm btn-outline-primary"
+                                         title="{{ __('admin.users.edit') }}">
+                                        <i class="bi bi-pencil"></i>
+                                      </a>
                                     </td>
                                 </tr>
                             @empty
