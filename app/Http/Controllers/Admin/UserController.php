@@ -37,7 +37,7 @@ class UserController extends AdminController
         ]);
 
         $user->update($data);
-        $user->admin = $request->has('admin');
+        $user->is_admin = $request->has('admin');
         $user->save();
 
         return redirect()->route('admin.users.index')

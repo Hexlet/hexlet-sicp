@@ -90,7 +90,7 @@ class User extends Authenticatable implements MustVerifyEmail
             $user->github_name = null;
             $user->remember_token = null;
             $user->password = null;
-            $user->admin = false;
+            $user->is_admin = false;
 
             $user->save();
 
@@ -159,6 +159,6 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function scopeAdmins(Builder $builder): Builder
     {
-        return $builder->where('admin', '=', true);
+        return $builder->where('is_admin', '=', true);
     }
 }

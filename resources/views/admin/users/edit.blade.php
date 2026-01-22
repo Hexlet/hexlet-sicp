@@ -50,7 +50,7 @@
                 {{ html()->checkbox('admin')
                     ->class('form-check-input')
                     ->value(1)
-                    ->checked($user->admin) }}
+                    ->checked($user->is_admin) }}
                 {{ html()->label(__('account.admin'), 'admin')
                     ->class('form-check-label') }}
               </div>

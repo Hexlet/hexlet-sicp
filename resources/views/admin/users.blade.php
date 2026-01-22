@@ -51,7 +51,7 @@
                                         <span class="text-break">{{ $user->email }}</span>
                                     </td>
                                     <td>
-                                        @if($user->admin)
+                                        @if($user->is_admin)
                                             <span class="badge bg-danger">
                                                 <i class="bi bi-shield-fill-check"></i> {{ __('admin.users.role.admin') }}
                                             </span>
