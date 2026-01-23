@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\Chapter;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -19,7 +18,7 @@ class UsersTableSeeder extends Seeder
             'name' => 'Admin',
             'email' => 'admin@test.com',
             'password' => bcrypt('password'),
-            'admin' => true,
+            'is_admin' => true,
         ]);
     }
 }
