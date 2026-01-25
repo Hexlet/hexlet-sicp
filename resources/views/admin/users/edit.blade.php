@@ -9,15 +9,15 @@
         {{-- Админское меню --}}
         <div class="list-group">
           <a href="{{ route('admin.users.index') }}"
-             class="list-group-item list-group-item-action {{ request()->routeIs('admin.users.*') ? 'active' : '' }}">
+            @class(['list-group-item', 'list-group-item-action', 'active' => request()->routeIs('admin.users.*')])>
             {{ __('admin.users.title') }}
           </a>
           <a href="{{ route('admin.comments.index') }}"
-             class="list-group-item list-group-item-action {{ request()->routeIs('admin.comments.*') ? 'active' : '' }}">
+            @class(['list-group-item', 'list-group-item-action', 'active' => request()->routeIs('admin.comments.*')])>
             {{ __('admin.comments.title') }}
           </a>
           <a href="{{ route('admin.solutions.index') }}"
-             class="list-group-item list-group-item-action {{ request()->routeIs('admin.solutions.*') ? 'active' : '' }}">
+            @class(['list-group-item', 'list-group-item-action', 'active' => request()->routeIs('admin.solutions.*')])>
             {{ __('admin.solutions.title') }}
           </a>
         </div>
@@ -47,11 +47,11 @@
 
             <div class="mb-3">
               <div class="form-check">
-                {{ html()->checkbox('admin')
+                {{ html()->checkbox('is_admin')
                     ->class('form-check-input')
                     ->value(1)
                     ->checked($user->is_admin) }}
-                {{ html()->label(__('account.admin'), 'admin')
+                {{ html()->label(__('account.admin'), 'is_admin')
                     ->class('form-check-label') }}
               </div>
             </div>

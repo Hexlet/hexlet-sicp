@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\DTO\Admin\UpdateUserData;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -29,18 +30,14 @@ class UserController extends AdminController
         return view('admin.users.edit', compact('user'));
     }
 
-    public function update(Request $request, User $user)
+    public function update(UpdateUserData $request, User $user)
     {
-        $data = $request->validate([
-            'name' => 'required|string|max:255',
-            'github_name' => 'nullable|string|max:255',
-            'is_admin' => 'nullable|accepted',
-        ]);
 
+        dd($request);
         $user->update([
-            'name' => $data['name'],
-            'github_name' => $data['github_name'] ?? null,
-            'is_admin' => array_key_exists('is_admin', $data),
+            'name' => $request->name,
+            'github_name' => $request->github_name,
+            'is_admin' => $request->is_admin,
         ]);
 
         return redirect()->route('admin.users.index')
