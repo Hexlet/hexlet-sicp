@@ -12,10 +12,8 @@ class UpdateUserData extends Data
     public function __construct(
         #[Required, Max(255)]
         public string $name,
-
         #[Nullable, Max(255)]
         public ?string $github_name,
-
         #[Nullable]
         public ?bool $is_admin,
     ) {
