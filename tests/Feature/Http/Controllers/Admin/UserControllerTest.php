@@ -46,4 +46,65 @@ class UserControllerTest extends ControllerTestCase
 
         $response->assertStatus(403);
     }
+
+    public function testUpdateAsAdmin(): void
+    {
+        $this->actingAs($this->adminUser);
+
+        $user = User::factory()->create([
+            'name' => $this->faker->name,
+            'github_name' => $this->faker->userName,
+            'is_admin' => false,
+        ]);
+
+        $newName = $this->faker->name;
+        $newGithub = $this->faker->userName;
+
+        $response = $this->put(route('admin.users.update', $user), [
+            'name' => $newName,
+            'github_name' => $newGithub,
+            'is_admin' => true,
+        ]);
+
+        $response->assertRedirect(route('admin.users.index'));
+        $response->assertSessionHas('success', 'User updated');
+
+        $this->assertDatabaseHas('users', [
+            'id' => $user->id,
+            'name' => $newName,
+            'github_name' => $newGithub,
+            'is_admin' => true,
+        ]);
+    }
+
+    public function testUpdateAsRegularUserDenied(): void
+    {
+        $this->withExceptionHandling();
+        $this->actingAs($this->regularUser);
+
+        $user = User::factory()->create();
+
+        $response = $this->put(route('admin.users.update', $user), [
+            'name' => $this->faker->name,
+            'github_name' => $this->faker->userName,
+            'is_admin' => true,
+        ]);
+
+        $response->assertStatus(403);
+    }
+
+    public function testUpdateAsGuestDenied(): void
+    {
+        $this->withExceptionHandling();
+
+        $user = User::factory()->create();
+
+        $response = $this->put(route('admin.users.update', $user), [
+            'name' => $this->faker->name,
+            'github_name' => $this->faker->userName,
+            'is_admin' => true,
+        ]);
+
+        $response->assertStatus(403);
+    }
 }
