@@ -32,8 +32,6 @@ class UserController extends AdminController
 
     public function update(UpdateUserData $request, User $user)
     {
-
-        dd($request);
         $user->update([
             'name' => $request->name,
             'github_name' => $request->github_name,
