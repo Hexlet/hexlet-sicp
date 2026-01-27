@@ -13,4 +13,9 @@ class UserPolicy
     {
         return $resourceUser->is($user);
     }
+
+    public function accessAdmin(User $user): bool
+    {
+        return $user->is_admin;
+    }
 }

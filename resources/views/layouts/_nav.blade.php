@@ -35,7 +35,7 @@
         <li class="nav-item"><a href="{{ TemplateHelper::getBookLink($currentLocale) }}"
             class="nav-link link-info p-2">{{ __('layout.nav.sicp_book') }}</a></li>
         @auth
-          @if(auth()->user()->is_admin)
+        @can('accessAdmin', \App\Models\User::class)
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle p-2" href="#" id="adminDropdown" role="button"
                  data-bs-toggle="dropdown" aria-expanded="false">
@@ -62,7 +62,7 @@
                 </li>
               </ul>
             </li>
-          @endif
+          @endcan
         @endauth
       </ul>
       <ul class="navbar-nav ms-md-auto">
