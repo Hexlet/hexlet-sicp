@@ -41,11 +41,16 @@ class HandleInertiaRequests extends Middleware
                 'user' => $request->user(),
             ],
             'locale' => app()->getLocale(),
-            'flash' => function () {
-                foreach (['success', 'error', 'warning', 'info'] as $level) {
-                    $message = session($level);
-                    if ($message) {
-                        return ['message' => $message, 'level' => $level];
+            'flash' => function () use ($request) {
+                $notifications = $request->session()->get('flash_notification');
+
+                if ($notifications && count($notifications) > 0) {
+                    $first = $notifications->first();
+                    if ($first) {
+                        return [
+                            'message' => $first->message,
+                            'level' => $first->level,
+                        ];
                     }
                 }
 

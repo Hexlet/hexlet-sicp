@@ -10,18 +10,20 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Support\Facades\Date;
 
 /**
  * App\Models\User
  * @property int $id
  * @property string $name
  * @property string $email
- * @property string $github_name
+ * @property string|null $github_name
+ * @property string|null $github_access_token
+ * @property string|null $github_refresh_token
  * @property bool $is_admin
  * @property \Illuminate\Support\Carbon|null $email_verified_at
  * @property string $password
@@ -41,6 +43,7 @@ use Illuminate\Support\Facades\Date;
  * @property-read int|null $chapter_members_count
  * @property-read Collection|Solution[] $solutions
  * @property-read int|null $solutions_count
+ * @property-read GithubRepository|null $githubRepository
  * @method static UserFactory factory(...$parameters)
  */
 class User extends Authenticatable implements MustVerifyEmail
@@ -67,7 +70,10 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password',
+        'remember_token',
+        'github_access_token',
+        'github_refresh_token',
     ];
 
     /**
@@ -78,6 +84,8 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $casts = [
         'email_verified_at' => 'datetime',
         'deleted_at' => 'datetime',
+        'github_access_token' => 'encrypted',
+        'github_refresh_token' => 'encrypted',
     ];
 
     public static function boot()
@@ -160,5 +168,10 @@ class User extends Authenticatable implements MustVerifyEmail
     public function scopeAdmins(Builder $builder): Builder
     {
         return $builder->where('is_admin', '=', true);
+    }
+
+    public function githubRepository(): HasOne
+    {
+        return $this->hasOne(GithubRepository::class);
     }
 }

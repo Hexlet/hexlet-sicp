@@ -6,7 +6,7 @@ Route::get('sitemap.xml', 'SitemapController@index');
 
 Route::group([
     'prefix' => LaravelLocalization::setLocale(),
-    'middleware' => [ 'localeSessionRedirect', 'localizationRedirect' ],
+    'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'setLocale' ],
 ], function (): void {
     Route::get('/', 'HomeController@index')->name('home');
 
@@ -27,6 +27,8 @@ Route::group([
     Route::namespace('Settings')->prefix('settings')->name('settings.')->group(function (): void {
         Route::resource('account', 'AccountController')->only('index', 'destroy');
         Route::resource('profile', 'ProfileController')->only('index', 'update');
+        Route::resource('github', 'GithubController')->only(['index', 'store', 'destroy']);
+        Route::post('github/sync', 'GithubController@sync')->name('github.sync');
     });
 
     Route::resource('users', 'UserController')->only('show');
