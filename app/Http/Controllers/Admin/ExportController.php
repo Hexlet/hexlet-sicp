@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\DTO\Admin\ExportData;
 use App\Services\AnalyticsExporter;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
@@ -20,12 +20,8 @@ class ExportController extends AdminController
         return view('admin.export');
     }
 
-    public function store(Request $request): BinaryFileResponse
+    public function store(ExportData $request): BinaryFileResponse
     {
-        $request->validate([
-            'type' => 'required|string',
-        ]);
-
         $filePath = $this->exporter->export($request->type);
 
         return response()->download($filePath)->deleteFileAfterSend();
